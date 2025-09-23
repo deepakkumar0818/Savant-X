@@ -567,7 +567,7 @@ export default function Home() {
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-amber-600 transition-colors duration-300">Zoho Integration</h3>
                   <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                    Seamless integration with Zoho's business suite including CRM customization, Creator apps, and workflow automation.
+                    Seamless integration with Zoho&apos;s business suite including CRM customization, Creator apps, and workflow automation.
                   </p>
                 </div>
               </div>
