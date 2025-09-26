@@ -7,58 +7,40 @@ export default function About() {
 
   const teamMembers = [
     {
-      name: "Sarah Johnson",
-      role: "CEO & Founder",
-      image: "👩‍💼",
-      description: "Visionary leader with 15+ years in tech innovation",
+      name: "Raushan Kumar Bharti",
+      role: "CEO",
+      image: "👨‍💼",
+      description: "Visionary leader with 15+ years in tech innovation and business strategy",
       expertise: ["Strategy", "Leadership", "Innovation"],
       experience: "15+ years",
       projects: "200+"
     },
     {
-      name: "Michael Chen",
+      name: "Bikash Kumar",
+      role: "Co-Founder",
+      image: "👨‍💼",
+      description: "Strategic co-founder passionate about building innovative technology solutions",
+      expertise: ["Business Development", "Strategy", "Partnerships"],
+      experience: "12+ years",
+      projects: "150+"
+    },
+    {
+      name: "Deepak Kumar",
       role: "CTO",
       image: "👨‍💻",
-      description: "Full-stack architect passionate about cutting-edge technology",
+      description: "Full-stack architect passionate about cutting-edge technology and system design",
       expertise: ["React", "Node.js", "Cloud Architecture"],
       experience: "12+ years",
       projects: "150+"
     },
     {
-      name: "Emily Rodriguez",
-      role: "Head of Design",
-      image: "👩‍🎨",
-      description: "Creative director focused on user-centered design",
+      name: "Iqra Zafar",
+      role: "UI/UX Designer",
+      image: "👩‍💻",
+      description: "Creative designer focused on user-centered design and exceptional user experiences",
       expertise: ["UI/UX", "Design Systems", "Brand Identity"],
-      experience: "10+ years",
-      projects: "180+"
-    },
-    {
-      name: "David Kim",
-      role: "Lead Developer",
-      image: "👨‍🔬",
-      description: "Problem solver with expertise in complex integrations",
-      expertise: ["Python", "AI/ML", "Data Science"],
       experience: "8+ years",
       projects: "120+"
-    },
-    {
-      name: "Alex Thompson",
-      role: "Product Manager",
-      image: "👨‍💼",
-      description: "Strategic thinker focused on product excellence",
-      expertise: ["Product Strategy", "Agile", "User Research"],
-      experience: "9+ years",
-      projects: "90+"
-    },
-    {
-      name: "Lisa Wang",
-      role: "DevOps Engineer",
-      image: "👩‍🔧",
-      description: "Infrastructure specialist ensuring scalable solutions",
-      expertise: ["AWS", "Docker", "Kubernetes"],
-      experience: "7+ years",
-      projects: "100+"
     }
   ];
 
@@ -328,57 +310,130 @@ export default function About() {
         </div>
       </section>
 
-      {/* Professional Team Section */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-              Meet Our Team
+      {/* Executive Team Section */}
+      <section className="relative z-10 py-24 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-slate-50 via-white to-blue-50">
+        <div className="max-w-7xl mx-auto">
+          {/* Executive Header */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
+              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+              Leadership Team
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
+              Meet Our
+              <span className="block text-blue-600 mt-2">Executive Team</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Talented professionals dedicated to delivering exceptional results and driving innovation.
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
+              Experienced leaders driving innovation and delivering exceptional results across enterprise technology solutions.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Executive Team Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {teamMembers.map((member, index) => (
-              <div key={index} className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-200 group">
-                <div className="text-center">
-                  {/* Professional Avatar */}
-                  <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-50 transition-colors duration-200">
-                    <span className="text-2xl">{member.image}</span>
+              <div key={index} className="group">
+                <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200/50 hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
+                  {/* Executive Header */}
+                  <div className="flex items-start gap-6 mb-6">
+                    {/* Professional Avatar */}
+                    <div className="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300 shadow-lg relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-2xl"></div>
+                      <span className="text-4xl relative z-10 drop-shadow-sm">{member.image}</span>
                   </div>
 
-                  {/* Professional Content */}
-                  <h3 className="text-lg font-semibold text-slate-900 mb-1">
+                    {/* Executive Info */}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-200">
                       {member.name}
                     </h3>
-                  <p className="text-blue-600 font-medium text-sm mb-3">{member.role}</p>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-4">{member.description}</p>
-
-                  {/* Professional Stats */}
-                  <div className="flex justify-center gap-6 mb-4 text-xs">
-                    <div className="text-center">
-                      <div className="font-semibold text-slate-900">{member.experience}</div>
-                      <div className="text-slate-500">Experience</div>
+                      <div className="inline-block bg-blue-50 text-blue-700 px-3 py-1 rounded-lg text-sm font-semibold mb-3">
+                        {member.role}
                       </div>
-                    <div className="text-center">
-                      <div className="font-semibold text-slate-900">{member.projects}</div>
-                      <div className="text-slate-500">Projects</div>
+                      <p className="text-slate-600 leading-relaxed text-base">
+                        {member.description}
+                      </p>
                     </div>
+                  </div>
+
+                  {/* Executive Stats */}
+                  <div className="grid grid-cols-2 gap-4 mb-6 p-4 bg-slate-50 rounded-xl">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-blue-600 mb-1">{member.experience}</div>
+                      <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Experience</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-blue-600 mb-1">{member.projects}</div>
+                      <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Projects</div>
+                      </div>
                     </div>
 
-                  {/* Professional Expertise Tags */}
-                  <div className="flex flex-wrap gap-1 justify-center">
+                  {/* Executive Expertise */}
+                  <div className="space-y-3">
+                    <h4 className="text-sm font-semibold text-slate-700 uppercase tracking-wide mb-3">Core Expertise</h4>
+                    <div className="flex flex-wrap gap-2">
                       {member.expertise.map((skill, skillIndex) => (
-                      <span key={skillIndex} className="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
+                        <span key={skillIndex} className="px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg text-sm font-medium border border-blue-200/50">
                           {skill}
                         </span>
                       ))}
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Executive Summary */}
+          <div className="mt-20 bg-white rounded-3xl p-12 shadow-xl border border-slate-200/50">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl font-bold text-slate-900 mb-4">Leadership Excellence</h3>
+              <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                Our executive team brings together decades of combined experience in technology innovation, 
+                strategic leadership, and enterprise solutions delivery.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                </div>
+                <h4 className="text-lg font-semibold text-slate-900 mb-2">Strategic Vision</h4>
+                <p className="text-slate-600 text-sm">Leading technology innovation and business growth</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-green-700 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H17c-.8 0-1.54.37-2.01.99L14 10v8h4z"/>
+                  </svg>
+                </div>
+                <h4 className="text-lg font-semibold text-slate-900 mb-2">Technical Excellence</h4>
+                <p className="text-slate-600 text-sm">Cutting-edge technology and system architecture</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-700 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                  </svg>
+                </div>
+                <h4 className="text-lg font-semibold text-slate-900 mb-2">Creative Design</h4>
+                <p className="text-slate-600 text-sm">User-centered design and exceptional experiences</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-orange-700 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M7 4V2c0-1.1.9-2 2-2h6c1.1 0 2 .9 2 2v2h3c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2h-1v8c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2v-8H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2h3zm2-2h6v2H9V2zm-1 4h8v2H8V6zm0 4h8v8H8v-8z"/>
+                  </svg>
+                </div>
+                <h4 className="text-lg font-semibold text-slate-900 mb-2">Business Growth</h4>
+                <p className="text-slate-600 text-sm">Strategic partnerships and business development</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -441,7 +496,7 @@ export default function About() {
                         {capability.title}
                       </h3>
                     <p className="text-slate-600 text-sm">{capability.desc}</p>
-                  </div>
+                    </div>
                   </div>
 
                   {/* Features List */}

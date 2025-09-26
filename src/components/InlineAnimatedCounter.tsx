@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface InlineAnimatedCounterProps {
   text: string; // Full text like "340% increase in lead conversion"
@@ -12,7 +12,28 @@ export default function InlineAnimatedCounter({ text, duration = 2000 }: InlineA
   const [hasStarted, setHasStarted] = useState(false);
   const counterRef = useRef<HTMLSpanElement>(null);
 
-  const animateNumbers = useCallback(() => {
+  useEffect(() => {
+    if (hasStarted) return;
+
+    // Intersection Observer to start animation when element comes into view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasStarted) {
+          setHasStarted(true);
+          animateNumbers();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (counterRef.current) {
+      observer.observe(counterRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasStarted]);
+
+  const animateNumbers = () => {
     // Extract number and percentage from text
     const numberMatch = text.match(/(\d+)%/);
     if (!numberMatch) {
@@ -44,28 +65,7 @@ export default function InlineAnimatedCounter({ text, duration = 2000 }: InlineA
     };
 
     requestAnimationFrame(animate);
-  }, [text, duration]);
-
-  useEffect(() => {
-    if (hasStarted) return;
-
-    // Intersection Observer to start animation when element comes into view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasStarted) {
-          setHasStarted(true);
-          animateNumbers();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (counterRef.current) {
-      observer.observe(counterRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [hasStarted, animateNumbers]);
+  };
 
   return (
     <span ref={counterRef}>

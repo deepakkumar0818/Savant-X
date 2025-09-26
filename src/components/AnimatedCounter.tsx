@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface AnimatedCounterProps {
   end: number;
@@ -23,7 +23,28 @@ export default function AnimatedCounter({
   const [hasStarted, setHasStarted] = useState(false);
   const countRef = useRef<HTMLSpanElement>(null);
 
-  const startCounting = useCallback(() => {
+  useEffect(() => {
+    if (!startAnimation || hasStarted) return;
+
+    // Intersection Observer to start animation when element comes into view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasStarted) {
+          setHasStarted(true);
+          startCounting();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (countRef.current) {
+      observer.observe(countRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [startAnimation, hasStarted]);
+
+  const startCounting = () => {
     const startTime = Date.now();
     const startValue = 0;
 
@@ -46,28 +67,7 @@ export default function AnimatedCounter({
     };
 
     requestAnimationFrame(animate);
-  }, [end, duration]);
-
-  useEffect(() => {
-    if (!startAnimation || hasStarted) return;
-
-    // Intersection Observer to start animation when element comes into view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasStarted) {
-          setHasStarted(true);
-          startCounting();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (countRef.current) {
-      observer.observe(countRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [startAnimation, hasStarted, startCounting]);
+  };
 
   return (
     <span ref={countRef} className={className}>

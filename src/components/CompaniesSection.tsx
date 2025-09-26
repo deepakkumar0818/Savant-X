@@ -23,7 +23,7 @@ const companyNames = [
 
 export default function CompaniesSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {

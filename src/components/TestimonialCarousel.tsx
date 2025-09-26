@@ -220,7 +220,7 @@ export default function TestimonialCarousel() {
                 transform: `translateX(-${currentIndex * (100 / visibleCards)}%)`
               }}
             >
-              {testimonials.map((testimonial) => (
+              {testimonials.map((testimonial, index) => (
                 <div
                   key={testimonial.id}
                   className={`flex-shrink-0 px-4 ${
@@ -268,7 +268,7 @@ export default function TestimonialCarousel() {
                         WebkitLineClamp: 5,
                         WebkitBoxOrient: 'vertical' as const
                       }}>
-                        &ldquo;{testimonial.content}&rdquo;
+                        "{testimonial.content}"
                       </blockquote>
 
                       {/* Results Badge */}

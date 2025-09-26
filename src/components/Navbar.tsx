@@ -33,7 +33,7 @@ const defaultNavItems: NavItem[] = [
       { label: 'Experience', href: '/expertise/experience' }
     ]
   },
-  { label: 'Thinking', href: '/thinking' },
+  { label: 'Products', href: '/products' },
   { label: 'Contact', href: '/contact' }
 ];
 
