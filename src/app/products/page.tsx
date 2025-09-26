@@ -210,7 +210,7 @@ export default function Products() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {featuredProducts.map((product, index) => (
+            {featuredProducts.map((product) => (
               <div key={product.id} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:border-blue-200/50 transition-all duration-300 h-full">
                   {/* Product Header */}
@@ -321,7 +321,7 @@ export default function Products() {
 
           {/* Professional Products Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProducts.map((product, index) => (
+            {filteredProducts.map((product) => (
               <div key={product.id} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
                   {/* Product Header */}

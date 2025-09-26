@@ -160,7 +160,7 @@ export default function Work() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {featuredProjects.map((project, index) => (
+            {featuredProjects.map((project) => (
               <div key={project.id} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
                   {/* Project Icon */}
@@ -238,7 +238,7 @@ export default function Work() {
 
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => (
+            {filteredProjects.map((project) => (
               <div key={project.id} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
                   {/* Project Header */}
