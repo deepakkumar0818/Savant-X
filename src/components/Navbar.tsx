@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 // TypeScript interfaces for type safety
@@ -28,6 +29,10 @@ const defaultNavItems: NavItem[] = [
     href: '/expertise',
     children: [
       { label: 'What We Do', href: '/expertise/what-we-do' },
+      { label: 'Websites', href: '/expertise/websites' },
+      { label: 'Web Apps', href: '/expertise/web-apps' },
+      { label: 'Mobile Apps', href: '/expertise/mobile-apps' },
+      { label: 'E-commerce', href: '/expertise/ecommerce' },
       { label: 'Design & UX', href: '/expertise/design-ux' },
       { label: 'Technology', href: '/expertise/technology' },
       { label: 'Experience', href: '/expertise/experience' }
@@ -41,12 +46,79 @@ export default function Navbar({
   companyName = 'SavantX', 
   logo,
   navItems = defaultNavItems,
-  className = '',
-  activeItem = 'Home'
-}: NavbarProps & { activeItem?: string }) {
+  className = ''
+}: NavbarProps) {
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [currentActiveItem, setCurrentActiveItem] = useState(activeItem);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  
+  // Function to get the active item based on current pathname
+  const getActiveItem = () => {
+    if (pathname === '/') return 'Home';
+    if (pathname === '/about') return 'About';
+    if (pathname === '/work') return 'Work';
+    if (pathname === '/products') return 'Products';
+    if (pathname === '/contact') return 'Contact';
+    
+    // Check for expertise pages
+    if (pathname.startsWith('/expertise')) {
+      // Check for specific expertise pages
+      if (pathname.includes('/websites')) return 'Expertise';
+      if (pathname.includes('/web-apps')) return 'Expertise';
+      if (pathname.includes('/mobile-apps')) return 'Expertise';
+      if (pathname.includes('/ecommerce')) return 'Expertise';
+      if (pathname.includes('/user-research')) return 'Expertise';
+      if (pathname.includes('/ui-ux-design')) return 'Expertise';
+      if (pathname.includes('/prototyping')) return 'Expertise';
+      if (pathname.includes('/design-systems')) return 'Expertise';
+      if (pathname.includes('/zoho-integrations')) return 'Expertise';
+      if (pathname.includes('/react')) return 'Expertise';
+      if (pathname.includes('/payload-cms')) return 'Expertise';
+      if (pathname.includes('/laravel')) return 'Expertise';
+      if (pathname.includes('/wordpress')) return 'Expertise';
+      if (pathname.includes('/commercial')) return 'Expertise';
+      if (pathname.includes('/not-for-profit')) return 'Expertise';
+      if (pathname.includes('/innovation')) return 'Expertise';
+      if (pathname.includes('/education-industrial-training')) return 'Expertise';
+      if (pathname.includes('/community')) return 'Expertise';
+      if (pathname.includes('/what-we-do')) return 'Expertise';
+      if (pathname.includes('/technology')) return 'Expertise';
+      if (pathname.includes('/experience')) return 'Expertise';
+      return 'Expertise';
+    }
+    
+    return 'Home';
+  };
+  
+  const currentActiveItem = getActiveItem();
+
+  // Handle click outside to close dropdown and mobile menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      // Close desktop dropdown if clicking outside
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setActiveDropdown(null);
+      }
+      
+      // Close mobile menu if clicking outside
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+        setIsMobileMenuOpen(false);
+        setActiveDropdown(null);
+      }
+    };
+
+    // Add event listener when dropdown or mobile menu is open
+    if (activeDropdown || isMobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    // Cleanup event listener
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [activeDropdown, isMobileMenuOpen]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -61,8 +133,7 @@ export default function Navbar({
     setActiveDropdown(null);
   };
 
-  const handleNavClick = (itemLabel: string) => {
-    setCurrentActiveItem(itemLabel);
+  const handleNavClick = () => {
     setActiveDropdown(null);
     setIsMobileMenuOpen(false);
   };
@@ -95,7 +166,7 @@ export default function Navbar({
           </div>
 
           {/* Desktop Navigation - Pill Container */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center" ref={dropdownRef}>
             <div className="bg-white/80 backdrop-blur-md rounded-full px-8 py-3 shadow-lg border border-blue-200/60 transition-all duration-300 ease-out">
               <div className="flex items-center space-x-8">
                 {navItems.map((item) => (
@@ -105,7 +176,7 @@ export default function Navbar({
                                                  <button
                            onClick={() => toggleDropdown(item.label)}
                            className={`px-4 py-2 rounded-full transition-all duration-300 ease-out font-semibold text-sm tracking-wide transform hover:scale-105 ${
-                             activeItem === item.label
+                             currentActiveItem === item.label
                                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
                                : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
                            }`}
@@ -178,15 +249,9 @@ export default function Navbar({
                                        </Link>
                                      </li>
                                      <li>
-                                       <Link href="/expertise/ux-design" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
-                                         <span className="text-lg">📐</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">UX Design</span>
-                                       </Link>
-                                     </li>
-                                     <li>
-                                       <Link href="/expertise/ui-design" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-pink-100 active:bg-pink-200 transition-all duration-200 group">
-                                         <span className="text-lg">🔲</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-pink-700 group-active:text-pink-800">UI Design</span>
+                                       <Link href="/expertise/ui-ux-design" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
+                                         <span className="text-lg">🎨</span>
+                                         <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">UI/UX Design</span>
                                        </Link>
                                      </li>
                                      <li>
@@ -211,9 +276,9 @@ export default function Navbar({
                                    </h3>
                                    <ul className="space-y-3">
                                      <li>
-                                       <Link href="/expertise/headless" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-purple-100 active:bg-purple-200 transition-all duration-200 group">
-                                         <span className="text-lg">⚡</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-purple-700 group-active:text-purple-800">Headless</span>
+                                       <Link href="/expertise/zoho-integrations" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-purple-100 active:bg-purple-200 transition-all duration-200 group">
+                                         <span className="text-lg">🔗</span>
+                                         <span className="text-sm font-medium text-slate-700 group-hover:text-purple-700 group-active:text-purple-800">Zoho Integrations</span>
                                        </Link>
                                      </li>
                                      <li>
@@ -268,9 +333,9 @@ export default function Navbar({
                                        </Link>
                                      </li>
                                      <li>
-                                       <Link href="/expertise/education" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-yellow-100 active:bg-yellow-200 transition-all duration-200 group">
-                                         <span className="text-lg">📚</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-yellow-700 group-active:text-yellow-800">Education</span>
+                                       <Link href="/expertise/education-industrial-training" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-yellow-100 active:bg-yellow-200 transition-all duration-200 group">
+                                         <span className="text-lg">🎓</span>
+                                         <span className="text-sm font-medium text-slate-700 group-hover:text-yellow-700 group-active:text-yellow-800">Education Industrial Training</span>
                                        </Link>
                                      </li>
                                      <li>
@@ -302,7 +367,7 @@ export default function Navbar({
                     ) : (
                       <Link
                         href={item.href}
-                        onClick={() => handleNavClick(item.label)}
+                        onClick={handleNavClick}
                         className={`px-4 py-2 rounded-full transition-all duration-300 ease-out font-semibold text-sm tracking-wide transform hover:scale-105 ${
                           currentActiveItem === item.label
                             ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
@@ -347,6 +412,7 @@ export default function Navbar({
 
                  {/* Mobile Navigation Menu */}
          <div 
+           ref={mobileMenuRef}
            className={`md:hidden transition-all duration-300 ease-in-out ${
              isMobileMenuOpen 
                ? 'max-h-screen opacity-100 visible' 
@@ -361,7 +427,7 @@ export default function Navbar({
                                          <button
                        onClick={() => toggleDropdown(item.label)}
                        className={`flex items-center justify-between w-full px-4 py-3 text-left transition-all duration-300 ease-out font-semibold text-sm rounded-xl transform hover:scale-105 ${
-                         activeItem === item.label
+                         currentActiveItem === item.label
                            ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
                            : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
                        }`}
@@ -403,8 +469,7 @@ export default function Navbar({
                               <h4 className="font-semibold text-slate-800 mb-2 text-sm">Design & UX</h4>
                               <div className="space-y-1 pl-2">
                                 <Link href="/expertise/user-research" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>User Research</Link>
-                                <Link href="/expertise/ux-design" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>UX Design</Link>
-                                <Link href="/expertise/ui-design" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>UI Design</Link>
+                                <Link href="/expertise/ui-ux-design" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>UI/UX Design</Link>
                                 <Link href="/expertise/prototyping" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Prototyping</Link>
                                 <Link href="/expertise/design-systems" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Design Systems</Link>
                               </div>
@@ -414,7 +479,7 @@ export default function Navbar({
                             <div>
                               <h4 className="font-semibold text-slate-800 mb-2 text-sm">Technology</h4>
                               <div className="space-y-1 pl-2">
-                                <Link href="/expertise/headless" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Headless</Link>
+                                <Link href="/expertise/zoho-integrations" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Zoho Integrations</Link>
                                 <Link href="/expertise/react" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>React.js</Link>
                                 <Link href="/expertise/payload-cms" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Payload CMS</Link>
                                 <Link href="/expertise/laravel" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Laravel</Link>
@@ -429,7 +494,7 @@ export default function Navbar({
                                 <Link href="/expertise/commercial" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Commercial</Link>
                                 <Link href="/expertise/not-for-profit" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Not for Profit</Link>
                                 <Link href="/expertise/innovation" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Innovation</Link>
-                                <Link href="/expertise/education" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Education</Link>
+                                <Link href="/expertise/education-industrial-training" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Education Industrial Training</Link>
                                 <Link href="/expertise/community" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Community</Link>
                               </div>
                             </div>
@@ -457,7 +522,7 @@ export default function Navbar({
                          ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
                          : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
                      }`}
-                     onClick={() => handleNavClick(item.label)}
+                     onClick={handleNavClick}
                    >
                      {item.label}
                    </Link>

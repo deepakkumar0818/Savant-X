@@ -492,3 +492,79 @@ html {
 .animate-fade-in-up {
   animation: fade-in-up 0.8s ease-out forwards;
 }
+
+/* 3D Animations for Web Apps */
+@keyframes float3d {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+  }
+  50% {
+    transform: translateY(-20px) rotateX(0deg) rotateY(0deg);
+  }
+  75% {
+    transform: translateY(-10px) rotateX(-5deg) rotateY(-5deg);
+  }
+}
+
+@keyframes rotate3d {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  33% {
+    transform: rotateX(10deg) rotateY(10deg) rotateZ(5deg);
+  }
+  66% {
+    transform: rotateX(-5deg) rotateY(-5deg) rotateZ(-5deg);
+  }
+  100% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+}
+
+@keyframes pulse3d {
+  0%, 100% {
+    transform: scale(1) rotateX(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05) rotateX(5deg);
+    opacity: 1;
+  }
+}
+
+@keyframes slide3d {
+  0% {
+    transform: translateX(0px) translateY(0px) rotateZ(0deg);
+  }
+  25% {
+    transform: translateX(10px) translateY(-5px) rotateZ(2deg);
+  }
+  50% {
+    transform: translateX(0px) translateY(-10px) rotateZ(0deg);
+  }
+  75% {
+    transform: translateX(-10px) translateY(-5px) rotateZ(-2deg);
+  }
+  100% {
+    transform: translateX(0px) translateY(0px) rotateZ(0deg);
+  }
+}
+
+.animate-float3d {
+  animation: float3d 6s ease-in-out infinite;
+}
+
+.animate-rotate3d {
+  animation: rotate3d 8s ease-in-out infinite;
+}
+
+.animate-pulse3d {
+  animation: pulse3d 4s ease-in-out infinite;
+}
+
+.animate-slide3d {
+  animation: slide3d 5s ease-in-out infinite;
+}
