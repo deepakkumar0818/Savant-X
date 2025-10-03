@@ -227,12 +227,6 @@ export default function Navbar({
                                          <span className="text-sm font-medium text-slate-700 group-hover:text-green-700 group-active:text-green-800">eCommerce</span>
                                        </Link>
                                      </li>
-                                     <li>
-                                       <Link href="/expertise/data-visualization" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-purple-100 active:bg-purple-200 transition-all duration-200 group">
-                                         <span className="text-lg">🔄</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-purple-700 group-active:text-purple-800">Data Vis</span>
-                                       </Link>
-                                     </li>
                                    </ul>
                                  </div>
 
@@ -460,7 +454,6 @@ export default function Navbar({
                                 <Link href="/expertise/web-apps" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Web Apps</Link>
                                 <Link href="/expertise/mobile-apps" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Mobile Apps</Link>
                                 <Link href="/expertise/ecommerce" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>eCommerce</Link>
-                                <Link href="/expertise/data-visualization" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Data Vis</Link>
                               </div>
                             </div>
                             
