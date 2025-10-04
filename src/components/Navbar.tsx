@@ -377,13 +377,33 @@ export default function Navbar({
             </div>
           </div>
 
-          {/* Contact Button */}
+          {/* Interactive 3D Button */}
           <div className="hidden md:flex items-center">
             <Link
               href="/contact"
-              className="text-blue-600 px-4 py-2 rounded-full transform hover:scale-105 transition-all duration-300 ease-out font-medium text-sm hover:text-blue-700"
+              className="group relative bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white px-6 py-2.5 rounded-2xl transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 ease-out font-semibold text-sm shadow-2xl hover:shadow-blue-500/25 hover:shadow-2xl border border-blue-400/30"
+              style={{
+                background: 'linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%)',
+                boxShadow: '0 8px 32px rgba(59, 130, 246, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)',
+              }}
             >
-              Contact Us
+              {/* 3D Cube Icon */}
+              <span className="flex items-center gap-2">
+                <div className="relative">
+                  <div className="w-5 h-5 bg-white/20 rounded transform group-hover:rotate-12 transition-transform duration-300" style={{
+                    background: 'linear-gradient(45deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%)',
+                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), 0 2px 4px rgba(0,0,0,0.1)'
+                  }}>
+                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/40 to-transparent rounded transform rotate-45"></div>
+                  </div>
+                </div>
+                Let's Build
+                <svg className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
+              {/* Animated background glow */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
             </Link>
           </div>
 
@@ -523,13 +543,32 @@ export default function Navbar({
               </div>
             ))}
             
-                         {/* Mobile Contact Button */}
+                         {/* Mobile Interactive 3D Button */}
              <div className="pt-4 border-t border-blue-200/60 text-center">
                <Link
                  href="/contact"
-                 className="inline-block text-blue-600 px-6 py-3 rounded-full transform hover:scale-105 transition-all duration-300 ease-out font-medium hover:text-blue-700"
+                 className="group relative inline-block text-white px-8 py-3 rounded-2xl transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 ease-out font-semibold shadow-2xl hover:shadow-blue-500/25 hover:shadow-2xl border border-blue-400/30"
+                 style={{
+                   background: 'linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%)',
+                   boxShadow: '0 8px 32px rgba(59, 130, 246, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)',
+                 }}
                >
-                 Contact Us
+                 <span className="flex items-center gap-2 justify-center">
+                   <div className="relative">
+                     <div className="w-6 h-6 bg-white/20 rounded transform group-hover:rotate-12 transition-transform duration-300" style={{
+                       background: 'linear-gradient(45deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%)',
+                       boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), 0 2px 4px rgba(0,0,0,0.1)'
+                     }}>
+                       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/40 to-transparent rounded transform rotate-45"></div>
+                     </div>
+                   </div>
+                   Let's Build
+                   <svg className="w-5 h-5 transform group-hover:translate-x-0.5 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                   </svg>
+                 </span>
+                 {/* Animated background glow */}
+                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
                </Link>
              </div>
           </div>

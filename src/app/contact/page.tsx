@@ -17,6 +17,13 @@ export default function ContactPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [isSupportOpen, setIsSupportOpen] = useState(false);
+  const [supportFormData, setSupportFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -24,6 +31,22 @@ export default function ContactPage() {
       ...prev,
       [name]: value
     }));
+  };
+
+  const handleSupportInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setSupportFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSupportSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Support form submitted:', supportFormData);
+    alert('Thank you for contacting support! We will get back to you soon.');
+    setIsSupportOpen(false);
+    setSupportFormData({ name: '', email: '', subject: '', message: '' });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -126,7 +149,7 @@ export default function ContactPage() {
             </div>
             <div className="bg-white/70 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg md:shadow-xl border border-blue-200/60 transform hover:scale-105 transition-all duration-500 ease-out group">
               <div className="text-2xl md:text-3xl font-bold text-blue-600 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
-                <AnimatedCounter end={500} suffix="+" duration={2800} />
+                <AnimatedCounter end={200} suffix="+" duration={2800} />
               </div>
               <div className="text-slate-600 font-medium text-sm md:text-base">Projects Delivered</div>
             </div>
@@ -170,7 +193,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-slate-900 bg-white"
                       placeholder="Your full name"
                     />
                   </div>
@@ -185,7 +208,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-slate-900 bg-white"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -202,7 +225,7 @@ export default function ContactPage() {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-slate-900 bg-white"
                       placeholder="Your company name"
                     />
                   </div>
@@ -216,7 +239,7 @@ export default function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-slate-900 bg-white"
                       placeholder="+1 (555) 123-4567"
                     />
                   </div>
@@ -233,7 +256,7 @@ export default function ContactPage() {
                       value={formData.service}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-slate-900 bg-white"
                     >
                       <option value="">Select a service</option>
                       <option value="web-development">Web Development</option>
@@ -255,14 +278,14 @@ export default function ContactPage() {
                       name="budget"
                       value={formData.budget}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-slate-900 bg-white"
                     >
                       <option value="">Select budget range</option>
-                      <option value="under-10k">Under $10,000</option>
-                      <option value="10k-25k">$10,000 - $25,000</option>
-                      <option value="25k-50k">$25,000 - $50,000</option>
-                      <option value="50k-100k">$50,000 - $100,000</option>
-                      <option value="over-100k">Over $100,000</option>
+                      <option value="under-10l">Under ₹10,00,000</option>
+                      <option value="10l-25l">₹10,00,000 - ₹25,00,000</option>
+                      <option value="25l-50l">₹25,00,000 - ₹50,00,000</option>
+                      <option value="50l-1cr">₹50,00,000 - ₹1,00,00,000</option>
+                      <option value="over-1cr">Over ₹1,00,00,000</option>
                     </select>
                   </div>
                 </div>
@@ -278,7 +301,7 @@ export default function ContactPage() {
                     onChange={handleInputChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none text-slate-900 bg-white"
                     placeholder="Tell us about your project, goals, and any specific requirements..."
                   />
                 </div>
@@ -324,8 +347,8 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold text-slate-900 mb-1">Email Us</h4>
                       <p className="text-slate-600 text-sm mb-2">Send us an email anytime</p>
-                      <a href="mailto:hello@savantx.com" className="text-blue-600 hover:text-blue-700 font-medium">
-                        hello@savantx.com
+                      <a href="mailto:contact@thesavantx.com" className="text-blue-600 hover:text-blue-700 font-medium">
+                        contact@thesavantx.com
                       </a>
                     </div>
                   </div>
@@ -338,10 +361,15 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-slate-900 mb-1">Call Us</h4>
-                      <p className="text-slate-600 text-sm mb-2">Mon-Fri 9AM-6PM EST</p>
-                      <a href="tel:+1234567890" className="text-purple-600 hover:text-purple-700 font-medium">
-                        +1 (555) 123-4567
-                      </a>
+                      <p className="text-slate-600 text-sm mb-2">Mon-Fri 9AM-6PM IST</p>
+                      <div className="space-y-1">
+                        <a href="tel:+919056425289" className="block text-purple-600 hover:text-purple-700 font-medium">
+                          +91 9056425289
+                        </a>
+                        <a href="tel:+917018318078" className="block text-purple-600 hover:text-purple-700 font-medium">
+                          +91 7018318078
+                        </a>
+                      </div>
                     </div>
                   </div>
 
@@ -354,11 +382,17 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-slate-900 mb-1">Visit Us</h4>
-                      <p className="text-slate-600 text-sm mb-2">Our main office</p>
-                      <p className="text-green-600 font-medium">
-                        123 Tech Street<br />
-                        Innovation District, NY 10001
-                      </p>
+                      <p className="text-slate-600 text-sm mb-2">Our office locations</p>
+                      <div className="space-y-3">
+                        <div className="text-green-600 font-medium text-sm">
+                          <p className="font-semibold text-slate-800">Punjab Office:</p>
+                          <p>Sector 71, Mohali<br />Punjab, 160071</p>
+                        </div>
+                        <div className="text-green-600 font-medium text-sm">
+                          <p className="font-semibold text-slate-800">Headquarters:</p>
+                          <p>Panchanpur, Tekari<br />Gaya, Bihar, 824236</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -468,7 +502,10 @@ export default function ContactPage() {
 
           <div className="text-center mt-12">
             <p className="text-slate-600 mb-6">Still have questions? We&apos;re here to help!</p>
-            <button className="group bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 transition-all duration-300 font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl">
+            <button 
+              onClick={() => setIsSupportOpen(true)}
+              className="group bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 transition-all duration-300 font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl"
+            >
               <span className="flex items-center justify-center gap-2">
                 Contact Support
                 <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -479,6 +516,111 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/* Support Popup Modal */}
+      {isSupportOpen && (
+        <div className="fixed inset-0 bg-white/20 backdrop-blur-md flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              {/* Modal Header */}
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-2xl font-bold text-slate-900">Contact Support</h3>
+                <button 
+                  onClick={() => setIsSupportOpen(false)}
+                  className="text-slate-400 hover:text-slate-600 transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Modal Form */}
+              <form onSubmit={handleSupportSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="support-name" className="block text-sm font-medium text-slate-700 mb-1">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="support-name"
+                    name="name"
+                    value={supportFormData.name}
+                    onChange={handleSupportInputChange}
+                    required
+                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-900 bg-white"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="support-email" className="block text-sm font-medium text-slate-700 mb-1">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="support-email"
+                    name="email"
+                    value={supportFormData.email}
+                    onChange={handleSupportInputChange}
+                    required
+                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-900 bg-white"
+                    placeholder="Enter your email address"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="support-subject" className="block text-sm font-medium text-slate-700 mb-1">
+                    Subject *
+                  </label>
+                  <input
+                    type="text"
+                    id="support-subject"
+                    name="subject"
+                    value={supportFormData.subject}
+                    onChange={handleSupportInputChange}
+                    required
+                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-900 bg-white"
+                    placeholder="What can we help you with?"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="support-message" className="block text-sm font-medium text-slate-700 mb-1">
+                    Message *
+                  </label>
+                  <textarea
+                    id="support-message"
+                    name="message"
+                    value={supportFormData.message}
+                    onChange={handleSupportInputChange}
+                    required
+                    rows={4}
+                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-900 bg-white"
+                    placeholder="Please describe your issue or question..."
+                  />
+                </div>
+
+                <div className="flex gap-3 pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setIsSupportOpen(false)}
+                    className="flex-1 px-4 py-2 border border-slate-300 text-slate-700 rounded-md hover:bg-slate-50 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                  >
+                    Send Support Request
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>

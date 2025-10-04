@@ -1,19 +1,46 @@
 'use client';
 
+import Link from 'next/link';
+import { useState } from 'react';
 import Footer from '@/components/Footer';
 import AnimatedCounter from '@/components/AnimatedCounter';
 
 export default function About() {
+  const [isConsultationOpen, setIsConsultationOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    projectType: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log('Form submitted:', formData);
+    alert('Thank you for your consultation request! We will get back to you soon.');
+    setIsConsultationOpen(false);
+    setFormData({ name: '', email: '', company: '', projectType: '', message: '' });
+  };
 
   const teamMembers = [
     {
       name: "Raushan Kumar Bharti",
       role: "CEO",
       image: "👨‍💼",
-      description: "Visionary leader with 15+ years in tech innovation and business strategy",
+      description: "Visionary leader with 5+ years in tech innovation and business strategy",
       expertise: ["Strategy", "Leadership", "Innovation"],
-      experience: "15+ years",
-      projects: "200+"
+      experience: "5+ years",
+      projects: "35+"
     },
     {
       name: "Bikash Kumar",
@@ -21,8 +48,8 @@ export default function About() {
       image: "👨‍💼",
       description: "Strategic co-founder passionate about building innovative technology solutions",
       expertise: ["Business Development", "Strategy", "Partnerships"],
-      experience: "12+ years",
-      projects: "150+"
+      experience: "4+ years",
+      projects: "30+"
     },
     {
       name: "Deepak Kumar",
@@ -30,8 +57,8 @@ export default function About() {
       image: "👨‍💻",
       description: "Full-stack architect passionate about cutting-edge technology and system design",
       expertise: ["React", "Node.js", "Cloud Architecture"],
-      experience: "12+ years",
-      projects: "150+"
+      experience: "5+ years",
+      projects: "40+"
     },
     {
       name: "Iqra Zafar",
@@ -39,8 +66,8 @@ export default function About() {
       image: "👩‍💻",
       description: "Creative designer focused on user-centered design and exceptional user experiences",
       expertise: ["UI/UX", "Design Systems", "Brand Identity"],
-      experience: "8+ years",
-      projects: "120+"
+      experience: "4+ years",
+      projects: "32+"
     }
   ];
 
@@ -199,7 +226,7 @@ export default function About() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16">
               <div className="text-center group">
                 <div className="text-4xl font-bold text-blue-600 mb-2 group-hover:text-blue-700 transition-colors duration-300">
-                  <AnimatedCounter end={500} suffix="+" duration={2800} />
+                  <AnimatedCounter end={200} suffix="+" duration={2800} />
                 </div>
                 <div className="text-slate-600 font-medium text-sm uppercase tracking-wide">Projects Delivered</div>
               </div>
@@ -219,10 +246,16 @@ export default function About() {
 
             {/* Professional CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition-colors duration-200 font-medium text-base">
+              <Link href="/work" className="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition-colors duration-200 font-medium text-base">
                 Explore Our Work
-              </button>
-              <button className="border border-slate-300 text-slate-700 px-8 py-3 rounded-md hover:border-slate-400 hover:bg-slate-50 transition-all duration-200 font-medium text-base">
+              </Link>
+              <button 
+                onClick={() => {
+                  const teamSection = document.getElementById('executive-team');
+                  teamSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+                className="border border-slate-300 text-slate-700 px-8 py-3 rounded-md hover:border-slate-400 hover:bg-slate-50 transition-all duration-200 font-medium text-base"
+              >
                 Meet Our Team
               </button>
             </div>
@@ -311,7 +344,7 @@ export default function About() {
       </section>
 
       {/* Executive Team Section */}
-      <section className="relative z-10 py-24 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-slate-50 via-white to-blue-50">
+      <section id="executive-team" className="relative z-10 py-24 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-slate-50 via-white to-blue-50">
         <div className="max-w-7xl mx-auto">
           {/* Executive Header */}
           <div className="text-center mb-20">
@@ -549,16 +582,143 @@ export default function About() {
               Let&apos;s discuss your project and see how SavantX can help you achieve your digital goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-blue-600 px-8 py-3 rounded-md hover:bg-blue-50 transition-colors duration-200 font-medium">
+              <Link href="/contact" className="bg-white text-blue-600 px-8 py-3 rounded-md hover:bg-blue-50 transition-colors duration-200 font-medium text-center">
                   Start Your Project
-              </button>
-              <button className="border border-white text-white px-8 py-3 rounded-md hover:bg-white hover:text-blue-600 transition-all duration-200 font-medium">
+              </Link>
+              <button 
+                onClick={() => setIsConsultationOpen(true)}
+                className="border border-white text-white px-8 py-3 rounded-md hover:bg-white hover:text-blue-600 transition-all duration-200 font-medium"
+              >
                   Schedule Consultation
               </button>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Consultation Popup Modal */}
+      {isConsultationOpen && (
+        <div className="fixed inset-0 bg-white/20 backdrop-blur-md flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              {/* Modal Header */}
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-2xl font-bold text-slate-900">Schedule Consultation</h3>
+                <button 
+                  onClick={() => setIsConsultationOpen(false)}
+                  className="text-slate-400 hover:text-slate-600 transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Modal Form */}
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Enter your email address"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="company" className="block text-sm font-medium text-slate-700 mb-1">
+                    Company
+                  </label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Enter your company name"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="projectType" className="block text-sm font-medium text-slate-700 mb-1">
+                    Project Type
+                  </label>
+                  <select
+                    id="projectType"
+                    name="projectType"
+                    value={formData.projectType}
+                    onChange={handleInputChange}
+                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  >
+                    <option value="">Select project type</option>
+                    <option value="website">Website Development</option>
+                    <option value="webapp">Web Application</option>
+                    <option value="mobile">Mobile App</option>
+                    <option value="ecommerce">E-commerce</option>
+                    <option value="consulting">Technology Consulting</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">
+                    Project Details
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={4}
+                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Tell us about your project requirements..."
+                  />
+                </div>
+
+                <div className="flex gap-3 pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setIsConsultationOpen(false)}
+                    className="flex-1 px-4 py-2 border border-slate-300 text-slate-700 rounded-md hover:bg-slate-50 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                  >
+                    Schedule Meeting
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>

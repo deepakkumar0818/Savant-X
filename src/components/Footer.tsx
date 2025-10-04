@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Footer() {
   return (
     <footer className="relative bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50 text-slate-800 overflow-hidden">
@@ -52,11 +54,11 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-6 text-blue-600">Quick Links</h4>
             <ul className="space-y-3">
-              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">About Us</a></li>
-              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Services</a></li>
-              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Portfolio</a></li>
-              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Blog</a></li>
-              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Careers</a></li>
+              <li><Link href="/about" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">About Us</Link></li>
+              <li><Link href="/expertise/what-we-do" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Services</Link></li>
+              <li><Link href="/work" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Portfolio</Link></li>
+              <li><Link href="/products" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Products</Link></li>
+              <li><Link href="/contact" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Contact</Link></li>
             </ul>
           </div>
 
@@ -64,11 +66,11 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-6 text-blue-600">Services</h4>
             <ul className="space-y-3">
-              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Web Development</a></li>
-              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Mobile Apps</a></li>
-              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">AI & Analytics</a></li>
-              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Zoho Integration</a></li>
-              <li><a href="#" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Consulting</a></li>
+              <li><Link href="/expertise/websites" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Web Development</Link></li>
+              <li><Link href="/expertise/mobile-apps" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Mobile Apps</Link></li>
+              <li><Link href="/expertise/web-apps" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Web Applications</Link></li>
+              <li><Link href="/expertise/zoho-integrations" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Zoho Integration</Link></li>
+              <li><Link href="/expertise/ui-ux-design" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">UI/UX Design</Link></li>
             </ul>
           </div>
         </div>
@@ -79,11 +81,11 @@ export default function Footer() {
             <div className="text-slate-500 text-sm mb-4 md:mb-0">
               © 2024 SavantX. All rights reserved.
             </div>
-            <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-slate-500 hover:text-blue-600 transition-colors duration-300">Privacy Policy</a>
-              <a href="#" className="text-slate-500 hover:text-blue-600 transition-colors duration-300">Terms of Service</a>
-              <a href="#" className="text-slate-500 hover:text-blue-600 transition-colors duration-300">Cookie Policy</a>
-            </div>
+             <div className="flex space-x-6 text-sm">
+               <Link href="/privacy-policy" className="text-slate-500 hover:text-blue-600 transition-colors duration-300">Privacy Policy</Link>
+               <Link href="/terms-of-service" className="text-slate-500 hover:text-blue-600 transition-colors duration-300">Terms of Service</Link>
+               <a href="#" className="text-slate-500 hover:text-blue-600 transition-colors duration-300">Cookie Policy</a>
+             </div>
           </div>
         </div>
       </div>

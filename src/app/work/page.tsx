@@ -111,9 +111,9 @@ export default function Work() {
 
             {/* Professional Main Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight tracking-tight">
-              Professional
+              Excellence in
               <span className="block text-blue-600 mt-2">
-                Work Portfolio
+                Digital Innovation
               </span>
             </h1>
 
@@ -212,10 +212,10 @@ export default function Work() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-              Complete Portfolio
+              Our Project Showcase
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Explore our comprehensive portfolio across different technologies and industries.
+              Explore our comprehensive showcase of cutting-edge solutions across different technologies and industries.
             </p>
           </div>
 
@@ -300,12 +300,9 @@ export default function Work() {
           <p className="text-xl text-blue-100 mb-8 leading-relaxed">
             Let&apos;s discuss how we can help bring your vision to life with our expertise and innovative solutions.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <button className="bg-white text-blue-600 px-8 py-3 rounded-md hover:bg-blue-50 transition-colors duration-200 font-medium text-base">
               Start a Project
-            </button>
-            <button className="border border-white text-white px-8 py-3 rounded-md hover:bg-white hover:text-blue-600 transition-all duration-200 font-medium text-base">
-              View Case Studies
             </button>
           </div>
         </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import Footer from '@/components/Footer';
 import CompaniesSection from '@/components/CompaniesSection';
 import TestimonialCarousel from '@/components/TestimonialCarousel';
@@ -297,15 +298,15 @@ export default function Home() {
 
             {/* Hero CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center mb-12 md:mb-16 px-4 lg:px-0">
-              <button className="group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg md:rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 ease-out font-semibold text-base md:text-lg shadow-lg transform hover:scale-105 hover:shadow-xl">
+              <Link href="/contact" className="group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg md:rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 ease-out font-semibold text-base md:text-lg shadow-lg transform hover:scale-105 hover:shadow-xl">
                 <span className="flex items-center justify-center gap-2">
                   Get Started Today
                   <svg className="w-4 h-4 md:w-5 md:h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </span>
-              </button>
-              <button className="group border-2 border-blue-600 text-blue-600 px-6 md:px-8 py-3 md:py-4 rounded-lg md:rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 ease-out font-semibold text-base md:text-lg transform hover:scale-105 hover:shadow-lg">
+              </Link>
+              <Link href="/work" className="group border-2 border-blue-600 text-blue-600 px-6 md:px-8 py-3 md:py-4 rounded-lg md:rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 ease-out font-semibold text-base md:text-lg transform hover:scale-105 hover:shadow-lg">
                 <span className="flex items-center justify-center gap-2">
                   View Our Work
                   <svg className="w-4 h-4 md:w-5 md:h-5 transform group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -313,14 +314,14 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                   </svg>
                 </span>
-              </button>
+              </Link>
             </div>
 
             {/* Hero Stats */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8 max-w-4xl mx-auto px-4 lg:px-0">
               <div className="bg-white/70 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg md:shadow-xl border border-blue-200/60 transform hover:scale-105 transition-all duration-500 ease-out group">
                 <div className="text-2xl md:text-3xl font-bold text-blue-600 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
-                  <AnimatedCounter end={500} suffix="+" duration={2800} />
+                  <AnimatedCounter end={200} suffix="+" duration={2800} />
                 </div>
                 <div className="text-slate-600 font-medium text-sm md:text-base">Projects Completed</div>
               </div>
@@ -629,15 +630,15 @@ export default function Home() {
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <button className="group bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl">
+                  <Link href="/contact" className="group bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl">
                     <span className="flex items-center gap-2">
                       Start Your Project
                       <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
                     </span>
-                  </button>
-                  <button className="group border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-xl hover:border-blue-600 hover:text-blue-600 transition-all duration-300 font-semibold text-lg">
+                  </Link>
+                  <Link href="/work" className="group border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-xl hover:border-blue-600 hover:text-blue-600 transition-all duration-300 font-semibold text-lg">
                     <span className="flex items-center gap-2">
                       View Our Work
                       <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -645,7 +646,7 @@ export default function Home() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                       </svg>
                     </span>
-                  </button>
+                  </Link>
                 </div>
 
                 {/* Statistics Grid */}
@@ -664,7 +665,7 @@ export default function Home() {
                   </div>
                   <div className="text-center group">
                     <div className="text-4xl font-bold text-green-600 mb-2 transition-transform duration-300 group-hover:scale-110">
-                      <AnimatedCounter end={500} suffix="+" duration={3000} />
+                      <AnimatedCounter end={200} suffix="+" duration={3000} />
                     </div>
                     <div className="text-slate-600 font-medium">Projects Delivered</div>
                   </div>
@@ -786,7 +787,7 @@ export default function Home() {
               Let&apos;s discuss your project and see how SavantX can help you achieve your digital goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="group bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-300 ease-out font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl animate-scale-in delay-300 hover:animate-pulse-glow">
+              <Link href="/contact" className="group bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-300 ease-out font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl animate-scale-in delay-300 hover:animate-pulse-glow">
                 <span className="flex items-center justify-center gap-2">
                   <span className="text-lg">🚀</span>
                   Start Your Project
@@ -794,8 +795,8 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </span>
-              </button>
-              <button className="group border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-300 ease-out font-semibold text-lg transform hover:scale-105 hover:shadow-lg animate-scale-in delay-400">
+              </Link>
+              <Link href="/about" className="group border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-300 ease-out font-semibold text-lg transform hover:scale-105 hover:shadow-lg animate-scale-in delay-400">
                 <span className="flex items-center justify-center gap-2">
                   <span className="text-lg">📅</span>
                   Schedule Consultation
@@ -803,7 +804,7 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
