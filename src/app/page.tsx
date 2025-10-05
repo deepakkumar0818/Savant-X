@@ -9,6 +9,8 @@ import AnimatedCounter from '@/components/AnimatedCounter';
 
 export default function Home() {
   const [codeVersion, setCodeVersion] = useState(0);
+  const [showAllSoftware, setShowAllSoftware] = useState(false);
+  const [showAllHardware, setShowAllHardware] = useState(false);
   
   const codeVersions = [
     // Version 0: CRM System
@@ -112,6 +114,142 @@ export default function Home() {
   const handleRefresh = () => {
     setCodeVersion((prev) => (prev + 1) % codeVersions.length);
   };
+
+  // Software Services Data
+  const softwareServices = [
+    {
+      title: "Web Development",
+      description: "Modern, scalable web applications built with cutting-edge technologies that deliver exceptional user experiences.",
+      icon: (
+        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+      ),
+      gradient: "from-blue-500 to-blue-600",
+      features: [
+        { icon: "⚡", title: "Progressive Web Apps", desc: "Lightning-fast performance" },
+        { icon: "🔄", title: "Server-Side Rendering", desc: "SEO optimized" },
+        { icon: "🔗", title: "API Integration", desc: "Seamless connectivity" },
+        { icon: "📱", title: "Responsive Design", desc: "All devices covered" }
+      ]
+    },
+    {
+      title: "Mobile Development",
+      description: "Cross-platform mobile solutions that deliver native performance across iOS and Android platforms.",
+      icon: (
+        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a1 1 0 001-1V4a1 1 0 00-1-1H8a1 1 0 00-1 1v16a1 1 0 001 1z" />
+        </svg>
+      ),
+      gradient: "from-indigo-500 to-purple-600",
+      features: [
+        { icon: "📱", title: "React Native", desc: "Cross-platform apps" },
+        { icon: "🎯", title: "App Store Optimization", desc: "Maximum visibility" },
+        { icon: "🔔", title: "Push Notifications", desc: "User engagement" },
+        { icon: "⚡", title: "Native Performance", desc: "Optimized speed" }
+      ]
+    },
+    {
+      title: "Enterprise Solutions",
+      description: "Comprehensive enterprise platforms including CRM, ERP, and custom business applications.",
+      icon: (
+        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+      ),
+      gradient: "from-emerald-500 to-teal-600",
+      features: [
+        { icon: "🏢", title: "CRM Systems", desc: "Customer management" },
+        { icon: "📈", title: "Business Analytics", desc: "Performance insights" },
+        { icon: "🔄", title: "Workflow Automation", desc: "Process efficiency" },
+        { icon: "🔒", title: "Enterprise Security", desc: "Data protection" }
+      ]
+    },
+    {
+      title: "Zoho Integration",
+      description: "Seamless integration with Zoho's business suite including CRM customization, Creator apps, and workflow automation.",
+      icon: (
+        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+      ),
+      gradient: "from-amber-500 to-yellow-600",
+      features: [
+        { icon: "🏢", title: "CRM Customization", desc: "Tailored CRM solutions" },
+        { icon: "🛠️", title: "Creator Apps", desc: "Custom applications" },
+        { icon: "🔄", title: "Workflow Automation", desc: "Process optimization" },
+        { icon: "🔗", title: "Third-party Integration", desc: "Seamless connectivity" }
+      ]
+    }
+  ];
+
+  // Hardware Services Data
+  const hardwareServices = [
+    {
+      title: "IoT & Embedded Systems",
+      description: "Smart connected devices and embedded systems that bring intelligence to everyday objects and industrial applications.",
+      icon: (
+        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        </svg>
+      ),
+      gradient: "from-purple-500 to-pink-600",
+      features: [
+        { icon: "🌐", title: "Smart Sensors", desc: "Real-time monitoring" },
+        { icon: "📡", title: "Wireless Connectivity", desc: "Seamless communication" },
+        { icon: "🔋", title: "Power Management", desc: "Efficient energy use" },
+        { icon: "🛡️", title: "Secure Protocols", desc: "Data protection" }
+      ]
+    },
+    {
+      title: "PCB Designing",
+      description: "Custom printed circuit board design and layout services for electronic products with optimized performance and reliability.",
+      icon: (
+        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+        </svg>
+      ),
+      gradient: "from-orange-500 to-red-600",
+      features: [
+        { icon: "🔧", title: "Custom PCB Layout", desc: "Optimized designs" },
+        { icon: "⚡", title: "Signal Integrity", desc: "High-speed performance" },
+        { icon: "🌡️", title: "Thermal Management", desc: "Heat dissipation" },
+        { icon: "📐", title: "3D Modeling", desc: "Visual prototyping" }
+      ]
+    },
+    {
+      title: "Product Development",
+      description: "End-to-end product development from concept to manufacturing, including industrial design and market-ready solutions.",
+      icon: (
+        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+        </svg>
+      ),
+      gradient: "from-cyan-500 to-blue-600",
+      features: [
+        { icon: "💡", title: "Concept Design", desc: "Innovative ideas" },
+        { icon: "🔬", title: "Prototyping", desc: "Rapid iteration" },
+        { icon: "🏭", title: "Manufacturing", desc: "Production ready" },
+        { icon: "📊", title: "Testing & Validation", desc: "Quality assurance" }
+      ]
+    },
+    {
+      title: "Firmware Development",
+      description: "Low-level software development for microcontrollers and embedded systems with optimized performance and reliability.",
+      icon: (
+        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+      ),
+      gradient: "from-green-500 to-emerald-600",
+      features: [
+        { icon: "⚙️", title: "Real-time Systems", desc: "Precise timing" },
+        { icon: "🔧", title: "Driver Development", desc: "Hardware control" },
+        { icon: "🛡️", title: "Security Features", desc: "Protected systems" },
+        { icon: "📈", title: "Performance Optimization", desc: "Efficient code" }
+      ]
+    }
+  ];
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50 relative overflow-hidden">
       {/* 3D Background Elements */}
@@ -370,37 +508,37 @@ export default function Home() {
             </p>
           </div>
           
-          {/* Interactive Services Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
-            {/* Web Development - Enhanced Interactive Card */}
-            <div className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 relative overflow-hidden">
-              {/* Animated Background Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          {/* Software & Hardware Services Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+            {/* Software Services Column */}
+            <div className="space-y-8">
+              <div className="text-center lg:text-left">
+                <h3 className="text-3xl font-bold text-slate-900 mb-4">
+                  <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Software</span> Solutions
+                </h3>
+                <p className="text-lg text-slate-600">Modern software development and integration services</p>
+              </div>
               
-              {/* Icon with Animation */}
-              <div className="relative z-10 flex items-start gap-6 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                  </svg>
+              <div className="grid grid-cols-1 gap-6">
+                {softwareServices.slice(0, showAllSoftware ? 4 : 3).map((service, index) => (
+                  <div key={index} className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 relative overflow-hidden h-full flex flex-col">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient.replace('from-', 'from-').replace('to-', 'to-')}/5 via-transparent to-${service.gradient.split(' ')[2]}/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                    
+                    <div className="relative z-10 flex items-start gap-6 mb-6 flex-shrink-0">
+                      <div className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 flex-shrink-0`}>
+                        {service.icon}
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">Web Development</h3>
-                  <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                    Modern, scalable web applications built with cutting-edge technologies that deliver exceptional user experiences.
+                      <div className="flex-1 min-h-[120px] flex flex-col">
+                        <h4 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">{service.title}</h4>
+                        <p className="text-slate-600 text-lg leading-relaxed flex-1">
+                          {service.description}
                   </p>
                 </div>
               </div>
               
-              {/* Interactive Feature List */}
-              <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  { icon: "⚡", title: "Progressive Web Apps", desc: "Lightning-fast performance" },
-                  { icon: "🔄", title: "Server-Side Rendering", desc: "SEO optimized" },
-                  { icon: "🔗", title: "API Integration", desc: "Seamless connectivity" },
-                  { icon: "📱", title: "Responsive Design", desc: "All devices covered" }
-                ].map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 group-hover:bg-blue-50/50 transition-colors duration-300">
+                    <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-auto">
+                      {service.features.map((feature, featureIndex) => (
+                        <div key={featureIndex} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 group-hover:bg-blue-50/50 transition-colors duration-300">
                     <span className="text-lg">{feature.icon}</span>
                     <div>
                       <div className="font-semibold text-slate-900 text-sm">{feature.title}</div>
@@ -410,105 +548,55 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            
-            {/* Mobile Development - Enhanced Interactive Card */}
-            <div className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative z-10 flex items-start gap-6 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a1 1 0 001-1V4a1 1 0 00-1-1H8a1 1 0 00-1 1v16a1 1 0 001 1z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors duration-300">Mobile Applications</h3>
-                  <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                    Cross-platform mobile solutions that deliver native performance across iOS and Android platforms.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  { icon: "📱", title: "React Native", desc: "Cross-platform apps" },
-                  { icon: "🎯", title: "App Store Optimization", desc: "Maximum visibility" },
-                  { icon: "🔔", title: "Push Notifications", desc: "User engagement" },
-                  { icon: "⚡", title: "Native Performance", desc: "Optimized speed" }
-                ].map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 group-hover:bg-indigo-50/50 transition-colors duration-300">
-                    <span className="text-lg">{feature.icon}</span>
-                    <div>
-                      <div className="font-semibold text-slate-900 text-sm">{feature.title}</div>
-                      <div className="text-xs text-slate-500">{feature.desc}</div>
-                    </div>
-                  </div>
                 ))}
-              </div>
-            </div>
-            
-            {/* AI & Analytics - Enhanced Interactive Card */}
-            <div className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative z-10 flex items-start gap-6 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                
+                {!showAllSoftware && (
+                  <div className="text-center">
+                    <button 
+                      onClick={() => setShowAllSoftware(true)}
+                      className="group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl"
+                    >
+                      <span className="flex items-center justify-center gap-2">
+                        See More Software Services
+                        <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors duration-300">AI & Analytics</h3>
-                  <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                    Harness artificial intelligence and data analytics to automate processes and drive informed decisions.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  { icon: "🤖", title: "Machine Learning", desc: "Intelligent automation" },
-                  { icon: "📊", title: "Business Intelligence", desc: "Data-driven insights" },
-                  { icon: "🔮", title: "Predictive Analytics", desc: "Future forecasting" },
-                  { icon: "⚙️", title: "Process Automation", desc: "Workflow optimization" }
-                ].map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 group-hover:bg-purple-50/50 transition-colors duration-300">
-                    <span className="text-lg">{feature.icon}</span>
-                    <div>
-                      <div className="font-semibold text-slate-900 text-sm">{feature.title}</div>
-                      <div className="text-xs text-slate-500">{feature.desc}</div>
-                    </div>
+                      </span>
+                    </button>
                   </div>
-                ))}
+                )}
               </div>
             </div>
 
-            {/* Enterprise Solutions - Enhanced Interactive Card */}
-            <div className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            {/* Hardware Services Column */}
+            <div className="space-y-8">
+              <div className="text-center lg:text-left">
+                <h3 className="text-3xl font-bold text-slate-900 mb-4">
+                  <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Hardware</span> Solutions
+                </h3>
+                <p className="text-lg text-slate-600">Advanced hardware development and embedded systems</p>
+              </div>
               
-              <div className="relative z-10 flex items-start gap-6 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
+              <div className="grid grid-cols-1 gap-6">
+                {hardwareServices.slice(0, showAllHardware ? 4 : 3).map((service, index) => (
+                  <div key={index} className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 relative overflow-hidden h-full flex flex-col">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient.replace('from-', 'from-').replace('to-', 'to-')}/5 via-transparent to-${service.gradient.split(' ')[2]}/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                    
+                    <div className="relative z-10 flex items-start gap-6 mb-6 flex-shrink-0">
+                      <div className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 flex-shrink-0`}>
+                        {service.icon}
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-emerald-600 transition-colors duration-300">Enterprise Solutions</h3>
-                  <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                    Comprehensive enterprise platforms including CRM, ERP, and custom business applications.
+                      <div className="flex-1 min-h-[120px] flex flex-col">
+                        <h4 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-orange-600 transition-colors duration-300">{service.title}</h4>
+                        <p className="text-slate-600 text-lg leading-relaxed flex-1">
+                          {service.description}
                   </p>
                 </div>
               </div>
               
-              <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  { icon: "🏢", title: "CRM Systems", desc: "Customer management" },
-                  { icon: "📈", title: "Business Analytics", desc: "Performance insights" },
-                  { icon: "🔄", title: "Workflow Automation", desc: "Process efficiency" },
-                  { icon: "🔒", title: "Enterprise Security", desc: "Data protection" }
-                ].map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 group-hover:bg-emerald-50/50 transition-colors duration-300">
+                    <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-auto">
+                      {service.features.map((feature, featureIndex) => (
+                        <div key={featureIndex} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 group-hover:bg-orange-50/50 transition-colors duration-300">
                     <span className="text-lg">{feature.icon}</span>
                     <div>
                       <div className="font-semibold text-slate-900 text-sm">{feature.title}</div>
@@ -518,76 +606,23 @@ export default function Home() {
                 ))}
               </div>
             </div>
-
-            {/* Hardware Development - Enhanced Interactive Card */}
-            <div className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative z-10 flex items-start gap-6 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-orange-600 transition-colors duration-300">Hardware Development</h3>
-                  <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                    Custom hardware solutions from PCB design to full product development with seamless software integration.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  { icon: "🔧", title: "PCB Design", desc: "Custom circuit boards" },
-                  { icon: "⚡", title: "Rapid Prototyping", desc: "Fast development cycles" },
-                  { icon: "🔗", title: "Hardware Integration", desc: "Software-hardware sync" },
-                  { icon: "🏭", title: "Manufacturing", desc: "Production ready" }
-                ].map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 group-hover:bg-orange-50/50 transition-colors duration-300">
-                    <span className="text-lg">{feature.icon}</span>
-                    <div>
-                      <div className="font-semibold text-slate-900 text-sm">{feature.title}</div>
-                      <div className="text-xs text-slate-500">{feature.desc}</div>
-                    </div>
-                  </div>
                 ))}
-              </div>
-            </div>
-
-            {/* Zoho Integration - Enhanced Interactive Card */}
-            <div className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 via-transparent to-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative z-10 flex items-start gap-6 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                
+                {!showAllHardware && (
+                  <div className="text-center">
+                    <button 
+                      onClick={() => setShowAllHardware(true)}
+                      className="group bg-gradient-to-r from-orange-600 to-red-600 text-white px-8 py-4 rounded-xl hover:from-orange-700 hover:to-red-700 transition-all duration-300 font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl"
+                    >
+                      <span className="flex items-center justify-center gap-2">
+                        See More Hardware Services
+                        <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-amber-600 transition-colors duration-300">Zoho Integration</h3>
-                  <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                    Seamless integration with Zoho&apos;s business suite including CRM customization, Creator apps, and workflow automation.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  { icon: "🏢", title: "CRM Customization", desc: "Tailored CRM solutions" },
-                  { icon: "🛠️", title: "Creator Apps", desc: "Custom applications" },
-                  { icon: "🔄", title: "Workflow Automation", desc: "Process optimization" },
-                  { icon: "🔗", title: "Third-party Integration", desc: "Seamless connectivity" }
-                ].map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50/50 group-hover:bg-amber-50/50 transition-colors duration-300">
-                    <span className="text-lg">{feature.icon}</span>
-                    <div>
-                      <div className="font-semibold text-slate-900 text-sm">{feature.title}</div>
-                      <div className="text-xs text-slate-500">{feature.desc}</div>
-                    </div>
+                      </span>
+                    </button>
                   </div>
-                ))}
+                )}
               </div>
             </div>
           </div>
