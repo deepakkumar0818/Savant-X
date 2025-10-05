@@ -803,7 +803,13 @@ export default function Home() {
                 { name: "PostgreSQL", icon: "🐘" },
                 { name: "Redis", icon: "🔴" },
                 { name: "GraphQL", icon: "🔺" },
-                { name: "Kubernetes", icon: "⚙️" }
+                { name: "Kubernetes", icon: "⚙️" },
+                { name: "ESP32", icon: "🔌" },
+                { name: "Arduino", icon: "⚡" },
+                { name: "STM32", icon: "🔧" },
+                { name: "KiCAD", icon: "📐" },
+                { name: "DipTrace", icon: "🔗" },
+                { name: "SolidWorks", icon: "🏗️" }
               ].map((tech, index) => (
                 <div key={index} className={`group bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-blue-200/40 hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out animate-scale-in delay-${Math.min(index * 100, 800)} animate-tech-bounce`}>
                   <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">{tech.icon}</div>

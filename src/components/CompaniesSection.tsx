@@ -111,11 +111,14 @@ export default function CompaniesSection() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16 animate-fade-in-up delay-600">
+        <div className="text-center mt-16 animate-fade-in-up delay-600 relative z-20">
           <p className="text-slate-600 text-lg mb-6">
             Join these industry leaders in transforming your digital presence
           </p>
-          <Link href="/contact" className="group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl">
+          <Link 
+            href="/contact" 
+            className="group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl relative z-30 inline-block"
+          >
             <span className="flex items-center justify-center gap-2">
               Start Your Project
               <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
