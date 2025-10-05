@@ -1,10 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import Footer from '@/components/Footer';
 
 export default function WebsitesPage() {
-  const [activeTab, setActiveTab] = useState('overview');
 
   const websiteTypes = [
     {

@@ -1,10 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import Footer from '@/components/Footer';
 
 export default function ZohoIntegrationsPage() {
-  const [activeIntegration, setActiveIntegration] = useState('crm');
 
   const zohoProducts = [
     {
@@ -344,7 +342,7 @@ export default function ZohoIntegrationsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {zohoProducts.map((product, index) => (
+            {zohoProducts.map((product) => (
               <div key={product.id} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
                   {/* Header */}

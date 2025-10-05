@@ -1,10 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import Footer from '@/components/Footer';
 
 export default function ReactPage() {
-  const [activeType, setActiveType] = useState('web-apps');
 
   const reactServices = [
     {
@@ -350,7 +348,7 @@ export default function ReactPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {reactServices.map((service, index) => (
+            {reactServices.map((service) => (
               <div key={service.id} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
                   {/* Header */}

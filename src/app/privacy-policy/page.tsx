@@ -1,14 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 export default function PrivacyPolicyPage() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50 relative overflow-hidden">
@@ -129,7 +123,7 @@ export default function PrivacyPolicyPage() {
               </div>
               <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
                 <p className="text-slate-700 leading-relaxed mb-4 font-medium text-lg">
-                  SavantX ("we," "our," or "us") is committed to protecting your privacy and ensuring the security of your personal information.
+                  SavantX (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) is committed to protecting your privacy and ensuring the security of your personal information.
                 </p>
                 <p className="text-slate-600 leading-relaxed">
                   This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services. By using our website or services, you agree to the collection and use of information in accordance with this policy.

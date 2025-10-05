@@ -397,7 +397,7 @@ export default function Navbar({
                     <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/40 to-transparent rounded transform rotate-45"></div>
                   </div>
                 </div>
-                Let's Build
+                Let&apos;s Build
                 <svg className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
@@ -562,7 +562,7 @@ export default function Navbar({
                        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/40 to-transparent rounded transform rotate-45"></div>
                      </div>
                    </div>
-                   Let's Build
+                   Let&apos;s Build
                    <svg className="w-5 h-5 transform group-hover:translate-x-0.5 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                    </svg>

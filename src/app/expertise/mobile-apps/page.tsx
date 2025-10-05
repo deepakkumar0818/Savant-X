@@ -231,7 +231,7 @@ export default function MobileAppsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {mobileAppTypes.map((app, index) => (
+            {mobileAppTypes.map((app) => (
               <div key={app.id} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
                   {/* Header */}

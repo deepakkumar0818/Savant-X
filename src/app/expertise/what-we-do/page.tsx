@@ -1,11 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 
 export default function WhatWeDoPage() {
-  const [activeService, setActiveService] = useState('websites');
 
   const services = [
     {

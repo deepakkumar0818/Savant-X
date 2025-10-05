@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Footer from '@/components/Footer';
 
 export default function WebAppsPage() {
-  const [activeTab, setActiveTab] = useState('overview');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {

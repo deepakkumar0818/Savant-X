@@ -1,10 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import Footer from '@/components/Footer';
 
 export default function UserResearchPage() {
-  const [activeMethod, setActiveMethod] = useState('interviews');
 
   const researchMethods = [
     {
@@ -234,7 +232,7 @@ export default function UserResearchPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {researchMethods.map((method, index) => (
+            {researchMethods.map((method) => (
               <div key={method.id} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-purple-200/50 transition-all duration-300 h-full">
                   {/* Header */}

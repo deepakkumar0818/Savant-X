@@ -1,10 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import Footer from '@/components/Footer';
 
 export default function InnovationPage() {
-  const [activeType, setActiveType] = useState('ai-ml');
 
   const innovationServices = [
     {
@@ -373,7 +371,7 @@ export default function InnovationPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {innovationServices.map((service, index) => (
+            {innovationServices.map((service) => (
               <div key={service.id} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
                   {/* Header */}

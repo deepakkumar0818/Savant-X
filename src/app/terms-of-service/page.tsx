@@ -1,14 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 export default function TermsOfServicePage() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50 relative overflow-hidden">
@@ -39,7 +33,7 @@ export default function TermsOfServicePage() {
 
             {/* Professional Subtitle */}
             <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8 font-light">
-              These terms and conditions outline the rules and regulations for the use of SavantX's website and services. 
+              These terms and conditions outline the rules and regulations for the use of SavantX&apos;s website and services. 
               By accessing our services, you accept these terms in full.
             </p>
 
@@ -129,7 +123,7 @@ export default function TermsOfServicePage() {
               </div>
               <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
                 <p className="text-slate-700 leading-relaxed mb-4 font-medium text-lg">
-                  By accessing and using SavantX's website and services, you accept and agree to be bound by the terms and provision of this agreement.
+                  By accessing and using SavantX&apos;s website and services, you accept and agree to be bound by the terms and provision of this agreement.
                 </p>
                 <p className="text-slate-600 leading-relaxed mb-4">
                   If you do not agree to abide by the above, please do not use this service. These terms apply to all visitors, users, and others who access or use the service.
@@ -379,7 +373,7 @@ export default function TermsOfServicePage() {
               </div>
               <div className="bg-gradient-to-r from-red-50 to-pink-50 rounded-xl p-6 border border-red-100">
                 <p className="text-slate-700 leading-relaxed mb-6 font-medium text-lg">
-                  To the maximum extent permitted by law, SavantX's liability is limited as follows:
+                  To the maximum extent permitted by law, SavantX&apos;s liability is limited as follows:
                 </p>
                 <div className="space-y-4">
                   <div className="bg-white/60 rounded-lg p-4">

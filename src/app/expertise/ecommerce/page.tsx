@@ -1,10 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import Footer from '@/components/Footer';
 
 export default function EcommercePage() {
-  const [activeTab, setActiveTab] = useState('platforms');
 
   const ecommerceTypes = [
     {
@@ -278,7 +276,7 @@ export default function EcommercePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {ecommerceTypes.map((type, index) => (
+            {ecommerceTypes.map((type) => (
               <div key={type.id} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
                   {/* Header */}
@@ -347,7 +345,7 @@ export default function EcommercePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {platforms.map((platform, index) => (
+            {platforms.map((platform) => (
               <div key={platform.id} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
                   {/* Platform Header */}
