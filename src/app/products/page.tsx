@@ -10,104 +10,150 @@ export default function Products() {
   const products = [
     {
       id: 1,
-      title: "SavantX CRM Platform",
-      category: "crm",
-      image: "📊",
-      description: "Complete customer relationship management solution with advanced automation, analytics, and integration capabilities.",
-      features: ["Lead Management", "Sales Pipeline", "Customer Analytics", "Email Integration", "Mobile App"],
-      pricing: "$49/month",
-      clients: "500+",
-      rating: "4.9",
-      featured: true,
-      status: "Live",
-      launchDate: "2023",
-      technology: ["React", "Node.js", "MongoDB"]
-    },
-    {
-      id: 2,
-      title: "SavantX Analytics Dashboard",
-      category: "analytics",
-      image: "📈",
-      description: "Powerful business intelligence platform with real-time data visualization and predictive analytics for data-driven decisions.",
-      features: ["Real-time Dashboards", "Custom Reports", "Data Export", "API Integration", "Team Collaboration"],
-      pricing: "$79/month",
-      clients: "200+",
+      title: "Doctor Appointment System",
+      category: "healthcare",
+      image: "🏥",
+      description: "Comprehensive healthcare management platform enabling patients to book appointments, manage medical records, and communicate with healthcare providers seamlessly.",
+      features: ["Online Booking", "Patient Records", "Appointment Scheduling", "Prescription Management", "Telemedicine Support"],
+      pricing: "₹20,000",
+      clients: "150+",
       rating: "4.8",
       featured: true,
       status: "Live",
-      launchDate: "2023",
-      technology: ["Vue.js", "Python", "PostgreSQL"]
+      launchDate: "2022",
+      technology: ["React", "Node.js", "PostgreSQL"]
     },
     {
-      id: 3,
-      title: "SavantX E-Commerce Suite",
-      category: "ecommerce",
-      image: "🛒",
-      description: "Complete e-commerce solution with inventory management, payment processing, and customer engagement tools.",
-      features: ["Product Management", "Order Processing", "Payment Gateway", "Inventory Sync", "Customer Portal"],
-      pricing: "$99/month",
+      id: 2,
+      title: "Food Ordering App",
+      category: "foodtech",
+      image: "🍕",
+      description: "Complete food delivery solution with restaurant management, order tracking, payment processing, and real-time delivery updates for enhanced customer experience.",
+      features: ["Menu Management", "Order Tracking", "Payment Gateway", "Delivery Management", "Restaurant Dashboard"],
+      pricing: "₹20,000",
       clients: "300+",
       rating: "4.7",
       featured: true,
       status: "Live",
+      launchDate: "2021",
+      technology: ["React Native", "Express", "MongoDB"]
+    },
+    {
+      id: 3,
+      title: "Real Estate App",
+      category: "realestate",
+      image: "🏠",
+      description: "Advanced property management platform with property listings, virtual tours, mortgage calculators, and comprehensive real estate analytics for agents and buyers.",
+      features: ["Property Listings", "Virtual Tours", "Mortgage Calculator", "Agent Management", "Market Analytics"],
+      pricing: "₹20,000",
+      clients: "200+",
+      rating: "4.9",
+      featured: true,
+      status: "Live",
       launchDate: "2022",
-      technology: ["Next.js", "Stripe", "Redis"]
+      technology: ["Next.js", "Laravel", "MySQL"]
     },
     {
       id: 4,
-      title: "SavantX Project Manager",
-      category: "productivity",
-      image: "📋",
-      description: "Advanced project management tool with task tracking, team collaboration, and resource planning capabilities.",
-      features: ["Task Management", "Team Collaboration", "Time Tracking", "Resource Planning", "Gantt Charts"],
-      pricing: "$39/month",
-      clients: "150+",
+      title: "Student Portal",
+      category: "education",
+      image: "🎓",
+      description: "Comprehensive educational platform providing students with course management, assignment tracking, grade monitoring, and collaborative learning tools.",
+      features: ["Course Management", "Assignment Tracking", "Grade Portal", "Discussion Forums", "Resource Library"],
+      pricing: "₹20,000",
+      clients: "500+",
       rating: "4.6",
       featured: false,
       status: "Live",
-      launchDate: "2023",
-      technology: ["Angular", "Express", "MySQL"]
+      launchDate: "2021",
+      technology: ["Vue.js", "Django", "PostgreSQL"]
     },
     {
       id: 5,
-      title: "SavantX HR Management",
-      category: "hr",
-      image: "👥",
-      description: "Comprehensive human resources management system with employee records, payroll, and performance tracking.",
-      features: ["Employee Records", "Payroll Management", "Performance Reviews", "Leave Management", "Recruitment"],
-      pricing: "$69/month",
+      title: "Web Scraping Tool",
+      category: "data",
+      image: "🕷️",
+      description: "Powerful data extraction platform with intelligent scraping capabilities, data processing, and automated collection from various web sources.",
+      features: ["Intelligent Scraping", "Data Processing", "Scheduled Extraction", "API Integration", "Data Export"],
+      pricing: "₹20,000",
       clients: "100+",
       rating: "4.5",
       featured: false,
       status: "Live",
-      launchDate: "2022",
-      technology: ["React", "Laravel", "MySQL"]
+      launchDate: "2023",
+      technology: ["Python", "Scrapy", "Redis"]
     },
     {
       id: 6,
-      title: "SavantX Inventory System",
-      category: "inventory",
-      image: "📦",
-      description: "Smart inventory management solution with real-time tracking, automated reordering, and supply chain optimization.",
-      features: ["Real-time Tracking", "Automated Reordering", "Barcode Scanning", "Supplier Management", "Reports"],
-      pricing: "$59/month",
+      title: "School Management System",
+      category: "education",
+      image: "🏫",
+      description: "Complete educational institution management solution covering student enrollment, staff management, academic planning, and administrative operations.",
+      features: ["Student Management", "Staff Administration", "Academic Planning", "Fee Management", "Report Generation"],
+      pricing: "₹20,000",
       clients: "75+",
+      rating: "4.8",
+      featured: false,
+      status: "Live",
+      launchDate: "2020",
+      technology: ["Angular", "Laravel", "MySQL"]
+    },
+    {
+      id: 7,
+      title: "Student Training Management System",
+      category: "education",
+      image: "📚",
+      description: "Specialized platform for managing training programs, skill development, certification tracking, and progress monitoring for educational institutions.",
+      features: ["Training Programs", "Skill Assessment", "Certification Tracking", "Progress Monitoring", "Resource Management"],
+      pricing: "₹20,000",
+      clients: "120+",
+      rating: "4.7",
+      featured: false,
+      status: "Live",
+      launchDate: "2022",
+      technology: ["React", "Node.js", "MongoDB"]
+    },
+    {
+      id: 8,
+      title: "Fleet Management System",
+      category: "logistics",
+      image: "🚛",
+      description: "Comprehensive vehicle fleet management solution with GPS tracking, maintenance scheduling, driver management, and route optimization.",
+      features: ["GPS Tracking", "Maintenance Scheduling", "Driver Management", "Route Optimization", "Fuel Monitoring"],
+      pricing: "₹20,000",
+      clients: "80+",
       rating: "4.9",
       featured: false,
       status: "Live",
-      launchDate: "2023",
-      technology: ["Vue.js", "Node.js", "MongoDB"]
+      launchDate: "2021",
+      technology: ["Vue.js", "Express", "PostgreSQL"]
+    },
+    {
+      id: 9,
+      title: "Professional Accounting Software for MNCs",
+      category: "finance",
+      image: "💰",
+      description: "Enterprise-grade accounting solution designed for multinational corporations with multi-currency support, compliance management, and advanced financial reporting.",
+      features: ["Multi-Currency Support", "Compliance Management", "Financial Reporting", "Tax Management", "Audit Trails"],
+      pricing: "₹20,000",
+      clients: "50+",
+      rating: "4.9",
+      featured: true,
+      status: "Live",
+      launchDate: "2020",
+      technology: ["React", "Java", "Oracle"]
     }
   ];
 
   const categories = [
     { id: 'all', name: 'All Products', count: products.length },
-    { id: 'crm', name: 'CRM Solutions', count: products.filter(p => p.category === 'crm').length },
-    { id: 'analytics', name: 'Analytics & BI', count: products.filter(p => p.category === 'analytics').length },
-    { id: 'ecommerce', name: 'E-Commerce', count: products.filter(p => p.category === 'ecommerce').length },
-    { id: 'productivity', name: 'Productivity', count: products.filter(p => p.category === 'productivity').length },
-    { id: 'hr', name: 'HR Management', count: products.filter(p => p.category === 'hr').length },
-    { id: 'inventory', name: 'Inventory', count: products.filter(p => p.category === 'inventory').length }
+    { id: 'healthcare', name: 'Healthcare', count: products.filter(p => p.category === 'healthcare').length },
+    { id: 'foodtech', name: 'Food Tech', count: products.filter(p => p.category === 'foodtech').length },
+    { id: 'realestate', name: 'Real Estate', count: products.filter(p => p.category === 'realestate').length },
+    { id: 'education', name: 'Education', count: products.filter(p => p.category === 'education').length },
+    { id: 'data', name: 'Data Solutions', count: products.filter(p => p.category === 'data').length },
+    { id: 'logistics', name: 'Logistics', count: products.filter(p => p.category === 'logistics').length },
+    { id: 'finance', name: 'Finance', count: products.filter(p => p.category === 'finance').length }
   ];
 
   const filteredProducts = activeFilter === 'all' 
@@ -150,7 +196,7 @@ export default function Products() {
                   </svg>
                 </div>
                 <div className="text-3xl font-bold text-slate-900 mb-2">
-                  <AnimatedCounter end={6} suffix="+" duration={2800} />
+                  <AnimatedCounter end={9} suffix="+" duration={2800} />
                 </div>
                 <div className="text-slate-600 font-medium text-sm uppercase tracking-wide">Products</div>
               </div>
@@ -161,7 +207,7 @@ export default function Products() {
                   </svg>
                 </div>
                 <div className="text-3xl font-bold text-slate-900 mb-2">
-                  <AnimatedCounter end={1325} suffix="+" duration={2200} />
+                  <AnimatedCounter end={1675} suffix="+" duration={2200} />
                 </div>
                 <div className="text-slate-600 font-medium text-sm uppercase tracking-wide">Users</div>
               </div>
@@ -238,7 +284,7 @@ export default function Products() {
                   <div className="grid grid-cols-2 gap-4 mb-6 p-4 bg-slate-50 rounded-xl">
                     <div className="text-center">
                       <div className="text-2xl font-bold text-blue-600 mb-1">{product.pricing}</div>
-                      <div className="text-xs font-medium text-slate-600 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs font-medium text-slate-600 uppercase tracking-wide">Price</div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-green-600 mb-1">{product.clients}</div>
@@ -355,7 +401,7 @@ export default function Products() {
                   <div className="grid grid-cols-2 gap-4 mb-6 p-4 bg-slate-50 rounded-xl">
                     <div className="text-center">
                       <div className="text-lg font-bold text-blue-600 mb-1">{product.pricing}</div>
-                      <div className="text-xs font-medium text-slate-600 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs font-medium text-slate-600 uppercase tracking-wide">Price</div>
                     </div>
                     <div className="text-center">
                       <div className="text-lg font-bold text-green-600 mb-1">{product.clients}</div>
@@ -396,7 +442,7 @@ export default function Products() {
                         </div>
                       )}
                     </div>
-                  </div>
+                  </div> 
 
                   {/* Product Actions */}
                   <div className="flex items-center justify-between pt-4 border-t border-slate-200">

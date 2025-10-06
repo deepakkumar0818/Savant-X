@@ -332,6 +332,11 @@ export default function WhatWeDoPage() {
             <button className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
               Get Started
             </button>
+            <Link href="/contact">
+              <button className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
+                Schedule Demo
+              </button>
+            </Link>
             <button className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
               View Portfolio
             </button>
