@@ -5,21 +5,14 @@ import Link from 'next/link';
 
 // Company names that will rotate
 const companyNames = [
-  "PENTANET",
-  "MACQUARIE University", 
-  "Deloitte",
-  "AgriFutures Australia",
-  "Cancer Council WA",
-  "Microsoft",
-  "Google",
-  "Amazon",
-  "IBM",
-  "Oracle",
-  "Salesforce",
-  "Adobe",
-  "Intel",
-  "Cisco",
-  "VMware"
+  "Legal Palz",
+  "St. Paul's Sr. Sec. School",
+  "Sansani Express",
+  "RV Logistics",
+  "JDN Technologies",
+  "Anoop Automations",
+  "Fleet Logic",
+  "The Canophilla"
 ];
 
 export default function CompaniesSection() {

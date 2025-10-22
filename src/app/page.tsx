@@ -9,8 +9,7 @@ import AnimatedCounter from '@/components/AnimatedCounter';
 
 export default function Home() {
   const [codeVersion, setCodeVersion] = useState(0);
-  const [showAllSoftware, setShowAllSoftware] = useState(false);
-  const [showAllHardware, setShowAllHardware] = useState(false);
+  const [showAllServices, setShowAllServices] = useState(false);
   
   const codeVersions = [
     // Version 0: CRM System
@@ -520,7 +519,7 @@ export default function Home() {
               </div>
               
               <div className="grid grid-cols-1 gap-6">
-                {softwareServices.slice(0, showAllSoftware ? 4 : 3).map((service, index) => (
+                {softwareServices.slice(0, showAllServices ? 4 : 3).map((service, index) => (
                   <div key={index} className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 relative overflow-hidden h-full flex flex-col">
                     <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient.replace('from-', 'from-').replace('to-', 'to-')}/5 via-transparent to-${service.gradient.split(' ')[2]}/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                     
@@ -549,22 +548,6 @@ export default function Home() {
               </div>
             </div>
                 ))}
-                
-                {!showAllSoftware && (
-                  <div className="text-center">
-                    <button 
-                      onClick={() => setShowAllSoftware(true)}
-                      className="group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl"
-                    >
-                      <span className="flex items-center justify-center gap-2">
-                        See More Software Services
-                        <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                      </span>
-                    </button>
-                  </div>
-                )}
               </div>
             </div>
 
@@ -578,7 +561,7 @@ export default function Home() {
               </div>
               
               <div className="grid grid-cols-1 gap-6">
-                {hardwareServices.slice(0, showAllHardware ? 4 : 3).map((service, index) => (
+                {hardwareServices.slice(0, showAllServices ? 4 : 3).map((service, index) => (
                   <div key={index} className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 relative overflow-hidden h-full flex flex-col">
                     <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient.replace('from-', 'from-').replace('to-', 'to-')}/5 via-transparent to-${service.gradient.split(' ')[2]}/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                     
@@ -607,25 +590,26 @@ export default function Home() {
               </div>
             </div>
                 ))}
-                
-                {!showAllHardware && (
-                  <div className="text-center">
-                    <button 
-                      onClick={() => setShowAllHardware(true)}
-                      className="group bg-gradient-to-r from-orange-600 to-red-600 text-white px-8 py-4 rounded-xl hover:from-orange-700 hover:to-red-700 transition-all duration-300 font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl"
-                    >
-                      <span className="flex items-center justify-center gap-2">
-                        See More Hardware Services
-                        <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                      </span>
-                    </button>
-                  </div>
-                )}
               </div>
             </div>
           </div>
+
+          {/* Single Show More Button */}
+          {!showAllServices && (
+            <div className="text-center mt-8">
+              <button 
+                onClick={() => setShowAllServices(true)}
+                className="group bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white px-10 py-4 rounded-xl hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 transition-all duration-300 font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl"
+              >
+                <span className="flex items-center justify-center gap-2">
+                  Show More Services
+                  <svg className="w-5 h-5 transform group-hover:translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          )}
 
           {/* About SavantX Section */}
           <div className="relative overflow-hidden">
@@ -792,27 +776,33 @@ export default function Home() {
             
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
               {[
-                { name: "React", icon: "⚛️" },
-                { name: "Next.js", icon: "▲" },
-                { name: "TypeScript", icon: "🔷" },
-                { name: "Node.js", icon: "🟢" },
-                { name: "Python", icon: "🐍" },
-                { name: "AWS", icon: "☁️" },
-                { name: "Docker", icon: "🐳" },
-                { name: "MongoDB", icon: "🍃" },
-                { name: "PostgreSQL", icon: "🐘" },
-                { name: "Redis", icon: "🔴" },
-                { name: "GraphQL", icon: "🔺" },
-                { name: "Kubernetes", icon: "⚙️" },
-                { name: "ESP32", icon: "🔌" },
-                { name: "Arduino", icon: "⚡" },
-                { name: "STM32", icon: "🔧" },
-                { name: "KiCAD", icon: "📐" },
-                { name: "DipTrace", icon: "🔗" },
-                { name: "SolidWorks", icon: "🏗️" }
+                { name: "React", icon: "/images/icons/react.png" },
+                { name: "Next.js", icon: "/images/icons/nextjs.png" },
+                { name: "TypeScript", icon: "/images/icons/typescript.png" },
+                { name: "Node.js", icon: "/images/icons/nodejs.png" },
+                { name: "Python", icon: "/images/icons/python.png" },
+                { name: "AWS", icon: "/images/icons/aws.png" },
+                { name: "Docker", icon: "/images/icons/docker.png" },
+                { name: "MongoDB", icon: "/images/icons/mongodb.png" },
+                { name: "PostgreSQL", icon: "/images/icons/postgresql.png" },
+                { name: "Redis", icon: "/images/icons/redis.png" },
+                { name: "GraphQL", icon: "/images/icons/graphql.jpeg" },
+                { name: "Kubernetes", icon: "/images/icons/kubernatives.png" },
+                { name: "ESP32", icon: "/images/icons/esp32.jpeg" },
+                { name: "Arduino", icon: "/images/icons/ardunino.png" },
+                { name: "STM32", icon: "/images/icons/stm32.jpeg" },
+                { name: "KiCAD", icon: "/images/icons/kicad.jpeg" },
+                { name: "DipTrace", icon: "/images/icons/Diptrace.jpeg" },
+                { name: "SolidWorks", icon: "/images/icons/SolidWorks.png" }
               ].map((tech, index) => (
                 <div key={index} className={`group bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-blue-200/40 hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out animate-scale-in delay-${Math.min(index * 100, 800)} animate-tech-bounce`}>
-                  <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">{tech.icon}</div>
+                  <div className="h-20 w-full mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <img 
+                      src={tech.icon} 
+                      alt={`${tech.name} icon`}
+                      className="w-full h-full object-contain rounded-lg"
+                    />
+                  </div>
                   <div className="text-sm font-semibold text-slate-700">{tech.name}</div>
                 </div>
               ))}

@@ -22,75 +22,99 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Sarah Chen",
-    role: "Chief Technology Officer",
-    company: "TechFlow Solutions",
-    companyLogo: "TF",
-    content: "SavantX transformed our entire digital infrastructure. Their enterprise CRM solution not only met our complex requirements but exceeded them. The implementation was seamless, and the results were immediate.",
+    name: "Advocate Rahul Sharma",
+    role: "Managing Partner",
+    company: "Legal Palz",
+    companyLogo: "LP",
+    content: "SavantX transformed our legal practice with a custom case management system that streamlined our workflow. Their understanding of legal processes and attention to detail is exceptional.",
     rating: 5,
-    industry: "Technology Services",
-    results: "340% increase in lead conversion",
-    location: "San Francisco, CA"
+    industry: "Legal Services",
+    results: "65% increase in case efficiency",
+    location: "New Delhi, India"
   },
   {
     id: 2,
-    name: "Marcus Rodriguez",
-    role: "Founder & Chief Executive Officer",
-    company: "InnovateLabs",
-    companyLogo: "IL",
-    content: "Working with SavantX was a game-changer for our startup. They delivered an enterprise-grade platform that scaled beautifully with our rapid growth from 10 to 500+ employees.",
+    name: "Dr. Anjali Verma",
+    role: "Principal",
+    company: "St. Paul's Sr. Sec. School",
+    companyLogo: "SP",
+    content: "The digital transformation SavantX brought to our institution has revolutionized how we manage student data and communicate with parents. Their education management system is truly world-class.",
     rating: 5,
-    industry: "Software Development",
-    results: "500% growth in 18 months",
-    location: "Austin, TX"
+    industry: "Education",
+    results: "90% improvement in parent engagement",
+    location: "Mumbai, India"
   },
   {
     id: 3,
-    name: "Emily Thompson",
-    role: "Head of Digital Transformation",
-    company: "RetailMax Group",
-    companyLogo: "RM",
-    content: "The level of expertise and professionalism from the SavantX team is exceptional. They understood our retail challenges and delivered a solution that transformed our customer experience.",
+    name: "Vikram Singh",
+    role: "Chief Editor",
+    company: "Sansani Express",
+    companyLogo: "SE",
+    content: "SavantX developed a robust content management and distribution platform that powers our digital news operations. Their technical expertise and commitment to deadlines is commendable.",
     rating: 5,
-    industry: "Retail & E-commerce",
-    results: "280% improvement in customer engagement",
-    location: "New York, NY"
+    industry: "Media & Publishing",
+    results: "200% increase in digital readership",
+    location: "Lucknow, India"
   },
   {
     id: 4,
-    name: "David Park",
-    role: "Vice President of Operations",
-    company: "GlobalTech Industries",
-    companyLogo: "GT",
-    content: "SavantX doesn't just deliver software; they deliver business transformation. Their solution streamlined our complex operations across 15 countries and multiple time zones.",
+    name: "Rajesh Kumar",
+    role: "Operations Director",
+    company: "RV Logistics",
+    companyLogo: "RV",
+    content: "SavantX built an intelligent fleet management system that revolutionized our logistics operations. Real-time tracking, route optimization, and automated scheduling have transformed our business.",
     rating: 5,
-    industry: "Manufacturing",
-    results: "250% increase in operational efficiency",
-    location: "Chicago, IL"
+    industry: "Logistics & Transportation",
+    results: "45% reduction in operational costs",
+    location: "Bangalore, India"
   },
   {
     id: 5,
-    name: "Lisa Wang",
-    role: "Director of Sales Operations",
-    company: "Enterprise Solutions Pro",
-    companyLogo: "ES",
-    content: "The CRM system SavantX built for us is nothing short of remarkable. It's intuitive, powerful, and has become the backbone of our sales organization.",
+    name: "Priya Malhotra",
+    role: "CEO & Founder",
+    company: "JDN Technologies",
+    companyLogo: "JT",
+    content: "Working with SavantX has been an incredible experience. They developed custom solutions that perfectly aligned with our business needs and exceeded all our expectations.",
     rating: 5,
-    industry: "Business Consulting",
-    results: "195% increase in sales productivity",
-    location: "Seattle, WA"
+    industry: "Technology Solutions",
+    results: "150% growth in client acquisition",
+    location: "Pune, India"
   },
   {
     id: 6,
-    name: "James Mitchell",
-    role: "Chief Innovation Officer",
-    company: "FutureVision Corp",
-    companyLogo: "FV",
-    content: "SavantX brought our vision to life with precision and innovation. Their technical expertise and strategic thinking helped us launch our platform ahead of schedule.",
+    name: "Anoop Gupta",
+    role: "Managing Director",
+    company: "Anoop Automations",
+    companyLogo: "AA",
+    content: "SavantX delivered an industrial IoT platform that seamlessly integrated with our automation systems. Their expertise in both hardware and software integration is unmatched.",
     rating: 5,
-    industry: "Financial Technology",
-    results: "Launched 3 months ahead of schedule",
-    location: "Boston, MA"
+    industry: "Industrial Automation",
+    results: "70% improvement in system efficiency",
+    location: "Noida, India"
+  },
+  {
+    id: 7,
+    name: "Sameer Patel",
+    role: "Founder & CEO",
+    company: "Fleet Logic",
+    companyLogo: "FL",
+    content: "The vehicle tracking and fleet management solution from SavantX has been a game-changer. Real-time analytics and predictive maintenance have significantly improved our operations.",
+    rating: 5,
+    industry: "Fleet Management",
+    results: "55% reduction in vehicle downtime",
+    location: "Ahmedabad, India"
+  },
+  {
+    id: 8,
+    name: "Dr. Meera Desai",
+    role: "Director",
+    company: "The Canophilla",
+    companyLogo: "TC",
+    content: "SavantX created a beautiful e-commerce platform with integrated booking and customer management. Their attention to detail and understanding of our niche market was exceptional.",
+    rating: 5,
+    industry: "Pet Care Services",
+    results: "180% increase in online bookings",
+    location: "Chennai, India"
   }
 ];
 
@@ -281,31 +305,6 @@ export default function TestimonialCarousel() {
                         </div>
                       </div>
 
-                      {/* Author Info */}
-                      <div className="border-t border-slate-100 pt-4 mt-auto">
-                        <div className="flex items-center justify-between">
-                          <div className="flex-1">
-                            <div className="text-base font-semibold text-slate-900 mb-1">
-                              {testimonial.name}
-                            </div>
-                            <div className="text-slate-600 text-xs mb-1">
-                              {testimonial.role}
-                            </div>
-                            <div className="text-slate-500 text-xs flex items-center gap-1">
-                              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                              </svg>
-                              {testimonial.location}
-                            </div>
-                          </div>
-                          <div className="w-14 h-14 bg-slate-100 rounded-full flex items-center justify-center ml-3">
-                            <span className="text-slate-600 font-bold text-lg">
-                              {testimonial.name.split(' ').map(n => n[0]).join('')}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>

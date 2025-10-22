@@ -94,6 +94,13 @@ export default function About() {
       features: ["Web Applications", "Mobile Apps", "API Development"]
     },
     { 
+      icon: "⚡", 
+      title: "Electronics & Hardware", 
+      desc: "Circuit design & embedded systems",
+      color: "from-cyan-500 to-cyan-600",
+      features: ["PCB Design", "IoT Solutions", "Firmware Development"]
+    },
+    { 
       icon: "📊", 
       title: "Analytics", 
       desc: "Data & insights",
@@ -176,18 +183,24 @@ export default function About() {
   ];
 
   const technologies = [
-    { name: "React", icon: "⚛️", category: "Frontend" },
-    { name: "Next.js", icon: "▲", category: "Framework" },
-    { name: "TypeScript", icon: "🔷", category: "Language" },
-    { name: "Node.js", icon: "🟢", category: "Backend" },
-    { name: "Python", icon: "🐍", category: "Language" },
-    { name: "AWS", icon: "☁️", category: "Cloud" },
-    { name: "Docker", icon: "🐳", category: "DevOps" },
-    { name: "MongoDB", icon: "🍃", category: "Database" },
-    { name: "PostgreSQL", icon: "🐘", category: "Database" },
-    { name: "Redis", icon: "🔴", category: "Cache" },
-    { name: "GraphQL", icon: "🔺", category: "API" },
-    { name: "Kubernetes", icon: "⚙️", category: "DevOps" }
+    { name: "React", icon: "/images/icons/react.png", category: "Frontend" },
+    { name: "Next.js", icon: "/images/icons/nextjs.png", category: "Framework" },
+    { name: "TypeScript", icon: "/images/icons/typescript.png", category: "Language" },
+    { name: "Node.js", icon: "/images/icons/nodejs.png", category: "Backend" },
+    { name: "Python", icon: "/images/icons/python.png", category: "Language" },
+    { name: "AWS", icon: "/images/icons/aws.png", category: "Cloud" },
+    { name: "Docker", icon: "/images/icons/docker.png", category: "DevOps" },
+    { name: "MongoDB", icon: "/images/icons/mongodb.png", category: "Database" },
+    { name: "PostgreSQL", icon: "/images/icons/postgresql.png", category: "Database" },
+    { name: "Redis", icon: "/images/icons/redis.png", category: "Cache" },
+    { name: "GraphQL", icon: "/images/icons/graphql.jpeg", category: "API" },
+    { name: "Kubernetes", icon: "/images/icons/kubernatives.png", category: "DevOps" },
+    { name: "ESP32", icon: "/images/icons/esp32.jpeg", category: "Hardware" },
+    { name: "Arduino", icon: "/images/icons/ardunino.png", category: "Hardware" },
+    { name: "STM32", icon: "/images/icons/stm32.jpeg", category: "Hardware" },
+    { name: "KiCAD", icon: "/images/icons/kicad.jpeg", category: "PCB Design" },
+    { name: "DipTrace", icon: "/images/icons/Diptrace.jpeg", category: "PCB Design" },
+    { name: "SolidWorks", icon: "/images/icons/SolidWorks.png", category: "CAD" }
   ];
 
   return (
@@ -562,7 +575,13 @@ export default function About() {
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {technologies.map((tech, index) => (
               <div key={index} className="bg-white border border-slate-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-200 text-center">
-                <div className="text-2xl mb-2">{tech.icon}</div>
+                <div className="h-20 w-full mx-auto mb-3 flex items-center justify-center">
+                  <img 
+                    src={tech.icon} 
+                    alt={`${tech.name} icon`}
+                    className="w-full h-full object-contain rounded-lg"
+                  />
+                </div>
                 <div className="text-sm font-medium text-slate-900 mb-1">{tech.name}</div>
                 <div className="text-xs text-slate-500">{tech.category}</div>
               </div>
