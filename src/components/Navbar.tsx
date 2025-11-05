@@ -376,8 +376,8 @@ export default function Navbar({
               }}
             >
               {/* 3D Cube Icon */}
-              <span className="flex items-center gap-2">
-                <div className="relative">
+              <span className="flex items-center gap-2 relative z-10">
+                <div className="relative pointer-events-none">
                   <div className="w-5 h-5 bg-white/20 rounded transform group-hover:rotate-12 transition-transform duration-300" style={{
                     background: 'linear-gradient(45deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%)',
                     boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), 0 2px 4px rgba(0,0,0,0.1)'
@@ -391,7 +391,7 @@ export default function Navbar({
                 </svg>
               </span>
               {/* Animated background glow */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm pointer-events-none"></div>
             </Link>
           </div>
 
@@ -536,14 +536,15 @@ export default function Navbar({
              <div className="pt-4 border-t border-blue-200/60 text-center">
                <Link
                  href="/contact"
+                 onClick={closeMobileMenu}
                  className="group relative inline-block text-white px-8 py-3 rounded-2xl transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 ease-out font-semibold shadow-2xl hover:shadow-blue-500/25 hover:shadow-2xl border border-blue-400/30"
                  style={{
                    background: 'linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%)',
                    boxShadow: '0 8px 32px rgba(59, 130, 246, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1)',
                  }}
                >
-                 <span className="flex items-center gap-2 justify-center">
-                   <div className="relative">
+                 <span className="flex items-center gap-2 justify-center relative z-10">
+                   <div className="relative pointer-events-none">
                      <div className="w-6 h-6 bg-white/20 rounded transform group-hover:rotate-12 transition-transform duration-300" style={{
                        background: 'linear-gradient(45deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%)',
                        boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3), 0 2px 4px rgba(0,0,0,0.1)'
@@ -557,7 +558,7 @@ export default function Navbar({
                    </svg>
                  </span>
                  {/* Animated background glow */}
-                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
+                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm pointer-events-none"></div>
                </Link>
              </div>
           </div>

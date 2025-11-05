@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import Footer from '@/components/Footer';
 import AnimatedCounter from '@/components/AnimatedCounter';
 
@@ -318,9 +319,9 @@ export default function Products() {
                   </div>
 
                   {/* CTA Button */}
-                  <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl">
+                  <Link href="/contact" className="block w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl text-center transform hover:scale-105">
                     Request Demo
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -450,9 +451,9 @@ export default function Products() {
                       <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                       <span className="text-sm font-medium text-slate-600">Available</span>
                     </div>
-                    <button className="text-blue-600 hover:text-blue-700 text-sm font-semibold transition-colors duration-200">
+                    <Link href="/contact" className="text-blue-600 hover:text-blue-700 text-sm font-semibold transition-colors duration-200 hover:underline">
                       Learn More →
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -507,12 +508,18 @@ export default function Products() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="bg-white text-blue-600 px-10 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="group bg-white text-blue-600 px-10 py-4 rounded-xl hover:bg-blue-50 transition-all duration-300 ease-out font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 inline-flex items-center justify-center gap-2">
               Start Free Trial
-            </button>
-            <button className="border-2 border-white text-white px-10 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
+              <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+            <Link href="/contact" className="group border-2 border-white text-white px-10 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-300 ease-out font-semibold text-lg transform hover:scale-105 inline-flex items-center justify-center gap-2">
+              <svg className="w-5 h-5 transform group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
               Schedule Demo
-            </button>
+            </Link>
           </div>
         </div>
       </section>

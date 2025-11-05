@@ -24,7 +24,7 @@ export default function Footer() {
              
             </div>
             <p className="text-slate-600 mb-6 leading-relaxed max-w-md">
-              Transforming businesses through innovative technology solutions. We deliver excellence in every project, from web development to AI-powered applications.
+              Transforming businesses through innovative software and electronics solutions. We deliver excellence in every project, from web development and mobile apps to IoT devices, embedded systems, and PCB design.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="group w-10 h-10 bg-blue-100/50 rounded-lg flex items-center justify-center hover:bg-blue-600 hover:scale-110 transition-all duration-300">
@@ -64,12 +64,12 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-blue-600">Services</h4>
+            <h4 className="text-lg font-semibold mb-6 text-blue-600">Our Expertise</h4>
             <ul className="space-y-3">
               <li><Link href="/expertise/websites" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Web Development</Link></li>
               <li><Link href="/expertise/mobile-apps" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Mobile Apps</Link></li>
-              <li><Link href="/expertise/web-apps" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Web Applications</Link></li>
-              <li><Link href="/expertise/zoho-integrations" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Zoho Integration</Link></li>
+              <li><Link href="/expertise/hardware-electronics" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">IoT & Embedded Systems</Link></li>
+              <li><Link href="/expertise/hardware-electronics" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">PCB Design</Link></li>
               <li><Link href="/expertise/ui-ux-design" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">UI/UX Design</Link></li>
             </ul>
           </div>
@@ -84,7 +84,7 @@ export default function Footer() {
              <div className="flex space-x-6 text-sm">
                <Link href="/privacy-policy" className="text-slate-500 hover:text-blue-600 transition-colors duration-300">Privacy Policy</Link>
                <Link href="/terms-of-service" className="text-slate-500 hover:text-blue-600 transition-colors duration-300">Terms of Service</Link>
-               <a href="#" className="text-slate-500 hover:text-blue-600 transition-colors duration-300">Cookie Policy</a>
+               <Link href="/cookie-policy" className="text-slate-500 hover:text-blue-600 transition-colors duration-300">Cookie Policy</Link>
              </div>
           </div>
         </div>

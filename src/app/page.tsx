@@ -10,6 +10,14 @@ import AnimatedCounter from '@/components/AnimatedCounter';
 export default function Home() {
   const [codeVersion, setCodeVersion] = useState(0);
   const [showAllServices, setShowAllServices] = useState(false);
+  const [isConsultationOpen, setIsConsultationOpen] = useState(false);
+  const [consultationFormData, setConsultationFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    phone: '',
+    message: ''
+  });
   
   const codeVersions = [
     // Version 0: CRM System
@@ -112,6 +120,43 @@ export default function Home() {
 
   const handleRefresh = () => {
     setCodeVersion((prev) => (prev + 1) % codeVersions.length);
+  };
+
+  const handleConsultationInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setConsultationFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleConsultationSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...consultationFormData,
+          service: 'Consultation Request',
+          budget: ''
+        }),
+      });
+
+      if (response.ok) {
+        alert('Thank you for your consultation request! We will get back to you soon.');
+        setIsConsultationOpen(false);
+        setConsultationFormData({ name: '', email: '', company: '', phone: '', message: '' });
+      } else {
+        alert('Sorry, there was an error. Please try again or contact us directly.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Sorry, there was an error. Please try again or contact us directly.');
+    }
   };
 
   // Software Services Data
@@ -511,7 +556,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
             {/* Software Services Column */}
             <div className="space-y-8">
-              <div className="text-center lg:text-left">
+              <div className="text-center lg:text-left min-h-[100px] flex flex-col justify-start">
                 <h3 className="text-3xl font-bold text-slate-900 mb-4">
                   <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Software</span> Solutions
                 </h3>
@@ -553,7 +598,7 @@ export default function Home() {
 
             {/* Hardware Services Column */}
             <div className="space-y-8">
-              <div className="text-center lg:text-left">
+              <div className="text-center lg:text-left min-h-[100px] flex flex-col justify-start">
                 <h3 className="text-3xl font-bold text-slate-900 mb-4">
                   <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">Hardware</span> Solutions
                 </h3>
@@ -640,10 +685,10 @@ export default function Home() {
                 {/* Body Text */}
                 <div className="space-y-6 text-xl text-slate-600 leading-relaxed max-w-2xl">
                   <p>
-                    We craft exceptional digital experiences that transform businesses and drive growth. Our comprehensive technology solutions span from web development to AI-powered applications.
+                    We craft exceptional digital experiences and innovative hardware solutions that transform businesses and drive growth. Our comprehensive technology services span from web development and mobile apps to IoT devices, embedded systems, and PCB design.
                   </p>
                   <p>
-                    With a commitment to innovation and quality, we deliver scalable solutions that help organizations thrive in the digital landscape.
+                    With expertise in both software and electronics, we deliver end-to-end solutions that bridge the digital and physical worlds, helping organizations thrive in today's connected landscape.
                   </p>
                 </div>
 
@@ -827,7 +872,7 @@ export default function Home() {
                   </svg>
                 </span>
               </Link>
-              <Link href="/about" className="group border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-300 ease-out font-semibold text-lg transform hover:scale-105 hover:shadow-lg animate-scale-in delay-400">
+              <button onClick={() => setIsConsultationOpen(true)} className="group border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-300 ease-out font-semibold text-lg transform hover:scale-105 hover:shadow-lg animate-scale-in delay-400">
                 <span className="flex items-center justify-center gap-2">
                   <span className="text-lg">📅</span>
                   Schedule Consultation
@@ -835,7 +880,7 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                 </span>
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -846,6 +891,124 @@ export default function Home() {
 
       {/* Testimonials Section */}
       <TestimonialCarousel />
+
+      {/* Consultation Modal */}
+      {isConsultationOpen && (
+        <div className="fixed inset-0 backdrop-blur-md bg-white/30 z-50 flex items-center justify-center p-4 animate-fade-in">
+          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-scale-in">
+            {/* Modal Header */}
+            <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-indigo-600 p-6 rounded-t-2xl flex justify-between items-center">
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-1">Schedule a Consultation</h3>
+                <p className="text-blue-100 text-sm">Let's discuss how we can help your business grow</p>
+              </div>
+              <button
+                onClick={() => setIsConsultationOpen(false)}
+                className="text-white hover:bg-white hover:bg-opacity-20 rounded-full p-2 transition-all duration-200"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <form onSubmit={handleConsultationSubmit} className="p-6 space-y-4">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Full Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={consultationFormData.name}
+                    onChange={handleConsultationInputChange}
+                    required
+                    className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-slate-900"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Email Address <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={consultationFormData.email}
+                    onChange={handleConsultationInputChange}
+                    required
+                    className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-slate-900"
+                    placeholder="john@company.com"
+                  />
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Company Name
+                  </label>
+                  <input
+                    type="text"
+                    name="company"
+                    value={consultationFormData.company}
+                    onChange={handleConsultationInputChange}
+                    className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-slate-900"
+                    placeholder="Your Company"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={consultationFormData.phone}
+                    onChange={handleConsultationInputChange}
+                    className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 text-slate-900"
+                    placeholder="+1 (555) 000-0000"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  Tell us about your project <span className="text-red-500">*</span>
+                </label>
+                <textarea
+                  name="message"
+                  value={consultationFormData.message}
+                  onChange={handleConsultationInputChange}
+                  required
+                  rows={4}
+                  className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 resize-none text-slate-900"
+                  placeholder="Describe your project requirements, goals, and any specific challenges you'd like to discuss..."
+                />
+              </div>
+
+              {/* Form Actions */}
+              <div className="flex gap-3 pt-4">
+                <button
+                  type="button"
+                  onClick={() => setIsConsultationOpen(false)}
+                  className="flex-1 px-6 py-3 border-2 border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition-all duration-200 font-semibold"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
+                >
+                  Send Request
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>

@@ -252,7 +252,7 @@ export default function TestimonialCarousel() {
                     visibleCards === 2 ? 'w-1/2' : 'w-1/3'
                   }`}
                 >
-                  <div className="bg-white rounded-2xl border border-slate-200 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group relative overflow-hidden h-[520px]">
+                  <div className="bg-white rounded-2xl border border-slate-200 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group relative overflow-hidden">
                     {/* Quote Icon */}
                     <div className="absolute top-8 right-8 text-slate-200 group-hover:text-blue-200 transition-colors duration-300">
                       <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
@@ -261,12 +261,21 @@ export default function TestimonialCarousel() {
                     </div>
 
                     {/* Content */}
-                    <div className="p-6 h-full flex flex-col">
+                    <div className="p-6 flex flex-col">
                       {/* Company Logo & Industry */}
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
-                            <span className="text-white font-bold text-base">
+                          <div className={`w-14 h-14 rounded-xl flex items-center justify-center shadow-lg ${
+                            testimonial.id === 1 ? 'bg-gradient-to-br from-amber-500 to-amber-600' :
+                            testimonial.id === 2 ? 'bg-gradient-to-br from-indigo-500 to-indigo-600' :
+                            testimonial.id === 3 ? 'bg-gradient-to-br from-red-500 to-red-600' :
+                            testimonial.id === 4 ? 'bg-gradient-to-br from-emerald-500 to-emerald-600' :
+                            testimonial.id === 5 ? 'bg-gradient-to-br from-purple-500 to-purple-600' :
+                            testimonial.id === 6 ? 'bg-gradient-to-br from-blue-500 to-blue-600' :
+                            testimonial.id === 7 ? 'bg-gradient-to-br from-cyan-500 to-cyan-600' :
+                            'bg-gradient-to-br from-pink-500 to-pink-600'
+                          }`}>
+                            <span className="text-white font-bold text-lg">
                               {testimonial.companyLogo}
                             </span>
                           </div>
@@ -287,16 +296,16 @@ export default function TestimonialCarousel() {
                       </div>
 
                       {/* Quote */}
-                      <blockquote className="text-slate-700 text-sm leading-relaxed mb-4 flex-grow font-normal italic overflow-hidden" style={{
+                      <blockquote className="text-slate-700 text-sm leading-relaxed mb-4 font-normal italic overflow-hidden" style={{
                         display: '-webkit-box',
-                        WebkitLineClamp: 5,
+                        WebkitLineClamp: 4,
                         WebkitBoxOrient: 'vertical' as const
                       }}>
                         &ldquo;{testimonial.content}&rdquo;
                       </blockquote>
 
                       {/* Results Badge */}
-                      <div className="mb-4">
+                      <div>
                         <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-800 px-3 py-1.5 rounded-lg text-xs font-semibold">
                           <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />

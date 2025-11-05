@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import Footer from '@/components/Footer';
 import AnimatedCounter from '@/components/AnimatedCounter';
 
@@ -339,9 +340,12 @@ export default function Work() {
             Let&apos;s discuss how we can help bring your vision to life with our expertise and innovative solutions.
           </p>
           <div className="flex justify-center">
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-md hover:bg-blue-50 transition-colors duration-200 font-medium text-base">
+            <Link href="/contact" className="group bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-300 ease-out font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl inline-flex items-center justify-center gap-2">
               Start a Project
-            </button>
+              <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
           </div>
         </div>
       </section>

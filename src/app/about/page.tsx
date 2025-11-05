@@ -44,16 +44,16 @@ export default function About() {
     },
     {
       name: "Bikash Kumar",
-      role: "Co-Founder",
+      role: "COO | Sr. Embedded System Engineer",
       image: "👨‍💼",
-      description: "Strategic co-founder passionate about building innovative technology solutions",
-      expertise: ["Business Development", "Strategy", "Partnerships"],
+      description: "Strategic operations leader with deep expertise in embedded systems and hardware development",
+      expertise: ["Embedded Systems", "Operations", "IoT Solutions"],
       experience: "4+ years",
       projects: "30+"
     },
     {
       name: "Deepak Kumar",
-      role: "CTO",
+      role: "CTO | Sr. Developer",
       image: "👨‍💻",
       description: "Full-stack architect passionate about cutting-edge technology and system design",
       expertise: ["React", "Node.js", "Cloud Architecture"],
@@ -68,6 +68,15 @@ export default function About() {
       expertise: ["UI/UX", "Design Systems", "Brand Identity"],
       experience: "4+ years",
       projects: "32+"
+    },
+    {
+      name: "Manisa Roy Chaudhary",
+      role: "Embedded Engineer",
+      image: "👩‍💻",
+      description: "Skilled embedded engineer specializing in hardware-software integration and firmware development",
+      expertise: ["Firmware", "Hardware Integration", "Microcontrollers"],
+      experience: "3+ years",
+      projects: "25+"
     }
   ];
 
@@ -259,17 +268,27 @@ export default function About() {
 
             {/* Professional CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/work" className="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition-colors duration-200 font-medium text-base">
-                Explore Our Work
+              <Link href="/work" className="group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 ease-out font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl">
+                <span className="flex items-center justify-center gap-2">
+                  Explore Our Work
+                  <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </span>
               </Link>
               <button 
                 onClick={() => {
                   const teamSection = document.getElementById('executive-team');
                   teamSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }}
-                className="border border-slate-300 text-slate-700 px-8 py-3 rounded-md hover:border-slate-400 hover:bg-slate-50 transition-all duration-200 font-medium text-base"
+                className="group border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 ease-out font-semibold text-lg transform hover:scale-105 hover:shadow-lg"
               >
-                Meet Our Team
+                <span className="flex items-center justify-center gap-2">
+                  Meet Our Team
+                  <svg className="w-5 h-5 transform group-hover:translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </span>
               </button>
             </div>
           </div>
@@ -453,7 +472,7 @@ export default function About() {
               <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-green-700 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H17c-.8 0-1.54.37-2.01.99L14 10v8h4z"/>
+                    <path d="M9 3L5 6.99h3V14h2V6.99h3L9 3zm7 14.01V10h-2v7.01h-3L15 21l4-3.99h-3zM14.5 5h2v3h-2V5zm-9 3h2v3h-2V8zM19 8v3h2V8h-2zm-9 5h2v3h-2v-3zM17 13v3h2v-3h-2zM3 13v3h2v-3H3z"/>
                   </svg>
                 </div>
                 <h4 className="text-lg font-semibold text-slate-900 mb-2">Technical Excellence</h4>
@@ -601,14 +620,24 @@ export default function About() {
               Let&apos;s discuss your project and see how SavantX can help you achieve your digital goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="bg-white text-blue-600 px-8 py-3 rounded-md hover:bg-blue-50 transition-colors duration-200 font-medium text-center">
+              <Link href="/contact" className="group bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-300 ease-out font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl">
+                <span className="flex items-center justify-center gap-2">
                   Start Your Project
+                  <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
               </Link>
               <button 
                 onClick={() => setIsConsultationOpen(true)}
-                className="border border-white text-white px-8 py-3 rounded-md hover:bg-white hover:text-blue-600 transition-all duration-200 font-medium"
+                className="group border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-300 ease-out font-semibold text-lg transform hover:scale-105 hover:shadow-lg"
               >
+                <span className="flex items-center justify-center gap-2">
+                  <svg className="w-5 h-5 transform group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
                   Schedule Consultation
+                </span>
               </button>
             </div>
           </div>
@@ -722,13 +751,13 @@ export default function About() {
                   <button
                     type="button"
                     onClick={() => setIsConsultationOpen(false)}
-                    className="flex-1 px-4 py-2 border border-slate-300 text-slate-700 rounded-md hover:bg-slate-50 transition-colors"
+                    className="flex-1 px-6 py-3 border-2 border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition-all duration-200 font-semibold"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                    className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
                     Schedule Meeting
                   </button>

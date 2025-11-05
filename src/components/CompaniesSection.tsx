@@ -74,7 +74,7 @@ export default function CompaniesSection() {
             return (
               <div
                 key={`${currentIndex}-${index}`}
-                className={`bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transform hover:scale-105 animate-fade-in-up transition-all duration-600 ease-in-out ${
+                className={`bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transform hover:scale-105 animate-fade-in-up transition-all duration-600 ease-in-out h-32 flex items-center justify-center ${
                   isTransitioning 
                     ? 'opacity-0 scale-95 translate-y-2' 
                     : 'opacity-100 scale-100 translate-y-0'
@@ -84,7 +84,7 @@ export default function CompaniesSection() {
                   transitionDelay: `${index * 50}ms`
                 }}
               >
-                <div className="text-center">
+                <div className="text-center w-full">
                   <h3 className={`text-lg sm:text-xl font-bold text-gray-900 mb-2 transition-all duration-600 ease-in-out ${
                     isTransitioning 
                       ? 'opacity-0 transform translate-y-1' 

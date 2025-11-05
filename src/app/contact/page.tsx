@@ -11,6 +11,7 @@ export default function ContactPage() {
     company: '',
     phone: '',
     service: '',
+    hardwareService: '',
     message: '',
     budget: ''
   });
@@ -27,10 +28,20 @@ export default function ContactPage() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => {
+      // Reset hardwareService when service is changed to non-hardware option
+      if (name === 'service' && value !== 'hardware-development') {
+        return {
+          ...prev,
+          [name]: value,
+          hardwareService: ''
+        };
+      }
+      return {
+        ...prev,
+        [name]: value
+      };
+    });
   };
 
   const handleSupportInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -72,6 +83,7 @@ export default function ContactPage() {
           company: '',
           phone: '',
           service: '',
+          hardwareService: '',
           message: '',
           budget: ''
         });
@@ -217,6 +229,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
+                      suppressHydrationWarning
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-slate-900 bg-white"
                       placeholder="Your full name"
                     />
@@ -232,6 +245,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
+                      suppressHydrationWarning
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-slate-900 bg-white"
                       placeholder="your@email.com"
                     />
@@ -249,6 +263,7 @@ export default function ContactPage() {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
+                      suppressHydrationWarning
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-slate-900 bg-white"
                       placeholder="Your company name"
                     />
@@ -263,6 +278,7 @@ export default function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
+                      suppressHydrationWarning
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-slate-900 bg-white"
                       placeholder="+1 (555) 123-4567"
                     />
@@ -280,6 +296,7 @@ export default function ContactPage() {
                       value={formData.service}
                       onChange={handleInputChange}
                       required
+                      suppressHydrationWarning
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-slate-900 bg-white"
                     >
                       <option value="">Select a service</option>
@@ -287,7 +304,7 @@ export default function ContactPage() {
                       <option value="mobile-apps">Mobile Applications</option>
                       <option value="ai-analytics">AI & Analytics</option>
                       <option value="enterprise-solutions">Enterprise Solutions</option>
-                      <option value="hardware-development">Hardware Development</option>
+                      <option value="hardware-development">Hardware & Electronics</option>
                       <option value="zoho-integration">Zoho Integration</option>
                       <option value="consulting">Consulting</option>
                       <option value="other">Other</option>
@@ -302,6 +319,7 @@ export default function ContactPage() {
                       name="budget"
                       value={formData.budget}
                       onChange={handleInputChange}
+                      suppressHydrationWarning
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-slate-900 bg-white"
                     >
                       <option value="">Select budget range</option>
@@ -314,6 +332,34 @@ export default function ContactPage() {
                   </div>
                 </div>
 
+                {/* Conditional Hardware Services Field */}
+                {formData.service === 'hardware-development' && (
+                  <div className="animate-fade-in">
+                    <label htmlFor="hardwareService" className="block text-sm font-semibold text-slate-700 mb-2">
+                      Which Hardware Service? *
+                    </label>
+                    <select
+                      id="hardwareService"
+                      name="hardwareService"
+                      value={formData.hardwareService}
+                      onChange={handleInputChange}
+                      required
+                      suppressHydrationWarning
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-slate-900 bg-white"
+                    >
+                      <option value="">Select hardware service</option>
+                      <option value="iot-solutions">IoT Solutions</option>
+                      <option value="embedded-systems">Embedded Systems Development</option>
+                      <option value="pcb-design">PCB Design & Circuit Engineering</option>
+                      <option value="firmware-development">Firmware Development</option>
+                      <option value="hardware-prototyping">Hardware Prototyping & Testing</option>
+                      <option value="industrial-automation">Industrial Automation</option>
+                      <option value="electronics-design">Electronics Design & Integration</option>
+                      <option value="product-development">Complete Product Development</option>
+                    </select>
+                  </div>
+                )}
+
                 <div>
                   <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-2">
                     Project Details *
@@ -325,6 +371,7 @@ export default function ContactPage() {
                     onChange={handleInputChange}
                     required
                     rows={6}
+                    suppressHydrationWarning
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none text-slate-900 bg-white"
                     placeholder="Tell us about your project, goals, and any specific requirements..."
                   />
@@ -333,6 +380,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
+                  suppressHydrationWarning
                   className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                 >
                   {isSubmitting ? (
@@ -528,6 +576,7 @@ export default function ContactPage() {
             <p className="text-slate-600 mb-6">Still have questions? We&apos;re here to help!</p>
             <button 
               onClick={() => setIsSupportOpen(true)}
+              suppressHydrationWarning
               className="group bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 transition-all duration-300 font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl"
             >
               <span className="flex items-center justify-center gap-2">
