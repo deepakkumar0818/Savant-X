@@ -378,7 +378,7 @@ export default function Home() {
               </h1>
                   <p className="text-lg sm:text-xl md:text-2xl text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-6 md:mb-8 px-4 lg:px-0">
                 Professional software and electronics solutions for modern businesses. 
-                We specialize in web development, mobile applications, CRM systems, Zoho integrations, IoT solutions, embedded hardware, PCB design, and complete digital transformation.
+                We specialize in web development, mobile applications, GenAI solutions, AI/ML integration, CRM systems, Zoho integrations, IoT solutions, embedded hardware, PCB design, and complete digital transformation.
               </p>
                 </div>
 
