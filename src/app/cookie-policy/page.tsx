@@ -36,7 +36,7 @@ export default function CookiePolicy() {
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-4">1. Introduction</h2>
               <p className="text-slate-600 leading-relaxed mb-4">
-                This Cookie Policy explains how Savantx Technologies Pvt Ltd ("we", "us", or "our") uses cookies and similar technologies on our website www.savantxtechnologies.com (the "Website"). This policy should be read in conjunction with our Privacy Policy.
+                This Cookie Policy explains how Savantx Technologies Pvt Ltd (&ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) uses cookies and similar technologies on our website www.savantxtechnologies.com (the &ldquo;Website&rdquo;). This policy should be read in conjunction with our Privacy Policy.
               </p>
               <p className="text-slate-600 leading-relaxed">
                 By using our Website, you consent to the use of cookies as described in this policy. If you do not agree with this policy, you should disable cookies or refrain from using our Website.
@@ -50,7 +50,7 @@ export default function CookiePolicy() {
                 Cookies are small text files that are placed on your computer or mobile device when you visit a website. They are widely used to make websites work more efficiently and provide information to the owners of the site.
               </p>
               <p className="text-slate-600 leading-relaxed">
-                Cookies can be "persistent" or "session" cookies. Persistent cookies remain on your device after you close your browser, while session cookies are deleted when you close your browser.
+                Cookies can be &ldquo;persistent&rdquo; or &ldquo;session&rdquo; cookies. Persistent cookies remain on your device after you close your browser, while session cookies are deleted when you close your browser.
               </p>
             </div>
 
@@ -154,7 +154,7 @@ export default function CookiePolicy() {
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-slate-900 mb-4">7. Updates to This Policy</h2>
               <p className="text-slate-600 leading-relaxed mb-4">
-                We may update this Cookie Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any material changes by posting the new Cookie Policy on this page with a new "Last Updated" date.
+                We may update this Cookie Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any material changes by posting the new Cookie Policy on this page with a new &ldquo;Last Updated&rdquo; date.
               </p>
               <p className="text-slate-600 leading-relaxed">
                 We encourage you to review this Cookie Policy periodically to stay informed about how we use cookies.

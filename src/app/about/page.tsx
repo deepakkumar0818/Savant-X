@@ -7,6 +7,7 @@ import AnimatedCounter from '@/components/AnimatedCounter';
 
 export default function About() {
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
+  const [showAllTechnologies, setShowAllTechnologies] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -122,6 +123,27 @@ export default function About() {
       desc: "System integration",
       color: "from-red-500 to-red-600",
       features: ["API Integration", "Third-party Services", "Legacy Systems"]
+    },
+    { 
+      icon: "🤖", 
+      title: "Generative AI Solutions", 
+      desc: "Advanced AI content generation",
+      color: "from-violet-500 to-violet-600",
+      features: ["LLM Integration", "AI Chatbots", "Content Automation", "GPT-based Solutions"]
+    },
+    { 
+      icon: "🧠", 
+      title: "Machine Learning", 
+      desc: "Intelligent predictive systems",
+      color: "from-indigo-500 to-indigo-600",
+      features: ["ML Model Development", "Predictive Analytics", "Computer Vision", "NLP Solutions"]
+    },
+    { 
+      icon: "✨", 
+      title: "AI Integration & Consulting", 
+      desc: "Expert AI implementation",
+      color: "from-pink-500 to-pink-600",
+      features: ["AI Strategy", "Model Training", "AI/ML Deployment", "Custom AI Solutions"]
     }
   ];
 
@@ -192,22 +214,27 @@ export default function About() {
   ];
 
   const technologies = [
-    { name: "React", icon: "/images/icons/react.png", category: "Frontend" },
+    { name: "React", icon: "/images/icons/react1.png", category: "Frontend" },
     { name: "Next.js", icon: "/images/icons/nextjs.png", category: "Framework" },
-    { name: "TypeScript", icon: "/images/icons/typescript.png", category: "Language" },
-    { name: "Node.js", icon: "/images/icons/nodejs.png", category: "Backend" },
-    { name: "Python", icon: "/images/icons/python.png", category: "Language" },
-    { name: "AWS", icon: "/images/icons/aws.png", category: "Cloud" },
+    { name: "TypeScript", icon: "/images/icons/ts1.jpeg", category: "Language" },
+    { name: "Node.js", icon: "/images/icons/nodejs1.png", category: "Backend" },
+    { name: "Python", icon: "/images/icons/python1.png", category: "Language" },
+    { name: "AWS", icon: "/images/icons/aws1.png", category: "Cloud" },
     { name: "Docker", icon: "/images/icons/docker.png", category: "DevOps" },
     { name: "MongoDB", icon: "/images/icons/mongodb.png", category: "Database" },
     { name: "PostgreSQL", icon: "/images/icons/postgresql.png", category: "Database" },
     { name: "Redis", icon: "/images/icons/redis.png", category: "Cache" },
-    { name: "GraphQL", icon: "/images/icons/graphql.jpeg", category: "API" },
+    { name: "GraphQL", icon: "/images/icons/Graphql1.png", category: "API" },
     { name: "Kubernetes", icon: "/images/icons/kubernatives.png", category: "DevOps" },
-    { name: "ESP32", icon: "/images/icons/esp32.jpeg", category: "Hardware" },
-    { name: "Arduino", icon: "/images/icons/ardunino.png", category: "Hardware" },
+    { name: "ESP32", icon: "/images/icons/esp32_1.jpeg", category: "Hardware" },
+    { name: "Arduino", icon: "/images/icons/ardunio1.png", category: "Hardware" },
     { name: "STM32", icon: "/images/icons/stm32.jpeg", category: "Hardware" },
-    { name: "KiCAD", icon: "/images/icons/kicad.jpeg", category: "PCB Design" },
+    { name: "Raspberry Pi", icon: "/images/icons/raspberrypi.jpeg", category: "Hardware" },
+    { name: "PIC / AVR", icon: "/images/icons/AVR.png", category: "Hardware" },
+    { name: "Zephyr RTOS", icon: "/images/icons/Zephyr.jpeg", category: "RTOS" },
+    { name: "AWS IoT Core", icon: "/images/icons/AwsIot.jpeg", category: "IoT" },
+    { name: "Google Cloud IoT", icon: "/images/icons/googleCloud.png", category: "IoT" },
+    { name: "KiCAD", icon: "/images/icons/kicad1.png", category: "PCB Design" },
     { name: "DipTrace", icon: "/images/icons/Diptrace.jpeg", category: "PCB Design" },
     { name: "SolidWorks", icon: "/images/icons/SolidWorks.png", category: "CAD" }
   ];
@@ -591,20 +618,50 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {technologies.map((tech, index) => (
-              <div key={index} className="bg-white border border-slate-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-200 text-center">
-                <div className="h-20 w-full mx-auto mb-3 flex items-center justify-center">
-                  <img 
-                    src={tech.icon} 
-                    alt={`${tech.name} icon`}
-                    className="w-full h-full object-contain rounded-lg"
-                  />
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8">
+            {(() => {
+              const displayedTechnologies = showAllTechnologies ? technologies : technologies.slice(0, 18);
+              
+              return displayedTechnologies.map((tech, index) => (
+                <div 
+                  key={index} 
+                  className="bg-white border border-slate-200 rounded-lg p-4 hover:shadow-md transition-all duration-300 text-center hover:scale-105"
+                  style={{
+                    animation: 'fadeInUp 0.6s ease-out forwards',
+                    animationDelay: `${index * 0.05}s`,
+                    opacity: 0
+                  }}
+                >
+                  <div className="h-20 w-full mx-auto mb-3 flex items-center justify-center">
+                    <img 
+                      src={tech.icon} 
+                      alt={`${tech.name} icon`}
+                      className="w-full h-full object-contain rounded-lg"
+                    />
+                  </div>
+                  <div className="text-sm font-medium text-slate-900 mb-1">{tech.name}</div>
+                  <div className="text-xs text-slate-500">{tech.category}</div>
                 </div>
-                <div className="text-sm font-medium text-slate-900 mb-1">{tech.name}</div>
-                <div className="text-xs text-slate-500">{tech.category}</div>
-              </div>
-            ))}
+              ));
+            })()}
+          </div>
+          
+          {/* See More/Less Button */}
+          <div className="text-center">
+            <button
+              onClick={() => setShowAllTechnologies(!showAllTechnologies)}
+              className="group inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
+            >
+              <span>{showAllTechnologies ? 'Show Less' : 'See More Technologies'}</span>
+              <svg 
+                className={`w-5 h-5 transform transition-transform duration-300 ${showAllTechnologies ? 'rotate-180' : ''}`}
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
           </div>
         </div>
       </section>

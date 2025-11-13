@@ -155,13 +155,13 @@ export default function Navbar({
                   <div key={item.label} className="relative">
                     {item.children ? (
                       <div className="relative">
-                        <button
-                          onClick={() => toggleDropdown(item.label)}
-                          className={`px-4 py-2 rounded-full transition-all duration-300 ease-out font-semibold text-sm tracking-wide transform hover:scale-105 ${
+                                                 <button
+                           onClick={() => toggleDropdown(item.label)}
+                           className={`px-4 py-2 rounded-full transition-all duration-300 ease-out font-semibold text-sm tracking-wide transform hover:scale-105 ${
                             isItemActive(item)
-                              ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                              : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
-                          }`}
+                               ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
+                               : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
+                           }`}
                           aria-expanded={activeDropdown === item.label}
                           aria-haspopup="true"
                         >
@@ -275,20 +275,20 @@ export default function Navbar({
                                          <span className="text-sm font-medium text-slate-700 group-hover:text-pink-700 group-active:text-pink-800">Laravel</span>
                                        </Link>
                                      </li>
-                                    <li>
-                                      <Link href="/expertise/wordpress" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
-                                        <span className="text-lg font-bold text-blue-600">W</span>
-                                        <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">WordPress</span>
-                                      </Link>
-                                    </li>
+                                     <li>
+                                       <Link href="/expertise/wordpress" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
+                                         <span className="text-lg font-bold text-blue-600">W</span>
+                                         <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">WordPress</span>
+                                       </Link>
+                                     </li>
                                     <li>
                                       <Link href="/expertise/hardware-electronics" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-cyan-100 active:bg-cyan-200 transition-all duration-200 group">
                                         <span className="text-lg">⚡</span>
                                         <span className="text-sm font-medium text-slate-700 group-hover:text-cyan-700 group-active:text-cyan-800">Hardware & Electronics</span>
                                       </Link>
                                     </li>
-                                  </ul>
-                                </div>
+                                   </ul>
+                                 </div>
 
                                  {/* Experience */}
                                  <div className="space-y-3">
@@ -426,13 +426,13 @@ export default function Navbar({
               <div key={item.label}>
                 {item.children ? (
                   <div>
-                    <button
-                      onClick={() => toggleDropdown(item.label)}
-                      className={`flex items-center justify-between w-full px-4 py-3 text-left transition-all duration-300 ease-out font-semibold text-sm rounded-xl transform hover:scale-105 ${
+                                         <button
+                       onClick={() => toggleDropdown(item.label)}
+                       className={`flex items-center justify-between w-full px-4 py-3 text-left transition-all duration-300 ease-out font-semibold text-sm rounded-xl transform hover:scale-105 ${
                         isItemActive(item)
-                          ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                          : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
-                      }`}
+                           ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
+                           : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
+                       }`}
                       aria-expanded={activeDropdown === item.label}
                     >
                       <span>{item.label}</span>
@@ -517,17 +517,17 @@ export default function Navbar({
                     </div>
                   </div>
                 ) : (
-                    <Link
-                    href={item.href}
-                    className={`block px-4 py-3 transition-all duration-300 ease-out font-semibold text-sm rounded-xl transform hover:scale-105 ${
+                                     <Link
+                     href={item.href}
+                     className={`block px-4 py-3 transition-all duration-300 ease-out font-semibold text-sm rounded-xl transform hover:scale-105 ${
                       isItemActive(item)
-                        ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                        : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
-                    }`}
-                    onClick={handleNavClick}
-                  >
-                    {item.label}
-                  </Link>
+                         ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
+                         : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
+                     }`}
+                     onClick={handleNavClick}
+                   >
+                     {item.label}
+                   </Link>
                 )}
               </div>
             ))}

@@ -10,6 +10,7 @@ import AnimatedCounter from '@/components/AnimatedCounter';
 export default function Home() {
   const [codeVersion, setCodeVersion] = useState(0);
   const [showAllServices, setShowAllServices] = useState(false);
+  const [showAllTechnologies, setShowAllTechnologies] = useState(false);
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
   const [consultationFormData, setConsultationFormData] = useState({
     name: '',
@@ -376,8 +377,8 @@ export default function Home() {
                 </span>
               </h1>
                   <p className="text-lg sm:text-xl md:text-2xl text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-6 md:mb-8 px-4 lg:px-0">
-                Professional technology solutions for modern businesses. 
-                We specialize in web development, mobile applications, and digital transformation.
+                Professional software and electronics solutions for modern businesses. 
+                We specialize in web development, mobile applications, CRM systems, Zoho integrations, IoT solutions, embedded hardware, PCB design, and complete digital transformation.
               </p>
                 </div>
 
@@ -685,10 +686,10 @@ export default function Home() {
                 {/* Body Text */}
                 <div className="space-y-6 text-xl text-slate-600 leading-relaxed max-w-2xl">
                   <p>
-                    We craft exceptional digital experiences and innovative hardware solutions that transform businesses and drive growth. Our comprehensive technology services span from web development and mobile apps to IoT devices, embedded systems, and PCB design.
+                    We craft exceptional digital experiences and innovative hardware solutions that transform businesses and drive growth. Our comprehensive technology services span from web development, mobile apps, ERP systems, CRM solutions, and Zoho integrations to IoT devices, embedded systems, and PCB design.
                   </p>
                   <p>
-                    With expertise in both software and electronics, we deliver end-to-end solutions that bridge the digital and physical worlds, helping organizations thrive in today's connected landscape.
+                    With expertise in both software and electronics, we deliver end-to-end solutions that bridge the digital and physical worlds, helping organizations streamline operations and thrive in today&apos;s connected landscape.
                   </p>
                 </div>
 
@@ -819,39 +820,74 @@ export default function Home() {
             <h3 className="text-3xl font-bold text-slate-900 mb-4 animate-fade-in-up">Technologies We Master</h3>
             <p className="text-lg text-slate-600 mb-12 animate-fade-in-up delay-200">Cutting-edge tools and frameworks for modern development</p>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-              {[
-                { name: "React", icon: "/images/icons/react.png" },
-                { name: "Next.js", icon: "/images/icons/nextjs.png" },
-                { name: "TypeScript", icon: "/images/icons/typescript.png" },
-                { name: "Node.js", icon: "/images/icons/nodejs.png" },
-                { name: "Python", icon: "/images/icons/python.png" },
-                { name: "AWS", icon: "/images/icons/aws.png" },
-                { name: "Docker", icon: "/images/icons/docker.png" },
-                { name: "MongoDB", icon: "/images/icons/mongodb.png" },
-                { name: "PostgreSQL", icon: "/images/icons/postgresql.png" },
-                { name: "Redis", icon: "/images/icons/redis.png" },
-                { name: "GraphQL", icon: "/images/icons/graphql.jpeg" },
-                { name: "Kubernetes", icon: "/images/icons/kubernatives.png" },
-                { name: "ESP32", icon: "/images/icons/esp32.jpeg" },
-                { name: "Arduino", icon: "/images/icons/ardunino.png" },
-                { name: "STM32", icon: "/images/icons/stm32.jpeg" },
-                { name: "KiCAD", icon: "/images/icons/kicad.jpeg" },
-                { name: "DipTrace", icon: "/images/icons/Diptrace.jpeg" },
-                { name: "SolidWorks", icon: "/images/icons/SolidWorks.png" }
-              ].map((tech, index) => (
-                <div key={index} className={`group bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-blue-200/40 hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out animate-scale-in delay-${Math.min(index * 100, 800)} animate-tech-bounce`}>
-                  <div className="h-20 w-full mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <img 
-                      src={tech.icon} 
-                      alt={`${tech.name} icon`}
-                      className="w-full h-full object-contain rounded-lg"
-                    />
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-8">
+              {(() => {
+                const allTechnologies = [
+                  { name: "React", icon: "/images/icons/react1.png" },
+                  { name: "Next.js", icon: "/images/icons/nextjs.png" },
+                  { name: "TypeScript", icon: "/images/icons/ts1.jpeg" },
+                  { name: "Node.js", icon: "/images/icons/nodejs1.png" },
+                  { name: "Python", icon: "/images/icons/python1.png" },
+                  { name: "AWS", icon: "/images/icons/aws1.png" },
+                  { name: "Docker", icon: "/images/icons/docker.png" },
+                  { name: "MongoDB", icon: "/images/icons/mongodb.png" },
+                  { name: "PostgreSQL", icon: "/images/icons/postgresql.png" },
+                  { name: "Redis", icon: "/images/icons/redis.png" },
+                  { name: "GraphQL", icon: "/images/icons/Graphql1.png" },
+                  { name: "Kubernetes", icon: "/images/icons/kubernatives.png" },
+                  { name: "ESP32", icon: "/images/icons/esp32_1.jpeg" },
+                  { name: "Arduino", icon: "/images/icons/ardunio1.png" },
+                  { name: "STM32", icon: "/images/icons/stm32.jpeg" },
+                  { name: "Raspberry Pi", icon: "/images/icons/raspberrypi.jpeg" },
+                  { name: "PIC / AVR", icon: "/images/icons/AVR.png" },
+                  { name: "Zephyr RTOS", icon: "/images/icons/Zephyr.jpeg" },
+                  { name: "AWS IoT Core", icon: "/images/icons/AwsIot.jpeg" },
+                  { name: "Google Cloud IoT", icon: "/images/icons/googleCloud.png" },
+                  { name: "KiCAD", icon: "/images/icons/kicad1.png" },
+                  { name: "DipTrace", icon: "/images/icons/Diptrace.jpeg" },
+                  { name: "SolidWorks", icon: "/images/icons/SolidWorks.png" }
+                ];
+                
+                const displayedTechnologies = showAllTechnologies ? allTechnologies : allTechnologies.slice(0, 18);
+                
+                return displayedTechnologies.map((tech, index) => (
+                  <div 
+                    key={index} 
+                    className="group bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-blue-200/40 hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out"
+                    style={{
+                      animation: 'fadeInUp 0.6s ease-out forwards',
+                      animationDelay: `${index * 0.05}s`,
+                      opacity: 0
+                    }}
+                  >
+                    <div className="h-20 w-full mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <img 
+                        src={tech.icon} 
+                        alt={`${tech.name} icon`}
+                        className="w-full h-full object-contain rounded-lg"
+                      />
+                    </div>
+                    <div className="text-sm font-semibold text-slate-700">{tech.name}</div>
                   </div>
-                  <div className="text-sm font-semibold text-slate-700">{tech.name}</div>
-                </div>
-              ))}
+                ));
+              })()}
             </div>
+            
+            {/* See More/Less Button */}
+            <button
+              onClick={() => setShowAllTechnologies(!showAllTechnologies)}
+              className="group inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
+            >
+              <span>{showAllTechnologies ? 'Show Less' : 'See More Technologies'}</span>
+              <svg 
+                className={`w-5 h-5 transform transition-transform duration-300 ${showAllTechnologies ? 'rotate-180' : ''}`}
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
           </div>
 
           {/* CTA Section */}
@@ -900,7 +936,7 @@ export default function Home() {
             <div className="sticky top-0 bg-gradient-to-r from-blue-600 to-indigo-600 p-6 rounded-t-2xl flex justify-between items-center">
               <div>
                 <h3 className="text-2xl font-bold text-white mb-1">Schedule a Consultation</h3>
-                <p className="text-blue-100 text-sm">Let's discuss how we can help your business grow</p>
+                <p className="text-blue-100 text-sm">Let&apos;s discuss how we can help your business grow</p>
               </div>
               <button
                 onClick={() => setIsConsultationOpen(false)}
