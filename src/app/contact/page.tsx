@@ -352,6 +352,7 @@ export default function ContactPage() {
                       <option value="embedded-systems">Embedded Systems Development</option>
                       <option value="pcb-design">PCB Design & Circuit Engineering</option>
                       <option value="firmware-development">Firmware Development</option>
+                      <option value="product-development">3D Printing and Designing</option>
                       <option value="hardware-prototyping">Hardware Prototyping & Testing</option>
                       <option value="industrial-automation">Industrial Automation</option>
                       <option value="electronics-design">Electronics Design & Integration</option>
@@ -419,8 +420,8 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold text-slate-900 mb-1">Email Us</h4>
                       <p className="text-slate-600 text-sm mb-2">Send us an email anytime</p>
-                      <a href="mailto:contact@thesavantx.com" className="text-blue-600 hover:text-blue-700 font-medium">
-                        contact@thesavantx.com
+                      <a href="mailto:contact@savantxtechnologies.com" className="text-blue-600 hover:text-blue-700 font-medium">
+                      contact@savantxtechnologies.com
                       </a>
                     </div>
                   </div>
@@ -435,11 +436,11 @@ export default function ContactPage() {
                       <h4 className="font-semibold text-slate-900 mb-1">Call Us</h4>
                       <p className="text-slate-600 text-sm mb-2">Mon-Fri 9AM-6PM IST</p>
                       <div className="space-y-1">
-                        <a href="tel:+919056425289" className="block text-purple-600 hover:text-purple-700 font-medium">
-                          +91 9056425289
+                        <a href="tel:+919888244166" className="block text-purple-600 hover:text-purple-700 font-medium">
+                          +91 9888244166
                         </a>
-                        <a href="tel:+917018318078" className="block text-purple-600 hover:text-purple-700 font-medium">
-                          +91 7018318078
+                        <a href="tel:+919888344166" className="block text-purple-600 hover:text-purple-700 font-medium">
+                          +91 9888344166
                         </a>
                       </div>
                     </div>

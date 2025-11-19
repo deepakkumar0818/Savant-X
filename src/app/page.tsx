@@ -378,7 +378,7 @@ export default function Home() {
               </h1>
                   <p className="text-lg sm:text-xl md:text-2xl text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-6 md:mb-8 px-4 lg:px-0">
                 Professional software and electronics solutions for modern businesses. 
-                We specialize in web development, mobile applications, GenAI solutions, AI/ML integration, CRM systems, Zoho integrations, IoT solutions, embedded hardware, PCB design, and complete digital transformation.
+                We specialize in web development, mobile applications, GenAI solutions, AI/ML integration, CRM systems, Zoho integrations, IoT solutions, Embedded hardware, PCB design, and complete digital transformation.
               </p>
                 </div>
 
@@ -686,7 +686,7 @@ export default function Home() {
                 {/* Body Text */}
                 <div className="space-y-6 text-xl text-slate-600 leading-relaxed max-w-2xl">
                   <p>
-                    We craft exceptional digital experiences and innovative hardware solutions that transform businesses and drive growth. Our comprehensive technology services span from web development, mobile apps, ERP systems, CRM solutions, and Zoho integrations to IoT devices, embedded systems, and PCB design.
+                    We craft exceptional digital experiences and innovative hardware solutions that transform businesses and drive growth. Our comprehensive technology services span from web development, mobile apps, ERP systems, CRM solutions, and Zoho integrations to IoT devices, Embedded systems, and PCB design.
                   </p>
                   <p>
                     With expertise in both software and electronics, we deliver end-to-end solutions that bridge the digital and physical worlds, helping organizations streamline operations and thrive in today&apos;s connected landscape.
@@ -820,58 +820,111 @@ export default function Home() {
             <h3 className="text-3xl font-bold text-slate-900 mb-4 animate-fade-in-up">Technologies We Master</h3>
             <p className="text-lg text-slate-600 mb-12 animate-fade-in-up delay-200">Cutting-edge tools and frameworks for modern development</p>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-8">
-              {(() => {
-                const allTechnologies = [
-                  { name: "React", icon: "/images/icons/react1.png" },
-                  { name: "Next.js", icon: "/images/icons/nextjs.png" },
-                  { name: "TypeScript", icon: "/images/icons/ts1.jpeg" },
-                  { name: "Node.js", icon: "/images/icons/nodejs1.png" },
-                  { name: "Python", icon: "/images/icons/python1.png" },
-                  { name: "AWS", icon: "/images/icons/aws1.png" },
-                  { name: "Docker", icon: "/images/icons/docker.png" },
-                  { name: "MongoDB", icon: "/images/icons/mongodb.png" },
-                  { name: "PostgreSQL", icon: "/images/icons/postgresql.png" },
-                  { name: "Redis", icon: "/images/icons/redis.png" },
-                  { name: "GraphQL", icon: "/images/icons/Graphql1.png" },
-                  { name: "Kubernetes", icon: "/images/icons/kubernatives.png" },
-                  { name: "ESP32", icon: "/images/icons/esp32_1.jpeg" },
-                  { name: "Arduino", icon: "/images/icons/ardunio1.png" },
-                  { name: "STM32", icon: "/images/icons/stm32.jpeg" },
-                  { name: "Raspberry Pi", icon: "/images/icons/raspberrypi.jpeg" },
-                  { name: "PIC / AVR", icon: "/images/icons/AVR.png" },
-                  { name: "Zephyr RTOS", icon: "/images/icons/Zephyr.jpeg" },
-                  { name: "AWS IoT Core", icon: "/images/icons/AwsIot.jpeg" },
-                  { name: "Google Cloud IoT", icon: "/images/icons/googleCloud.png" },
-                  { name: "KiCAD", icon: "/images/icons/kicad1.png" },
-                  { name: "DipTrace", icon: "/images/icons/Diptrace.jpeg" },
-                  { name: "SolidWorks", icon: "/images/icons/SolidWorks.png" }
-                ];
-                
-                const displayedTechnologies = showAllTechnologies ? allTechnologies : allTechnologies.slice(0, 18);
-                
-                return displayedTechnologies.map((tech, index) => (
-                  <div 
-                    key={index} 
-                    className="group bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-blue-200/40 hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out"
-                    style={{
-                      animation: 'fadeInUp 0.6s ease-out forwards',
-                      animationDelay: `${index * 0.05}s`,
-                      opacity: 0
-                    }}
-                  >
-                    <div className="h-20 w-full mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <img 
-                        src={tech.icon} 
-                        alt={`${tech.name} icon`}
-                        className="w-full h-full object-contain rounded-lg"
-                      />
+            {(() => {
+              const softwareTechnologies = [
+                { name: "React", icon: "/images/icons/react1.png" },
+                { name: "Next.js", icon: "/images/icons/nextjs.png" },
+                { name: "TypeScript", icon: "/images/icons/ts1.jpeg" },
+                { name: "Node.js", icon: "/images/icons/nodejs1.png" },
+                { name: "Python", icon: "/images/icons/python1.png" },
+                { name: "AWS", icon: "/images/icons/aws1.png" },
+                { name: "Docker", icon: "/images/icons/docker.png" },
+                { name: "MongoDB", icon: "/images/icons/mongodb.png" },
+                { name: "PostgreSQL", icon: "/images/icons/postgresql.png" },
+                { name: "Redis", icon: "/images/icons/redis.png" },
+                { name: "GraphQL", icon: "/images/icons/Graphql1.png" },
+                { name: "Kubernetes", icon: "/images/icons/kubernatives.png" },
+                { name: "FreeRTOS", icon: "/images/icons/freeRtos.jpeg" },
+                { name: "Git", icon: "/images/icons/github.png" },
+                { name: "TensorFlow", icon: "/images/icons/tensorFlow.jpeg" },
+                { name: "PyTorch", icon: "/images/icons/pytorch.png" },
+                { name: "GenAI", icon: "/images/icons/genai.png" },
+                { name: "Langchain", icon: "/images/icons/langchain.png" }
+              ];
+
+              const hardwareTechnologies = [
+                { name: "ESP32", icon: "/images/icons/esp32_1.jpeg" },
+                { name: "Arduino", icon: "/images/icons/ardunio1.png" },
+                { name: "STM32", icon: "/images/icons/stm32.jpeg" },
+                { name: "Raspberry Pi", icon: "/images/icons/raspberrypi.jpeg" },
+                { name: "PIC / AVR", icon: "/images/icons/AVR.png" },
+                { name: "Zephyr RTOS", icon: "/images/icons/Zephyr.jpeg" },
+                { name: "AWS IoT Core", icon: "/images/icons/AwsIot.jpeg" },
+                { name: "Google Cloud IoT", icon: "/images/icons/googleCloud.png" },
+                { name: "KiCAD", icon: "/images/icons/kicad1.png" },
+                { name: "DipTrace", icon: "/images/icons/Diptrace.jpeg" },
+                { name: "SolidWorks", icon: "/images/icons/SolidWorks.png" }
+              ];
+
+              // Interleave: 3 software + 3 hardware per row
+              const interleavedTechnologies = [];
+              let softIndex = 0;
+              let hardIndex = 0;
+
+              while (softIndex < softwareTechnologies.length || hardIndex < hardwareTechnologies.length) {
+                // Add 3 software technologies
+                for (let i = 0; i < 3 && softIndex < softwareTechnologies.length; i++) {
+                  interleavedTechnologies.push({ ...softwareTechnologies[softIndex], type: 'software' });
+                  softIndex++;
+                }
+                // Add 3 hardware technologies
+                for (let i = 0; i < 3 && hardIndex < hardwareTechnologies.length; i++) {
+                  interleavedTechnologies.push({ ...hardwareTechnologies[hardIndex], type: 'hardware' });
+                  hardIndex++;
+                }
+              }
+
+              // Show 3 rows (18 items) by default, all when expanded
+              const displayedTechnologies = showAllTechnologies ? interleavedTechnologies : interleavedTechnologies.slice(0, 18);
+              
+              return (
+                <div className="mb-8">
+                  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                    {/* Category Labels as Grid Items */}
+                    <div className="col-span-2 md:col-span-2 lg:col-span-3 flex items-center gap-3 border-l-4 border-blue-600 pl-4">
+                      <h4 className="text-base md:text-lg font-bold text-blue-600">
+                        Software Technologies
+                      </h4>
                     </div>
-                    <div className="text-sm font-semibold text-slate-700">{tech.name}</div>
+                    <div className="col-span-2 md:col-span-2 lg:col-span-3 flex items-center gap-3 border-l-4 border-orange-600 pl-4">
+                      <h4 className="text-base md:text-lg font-bold text-orange-600">
+                        Hardware & IoT Technology
+                      </h4>
+                    </div>
+
+                    {/* Technology Cards */}
+                    {displayedTechnologies.map((tech, index) => (
+                      <div 
+                        key={index} 
+                        className={`group bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border ${
+                          tech.type === 'software' 
+                            ? 'border-blue-200/40 hover:border-blue-300/60' 
+                            : 'border-orange-200/40 hover:border-orange-300/60'
+                        } hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out`}
+                        style={{
+                          animation: 'fadeInUp 0.6s ease-out forwards',
+                          animationDelay: `${index * 0.05}s`,
+                          opacity: 0
+                        }}
+                      >
+                        <div className="h-20 w-full mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          <img 
+                            src={tech.icon} 
+                            alt={`${tech.name} icon`}
+                            className="w-full h-full object-contain rounded-lg"
+                          />
+                        </div>
+                        <div className={`text-sm font-semibold ${
+                          tech.type === 'software' ? 'text-blue-700' : 'text-orange-700'
+                        }`}>
+                          {tech.name}
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ));
-              })()}
-            </div>
+                </div>
+              );
+            })()}
             
             {/* See More/Less Button */}
             <button

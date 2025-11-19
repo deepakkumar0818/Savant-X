@@ -213,30 +213,39 @@ export default function About() {
     }
   ];
 
-  const technologies = [
-    { name: "React", icon: "/images/icons/react1.png", category: "Frontend" },
-    { name: "Next.js", icon: "/images/icons/nextjs.png", category: "Framework" },
-    { name: "TypeScript", icon: "/images/icons/ts1.jpeg", category: "Language" },
-    { name: "Node.js", icon: "/images/icons/nodejs1.png", category: "Backend" },
-    { name: "Python", icon: "/images/icons/python1.png", category: "Language" },
-    { name: "AWS", icon: "/images/icons/aws1.png", category: "Cloud" },
-    { name: "Docker", icon: "/images/icons/docker.png", category: "DevOps" },
-    { name: "MongoDB", icon: "/images/icons/mongodb.png", category: "Database" },
-    { name: "PostgreSQL", icon: "/images/icons/postgresql.png", category: "Database" },
-    { name: "Redis", icon: "/images/icons/redis.png", category: "Cache" },
-    { name: "GraphQL", icon: "/images/icons/Graphql1.png", category: "API" },
-    { name: "Kubernetes", icon: "/images/icons/kubernatives.png", category: "DevOps" },
-    { name: "ESP32", icon: "/images/icons/esp32_1.jpeg", category: "Hardware" },
-    { name: "Arduino", icon: "/images/icons/ardunio1.png", category: "Hardware" },
-    { name: "STM32", icon: "/images/icons/stm32.jpeg", category: "Hardware" },
-    { name: "Raspberry Pi", icon: "/images/icons/raspberrypi.jpeg", category: "Hardware" },
-    { name: "PIC / AVR", icon: "/images/icons/AVR.png", category: "Hardware" },
-    { name: "Zephyr RTOS", icon: "/images/icons/Zephyr.jpeg", category: "RTOS" },
-    { name: "AWS IoT Core", icon: "/images/icons/AwsIot.jpeg", category: "IoT" },
-    { name: "Google Cloud IoT", icon: "/images/icons/googleCloud.png", category: "IoT" },
-    { name: "KiCAD", icon: "/images/icons/kicad1.png", category: "PCB Design" },
-    { name: "DipTrace", icon: "/images/icons/Diptrace.jpeg", category: "PCB Design" },
-    { name: "SolidWorks", icon: "/images/icons/SolidWorks.png", category: "CAD" }
+  const softwareTechnologies = [
+    { name: "React", icon: "/images/icons/react1.png" },
+    { name: "Next.js", icon: "/images/icons/nextjs.png" },
+    { name: "TypeScript", icon: "/images/icons/ts1.jpeg" },
+    { name: "Node.js", icon: "/images/icons/nodejs1.png" },
+    { name: "Python", icon: "/images/icons/python1.png" },
+    { name: "AWS", icon: "/images/icons/aws1.png" },
+    { name: "Docker", icon: "/images/icons/docker.png" },
+    { name: "MongoDB", icon: "/images/icons/mongodb.png" },
+    { name: "PostgreSQL", icon: "/images/icons/postgresql.png" },
+    { name: "Redis", icon: "/images/icons/redis.png" },
+    { name: "GraphQL", icon: "/images/icons/Graphql1.png" },
+    { name: "Kubernetes", icon: "/images/icons/kubernatives.png" },
+    { name: "FreeRTOS", icon: "/images/icons/freeRtos.jpeg" },
+    { name: "Git", icon: "/images/icons/github.png" },
+    { name: "TensorFlow", icon: "/images/icons/tensorFlow.jpeg" },
+    { name: "PyTorch", icon: "/images/icons/pytorch.png" },
+    { name: "GenAI", icon: "/images/icons/genai.png" },
+    { name: "Langchain", icon: "/images/icons/langchain.png" }
+  ];
+
+  const hardwareTechnologies = [
+    { name: "ESP32", icon: "/images/icons/esp32_1.jpeg" },
+    { name: "Arduino", icon: "/images/icons/ardunio1.png" },
+    { name: "STM32", icon: "/images/icons/stm32.jpeg" },
+    { name: "Raspberry Pi", icon: "/images/icons/raspberrypi.jpeg" },
+    { name: "PIC / AVR", icon: "/images/icons/AVR.png" },
+    { name: "Zephyr RTOS", icon: "/images/icons/Zephyr.jpeg" },
+    { name: "AWS IoT Core", icon: "/images/icons/AwsIot.jpeg" },
+    { name: "Google Cloud IoT", icon: "/images/icons/googleCloud.png" },
+    { name: "KiCAD", icon: "/images/icons/kicad1.png" },
+    { name: "DipTrace", icon: "/images/icons/Diptrace.jpeg" },
+    { name: "SolidWorks", icon: "/images/icons/SolidWorks.png" }
   ];
 
   return (
@@ -618,33 +627,76 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8">
-            {(() => {
-              const displayedTechnologies = showAllTechnologies ? technologies : technologies.slice(0, 18);
-              
-              return displayedTechnologies.map((tech, index) => (
-                <div 
-                  key={index} 
-                  className="bg-white border border-slate-200 rounded-lg p-4 hover:shadow-md transition-all duration-300 text-center hover:scale-105"
-                  style={{
-                    animation: 'fadeInUp 0.6s ease-out forwards',
-                    animationDelay: `${index * 0.05}s`,
-                    opacity: 0
-                  }}
-                >
-                  <div className="h-20 w-full mx-auto mb-3 flex items-center justify-center">
-                    <img 
-                      src={tech.icon} 
-                      alt={`${tech.name} icon`}
-                      className="w-full h-full object-contain rounded-lg"
-                    />
+          {(() => {
+            // Interleave: 3 software + 3 hardware per row
+            const interleavedTechnologies = [];
+            let softIndex = 0;
+            let hardIndex = 0;
+
+            while (softIndex < softwareTechnologies.length || hardIndex < hardwareTechnologies.length) {
+              // Add 3 software technologies
+              for (let i = 0; i < 3 && softIndex < softwareTechnologies.length; i++) {
+                interleavedTechnologies.push({ ...softwareTechnologies[softIndex], type: 'software' });
+                softIndex++;
+              }
+              // Add 3 hardware technologies
+              for (let i = 0; i < 3 && hardIndex < hardwareTechnologies.length; i++) {
+                interleavedTechnologies.push({ ...hardwareTechnologies[hardIndex], type: 'hardware' });
+                hardIndex++;
+              }
+            }
+
+            // Show 3 rows (18 items) by default, all when expanded
+            const displayedTechnologies = showAllTechnologies ? interleavedTechnologies : interleavedTechnologies.slice(0, 18);
+            
+            return (
+              <div className="mb-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                  {/* Category Labels as Grid Items */}
+                  <div className="col-span-2 md:col-span-2 lg:col-span-3 flex items-center gap-3 border-l-4 border-blue-600 pl-4">
+                    <h4 className="text-base md:text-lg font-bold text-blue-600">
+                      Software Technologies
+                    </h4>
                   </div>
-                  <div className="text-sm font-medium text-slate-900 mb-1">{tech.name}</div>
-                  <div className="text-xs text-slate-500">{tech.category}</div>
+                  <div className="col-span-2 md:col-span-2 lg:col-span-3 flex items-center gap-3 border-l-4 border-orange-600 pl-4">
+                    <h4 className="text-base md:text-lg font-bold text-orange-600">
+                      Hardware & IoT Technology
+                    </h4>
+                  </div>
+
+                  {/* Technology Cards */}
+                  {displayedTechnologies.map((tech, index) => (
+                    <div 
+                      key={index} 
+                      className={`group bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg border ${
+                        tech.type === 'software' 
+                          ? 'border-blue-200/40 hover:border-blue-300/60' 
+                          : 'border-orange-200/40 hover:border-orange-300/60'
+                      } hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out`}
+                      style={{
+                        animation: 'fadeInUp 0.6s ease-out forwards',
+                        animationDelay: `${index * 0.05}s`,
+                        opacity: 0
+                      }}
+                    >
+                      <div className="h-20 w-full mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <img 
+                          src={tech.icon} 
+                          alt={`${tech.name} icon`}
+                          className="w-full h-full object-contain rounded-lg"
+                        />
+                      </div>
+                      <div className={`text-sm font-semibold ${
+                        tech.type === 'software' ? 'text-blue-700' : 'text-orange-700'
+                      }`}>
+                        {tech.name}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ));
-            })()}
-          </div>
+              </div>
+            );
+          })()}
           
           {/* See More/Less Button */}
           <div className="text-center">

@@ -31,7 +31,7 @@ const defaultNavItems: NavItem[] = [
       { label: 'What We Do', href: '/expertise/what-we-do' },
       { label: 'Websites', href: '/expertise/websites' },
       { label: 'Web Apps', href: '/expertise/web-apps' },
-      { label: 'Mobile Apps', href: '/expertise/mobile-apps' },
+      { label: 'Mobile Apps', href: '/expertise/mobile-app' },
       { label: 'E-commerce', href: '/expertise/ecommerce' },
       { label: 'Design & UX', href: '/expertise/design-ux' },
       { label: 'Technology', href: '/expertise/technology' },
@@ -79,27 +79,34 @@ export default function Navbar({
   // Handle click outside to close dropdown and mobile menu
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+      
+      // Don't close if clicking on a link (let it navigate first)
+      if ((target as HTMLElement).closest('a')) {
+        return;
+      }
+      
       // Close desktop dropdown if clicking outside
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
         setActiveDropdown(null);
       }
       
       // Close mobile menu if clicking outside
-      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(target)) {
         setIsMobileMenuOpen(false);
         setActiveDropdown(null);
       }
     };
 
     // Add event listener when dropdown or mobile menu is open
+    // Use 'click' instead of 'mousedown' to avoid interfering with link navigation
     if (activeDropdown || isMobileMenuOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
+      document.addEventListener('click', handleClickOutside, true);
 
-    // Cleanup event listener
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+      return () => {
+        document.removeEventListener('click', handleClickOutside, true);
+      };
+    }
   }, [activeDropdown, isMobileMenuOpen]);
 
   const toggleMobileMenu = () => {
@@ -173,171 +180,219 @@ export default function Navbar({
                             className={`absolute top-full left-1/2 transform -translate-x-1/2 bg-white/95 backdrop-blur-md rounded-b-2xl shadow-lg border border-slate-200/50 border-t-0 transition-all duration-300 ease-out z-50 ${
                              activeDropdown === item.label 
                                ? 'opacity-100 visible translate-y-0 scale-100' 
-                                : 'opacity-0 invisible -translate-y-2 scale-95'
-                            } ${activeDropdown === 'Expertise' ? 'w-[900px]' : 'w-[700px]'}`}
+                                : 'opacity-0 invisible -translate-y-2 scale-95 pointer-events-none'
+                            } ${activeDropdown === 'Expertise' ? 'w-[1000px]' : 'w-[700px]'}`}
+                            suppressHydrationWarning
                           >
                            {item.label === 'Expertise' ? (
-                             <div className="p-6">
-                               <div className="grid grid-cols-4 gap-6">
-                                 {/* What We Do */}
-                                 <div className="space-y-3">
-                                   <h3 className="font-bold text-slate-900 text-sm mb-4">
-                                     What We Do
-                                   </h3>
-                                   <ul className="space-y-3">
-                                     <li>
-                                       <Link href="/expertise/websites" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
-                                         <span className="text-lg">✈️</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">Websites</span>
-                                       </Link>
-                                     </li>
-                                     <li>
-                                       <Link href="/expertise/web-apps" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-pink-100 active:bg-pink-200 transition-all duration-200 group">
-                                         <span className="text-lg">💎</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-pink-700 group-active:text-pink-800">Web Apps</span>
-                                       </Link>
-                                     </li>
-                                     <li>
-                                       <Link href="/expertise/mobile-apps" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
-                                         <span className="text-lg">📱</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">Mobile Apps</span>
-                                       </Link>
-                                     </li>
-                                     <li>
-                                       <Link href="/expertise/ecommerce" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-green-100 active:bg-green-200 transition-all duration-200 group">
-                                         <span className="text-lg">🛍️</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-green-700 group-active:text-green-800">eCommerce</span>
-                                       </Link>
-                                     </li>
-                                   </ul>
-                                 </div>
-
-                                 {/* Design & UX */}
-                                 <div className="space-y-3">
-                                   <h3 className="font-bold text-slate-900 text-sm mb-4">
-                                     Design & UX
-                                   </h3>
-                                   <ul className="space-y-3">
-                                     <li>
-                                       <Link href="/expertise/user-research" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-purple-100 active:bg-purple-200 transition-all duration-200 group">
-                                         <span className="text-lg">👥</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-purple-700 group-active:text-purple-800">User Research</span>
-                                       </Link>
-                                     </li>
-                                     <li>
-                                       <Link href="/expertise/ui-ux-design" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
-                                         <span className="text-lg">🎨</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">UI/UX Design</span>
-                                       </Link>
-                                     </li>
-                                     <li>
-                                       <Link href="/expertise/prototyping" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
-                                         <span className="text-lg">🔧</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">Prototyping</span>
-                                       </Link>
-                                     </li>
-                                     <li>
-                                       <Link href="/expertise/design-systems" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-green-100 active:bg-green-200 transition-all duration-200 group">
-                                         <span className="text-lg">🎨</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-green-700 group-active:text-green-800">Design Systems</span>
-                                       </Link>
-                                     </li>
-                                   </ul>
-                                 </div>
-
-                                 {/* Technology */}
-                                 <div className="space-y-3">
-                                   <h3 className="font-bold text-slate-900 text-sm mb-4">
-                                     Technology
-                                   </h3>
-                                   <ul className="space-y-3">
-                                     <li>
-                                       <Link href="/expertise/zoho-integrations" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-purple-100 active:bg-purple-200 transition-all duration-200 group">
-                                         <span className="text-lg">🔗</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-purple-700 group-active:text-purple-800">Zoho Integrations</span>
-                                       </Link>
-                                     </li>
-                                     <li>
-                                       <Link href="/expertise/react" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
-                                         <span className="text-lg">⚛️</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">React.js</span>
-                                       </Link>
-                                     </li>
-                                     <li>
-                                       <Link href="/expertise/payload-cms" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-all duration-200 group">
-                                         <span className="text-lg">🔄</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-gray-700 group-active:text-gray-800">Payload CMS</span>
-                                       </Link>
-                                     </li>
-                                     <li>
-                                       <Link href="/expertise/laravel" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-pink-100 active:bg-pink-200 transition-all duration-200 group">
-                                         <span className="text-lg">🔥</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-pink-700 group-active:text-pink-800">Laravel</span>
-                                       </Link>
-                                     </li>
-                                     <li>
-                                       <Link href="/expertise/wordpress" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
-                                         <span className="text-lg font-bold text-blue-600">W</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">WordPress</span>
-                                       </Link>
-                                     </li>
+                            <div className="p-6">
+                              <div className="grid grid-cols-5 gap-6">
+                                {/* What We Do */}
+                                <div className="space-y-3">
+                                  <Link href="/expertise/what-we-do" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="block">
+                                    <h3 className="font-bold text-slate-900 text-sm mb-4 hover:text-blue-600 transition-colors duration-200 cursor-pointer">
+                                      What We Do
+                                    </h3>
+                                  </Link>
+                                  <ul className="space-y-3">
                                     <li>
-                                      <Link href="/expertise/hardware-electronics" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-cyan-100 active:bg-cyan-200 transition-all duration-200 group">
-                                        <span className="text-lg">⚡</span>
-                                        <span className="text-sm font-medium text-slate-700 group-hover:text-cyan-700 group-active:text-cyan-800">Hardware & Electronics</span>
+                                      <Link href="/expertise/websites" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
+                                        <span className="text-lg">✈️</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">Websites</span>
                                       </Link>
                                     </li>
-                                   </ul>
-                                 </div>
+                                    <li>
+                                      <Link href="/expertise/web-apps" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-pink-100 active:bg-pink-200 transition-all duration-200 group">
+                                        <span className="text-lg">💎</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-pink-700 group-active:text-pink-800">Web Apps</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/mobile-apps" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
+                                        <span className="text-lg">📱</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">Mobile Apps</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/ecommerce" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-green-100 active:bg-green-200 transition-all duration-200 group">
+                                        <span className="text-lg">🛍️</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-green-700 group-active:text-green-800">eCommerce</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/zoho-integrations" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-purple-100 active:bg-purple-200 transition-all duration-200 group">
+                                        <span className="text-lg">🔗</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-purple-700 group-active:text-purple-800">Zoho Integrations</span>
+                                      </Link>
+                                    </li>
+                                  </ul>
+                                </div>
 
-                                 {/* Experience */}
-                                 <div className="space-y-3">
-                                   <h3 className="font-bold text-slate-900 text-sm mb-4">
-                                     Experience
-                                   </h3>
-                                   <ul className="space-y-3">
-                                     <li>
-                                       <Link href="/expertise/commercial" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
-                                         <span className="text-lg">🏢</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">Commercial</span>
-                                       </Link>
-                                     </li>
-                                     <li>
-                                       <Link href="/expertise/not-for-profit" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-pink-100 active:bg-pink-200 transition-all duration-200 group">
-                                         <span className="text-lg">❤️</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-pink-700 group-active:text-pink-800">Not for Profit</span>
-                                       </Link>
-                                     </li>
-                                     <li>
-                                       <Link href="/expertise/innovation" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-purple-100 active:bg-purple-200 transition-all duration-200 group">
-                                         <span className="text-lg">〰️</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-purple-700 group-active:text-purple-800">Innovation</span>
-                                       </Link>
-                                     </li>
-                                     <li>
-                                       <Link href="/expertise/education-industrial-training" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-yellow-100 active:bg-yellow-200 transition-all duration-200 group">
-                                         <span className="text-lg">🎓</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-yellow-700 group-active:text-yellow-800">Education Industrial Training</span>
-                                       </Link>
-                                     </li>
-                                     <li>
-                                       <Link href="/expertise/community" onClick={() => setActiveDropdown(null)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
-                                         <span className="text-lg">😊</span>
-                                         <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">Community</span>
-                                       </Link>
-                                     </li>
-                                   </ul>
-                                 </div>
-                               </div>
-                             </div>
-                           ) : (
+                                {/* Design & UX */}
+                                <div className="space-y-3">
+                                  <Link href="/expertise/design-ux" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="block">
+                                    <h3 className="font-bold text-slate-900 text-sm mb-4 hover:text-blue-600 transition-colors duration-200 cursor-pointer">
+                                      Design & UX
+                                    </h3>
+                                  </Link>
+                                  <ul className="space-y-3">
+                                    <li>
+                                      <Link href="/expertise/user-research" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-purple-100 active:bg-purple-200 transition-all duration-200 group">
+                                        <span className="text-lg">👥</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-purple-700 group-active:text-purple-800">User Research</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/ui-ux-design" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
+                                        <span className="text-lg">🎨</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">UI/UX Design</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/prototyping" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
+                                        <span className="text-lg">🔧</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">Prototyping</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/design-systems" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-green-100 active:bg-green-200 transition-all duration-200 group">
+                                        <span className="text-lg">🎨</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-green-700 group-active:text-green-800">Design Systems</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/3d-designing" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-cyan-100 active:bg-cyan-200 transition-all duration-200 group">
+                                        <span className="text-lg">🎭</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-cyan-700 group-active:text-cyan-800">3D Designing</span>
+                                      </Link>
+                                    </li>
+                                  </ul>
+                                </div>
+
+                                {/* Technology */}
+                                <div className="space-y-3">
+                                  <Link href="/expertise/technology" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="block">
+                                    <h3 className="font-bold text-slate-900 text-sm mb-4 hover:text-blue-600 transition-colors duration-200 cursor-pointer">
+                                      Technology
+                                    </h3>
+                                  </Link>
+                                  <ul className="space-y-3">
+                                    <li>
+                                      <Link href="/expertise/genai" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-indigo-100 active:bg-indigo-200 transition-all duration-200 group">
+                                        <span className="text-lg">🤖</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-indigo-700 group-active:text-indigo-800">GenAI</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/react" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
+                                        <span className="text-lg">⚛️</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">MERN Stack</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/payload-cms" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-all duration-200 group">
+                                        <span className="text-lg">🔄</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-gray-700 group-active:text-gray-800">Payload CMS</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/laravel" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-pink-100 active:bg-pink-200 transition-all duration-200 group">
+                                        <span className="text-lg">🔥</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-pink-700 group-active:text-pink-800">Laravel</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/wordpress" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
+                                        <span className="text-lg font-bold text-blue-600">W</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">WordPress</span>
+                                      </Link>
+                                    </li>
+                                  </ul>
+                                </div>
+
+                                {/* Hardware and Electronics */}
+                                <div className="space-y-3">
+                                  <h3 className="font-bold text-slate-900 text-sm mb-4">
+                                    Hardware and Electronics
+                                  </h3>
+                                  <ul className="space-y-3">
+                                    <li>
+                                      <Link href="/expertise/iot-embedded-systems" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-cyan-100 active:bg-cyan-200 transition-all duration-200 group">
+                                        <span className="text-lg">📡</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-cyan-700 group-active:text-cyan-800">IoT & Embedded Systems</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/pcb-design" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-green-100 active:bg-green-200 transition-all duration-200 group">
+                                        <span className="text-lg">🔌</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-green-700 group-active:text-green-800">PCB Designing</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/product-development" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-orange-100 active:bg-orange-200 transition-all duration-200 group">
+                                        <span className="text-lg">🛠️</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-orange-700 group-active:text-orange-800">Product Development</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/firmware-development" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-purple-100 active:bg-purple-200 transition-all duration-200 group">
+                                        <span className="text-lg">⚙️</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-purple-700 group-active:text-purple-800">Firmware Development</span>
+                                      </Link>
+                                    </li>
+                                  </ul>
+                                </div>
+
+                                {/* Experience */}
+                                <div className="space-y-3">
+                                  <Link href="/expertise/experience" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="block">
+                                    <h3 className="font-bold text-slate-900 text-sm mb-4 hover:text-blue-600 transition-colors duration-200 cursor-pointer">
+                                      Experience
+                                    </h3>
+                                  </Link>
+                                  <ul className="space-y-3">
+                                    <li>
+                                      <Link href="/expertise/commercial" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
+                                        <span className="text-lg">🏢</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">Commercial</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/not-for-profit" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-pink-100 active:bg-pink-200 transition-all duration-200 group">
+                                        <span className="text-lg">❤️</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-pink-700 group-active:text-pink-800">Not for Profit</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/innovation" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-purple-100 active:bg-purple-200 transition-all duration-200 group">
+                                        <span className="text-lg">〰️</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-purple-700 group-active:text-purple-800">Innovation</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/education-industrial-training" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-yellow-100 active:bg-yellow-200 transition-all duration-200 group">
+                                        <span className="text-lg">🎓</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-yellow-700 group-active:text-yellow-800">Education Industrial Training</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link href="/expertise/community" onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-100 active:bg-blue-200 transition-all duration-200 group">
+                                        <span className="text-lg">😊</span>
+                                        <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700 group-active:text-blue-800">Community</span>
+                                      </Link>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
                            <div className="py-3">
                              {item.children.map((child) => (
                                <Link
                                  key={child.label}
                                  href={child.href}
                                  className="block px-5 py-3 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 font-medium transform hover:translate-x-1"
-                                 onClick={() => setActiveDropdown(null)}
+                                 onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }}
                                >
                                  {child.label}
                                </Link>
@@ -462,6 +517,7 @@ export default function Navbar({
                                 <Link href="/expertise/web-apps" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Web Apps</Link>
                                 <Link href="/expertise/mobile-apps" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Mobile Apps</Link>
                                 <Link href="/expertise/ecommerce" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>eCommerce</Link>
+                                <Link href="/expertise/zoho-integrations" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Zoho Integrations</Link>
                               </div>
                             </div>
                             
@@ -473,6 +529,7 @@ export default function Navbar({
                                 <Link href="/expertise/ui-ux-design" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>UI/UX Design</Link>
                                 <Link href="/expertise/prototyping" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Prototyping</Link>
                                 <Link href="/expertise/design-systems" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Design Systems</Link>
+                                <Link href="/expertise/3d-designing" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>3D Designing</Link>
                               </div>
                             </div>
                             
@@ -480,12 +537,22 @@ export default function Navbar({
                             <div>
                               <h4 className="font-semibold text-slate-800 mb-2 text-sm">Technology</h4>
                               <div className="space-y-1 pl-2">
-                                <Link href="/expertise/zoho-integrations" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Zoho Integrations</Link>
-                                <Link href="/expertise/react" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>React.js</Link>
+                                <Link href="/expertise/genai" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>GEnAI</Link>
+                                <Link href="/expertise/react" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>MERN Stack</Link>
                                 <Link href="/expertise/payload-cms" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Payload CMS</Link>
                                 <Link href="/expertise/laravel" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Laravel</Link>
                                 <Link href="/expertise/wordpress" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>WordPress</Link>
-                                <Link href="/expertise/hardware-electronics" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Hardware & Electronics</Link>
+                              </div>
+                            </div>
+                            
+                            {/* Hardware and Electronics */}
+                            <div>
+                              <h4 className="font-semibold text-slate-800 mb-2 text-sm">Hardware and Electronics</h4>
+                              <div className="space-y-1 pl-2">
+                                <Link href="/expertise/iot-embedded-systems" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>IoT & Embedded Systems</Link>
+                                <Link href="/expertise/pcb-design" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>PCB Designing</Link>
+                                <Link href="/expertise/product-development" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Product Development</Link>
+                                <Link href="/expertise/firmware-development" className="block px-3 py-1 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 rounded" onClick={closeMobileMenu}>Firmware Development</Link>
                               </div>
                             </div>
                             
