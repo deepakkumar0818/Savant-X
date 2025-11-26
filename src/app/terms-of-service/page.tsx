@@ -33,7 +33,7 @@ export default function TermsOfServicePage() {
 
             {/* Professional Subtitle */}
             <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8 font-light">
-              These terms and conditions outline the rules and regulations for the use of SavantX&apos;s website and services. 
+              These terms and conditions outline the rules and regulations for the use of SavantX Technologies Pvt Ltd&apos;s website and services. 
               By accessing our services, you accept these terms in full.
             </p>
 
@@ -123,7 +123,7 @@ export default function TermsOfServicePage() {
               </div>
               <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
                 <p className="text-slate-700 leading-relaxed mb-4 font-medium text-lg">
-                  By accessing and using SavantX&apos;s website and services, you accept and agree to be bound by the terms and provision of this agreement.
+                  By accessing and using SavantX Technologies Pvt Ltd&apos;s website and services, you accept and agree to be bound by the terms and provision of this agreement.
                 </p>
                 <p className="text-slate-600 leading-relaxed mb-4">
                   If you do not agree to abide by the above, please do not use this service. These terms apply to all visitors, users, and others who access or use the service.
@@ -148,7 +148,7 @@ export default function TermsOfServicePage() {
               </div>
               <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 border border-green-100">
                 <p className="text-slate-700 leading-relaxed mb-6 font-medium text-lg">
-                  SavantX provides comprehensive technology solutions including:
+                  SavantX Technologies Pvt Ltd provides comprehensive technology solutions including:
                 </p>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-3">
@@ -271,7 +271,7 @@ export default function TermsOfServicePage() {
               </div>
               <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-xl p-6 border border-orange-100">
                 <p className="text-slate-700 leading-relaxed mb-6 font-medium text-lg">
-                  All intellectual property rights in our services and content remain with SavantX and our licensors.
+                  All intellectual property rights in our services and content remain with SavantX Technologies Pvt Ltd and our licensors.
                 </p>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-white/60 rounded-lg p-4">
@@ -373,7 +373,7 @@ export default function TermsOfServicePage() {
               </div>
               <div className="bg-gradient-to-r from-red-50 to-pink-50 rounded-xl p-6 border border-red-100">
                 <p className="text-slate-700 leading-relaxed mb-6 font-medium text-lg">
-                  To the maximum extent permitted by law, SavantX&apos;s liability is limited as follows:
+                  To the maximum extent permitted by law, SavantX Technologies Pvt Ltd&apos;s liability is limited as follows:
                 </p>
                 <div className="space-y-4">
                   <div className="bg-white/60 rounded-lg p-4">

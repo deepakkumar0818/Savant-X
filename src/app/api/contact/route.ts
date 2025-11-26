@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { saveContact } from '@/lib/contactStorage';
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,6 +14,17 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Save contact submission to storage
+    const contact = saveContact({
+      name,
+      email,
+      company,
+      phone,
+      service,
+      message,
+      budget,
+    });
 
     // Create transporter using Gmail SMTP
     const transporter = nodemailer.createTransport({

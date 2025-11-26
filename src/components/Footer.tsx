@@ -18,7 +18,7 @@ export default function Footer() {
             <div className="flex items-center mb-6">
               <img 
                 src="/images/logos/Logo.png" 
-                alt="SavantX logo" 
+                alt="SavantX Technologies Pvt Ltd logo" 
                 className="h-12 w-auto object-contain mr-4"
               />
              
@@ -84,7 +84,7 @@ export default function Footer() {
         <div className="border-t border-slate-300 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-slate-500 text-sm mb-4 md:mb-0">
-              © 2024 SavantX. All rights reserved.
+              © 2024 SavantX Technologies Pvt Ltd. All rights reserved.
             </div>
              <div className="flex space-x-6 text-sm">
                <Link href="/privacy-policy" className="text-slate-500 hover:text-blue-600 transition-colors duration-300">Privacy Policy</Link>

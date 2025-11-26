@@ -33,7 +33,7 @@ export default function RefundCancellationPage() {
 
             {/* Professional Subtitle */}
             <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8 font-light">
-              SavantX is committed to providing fair and transparent refund and cancellation policies. 
+              SavantX Technologies Pvt Ltd is committed to providing fair and transparent refund and cancellation policies. 
               This policy outlines the terms and conditions for refunds and cancellations of our services.
             </p>
 
@@ -123,7 +123,7 @@ export default function RefundCancellationPage() {
               </div>
               <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
                 <p className="text-slate-700 leading-relaxed mb-4 font-medium text-lg">
-                  SavantX (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) strives to provide exceptional services and customer satisfaction.
+                  SavantX Technologies Pvt Ltd (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) strives to provide exceptional services and customer satisfaction.
                 </p>
                 <p className="text-slate-600 leading-relaxed">
                   This Refund and Cancellation Policy outlines the terms and conditions under which refunds and cancellations are processed. By engaging our services, you agree to the terms outlined in this policy. We reserve the right to modify this policy at any time, and changes will be effective immediately upon posting.
@@ -536,7 +536,7 @@ export default function RefundCancellationPage() {
               </div>
               <div className="bg-gradient-to-r from-slate-50 to-gray-50 rounded-xl p-6 border border-slate-100">
                 <p className="text-slate-700 leading-relaxed mb-4">
-                  SavantX reserves the right to modify this Refund and Cancellation Policy at any time. Changes will be effective immediately upon posting on our website. We encourage you to review this policy periodically.
+                  SavantX Technologies Pvt Ltd reserves the right to modify this Refund and Cancellation Policy at any time. Changes will be effective immediately upon posting on our website. We encourage you to review this policy periodically.
                 </p>
                 <p className="text-slate-600 leading-relaxed">
                   Your continued use of our services after any modifications constitutes acceptance of the updated policy. If you do not agree with any changes, you may cancel your service in accordance with the cancellation terms.
