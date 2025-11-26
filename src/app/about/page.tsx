@@ -90,7 +90,7 @@ export default function About() {
       features: ["Market Analysis", "Digital Roadmaps", "Competitive Research"]
     },
     { 
-      icon: "🎨", +
+      icon: "🎨",
       title: "Design", 
       desc: "UI/UX & brand design",
       color: "from-purple-500 to-purple-600",

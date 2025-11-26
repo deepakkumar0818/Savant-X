@@ -5,13 +5,13 @@ export interface PageContent {
   id: string;
   page: string; // 'home', 'about', etc.
   section: string; // 'hero', 'services', etc.
-  content: Record<string, any>; // Flexible content structure
+  content: Record<string, unknown>; // Flexible content structure
   updatedAt: string;
 }
 
 // In-memory store (will be lost on server restart)
 // In production, use a database
-let pageContents: PageContent[] = [];
+const pageContents: PageContent[] = [];
 
 // Default content for home page
 const defaultHomeContent = {
@@ -39,7 +39,7 @@ const defaultHomeContent = {
   }
 };
 
-export function getPageContent(page: string, section?: string): any {
+export function getPageContent(page: string, section?: string): Record<string, unknown> {
   if (section) {
     const content = pageContents.find(
       pc => pc.page === page && pc.section === section
@@ -53,7 +53,7 @@ export function getPageContent(page: string, section?: string): any {
     return defaultHomeContent;
   }
   
-  const result: Record<string, any> = {};
+  const result: Record<string, unknown> = {};
   allSections.forEach(section => {
     result[section.section] = section.content;
   });
@@ -65,7 +65,7 @@ export function getPageContent(page: string, section?: string): any {
 export function savePageContent(
   page: string,
   section: string,
-  content: Record<string, any>
+  content: Record<string, unknown>
 ): PageContent {
   const existing = pageContents.find(
     pc => pc.page === page && pc.section === section

@@ -1,12 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export', // 👈 This is the key line for static export
+  // Removed 'output: export' to allow API routes to work
+  // If you need static export, you'll need to remove or disable API routes
   images: {
-    unoptimized: true, // 👈 Important for static export
+    unoptimized: true,
   },
-  trailingSlash: true, // 👈 Helps with static hosting
-  distDir: 'out', // 👈 Output directory for static files
+  trailingSlash: true,
 };
 
 export default nextConfig;

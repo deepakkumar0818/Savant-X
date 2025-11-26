@@ -16,7 +16,7 @@ export interface ContactSubmission {
 
 // In-memory store (will be lost on server restart)
 // In production, use a database
-let contacts: ContactSubmission[] = [];
+const contacts: ContactSubmission[] = [];
 
 export function saveContact(contact: Omit<ContactSubmission, 'id' | 'status' | 'createdAt'>): ContactSubmission {
   const newContact: ContactSubmission = {

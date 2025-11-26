@@ -8,7 +8,7 @@ interface PageContent {
   id: string;
   page: string;
   section: string;
-  content: Record<string, any>;
+  content: Record<string, unknown>;
   updatedAt: string;
 }
 
@@ -18,7 +18,7 @@ export default function PagesManagement() {
   const [sections, setSections] = useState<PageContent[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingSection, setEditingSection] = useState<string | null>(null);
-  const [editContent, setEditContent] = useState<Record<string, any>>({});
+  const [editContent, setEditContent] = useState<Record<string, unknown>>({});
 
   useEffect(() => {
     fetchPages();
@@ -169,7 +169,7 @@ export default function PagesManagement() {
     setEditContent({});
   };
 
-  const updateField = (key: string, value: any) => {
+  const updateField = (key: string, value: unknown) => {
     setEditContent(prev => ({
       ...prev,
       [key]: value,
@@ -306,7 +306,7 @@ export default function PagesManagement() {
                         ) : (
                           <input
                             type="text"
-                            value={value}
+                            value={typeof value === 'string' || typeof value === 'number' ? String(value) : ''}
                             onChange={(e) => updateField(key, e.target.value)}
                             className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                           />
