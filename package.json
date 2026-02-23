@@ -13,7 +13,7 @@
     "@types/leaflet": "^1.9.21",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.542.0",
-    "next": "15.5.2",
+    "next": "15.5.9",
     "nodemailer": "^6.9.8",
     "react": "19.1.0",
     "react-dom": "19.1.0",
