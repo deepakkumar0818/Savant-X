@@ -128,11 +128,12 @@ export default function Navbar({
   };
 
   return (
-    <nav className={`bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50 backdrop-blur-md sticky top-0 z-50 ${className}`}>
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative">
-        <div className="flex justify-between items-center h-20">
+    <nav className={`w-full bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50 backdrop-blur-md sticky top-0 z-50 ${className}`}>
+      {/* Inner content wrapper with controlled width */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="flex w-full justify-between items-center h-20">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center flex-shrink-0">
             <Link 
               href="/" 
               className="flex items-center hover:opacity-90 transition-all duration-300 ease-out"
@@ -421,7 +422,7 @@ export default function Navbar({
           </div>
 
           {/* Interactive 3D Button */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center flex-shrink-0">
             <Link
               href="/contact"
               className="group relative bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white px-6 py-2.5 rounded-2xl transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 ease-out font-semibold text-sm shadow-2xl hover:shadow-blue-500/25 hover:shadow-2xl border border-blue-400/30"
@@ -451,7 +452,7 @@ export default function Navbar({
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex-shrink-0">
             <button
               onClick={toggleMobileMenu}
               className="text-slate-600 hover:text-blue-600 transition-all duration-300 ease-out p-2 rounded-lg hover:bg-blue-50 transform hover:scale-110"
@@ -467,16 +468,16 @@ export default function Navbar({
           </div>
         </div>
 
-                 {/* Mobile Navigation Menu */}
-         <div 
-           ref={mobileMenuRef}
-           className={`md:hidden transition-all duration-300 ease-in-out ${
-             isMobileMenuOpen 
-               ? 'max-h-screen opacity-100 visible' 
-               : 'max-h-0 opacity-0 invisible'
-           }`}
-         >
-           <div className="px-4 pt-4 pb-6 space-y-2 border-t border-blue-200/60 bg-white/95 backdrop-blur-md rounded-b-2xl shadow-xl transform">
+        {/* Mobile Navigation Menu */}
+        <div 
+          ref={mobileMenuRef}
+          className={`md:hidden transition-all duration-300 ease-in-out ${
+            isMobileMenuOpen 
+              ? 'max-h-screen opacity-100 visible' 
+              : 'max-h-0 opacity-0 invisible'
+          }`}
+        >
+          <div className="pt-4 pb-6 space-y-2 border-t border-blue-200/60 bg-white/95 backdrop-blur-md shadow-xl">
             {navItems.map((item) => (
               <div key={item.label}>
                 {item.children ? (

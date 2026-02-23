@@ -11,7 +11,7 @@ export default function Footer() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           
           {/* Company Info */}
           <div className="lg:col-span-2">
@@ -78,7 +78,26 @@ export default function Footer() {
               <li><Link href="/expertise/ui-ux-design" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">UI/UX Design</Link></li>
             </ul>
           </div>
+
+          {/* Locations */}
+          <div>
+            <h4 className="text-lg font-semibold mb-6 text-blue-600">Our Locations</h4>
+            <ul className="space-y-3">
+              <li><Link href="/contact#map" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">USA</Link></li>
+              <li><Link href="/contact#map" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Canada</Link></li>
+              <li><Link href="/contact#map" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">UAE</Link></li>
+              <li><Link href="/contact#map" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Nepal</Link></li>
+              <li><Link href="/contact#map" className="text-slate-600 hover:text-blue-600 transition-colors duration-300 hover:translate-x-1 transform inline-block">Singapore</Link></li>
+            </ul>
+            <Link href="/contact#map" className="mt-4 inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+              </svg>
+              View Map
+            </Link>
+          </div>
         </div>
+
 
         {/* Bottom Bar */}
         <div className="border-t border-slate-300 pt-8">

@@ -1,8 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import Footer from '@/components/Footer';
 import AnimatedCounter from '@/components/AnimatedCounter';
+
+const LocationsMap = dynamic(() => import('@/components/LocationsMap'), { ssr: false });
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -188,19 +191,27 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             
             {/* Contact Form */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 md:p-10 shadow-2xl border border-white/20 flex flex-col">
               <div className="mb-8">
                 <h2 className="text-3xl font-bold text-slate-900 mb-4">Start Your Project</h2>
                 <p className="text-slate-600 text-lg">Tell us about your vision and we&apos;ll make it happen.</p>
               </div>
 
               {submitStatus === 'success' && (
-                <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-xl">
-                  <div className="flex items-center gap-2">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    Thank you! Your message has been sent successfully. We&apos;ll get back to you soon.
+                <div className="mb-6 p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-400 text-green-700 rounded-xl animate-scale-in shadow-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-green-400 rounded-full animate-ping opacity-75"></div>
+                      <div className="relative w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                        <svg className="w-6 h-6 text-white animate-scale-in" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-semibold text-lg mb-1">Message Sent Successfully!</p>
+                      <p className="text-sm">Thank you! We&apos;ll get back to you within 24 hours.</p>
+                    </div>
                   </div>
                 </div>
               )}
@@ -361,22 +372,86 @@ export default function ContactPage() {
                   </div>
                 )}
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-2">
-                    Project Details *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={6}
-                    suppressHydrationWarning
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none text-slate-900 bg-white"
-                    placeholder="Tell us about your project, goals, and any specific requirements..."
-                  />
-                </div>
+                 <div>
+                   <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-2">
+                     Project Details *
+                   </label>
+                   <textarea
+                     id="message"
+                     name="message"
+                     value={formData.message}
+                     onChange={handleInputChange}
+                     required
+                     rows={6}
+                     suppressHydrationWarning
+                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none text-slate-900 bg-white"
+                     placeholder="Tell us about your project, goals, and any specific requirements..."
+                   />
+                 </div>
+
+                 {/* Animated Illustration - Fills remaining space */}
+                 <div className="relative mt-6 h-80 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-xl overflow-hidden border border-blue-100">
+                   <div className="absolute inset-0 flex items-center justify-center">
+                     <div className="relative w-full h-full">
+                       {/* Animated Background Elements */}
+                       <div className="absolute top-6 left-6 w-24 h-24 bg-blue-200/30 rounded-full blur-xl animate-pulse"></div>
+                       <div className="absolute bottom-6 right-6 w-28 h-28 bg-indigo-200/30 rounded-full blur-xl animate-pulse" style={{ animationDelay: '0.3s' }}></div>
+                       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-purple-200/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '0.7s' }}></div>
+                       <div className="absolute top-16 right-12 w-20 h-20 bg-blue-300/20 rounded-full blur-lg animate-pulse" style={{ animationDelay: '1s' }}></div>
+                       <div className="absolute bottom-16 left-12 w-18 h-18 bg-indigo-300/20 rounded-full blur-lg animate-pulse" style={{ animationDelay: '1.3s' }}></div>
+                       
+                       {/* Animated Icons - Larger and more spread out */}
+                       <div className="absolute top-12 left-12 animate-float-slow">
+                         <svg className="w-12 h-12 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                         </svg>
+                       </div>
+                       <div className="absolute top-16 right-16 animate-float-medium">
+                         <svg className="w-11 h-11 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                         </svg>
+                       </div>
+                       <div className="absolute bottom-16 left-16 animate-float-slow" style={{ animationDelay: '0.5s' }}>
+                         <svg className="w-10 h-10 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                         </svg>
+                       </div>
+                       <div className="absolute bottom-20 right-14 animate-float-medium" style={{ animationDelay: '0.7s' }}>
+                         <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                         </svg>
+                       </div>
+                       
+                       {/* Additional floating elements */}
+                       <div className="absolute top-1/3 right-1/3 animate-float-medium" style={{ animationDelay: '1.2s' }}>
+                         <svg className="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                         </svg>
+                       </div>
+                       <div className="absolute bottom-1/3 left-1/3 animate-float-slow" style={{ animationDelay: '0.9s' }}>
+                         <svg className="w-9 h-9 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                         </svg>
+                       </div>
+                       <div className="absolute top-1/4 left-1/4 animate-float-medium" style={{ animationDelay: '1.5s' }}>
+                         <svg className="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                         </svg>
+                       </div>
+                       <div className="absolute bottom-1/4 right-1/4 animate-float-slow" style={{ animationDelay: '1.1s' }}>
+                         <svg className="w-8 h-8 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                         </svg>
+                       </div>
+                       
+                       {/* Center Text with better styling */}
+                       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-10 bg-white/70 backdrop-blur-sm px-8 py-4 rounded-2xl border border-white/50 shadow-xl">
+                         <p className="text-base font-bold text-slate-700 mb-1">Let&apos;s Build Together</p>
+                         <p className="text-sm text-slate-600">Innovation • Excellence • Results</p>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
 
                 <button
                   type="submit"
@@ -458,12 +533,20 @@ export default function ContactPage() {
                       <p className="text-slate-600 text-sm mb-2">Our office locations</p>
                       <div className="space-y-3">
                         <div className="text-green-600 font-medium text-sm">
-                          <p className="font-semibold text-slate-800">Punjab Office:</p>
-                          <p>Sector 71, Mohali<br />Punjab, 160071</p>
-                        </div>
-                        <div className="text-green-600 font-medium text-sm">
                           <p className="font-semibold text-slate-800">Headquarters:</p>
                           <p>Panchanpur, Tekari<br />Gaya, Bihar, 824236</p>
+                        </div>
+                        <div className="text-green-600 font-medium text-sm">
+                          <p className="font-semibold text-slate-800">Bangalore Office:</p>
+                          <p>Whitefield, Bangalore<br />Karnataka, 560066</p>
+                        </div>
+                        <div className="text-green-600 font-medium text-sm">
+                          <p className="font-semibold text-slate-800">Hyderabad Office:</p>
+                          <p>Hitech City, Hyderabad<br />Telangana, 500081</p>
+                        </div>
+                        <div className="text-green-600 font-medium text-sm">
+                          <p className="font-semibold text-slate-800">Other Locations:</p>
+                          <p>USA, Canada, UAE<br />Nepal, Singapore</p>
                         </div>
                       </div>
                     </div>
@@ -518,6 +601,27 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Map Section */}
+      <section id="map" className="relative z-10 py-20 px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-scale-in shadow-lg">
+              <svg className="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+              </svg>
+              Global Presence
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
+              Find Us Around the World
+            </h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              We have a global presence with offices and operations in multiple countries. Click on any location to explore.
+            </p>
+          </div>
+          <LocationsMap />
         </div>
       </section>
 
