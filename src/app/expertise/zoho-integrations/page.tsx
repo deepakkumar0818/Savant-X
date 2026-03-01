@@ -34,16 +34,16 @@ export default function ZohoIntegrationsPage() {
   ];
 
   const zohoApps = [
-    { name: 'Zoho CRM', icon: '📊' },
-    { name: 'Zoho Books', icon: '💰' },
-    { name: 'Zoho Creator', icon: '🛠️' },
-    { name: 'Zoho Recruit', icon: '👥' },
-    { name: 'Zoho Analytics', icon: '📈' },
-    { name: 'Zoho Desk', icon: '🎧' },
-    { name: 'Zoho SalesIQ', icon: '💬' },
-    { name: 'Zoho Campaigns', icon: '📧' },
-    { name: 'Zoho Inventory', icon: '📦' },
-    { name: 'Zoho Projects', icon: '📋' },
+    { name: 'Zoho CRM', iconUrl: '/images/zoho-crm.webp' },
+    { name: 'Zoho Books', iconUrl: '/images/zohoBooks.png' },
+    { name: 'Zoho Creator', iconUrl: '/images/ZohoCreator.png' },
+    { name: 'Zoho Recruit', iconUrl: '/images/ZohoRecruit.png' },
+    { name: 'Zoho Analytics', iconUrl: '/images/ZohoAnalytics.png' },
+    { name: 'Zoho Desk', iconUrl: '/images/ZohoDesk.png' },
+    { name: 'Zoho SalesIQ', iconUrl: '/images/ZohoSalesiq.png' },
+    { name: 'Zoho Campaigns', iconUrl: '/images/ZohoCampains.png' },
+    { name: 'Zoho Inventory', iconUrl: '/images/ZohoInventary.png' },
+    { name: 'Zoho Projects', iconUrl: '/images/ZohoProjects.png' },
   ];
 
   const struggles = [
@@ -100,7 +100,7 @@ export default function ZohoIntegrationsPage() {
             From CRM to Creator, Books to Recruit — we design, build and automate your entire Zoho ecosystem.
           </p>
           <Link
-            href="#form-section"
+            href="tel:+919888244166"
             className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-base shadow-lg shadow-blue-500/25 transition-all duration-200"
           >
             Get Free Zoho Strategy Call
@@ -133,8 +133,14 @@ export default function ZohoIntegrationsPage() {
                 key={i}
                 className="group flex flex-col items-center rounded-2xl border border-slate-200 bg-slate-50/50 p-6 text-center transition-all duration-200 hover:border-blue-200 hover:bg-blue-50/50 hover:shadow-md"
               >
-                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-white text-2xl shadow-sm ring-1 ring-slate-200/80 group-hover:ring-blue-200">
-                  {app.icon}
+                <div className="mb-4 flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-slate-200/80 group-hover:ring-blue-200 overflow-hidden shrink-0">
+                  <div className={app.name === 'Zoho Projects' ? 'h-full w-full scale-110' : 'h-full w-full'}>
+                    <img
+                      src={app.iconUrl}
+                      alt={app.name}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
                 </div>
                 <span className="text-sm font-semibold text-slate-800">{app.name}</span>
               </div>
@@ -221,7 +227,7 @@ export default function ZohoIntegrationsPage() {
               <p className="text-white font-bold text-lg">Book your free strategy call</p>
               <p className="text-slate-400 text-sm mt-1">No commitment required</p>
               <Link
-                href="#form-section"
+                href="tel:+919888244166"
                 className="mt-6 block w-full rounded-xl bg-white py-3.5 text-center font-semibold text-slate-900 hover:bg-slate-100 transition-colors"
               >
                 Book Now

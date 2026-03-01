@@ -197,7 +197,7 @@ export default function Home() {
     },
     {
       title: "Enterprise Solutions",
-      description: "Comprehensive enterprise platforms including CRM, ERP, and custom business applications.",
+      description: "Comprehensive enterprise platforms including CRM, ERP manufacturing (which we do extensively), and custom business applications. We focus on understanding your business deeply so every solution fits your operations.",
       icon: (
         <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -205,10 +205,10 @@ export default function Home() {
       ),
       gradient: "from-emerald-500 to-teal-600",
       features: [
+        { icon: "🏭", title: "ERP & Manufacturing", desc: "Extensive ERP implementation" },
         { icon: "🏢", title: "CRM Systems", desc: "Customer management" },
         { icon: "📈", title: "Business Analytics", desc: "Performance insights" },
-        { icon: "🔄", title: "Workflow Automation", desc: "Process efficiency" },
-        { icon: "🔒", title: "Enterprise Security", desc: "Data protection" }
+        { icon: "🎯", title: "Understand Your Business", desc: "Solutions that fit" }
       ]
     },
     {
@@ -297,7 +297,7 @@ export default function Home() {
     }
   ];
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50 relative overflow-x-hidden overflow-y-auto">
       {/* 3D Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-200/20 to-indigo-300/20 rounded-full blur-3xl transform rotate-12"></div>
@@ -363,23 +363,23 @@ export default function Home() {
       </div>
       
       {/* Hero Section - Seamlessly connected to navbar */}
-      <section className="relative z-10 pt-4 pb-16 px-6 sm:px-8 lg:px-12">
+      <section className="relative z-10 pt-6 pb-12 sm:pt-4 sm:pb-16 px-4 sm:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
             {/* Hero Title */}
-            <div className="mb-8 mt-8">
-              <div className="flex flex-col lg:flex-row items-center justify-center gap-6 md:gap-8 lg:gap-20 lg:justify-end">
+            <div className="mb-6 mt-4 sm:mb-8 sm:mt-8">
+              <div className="flex flex-col lg:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-20 lg:justify-end">
                 {/* Hero Text */}
                 <div className="text-center lg:text-left w-full lg:w-auto">
-                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-4 md:mb-6 tracking-tight drop-shadow-lg transform hover:scale-105 transition-all duration-500 ease-out">
+                  <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-3 sm:mb-4 md:mb-6 tracking-tight drop-shadow-lg transform hover:scale-105 transition-all duration-500 ease-out">
                 Welcome to{' '}
                 <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                   SavantX
                 </span>
               </h1>
-                  <p className="text-lg sm:text-xl md:text-2xl text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-6 md:mb-8 px-4 lg:px-0">
+                  <p className="text-base sm:text-xl md:text-2xl text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-4 sm:mb-6 md:mb-8 px-0 sm:px-4 lg:px-0">
                 Professional software and electronics solutions for modern businesses. 
-                We specialize in web development, mobile applications, GenAI solutions, AI/ML integration, CRM systems, Zoho integrations, IoT solutions, Embedded hardware, PCB design, and complete digital transformation.
+                We specialize in web development, mobile applications, GenAI solutions, AI/ML integration, CRM systems, <strong>ERP manufacturing</strong>, Zoho integrations, IoT solutions, Embedded hardware, PCB design, and complete digital transformation. Our main strength: we take time to understand your business so we can deliver solutions that truly fit.
               </p>
                 </div>
 
@@ -481,7 +481,7 @@ export default function Home() {
             </div>
 
             {/* Hero CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center mb-12 md:mb-16 px-4 lg:px-0">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center mb-8 sm:mb-12 md:mb-16 px-2 sm:px-4 lg:px-0">
               <Link href="/contact" className="group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg md:rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 ease-out font-semibold text-base md:text-lg shadow-lg transform hover:scale-105 hover:shadow-xl">
                 <span className="flex items-center justify-center gap-2">
                   Get Started Today
@@ -502,7 +502,7 @@ export default function Home() {
             </div>
 
             {/* Hero Stats */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8 max-w-4xl mx-auto px-4 lg:px-0">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-8 max-w-4xl mx-auto px-2 sm:px-4 lg:px-0">
               <div className="bg-white/70 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg md:shadow-xl border border-blue-200/60 transform hover:scale-105 transition-all duration-500 ease-out group">
                 <div className="text-2xl md:text-3xl font-bold text-blue-600 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
                   <AnimatedCounter end={200} suffix="+" duration={2800} />
@@ -528,7 +528,7 @@ export default function Home() {
 
 
       {/* Why Choose SavantX Section */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 overflow-hidden">
+      <section className="relative z-10 py-12 sm:py-16 lg:py-20 px-4 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200/20 rounded-full animate-float-gentle"></div>
@@ -538,36 +538,36 @@ export default function Home() {
         
         <div className="max-w-7xl mx-auto relative">
           {/* Section Header */}
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-scale-in shadow-lg">
-              <svg className="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+          <div className="text-center mb-10 sm:mb-14 lg:mb-20">
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 animate-scale-in shadow-lg">
+              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               Why Choose SavantX?
             </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight animate-fade-in-up">
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-slate-900 mb-4 sm:mb-6 tracking-tight animate-fade-in-up">
               Excellence in Every
               <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent animate-gradient-shift"> Solution</span>
             </h2>
-            <p className="text-xl sm:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-200">
-              We combine cutting-edge technology with strategic thinking to deliver solutions that transform businesses and drive sustainable growth.
+            <p className="text-base sm:text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-200 px-2">
+              Our main power is understanding the client&apos;s business properly. We combine that with cutting-edge technology and strategic thinking to deliver solutions that transform businesses and drive sustainable growth.
             </p>
           </div>
           
           {/* Software & Hardware Services Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 mb-10 sm:mb-14 lg:mb-20">
             {/* Software Services Column */}
-            <div className="space-y-8">
-              <div className="text-center lg:text-left min-h-[100px] flex flex-col justify-start">
-                <h3 className="text-3xl font-bold text-slate-900 mb-4">
+            <div className="space-y-6 sm:space-y-8">
+              <div className="text-center lg:text-left min-h-0 sm:min-h-[100px] flex flex-col justify-start">
+                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3 sm:mb-4">
                   <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Software</span> Solutions
                 </h3>
-                <p className="text-lg text-slate-600">Modern software development and integration services</p>
+                <p className="text-base sm:text-lg text-slate-600">Modern software development and integration services</p>
               </div>
               
-              <div className="grid grid-cols-1 gap-6">
+              <div className="grid grid-cols-1 gap-4 sm:gap-6">
                 {softwareServices.slice(0, showAllServices ? 4 : 3).map((service, index) => (
-                  <div key={index} className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 relative overflow-hidden h-full flex flex-col">
+                  <div key={index} className="group bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 shadow-xl border border-white/20 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 relative overflow-hidden h-full flex flex-col">
                     <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient.replace('from-', 'from-').replace('to-', 'to-')}/5 via-transparent to-${service.gradient.split(' ')[2]}/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                     
                     <div className="relative z-10 flex items-start gap-6 mb-6 flex-shrink-0">
@@ -612,13 +612,13 @@ export default function Home() {
                   <div key={index} className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 relative overflow-hidden h-full flex flex-col">
                     <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient.replace('from-', 'from-').replace('to-', 'to-')}/5 via-transparent to-${service.gradient.split(' ')[2]}/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                     
-                    <div className="relative z-10 flex items-start gap-6 mb-6 flex-shrink-0">
-                      <div className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 flex-shrink-0`}>
+                    <div className="relative z-10 flex items-start gap-4 sm:gap-6 mb-4 sm:mb-6 flex-shrink-0">
+                      <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br ${service.gradient} rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 flex-shrink-0`}>
                         {service.icon}
                 </div>
-                      <div className="flex-1 min-h-[120px] flex flex-col">
-                        <h4 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-orange-600 transition-colors duration-300">{service.title}</h4>
-                        <p className="text-slate-600 text-lg leading-relaxed flex-1">
+                      <div className="flex-1 min-h-0 sm:min-h-[120px] flex flex-col">
+                        <h4 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2 sm:mb-3 group-hover:text-orange-600 transition-colors duration-300">{service.title}</h4>
+                        <p className="text-slate-600 text-base sm:text-lg leading-relaxed flex-1">
                           {service.description}
                   </p>
                 </div>
@@ -659,24 +659,24 @@ export default function Home() {
           )}
 
           {/* About SavantX Section */}
-          <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 opacity-50"></div>
             <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-100 to-transparent rounded-full blur-3xl opacity-30"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-purple-100 to-transparent rounded-full blur-3xl opacity-30"></div>
             
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-20">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center py-12 sm:py-16 lg:py-20">
               {/* Left Side - Content */}
-              <div className="space-y-10">
+              <div className="space-y-6 sm:space-y-10">
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
-                  <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></div>
+                <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium">
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-600 rounded-full animate-pulse"></div>
                   Trusted Technology Partner
                 </div>
 
                 {/* Main Headline */}
                 <div>
-                  <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 leading-tight">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-slate-900 mb-4 sm:mb-6 leading-tight">
                     Building Digital
                     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                       Excellence
@@ -685,12 +685,12 @@ export default function Home() {
                 </div>
 
                 {/* Body Text */}
-                <div className="space-y-6 text-xl text-slate-600 leading-relaxed max-w-2xl">
+                <div className="space-y-4 sm:space-y-6 text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-2xl">
                   <p>
-                    We craft exceptional digital experiences and innovative hardware solutions that transform businesses and drive growth. Our comprehensive technology services span from web development, mobile apps, ERP systems, CRM solutions, and Zoho integrations to IoT devices, Embedded systems, and PCB design.
+                    We craft exceptional digital experiences and innovative hardware solutions that transform businesses and drive growth. Our comprehensive technology services span web development, mobile apps, <strong>ERP manufacturing (which we do extensively)</strong>, CRM solutions, and Zoho integrations to IoT devices, embedded systems, and PCB design.
                   </p>
                   <p>
-                    With expertise in both software and electronics, we deliver end-to-end solutions that bridge the digital and physical worlds, helping organizations streamline operations and thrive in today&apos;s connected landscape.
+                    Our main strength is that we understand the client&apos;s business properly. With expertise in both software and electronics, we deliver end-to-end solutions that bridge the digital and physical worlds, helping organizations streamline operations and thrive in today&apos;s connected landscape.
                   </p>
                 </div>
 
@@ -741,17 +741,17 @@ export default function Home() {
               {/* Right Side - Visual Elements */}
               <div className="relative">
                 {/* Main Card */}
-                <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
+                <div className="bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 shadow-2xl border border-white/20">
                   {/* Header */}
-                  <div className="text-center mb-8">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Why Choose SavantX?</h3>
-                    <p className="text-slate-600">Proven expertise in modern technology</p>
+                  <div className="text-center mb-6 sm:mb-8">
+                    <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-1 sm:mb-2">Why Choose SavantX?</h3>
+                    <p className="text-slate-600 text-sm sm:text-base">Proven expertise in modern technology</p>
                   </div>
 
                   {/* Feature Cards */}
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     {/* Feature 1 */}
-                    <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl">
+                    <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl sm:rounded-2xl">
                       <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
                         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
