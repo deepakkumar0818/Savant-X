@@ -1,646 +1,366 @@
 'use client';
 
+import { useState } from 'react';
+import Link from 'next/link';
 import Footer from '@/components/Footer';
 
 export default function ZohoIntegrationsPage() {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    companyName: '',
+    email: '',
+    phone: '',
+    zohoApps: '',
+    lookingToBuild: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const zohoProducts = [
-    {
-      id: 'crm',
-      title: 'Zoho CRM Integration',
-      icon: '📊',
-      description: 'Seamless customer relationship management integration with your existing systems.',
-      features: ['Lead Management', 'Contact Sync', 'Deal Tracking', 'Sales Pipeline', 'Customer Support', 'Analytics & Reports'],
-      pricing: 'Starting at $2,500',
-      timeline: '2-4 weeks',
-      complexity: 'Advanced',
-      integrations: '15+'
-    },
-    {
-      id: 'creator',
-      title: 'Zoho Creator Integration',
-      icon: '🛠️',
-      description: 'Custom application development and integration with Zoho Creator platform.',
-      features: ['Custom Apps', 'Workflow Automation', 'Data Management', 'Form Builder', 'API Integration', 'Mobile Apps'],
-      pricing: 'Starting at $3,500',
-      timeline: '3-6 weeks',
-      complexity: 'Custom',
-      integrations: '20+'
-    },
-    {
-      id: 'books',
-      title: 'Zoho Books Integration',
-      icon: '💰',
-      description: 'Complete accounting and financial management system integration.',
-      features: ['Invoice Management', 'Expense Tracking', 'Bank Reconciliation', 'Tax Management', 'Financial Reports', 'Multi-Currency'],
-      pricing: 'Starting at $2,000',
-      timeline: '2-3 weeks',
-      complexity: 'Standard',
-      integrations: '10+'
-    },
-    {
-      id: 'desk',
-      title: 'Zoho Desk Integration',
-      icon: '🎧',
-      description: 'Customer support and helpdesk system integration for better service delivery.',
-      features: ['Ticket Management', 'Customer Portal', 'Knowledge Base', 'Live Chat', 'SLA Management', 'Performance Analytics'],
-      pricing: 'Starting at $2,800',
-      timeline: '3-4 weeks',
-      complexity: 'Advanced',
-      integrations: '12+'
-    },
-    {
-      id: 'campaigns',
-      title: 'Zoho Campaigns Integration',
-      icon: '📧',
-      description: 'Email marketing and campaign management integration with your marketing tools.',
-      features: ['Email Automation', 'List Management', 'Campaign Analytics', 'A/B Testing', 'Social Media Integration', 'Lead Nurturing'],
-      pricing: 'Starting at $1,800',
-      timeline: '2-3 weeks',
-      complexity: 'Standard',
-      integrations: '8+'
-    },
-    {
-      id: 'projects',
-      title: 'Zoho Projects Integration',
-      icon: '📋',
-      description: 'Project management and team collaboration integration for better productivity.',
-      features: ['Task Management', 'Time Tracking', 'Resource Planning', 'Gantt Charts', 'Team Collaboration', 'Project Reports'],
-      pricing: 'Starting at $2,200',
-      timeline: '2-4 weeks',
-      complexity: 'Advanced',
-      integrations: '14+'
-    }
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setTimeout(() => setIsSubmitting(false), 1000);
+  };
+
+  const trustItems = [
+    'End-to-End Zoho Implementation',
+    'Custom Apps Built on Zoho',
+    'Automation • Integration • Advanced Workflows',
+    'Dedicated Expert Support',
   ];
 
-  const integrationProcess = [
-    {
-      step: '01',
-      title: 'Requirements Analysis',
-      description: 'Understanding your business needs and Zoho product requirements.',
-      duration: '3-5 days',
-      icon: '🔍'
-    },
-    {
-      step: '02',
-      title: 'System Architecture',
-      description: 'Designing the integration architecture and data flow.',
-      duration: '5-7 days',
-      icon: '🏗️'
-    },
-    {
-      step: '03',
-      title: 'API Development',
-      description: 'Building custom APIs and integration connectors.',
-      duration: '7-14 days',
-      icon: '⚙️'
-    },
-    {
-      step: '04',
-      title: 'Data Migration',
-      description: 'Migrating existing data to Zoho systems safely.',
-      duration: '3-7 days',
-      icon: '📊'
-    },
-    {
-      step: '05',
-      title: 'Testing & Validation',
-      description: 'Comprehensive testing and validation of all integrations.',
-      duration: '5-10 days',
-      icon: '🧪'
-    },
-    {
-      step: '06',
-      title: 'Deployment & Training',
-      description: 'Deploying the solution and training your team.',
-      duration: '3-5 days',
-      icon: '🚀'
-    }
+  const zohoApps = [
+    { name: 'Zoho CRM', icon: '📊' },
+    { name: 'Zoho Books', icon: '💰' },
+    { name: 'Zoho Creator', icon: '🛠️' },
+    { name: 'Zoho Recruit', icon: '👥' },
+    { name: 'Zoho Analytics', icon: '📈' },
+    { name: 'Zoho Desk', icon: '🎧' },
+    { name: 'Zoho SalesIQ', icon: '💬' },
+    { name: 'Zoho Campaigns', icon: '📧' },
+    { name: 'Zoho Inventory', icon: '📦' },
+    { name: 'Zoho Projects', icon: '📋' },
   ];
 
-  const deliverables = [
-    {
-      title: 'Custom Integration',
-      description: 'Tailored integration solution connecting your systems with Zoho.',
-      icon: '🔗'
-    },
-    {
-      title: 'API Documentation',
-      description: 'Comprehensive documentation for all custom APIs and endpoints.',
-      icon: '📚'
-    },
-    {
-      title: 'Data Migration',
-      description: 'Safe migration of existing data to Zoho systems.',
-      icon: '📊'
-    },
-    {
-      title: 'User Training',
-      description: 'Complete training for your team on new integrated workflows.',
-      icon: '🎓'
-    },
-    {
-      title: 'Maintenance Support',
-      description: 'Ongoing support and maintenance for your integrations.',
-      icon: '🔧'
-    },
-    {
-      title: 'Performance Monitoring',
-      description: 'Monitoring tools and performance optimization.',
-      icon: '📈'
-    }
+  const struggles = [
+    'Poor CRM structure',
+    'No proper lead automation',
+    'Broken integrations',
+    'Manual repetitive tasks',
+    'No real-time reporting',
+    'Low team adoption',
   ];
 
-  const zohoSuite = [
-    { name: 'CRM', icon: '📊', description: 'Customer relationship management', category: 'Sales' },
-    { name: 'Creator', icon: '🛠️', description: 'Custom application development', category: 'Development' },
-    { name: 'Books', icon: '💰', description: 'Accounting and financial management', category: 'Finance' },
-    { name: 'Desk', icon: '🎧', description: 'Customer support and helpdesk', category: 'Support' },
-    { name: 'Campaigns', icon: '📧', description: 'Email marketing automation', category: 'Marketing' },
-    { name: 'Projects', icon: '📋', description: 'Project management and collaboration', category: 'Project' },
-    { name: 'Inventory', icon: '📦', description: 'Inventory and order management', category: 'Operations' },
-    { name: 'Analytics', icon: '📈', description: 'Business intelligence and analytics', category: 'Analytics' }
+  const expertise = [
+    { title: 'Complete Zoho Implementation', desc: 'Full setup tailored to your business workflow.', icon: '⚙️' },
+    { title: 'Custom Zoho Creator Applications', desc: 'We build fully custom apps inside Zoho.', icon: '🛠️' },
+    { title: 'Advanced Workflow & Blueprint Automation', desc: 'Smart automation that saves hours every week.', icon: '🔄' },
+    { title: 'API & Third-Party Integration', desc: 'Payment gateways, websites, WhatsApp, custom APIs.', icon: '🔗' },
+    { title: 'Multi-App Zoho Ecosystem Architecture', desc: 'Connecting CRM, Books, Recruit, Analytics & more.', icon: '🏗️' },
+    { title: 'Official Zoho Development Partner', desc: 'Business-first implementation approach.', icon: '✅' },
+    { title: 'Clean Data Architecture', desc: 'Scalable system design.', icon: '📐' },
+    { title: 'Long-Term Support Available', desc: 'Transparent pricing & timeline.', icon: '🛡️' },
   ];
 
-  const benefits = [
-    {
-      title: 'Unified Data',
-      description: 'Centralize all your business data in one integrated Zoho ecosystem.',
-      icon: '🎯'
-    },
-    {
-      title: 'Automated Workflows',
-      description: 'Automate repetitive tasks and streamline business processes.',
-      icon: '⚡'
-    },
-    {
-      title: 'Real-time Sync',
-      description: 'Keep all systems synchronized with real-time data updates.',
-      icon: '🔄'
-    },
-    {
-      title: 'Cost Efficiency',
-      description: 'Reduce operational costs through integrated workflows.',
-      icon: '💰'
-    },
-    {
-      title: 'Better Insights',
-      description: 'Get comprehensive business insights from unified data.',
-      icon: '📊'
-    },
-    {
-      title: 'Scalable Solution',
-      description: 'Scale your business with flexible Zoho integrations.',
-      icon: '📈'
-    }
+  const auditPoints = [
+    'Review your current setup',
+    'Identify automation gaps',
+    'Suggest system improvements',
+    'Share implementation roadmap',
+    'Estimate cost & timeline',
   ];
 
-  const integrationTypes = [
+  const testimonials = [
     {
-      title: 'CRM Integration',
-      description: 'Connect your existing CRM with Zoho CRM for unified customer data.',
-      icon: '📊'
+      quote: 'SavantX transformed our Zoho setup. We went from scattered data to a single source of truth. CRM, Books, and Projects now work as one.',
+      author: 'Operations Director',
+      problem: 'Disconnected systems, manual data entry, no visibility.',
+      solution: 'Unified Zoho ecosystem with Blueprint automation and custom Creator app.',
     },
-    {
-      title: 'ERP Integration',
-      description: 'Integrate enterprise resource planning systems with Zoho suite.',
-      icon: '🏢'
-    },
-    {
-      title: 'E-commerce Integration',
-      description: 'Connect online stores with Zoho inventory and accounting.',
-      icon: '🛒'
-    },
-    {
-      title: 'Marketing Integration',
-      description: 'Integrate marketing tools with Zoho Campaigns and CRM.',
-      icon: '📧'
-    },
-    {
-      title: 'Support Integration',
-      description: 'Connect helpdesk systems with Zoho Desk for better support.',
-      icon: '🎧'
-    },
-    {
-      title: 'Custom App Integration',
-      description: 'Build custom applications using Zoho Creator platform.',
-      icon: '🛠️'
-    }
-  ];
-
-  const technicalCapabilities = [
-    {
-      title: 'API Development',
-      description: 'Custom API development for seamless system integration.',
-      icon: '🔧'
-    },
-    {
-      title: 'Data Mapping',
-      description: 'Intelligent data mapping between different systems.',
-      icon: '🗺️'
-    },
-    {
-      title: 'Real-time Sync',
-      description: 'Real-time data synchronization across platforms.',
-      icon: '⚡'
-    },
-    {
-      title: 'Security Compliance',
-      description: 'Enterprise-grade security and compliance standards.',
-      icon: '🔒'
-    },
-    {
-      title: 'Performance Optimization',
-      description: 'Optimized performance for large-scale integrations.',
-      icon: '🚀'
-    },
-    {
-      title: 'Error Handling',
-      description: 'Robust error handling and recovery mechanisms.',
-      icon: '🛡️'
-    }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50">
-      {/* Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-indigo-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-pink-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-cyan-400/10 to-blue-600/10 rounded-full blur-3xl"></div>
-        
-        {/* Floating Zoho Integration Icons */}
-        <div className="absolute top-20 left-20 w-16 h-16 bg-gradient-to-br from-blue-400/30 to-blue-600/30 rounded-2xl flex items-center justify-center animate-float">
-          <span className="text-2xl">🔗</span>
-        </div>
-        <div className="absolute top-40 right-32 w-12 h-12 bg-gradient-to-br from-purple-400/30 to-purple-600/30 rounded-xl flex items-center justify-center animate-float" style={{animationDelay: '1s'}}>
-          <span className="text-xl">📊</span>
-        </div>
-        <div className="absolute bottom-32 left-32 w-14 h-14 bg-gradient-to-br from-green-400/30 to-green-600/30 rounded-xl flex items-center justify-center animate-float" style={{animationDelay: '2s'}}>
-          <span className="text-xl">⚙️</span>
-        </div>
-        <div className="absolute bottom-20 right-20 w-10 h-10 bg-gradient-to-br from-orange-400/30 to-orange-600/30 rounded-lg flex items-center justify-center animate-float" style={{animationDelay: '3s'}}>
-          <span className="text-lg">🛠️</span>
-        </div>
-      </div>
-
-      {/* Hero Section */}
-      <section className="relative z-10 pt-32 pb-20 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-blue-200">
-              <span className="text-lg">🔗</span>
-              Zoho Integrations
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
-              Zoho
-              <span className="block text-blue-600 mt-2">Integrations</span>
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
-              Seamlessly integrate your existing systems with Zoho&apos;s comprehensive business suite. 
-              We specialize in connecting your workflows, automating processes, and unifying your data across all Zoho applications.
-            </p>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">100+</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Zoho Integrations</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-green-600 mb-2">95%</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Success Rate</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">2-6</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Week Delivery</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600 mb-2">24/7</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Support</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Zoho Products */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-              Zoho Products
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-              Zoho Suite
-              <span className="block text-blue-600 mt-2">Integrations</span>
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We integrate all major Zoho products with your existing systems for a unified business experience.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {zohoProducts.map((product) => (
-              <div key={product.id} className="group">
-                <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
-                  {/* Header */}
-                  <div className="flex items-start gap-6 mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                      <span className="text-3xl">{product.icon}</span>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-200">
-                        {product.title}
-                      </h3>
-                      <p className="text-slate-600 leading-relaxed">
-                        {product.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Features */}
-                  <div className="grid grid-cols-2 gap-3 mb-6">
-                    {product.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
-                        <span className="text-sm text-slate-600">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Details Grid */}
-                  <div className="grid grid-cols-4 gap-4 pt-6 border-t border-slate-200">
-                    <div className="text-center">
-                      <div className="text-sm font-bold text-blue-600 mb-1">{product.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-sm font-bold text-green-600 mb-1">{product.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-sm font-bold text-purple-600 mb-1">{product.complexity}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Complexity</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-sm font-bold text-orange-600 mb-1">{product.integrations}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Integrations</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Integration Process */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-              Our Process
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-              Integration
-              <span className="block text-blue-600 mt-2">Process</span>
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our systematic approach ensures seamless integration with minimal disruption to your business operations.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {integrationProcess.map((step, index) => (
-              <div key={index} className="group">
-                <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full text-center">
-                  <div className="flex flex-col items-center mb-4">
-                    <div className="inline-block bg-blue-50 text-blue-700 px-3 py-1 rounded-lg text-sm font-bold mb-3 border border-blue-200">
-                      {step.step}
-                    </div>
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                      <span className="text-2xl">{step.icon}</span>
-                    </div>
-                  </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed mb-3">
-                    {step.description}
-                  </p>
-                  <div className="text-xs font-medium text-blue-600">{step.duration}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Zoho Suite Overview */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-              Zoho Suite
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-              Complete Zoho
-              <span className="block text-blue-600 mt-2">Ecosystem</span>
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We integrate with all major Zoho applications to create a unified business management platform.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
-            {zohoSuite.map((app, index) => (
-              <div key={index} className="group">
-                <div className="bg-white border border-slate-200 rounded-2xl p-6 text-center hover:shadow-lg hover:border-blue-200/50 transition-all duration-300 group-hover:scale-105">
-                  <div className="text-3xl mb-3">{app.icon}</div>
-                  <h3 className="text-sm font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors duration-200">
-                    {app.name}
-                  </h3>
-                  <p className="text-xs text-slate-600 mb-2">{app.description}</p>
-                  <span className="inline-block px-2 py-1 bg-blue-50 text-blue-700 rounded text-xs font-medium">
-                    {app.category}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Deliverables */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-              Deliverables
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-              What You&apos;ll
-              <span className="block text-blue-600 mt-2">Receive</span>
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Complete Zoho integration deliverables that provide everything needed for seamless business operations.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {deliverables.map((deliverable, index) => (
-              <div key={index} className="group">
-                <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mb-4 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                    <span className="text-2xl">{deliverable.icon}</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
-                    {deliverable.title}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    {deliverable.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-              Why Zoho Integration
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-              Benefits of
-              <span className="block text-blue-600 mt-2">Zoho Integration</span>
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Zoho integration provides significant advantages for businesses looking to streamline operations and improve efficiency.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="group">
-                <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mb-4 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                    <span className="text-2xl">{benefit.icon}</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    {benefit.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Integration Types */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-              Integration Types
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-              Common
-              <span className="block text-blue-600 mt-2">Integrations</span>
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We specialize in various types of Zoho integrations to meet your specific business needs.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {integrationTypes.map((integration, index) => (
-              <div key={index} className="group">
-                <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mb-4 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                    <span className="text-2xl">{integration.icon}</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
-                    {integration.title}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    {integration.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technical Capabilities */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-              Technical Capabilities
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-              Our Technical
-              <span className="block text-blue-600 mt-2">Expertise</span>
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Advanced technical capabilities ensure robust and scalable Zoho integrations.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {technicalCapabilities.map((capability, index) => (
-              <div key={index} className="group">
-                <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mb-4 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                    <span className="text-2xl">{capability.icon}</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
-                    {capability.title}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    {capability.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Integrate
-            <span className="block text-blue-100 mt-2">with Zoho?</span>
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">
-            Let&apos;s connect your business systems with Zoho&apos;s powerful suite for unified operations and enhanced productivity.
+    <div className="min-h-screen bg-white">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-slate-900 pt-28 pb-20 sm:pt-32 sm:pb-24 px-6 sm:px-8 lg:px-12">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-slate-900 to-indigo-900/20" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+        <div className="relative max-w-4xl mx-auto text-center">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-blue-500/20 text-blue-300 text-sm font-medium border border-blue-500/30 mb-8">
+            Official Zoho Development Partner
+          </span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.15] mb-6">
+            Complete Zoho Setup, Customization & App Development
+          </h1>
+          <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-10">
+            From CRM to Creator, Books to Recruit — we design, build and automate your entire Zoho ecosystem.
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Start Integration
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-              View Examples
-            </button>
+          <Link
+            href="#form-section"
+            className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-base shadow-lg shadow-blue-500/25 transition-all duration-200"
+          >
+            Get Free Zoho Strategy Call
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </Link>
+          <ul className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-4 text-slate-400 text-sm font-medium">
+            {trustItems.map((item, i) => (
+              <li key={i} className="flex items-center gap-2">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 text-xs">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* What We Do */}
+      <section className="py-20 sm:py-24 px-6 sm:px-8 lg:px-12 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider text-center mb-3">What We Do</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 text-center mb-4">
+            We Build & Customize Every Zoho Application
+          </h2>
+          <p className="text-slate-600 text-center max-w-2xl mx-auto mb-14">
+            We help businesses implement and customize the following — and fully integrate them into one powerful ecosystem.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {zohoApps.map((app, i) => (
+              <div
+                key={i}
+                className="group flex flex-col items-center rounded-2xl border border-slate-200 bg-slate-50/50 p-6 text-center transition-all duration-200 hover:border-blue-200 hover:bg-blue-50/50 hover:shadow-md"
+              >
+                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-white text-2xl shadow-sm ring-1 ring-slate-200/80 group-hover:ring-blue-200">
+                  {app.icon}
+                </div>
+                <span className="text-sm font-semibold text-slate-800">{app.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Businesses Struggle */}
+      <section className="py-20 sm:py-24 px-6 sm:px-8 lg:px-12 bg-slate-50">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-slate-500 font-semibold text-sm uppercase tracking-wider text-center mb-3">Common Challenges</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 text-center mb-3">
+            Why Businesses Struggle With Zoho
+          </h2>
+          <p className="text-slate-600 text-center mb-12 max-w-xl mx-auto">
+            Even though Zoho is powerful, most companies face one or more of these issues.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {struggles.map((item, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-4 rounded-xl border border-slate-200 bg-white px-5 py-4 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red-50 text-red-600 text-sm font-bold">!</span>
+                <span className="font-medium text-slate-800">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Expertise */}
+      <section className="py-20 sm:py-24 px-6 sm:px-8 lg:px-12 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider text-center mb-3">Our Expertise</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 text-center mb-3">
+            Why Businesses Choose Us
+          </h2>
+          <p className="text-slate-600 text-center mb-14 max-w-xl mx-auto">
+            End-to-end Zoho implementation, custom apps, and long-term support.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {expertise.map((item, i) => (
+              <div
+                key={i}
+                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:border-blue-200 hover:shadow-md"
+              >
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-xl">
+                  {item.icon}
+                </div>
+                <h3 className="font-bold text-slate-900 mb-2 text-base leading-snug">{item.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Free Strategy Offer */}
+      <section id="free-strategy" className="relative py-20 sm:py-24 px-6 sm:px-8 lg:px-12 bg-slate-900">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-slate-900" />
+        <div className="relative max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 leading-tight">
+                Get a FREE 30-Minute Zoho System Audit
+              </h2>
+              <p className="text-slate-300 text-lg font-medium mb-4">In this call, we:</p>
+              <ul className="space-y-3 mb-8">
+                {auditPoints.map((point, i) => (
+                  <li key={i} className="flex items-center gap-3 text-slate-200">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold">✓</span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-amber-400 font-semibold">Limited slots available this week.</p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/5 px-8 py-10 text-center">
+              <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-white/10 text-4xl">
+                📞
+              </div>
+              <p className="text-white font-bold text-lg">Book your free strategy call</p>
+              <p className="text-slate-400 text-sm mt-1">No commitment required</p>
+              <Link
+                href="#form-section"
+                className="mt-6 block w-full rounded-xl bg-white py-3.5 text-center font-semibold text-slate-900 hover:bg-slate-100 transition-colors"
+              >
+                Book Now
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects & Testimonial */}
+      <section className="py-20 sm:py-24 px-6 sm:px-8 lg:px-12 bg-slate-50">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider text-center mb-3">Success Story</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 text-center mb-12">
+            Projects & Testimonials
+          </h2>
+          {testimonials.map((t, i) => (
+            <div key={i} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 md:p-10 flex items-center justify-center min-h-[200px]">
+                  <div className="flex flex-col items-center gap-3 text-slate-400">
+                    <svg className="h-12 w-12" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" /></svg>
+                    <span className="text-sm font-medium">Zoho ecosystem dashboard</span>
+                  </div>
+                </div>
+                <div className="p-8 md:p-10">
+                  <p className="text-slate-700 text-lg leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
+                  <p className="font-semibold text-slate-900">{t.author}</p>
+                  <div className="mt-4 space-y-2 rounded-lg bg-slate-50 p-4 text-sm">
+                    <p><span className="font-semibold text-slate-700">Problem:</span> {t.problem}</p>
+                    <p><span className="font-semibold text-slate-700">Solution:</span> {t.solution}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Form */}
+      <section id="form-section" className="py-20 sm:py-24 px-6 sm:px-8 lg:px-12 bg-white">
+        <div className="max-w-lg mx-auto">
+          <div className="rounded-2xl border border-slate-200 bg-slate-50/50 p-8 sm:p-10 shadow-sm">
+            <h2 className="text-2xl font-bold text-slate-900 mb-2 text-center">
+              Get Your Free Zoho Strategy Call
+            </h2>
+            <p className="text-slate-600 text-center mb-8 text-sm">
+              Share a few details and we&apos;ll reach out to discuss your needs.
+            </p>
+
+            <form onSubmit={handleSubmit} className="space-y-5" suppressHydrationWarning>
+              <div>
+                <label className="mb-1.5 block text-sm font-semibold text-slate-700">Full Name *</label>
+                <input
+                  type="text"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                  placeholder="Your name"
+                  suppressHydrationWarning
+                />
+              </div>
+              <div>
+                <label className="mb-1.5 block text-sm font-semibold text-slate-700">Company Name *</label>
+                <input
+                  type="text"
+                  name="companyName"
+                  value={formData.companyName}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                  placeholder="Company name"
+                  suppressHydrationWarning
+                />
+              </div>
+              <div>
+                <label className="mb-1.5 block text-sm font-semibold text-slate-700">Email *</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                  placeholder="you@company.com"
+                  suppressHydrationWarning
+                />
+              </div>
+              <div>
+                <label className="mb-1.5 block text-sm font-semibold text-slate-700">Phone *</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                  placeholder="+1 234 567 8900"
+                  suppressHydrationWarning
+                />
+              </div>
+              <div>
+                <label className="mb-1.5 block text-sm font-semibold text-slate-700">Which Zoho Apps Are You Using?</label>
+                <input
+                  type="text"
+                  name="zohoApps"
+                  value={formData.zohoApps}
+                  onChange={handleInputChange}
+                  className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                  placeholder="e.g. CRM, Books, Creator"
+                  suppressHydrationWarning
+                />
+              </div>
+              <div>
+                <label className="mb-1.5 block text-sm font-semibold text-slate-700">What Are You Looking To Build?</label>
+                <textarea
+                  name="lookingToBuild"
+                  value={formData.lookingToBuild}
+                  onChange={handleInputChange}
+                  rows={3}
+                  className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 resize-none"
+                  placeholder="Brief description of your goals"
+                  suppressHydrationWarning
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full rounded-xl bg-blue-600 py-4 font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 disabled:opacity-70 disabled:cursor-not-allowed"
+                suppressHydrationWarning
+              >
+                {isSubmitting ? 'Submitting...' : 'Submit'}
+              </button>
+            </form>
+            <p className="mt-5 text-center text-xs text-slate-500">
+              We use your details only to contact you about your Zoho strategy. We do not share them with third parties.
+            </p>
           </div>
         </div>
       </section>
