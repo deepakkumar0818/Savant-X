@@ -30,10 +30,17 @@ export default function ZohoIntegrationsPage() {
     setSubmitStatus('idle');
     setErrorMessage('');
     try {
-      const res = await fetch('/api/zoho-strategy', {
+      const res = await fetch('/api/zoho-form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          companyName: formData.companyName,
+          email: formData.email,
+          phone: formData.phone,
+          zohoApps: formData.zohoApps,
+          requirement: formData.lookingToBuild,
+        }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {

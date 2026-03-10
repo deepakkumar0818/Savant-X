@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { loadEmailEnv } from '@/lib/emailEnv';
 
 const TO_EMAIL = 'siya.savantxtechnologies@gmail.com';
 
@@ -15,6 +16,7 @@ function escapeHtml(text: string): string {
 
 export async function POST(request: NextRequest) {
   try {
+    loadEmailEnv();
     const emailUser = process.env.EMAIL_USER;
     const emailPass = process.env.EMAIL_PASS;
 
