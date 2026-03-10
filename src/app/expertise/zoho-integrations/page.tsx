@@ -14,16 +14,41 @@ export default function ZohoIntegrationsPage() {
     lookingToBuild: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setSubmitStatus('idle');
+    setErrorMessage('');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => setIsSubmitting(false), 1000);
+    setSubmitStatus('idle');
+    setErrorMessage('');
+    try {
+      const res = await fetch('/api/zoho-strategy', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setSubmitStatus('error');
+        setErrorMessage(data.error || 'Something went wrong. Please try again.');
+        return;
+      }
+      setSubmitStatus('success');
+      setFormData({ fullName: '', companyName: '', email: '', phone: '', zohoApps: '', lookingToBuild: '' });
+    } catch {
+      setSubmitStatus('error');
+      setErrorMessage('Network error. Please try again or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const trustItems = [
@@ -76,10 +101,12 @@ export default function ZohoIntegrationsPage() {
 
   const testimonials = [
     {
-      quote: 'SavantX transformed our Zoho setup. We went from scattered data to a single source of truth. CRM, Books, and Projects now work as one.',
-      author: 'Operations Director',
-      problem: 'Disconnected systems, manual data entry, no visibility.',
-      solution: 'Unified Zoho ecosystem with Blueprint automation and custom Creator app.',
+      quote: 'SavantX built our manufacturing ERP on Zoho. We now have one system for production planning, inventory, shop floor, and finance. Everything is visible and traceable.',
+      author: 'Operations Director, Manufacturing',
+      problem: 'They were on pen and paper and Excel — manual production tracking, spreadsheets for inventory, no real-time visibility across shop floor and finance.',
+      solution: 'Custom manufacturing ERP on Zoho — production orders, BOMs, work orders, inventory, and reporting in one place.',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+      imageAlt: 'Manufacturing ERP dashboard — production, inventory, and reporting',
     },
   ];
 
@@ -239,26 +266,53 @@ export default function ZohoIntegrationsPage() {
 
       {/* Projects & Testimonial */}
       <section className="py-20 sm:py-24 px-6 sm:px-8 lg:px-12 bg-slate-50">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider text-center mb-3">Success Story</p>
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 text-center mb-12">
             Projects & Testimonials
           </h2>
           {testimonials.map((t, i) => (
             <div key={i} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 md:p-10 flex items-center justify-center min-h-[200px]">
-                  <div className="flex flex-col items-center gap-3 text-slate-400">
+              <div className="grid grid-cols-1 md:grid-cols-[1.25fr_1fr] gap-0 md:items-stretch">
+                <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[340px] bg-gradient-to-br from-blue-50 to-indigo-50">
+                  {t.image ? (
+                    <>
+                      <img
+                        src={t.image}
+                        alt={t.imageAlt ?? 'Zoho ecosystem dashboard'}
+                        className="h-full w-full object-cover"
+                        onError={(e) => {
+                          const target = e.currentTarget;
+                          target.style.display = 'none';
+                          const fallback = target.closest('.relative')?.querySelector('[data-fallback]') as HTMLElement | null;
+                          if (fallback) fallback.style.display = 'flex';
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-indigo-500/10 to-slate-500/10 pointer-events-none" aria-hidden />
+                    </>
+                  ) : null}
+                  <div
+                    data-fallback
+                    className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-blue-50 to-indigo-50 p-8 text-slate-400"
+                    style={{ display: t.image ? 'none' : 'flex' }}
+                    aria-hidden={!!t.image}
+                  >
                     <svg className="h-12 w-12" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" /></svg>
                     <span className="text-sm font-medium">Zoho ecosystem dashboard</span>
                   </div>
                 </div>
-                <div className="p-8 md:p-10">
+                <div className="p-8 md:p-10 pb-10 flex flex-col">
                   <p className="text-slate-700 text-lg leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
-                  <p className="font-semibold text-slate-900">{t.author}</p>
-                  <div className="mt-4 space-y-2 rounded-lg bg-slate-50 p-4 text-sm">
-                    <p><span className="font-semibold text-slate-700">Problem:</span> {t.problem}</p>
-                    <p><span className="font-semibold text-slate-700">Solution:</span> {t.solution}</p>
+                  <p className="font-semibold text-slate-900 mb-4">{t.author}</p>
+                  <div className="space-y-4 rounded-lg bg-slate-100 border border-slate-200 p-5 pb-6 text-sm leading-relaxed text-slate-800">
+                    <div>
+                      <span className="font-semibold text-slate-900">Problem: </span>
+                      <span className="text-slate-800">{t.problem}</span>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-slate-900">Solution: </span>
+                      <span className="text-slate-800">{t.solution}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -355,6 +409,16 @@ export default function ZohoIntegrationsPage() {
                   suppressHydrationWarning
                 />
               </div>
+              {submitStatus === 'success' && (
+                <p className="rounded-xl bg-emerald-50 border border-emerald-200 py-3 px-4 text-sm font-medium text-emerald-800 text-center">
+                  Thank you! We&apos;ve received your request and will reach out soon.
+                </p>
+              )}
+              {submitStatus === 'error' && (
+                <p className="rounded-xl bg-red-50 border border-red-200 py-3 px-4 text-sm font-medium text-red-800 text-center">
+                  {errorMessage}
+                </p>
+              )}
               <button
                 type="submit"
                 disabled={isSubmitting}

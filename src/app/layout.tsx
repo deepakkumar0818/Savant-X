@@ -27,16 +27,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google Analytics */}
+        {/* Google tag (gtag.js) - Analytics + Ads */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-D60F50EG51"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17987668620"
           strategy="afterInteractive"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-gtag" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
+            gtag('config', 'AW-17987668620');
             gtag('config', 'G-D60F50EG51');
           `}
         </Script>
