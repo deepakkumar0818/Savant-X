@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import Footer from '@/components/Footer';
-import AnimatedCounter from '@/components/AnimatedCounter';
+import AboutPageHero from '@/components/about/AboutPageHero';
 
 export default function About() {
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
@@ -201,73 +201,8 @@ export default function About() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50 relative overflow-hidden">
-      {/* Subtle Professional Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50/30 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-slate-50/30 rounded-full blur-3xl"></div>
-      </div>
-
-      {/* Professional Hero Section */}
-      <section className="relative z-10 pt-24 pb-20 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center">
-            {/* Professional Badge */}
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-md text-sm font-medium mb-8 border border-slate-200">
-              <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
-              About SavantX
-            </div>
-
-            {/* Professional Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight tracking-tight">
-              Building Digital
-              <span className="block text-blue-600 mt-2">
-                Excellence
-              </span>
-            </h1>
-
-            {/* Professional Subtitle */}
-            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12 font-light">
-              We craft exceptional digital experiences that transform businesses and drive growth. 
-              Our comprehensive technology solutions span from web development to AI-powered applications.
-            </p>
-
-            {/* Professional Stats Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16">
-              <div className="text-center group">
-                <div className="text-4xl font-bold text-blue-600 mb-2 group-hover:text-blue-700 transition-colors duration-300">
-                  <AnimatedCounter end={200} suffix="+" duration={2800} />
-                </div>
-                <div className="text-slate-600 font-medium text-sm uppercase tracking-wide">Projects Delivered</div>
-              </div>
-              <div className="text-center group">
-                <div className="text-4xl font-bold text-blue-600 mb-2 group-hover:text-blue-700 transition-colors duration-300">
-                  <AnimatedCounter end={98} suffix="%" duration={2200} />
-                </div>
-                <div className="text-slate-600 font-medium text-sm uppercase tracking-wide">Client Satisfaction</div>
-              </div>
-              <div className="text-center group">
-                <div className="text-4xl font-bold text-blue-600 mb-2 group-hover:text-blue-700 transition-colors duration-300">
-                  <AnimatedCounter end={5} suffix="+" duration={1600} />
-                </div>
-                <div className="text-slate-600 font-medium text-sm uppercase tracking-wide">Years Experience</div>
-              </div>
-            </div>
-
-            {/* Professional CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/work" className="group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 ease-out font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl">
-                <span className="flex items-center justify-center gap-2">
-                  Explore Our Work
-                  <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="relative min-h-screen overflow-x-hidden bg-slate-50">
+      <AboutPageHero />
 
       {/* Professional Journey Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">

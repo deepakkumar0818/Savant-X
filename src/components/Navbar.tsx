@@ -42,6 +42,11 @@ const defaultNavItems: NavItem[] = [
   { label: 'Contact', href: '/contact' }
 ];
 
+function normalizePath(pathname: string | null): string {
+  if (!pathname) return '';
+  return pathname.length > 1 && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
+}
+
 export default function Navbar({ 
   companyName = 'SavantX', 
   logo,
@@ -51,13 +56,20 @@ export default function Navbar({
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
   
   // Function to check if a nav item is active
   const isItemActive = (item: NavItem) => {
     // Exact match for home page
-    if (item.href === '/' && pathname === '/') {
+    if (item.href === '/' && (pathname === '/' || pathname === '' || normalizePath(pathname) === '/')) {
       return true;
     }
     
@@ -128,10 +140,13 @@ export default function Navbar({
   };
 
   return (
-    <nav className={`w-full bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50 backdrop-blur-md sticky top-0 z-50 ${className}`}>
-      {/* Inner content wrapper with controlled width */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="flex w-full justify-between items-center h-20">
+    <nav
+      className={`sticky top-0 z-50 w-full border-b border-slate-100 bg-white transition-[box-shadow,border-color] duration-300 ${
+        scrolled ? 'shadow-sm' : 'shadow-none'
+      } ${className}`}
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
+        <div className="flex h-[4.25rem] w-full items-center justify-between gap-4">
           {/* Logo */}
           <div className="flex items-center flex-shrink-0">
             <Link 
@@ -157,18 +172,18 @@ export default function Navbar({
 
           {/* Desktop Navigation - Pill Container */}
           <div className="hidden md:flex items-center" ref={dropdownRef}>
-            <div className="bg-white/80 backdrop-blur-md rounded-full px-8 py-3 shadow-lg border border-blue-200/60 transition-all duration-300 ease-out">
-              <div className="flex items-center space-x-8">
+            <div className="rounded-full border border-slate-200/90 bg-white px-4 py-1.5 shadow-sm">
+              <div className="flex items-center gap-0.5 sm:gap-1">
                 {navItems.map((item) => (
                   <div key={item.label} className="relative">
                     {item.children ? (
                       <div className="relative">
                                                  <button
                            onClick={() => toggleDropdown(item.label)}
-                           className={`px-4 py-2 rounded-full transition-all duration-300 ease-out font-semibold text-sm tracking-wide transform hover:scale-105 ${
+                           className={`rounded-full px-3 py-1.5 text-sm font-semibold tracking-wide transition-all duration-300 ease-out motion-safe:hover:scale-105 ${
                             isItemActive(item)
-                               ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                               : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
+                               ? 'bg-indigo-600 text-white shadow-sm'
+                               : 'text-slate-700 hover:bg-slate-50 hover:text-indigo-600'
                            }`}
                           aria-expanded={activeDropdown === item.label}
                           aria-haspopup="true"
@@ -406,10 +421,10 @@ export default function Navbar({
                       <Link
                         href={item.href}
                         onClick={handleNavClick}
-                        className={`px-4 py-2 rounded-full transition-all duration-300 ease-out font-semibold text-sm tracking-wide transform hover:scale-105 ${
+                        className={`rounded-full px-3 py-1.5 text-sm font-semibold tracking-wide transition-all duration-300 ease-out motion-safe:hover:scale-105 ${
                           isItemActive(item)
-                            ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                            : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
+                            ? 'bg-indigo-600 text-white shadow-sm'
+                            : 'text-slate-700 hover:bg-slate-50 hover:text-indigo-600'
                         }`}
                       >
                         {item.label}
@@ -477,7 +492,7 @@ export default function Navbar({
               : 'max-h-0 opacity-0 invisible'
           }`}
         >
-          <div className="pt-4 pb-6 space-y-2 border-t border-blue-200/60 bg-white/95 backdrop-blur-md shadow-xl">
+          <div className="border-t border-slate-100 bg-white pt-4 pb-6 space-y-2 shadow-xl backdrop-blur-md">
             {navItems.map((item) => (
               <div key={item.label}>
                 {item.children ? (
@@ -486,8 +501,8 @@ export default function Navbar({
                        onClick={() => toggleDropdown(item.label)}
                        className={`flex items-center justify-between w-full px-4 py-3 text-left transition-all duration-300 ease-out font-semibold text-sm rounded-xl transform hover:scale-105 ${
                         isItemActive(item)
-                           ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                           : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
+                           ? 'bg-indigo-600 text-white shadow-sm'
+                           : 'text-slate-700 hover:text-indigo-600 hover:bg-slate-50'
                        }`}
                       aria-expanded={activeDropdown === item.label}
                     >
@@ -589,8 +604,8 @@ export default function Navbar({
                      href={item.href}
                      className={`block px-4 py-3 transition-all duration-300 ease-out font-semibold text-sm rounded-xl transform hover:scale-105 ${
                       isItemActive(item)
-                         ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg'
-                         : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
+                         ? 'bg-indigo-600 text-white shadow-sm'
+                         : 'text-slate-700 hover:text-indigo-600 hover:bg-slate-50'
                      }`}
                      onClick={handleNavClick}
                    >

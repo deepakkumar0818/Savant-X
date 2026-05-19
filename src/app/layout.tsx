@@ -95,10 +95,10 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-white antialiased overflow-x-hidden`}
       >
         <ConditionalNavbar />
-        <main>
+        <main className="bg-white">
           {children}
         </main>
       </body>

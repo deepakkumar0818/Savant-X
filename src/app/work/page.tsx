@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
-import AnimatedCounter from '@/components/AnimatedCounter';
+import WorkPageHero from '@/components/work/WorkPageHero';
 
 export default function Work() {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -137,57 +137,11 @@ export default function Work() {
   const featuredProjects = projects.filter(project => project.featured);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50">
-      {/* Hero Section */}
-      <section className="relative z-10 pt-24 pb-20 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center">
-            {/* Professional Badge */}
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-md text-sm font-medium mb-8 border border-slate-200">
-              <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
-              Our Portfolio
-            </div>
-
-            {/* Professional Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight tracking-tight">
-              Excellence in
-              <span className="block text-blue-600 mt-2">
-                Digital Innovation
-              </span>
-            </h1>
-
-            {/* Professional Subtitle */}
-            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-12 font-light">
-              Discover our portfolio of innovative projects that have transformed businesses and delivered exceptional results across various industries.
-            </p>
-
-            {/* Professional Stats Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16">
-              <div className="text-center group">
-                <div className="text-4xl font-bold text-blue-600 mb-2 group-hover:text-blue-700 transition-colors duration-300">
-                  <AnimatedCounter end={9} suffix="+" duration={2800} />
-                </div>
-                <div className="text-slate-600 font-medium text-sm uppercase tracking-wide">Projects Delivered</div>
-              </div>
-              <div className="text-center group">
-                <div className="text-4xl font-bold text-blue-600 mb-2 group-hover:text-blue-700 transition-colors duration-300">
-                  <AnimatedCounter end={98} suffix="%" duration={2200} />
-                </div>
-                <div className="text-slate-600 font-medium text-sm uppercase tracking-wide">Client Satisfaction</div>
-              </div>
-              <div className="text-center group">
-                <div className="text-4xl font-bold text-blue-600 mb-2 group-hover:text-blue-700 transition-colors duration-300">
-                  <AnimatedCounter end={25} suffix="+" duration={1600} />
-                </div>
-                <div className="text-slate-600 font-medium text-sm uppercase tracking-wide">Technologies</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/80 to-indigo-50">
+      <WorkPageHero />
 
       {/* Featured Projects Section */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
+      <section id="showcase" className="relative z-10 bg-white px-6 py-20 sm:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">

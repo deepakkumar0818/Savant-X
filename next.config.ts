@@ -31,8 +31,23 @@ function loadEnvLocal() {
 loadEnvLocal();
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    root: path.join(__dirname),
+  },
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'api.dicebear.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
+    ],
   },
   trailingSlash: true,
   // Expose env to server (API routes)

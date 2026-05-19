@@ -182,15 +182,35 @@ export default function TestimonialCarousel() {
   };
 
   return (
-    <section className="pt-0 pb-24 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200/20 rounded-full animate-float-gentle blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-indigo-200/20 rounded-full animate-float-gentle delay-500 blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-slate-200/15 rounded-full animate-float-gentle delay-1000 blur-3xl"></div>
+    <section className="relative isolate overflow-hidden pt-0 pb-24 px-6 sm:px-8 lg:px-12">
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/40 to-indigo-50/90" />
+        <div className="absolute inset-0 bg-[linear-gradient(168deg,rgb(255_255_255_/_0.75)_0%,transparent_46%,rgb(239_246_255_/_0.55)_100%)]" />
+        <div className="absolute inset-x-0 top-0 h-[52%] bg-[radial-gradient(ellipse_90%_100%_at_50%_0%,rgb(219_234_254_/_0.55),transparent_62%)]" />
+
+        <div className="absolute -left-[18%] top-[8%] h-[min(72vw,30rem)] w-[min(88vw,38rem)] rounded-full bg-[radial-gradient(ellipse_at_center,rgb(59_130_246_/_0.14),rgb(99_102_241_/_0.07)_44%,transparent_68%)] blur-3xl motion-safe:animate-float-gentle motion-reduce:animate-none" />
+        <div className="absolute -right-[14%] top-[38%] h-[min(68vw,28rem)] w-[min(82vw,34rem)] rounded-full bg-[radial-gradient(ellipse_at_center,rgb(139_92_246_/_0.12),rgb(99_102_241_/_0.06)_48%,transparent_70%)] blur-3xl motion-safe:animate-float-gentle motion-safe:delay-500 motion-reduce:animate-none" />
+        <div className="absolute -bottom-[28%] left-[22%] h-[min(64vw,26rem)] w-[min(78vw,32rem)] rounded-full bg-[radial-gradient(ellipse_at_center,rgb(186_230_253_/_0.35),rgb(129_140_248_/_0.08)_50%,transparent_72%)] blur-3xl motion-safe:animate-float-gentle motion-safe:delay-1000 motion-reduce:animate-none" />
+
+        <div className="absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-indigo-950/[0.035] via-transparent to-transparent" />
+
+        <div
+          className="absolute inset-0 opacity-[0.38]"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgb(100 116 139 / 0.075) 1px, transparent 1px), linear-gradient(90deg, rgb(100 116 139 / 0.075) 1px, transparent 1px)',
+            backgroundSize: '44px 44px',
+            maskImage: 'radial-gradient(ellipse 88% 72% at 50% 42%, black 8%, transparent 70%)',
+            WebkitMaskImage:
+              'radial-gradient(ellipse 88% 72% at 50% 42%, black 8%, transparent 70%)',
+          }}
+        />
+
+        <div className="absolute inset-x-[12%] top-0 h-px bg-gradient-to-r from-transparent via-blue-300/65 to-transparent" />
+        <div className="absolute inset-x-[18%] bottom-0 h-px bg-gradient-to-r from-transparent via-indigo-200/50 to-transparent opacity-90" />
       </div>
-      
-      <div className="max-w-7xl mx-auto relative">
+
+      <div className="relative z-10 mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="text-center mb-20 mt-20">
           <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-5 py-2.5 rounded-full text-sm font-medium mb-8 border border-slate-200">
@@ -338,7 +358,7 @@ export default function TestimonialCarousel() {
         </div>
 
         {/* Bottom Stats */}
-        <div className="mt-20 bg-slate-50 rounded-3xl p-12 border border-slate-200">
+        <div className="mt-20 rounded-3xl border border-slate-200/75 bg-white/80 p-12 shadow-[0_28px_80px_-44px_rgba(30,58,138,0.18)] ring-1 ring-white/95 backdrop-blur-md">
           <div className="text-center mb-12">
             <h3 className="text-2xl font-bold text-slate-900 mb-4">Proven Results Across Industries</h3>
             <p className="text-slate-600 max-w-2xl mx-auto">Our enterprise solutions deliver measurable impact for organizations worldwide</p>
