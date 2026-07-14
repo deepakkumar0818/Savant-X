@@ -47,9 +47,10 @@ export default function ZohoAppPage({ app }: Props) {
   const c = theme.colors;
   const reduced = useReducedMotion();
   const heroRef = useRef<HTMLElement>(null);
-  const heroCtaRef = useRef<HTMLButtonElement>(null);
+  const hasAutoOpened = useRef(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [formAnchor, setFormAnchor] = useState<FormAnchor | null>(null);
+  const [modalPlacement, setModalPlacement] = useState<'anchor' | 'center'>('anchor');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const related = zohoApps.filter((a) => a.slug !== app.slug).slice(0, 4);
 
@@ -66,6 +67,8 @@ export default function ZohoAppPage({ app }: Props) {
   };
 
   const openForm = (e: React.MouseEvent<HTMLButtonElement>) => {
+    hasAutoOpened.current = true;
+    setModalPlacement('anchor');
     setAnchorFromElement(e.currentTarget);
     setIsFormOpen(true);
   };
@@ -78,20 +81,17 @@ export default function ZohoAppPage({ app }: Props) {
   useEffect(() => {
     let cancelled = false;
 
-    const openOnLoad = () => {
-      const el = heroCtaRef.current;
-      if (!el || cancelled) return;
-      setAnchorFromElement(el);
+    const timer = setTimeout(() => {
+      if (cancelled || hasAutoOpened.current) return;
+      hasAutoOpened.current = true;
+      setModalPlacement('center');
+      setFormAnchor(null);
       setIsFormOpen(true);
-    };
-
-    const raf = requestAnimationFrame(() => {
-      requestAnimationFrame(openOnLoad);
-    });
+    }, 10_000);
 
     return () => {
       cancelled = true;
-      cancelAnimationFrame(raf);
+      clearTimeout(timer);
     };
   }, [app.slug]);
 
@@ -238,7 +238,6 @@ export default function ZohoAppPage({ app }: Props) {
                 className="mt-9 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start"
               >
                 <button
-                  ref={heroCtaRef}
                   type="button"
                   onClick={openForm}
                   className="inline-flex items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-base font-semibold text-white shadow-lg transition-all motion-safe:hover:-translate-y-0.5"
@@ -860,6 +859,7 @@ export default function ZohoAppPage({ app }: Props) {
       <ZohoStrategyFormModal
         open={isFormOpen}
         onClose={closeForm}
+        placement={modalPlacement}
         anchor={formAnchor}
         defaultZohoApps={app.name}
         accentFrom={c.gradientFrom}

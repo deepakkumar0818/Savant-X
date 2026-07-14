@@ -1,10 +1,81 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import ZohoStrategyForm from '@/components/zoho/ZohoStrategyForm';
+import ZohoStrategyFormModal from '@/components/zoho/ZohoStrategyFormModal';
+
+const AUTO_OPEN_DELAY_MS = 10_000;
+
+const accentFrom = '#2563eb';
+const accentVia = '#4f46e5';
+const accentTo = '#7c3aed';
+const accentGlow = 'rgba(37, 99, 235, 0.25)';
 
 export default function ZohoIntegrationsPage() {
+  const heroSectionRef = useRef<HTMLElement>(null);
+  const autoTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hasAutoOpened = useRef(false);
+  const [isInHero, setIsInHero] = useState(true);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [modalPlacement, setModalPlacement] = useState<'center' | 'bottom-right'>('bottom-right');
+
+  const openForm = () => {
+    if (isInHero) return;
+    hasAutoOpened.current = true;
+    setModalPlacement('bottom-right');
+    setIsFormOpen(true);
+  };
+
+  const closeForm = () => {
+    setIsFormOpen(false);
+  };
+
+  useEffect(() => {
+    const hero = heroSectionRef.current;
+    if (!hero) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const inHero = entry.isIntersecting && entry.intersectionRatio > 0.4;
+        setIsInHero(inHero);
+        if (inHero) {
+          setIsFormOpen(false);
+        }
+      },
+      { threshold: [0, 0.4, 0.7, 1] }
+    );
+
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (isInHero) {
+      if (autoTimerRef.current) {
+        clearTimeout(autoTimerRef.current);
+        autoTimerRef.current = null;
+      }
+      return;
+    }
+
+    if (hasAutoOpened.current) return;
+
+    autoTimerRef.current = setTimeout(() => {
+      if (hasAutoOpened.current) return;
+      hasAutoOpened.current = true;
+      setModalPlacement('center');
+      setIsFormOpen(true);
+    }, AUTO_OPEN_DELAY_MS);
+
+    return () => {
+      if (autoTimerRef.current) {
+        clearTimeout(autoTimerRef.current);
+        autoTimerRef.current = null;
+      }
+    };
+  }, [isInHero]);
   const trustItems = [
     'End-to-End Zoho Implementation',
     'Custom Apps Built on Zoho',
@@ -67,7 +138,10 @@ export default function ZohoIntegrationsPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero + Strategy Call Form */}
-      <section className="relative overflow-hidden bg-slate-900 pt-8 pb-14 sm:pt-10 sm:pb-16 lg:pt-12 px-6 sm:px-8 lg:px-12">
+      <section
+        ref={heroSectionRef}
+        className="relative overflow-hidden bg-slate-900 pt-8 pb-14 sm:pt-10 sm:pb-16 lg:pt-12 px-6 sm:px-8 lg:px-12"
+      >
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-slate-900 to-indigo-900/20" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
         <div className="relative max-w-6xl mx-auto">
@@ -92,7 +166,10 @@ export default function ZohoIntegrationsPage() {
               </ul>
             </div>
 
-            <div id="form-section" className="rounded-2xl border border-white/10 bg-white p-6 sm:p-8 shadow-xl shadow-black/20">
+            <div
+              id="form-section"
+              className="rounded-2xl border border-white/10 bg-white p-6 sm:p-8 shadow-xl shadow-black/20"
+            >
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2 text-center">
                 Get Your Free Zoho Strategy Call
               </h2>
@@ -141,6 +218,15 @@ export default function ZohoIntegrationsPage() {
               </Link>
             ))}
           </div>
+          <div className="mt-12 text-center">
+            <button
+              type="button"
+              onClick={openForm}
+              className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700"
+            >
+              Get Your Free Strategy Call
+            </button>
+          </div>
         </div>
       </section>
 
@@ -164,6 +250,15 @@ export default function ZohoIntegrationsPage() {
                 <span className="font-medium text-slate-800">{item}</span>
               </div>
             ))}
+          </div>
+          <div className="mt-12 text-center">
+            <button
+              type="button"
+              onClick={openForm}
+              className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-8 py-3.5 text-base font-semibold text-slate-900 shadow-sm transition-all hover:border-blue-200 hover:bg-blue-50"
+            >
+              Fix Your Zoho Setup — Book Free Call
+            </button>
           </div>
         </div>
       </section>
@@ -191,6 +286,15 @@ export default function ZohoIntegrationsPage() {
                 <p className="text-sm text-slate-600 leading-relaxed">{item.desc}</p>
               </div>
             ))}
+          </div>
+          <div className="mt-12 text-center">
+            <button
+              type="button"
+              onClick={openForm}
+              className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700"
+            >
+              Talk to a Zoho Expert
+            </button>
           </div>
         </div>
       </section>
@@ -221,12 +325,13 @@ export default function ZohoIntegrationsPage() {
               </div>
               <p className="text-white font-bold text-lg">Book your free strategy call</p>
               <p className="text-slate-400 text-sm mt-1">No commitment required</p>
-              <Link
-                href="#form-section"
-                className="mt-6 block w-full rounded-xl bg-white py-3.5 text-center font-semibold text-slate-900 hover:bg-slate-100 transition-colors"
+              <button
+                type="button"
+                onClick={openForm}
+                className="mt-6 block w-full rounded-xl bg-white py-3.5 text-center font-semibold text-slate-900 transition-colors hover:bg-slate-100"
               >
                 Book Now
-              </Link>
+              </button>
               <a
                 href="tel:+919888244166"
                 className="mt-3 block text-sm text-slate-400 hover:text-white transition-colors"
@@ -292,8 +397,31 @@ export default function ZohoIntegrationsPage() {
               </div>
             </div>
           ))}
+          <div className="mt-12 text-center">
+            <button
+              type="button"
+              onClick={openForm}
+              className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700"
+            >
+              Start Your Zoho Journey
+            </button>
+          </div>
         </div>
       </section>
+
+      <ZohoStrategyFormModal
+        open={isFormOpen}
+        onClose={closeForm}
+        placement={modalPlacement}
+        accentFrom={accentFrom}
+        accentVia={accentVia}
+        accentTo={accentTo}
+        accentGlow={accentGlow}
+        submitStyle={{
+          background: `linear-gradient(135deg, ${accentFrom}, ${accentTo})`,
+          boxShadow: `0 12px 28px -10px ${accentGlow}`,
+        }}
+      />
 
       <Footer />
     </div>

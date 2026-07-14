@@ -2,7 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { Sparkles, X } from 'lucide-react';
+import { MessageCircle, X } from 'lucide-react';
 import ZohoStrategyForm from '@/components/zoho/ZohoStrategyForm';
 
 export type FormAnchor = {
@@ -25,6 +25,7 @@ type Props = {
   open: boolean;
   onClose: () => void;
   anchor?: FormAnchor | null;
+  placement?: 'anchor' | 'bottom-right' | 'center';
   defaultZohoApps?: string;
   title?: string;
   subtitle?: string;
@@ -37,26 +38,46 @@ type Props = {
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const MODAL_ESTIMATE_HEIGHT = 380;
-const MODAL_MAX_WIDTH = 448;
+const MODAL_MAX_WIDTH = 400;
 const DESKTOP_BREAKPOINT = 1024;
 const DESKTOP_OFFSET_X = 88;
+const VIEWPORT_PAD = 12;
+const BOTTOM_RIGHT_SIDE_PAD = 40;
+const BOTTOM_RIGHT_GAP = 56;
+
+function computeBottomRightLayout(modalW: number, modalH: number): ModalLayout {
+  const left = Math.max(
+    VIEWPORT_PAD,
+    window.innerWidth - modalW - BOTTOM_RIGHT_SIDE_PAD
+  );
+  const top = Math.max(
+    VIEWPORT_PAD,
+    window.innerHeight - modalH - BOTTOM_RIGHT_GAP
+  );
+
+  return {
+    top,
+    left,
+    originX: modalW,
+    originY: modalH,
+  };
+}
 
 function computeModalLayout(anchor: FormAnchor, modalW: number, modalH: number): ModalLayout {
-  const pad = 12;
   const gap = 10;
   const desktopOffsetX = window.innerWidth >= DESKTOP_BREAKPOINT ? DESKTOP_OFFSET_X : 0;
 
   let top = anchor.bottom + gap;
   let left = anchor.left + anchor.width / 2 - modalW / 2 + desktopOffsetX;
 
-  if (top + modalH > window.innerHeight - pad) {
+  if (top + modalH > window.innerHeight - VIEWPORT_PAD) {
     top = anchor.top - modalH - gap;
   }
-  if (top < pad) {
-    top = Math.max(pad, (window.innerHeight - modalH) / 2);
+  if (top < VIEWPORT_PAD) {
+    top = Math.max(VIEWPORT_PAD, (window.innerHeight - modalH) / 2);
   }
 
-  left = Math.max(pad, Math.min(left, window.innerWidth - modalW - pad));
+  left = Math.max(VIEWPORT_PAD, Math.min(left, window.innerWidth - modalW - VIEWPORT_PAD));
 
   const originX = anchor.left + anchor.width / 2 - left;
   const originY = anchor.top + anchor.height / 2 - top;
@@ -84,13 +105,14 @@ export default function ZohoStrategyFormModal({
   open,
   onClose,
   anchor = null,
+  placement = 'anchor',
   defaultZohoApps = '',
   title = 'Get Your Free Zoho Strategy Call',
   submitStyle,
-  accentFrom = '#2563eb',
-  accentVia = '#4f46e5',
-  accentTo = '#7c3aed',
-  accentGlow = 'rgba(37, 99, 235, 0.25)',
+  accentFrom = '#226DB4',
+  accentVia = '#1e5a96',
+  accentTo = '#1a4f82',
+  accentGlow = 'rgba(34, 109, 180, 0.28)',
 }: Props) {
   const reduced = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);
@@ -107,7 +129,11 @@ export default function ZohoStrategyFormModal({
       const modalH = panelRef.current?.offsetHeight ?? MODAL_ESTIMATE_HEIGHT;
       const measuredW = panelRef.current?.offsetWidth ?? modalW;
 
-      if (anchor) {
+      if (placement === 'bottom-right') {
+        setLayout(computeBottomRightLayout(measuredW, modalH));
+      } else if (placement === 'center') {
+        setLayout(computeCenterLayout(measuredW, modalH));
+      } else if (anchor) {
         setLayout(computeModalLayout(anchor, measuredW, modalH));
       } else {
         setLayout(computeCenterLayout(measuredW, modalH));
@@ -121,7 +147,7 @@ export default function ZohoStrategyFormModal({
       cancelAnimationFrame(raf);
       window.removeEventListener('resize', update);
     };
-  }, [open, anchor]);
+  }, [open, anchor, placement]);
 
   useEffect(() => {
     if (!open) return;
@@ -152,74 +178,76 @@ export default function ZohoStrategyFormModal({
             transition={{ duration: 0.2, ease }}
           />
 
-          {/* Panel — anchored near trigger button */}
+          {/* Panel — Zoho-style floating chat widget */}
           <motion.div
             ref={panelRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby="zoho-strategy-modal-title"
-            className="fixed z-[51] w-[calc(100%-1.5rem)] max-w-md overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-2xl"
+            className="fixed z-[51] w-[calc(100%-1.5rem)] max-w-[400px] overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-[0_20px_50px_-12px_rgba(15,23,42,0.28),0_8px_20px_-8px_rgba(34,109,180,0.2)]"
             style={{
               top: layout?.top ?? -9999,
               left: layout?.left ?? -9999,
               visibility: layout ? 'visible' : 'hidden',
               transformOrigin: layout ? `${layout.originX}px ${layout.originY}px` : 'center center',
-              boxShadow: `0 24px 60px -20px ${accentGlow}, 0 12px 32px -16px rgba(15,23,42,0.2)`,
             }}
-            initial={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.4 }}
-            animate={reduced ? { opacity: 1 } : { opacity: 1, scale: 1 }}
-            exit={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.5 }}
+            initial={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.92, y: 16 }}
+            animate={reduced ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0 }}
+            exit={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.94, y: 12 }}
             transition={
               reduced
                 ? { duration: 0.2 }
-                : { type: 'spring', stiffness: 420, damping: 30, mass: 0.75 }
+                : { type: 'spring', stiffness: 380, damping: 28, mass: 0.8 }
             }
           >
-            <div className="relative overflow-hidden">
-              <motion.div
-                className="h-1 w-full"
-                style={{
-                  background: `linear-gradient(90deg, ${accentFrom}, ${accentVia}, ${accentTo}, ${accentFrom})`,
-                  backgroundSize: '200% 100%',
-                }}
-                animate={reduced ? undefined : { backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                transition={reduced ? undefined : { duration: 4, repeat: Infinity, ease: 'linear' }}
+            {/* Browser-style header — inspired by Zoho product UI */}
+            <div
+              className="relative overflow-hidden px-4 pb-3.5 pt-3 text-white"
+              style={{
+                background: `linear-gradient(135deg, ${accentFrom} 0%, ${accentVia} 55%, ${accentTo} 100%)`,
+              }}
+            >
+              <div
+                className="pointer-events-none absolute -right-6 -top-8 h-24 w-24 rounded-full bg-white/10 blur-2xl"
+                aria-hidden
               />
+              <div className="mb-2.5 flex items-center gap-1.5" aria-hidden>
+                <span className="h-2.5 w-2.5 rounded-full bg-white/30" />
+                <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
+                <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
+              </div>
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <div className="mb-1 flex items-center gap-2">
+                    <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-white/15 ring-1 ring-white/20">
+                      <MessageCircle className="h-4 w-4" />
+                    </span>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/75">
+                      SavantX
+                    </p>
+                  </div>
+                  <h2 id="zoho-strategy-modal-title" className="text-[15px] font-bold leading-snug">
+                    {title}
+                  </h2>
+                  <p className="mt-1 text-[11px] leading-relaxed text-white/80">
+                    Official Zoho Development Partner · Free 30-min strategy call
+                  </p>
+                </div>
+                <motion.button
+                  type="button"
+                  onClick={onClose}
+                  className="shrink-0 rounded-lg bg-white/10 p-1.5 text-white/90 ring-1 ring-white/15 transition-colors hover:bg-white/20"
+                  aria-label="Close"
+                  whileHover={reduced ? undefined : { scale: 1.05 }}
+                  whileTap={reduced ? undefined : { scale: 0.95 }}
+                >
+                  <X className="h-4 w-4" />
+                </motion.button>
+              </div>
             </div>
 
             <motion.div
-              className="flex items-center justify-between gap-3 border-b border-slate-100 px-4 py-3"
-              variants={reduced ? undefined : contentStagger}
-              initial={reduced ? false : 'hidden'}
-              animate={reduced ? undefined : 'show'}
-            >
-              <motion.div variants={reduced ? undefined : contentItem} className="min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-indigo-100 bg-indigo-50/80 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-indigo-700">
-                    <Sparkles className="h-2.5 w-2.5" />
-                    Free call
-                  </span>
-                  <h2 id="zoho-strategy-modal-title" className="truncate text-base font-bold text-slate-900">
-                    {title}
-                  </h2>
-                </div>
-              </motion.div>
-              <motion.button
-                type="button"
-                onClick={onClose}
-                className="shrink-0 rounded-md p-1 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
-                aria-label="Close"
-                variants={reduced ? undefined : contentItem}
-                whileHover={reduced ? undefined : { scale: 1.08, rotate: 90 }}
-                whileTap={reduced ? undefined : { scale: 0.92 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-              >
-                <X className="h-4 w-4" />
-              </motion.button>
-            </motion.div>
-
-            <motion.div
-              className="px-4 py-3"
+              className="bg-gradient-to-b from-slate-50/80 to-white px-4 py-3.5"
               variants={reduced ? undefined : contentStagger}
               initial={reduced ? false : 'hidden'}
               animate={reduced ? undefined : 'show'}
@@ -228,8 +256,9 @@ export default function ZohoStrategyFormModal({
                 <ZohoStrategyForm
                   key={`${open}-${defaultZohoApps}`}
                   defaultZohoApps={defaultZohoApps}
-                  submitStyle={submitStyle}
-                  compact
+                  popup
+                  accentFrom={accentFrom}
+                  accentTo={accentTo}
                 />
               </motion.div>
             </motion.div>
