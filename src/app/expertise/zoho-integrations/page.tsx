@@ -1,63 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
+import ZohoStrategyForm from '@/components/zoho/ZohoStrategyForm';
 
 export default function ZohoIntegrationsPage() {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    companyName: '',
-    email: '',
-    phone: '',
-    zohoApps: '',
-    lookingToBuild: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    setSubmitStatus('idle');
-    setErrorMessage('');
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-    setErrorMessage('');
-    try {
-      const res = await fetch('/api/zoho-form', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fullName: formData.fullName,
-          companyName: formData.companyName,
-          email: formData.email,
-          phone: formData.phone,
-          zohoApps: formData.zohoApps,
-          requirement: formData.lookingToBuild,
-        }),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        setSubmitStatus('error');
-        setErrorMessage(data.error || 'Something went wrong. Please try again.');
-        return;
-      }
-      setSubmitStatus('success');
-      setFormData({ fullName: '', companyName: '', email: '', phone: '', zohoApps: '', lookingToBuild: '' });
-    } catch {
-      setSubmitStatus('error');
-      setErrorMessage('Network error. Please try again or contact us directly.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   const trustItems = [
     'End-to-End Zoho Implementation',
     'Custom Apps Built on Zoho',
@@ -66,16 +13,16 @@ export default function ZohoIntegrationsPage() {
   ];
 
   const zohoApps = [
-    { name: 'Zoho CRM', iconUrl: '/images/zoho-crm.webp' },
-    { name: 'Zoho Books', iconUrl: '/images/zohoBooks.png' },
-    { name: 'Zoho Creator', iconUrl: '/images/ZohoCreator.png' },
-    { name: 'Zoho Recruit', iconUrl: '/images/ZohoRecruit.png' },
-    { name: 'Zoho Analytics', iconUrl: '/images/ZohoAnalytics.png' },
-    { name: 'Zoho Desk', iconUrl: '/images/ZohoDesk.png' },
-    { name: 'Zoho SalesIQ', iconUrl: '/images/ZohoSalesiq.png' },
-    { name: 'Zoho Campaigns', iconUrl: '/images/ZohoCampains.png' },
-    { name: 'Zoho Inventory', iconUrl: '/images/ZohoInventary.png' },
-    { name: 'Zoho Projects', iconUrl: '/images/ZohoProjects.png' },
+    { name: 'Zoho CRM', iconUrl: '/images/zoho-crm.webp', slug: 'zoho-crm' },
+    { name: 'Zoho Books', iconUrl: '/images/zohoBooks.png', slug: 'zoho-books' },
+    { name: 'Zoho Creator', iconUrl: '/images/ZohoCreator.png', slug: 'zoho-creator' },
+    { name: 'Zoho Recruit', iconUrl: '/images/ZohoRecruit.png', slug: 'zoho-recruit' },
+    { name: 'Zoho Analytics', iconUrl: '/images/ZohoAnalytics.png', slug: 'zoho-analytics' },
+    { name: 'Zoho Desk', iconUrl: '/images/ZohoDesk.png', slug: 'zoho-desk' },
+    { name: 'Zoho SalesIQ', iconUrl: '/images/ZohoSalesiq.png', slug: 'zoho-salesiq' },
+    { name: 'Zoho Campaigns', iconUrl: '/images/ZohoCampains.png', slug: 'zoho-campaigns' },
+    { name: 'Zoho Inventory', iconUrl: '/images/ZohoInventary.png', slug: 'zoho-inventory' },
+    { name: 'Zoho Projects', iconUrl: '/images/ZohoProjects.png', slug: 'zoho-projects' },
   ];
 
   const struggles = [
@@ -119,35 +66,43 @@ export default function ZohoIntegrationsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-slate-900 pt-28 pb-20 sm:pt-32 sm:pb-24 px-6 sm:px-8 lg:px-12">
+      {/* Hero + Strategy Call Form */}
+      <section className="relative overflow-hidden bg-slate-900 pt-8 pb-14 sm:pt-10 sm:pb-16 lg:pt-12 px-6 sm:px-8 lg:px-12">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-slate-900 to-indigo-900/20" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-        <div className="relative max-w-4xl mx-auto text-center">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-blue-500/20 text-blue-300 text-sm font-medium border border-blue-500/30 mb-8">
-            Official Zoho Development Partner
-          </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.15] mb-6">
-            Complete Zoho Setup, Customization & App Development
-          </h1>
-          <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-10">
-            From CRM to Creator, Books to Recruit — we design, build and automate your entire Zoho ecosystem.
-          </p>
-          <Link
-            href="tel:+919888244166"
-            className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-base shadow-lg shadow-blue-500/25 transition-all duration-200"
-          >
-            Get Free Zoho Strategy Call
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-          </Link>
-          <ul className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-4 text-slate-400 text-sm font-medium">
-            {trustItems.map((item, i) => (
-              <li key={i} className="flex items-center gap-2">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 text-xs">✓</span>
-                {item}
-              </li>
-            ))}
-          </ul>
+        <div className="relative max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-10 items-center">
+            <div className="text-center lg:text-left">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-blue-500/20 text-blue-300 text-sm font-medium border border-blue-500/30 mb-4">
+                Official Zoho Development Partner
+              </span>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.15] mb-4">
+                Complete Zoho Setup, Customization & App Development
+              </h1>
+              <p className="text-lg sm:text-xl text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-6">
+                From CRM to Creator, Books to Recruit — we design, build and automate your entire Zoho ecosystem.
+              </p>
+              <ul className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-col gap-3 sm:gap-x-6 sm:gap-y-3 lg:gap-3 text-slate-400 text-sm font-medium items-center lg:items-start">
+                {trustItems.map((item, i) => (
+                  <li key={i} className="flex items-center gap-2">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 text-xs">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div id="form-section" className="rounded-2xl border border-white/10 bg-white p-6 sm:p-8 shadow-xl shadow-black/20">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2 text-center">
+                Get Your Free Zoho Strategy Call
+              </h2>
+              <p className="text-slate-600 text-center mb-6 text-sm">
+                Share a few details and we&apos;ll reach out to discuss your needs.
+              </p>
+
+              <ZohoStrategyForm />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -162,9 +117,10 @@ export default function ZohoIntegrationsPage() {
             We help businesses implement and customize the following — and fully integrate them into one powerful ecosystem.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-            {zohoApps.map((app, i) => (
-              <div
-                key={i}
+            {zohoApps.map((app) => (
+              <Link
+                key={app.slug}
+                href={`/expertise/zoho-integrations/${app.slug}/`}
                 className="group flex flex-col items-center rounded-2xl border border-slate-200 bg-slate-50/50 p-6 text-center transition-all duration-200 hover:border-blue-200 hover:bg-blue-50/50 hover:shadow-md"
               >
                 <div className="mb-4 flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-slate-200/80 group-hover:ring-blue-200 overflow-hidden shrink-0">
@@ -176,8 +132,13 @@ export default function ZohoIntegrationsPage() {
                     />
                   </div>
                 </div>
-                <span className="text-sm font-semibold text-slate-800">{app.name}</span>
-              </div>
+                <span className="text-sm font-semibold text-slate-800 group-hover:text-blue-700">
+                  {app.name}
+                </span>
+                <span className="mt-2 text-xs font-medium text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                  Learn more →
+                </span>
+              </Link>
             ))}
           </div>
         </div>
@@ -261,11 +222,17 @@ export default function ZohoIntegrationsPage() {
               <p className="text-white font-bold text-lg">Book your free strategy call</p>
               <p className="text-slate-400 text-sm mt-1">No commitment required</p>
               <Link
-                href="tel:+919888244166"
+                href="#form-section"
                 className="mt-6 block w-full rounded-xl bg-white py-3.5 text-center font-semibold text-slate-900 hover:bg-slate-100 transition-colors"
               >
                 Book Now
               </Link>
+              <a
+                href="tel:+919888244166"
+                className="mt-3 block text-sm text-slate-400 hover:text-white transition-colors"
+              >
+                Or call +91 98882 44166
+              </a>
             </div>
           </div>
         </div>
@@ -325,120 +292,6 @@ export default function ZohoIntegrationsPage() {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Form */}
-      <section id="form-section" className="py-20 sm:py-24 px-6 sm:px-8 lg:px-12 bg-white">
-        <div className="max-w-lg mx-auto">
-          <div className="rounded-2xl border border-slate-200 bg-slate-50/50 p-8 sm:p-10 shadow-sm">
-            <h2 className="text-2xl font-bold text-slate-900 mb-2 text-center">
-              Get Your Free Zoho Strategy Call
-            </h2>
-            <p className="text-slate-600 text-center mb-8 text-sm">
-              Share a few details and we&apos;ll reach out to discuss your needs.
-            </p>
-
-            <form onSubmit={handleSubmit} className="space-y-5" suppressHydrationWarning>
-              <div>
-                <label className="mb-1.5 block text-sm font-semibold text-slate-700">Full Name *</label>
-                <input
-                  type="text"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                  placeholder="Your name"
-                  suppressHydrationWarning
-                />
-              </div>
-              <div>
-                <label className="mb-1.5 block text-sm font-semibold text-slate-700">Company Name *</label>
-                <input
-                  type="text"
-                  name="companyName"
-                  value={formData.companyName}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                  placeholder="Company name"
-                  suppressHydrationWarning
-                />
-              </div>
-              <div>
-                <label className="mb-1.5 block text-sm font-semibold text-slate-700">Email *</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                  placeholder="you@company.com"
-                  suppressHydrationWarning
-                />
-              </div>
-              <div>
-                <label className="mb-1.5 block text-sm font-semibold text-slate-700">Phone *</label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                  placeholder="+1 234 567 8900"
-                  suppressHydrationWarning
-                />
-              </div>
-              <div>
-                <label className="mb-1.5 block text-sm font-semibold text-slate-700">Which Zoho Apps Are You Using?</label>
-                <input
-                  type="text"
-                  name="zohoApps"
-                  value={formData.zohoApps}
-                  onChange={handleInputChange}
-                  className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                  placeholder="e.g. CRM, Books, Creator"
-                  suppressHydrationWarning
-                />
-              </div>
-              <div>
-                <label className="mb-1.5 block text-sm font-semibold text-slate-700">What Are You Looking To Build?</label>
-                <textarea
-                  name="lookingToBuild"
-                  value={formData.lookingToBuild}
-                  onChange={handleInputChange}
-                  rows={3}
-                  className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 resize-none"
-                  placeholder="Brief description of your goals"
-                  suppressHydrationWarning
-                />
-              </div>
-              {submitStatus === 'success' && (
-                <p className="rounded-xl bg-emerald-50 border border-emerald-200 py-3 px-4 text-sm font-medium text-emerald-800 text-center">
-                  Thank you! We&apos;ve received your request and will reach out soon.
-                </p>
-              )}
-              {submitStatus === 'error' && (
-                <p className="rounded-xl bg-red-50 border border-red-200 py-3 px-4 text-sm font-medium text-red-800 text-center">
-                  {errorMessage}
-                </p>
-              )}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full rounded-xl bg-blue-600 py-4 font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 disabled:opacity-70 disabled:cursor-not-allowed"
-                suppressHydrationWarning
-              >
-                {isSubmitting ? 'Submitting...' : 'Submit'}
-              </button>
-            </form>
-            <p className="mt-5 text-center text-xs text-slate-500">
-              We use your details only to contact you about your Zoho strategy. We do not share them with third parties.
-            </p>
-          </div>
         </div>
       </section>
 

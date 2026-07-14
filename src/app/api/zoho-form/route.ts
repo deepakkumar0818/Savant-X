@@ -1,61 +1,84 @@
 import { NextRequest, NextResponse } from 'next/server';
-
-const GOOGLE_SCRIPT_URL =
-  'https://script.google.com/macros/s/AKfycbxf1yi29E6UeYzg23FBr6dzheMllWVg-xLZTa93sTDujBvrkZOfybbRtUxkJgXRj8Pj/exec';
+import { submitZohoLeadToGoogleSheet } from '@/lib/zohoGoogleSheet';
+import { submitZohoLeadToCrm, validateZohoLeadPayload } from '@/lib/zohoCrmWebToLead';
 
 /**
- * Proxies the Zoho form submission to the Google Apps Script web app.
- * Sends as form-urlencoded (Google Apps Script doPost(e) reads e.parameter).
- * Avoids CORS and 401 from JSON POST.
+ * Proxies Zoho strategy form submissions to Zoho CRM and Google Sheets in parallel.
  */
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { fullName, companyName, email, phone, zohoApps, requirement } = body;
+    const {
+      fullName,
+      companyName,
+      email,
+      phone,
+      zohoApps,
+      requirement,
+      honeypot,
+      service,
+    } = body;
 
-    if (!fullName || !companyName || !email || !phone) {
-      return NextResponse.json(
-        { error: 'Missing required fields: Full Name, Company Name, Email, Phone' },
-        { status: 400 }
-      );
+    const payload = {
+      lastName: String(fullName ?? ''),
+      company: String(companyName ?? ''),
+      email: String(email ?? ''),
+      mobile: String(phone ?? ''),
+      description: String(requirement ?? ''),
+      interestZohoApps: String(zohoApps ?? ''),
+      honeypot: String(honeypot ?? ''),
+      service: service ? String(service) : undefined,
+    };
+
+    const validationError = validateZohoLeadPayload(payload);
+    if (validationError) {
+      return NextResponse.json({ error: validationError }, { status: 400 });
     }
 
-    const params = new URLSearchParams({
-      fullName: String(fullName),
-      companyName: String(companyName),
-      email: String(email),
-      phone: String(phone),
-      zohoApps: String(zohoApps ?? ''),
-      requirement: String(requirement ?? ''),
-    });
+    const sheetPayload = {
+      fullName: payload.lastName,
+      companyName: payload.company,
+      email: payload.email,
+      phone: payload.mobile,
+      zohoApps: payload.interestZohoApps,
+      requirement: payload.description,
+    };
 
-    const res = await fetch(GOOGLE_SCRIPT_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: params.toString(),
-    });
+    const [crmResult, sheetResult] = await Promise.allSettled([
+      submitZohoLeadToCrm(payload),
+      submitZohoLeadToGoogleSheet(sheetPayload),
+    ]);
 
-    const text = await res.text();
-    let data: unknown = {};
-    try {
-      data = text ? JSON.parse(text) : {};
-    } catch {
-      data = { message: text || 'Submitted' };
+    const crm =
+      crmResult.status === 'fulfilled'
+        ? crmResult.value
+        : { ok: false, message: 'Zoho CRM submission failed.' };
+    const sheet =
+      sheetResult.status === 'fulfilled'
+        ? sheetResult.value
+        : { ok: false, message: 'Google Sheet submission failed.' };
+
+    if (!crm.ok) {
+      console.error('Zoho CRM submission failed:', crm.message);
+    }
+    if (!sheet.ok) {
+      console.error('Google Sheet submission failed:', sheet.message);
     }
 
-    // Google Script may return 401 if deployed as "Only myself"; treat as success so form doesn't show error
-    if (res.status === 401) {
-      return NextResponse.json({ message: 'Form submitted successfully.' });
+    if (crm.ok) {
+      return NextResponse.json({ message: crm.message });
     }
 
-    if (!res.ok) {
-      return NextResponse.json(
-        { error: (data as { error?: string })?.error || 'Form submission failed.' },
-        { status: res.status }
-      );
+    if (sheet.ok) {
+      return NextResponse.json({
+        message: sheet.message || "Thank you! We've received your request and will reach out soon.",
+      });
     }
 
-    return NextResponse.json(data);
+    return NextResponse.json(
+      { error: crm.message || sheet.message || 'Submission failed. Please try again.' },
+      { status: 500 }
+    );
   } catch (err) {
     console.error('Zoho form proxy error:', err);
     return NextResponse.json(

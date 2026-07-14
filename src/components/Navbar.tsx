@@ -24,6 +24,7 @@ const defaultNavItems: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Work', href: '/work' },
+  { label: 'Zoho', href: '/expertise/zoho-integrations' },
   { 
     label: 'Expertise', 
     href: '/expertise',
@@ -68,23 +69,49 @@ export default function Navbar({
   
   // Function to check if a nav item is active
   const isItemActive = (item: NavItem) => {
+    const current = normalizePath(pathname);
+    const href = normalizePath(item.href);
+
     // Exact match for home page
-    if (item.href === '/' && (pathname === '/' || pathname === '' || normalizePath(pathname) === '/')) {
+    if (href === '/' && (current === '/' || current === '')) {
       return true;
     }
-    
-    // For non-home pages, check if pathname starts with the item's href
-    if (item.href !== '/' && pathname.startsWith(item.href)) {
+
+    // Zoho is a top-level item under /expertise/zoho-integrations — match it specifically
+    if (href === '/expertise/zoho-integrations') {
+      return current === href || current.startsWith(`${href}/`);
+    }
+
+    // Expertise should not stay active on dedicated Zoho routes
+    if (href === '/expertise') {
+      if (current.startsWith('/expertise/zoho-integrations')) {
+        return false;
+      }
+      if (current === href || current.startsWith(`${href}/`)) {
+        return true;
+      }
+      if (item.children) {
+        return item.children.some((child) => {
+          const childHref = normalizePath(child.href);
+          return current === childHref || current.startsWith(`${childHref}/`);
+        });
+      }
+      return false;
+    }
+
+    // For other non-home pages, check if pathname starts with the item's href
+    if (href !== '/' && (current === href || current.startsWith(`${href}/`))) {
       return true;
     }
-    
+
     // Check if any child item matches (for dropdown menus)
     if (item.children) {
-      return item.children.some(child => 
-        child.href === pathname || pathname.startsWith(child.href)
-      );
+      return item.children.some((child) => {
+        const childHref = normalizePath(child.href);
+        return current === childHref || current.startsWith(`${childHref}/`);
+      });
     }
-    
+
     return false;
   };
 
