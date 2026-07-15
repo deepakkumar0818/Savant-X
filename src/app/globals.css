@@ -25,7 +25,7 @@
   --color-border: var(--border);
   --color-border-light: var(--border-light);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -47,11 +47,51 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 html {
-  overflow-x: hidden;
+  overflow-x: clip;
+  scroll-behavior: auto;
+}
+
+/* Pause decorative motion while scrolling — keeps the main thread free for scroll */
+html[data-scrolling='true'] .motion-safe\:animate-hero-blob-a,
+html[data-scrolling='true'] .motion-safe\:animate-hero-blob-b,
+html[data-scrolling='true'] .animate-hero-blob-a,
+html[data-scrolling='true'] .animate-hero-blob-b,
+html[data-scrolling='true'] .animate-hero-radial-breathe,
+html[data-scrolling='true'] .animate-hero-conic-slow,
+html[data-scrolling='true'] .animate-hero-grid-pan,
+html[data-scrolling='true'] .animate-hero-mesh-gradient,
+html[data-scrolling='true'] .animate-hero-heading-spotlight,
+html[data-scrolling='true'] .animate-hero-beam-premium,
+html[data-scrolling='true'] .animate-hero-beam-premium-delayed,
+html[data-scrolling='true'] .animate-hero-particle-drift,
+html[data-scrolling='true'] .animate-hero-noise-shift,
+html[data-scrolling='true'] .animate-hero-card-float-soft,
+html[data-scrolling='true'] .animate-hero-gradient-text-shift,
+html[data-scrolling='true'] .animate-float-gentle,
+html[data-scrolling='true'] .animate-cta-gradient-flow,
+html[data-scrolling='true'] .animate-cta-conic-slow,
+html[data-scrolling='true'] .animate-cta-orb-a,
+html[data-scrolling='true'] .animate-cta-orb-b,
+html[data-scrolling='true'] .animate-cta-orb-soft,
+html[data-scrolling='true'] .animate-cta-micro-drift,
+html[data-scrolling='true'] .animate-cta-shimmer-sweep,
+html[data-scrolling='true'] .animate-cta-shimmer-sweep-2,
+html[data-scrolling='true'] .animate-cta-border-glow,
+html[data-scrolling='true'] .animate-cta-dust-a,
+html[data-scrolling='true'] .animate-cta-dust-b,
+html[data-scrolling='true'] .animate-cta-dust-c,
+html[data-scrolling='true'] [class*='animate-'] {
+  animation-play-state: paused !important;
+}
+
+/* Contain paint for large sections so scrolling doesn't repaint the whole page */
+.scroll-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
 }
 
 /* 3D Floating Animations */
@@ -1169,11 +1209,8 @@ html {
   inset: 0;
   pointer-events: none;
   z-index: 4;
-  box-shadow:
-    inset 0 0 0 1px rgb(79 70 229 / 0.07),
-    inset 0 0 100px -48px rgb(37 99 235 / 0.07),
-    inset 0 -120px 160px -100px rgb(124 58 237 / 0.05);
-  animation: solutions-frame-glow 14s ease-in-out infinite;
+  box-shadow: inset 0 0 0 1px rgb(79 70 229 / 0.06);
+  animation: none;
 }
 
 /* Home mega-section CTA banner — gradient flow + light pools */

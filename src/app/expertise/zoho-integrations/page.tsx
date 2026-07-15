@@ -1,12 +1,17 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import ZohoStrategyForm from '@/components/zoho/ZohoStrategyForm';
-import ZohoStrategyFormModal from '@/components/zoho/ZohoStrategyFormModal';
 
-const AUTO_OPEN_DELAY_MS = 10_000;
+const ZohoStrategyFormModal = dynamic(
+  () => import('@/components/zoho/ZohoStrategyFormModal'),
+  { ssr: false }
+);
+
+const AUTO_OPEN_DELAY_MS = 25_000;
 
 const accentFrom = '#2563eb';
 const accentVia = '#4f46e5';

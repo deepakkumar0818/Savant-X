@@ -17,10 +17,16 @@ import {
   Zap,
 } from 'lucide-react';
 import Footer from '@/components/Footer';
-import ZohoStrategyFormModal, { type FormAnchor } from '@/components/zoho/ZohoStrategyFormModal';
+import type { FormAnchor } from '@/components/zoho/ZohoStrategyFormModal';
 import type { ZohoApp } from '@/data/zohoApps';
 import { zohoApps } from '@/data/zohoApps';
 import { getZohoAppTheme } from '@/data/zohoAppThemes';
+import dynamic from 'next/dynamic';
+
+const ZohoStrategyFormModal = dynamic(
+  () => import('@/components/zoho/ZohoStrategyFormModal'),
+  { ssr: false }
+);
 
 const featureIcons = [Layers, Workflow, Zap, Target, Sparkles, CircleDot];
 
@@ -87,7 +93,7 @@ export default function ZohoAppPage({ app }: Props) {
       setModalPlacement('center');
       setFormAnchor(null);
       setIsFormOpen(true);
-    }, 10_000);
+    }, 25_000);
 
     return () => {
       cancelled = true;

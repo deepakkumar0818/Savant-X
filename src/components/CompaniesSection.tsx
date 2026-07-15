@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
 const companyNames = [
@@ -17,10 +17,25 @@ const companyNames = [
 const SLOT_COUNT = 5;
 
 export default function CompaniesSection() {
+  const sectionRef = useRef<HTMLElement>(null);
   const [offset, setOffset] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { rootMargin: '80px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!inView) return;
+
     let revealTimeout: ReturnType<typeof setTimeout>;
 
     const interval = setInterval(() => {
@@ -35,10 +50,13 @@ export default function CompaniesSection() {
       clearInterval(interval);
       clearTimeout(revealTimeout);
     };
-  }, []);
+  }, [inView]);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/80 to-indigo-50/90 px-6 py-20 pb-24 sm:px-8 sm:pb-28 lg:px-12 lg:pb-32">
+    <section
+      ref={sectionRef}
+      className="scroll-section relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/80 to-indigo-50/90 px-6 py-20 pb-24 sm:px-8 sm:pb-28 lg:px-12 lg:pb-32"
+    >
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
         <div className="absolute -right-40 -top-40 h-80 w-80 rounded-full bg-blue-200/25 blur-3xl motion-safe:animate-float-gentle" />
         <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-indigo-200/25 blur-3xl motion-safe:animate-float-gentle motion-safe:delay-500" />

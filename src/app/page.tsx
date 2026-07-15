@@ -1,20 +1,29 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import dynamic from 'next/dynamic';
 import { motion, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, Building2, Cpu, CircuitBoard, Eye, Puzzle, Smartphone, Sparkles } from 'lucide-react';
 import Footer from '@/components/Footer';
-import CompaniesSection from '@/components/CompaniesSection';
-import TestimonialCarousel from '@/components/TestimonialCarousel';
 import AnimatedCounter from '@/components/AnimatedCounter';
-import HeroWorkflowEditor from '@/components/HeroWorkflowEditor';
-import AboutExcellenceSection from '@/components/AboutExcellenceSection';
-import SolutionsMegaSectionBackdrop, {
-  useSolutionsAmbientMotion,
-} from '@/components/solutions/SolutionsMegaSectionBackdrop';
+import SolutionsMegaSectionBackdrop from '@/components/solutions/SolutionsMegaSectionBackdrop';
 import HomeMegaSectionCTA from '@/components/HomeMegaSectionCTA';
 import HeroPremiumBackdrop from '@/components/hero/HeroPremiumBackdrop';
+
+const HeroWorkflowEditor = dynamic(() => import('@/components/HeroWorkflowEditor'), {
+  ssr: false,
+  loading: () => (
+    <div
+      className="mx-auto h-[min(28rem,70vw)] w-full max-w-lg animate-pulse rounded-2xl bg-slate-100/90 ring-1 ring-slate-200/80 lg:ml-auto lg:mr-0"
+      aria-hidden
+    />
+  ),
+});
+
+const AboutExcellenceSection = dynamic(() => import('@/components/AboutExcellenceSection'));
+const CompaniesSection = dynamic(() => import('@/components/CompaniesSection'));
+const TestimonialCarousel = dynamic(() => import('@/components/TestimonialCarousel'));
 
 const heroShellVariants = {
   hidden: {},
@@ -45,7 +54,7 @@ export default function Home() {
   });
   const [heroGridGlow, setHeroGridGlow] = useState(false);
   const heroSectionRef = useRef<HTMLElement>(null);
-  const solutionsAmbient = useSolutionsAmbientMotion();
+  const heroPointerRaf = useRef(0);
   const reducedMotionPreference = useReducedMotion();
 
   const handleConsultationInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -120,22 +129,6 @@ export default function Home() {
       ]
     },
     {
-      title: "Enterprise Solutions",
-      description: "Comprehensive enterprise platforms including CRM, ERP manufacturing (which we do extensively), and custom business applications. We focus on understanding your business deeply so every solution fits your operations.",
-      icon: (
-        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-        </svg>
-      ),
-      gradient: "from-emerald-500 to-teal-600",
-      features: [
-        { icon: "🏭", title: "ERP & Manufacturing", desc: "Extensive ERP implementation" },
-        { icon: "🏢", title: "CRM Systems", desc: "Customer management" },
-        { icon: "📈", title: "Business Analytics", desc: "Performance insights" },
-        { icon: "🎯", title: "Understand Your Business", desc: "Solutions that fit" }
-      ]
-    },
-    {
       title: "Zoho Integration",
       description: "Seamless integration with Zoho's business suite including CRM customization, Creator apps, and workflow automation.",
       icon: (
@@ -149,6 +142,22 @@ export default function Home() {
         { icon: "🛠️", title: "Creator Apps", desc: "Custom applications" },
         { icon: "🔄", title: "Workflow Automation", desc: "Process optimization" },
         { icon: "🔗", title: "Third-party Integration", desc: "Seamless connectivity" }
+      ]
+    },
+    {
+      title: "Enterprise Solutions",
+      description: "Comprehensive enterprise platforms including CRM, ERP manufacturing (which we do extensively), and custom business applications. We focus on understanding your business deeply so every solution fits your operations.",
+      icon: (
+        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+      ),
+      gradient: "from-emerald-500 to-teal-600",
+      features: [
+        { icon: "🏭", title: "ERP & Manufacturing", desc: "Extensive ERP implementation" },
+        { icon: "🏢", title: "CRM Systems", desc: "Customer management" },
+        { icon: "📈", title: "Business Analytics", desc: "Performance insights" },
+        { icon: "🎯", title: "Understand Your Business", desc: "Solutions that fit" }
       ]
     }
   ];
@@ -234,13 +243,18 @@ export default function Home() {
     if (heroGlowReducedMotion()) return;
     const el = heroSectionRef.current;
     if (!el) return;
-    const r = el.getBoundingClientRect();
-    const x = ((e.clientX - r.left) / Math.max(r.width, 1)) * 100;
-    const y = ((e.clientY - r.top) / Math.max(r.height, 1)) * 100;
-    el.style.setProperty('--hero-gx', `${x}%`);
-    el.style.setProperty('--hero-gy', `${y}%`);
-    el.style.setProperty('--hero-px', String(Math.min(1, Math.max(0, x / 100))));
-    el.style.setProperty('--hero-py', String(Math.min(1, Math.max(0, y / 100))));
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+    cancelAnimationFrame(heroPointerRaf.current);
+    heroPointerRaf.current = requestAnimationFrame(() => {
+      const r = el.getBoundingClientRect();
+      const x = ((clientX - r.left) / Math.max(r.width, 1)) * 100;
+      const y = ((clientY - r.top) / Math.max(r.height, 1)) * 100;
+      el.style.setProperty('--hero-gx', `${x}%`);
+      el.style.setProperty('--hero-gy', `${y}%`);
+      el.style.setProperty('--hero-px', String(Math.min(1, Math.max(0, x / 100))));
+      el.style.setProperty('--hero-py', String(Math.min(1, Math.max(0, y / 100))));
+    });
   };
 
   const handleHeroPointerLeave = () => {
@@ -255,7 +269,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden overflow-y-auto bg-white font-sans text-slate-900 antialiased">
+    <div className="relative min-h-screen overflow-x-clip overflow-y-auto bg-white font-sans text-slate-900 antialiased">
       {/* Hero */}
       <section
         ref={heroSectionRef}
@@ -382,39 +396,29 @@ export default function Home() {
 
       {/* Why Choose SavantX — services + tech */}
       <section
-        className="solutions-mega-section-ring relative isolate z-10 overflow-hidden py-12 sm:py-16 lg:py-20 px-4 sm:px-8 lg:px-12"
-        {...solutionsAmbient.handlers}
+        className="solutions-mega-section-ring scroll-section relative isolate z-10 overflow-hidden py-12 sm:py-16 lg:py-20 px-4 sm:px-8 lg:px-12"
       >
-        <SolutionsMegaSectionBackdrop
-          spotlight={solutionsAmbient.spotlight}
-          parallax={solutionsAmbient.parallax}
-        />
+        <SolutionsMegaSectionBackdrop />
 
-        <motion.div
-          className="relative z-10 mx-auto max-w-7xl"
-          initial={{ opacity: reducedMotionPreference === true ? 1 : 0, y: reducedMotionPreference === true ? 0 : 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-90px 0px -72px 0px' }}
-          transition={{ duration: reducedMotionPreference === true ? 0 : 0.88, ease: [0.22, 1, 0.36, 1] }}
-        >
+        <div className="relative z-10 mx-auto max-w-7xl">
           {/* Section Header */}
           <div className="mb-12 text-center sm:mb-16 lg:mb-20">
             <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] backdrop-blur-sm sm:text-sm">
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 text-white shadow-inner">
-                <svg className="h-3.5 w-3.5 motion-safe:animate-pulse" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
               </span>
               Why Choose SavantX?
             </p>
-            <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[3.25rem] lg:leading-[1.15] animate-fade-in-up">
+            <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[3.25rem] lg:leading-[1.15]">
               Excellence in Every
-              <span className="animate-hero-gradient-text-shift bg-[length:200%_auto] bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
                 {' '}
                 Solution
               </span>
             </h2>
-            <p className="mx-auto mt-5 max-w-3xl px-2 text-base leading-relaxed text-slate-600 sm:text-lg lg:text-xl animate-fade-in-up delay-200">
+            <p className="mx-auto mt-5 max-w-3xl px-2 text-base leading-relaxed text-slate-600 sm:text-lg lg:text-xl">
               We learn how your business runs first—then pair that clarity with modern software, Zoho and ERP depth, and hardware when it matters.
             </p>
           </div>
@@ -446,9 +450,9 @@ export default function Home() {
                       <div className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 flex-shrink-0`}>
                         {service.icon}
                 </div>
-                      <div className="flex-1 min-h-[120px] flex flex-col">
+                      <div className="flex-1 flex flex-col">
                         <h4 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">{service.title}</h4>
-                        <p className="text-slate-600 text-lg leading-relaxed flex-1">
+                        <p className="text-slate-600 text-lg leading-relaxed">
                           {service.description}
                   </p>
                 </div>
@@ -522,17 +526,22 @@ export default function Home() {
 
           {/* Single Show More Button */}
           {!showAllServices && (
-            <div className="text-center mt-8">
-              <button 
+            <div className="mt-10 flex justify-center">
+              <button
+                type="button"
                 onClick={() => setShowAllServices(true)}
-                className="group bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white px-10 py-4 rounded-xl hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 transition-all duration-300 font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl"
+                className="group inline-flex items-center gap-2 rounded-xl border border-slate-200/90 bg-white px-8 py-3.5 text-base font-semibold text-slate-800 shadow-[0_12px_32px_-18px_rgba(15,23,42,0.25)] ring-1 ring-slate-900/5 transition-all duration-300 hover:border-indigo-200 hover:text-indigo-800 hover:shadow-[0_16px_40px_-16px_rgba(79,70,229,0.28)]"
               >
-                <span className="flex items-center justify-center gap-2">
-                  Show More Services
-                  <svg className="w-5 h-5 transform group-hover:translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </span>
+                Show More Services
+                <svg
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
               </button>
             </div>
           )}
@@ -635,6 +644,8 @@ export default function Home() {
                           <img 
                             src={tech.icon} 
                             alt={`${tech.name} icon`}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-contain rounded-lg"
                           />
                         </div>
@@ -669,7 +680,7 @@ export default function Home() {
 
           {/* CTA */}
           <HomeMegaSectionCTA onScheduleConsultation={() => setIsConsultationOpen(true)} />
-        </motion.div>
+        </div>
       </section>
 
       {/* Companies Section */}

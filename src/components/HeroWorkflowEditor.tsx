@@ -336,16 +336,19 @@ function CodeLineView({ line }: { line: CodeLine }) {
 
 
 export default function HeroWorkflowEditor() {
+  const rootRef = useRef<HTMLDivElement>(null);
   const [scenarioId, setScenarioId] = useState<ScenarioId>('crm');
   const [fileIndex, setFileIndex] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [hasRun, setHasRun] = useState(false);
   const [runProgress, setRunProgress] = useState(0);
   const [previewPulse, setPreviewPulse] = useState(false);
-  const [autoPlay, setAutoPlay] = useState(true);
+  const [inView, setInView] = useState(false);
+  const [autoPlay, setAutoPlay] = useState(false);
   const runIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const codeScrollRef = useRef<HTMLDivElement>(null);
   const resumeAutoRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const inViewRef = useRef(false);
 
   const scenario = SCENARIOS.find((s) => s.id === scenarioId) ?? SCENARIOS[0];
   const activeFile = scenario.files[fileIndex] ?? scenario.files[0];
@@ -361,10 +364,42 @@ export default function HeroWorkflowEditor() {
 
   useEffect(() => () => stopRun(), [stopRun]);
 
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const visible = entry.isIntersecting && entry.intersectionRatio >= 0.2;
+        inViewRef.current = visible;
+        setInView(visible);
+      },
+      { threshold: [0, 0.2, 0.4] }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Start auto-demo only once visible, after a short delay so first paint stays light
+  useEffect(() => {
+    if (!inView) {
+      setAutoPlay(false);
+      stopRun();
+      return;
+    }
+
+    const start = setTimeout(() => {
+      if (inViewRef.current) setAutoPlay(true);
+    }, 2200);
+    return () => clearTimeout(start);
+  }, [inView, stopRun]);
+
   const pauseAutoTemporarily = useCallback((ms = 12000) => {
     setAutoPlay(false);
     if (resumeAutoRef.current) clearTimeout(resumeAutoRef.current);
-    resumeAutoRef.current = setTimeout(() => setAutoPlay(true), ms);
+    resumeAutoRef.current = setTimeout(() => {
+      if (inViewRef.current) setAutoPlay(true);
+    }, ms);
   }, []);
 
   useEffect(
@@ -469,7 +504,10 @@ export default function HeroWorkflowEditor() {
   }, [autoPlay, applyScenario, runWorkflow, stopRun]);
 
   return (
-    <div className="flex justify-center motion-safe:animate-fade-in-right motion-safe:[animation-delay:320ms] lg:justify-end lg:pt-10">
+    <div
+      ref={rootRef}
+      className="flex justify-center motion-safe:animate-fade-in-right motion-safe:[animation-delay:320ms] lg:justify-end lg:pt-10"
+    >
       <div className="relative w-full max-w-lg motion-safe:animate-hero-card-float-soft">
         <div
           className={`pointer-events-none absolute -inset-px rounded-[1.2rem] opacity-75 blur-xl motion-reduce:hidden ${scenario.accent.glow}`}

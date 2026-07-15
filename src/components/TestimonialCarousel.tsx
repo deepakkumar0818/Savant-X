@@ -121,8 +121,21 @@ const testimonials: Testimonial[] = [
 export default function TestimonialCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [inView, setInView] = useState(false);
   const [visibleCards, setVisibleCards] = useState(3);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { rootMargin: '80px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   // Responsive card visibility
   useEffect(() => {
@@ -143,7 +156,7 @@ export default function TestimonialCarousel() {
 
   // Auto-play functionality
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (!isAutoPlaying || !inView) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => {
@@ -153,7 +166,7 @@ export default function TestimonialCarousel() {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, visibleCards]);
+  }, [isAutoPlaying, visibleCards, inView]);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => {
@@ -182,7 +195,10 @@ export default function TestimonialCarousel() {
   };
 
   return (
-    <section className="relative isolate overflow-hidden pt-0 pb-24 px-6 sm:px-8 lg:px-12">
+    <section
+      ref={sectionRef}
+      className="scroll-section relative isolate overflow-hidden pt-0 pb-24 px-6 sm:px-8 lg:px-12"
+    >
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden>
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/40 to-indigo-50/90" />
         <div className="absolute inset-0 bg-[linear-gradient(168deg,rgb(255_255_255_/_0.75)_0%,transparent_46%,rgb(239_246_255_/_0.55)_100%)]" />

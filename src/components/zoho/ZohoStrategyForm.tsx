@@ -45,6 +45,29 @@ const emptyForm = (defaultZohoApps = ''): FormData => ({
   honeypot: '',
 });
 
+/** Must live outside the form so inputs don't remount (and lose focus) on each keystroke. */
+function FieldWrap({
+  icon: Icon,
+  label,
+  labelClassName,
+  children,
+}: {
+  icon: typeof User;
+  label: string;
+  labelClassName: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <label className={labelClassName}>{label}</label>
+      <div className="relative">
+        <Icon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function ZohoStrategyForm({
   defaultZohoApps = '',
   onSuccess,
@@ -151,24 +174,6 @@ export default function ZohoStrategyForm({
     ...submitStyle,
   };
 
-  const FieldWrap = ({
-    icon: Icon,
-    label,
-    children,
-  }: {
-    icon: typeof User;
-    label: string;
-    children: React.ReactNode;
-  }) => (
-    <div>
-      <label className={labelClass}>{label}</label>
-      <div className="relative">
-        <Icon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-        {children}
-      </div>
-    </div>
-  );
-
   return (
     <>
       <ZohoCrmAnalytics />
@@ -188,10 +193,10 @@ export default function ZohoStrategyForm({
           {isPopup ? (
             popup ? (
               <>
-                <FieldWrap icon={User} label="Full Name *">
+                <FieldWrap icon={User} label="Full Name *" labelClassName={labelClass}>
                   <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} required className={fieldClass} placeholder="Your name" suppressHydrationWarning />
                 </FieldWrap>
-                <FieldWrap icon={Building2} label="Company *">
+                <FieldWrap icon={Building2} label="Company *" labelClassName={labelClass}>
                   <input type="text" name="companyName" value={formData.companyName} onChange={handleInputChange} required className={fieldClass} placeholder="Company" suppressHydrationWarning />
                 </FieldWrap>
               </>
@@ -241,10 +246,10 @@ export default function ZohoStrategyForm({
         <div className={`grid gap-2.5 ${isPopup ? 'grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 sm:gap-4'}`}>
           {popup ? (
             <>
-              <FieldWrap icon={Mail} label="Email *">
+              <FieldWrap icon={Mail} label="Email *" labelClassName={labelClass}>
                 <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className={fieldClass} placeholder="you@company.com" suppressHydrationWarning />
               </FieldWrap>
-              <FieldWrap icon={Phone} label="Phone *">
+              <FieldWrap icon={Phone} label="Phone *" labelClassName={labelClass}>
                 <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required className={fieldClass} placeholder="+91 98765 43210" suppressHydrationWarning />
               </FieldWrap>
             </>
@@ -264,10 +269,10 @@ export default function ZohoStrategyForm({
         {isPopup ? (
           popup ? (
             <div className="grid grid-cols-2 gap-3">
-              <FieldWrap icon={Layers} label="Zoho Apps">
+              <FieldWrap icon={Layers} label="Zoho Apps" labelClassName={labelClass}>
                 <input type="text" name="zohoApps" value={formData.zohoApps} onChange={handleInputChange} className={fieldClass} placeholder="e.g. CRM, Books" suppressHydrationWarning />
               </FieldWrap>
-              <FieldWrap icon={Target} label="Your Goal">
+              <FieldWrap icon={Target} label="Your Goal" labelClassName={labelClass}>
                 <input type="text" name="lookingToBuild" value={formData.lookingToBuild} onChange={handleInputChange} className={fieldClass} placeholder="Brief goal" suppressHydrationWarning />
               </FieldWrap>
             </div>
