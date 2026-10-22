@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { fetchWithTimeout } from '@/lib/fetchWithTimeout';
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState('');
@@ -11,17 +12,13 @@ export default function NewsletterSignup() {
     if (!email.trim()) return;
     setStatus('loading');
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetchWithTimeout('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: 'Newsletter subscriber',
+          kind: 'newsletter',
           email: email.trim(),
-          company: '',
-          phone: '',
-          service: 'Newsletter',
           message: 'Please add this address to the SavantX newsletter list.',
-          budget: '',
         }),
       });
       setStatus(res.ok ? 'ok' : 'err');
@@ -61,9 +58,10 @@ export default function NewsletterSignup() {
           {status === 'loading' ? 'Sending…' : 'Subscribe'}
         </button>
       </form>
-      {status === 'ok' && <p className="mt-2 text-sm text-emerald-700">Thanks — you&apos;re on the list.</p>}
+      <div aria-live="polite">
+      {status === 'ok' && <p role="status" className="mt-2 text-sm text-emerald-700">Thanks — you&apos;re on the list.</p>}
       {status === 'err' && (
-        <p className="mt-2 text-sm text-amber-800">
+        <p role="alert" className="mt-2 text-sm text-amber-800">
           Could not subscribe. Try{' '}
           <a href="/contact" className="font-medium underline underline-offset-2">
             contact
@@ -71,6 +69,7 @@ export default function NewsletterSignup() {
           .
         </p>
       )}
+      </div>
     </div>
   );
 }

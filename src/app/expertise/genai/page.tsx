@@ -1,6 +1,18 @@
-'use client';
-
+import Link from 'next/link';
 import Footer from '@/components/Footer';
+import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
+import { COMPANY } from '@/lib/company';
+import PageHero from '@/components/hero/PageHero';
+import { Sparkles } from 'lucide-react';
+import ServiceIcon from '@/components/ui/ServiceIcon';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Generative AI Solutions',
+  description:
+    'Generative AI solutions from SavantX Technologies that automate processes, generate content and support better decisions.',
+  path: '/expertise/genai',
+});
 
 export default function GenAIPage() {
 
@@ -290,79 +302,34 @@ export default function GenAIPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-slate-50">
-      {/* Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-indigo-400/20 to-purple-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-pink-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-cyan-400/10 to-indigo-600/10 rounded-full blur-3xl"></div>
-        
-        {/* Floating AI Icons */}
-        <div className="absolute top-20 left-20 w-16 h-16 bg-gradient-to-br from-indigo-400/30 to-purple-600/30 rounded-2xl flex items-center justify-center animate-float">
-          <span className="text-2xl">🤖</span>
-        </div>
-        <div className="absolute top-40 right-32 w-12 h-12 bg-gradient-to-br from-purple-400/30 to-pink-600/30 rounded-xl flex items-center justify-center animate-float" style={{animationDelay: '1s'}}>
-          <span className="text-xl">🧠</span>
-        </div>
-        <div className="absolute bottom-32 left-32 w-14 h-14 bg-gradient-to-br from-cyan-400/30 to-blue-600/30 rounded-xl flex items-center justify-center animate-float" style={{animationDelay: '2s'}}>
-          <span className="text-xl">⚡</span>
-        </div>
-        <div className="absolute bottom-20 right-20 w-10 h-10 bg-gradient-to-br from-orange-400/30 to-red-600/30 rounded-lg flex items-center justify-center animate-float" style={{animationDelay: '3s'}}>
-          <span className="text-lg">💡</span>
-        </div>
-      </div>
+    <div className="min-h-screen bg-white">
 
-      {/* Hero Section */}
-      <section className="relative z-10 pt-32 pb-20 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-indigo-200">
-              <span className="text-lg">🤖</span>
-              Generative AI Development
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
-              GenAI
-              <span className="block text-indigo-600 mt-2">Solutions</span>
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
-              Harness the power of Generative AI to transform your business. 
-              We build intelligent AI solutions using cutting-edge models like GPT-4, Claude, and Gemini to automate processes, generate content, and deliver exceptional user experiences.
-            </p>
-          </div>
+      <PageHero
+        eyebrow="Generative AI Development"
+        eyebrowIcon={Sparkles}
+        title="GenAI"
+        highlight="Solutions"
+        description="Harness the power of Generative AI to transform your business. We build intelligent AI solutions using cutting-edge models like GPT-4, Claude, and Gemini to automate processes, generate content, and deliver exceptional user experiences."
+        highlights={["AI Chatbots & Assistants", "Content Generation", "AI Data Analysis", "AI Workflow Automation"]}
+        stats={[
+          { value: COMPANY.foundingYear, label: "Founded" },
+          { value: "95%", label: "Accuracy Rate" },
+          { value: "3-12", label: "Week Delivery" },
+          { value: "100%", label: "Client Satisfaction" },
+        ]}
+      />
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-indigo-600 mb-2">50+</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">AI Projects</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">95%</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Accuracy Rate</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-cyan-600 mb-2">3-12</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Week Delivery</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-pink-600 mb-2">100%</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Client Satisfaction</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* GEnAI Services */}
+      {/* GenAI Services */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-indigo-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Our Services
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               GenAI
-              <span className="block text-indigo-600 mt-2">Solutions</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Solutions</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               Comprehensive Generative AI development services for chatbots, content generation, data analysis, and automation.
@@ -375,8 +342,8 @@ export default function GenAIPage() {
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-indigo-200/50 transition-all duration-300 h-full">
                   {/* Header */}
                   <div className="flex items-start gap-6 mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-indigo-100 to-purple-200 rounded-2xl flex items-center justify-center group-hover:from-indigo-200 group-hover:to-purple-300 transition-all duration-300">
-                      <span className="text-3xl">{service.icon}</span>
+                    <div className="w-16 h-16 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-2xl flex items-center justify-center group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                      <ServiceIcon emoji={service.icon} size="none" className="h-7 w-7 text-indigo-600" />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors duration-200">
@@ -401,19 +368,19 @@ export default function GenAIPage() {
                   {/* Details Grid */}
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200">
                     <div className="text-center">
-                      <div className="text-sm font-bold text-indigo-600 mb-1">{service.pricing}</div>
+                      <div className="text-sm font-semibold text-slate-900 mb-1">{service.pricing}</div>
                       <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-sm font-bold text-purple-600 mb-1">{service.timeline}</div>
+                      <div className="text-sm font-semibold text-slate-900 mb-1">{service.timeline}</div>
                       <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-sm font-bold text-cyan-600 mb-1">{service.complexity}</div>
+                      <div className="text-sm font-semibold text-slate-900 mb-1">{service.complexity}</div>
                       <div className="text-xs text-slate-500 uppercase tracking-wide">Complexity</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-sm font-bold text-pink-600 mb-1">{service.models}</div>
+                      <div className="text-sm font-semibold text-slate-900 mb-1">{service.models}</div>
                       <div className="text-xs text-slate-500 uppercase tracking-wide">AI Models</div>
                     </div>
                   </div>
@@ -428,13 +395,13 @@ export default function GenAIPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-indigo-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               AI Technology Stack
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Complete AI
-              <span className="block text-indigo-600 mt-2">Technology Ecosystem</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Technology Ecosystem</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               We work with the latest AI models, frameworks, and platforms to build cutting-edge solutions.
@@ -451,7 +418,7 @@ export default function GenAIPage() {
                   <div className="grid grid-cols-1 gap-4">
                     {category.tools.map((tool, toolIndex) => (
                       <div key={toolIndex} className="flex items-center gap-4 p-4 bg-slate-50 rounded-xl hover:bg-indigo-50 transition-all duration-200">
-                        <div className="text-2xl">{tool.icon}</div>
+                        <ServiceIcon emoji={tool.icon} size="md" />
                         <div className="flex-1">
                           <h4 className="font-semibold text-slate-900">{tool.name}</h4>
                           <p className="text-sm text-slate-600">{tool.description}</p>
@@ -470,13 +437,13 @@ export default function GenAIPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-indigo-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Our Process
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               AI Development
-              <span className="block text-indigo-600 mt-2">Process</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Process</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               Our systematic approach ensures high-quality AI solutions delivered on time and within budget.
@@ -491,8 +458,8 @@ export default function GenAIPage() {
                     <div className="inline-block bg-indigo-50 text-indigo-700 px-3 py-1 rounded-lg text-sm font-bold mb-3 border border-indigo-200">
                       {step.step}
                     </div>
-                    <div className="w-12 h-12 bg-gradient-to-br from-indigo-100 to-purple-200 rounded-xl flex items-center justify-center group-hover:from-indigo-200 group-hover:to-purple-300 transition-all duration-300">
-                      <span className="text-2xl">{step.icon}</span>
+                    <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                      <ServiceIcon emoji={step.icon} size="none" className="h-6 w-6 text-indigo-600" />
                     </div>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors duration-200">
@@ -513,13 +480,13 @@ export default function GenAIPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-indigo-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Deliverables
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               What You&apos;ll
-              <span className="block text-indigo-600 mt-2">Receive</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Receive</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               Complete AI development deliverables that provide everything needed for successful deployment.
@@ -530,8 +497,8 @@ export default function GenAIPage() {
             {deliverables.map((deliverable, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-indigo-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-100 to-purple-200 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-200 group-hover:to-purple-300 transition-all duration-300">
-                    <span className="text-2xl">{deliverable.icon}</span>
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                    <ServiceIcon emoji={deliverable.icon} size="none" className="h-6 w-6 text-indigo-600" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors duration-200">
                     {deliverable.title}
@@ -550,13 +517,13 @@ export default function GenAIPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-indigo-600 rounded-full"></div>
-              Why GEnAI
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
+              Why GenAI
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Benefits of
-              <span className="block text-indigo-600 mt-2">Generative AI</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Generative AI</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               Generative AI provides significant advantages for businesses looking to innovate and automate.
@@ -567,8 +534,8 @@ export default function GenAIPage() {
             {benefits.map((benefit, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-indigo-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-100 to-purple-200 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-200 group-hover:to-purple-300 transition-all duration-300">
-                    <span className="text-2xl">{benefit.icon}</span>
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                    <ServiceIcon emoji={benefit.icon} size="none" className="h-6 w-6 text-indigo-600" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors duration-200">
                     {benefit.title}
@@ -587,13 +554,13 @@ export default function GenAIPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-indigo-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Use Cases
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Perfect For
-              <span className="block text-indigo-600 mt-2">These Applications</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">These Applications</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               Generative AI is ideal for a wide range of business applications and use cases.
@@ -604,8 +571,8 @@ export default function GenAIPage() {
             {useCases.map((useCase, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-indigo-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-100 to-purple-200 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-200 group-hover:to-purple-300 transition-all duration-300">
-                    <span className="text-2xl">{useCase.icon}</span>
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                    <ServiceIcon emoji={useCase.icon} size="none" className="h-6 w-6 text-indigo-600" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors duration-200">
                     {useCase.title}
@@ -624,13 +591,13 @@ export default function GenAIPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-indigo-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               AI Capabilities
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Advanced AI
-              <span className="block text-indigo-600 mt-2">Capabilities</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Capabilities</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               We implement advanced AI capabilities for intelligent and responsive applications.
@@ -641,8 +608,8 @@ export default function GenAIPage() {
             {aiCapabilities.map((capability, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-indigo-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-100 to-purple-200 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-200 group-hover:to-purple-300 transition-all duration-300">
-                    <span className="text-2xl">{capability.icon}</span>
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                    <ServiceIcon emoji={capability.icon} size="none" className="h-6 w-6 text-indigo-600" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors duration-200">
                     {capability.title}
@@ -662,19 +629,19 @@ export default function GenAIPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
             Ready to Transform
-            <span className="block text-indigo-100 mt-2">with GEnAI?</span>
+            <span className="block text-indigo-100 mt-2">with GenAI?</span>
           </h2>
           <p className="text-xl text-indigo-100 mb-8 leading-relaxed font-light">
             Let&apos;s create intelligent AI solutions that automate processes, generate content, and deliver exceptional experiences.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-indigo-600 px-8 py-4 rounded-xl hover:bg-indigo-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="bg-white text-indigo-600 px-8 py-4 rounded-xl hover:bg-indigo-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
               Start AI Project
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-indigo-600 transition-all duration-200 font-semibold text-lg">
+            </Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-indigo-600 transition-all duration-200 font-semibold text-lg">
               View Examples
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -683,4 +650,3 @@ export default function GenAIPage() {
     </div>
   );
 }
-

@@ -1,31 +1,29 @@
 import Footer from '@/components/Footer';
+import { COMPANY } from '@/lib/company';
+import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
+import PageHero from '@/components/hero/PageHero';
+import { Cookie } from 'lucide-react';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Cookie Policy',
+  description:
+    'How SavantX Technologies uses cookies and similar technologies on its website, and how you can manage your preferences.',
+  path: '/cookie-policy',
+});
 
 export default function CookiePolicy() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50 overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200/20 rounded-full animate-float-gentle blur-3xl"></div>
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-indigo-200/20 rounded-full animate-float-gentle delay-500 blur-3xl"></div>
-        </div>
-
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-            </svg>
-            Legal Information
-          </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-            Cookie Policy
-          </h1>
-          <p className="text-xl text-slate-600">
-            Last Updated: November 5, 2024
-          </p>
-        </div>
-      </section>
+      <PageHero
+        compact
+        eyebrow="Legal information"
+        eyebrowIcon={Cookie}
+        title="Cookie"
+        highlight="Policy"
+        description="How SavantX Technologies uses cookies and similar technologies on this website."
+        note="Last updated: November 5, 2024"
+      />
 
       {/* Content Section */}
       <section className="py-16 px-6 sm:px-8 lg:px-12">
@@ -174,7 +172,7 @@ export default function CookiePolicy() {
                   </svg>
                   <div>
                     <p className="font-semibold text-slate-900">Email:</p>
-                    <a href="mailto:deepakkumr0818@gmail.com" className="text-blue-600 hover:underline">deepakkumr0818@gmail.com</a>
+                    <a href={`mailto:${COMPANY.email}`} className="text-blue-600 hover:underline break-all">{COMPANY.email}</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -183,7 +181,7 @@ export default function CookiePolicy() {
                   </svg>
                   <div>
                     <p className="font-semibold text-slate-900">Phone:</p>
-                    <a href="tel:+919888244166" className="text-blue-600 hover:underline">+91 98882-44166</a>
+                    <a href={COMPANY.phone.href} className="text-blue-600 hover:underline">{COMPANY.phone.display}</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">

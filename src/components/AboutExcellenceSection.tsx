@@ -15,6 +15,7 @@ import {
   UsersRound,
 } from 'lucide-react';
 import AnimatedCounter from '@/components/AnimatedCounter';
+import { COMPANY_METRICS } from '@/lib/company';
 
 const CAPABILITIES = [
   { label: 'ERP & Manufacturing', Icon: Building2 },
@@ -55,7 +56,7 @@ const FEATURES = [
 const METRICS = [
   { end: 100, suffix: '%', label: 'In-House Team', gradient: 'from-blue-600 to-indigo-600' },
   { end: 5, suffix: '+', label: 'Years Experience', gradient: 'from-indigo-600 to-violet-600' },
-  { end: 200, suffix: '+', label: 'Projects Delivered', gradient: 'from-violet-600 to-purple-600' },
+  { end: COMPANY_METRICS[0].value, suffix: COMPANY_METRICS[0].suffix, label: COMPANY_METRICS[0].label, gradient: 'from-violet-600 to-purple-600' },
 ] as const;
 
 export default function AboutExcellenceSection() {

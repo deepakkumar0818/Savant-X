@@ -1,7 +1,18 @@
-'use client';
-
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
+import { COMPANY } from '@/lib/company';
+import PageHero from '@/components/hero/PageHero';
+import { Package } from 'lucide-react';
+import ServiceIcon from '@/components/ui/ServiceIcon';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Product Development & Engineering',
+  description:
+    'End-to-end hardware product development, from concept and prototyping to manufacturing-ready designs.',
+  path: '/expertise/product-development',
+});
 
 export default function ProductDevelopmentPage() {
   const features = [
@@ -149,58 +160,27 @@ export default function ProductDevelopmentPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-slate-50">
-      {/* Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-orange-400/20 to-red-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-amber-400/20 to-orange-600/20 rounded-full blur-3xl"></div>
-      </div>
+    <div className="min-h-screen bg-white">
 
-      {/* Hero Section */}
-      <section className="relative z-10 pt-32 pb-20 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-orange-200">
-              <span className="text-lg">🛠️</span>
-              Product Development
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
-              End-to-End Product Development &
-              <span className="block text-orange-600 mt-2">Engineering Services</span>
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
-              From concept to manufacturing, we provide complete product development services. 
-              Transform your ideas into market-ready products with our expert engineering and design team.
-            </p>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600 mb-2">100+</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Products Launched</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-amber-600 mb-2">500+</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Prototypes Built</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-red-600 mb-2">95%</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Success Rate</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-yellow-600 mb-2">8-16</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Week Delivery</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Product Development"
+        eyebrowIcon={Package}
+        title="End-to-End Product Development &"
+        highlight="Engineering Services"
+        description="From concept to manufacturing, we provide complete product development services. Transform your ideas into market-ready products with our expert engineering and design team."
+        highlights={["Concept Design", "Industrial Design", "Prototyping", "Engineering Analysis"]}
+        stats={[
+          { value: COMPANY.foundingYear, label: "Founded" },
+          { value: "95%", label: "Success Rate" },
+          { value: "8-16", label: "Week Delivery" },
+        ]}
+      />
 
       {/* Features */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Product Development
               <span className="block text-orange-600 mt-2">Services</span>
             </h2>
@@ -210,8 +190,8 @@ export default function ProductDevelopmentPage() {
             {features.map((feature, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-orange-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl flex items-center justify-center mb-4 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
-                    <span className="text-2xl">{feature.icon}</span>
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                    <ServiceIcon emoji={feature.icon} size="none" className="h-6 w-6 text-indigo-600" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-orange-600 transition-colors duration-200">
                     {feature.title}
@@ -230,7 +210,7 @@ export default function ProductDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Development
               <span className="block text-orange-600 mt-2">Phases</span>
             </h2>
@@ -240,8 +220,8 @@ export default function ProductDevelopmentPage() {
             {developmentPhases.map((phase, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-orange-200/50 transition-all duration-300 h-full">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${phase.color} rounded-2xl flex items-center justify-center mb-6`}>
-                    <span className="text-3xl">{phase.icon}</span>
+                  <div className={`w-16 h-16 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-2xl flex items-center justify-center mb-6`}>
+                    <ServiceIcon emoji={phase.icon} size="none" className="h-7 w-7 text-indigo-600" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-orange-600 transition-colors duration-200">
                     {phase.title}
@@ -274,7 +254,7 @@ export default function ProductDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Product
               <span className="block text-orange-600 mt-2">Categories</span>
             </h2>
@@ -284,7 +264,7 @@ export default function ProductDevelopmentPage() {
             {productTypes.map((type, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-orange-200/50 transition-all duration-300 h-full">
-                  <div className="text-4xl mb-4">{type.icon}</div>
+                  <ServiceIcon emoji={type.icon} size="lg" className="mb-4" />
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-orange-600 transition-colors duration-200">
                     {type.title}
                   </h3>
@@ -310,7 +290,7 @@ export default function ProductDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Development
               <span className="block text-orange-600 mt-2">Tools</span>
             </h2>
@@ -324,7 +304,9 @@ export default function ProductDevelopmentPage() {
                     <img 
                       src={tech.icon} 
                       alt={`${tech.name} icon`}
-                      className="w-full h-full object-contain rounded-lg"
+                      loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-contain rounded-lg"
                     />
                   </div>
                   <h3 className="text-sm font-bold text-slate-900 mb-1 group-hover:text-orange-600 transition-colors duration-200">
@@ -342,7 +324,7 @@ export default function ProductDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Development
               <span className="block text-orange-600 mt-2">Process</span>
             </h2>
@@ -356,8 +338,8 @@ export default function ProductDevelopmentPage() {
                     <div className="inline-block bg-orange-50 text-orange-700 px-3 py-1 rounded-lg text-sm font-bold mb-3 border border-orange-200">
                       {step.step}
                     </div>
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl flex items-center justify-center group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
-                      <span className="text-2xl">{step.icon}</span>
+                    <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                      <ServiceIcon emoji={step.icon} size="none" className="h-6 w-6 text-indigo-600" />
                     </div>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-orange-600 transition-colors duration-200">
@@ -386,16 +368,12 @@ export default function ProductDevelopmentPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
-              <button className="bg-white text-orange-600 px-8 py-4 rounded-xl hover:bg-orange-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="bg-white text-orange-600 px-8 py-4 rounded-xl hover:bg-orange-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
                 Start Your Project
-              </button>
-            </Link>
-            <Link href="/contact">
-              <button className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-orange-600 transition-all duration-200 font-semibold text-lg">
+              </Link>
+            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-orange-600 transition-all duration-200 font-semibold text-lg">
                 Schedule Consultation
-              </button>
-            </Link>
+              </Link>
           </div>
         </div>
       </section>
@@ -404,4 +382,3 @@ export default function ProductDevelopmentPage() {
     </div>
   );
 }
-

@@ -1,17 +1,45 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
+import {
+  ArrowLeft,
+  ArrowRight,
+  Phone,
+} from 'lucide-react';
 import Footer from '@/components/Footer';
-import WorkPageHero from '@/components/work/WorkPageHero';
+import ServiceIcon from '@/components/ui/ServiceIcon';
+import ProjectMock from '@/components/work/ProjectMock';
+import WorkHero from '@/components/work/WorkHero';
+import { COMPANY } from '@/lib/company';
 
 export default function Work() {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [spotlightIndex, setSpotlightIndex] = useState(0);
 
   const projects = [
     {
+      id: 9,
+      title: "Customized Manufacturing ERP",
+      category: "manufacturing",
+      image: "🏭",
+      description: "Custom ERP for manufacturers that brings sales, purchases, inventory, production, quality control, finance and HR & payroll into one system, with live dashboards for orders, stock and work orders.",
+      technologies: [],
+      client: "",
+      duration: "",
+      results: "",
+      featured: true,
+      screenshot: {
+        src: "/images/work/manufacturing-erp-dashboard.webp",
+        width: 1536,
+        height: 1024,
+        alt: "Manufacturing ERP dashboard showing sales, purchases, inventory value, order status, production, quality control and recent orders",
+      },
+    },
+    {
       id: 1,
-      title: "Doctor Appointment System",
+      title: "Sehat Setu",
       category: "healthcare",
       image: "🏥",
       description: "Comprehensive healthcare management platform enabling patients to book appointments, manage medical records, and communicate with healthcare providers seamlessly.",
@@ -19,43 +47,49 @@ export default function Work() {
       client: "MediCare Solutions",
       duration: "4 months",
       results: "150+ active users",
-      featured: true
+      featured: true,
+      screenshot: {
+        src: "/images/work/sehat-setu-hero.webp",
+        width: 1345,
+        height: 841,
+        alt: "Sehat Setu home page with doctor search, appointment booking and online consultation",
+      },
     },
     {
       id: 2,
       title: "Food Ordering App",
-      category: "mobile",
+      category: "web-mobile",
       image: "🍕",
       description: "Complete food delivery solution with restaurant management, order tracking, payment processing, and real-time delivery updates for enhanced customer experience.",
       technologies: ["React Native", "Express", "MongoDB", "Stripe API"],
       client: "FoodieHub",
       duration: "5 months",
       results: "300+ restaurants onboarded",
-      featured: true
+      featured: true,
+      screenshot: {
+        src: "/images/work/savantx-eats-dashboard.webp",
+        width: 1536,
+        height: 1024,
+        alt: "SavantX Eats restaurant management dashboard with orders, revenue trend, order status, popular menu items and live deliveries",
+      },
     },
     {
       id: 3,
       title: "Real Estate App",
-      category: "web",
+      category: "web-mobile",
       image: "🏠",
       description: "Advanced property management platform with property listings, virtual tours, mortgage calculators, and comprehensive real estate analytics for agents and buyers.",
       technologies: ["Next.js", "Laravel", "MySQL", "Google Maps API"],
       client: "PropertyMax",
       duration: "6 months",
       results: "200+ properties listed",
-      featured: true
-    },
-    {
-      id: 4,
-      title: "Student Portal",
-      category: "education",
-      image: "🎓",
-      description: "Comprehensive educational platform providing students with course management, assignment tracking, grade monitoring, and collaborative learning tools.",
-      technologies: ["Vue.js", "Django", "PostgreSQL", "Redis"],
-      client: "EduTech Institute",
-      duration: "3 months",
-      results: "500+ students enrolled",
-      featured: false
+      featured: true,
+      screenshot: {
+        src: "/images/work/homehub-real-estate-dashboard.webp",
+        width: 1536,
+        height: 1024,
+        alt: "HomeHub real estate dashboard with property stats, featured listings, property map, sales overview, leads and bookings",
+      },
     },
     {
       id: 5,
@@ -67,7 +101,38 @@ export default function Work() {
       client: "DataInsights Corp",
       duration: "2 months",
       results: "100+ data sources integrated",
-      featured: false
+      featured: false,
+      hideFromAll: true,
+    },
+    {
+      id: 10,
+      title: "EcoTours India",
+      category: "ui-ux",
+      image: "🌿",
+      description: "UI/UX design for EcoTours India, a travel website showcasing eco-friendly tours across India.",
+      technologies: [],
+      client: "",
+      duration: "",
+      results: "",
+      featured: false,
+    },
+    {
+      id: 4,
+      title: "Student Portal",
+      category: "education",
+      image: "🎓",
+      description: "Comprehensive educational platform providing students with course management, assignment tracking, grade monitoring, and collaborative learning tools.",
+      technologies: ["Vue.js", "Django", "PostgreSQL", "Redis"],
+      client: "EduTech Institute",
+      duration: "3 months",
+      results: "500+ students enrolled",
+      featured: false,
+      screenshot: {
+        src: "/images/work/savantx-student-portal.webp",
+        width: 1536,
+        height: 1024,
+        alt: "SavantX Student Portal dashboard with enrolled courses, assignments, schedule, deadlines, grades and announcements",
+      },
     },
     {
       id: 6,
@@ -103,208 +168,454 @@ export default function Work() {
       client: "LogiTrack Solutions",
       duration: "5 months",
       results: "80+ vehicles tracked",
-      featured: false
+      featured: false,
+      screenshot: {
+        src: "/images/work/fleetmint-fleet-management.webp",
+        width: 1440,
+        height: 820,
+        alt: "Fleetmint fleet management website hero with vehicle routes and tracking stats",
+      },
     },
     {
-      id: 9,
-      title: "Professional Accounting Software for MNCs",
-      category: "finance",
-      image: "💰",
-      description: "Enterprise-grade accounting solution designed for multinational corporations with multi-currency support, compliance management, and advanced financial reporting.",
-      technologies: ["React", "Java", "Oracle", "Spring Boot"],
-      client: "Global Finance Corp",
-      duration: "8 months",
-      results: "50+ MNCs using platform",
-      featured: true
+      id: 11,
+      title: "Logic Mechanics",
+      category: "ui-ux",
+      image: "⚙️",
+      description: "UI/UX design for the Logic Mechanics website, from layout and visual style to responsive screens.",
+      technologies: [],
+      client: "",
+      duration: "",
+      results: "",
+      featured: false,
+      hideFromAll: true,
+    },
+    {
+      id: 12,
+      title: "Pet E-commerce",
+      category: "ui-ux",
+      image: "🐾",
+      description: "UI/UX design for a pet supplies online store, covering product browsing, cart and checkout.",
+      technologies: [],
+      client: "",
+      duration: "",
+      results: "",
+      featured: false,
+      hideFromAll: true,
+    },
+    {
+      id: 13,
+      title: "Real Estate Website",
+      category: "ui-ux",
+      image: "🏡",
+      description: "UI/UX design for a real estate website that makes property listings easy to browse and compare.",
+      technologies: [],
+      client: "",
+      duration: "",
+      results: "",
+      featured: false,
+      hideFromAll: true,
+    },
+    {
+      id: 14,
+      title: "Viz Vigyaan",
+      category: "ui-ux",
+      image: "🔬",
+      description: "UI/UX design for Viz Vigyaan, from layout and visual style to responsive screens.",
+      technologies: [],
+      client: "",
+      duration: "",
+      results: "",
+      featured: false,
+      hideFromAll: true,
+    },
+    {
+      id: 15,
+      title: "Kouton Table Booking App",
+      category: "ui-ux",
+      image: "🍽️",
+      description: "UI/UX design for Kouton, a table booking app for finding restaurants and reserving a table.",
+      technologies: [],
+      client: "",
+      duration: "",
+      results: "",
+      featured: false,
+      hideFromAll: true,
     }
   ];
 
-  const categories = [
-    { id: 'all', name: 'All Projects', count: projects.length },
-    { id: 'healthcare', name: 'Healthcare', count: projects.filter(p => p.category === 'healthcare').length },
-    { id: 'mobile', name: 'Mobile Apps', count: projects.filter(p => p.category === 'mobile').length },
-    { id: 'web', name: 'Web Development', count: projects.filter(p => p.category === 'web').length },
-    { id: 'education', name: 'Education', count: projects.filter(p => p.category === 'education').length },
-    { id: 'data', name: 'Data Solutions', count: projects.filter(p => p.category === 'data').length },
-    { id: 'logistics', name: 'Logistics', count: projects.filter(p => p.category === 'logistics').length },
-    { id: 'finance', name: 'Finance', count: projects.filter(p => p.category === 'finance').length }
+  const countIn = (id: string) => projects.filter(p => p.category === id).length;
+  const allCategories = [
+    { id: 'all', name: 'All', count: projects.filter(p => !p.hideFromAll).length },
+    { id: 'zoho', name: 'Zoho', count: countIn('zoho') },
+    { id: 'web-mobile', name: 'Web & Mobile', count: countIn('web-mobile') },
+    { id: 'ui-ux', name: 'UI/UX', count: countIn('ui-ux') },
+    { id: 'hardware', name: 'Hardware', count: countIn('hardware') },
+    { id: 'manufacturing', name: 'Manufacturing', count: countIn('manufacturing') },
+    { id: 'healthcare', name: 'Healthcare', count: countIn('healthcare') },
+    { id: 'education', name: 'Education', count: countIn('education') },
+    { id: 'data', name: 'Data Solutions', count: countIn('data') },
+    { id: 'logistics', name: 'Logistics', count: countIn('logistics') },
+    { id: 'finance', name: 'Finance', count: countIn('finance') },
   ];
+  // Service filters stay visible even before projects are added; industry filters hide when empty.
+  const categories = allCategories.filter(c => c.count > 0 || c.id in SERVICE_PAGES);
+  const categoryName = (id: string) => allCategories.find(c => c.id === id)?.name ?? id;
 
-  const filteredProjects = activeFilter === 'all' 
-    ? projects 
+  const filteredProjects = activeFilter === 'all'
+    ? projects.filter(project => !project.hideFromAll)
     : projects.filter(project => project.category === activeFilter);
+  const bentoSpans = bentoLayout(filteredProjects.length);
 
   const featuredProjects = projects.filter(project => project.featured);
+  const spotlight = featuredProjects[spotlightIndex];
+  const stepSpotlight = (delta: number) =>
+    setSpotlightIndex((i) => (i + delta + featuredProjects.length) % featuredProjects.length);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/80 to-indigo-50">
-      <WorkPageHero />
+    <div className="min-h-screen bg-white">
+      <WorkHero />
 
-      {/* Featured Projects Section */}
-      <section id="showcase" className="relative z-10 bg-white px-6 py-20 sm:px-8 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-              Featured Projects
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Showcasing our most impactful and innovative solutions that have delivered exceptional results.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {featuredProjects.map((project) => (
-              <div key={project.id} className="group">
-                <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
-                  {/* Project Icon */}
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                    <span className="text-3xl">{project.image}</span>
-                  </div>
-
-                  {/* Project Info */}
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
-                    {project.title}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed mb-6">
-                    {project.description}
-                  </p>
-
-                  {/* Project Details */}
-                  <div className="space-y-4 mb-6">
-                    <div className="flex justify-between">
-                      <span className="text-sm font-medium text-slate-500">Client</span>
-                      <span className="text-sm text-slate-900">{project.client}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm font-medium text-slate-500">Duration</span>
-                      <span className="text-sm text-slate-900">{project.duration}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm font-medium text-slate-500">Result</span>
-                      <span className="text-sm text-green-600 font-semibold">{project.results}</span>
-                    </div>
-                  </div>
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span key={techIndex} className="px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-sm font-medium border border-blue-200/50">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+      <section className="relative px-6 pt-16 sm:px-8 lg:px-12 lg:pt-20">
+        <div className="mx-auto max-w-6xl">
+          {/* Spotlight */}
+          {spotlight && (
+            <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1.45fr)_minmax(0,1fr)]">
+              <div className="relative flex min-h-[19rem] min-w-0 items-center justify-center overflow-hidden rounded-2xl bg-[#070b18] px-4 py-8 sm:px-6 sm:py-10 shadow-[0_30px_60px_-30px_rgba(2,6,23,0.6)] sm:min-h-[22rem]">
+                <div
+                  aria-hidden
+                  className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(59,130,246,0.35),transparent_45%),radial-gradient(circle_at_90%_100%,rgba(139,92,246,0.35),transparent_50%)]"
+                />
+                <div key={spotlight.id} className="animate-fade-in-up relative w-full">
+                  <ProjectVisual project={spotlight} />
                 </div>
               </div>
-            ))}
-          </div>
+              <div className="flex flex-col rounded-2xl bg-white p-6 shadow-[0_20px_50px_-30px_rgba(15,23,42,0.35)] ring-1 ring-slate-200/70 sm:p-7">
+                <div aria-live="polite" className="flex-1">
+                  <p className="text-xs font-medium text-slate-500">
+                    Featured · {categoryName(spotlight.category)}
+                  </p>
+                  <h2 className="mt-2 text-xl font-semibold tracking-tight text-slate-900">{spotlight.title}</h2>
+                  <p className="mt-3 text-[15px] leading-relaxed text-slate-600">{spotlight.description}</p>
+                </div>
+                <div className="mt-6 flex items-center gap-3">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white">
+                    <ServiceIcon emoji={spotlight.image} size="none" className="h-5 w-5" />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-sm font-semibold text-slate-900">{spotlight.client || spotlight.title}</span>
+                    {spotlight.results && <span className="block truncate text-xs text-slate-500">{spotlight.results}</span>}
+                  </span>
+                  <span className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={() => stepSpotlight(-1)}
+                      aria-label="Previous featured project"
+                      className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-700 transition hover:bg-slate-200"
+                    >
+                      <ArrowLeft className="h-4 w-4" aria-hidden />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => stepSpotlight(1)}
+                      aria-label="Next featured project"
+                      className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-700 transition hover:bg-slate-200"
+                    >
+                      <ArrowRight className="h-4 w-4" aria-hidden />
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
+
         </div>
       </section>
 
       {/* Portfolio Filter Section */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-              Our Project Showcase
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Explore our comprehensive showcase of cutting-edge solutions across different technologies and industries.
-            </p>
-          </div>
+      <section id="showcase" className="scroll-mt-24 px-6 py-20 sm:px-8 lg:px-12 lg:py-24">
+        <div className="mx-auto max-w-6xl">
+          <SectionHeader
+            title="Every project, every industry"
+            description="Solutions we have delivered across sectors and technology stacks. Filter by industry to find work like yours."
+            cta={{ label: 'Start a project', href: '/contact' }}
+          />
 
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setActiveFilter(category.id)}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-                  activeFilter === category.id
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-white text-slate-700 border border-slate-200 hover:border-blue-300 hover:bg-blue-50'
-                }`}
-              >
-                {category.name} ({category.count})
-              </button>
+          <div className="-mx-6 mt-10 overflow-x-auto px-6 pb-2 sm:mx-0 sm:px-0">
+            <div role="group" aria-label="Filter projects by industry" className="flex w-max gap-2 sm:w-auto sm:flex-wrap">
+              {categories.map((category) => {
+                const active = activeFilter === category.id;
+                return (
+                  <button
+                    key={category.id}
+                    type="button"
+                    onClick={() => setActiveFilter(category.id)}
+                    aria-pressed={active}
+                    className={`whitespace-nowrap rounded-full px-3.5 py-1.5 text-sm font-medium transition ${
+                      active ? 'bg-blue-600 text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
+                    }`}
+                  >
+                    {category.name}
+                    <span className={`ml-1.5 tabular-nums ${active ? 'text-white/70' : 'text-slate-400'}`}>{category.count}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          <p aria-live="polite" className="sr-only">
+            Showing {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}
+          </p>
+
+          <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 pointer-fine:[&:has(>article:hover)>article:not(:hover)]:scale-[0.98] pointer-fine:[&:has(>article:hover)>article:not(:hover)]:opacity-60 pointer-fine:[&:has(>article:hover)>article:not(:hover)]:blur-[3px] pointer-fine:[&:has(>article:hover)>article:not(:hover)]:saturate-50">
+            {filteredProjects.map((project, index) => (
+              <BentoCard
+                key={project.id}
+                project={project}
+                label={categoryName(project.category)}
+                span={bentoSpans[index]}
+                theme={BENTO_THEMES[index % BENTO_THEMES.length]}
+              />
             ))}
           </div>
 
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project) => (
-              <div key={project.id} className="group">
-                <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
-                  {/* Project Header */}
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                      <span className="text-2xl">{project.image}</span>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-xl font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors duration-200">
-                        {project.title}
-                      </h3>
-                      <p className="text-blue-600 font-medium text-sm">{project.client}</p>
-                    </div>
-                  </div>
-
-                  {/* Project Description */}
-                  <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                    {project.description}
-                  </p>
-
-                  {/* Project Stats */}
-                  <div className="grid grid-cols-2 gap-4 mb-4 text-xs">
-                    <div className="text-center p-2 bg-slate-50 rounded-lg">
-                      <div className="font-semibold text-slate-900">{project.duration}</div>
-                      <div className="text-slate-500">Duration</div>
-                    </div>
-                    <div className="text-center p-2 bg-slate-50 rounded-lg">
-                      <div className="font-semibold text-green-600">{project.results}</div>
-                      <div className="text-slate-500">Result</div>
-                    </div>
-                  </div>
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-1">
-                    {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                      <span key={techIndex} className="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 3 && (
-                      <span className="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                        +{project.technologies.length - 3}
-                      </span>
-                    )}
-                  </div>
-                </div>
+          {filteredProjects.length === 0 && activeFilter in SERVICE_PAGES && (
+            <div className="mt-8 rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-6 py-14 text-center">
+              <p className="text-lg font-semibold text-slate-900">{categoryName(activeFilter)} case studies are coming soon</p>
+              <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-slate-600">
+                We are preparing write-ups of our {categoryName(activeFilter)} work. In the meantime, see what we offer or
+                talk to us about your project.
+              </p>
+              <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+                <Link
+                  href={SERVICE_PAGES[activeFilter]}
+                  className="inline-flex items-center justify-center rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-slate-200 transition hover:ring-slate-300"
+                >
+                  Explore {categoryName(activeFilter)} services
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+                >
+                  Start a project
+                </Link>
               </div>
-            ))}
-          </div>
+            </div>
+          )}
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-r from-blue-600 to-blue-700">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-            Ready to Start Your Project?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-            Let&apos;s discuss how we can help bring your vision to life with our expertise and innovative solutions.
-          </p>
-          <div className="flex justify-center">
-            <Link href="/contact" className="group bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-300 ease-out font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl inline-flex items-center justify-center gap-2">
-              Start a Project
-              <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Link>
+      <section className="px-4 pb-20 sm:px-8 lg:px-12">
+        <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-[#0b0b10] px-6 py-20 text-center sm:py-24">
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-[radial-gradient(ellipse_40%_60%_at_25%_0%,rgba(190,24,93,0.45),transparent_70%),radial-gradient(ellipse_45%_60%_at_75%_0%,rgba(37,99,235,0.5),transparent_70%)]"
+          />
+          <div className="relative">
+            <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white p-2.5 shadow-[0_10px_40px_-10px_rgba(59,130,246,0.7)]">
+              <Image src={COMPANY.logoPath} alt="" width={48} height={48} className="h-full w-full object-contain" />
+            </span>
+            <h2 className="mx-auto mt-8 max-w-xl text-3xl font-semibold tracking-[-0.02em] text-white sm:text-4xl">
+              Have a project in mind? Let&apos;s build it together.
+            </h2>
+            <p className="mx-auto mt-4 max-w-md text-slate-300">
+              Tell us what you are building and we will come back with a plan, timeline and estimate.
+            </p>
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link
+                href="/contact"
+                className="inline-flex items-center rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-slate-100"
+              >
+                Start a project
+              </Link>
+              <a
+                href={COMPANY.phone.href}
+                className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-white ring-1 ring-white/20 transition hover:bg-white/10"
+              >
+                <Phone className="h-4 w-4" aria-hidden />
+                {COMPANY.phone.display}
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       <Footer />
+    </div>
+  );
+}
+
+type Project = {
+  id: number;
+  title: string;
+  category: string;
+  image: string;
+  description: string;
+  technologies: string[];
+  client: string;
+  duration: string;
+  results: string;
+  featured: boolean;
+  screenshot?: { src: string; alt: string; width: number; height: number };
+  /** Listed only under its own filter, not in "All". */
+  hideFromAll?: boolean;
+};
+
+/** Real product screenshot in a browser frame when we have one, otherwise the illustrative mock. */
+function ProjectVisual({ project }: { project: Project }) {
+  if (!project.screenshot) return <ProjectMock category={project.category} />;
+  return (
+    <div className="mx-auto w-full max-w-2xl overflow-hidden rounded-xl bg-white shadow-[0_30px_60px_-20px_rgba(2,6,23,0.6)] ring-1 ring-slate-900/10">
+      <div className="flex items-center gap-1.5 border-b border-slate-100 px-3 py-2" aria-hidden>
+        <span className="h-2 w-2 rounded-full bg-rose-400" />
+        <span className="h-2 w-2 rounded-full bg-amber-400" />
+        <span className="h-2 w-2 rounded-full bg-emerald-400" />
+      </div>
+      <Image
+        src={project.screenshot.src}
+        alt={project.screenshot.alt}
+        width={project.screenshot.width}
+        height={project.screenshot.height}
+        sizes="(min-width: 1024px) 640px, 100vw"
+        className="h-auto w-full"
+      />
+    </div>
+  );
+}
+
+// Service filters without published projects yet link to the matching service page.
+const SERVICE_PAGES: Record<string, string> = {
+  zoho: '/expertise/zoho-integrations',
+  'ui-ux': '/expertise/ui-ux-design',
+  hardware: '/expertise/hardware-electronics',
+};
+
+const BENTO_WIDE = [true, false, false, false, false, true, true, false, false];
+const BENTO_COLUMNS = 4;
+const SPAN_CLASSES: Record<number, string> = {
+  1: '',
+  2: 'md:col-span-2',
+  3: 'md:col-span-2 lg:col-span-3',
+  4: 'md:col-span-2 lg:col-span-4',
+};
+
+/** Column span per card; the last card stretches so a short final row has no gap. */
+function bentoLayout(count: number) {
+  const spans = Array.from({ length: count }, (_, i) => (BENTO_WIDE[i % BENTO_WIDE.length] ? 2 : 1));
+  let used = 0;
+  spans.forEach((span, i) => {
+    if (used + span > BENTO_COLUMNS) used = 0;
+    used = (used + span) % BENTO_COLUMNS;
+    if (i === count - 1 && used > 0) spans[i] += BENTO_COLUMNS - used;
+  });
+  return spans;
+}
+const BENTO_THEMES: BentoTheme[] = ['blue', 'light', 'dark', 'dark', 'peach', 'light', 'dark', 'light', 'blue'];
+
+type BentoTheme = 'light' | 'peach' | 'dark' | 'blue';
+
+const THEME_STYLES: Record<BentoTheme, { card: string; inverse: boolean }> = {
+  light: { card: 'bg-[linear-gradient(160deg,#ffffff_0%,#eef2ff_45%,#bfdbfe_100%)] ring-1 ring-slate-200/70', inverse: false },
+  peach: { card: 'bg-[linear-gradient(160deg,#fff7ed_0%,#ffe4e6_50%,#fecdd3_100%)] ring-1 ring-rose-100', inverse: false },
+  dark: {
+    card: 'bg-[#07070c] bg-[radial-gradient(ellipse_80%_60%_at_50%_110%,rgba(79,70,229,0.55),transparent_70%)]',
+    inverse: true,
+  },
+  blue: { card: 'bg-[linear-gradient(160deg,#3b82f6_0%,#4338ca_50%,#2e1065_100%)]', inverse: true },
+};
+
+function BentoCard({ project, label, span, theme }: { project: Project; label: string; span: number; theme: BentoTheme }) {
+  const wide = span > 1;
+  const { card, inverse } = THEME_STYLES[theme];
+  const chips = (
+      <div
+        className={`relative z-10 flex flex-wrap items-center gap-2 text-xs font-medium ${wide ? 'mt-4' : ''}`}
+      >
+        {[project.duration, project.results].filter(Boolean).map((item) => (
+          <span
+            key={item}
+            className={`rounded-full px-2.5 py-1 backdrop-blur ${
+              inverse ? 'bg-white/10 text-white ring-1 ring-white/15' : 'bg-white/80 text-slate-700 ring-1 ring-slate-200'
+            }`}
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+  );
+  return (
+    <article
+      className={`group relative flex h-[24rem] flex-col overflow-hidden rounded-2xl p-6 transition duration-500 ease-out motion-safe:hover:-translate-y-1 ${card} ${
+        SPAN_CLASSES[span]
+      }`}
+    >
+      <p className={`text-xs font-medium ${inverse ? 'text-white/60' : 'text-slate-500'}`}>{label}</p>
+      <h3 className={`mt-1.5 text-lg font-semibold tracking-tight ${inverse ? 'text-white' : 'text-slate-900'}`}>
+        {project.title}
+      </h3>
+      <p className={`mt-2 line-clamp-2 shrink-0 text-sm leading-relaxed ${inverse ? 'text-white/70' : 'text-slate-600'} ${wide ? 'max-w-md' : ''}`}>
+        {project.description}
+      </p>
+      {wide && chips}
+
+      {wide ? (
+        <div className="relative -mb-16 mt-6 flex flex-1 items-start justify-center transition-transform duration-500 motion-safe:group-hover:-translate-y-2">
+          <div className="w-full max-w-md">
+            <ProjectVisual project={project} />
+          </div>
+        </div>
+      ) : project.screenshot ? (
+        <div className="flex flex-1 items-center">
+          <div className="w-full overflow-hidden rounded-xl shadow-[0_20px_40px_-15px_rgba(37,99,235,0.45)] ring-1 ring-slate-900/10 transition-transform duration-500 motion-safe:group-hover:scale-[1.03]">
+            <Image
+              src={project.screenshot.src}
+              alt={project.screenshot.alt}
+              width={project.screenshot.width}
+              height={project.screenshot.height}
+              sizes="(min-width: 1024px) 280px, (min-width: 768px) 50vw, 100vw"
+              className="h-auto w-full"
+            />
+          </div>
+        </div>
+      ) : (
+        <div className="flex flex-1 items-center justify-center">
+          <span
+            className={`flex h-20 w-20 items-center justify-center rounded-2xl transition-transform duration-500 motion-safe:group-hover:scale-105 ${
+              inverse
+                ? 'bg-white/10 text-white ring-1 ring-white/20 shadow-[0_0_60px_-5px_rgba(129,140,248,0.75)] backdrop-blur'
+                : 'bg-white text-blue-600 shadow-[0_20px_40px_-15px_rgba(37,99,235,0.45)] ring-1 ring-slate-200/70'
+            }`}
+          >
+            <ServiceIcon emoji={project.image} size="none" className="h-9 w-9" />
+          </span>
+        </div>
+      )}
+
+      {!wide && chips}
+    </article>
+  );
+}
+
+function SectionHeader({
+  title,
+  description,
+  cta,
+}: {
+  title: string;
+  description: string;
+  cta: { label: string; href: string };
+}) {
+  return (
+    <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+      <div className="max-w-xl">
+        <h2 className="text-3xl font-semibold tracking-[-0.02em] text-slate-900 sm:text-4xl">{title}</h2>
+        <p className="mt-3 text-base leading-relaxed text-slate-500">{description}</p>
+      </div>
+      <Link
+        href={cta.href}
+        className="inline-flex shrink-0 items-center self-start rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_-8px_rgba(37,99,235,0.8),inset_0_1px_0_rgba(255,255,255,0.2)] transition hover:bg-blue-700 sm:self-auto"
+      >
+        {cta.label}
+      </Link>
     </div>
   );
 }

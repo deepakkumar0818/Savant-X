@@ -1,8 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   ArrowRight,
   CheckCircle2,
@@ -51,7 +52,6 @@ type Props = {
 export default function ZohoAppPage({ app }: Props) {
   const theme = getZohoAppTheme(app.slug);
   const c = theme.colors;
-  const reduced = useReducedMotion();
   const heroRef = useRef<HTMLElement>(null);
   const hasAutoOpened = useRef(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -176,13 +176,7 @@ export default function ZohoAppPage({ app }: Props) {
           </nav>
 
           <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-10">
-            <motion.div
-              variants={stagger}
-              initial={reduced ? false : 'hidden'}
-              whileInView={reduced ? undefined : 'show'}
-              viewport={{ once: true, amount: 0.25 }}
-              className="text-center lg:text-left"
-            >
+            <div className="hero-enter text-center lg:text-left">
               <motion.div
                 variants={fadeUp}
                 className="mb-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
@@ -277,15 +271,9 @@ export default function ZohoAppPage({ app }: Props) {
                   <ExternalLink className="h-3 w-3" />
                 </a>
               </motion.p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={reduced ? false : { opacity: 0, y: 28 }}
-              whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-              className="relative"
-            >
+            <div className="hero-enter relative [--hero-delay:0.1s]">
               <div
                 className="absolute -inset-4 rounded-[2rem] blur-2xl"
                 style={{
@@ -311,9 +299,13 @@ export default function ZohoAppPage({ app }: Props) {
                   </span>
                 </div>
                 <div className="aspect-[4/3] overflow-hidden">
-                  <img
+                  <Image
                     src={app.heroImage}
                     alt={app.heroImageAlt}
+                    width={1400}
+                    height={1050}
+                    priority
+                    sizes="(min-width: 1024px) 45vw, 92vw"
                     className="h-full w-full object-cover"
                   />
                 </div>
@@ -334,7 +326,7 @@ export default function ZohoAppPage({ app }: Props) {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Stats strip — Zoho product-site style */}
@@ -370,8 +362,8 @@ export default function ZohoAppPage({ app }: Props) {
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start lg:gap-16">
           <motion.div
             variants={stagger}
-            initial={reduced ? false : 'hidden'}
-            whileInView={reduced ? undefined : 'show'}
+            initial='hidden'
+            whileInView='show'
             viewport={{ once: true, amount: 0.2 }}
           >
             <motion.p
@@ -414,8 +406,8 @@ export default function ZohoAppPage({ app }: Props) {
           </motion.div>
 
           <motion.div
-            initial={reduced ? false : { opacity: 0, y: 20 }}
-            whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
             className="overflow-hidden rounded-3xl border bg-white shadow-[0_22px_55px_-28px_rgba(15,23,42,0.2)]"
@@ -425,6 +417,8 @@ export default function ZohoAppPage({ app }: Props) {
               <img
                 src={app.secondaryImage}
                 alt={app.secondaryImageAlt}
+                loading="lazy"
+                decoding="async"
                 className="h-full w-full object-cover"
               />
             </div>
@@ -465,8 +459,8 @@ export default function ZohoAppPage({ app }: Props) {
             {app.challenges.map((challenge, i) => (
               <motion.div
                 key={challenge.title}
-                initial={reduced ? false : { opacity: 0, y: 18 }}
-                whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.05 }}
                 className="rounded-2xl border border-white/80 bg-white/95 p-6 shadow-sm backdrop-blur-md motion-safe:transition-all motion-safe:hover:-translate-y-1"
@@ -514,8 +508,8 @@ export default function ZohoAppPage({ app }: Props) {
               return (
                 <motion.div
                   key={feature.title}
-                  initial={reduced ? false : { opacity: 0, y: 18 }}
-                  whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.45, delay: (i % 3) * 0.05 }}
                   className="group relative overflow-hidden rounded-2xl border bg-white/95 p-6 shadow-sm backdrop-blur-md before:absolute before:inset-x-0 before:top-0 before:h-[3px] motion-safe:transition-all motion-safe:hover:-translate-y-1"
@@ -843,7 +837,9 @@ export default function ZohoAppPage({ app }: Props) {
                     <img
                       src={relatedApp.iconUrl}
                       alt={relatedApp.name}
-                      className="h-full w-full object-cover"
+                      loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover"
                     />
                   </div>
                   <span className="text-sm font-semibold text-slate-800 group-hover:opacity-90">

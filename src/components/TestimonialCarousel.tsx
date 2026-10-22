@@ -3,6 +3,9 @@
 import { useState, useEffect, useRef } from 'react';
 import AnimatedCounter from './AnimatedCounter';
 import InlineAnimatedCounter from './InlineAnimatedCounter';
+import { useInView } from '@/lib/useInView';
+import { usePageVisible } from '@/lib/usePageVisible';
+import { COMPANY_METRICS } from '@/lib/company';
 
 // Testimonial data structure
 interface Testimonial {
@@ -119,23 +122,13 @@ const testimonials: Testimonial[] = [
 ];
 
 export default function TestimonialCarousel() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef);
+  const pageVisible = usePageVisible();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [inView, setInView] = useState(false);
   const [visibleCards, setVisibleCards] = useState(3);
   const carouselRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { rootMargin: '80px' }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   // Responsive card visibility
   useEffect(() => {
@@ -156,7 +149,7 @@ export default function TestimonialCarousel() {
 
   // Auto-play functionality
   useEffect(() => {
-    if (!isAutoPlaying || !inView) return;
+    if (!isAutoPlaying || !inView || !pageVisible) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => {
@@ -166,7 +159,7 @@ export default function TestimonialCarousel() {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, visibleCards, inView]);
+  }, [isAutoPlaying, visibleCards, inView, pageVisible]);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => {
@@ -197,16 +190,14 @@ export default function TestimonialCarousel() {
   return (
     <section
       ref={sectionRef}
-      className="scroll-section relative isolate overflow-hidden pt-0 pb-24 px-6 sm:px-8 lg:px-12"
+      className="relative isolate overflow-hidden pt-0 pb-24 px-6 sm:px-8 lg:px-12 [content-visibility:auto] [contain-intrinsic-size:auto_640px]"
     >
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden>
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/40 to-indigo-50/90" />
         <div className="absolute inset-0 bg-[linear-gradient(168deg,rgb(255_255_255_/_0.75)_0%,transparent_46%,rgb(239_246_255_/_0.55)_100%)]" />
         <div className="absolute inset-x-0 top-0 h-[52%] bg-[radial-gradient(ellipse_90%_100%_at_50%_0%,rgb(219_234_254_/_0.55),transparent_62%)]" />
-
-        <div className="absolute -left-[18%] top-[8%] h-[min(72vw,30rem)] w-[min(88vw,38rem)] rounded-full bg-[radial-gradient(ellipse_at_center,rgb(59_130_246_/_0.14),rgb(99_102_241_/_0.07)_44%,transparent_68%)] blur-3xl motion-safe:animate-float-gentle motion-reduce:animate-none" />
-        <div className="absolute -right-[14%] top-[38%] h-[min(68vw,28rem)] w-[min(82vw,34rem)] rounded-full bg-[radial-gradient(ellipse_at_center,rgb(139_92_246_/_0.12),rgb(99_102_241_/_0.06)_48%,transparent_70%)] blur-3xl motion-safe:animate-float-gentle motion-safe:delay-500 motion-reduce:animate-none" />
-        <div className="absolute -bottom-[28%] left-[22%] h-[min(64vw,26rem)] w-[min(78vw,32rem)] rounded-full bg-[radial-gradient(ellipse_at_center,rgb(186_230_253_/_0.35),rgb(129_140_248_/_0.08)_50%,transparent_72%)] blur-3xl motion-safe:animate-float-gentle motion-safe:delay-1000 motion-reduce:animate-none" />
+        <div className="absolute -left-[18%] top-[8%] h-[min(72vw,30rem)] w-[min(88vw,38rem)] rounded-full bg-[radial-gradient(ellipse_at_center,rgb(59_130_246_/_0.12),transparent_68%)] blur-2xl" />
+        <div className="absolute -right-[14%] top-[38%] h-[min(68vw,28rem)] w-[min(82vw,34rem)] rounded-full bg-[radial-gradient(ellipse_at_center,rgb(139_92_246_/_0.1),transparent_70%)] blur-2xl" />
 
         <div className="absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-indigo-950/[0.035] via-transparent to-transparent" />
 
@@ -358,17 +349,23 @@ export default function TestimonialCarousel() {
           </div>
 
           {/* Pagination Dots */}
-          <div className="flex justify-center mt-12 gap-3">
+          <div className="flex justify-center mt-12 gap-1">
             {Array.from({ length: testimonials.length - visibleCards + 1 }).map((_, index) => (
               <button
                 key={index}
+                type="button"
                 onClick={() => goToSlide(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'bg-blue-600 w-8' 
-                    : 'bg-slate-300 hover:bg-slate-400 w-2'
-                }`}
-              />
+                aria-label={`Show testimonials ${index + 1}`}
+                aria-current={index === currentIndex}
+                className="group flex h-6 min-w-6 items-center justify-center px-1"
+              >
+                <span
+                  aria-hidden
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentIndex ? 'bg-blue-600 w-8' : 'bg-slate-300 group-hover:bg-slate-400 w-2'
+                  }`}
+                />
+              </button>
             ))}
           </div>
         </div>
@@ -388,9 +385,9 @@ export default function TestimonialCarousel() {
                 </svg>
               </div>
               <div className="text-3xl font-bold text-slate-900 mb-2 group-hover:scale-105 transition-transform duration-300">
-                <AnimatedCounter end={250} suffix="+" duration={2500} />
+                <AnimatedCounter end={COMPANY_METRICS[0].value} suffix={COMPANY_METRICS[0].suffix} duration={2500} />
               </div>
-              <div className="text-slate-600 font-medium">Enterprise Projects</div>
+              <div className="text-slate-600 font-medium">{COMPANY_METRICS[0].label}</div>
             </div>
             
             <div className="group">

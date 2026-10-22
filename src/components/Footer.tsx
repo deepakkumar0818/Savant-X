@@ -1,5 +1,43 @@
 import Link from 'next/link';
+import { Facebook, Instagram, Linkedin } from 'lucide-react';
 import NewsletterSignup from '@/components/NewsletterSignup';
+import { COMPANY, OFFICES, formatOfficeAddress, officeMapUrl } from '@/lib/company';
+
+const SOCIAL_LINKS = [
+  {
+    href: 'https://x.com/Savantxtech',
+    label: 'X (Twitter)',
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor" aria-hidden>
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      </svg>
+    ),
+  },
+  {
+    href: 'https://www.linkedin.com/company/savantxtechnologies/posts/?feedView=all',
+    label: 'LinkedIn',
+    icon: <Linkedin className="h-[18px] w-[18px]" strokeWidth={2} aria-hidden />,
+  },
+  {
+    href: 'https://www.facebook.com/savantxtechnologies',
+    label: 'Facebook',
+    icon: <Facebook className="h-[18px] w-[18px]" strokeWidth={2} aria-hidden />,
+  },
+  {
+    href: 'https://www.instagram.com/savantxtechnologies/',
+    label: 'Instagram',
+    icon: <Instagram className="h-[18px] w-[18px]" strokeWidth={2} aria-hidden />,
+  },
+  {
+    href: 'https://www.threads.net/@savantxtechnologies',
+    label: 'Threads',
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor" aria-hidden>
+        <path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.277.676c-.533-1.886-1.406-3.271-2.605-4.124-1.154-.824-2.652-1.283-4.453-1.296-2.867.024-5.044 1.103-6.293 3.074-.953 1.505-1.435 3.533-1.435 6.027v.017c0 2.493.482 4.522 1.435 6.027 1.249 1.972 3.426 3.05 6.293 3.074 1.801-.013 3.299-.472 4.453-1.296 1.199-.853 2.072-2.238 2.605-4.124l2.277.676c-.651 2.337-1.832 4.177-3.509 5.467-1.783 1.373-4.08 2.078-6.826 2.098z" />
+      </svg>
+    ),
+  },
+] as const;
 
 export default function Footer() {
   return (
@@ -10,33 +48,30 @@ export default function Footer() {
             <img
               src="/images/logos/Logo.png"
               alt="SavantX Technologies Pvt Ltd logo"
+              width={124}
+              height={44}
+              loading="lazy"
               className="mb-5 h-11 w-auto object-contain"
             />
             <p className="max-w-md text-[15px] leading-relaxed text-slate-600">
               Software, integrations, and electronics—from web and mobile to ERP, IoT, firmware, and PCB—with
               documentation your teams can own.
             </p>
-            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
-              <a href="https://x.com/Savantxtech" target="_blank" rel="noopener noreferrer" className="text-slate-600 transition hover:text-indigo-700">
-                X (Twitter)
-              </a>
-              <a
-                href="https://www.linkedin.com/company/savantxtechnologies/posts/?feedView=all"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-600 transition hover:text-indigo-700"
-              >
-                LinkedIn
-              </a>
-              <a href="https://www.facebook.com/savantxtechnologies" target="_blank" rel="noopener noreferrer" className="text-slate-600 transition hover:text-indigo-700">
-                Facebook
-              </a>
-              <a href="https://www.instagram.com/savantxtechnologies/" target="_blank" rel="noopener noreferrer" className="text-slate-600 transition hover:text-indigo-700">
-                Instagram
-              </a>
-              <a href="https://www.threads.net/@savantxtechnologies" target="_blank" rel="noopener noreferrer" className="text-slate-600 transition hover:text-indigo-700">
-                Threads
-              </a>
+            <div className="mt-6 flex flex-wrap items-center gap-2.5">
+              {SOCIAL_LINKS.map(({ href, label, icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  title={label}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200/90 bg-white text-slate-600 shadow-sm ring-1 ring-slate-100/80 transition-all hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-700 hover:shadow-md"
+                >
+                  {icon}
+                  <span className="sr-only">{label}</span>
+                </a>
+              ))}
             </div>
           </div>
           <div className="lg:col-span-7">
@@ -90,6 +125,11 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/expertise/hardware-electronics" className="text-slate-600 transition hover:text-indigo-700">
+                  Hardware &amp; electronics
+                </Link>
+              </li>
+              <li>
+                <Link href="/expertise/iot-embedded-systems" className="text-slate-600 transition hover:text-indigo-700">
                   IoT &amp; embedded
                 </Link>
               </li>
@@ -106,32 +146,30 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-slate-500">Locations</h4>
+            <h4 className="mb-4 text-xs font-semibold uppercase tracking-wider text-slate-500">Offices &amp; contact</h4>
             <ul className="space-y-2.5 text-sm">
+              {OFFICES.map((office) => (
+                <li key={office.id}>
+                  <a
+                    href={officeMapUrl(office)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={formatOfficeAddress(office)}
+                    className="text-slate-600 transition hover:text-indigo-700"
+                  >
+                    {office.city}, {office.region}
+                  </a>
+                </li>
+              ))}
               <li>
-                <Link href="/contact#map" className="text-slate-600 transition hover:text-indigo-700">
-                  USA
-                </Link>
+                <a href={COMPANY.phone.href} className="text-slate-600 transition hover:text-indigo-700">
+                  {COMPANY.phone.display}
+                </a>
               </li>
               <li>
-                <Link href="/contact#map" className="text-slate-600 transition hover:text-indigo-700">
-                  Canada
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact#map" className="text-slate-600 transition hover:text-indigo-700">
-                  UAE
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact#map" className="text-slate-600 transition hover:text-indigo-700">
-                  Nepal
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact#map" className="text-slate-600 transition hover:text-indigo-700">
-                  Singapore
-                </Link>
+                <a href={`mailto:${COMPANY.email}`} className="break-all text-slate-600 transition hover:text-indigo-700">
+                  {COMPANY.email}
+                </a>
               </li>
             </ul>
           </div>
@@ -144,18 +182,18 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-slate-200 pt-8 text-sm text-slate-500 md:flex-row">
-          <p>© {new Date().getFullYear()} SavantX Technologies Pvt Ltd. All rights reserved.</p>
-          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2">
-            <Link href="/privacy-policy" className="transition hover:text-slate-800">
+          <p>© {new Date().getFullYear()} {COMPANY.legalName}. All rights reserved.</p>
+          <div className="flex flex-wrap justify-center gap-x-3">
+            <Link href="/privacy-policy" className="inline-flex min-h-[44px] items-center px-2 transition hover:text-slate-800">
               Privacy
             </Link>
-            <Link href="/terms-of-service" className="transition hover:text-slate-800">
+            <Link href="/terms-of-service" className="inline-flex min-h-[44px] items-center px-2 transition hover:text-slate-800">
               Terms
             </Link>
-            <Link href="/cookie-policy" className="transition hover:text-slate-800">
+            <Link href="/cookie-policy" className="inline-flex min-h-[44px] items-center px-2 transition hover:text-slate-800">
               Cookies
             </Link>
-            <Link href="/refund-cancellation" className="transition hover:text-slate-800">
+            <Link href="/refund-cancellation" className="inline-flex min-h-[44px] items-center px-2 transition hover:text-slate-800">
               Refunds
             </Link>
           </div>

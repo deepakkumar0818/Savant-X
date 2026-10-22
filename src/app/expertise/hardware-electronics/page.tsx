@@ -1,8 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { COMPANY } from '@/lib/company';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import PageHero from '@/components/hero/PageHero';
+import { CircuitBoard } from 'lucide-react';
+import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export default function HardwareElectronicsPage() {
   const [activePlatform, setActivePlatform] = useState('iot');
@@ -51,10 +55,10 @@ export default function HardwareElectronicsPage() {
   ];
 
   const technologies = [
-    { name: 'ESP32', icon: '/images/icons/esp32.jpeg', description: 'IoT microcontroller', category: 'Hardware' },
-    { name: 'Arduino', icon: '/images/icons/ardunino.png', description: 'Development platform', category: 'Hardware' },
+    { name: 'ESP32', icon: '/images/icons/esp32_1.jpeg', description: 'IoT microcontroller', category: 'Hardware' },
+    { name: 'Arduino', icon: '/images/icons/ardunio1.png', description: 'Development platform', category: 'Hardware' },
     { name: 'STM32', icon: '/images/icons/stm32.jpeg', description: 'ARM Cortex MCU', category: 'Hardware' },
-    { name: 'KiCAD', icon: '/images/icons/kicad.jpeg', description: 'PCB design tool', category: 'PCB Design' },
+    { name: 'KiCAD', icon: '/images/icons/kicad1.png', description: 'PCB design tool', category: 'PCB Design' },
     { name: 'DipTrace', icon: '/images/icons/Diptrace.jpeg', description: 'PCB layout software', category: 'PCB Design' },
     { name: 'SolidWorks', icon: '/images/icons/SolidWorks.png', description: '3D CAD software', category: 'CAD' },
     { name: 'Raspberry Pi', icon: '🥧', description: 'Single-board computer', category: 'Hardware' },
@@ -152,79 +156,33 @@ export default function HardwareElectronicsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50">
-      {/* Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-green-400/20 to-emerald-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-orange-400/10 to-red-600/10 rounded-full blur-3xl"></div>
-        
-        {/* Floating Hardware Icons */}
-        <div className="absolute top-20 left-20 w-16 h-16 bg-gradient-to-br from-cyan-400/30 to-cyan-600/30 rounded-2xl flex items-center justify-center animate-float">
-          <span className="text-2xl">🔌</span>
-        </div>
-        <div className="absolute top-40 right-32 w-12 h-12 bg-gradient-to-br from-green-400/30 to-green-600/30 rounded-xl flex items-center justify-center animate-float" style={{animationDelay: '1s'}}>
-          <span className="text-xl">⚡</span>
-        </div>
-        <div className="absolute bottom-32 left-32 w-14 h-14 bg-gradient-to-br from-orange-400/30 to-orange-600/30 rounded-xl flex items-center justify-center animate-float" style={{animationDelay: '2s'}}>
-          <span className="text-xl">🔧</span>
-        </div>
-        <div className="absolute bottom-20 right-20 w-10 h-10 bg-gradient-to-br from-blue-400/30 to-blue-600/30 rounded-lg flex items-center justify-center animate-float" style={{animationDelay: '3s'}}>
-          <span className="text-lg">🌐</span>
-        </div>
-      </div>
+    <div className="min-h-screen bg-white">
 
-      {/* Hero Section */}
-      <section className="relative z-10 pt-32 pb-20 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-cyan-100 text-cyan-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-cyan-200">
-              <span className="text-lg">⚡</span>
-              Hardware & Electronics
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
-              Electronics &
-              <span className="block text-cyan-600 mt-2">Hardware Development</span>
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
-              We design and develop custom electronics, PCBs, and embedded systems that power innovative products. 
-              From IoT devices to industrial automation, we bring your hardware ideas to life.
-            </p>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-cyan-600 mb-2">50+</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">PCB Designs</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-green-600 mb-2">40+</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">IoT Products</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600 mb-2">6-16</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Week Delivery</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">24/7</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Support</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Hardware & Electronics"
+        eyebrowIcon={CircuitBoard}
+        title="Electronics &"
+        highlight="Hardware Development"
+        description="We design and develop custom electronics, PCBs, and embedded systems that power innovative products. From IoT devices to industrial automation, we bring your hardware ideas to life."
+        highlights={["IoT & Embedded Systems", "PCB Design & Layout", "Product Development", "Firmware Development"]}
+        stats={[
+          { value: COMPANY.foundingYear, label: "Founded" },
+          { value: "6-16", label: "Week Delivery" },
+          { value: "24/7", label: "Support" },
+        ]}
+      />
 
       {/* Hardware Types */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-cyan-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Our Solutions
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Hardware
-              <span className="block text-cyan-600 mt-2">Development Services</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Development Services</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               From circuit design to firmware development, we offer comprehensive hardware engineering services.
@@ -237,8 +195,8 @@ export default function HardwareElectronicsPage() {
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-cyan-200/50 transition-all duration-300 h-full">
                   {/* Header */}
                   <div className="flex items-start gap-6 mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-cyan-100 to-cyan-200 rounded-2xl flex items-center justify-center group-hover:from-cyan-200 group-hover:to-cyan-300 transition-all duration-300">
-                      <span className="text-3xl">{type.icon}</span>
+                    <div className="w-16 h-16 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-2xl flex items-center justify-center group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                      <ServiceIcon emoji={type.icon} size="none" className="h-7 w-7 text-indigo-600" />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-cyan-600 transition-colors duration-200">
@@ -291,13 +249,13 @@ export default function HardwareElectronicsPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-cyan-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Specializations
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               IoT & Embedded
-              <span className="block text-cyan-600 mt-2">Systems</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Systems</span>
             </h2>
           </div>
 
@@ -314,7 +272,7 @@ export default function HardwareElectronicsPage() {
                       : 'text-slate-700 hover:bg-cyan-50'
                   }`}
                 >
-                  <span className="mr-2">{platform.icon}</span>
+                  <ServiceIcon emoji={platform.icon} size="none" className="mr-2" />
                   {platform.name}
                 </button>
               ))}
@@ -328,8 +286,8 @@ export default function HardwareElectronicsPage() {
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg">
                   {/* Platform Header */}
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-cyan-100 to-cyan-200 rounded-2xl flex items-center justify-center">
-                      <span className="text-3xl">{platform.icon}</span>
+                    <div className="w-16 h-16 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-2xl flex items-center justify-center">
+                      <ServiceIcon emoji={platform.icon} size="none" className="h-7 w-7 text-indigo-600" />
                     </div>
                     <div>
                       <h3 className="text-2xl font-bold text-slate-900 mb-1">{platform.name}</h3>
@@ -376,13 +334,13 @@ export default function HardwareElectronicsPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-cyan-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Technology Stack
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Hardware
-              <span className="block text-cyan-600 mt-2">Technologies</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Technologies</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               We use industry-leading tools and platforms for electronics and hardware development.
@@ -398,11 +356,13 @@ export default function HardwareElectronicsPage() {
                       <img 
                         src={tech.icon} 
                         alt={`${tech.name} icon`}
-                        className="w-full h-full object-contain rounded-lg"
+                        loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-contain rounded-lg"
                       />
                     </div>
                   ) : (
-                    <div className="text-3xl mb-3">{tech.icon}</div>
+                    <ServiceIcon emoji={tech.icon} size="lg" className="mb-3" />
                   )}
                   <h3 className="text-sm font-bold text-slate-900 mb-1 group-hover:text-cyan-600 transition-colors duration-200">
                     {tech.name}
@@ -422,13 +382,13 @@ export default function HardwareElectronicsPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-cyan-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Key Features
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Why Choose Our
-              <span className="block text-cyan-600 mt-2">Hardware Services</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Hardware Services</span>
             </h2>
           </div>
 
@@ -436,8 +396,8 @@ export default function HardwareElectronicsPage() {
             {features.map((feature, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-cyan-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-cyan-100 to-cyan-200 rounded-xl flex items-center justify-center mb-4 group-hover:from-cyan-200 group-hover:to-cyan-300 transition-all duration-300">
-                    <span className="text-2xl">{feature.icon}</span>
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                    <ServiceIcon emoji={feature.icon} size="none" className="h-6 w-6 text-indigo-600" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-cyan-600 transition-colors duration-200">
                     {feature.title}
@@ -456,13 +416,13 @@ export default function HardwareElectronicsPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-cyan-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Our Process
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               How We Develop
-              <span className="block text-cyan-600 mt-2">Hardware Products</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Hardware Products</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               Our proven 5-step process ensures your hardware product is delivered on time with exceptional quality.
@@ -477,8 +437,8 @@ export default function HardwareElectronicsPage() {
                     <div className="inline-block bg-cyan-50 text-cyan-700 px-3 py-1 rounded-lg text-sm font-bold mb-3 border border-cyan-200">
                       {step.step}
                     </div>
-                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-100 to-cyan-200 rounded-xl flex items-center justify-center group-hover:from-cyan-200 group-hover:to-cyan-300 transition-all duration-300">
-                      <span className="text-2xl">{step.icon}</span>
+                    <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                      <ServiceIcon emoji={step.icon} size="none" className="h-6 w-6 text-indigo-600" />
                     </div>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-cyan-600 transition-colors duration-200">
@@ -507,21 +467,15 @@ export default function HardwareElectronicsPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
-              <button className="bg-white text-cyan-600 px-8 py-4 rounded-xl hover:bg-cyan-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="bg-white text-cyan-600 px-8 py-4 rounded-xl hover:bg-cyan-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
                 Start Your Project
-              </button>
-            </Link>
-            <Link href="/contact">
-              <button className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-cyan-600 transition-all duration-200 font-semibold text-lg">
+              </Link>
+            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-cyan-600 transition-all duration-200 font-semibold text-lg">
                 Schedule Consultation
-              </button>
-            </Link>
-            <Link href="/work">
-              <button className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-cyan-600 transition-all duration-200 font-semibold text-lg">
+              </Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-cyan-600 transition-all duration-200 font-semibold text-lg">
                 View Portfolio
-              </button>
-            </Link>
+              </Link>
           </div>
         </div>
       </section>

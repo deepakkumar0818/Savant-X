@@ -1,7 +1,18 @@
-'use client';
-
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
+import { COMPANY } from '@/lib/company';
+import PageHero from '@/components/hero/PageHero';
+import { Radio } from 'lucide-react';
+import ServiceIcon from '@/components/ui/ServiceIcon';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'IoT & Embedded Systems',
+  description:
+    'Connected IoT devices and embedded systems, from smart sensors to industrial automation, designed by SavantX Technologies.',
+  path: '/expertise/iot-embedded-systems',
+});
 
 export default function IotEmbeddedSystemsPage() {
   const features = [
@@ -126,61 +137,30 @@ export default function IotEmbeddedSystemsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50">
-      {/* Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-indigo-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-indigo-400/10 to-blue-600/10 rounded-full blur-3xl"></div>
-      </div>
+    <div className="min-h-screen bg-white">
 
-      {/* Hero Section */}
-      <section className="relative z-10 pt-32 pb-20 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-blue-200">
-              <span className="text-lg">📡</span>
-              IoT & Embedded Systems
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
-              Smart Connected Devices &
-              <span className="block text-blue-600 mt-2">Embedded Systems</span>
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
-              We design and develop intelligent IoT solutions and embedded systems that connect the physical and digital worlds. 
-              From smart sensors to industrial automation, we create innovative connected products.
-            </p>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">50+</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">IoT Projects</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-cyan-600 mb-2">100K+</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Devices Deployed</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-indigo-600 mb-2">99.9%</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Uptime</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">24/7</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Monitoring</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="IoT & Embedded Systems"
+        eyebrowIcon={Radio}
+        title="Smart Connected Devices &"
+        highlight="Embedded Systems"
+        description="We design and develop intelligent IoT solutions and embedded systems that connect the physical and digital worlds. From smart sensors to industrial automation, we create innovative connected products."
+        highlights={["Smart Sensors Integration", "Wireless Connectivity", "Cloud Integration", "Real-time Processing"]}
+        stats={[
+          { value: COMPANY.foundingYear, label: "Founded" },
+          { value: "100K+", label: "Devices Deployed" },
+          { value: "99.9%", label: "Uptime" },
+          { value: "24/7", label: "Monitoring" },
+        ]}
+      />
 
       {/* Features */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Core
-              <span className="block text-blue-600 mt-2">Capabilities</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Capabilities</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               Comprehensive IoT and embedded systems development services.
@@ -191,8 +171,8 @@ export default function IotEmbeddedSystemsPage() {
             {features.map((feature, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mb-4 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                    <span className="text-2xl">{feature.icon}</span>
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                    <ServiceIcon emoji={feature.icon} size="none" className="h-6 w-6 text-indigo-600" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
                     {feature.title}
@@ -211,9 +191,9 @@ export default function IotEmbeddedSystemsPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Industry
-              <span className="block text-blue-600 mt-2">Applications</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Applications</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               IoT solutions tailored for various industries and use cases.
@@ -225,7 +205,7 @@ export default function IotEmbeddedSystemsPage() {
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
                   <div className={`w-12 h-12 bg-gradient-to-br ${useCase.color} rounded-xl flex items-center justify-center mb-4`}>
-                    <span className="text-2xl">{useCase.icon}</span>
+                    <ServiceIcon emoji={useCase.icon} size="none" className="h-6 w-6 text-indigo-600" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
                     {useCase.title}
@@ -244,9 +224,9 @@ export default function IotEmbeddedSystemsPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Technology
-              <span className="block text-blue-600 mt-2">Stack</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Stack</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               Industry-leading platforms and tools for IoT development.
@@ -261,7 +241,9 @@ export default function IotEmbeddedSystemsPage() {
                     <img 
                       src={tech.icon} 
                       alt={`${tech.name} icon`}
-                      className="w-full h-full object-contain rounded-lg"
+                      loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-contain rounded-lg"
                     />
                   </div>
                   <h3 className="text-sm font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors duration-200">
@@ -279,9 +261,9 @@ export default function IotEmbeddedSystemsPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Development
-              <span className="block text-blue-600 mt-2">Process</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Process</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               Our proven 5-step process for IoT and embedded systems development.
@@ -296,8 +278,8 @@ export default function IotEmbeddedSystemsPage() {
                     <div className="inline-block bg-blue-50 text-blue-700 px-3 py-1 rounded-lg text-sm font-bold mb-3 border border-blue-200">
                       {step.step}
                     </div>
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                      <span className="text-2xl">{step.icon}</span>
+                    <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                      <ServiceIcon emoji={step.icon} size="none" className="h-6 w-6 text-indigo-600" />
                     </div>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
@@ -326,16 +308,12 @@ export default function IotEmbeddedSystemsPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
-              <button className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
                 Start Your Project
-              </button>
-            </Link>
-            <Link href="/contact">
-              <button className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
+              </Link>
+            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
                 Schedule Consultation
-              </button>
-            </Link>
+              </Link>
           </div>
         </div>
       </section>
@@ -344,4 +322,3 @@ export default function IotEmbeddedSystemsPage() {
     </div>
   );
 }
-

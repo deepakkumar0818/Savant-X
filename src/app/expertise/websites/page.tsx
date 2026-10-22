@@ -1,6 +1,18 @@
-'use client';
-
+import Link from 'next/link';
 import Footer from '@/components/Footer';
+import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
+import { COMPANY } from '@/lib/company';
+import PageHero from '@/components/hero/PageHero';
+import { Globe } from 'lucide-react';
+import ServiceIcon from '@/components/ui/ServiceIcon';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Website Development',
+  description:
+    'High-performance, professionally designed websites from SavantX Technologies, from corporate sites to portfolios.',
+  path: '/expertise/websites',
+});
 
 export default function WebsitesPage() {
 
@@ -80,65 +92,34 @@ export default function WebsitesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50">
-      {/* Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-indigo-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-pink-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-cyan-400/10 to-blue-600/10 rounded-full blur-3xl"></div>
-      </div>
+    <div className="min-h-screen bg-white">
 
-      {/* Hero Section */}
-      <section className="relative z-10 pt-32 pb-20 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-blue-200">
-              <span className="text-lg">✈️</span>
-              Website Development
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
-              Professional
-              <span className="block text-blue-600 mt-2">Website Solutions</span>
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
-              We create stunning, high-performance websites that drive results. From corporate sites to portfolios, 
-              we deliver exceptional web experiences that engage your audience and grow your business.
-            </p>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">200+</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Websites Built</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-green-600 mb-2">98%</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Client Satisfaction</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">2-4</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Week Delivery</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600 mb-2">24/7</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Support</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Website Development"
+        eyebrowIcon={Globe}
+        title="Professional"
+        highlight="Website Solutions"
+        description="We create stunning, high-performance websites that drive results. From corporate sites to portfolios, we deliver exceptional web experiences that engage your audience and grow your business."
+        highlights={["Corporate Websites", "Portfolio Websites", "Landing Pages", "Blog Websites"]}
+        stats={[
+          { value: COMPANY.foundingYear, label: "Founded" },
+          { value: "98%", label: "Client Satisfaction" },
+          { value: "2-4", label: "Week Delivery" },
+          { value: "24/7", label: "Support" },
+        ]}
+      />
 
       {/* Website Types */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Our Services
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Website Types
-              <span className="block text-blue-600 mt-2">We Build</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">We Build</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               From simple landing pages to complex corporate websites, we have the expertise to deliver exactly what you need.
@@ -150,8 +131,8 @@ export default function WebsitesPage() {
               <div key={type.id} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
                   {/* Icon */}
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mb-6 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                    <span className="text-3xl">{type.icon}</span>
+                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-2xl flex items-center justify-center mb-6 group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                    <ServiceIcon emoji={type.icon} size="none" className="h-7 w-7 text-indigo-600" />
                   </div>
 
                   {/* Content */}
@@ -199,13 +180,13 @@ export default function WebsitesPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Technology Stack
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Modern
-              <span className="block text-blue-600 mt-2">Technologies</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Technologies</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               We use cutting-edge technologies to build fast, secure, and scalable websites.
@@ -216,7 +197,7 @@ export default function WebsitesPage() {
             {technologies.map((tech, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-xl p-6 text-center hover:shadow-lg hover:border-blue-200/50 transition-all duration-300">
-                  <div className="text-3xl mb-3">{tech.icon}</div>
+                  <ServiceIcon emoji={tech.icon} size="lg" className="mb-3" />
                   <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-200">
                     {tech.name}
                   </h3>
@@ -232,13 +213,13 @@ export default function WebsitesPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Our Process
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               How We
-              <span className="block text-blue-600 mt-2">Build Websites</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Build Websites</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               Our proven 4-step process ensures your website is delivered on time and exceeds expectations.
@@ -286,12 +267,12 @@ export default function WebsitesPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
               Start Your Project
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
+            </Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
               View Our Work
-            </button>
+            </Link>
           </div>
         </div>
       </section>

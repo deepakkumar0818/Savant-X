@@ -47,12 +47,12 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-  overflow-x: clip;
 }
 
 html {
-  overflow-x: clip;
   scroll-behavior: auto;
+  /* Keeps anchor targets clear of the sticky navbar. */
+  scroll-padding-top: 5rem;
 }
 
 /* Pause decorative motion while scrolling — keeps the main thread free for scroll */
@@ -132,49 +132,6 @@ html[data-scrolling='true'] [class*='animate-'] {
 
 .animate-float-center {
   animation: float-center 5s ease-in-out infinite;
-}
-
-/* Auto-scroll animation for code editor */
-@keyframes scroll-up {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-50%);
-  }
-}
-
-.animate-scroll-up {
-  animation: scroll-up 20s linear infinite;
-  animation-fill-mode: both;
-}
-
-/* Alternative scroll animation */
-@keyframes code-scroll {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-50%);
-  }
-}
-
-.code-scroll {
-  animation: code-scroll 15s linear infinite;
-}
-
-/* Simple scroll animation */
-@keyframes simple-scroll {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-200px);
-  }
-}
-
-.simple-scroll {
-  animation: simple-scroll 10s linear infinite;
 }
 
 /* Hero workbench workflow animation */
@@ -448,45 +405,6 @@ html[data-scrolling='true'] [class*='animate-'] {
   animation: float-gentle 3s ease-in-out infinite;
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-.animate-gradient-shift {
-  background-size: 200% 200%;
-  animation: gradient-shift 3s ease infinite;
-}
-
-.animate-tech-bounce {
-  animation: tech-bounce 2s ease-in-out infinite;
-}
-
-.animate-slide-in-bottom {
-  animation: slideInFromBottom 0.8s ease-out forwards;
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-}
-
-.animate-company-fade-in {
-  animation: companyFadeInUp 0.6s ease-out forwards;
-}
-
-.animate-company-fade-out {
-  animation: companyFadeOut 0.3s ease-in forwards;
-}
-
-.animate-company-slide-in {
-  animation: companySlideIn 0.5s ease-out forwards;
-}
-
-.animate-company-bounce {
-  animation: companyGentleBounce 2s ease-in-out infinite;
-}
-
 /* Staggered Animation Delays */
 .delay-100 {
   animation-delay: 0.1s;
@@ -524,69 +442,6 @@ html[data-scrolling='true'] [class*='animate-'] {
   animation-delay: 1s;
 }
 
-/* Initial Hidden State */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.animate-on-scroll.animate-fade-in-up {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Professional Emoji Animation */
-@keyframes emoji-glow-bounce {
-  0%, 100% {
-    filter: brightness(1) drop-shadow(0 0 0 rgba(59, 130, 246, 0));
-    transform: translateY(0);
-  }
-  25% {
-    filter: brightness(1.05) drop-shadow(0 0 4px rgba(59, 130, 246, 0.2));
-    transform: translateY(-2px);
-  }
-  50% {
-    filter: brightness(1.1) drop-shadow(0 0 8px rgba(59, 130, 246, 0.3));
-    transform: translateY(-1px);
-  }
-  75% {
-    filter: brightness(1.05) drop-shadow(0 0 4px rgba(59, 130, 246, 0.2));
-    transform: translateY(-2px);
-  }
-}
-
-@keyframes emoji-fade-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes emoji-subtle-scale {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.02);
-  }
-}
-
-.animate-emoji-glow {
-  animation: emoji-glow-bounce 3s ease-in-out infinite;
-}
-
-.animate-emoji-fade-in {
-  animation: emoji-fade-in 0.8s ease-out forwards;
-}
-
-.animate-emoji-subtle {
-  animation: emoji-subtle-scale 4s ease-in-out infinite;
-}
-
 @keyframes fade-in-up {
   0% {
     opacity: 0;
@@ -600,82 +455,6 @@ html[data-scrolling='true'] [class*='animate-'] {
 
 .animate-fade-in-up {
   animation: fade-in-up 0.8s ease-out forwards;
-}
-
-/* 3D Animations for Web Apps */
-@keyframes float3d {
-  0%, 100% {
-    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
-  }
-  25% {
-    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
-  }
-  50% {
-    transform: translateY(-20px) rotateX(0deg) rotateY(0deg);
-  }
-  75% {
-    transform: translateY(-10px) rotateX(-5deg) rotateY(-5deg);
-  }
-}
-
-@keyframes rotate3d {
-  0% {
-    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-  }
-  33% {
-    transform: rotateX(10deg) rotateY(10deg) rotateZ(5deg);
-  }
-  66% {
-    transform: rotateX(-5deg) rotateY(-5deg) rotateZ(-5deg);
-  }
-  100% {
-    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-  }
-}
-
-@keyframes pulse3d {
-  0%, 100% {
-    transform: scale(1) rotateX(0deg);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.05) rotateX(5deg);
-    opacity: 1;
-  }
-}
-
-@keyframes slide3d {
-  0% {
-    transform: translateX(0px) translateY(0px) rotateZ(0deg);
-  }
-  25% {
-    transform: translateX(10px) translateY(-5px) rotateZ(2deg);
-  }
-  50% {
-    transform: translateX(0px) translateY(-10px) rotateZ(0deg);
-  }
-  75% {
-    transform: translateX(-10px) translateY(-5px) rotateZ(-2deg);
-  }
-  100% {
-    transform: translateX(0px) translateY(0px) rotateZ(0deg);
-  }
-}
-
-.animate-float3d {
-  animation: float3d 6s ease-in-out infinite;
-}
-
-.animate-rotate3d {
-  animation: rotate3d 8s ease-in-out infinite;
-}
-
-.animate-pulse3d {
-  animation: pulse3d 4s ease-in-out infinite;
-}
-
-.animate-slide3d {
-  animation: slide3d 5s ease-in-out infinite;
 }
 
 /* Leaflet Map Styles */
@@ -711,40 +490,6 @@ html[data-scrolling='true'] [class*='animate-'] {
   font-family: inherit;
 }
 
-.footer-map {
-  font-family: inherit;
-}
-
-.footer-map .leaflet-container {
-  cursor: grab;
-  background: #ffffff;
-}
-
-.footer-map .leaflet-container:active {
-  cursor: grabbing;
-}
-
-.footer-map .leaflet-control-zoom {
-  margin-top: 10px;
-  margin-right: 10px;
-  border: none !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
-}
-
-.footer-map .leaflet-control-zoom a {
-  background-color: white !important;
-  color: #2563eb !important;
-  border: 2px solid #3b82f6 !important;
-  font-weight: bold !important;
-  transition: all 0.2s ease !important;
-}
-
-.footer-map .leaflet-control-zoom a:hover {
-  background-color: #3b82f6 !important;
-  color: white !important;
-  transform: scale(1.1);
-}
-
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
@@ -774,23 +519,6 @@ html[data-scrolling='true'] [class*='animate-'] {
 
 .animate-scale-in {
   animation: scale-in 0.3s ease-out forwards;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 42s linear infinite;
-}
-
-.animate-marquee-slow {
-  animation: marquee 56s linear infinite;
 }
 
 /* Hero — professional motion (respects prefers-reduced-motion via motion-safe / media) */
@@ -1392,101 +1120,60 @@ html[data-scrolling='true'] [class*='animate-'] {
   animation: cta-orb-soft 16s ease-in-out infinite;
 }
 
-/* About page hero — premium SaaS ambient (Linear / Vercel–style depth) */
-@keyframes about-hero-orb-a {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
+@keyframes products-orbit-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
   }
-  50% {
-    transform: translate(28px, 20px) scale(1.06);
-    opacity: 0.92;
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
-@keyframes about-hero-orb-b {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: translate(-24px, 26px) scale(1.05);
-    opacity: 0.9;
-  }
+.products-orbit-ring {
+  transform: translate(-50%, -50%);
+  animation: products-orbit-spin 34s linear infinite;
 }
 
-@keyframes about-hero-orb-c {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
+.products-orbit-ring-reverse {
+  transform: translate(-50%, -50%);
+  animation: products-orbit-spin 28s linear infinite reverse;
+}
+
+@keyframes products-orbit-icons-rotate {
+  from {
+    transform: rotate(0deg);
   }
-  50% {
-    transform: translate(18px, -22px) scale(1.04);
-    opacity: 0.88;
+  to {
+    transform: rotate(360deg);
   }
 }
 
-@keyframes about-hero-orb-d {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
+@keyframes products-orbit-icons-upright {
+  from {
+    transform: translate(-50%, -100%) rotate(0deg);
   }
-  50% {
-    transform: translate(-20px, -18px) scale(1.05);
-    opacity: 0.9;
+  to {
+    transform: translate(-50%, -100%) rotate(-360deg);
   }
 }
 
-@keyframes about-hero-particle {
-  0%,
-  100% {
-    opacity: 0.28;
-    transform: translate(0, 0);
+.products-orbit-icons-track {
+  transform-origin: center center;
+  animation: products-orbit-icons-rotate 32s linear infinite;
+}
+
+.products-orbit-icon-upright {
+  transform: translate(-50%, -100%);
+  animation: products-orbit-icons-upright 32s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .products-orbit-ring,
+  .products-orbit-ring-reverse,
+  .products-orbit-icons-track,
+  .products-orbit-icon-upright {
+    animation: none;
   }
-  50% {
-    opacity: 0.85;
-    transform: translate(10px, -18px);
-  }
-}
-
-.animate-about-hero-orb-a {
-  animation: about-hero-orb-a 26s ease-in-out infinite;
-}
-
-.animate-about-hero-orb-b {
-  animation: about-hero-orb-b 32s ease-in-out infinite alternate;
-}
-
-.animate-about-hero-orb-c {
-  animation: about-hero-orb-c 28s ease-in-out infinite;
-}
-
-.animate-about-hero-orb-d {
-  animation: about-hero-orb-d 30s ease-in-out infinite alternate;
-}
-
-.animate-about-hero-particle {
-  animation: about-hero-particle 11s ease-in-out infinite;
-}
-
-@keyframes about-hero-sheen {
-  0%,
-  100% {
-    transform: translate(-6%, -4%) rotate(0deg);
-    opacity: 0.42;
-  }
-  50% {
-    transform: translate(5%, 6%) rotate(120deg);
-    opacity: 0.58;
-  }
-}
-
-.animate-about-hero-sheen {
-  animation: about-hero-sheen 42s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1557,17 +1244,152 @@ html[data-scrolling='true'] [class*='animate-'] {
     animation: none !important;
   }
 
-  .animate-about-hero-orb-a,
-  .animate-about-hero-orb-b,
-  .animate-about-hero-orb-c,
-  .animate-about-hero-orb-d,
-  .animate-about-hero-particle {
+  .products-orbit-ring,
+  .products-orbit-ring-reverse {
     animation: none !important;
+    transform: translate(-50%, -50%) !important;
   }
 
-  .animate-about-hero-sheen {
+  .products-orbit-icons-track,
+  .products-orbit-icon-upright {
     animation: none !important;
-    opacity: 0.48 !important;
-    transform: none !important;
+  }
+}
+
+/* Pause orbit when off-screen or tab hidden */
+.products-orbit-paused .products-orbit-ring,
+.products-orbit-paused .products-orbit-ring-reverse,
+.products-orbit-paused .products-orbit-icons-track,
+.products-orbit-paused .products-orbit-icon-upright {
+  animation-play-state: paused !important;
+}
+
+/* Reduce GPU load on smaller screens — keep layout, drop continuous motion */
+@media (max-width: 1280px), (pointer: coarse) {
+  .animate-hero-mesh-gradient,
+  .animate-hero-radial-breathe,
+  .animate-hero-blob-a,
+  .animate-hero-blob-b,
+  .animate-hero-conic-slow,
+  .animate-hero-grid-pan,
+  .animate-hero-beam-premium,
+  .animate-hero-beam-premium-delayed,
+  .animate-hero-particle-drift,
+  .animate-hero-noise-shift,
+  .animate-hero-heading-spotlight,
+  .animate-solutions-heading-glow,
+  .animate-solutions-aurora-a,
+  .animate-solutions-aurora-b,
+  .animate-solutions-aurora-c,
+  .animate-solutions-mesh-drift,
+  .animate-solutions-conic-slow,
+  .animate-solutions-ambient-pulse,
+  .animate-solutions-ambient-pulse-delayed,
+  .animate-solutions-shimmer-line,
+  .animate-solutions-shimmer-line-delayed,
+  .animate-solutions-dots-drift,
+  .animate-solutions-particles-drift,
+  .animate-solutions-grid-pan,
+  .animate-solutions-diagonal-pan,
+  .animate-solutions-beam-sweep,
+  .animate-solutions-noise-drift,
+  .animate-cta-gradient-flow,
+  .animate-cta-conic-slow,
+  .animate-cta-orb-a,
+  .animate-cta-orb-b,
+  .animate-cta-orb-soft,
+  .animate-cta-micro-drift,
+  .animate-cta-shimmer-sweep,
+  .animate-cta-shimmer-sweep-2,
+  .animate-cta-border-glow,
+  .animate-cta-dust-a,
+  .animate-cta-dust-b,
+  .animate-cta-dust-c {
+    animation: none !important;
+  }
+}
+
+/* Hero entrance: movement only. The content is visible from the first paint (no opacity fade),
+   so the largest text or image never waits for a busy main thread to start an animation. */
+@keyframes hero-enter {
+  from {
+    transform: translateY(14px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.hero-enter {
+  animation: hero-enter 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--hero-delay, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter {
+    animation: none;
+  }
+}
+
+/* Route-change indicator (NavigationProgress). */
+@keyframes nav-progress-run {
+  from {
+    transform: scaleX(0.05);
+  }
+  to {
+    transform: scaleX(0.85);
+  }
+}
+.nav-progress-run {
+  transform: scaleX(0.85);
+  animation: nav-progress-run 6s cubic-bezier(0.1, 0.7, 0.2, 1) both;
+}
+.nav-progress-done {
+  transform: scaleX(1);
+  transition: transform 0.2s ease-out;
+}
+@keyframes nav-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.nav-spinner {
+  background: conic-gradient(from 0deg, transparent 0deg, #3b82f6 140deg, #8b5cf6 300deg, transparent 360deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+  animation: nav-spin 0.9s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-progress-run {
+    animation: none;
+    transform: scaleX(0.6);
+  }
+  .nav-spinner {
+    animation: none;
+  }
+}
+
+/* Product details dialog (ProductCatalog). */
+@keyframes product-zoom {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+@keyframes product-fade {
+  from {
+    opacity: 0;
+  }
+}
+.product-zoom {
+  animation: product-zoom 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.product-fade {
+  animation: product-fade 0.2s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .product-zoom,
+  .product-fade {
+    animation: none;
   }
 }

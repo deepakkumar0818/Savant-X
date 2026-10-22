@@ -42,9 +42,10 @@ export async function submitZohoLeadToGoogleSheet(
     data = { message: text || 'Submitted' };
   }
 
-  // Google Script may return 401 if deployed as "Only myself"; treat as success.
+  // 401 means the Apps Script is deployed as "Only myself" and the row was NOT written.
+  // Report it as a failure so the visitor is never told a lost submission succeeded.
   if (response.status === 401) {
-    return { ok: true, message: 'Form submitted successfully.' };
+    return { ok: false, message: 'Google Sheet script rejected the request (401). Redeploy it with access "Anyone".' };
   }
 
   if (!response.ok) {

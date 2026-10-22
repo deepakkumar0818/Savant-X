@@ -1,6 +1,18 @@
-'use client';
-
+import Link from 'next/link';
 import Footer from '@/components/Footer';
+import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
+import { COMPANY } from '@/lib/company';
+import PageHero from '@/components/hero/PageHero';
+import { Code } from 'lucide-react';
+import ServiceIcon from '@/components/ui/ServiceIcon';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'MERN Stack & React Development',
+  description:
+    'Modern, scalable React and MERN stack applications, from websites to complex business platforms.',
+  path: '/expertise/react',
+});
 
 export default function ReactPage() {
 
@@ -268,79 +280,34 @@ export default function ReactPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50">
-      {/* Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-indigo-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-pink-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-cyan-400/10 to-blue-600/10 rounded-full blur-3xl"></div>
-        
-        {/* Floating React Icons */}
-        <div className="absolute top-20 left-20 w-16 h-16 bg-gradient-to-br from-blue-400/30 to-blue-600/30 rounded-2xl flex items-center justify-center animate-float">
-          <span className="text-2xl">⚛️</span>
-        </div>
-        <div className="absolute top-40 right-32 w-12 h-12 bg-gradient-to-br from-purple-400/30 to-purple-600/30 rounded-xl flex items-center justify-center animate-float" style={{animationDelay: '1s'}}>
-          <span className="text-xl">💻</span>
-        </div>
-        <div className="absolute bottom-32 left-32 w-14 h-14 bg-gradient-to-br from-green-400/30 to-green-600/30 rounded-xl flex items-center justify-center animate-float" style={{animationDelay: '2s'}}>
-          <span className="text-xl">🚀</span>
-        </div>
-        <div className="absolute bottom-20 right-20 w-10 h-10 bg-gradient-to-br from-orange-400/30 to-orange-600/30 rounded-lg flex items-center justify-center animate-float" style={{animationDelay: '3s'}}>
-          <span className="text-lg">⚡</span>
-        </div>
-      </div>
+    <div className="min-h-screen bg-white">
 
-      {/* Hero Section */}
-      <section className="relative z-10 pt-32 pb-20 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-blue-200">
-              <span className="text-lg">⚛️</span>
-              React.js Development
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
-              React.js
-              <span className="block text-blue-600 mt-2">Development</span>
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
-              We build modern, scalable React.js applications with cutting-edge technologies. 
-              From simple websites to complex enterprise applications, we deliver exceptional user experiences.
-            </p>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">200+</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">React Projects</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-green-600 mb-2">99%</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Performance Score</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">4-16</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Week Delivery</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600 mb-2">100%</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Client Satisfaction</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="React.js Development"
+        eyebrowIcon={Code}
+        title="React.js"
+        highlight="Development"
+        description="We build modern, scalable React.js applications with cutting-edge technologies. From simple websites to complex enterprise applications, we deliver exceptional user experiences."
+        highlights={["React Web Applications", "React Dashboards", "React E-commerce", "React Native Apps"]}
+        stats={[
+          { value: COMPANY.foundingYear, label: "Founded" },
+          { value: "99%", label: "Performance Score" },
+          { value: "4-16", label: "Week Delivery" },
+          { value: "100%", label: "Client Satisfaction" },
+        ]}
+      />
 
       {/* React Services */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Our Services
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               React.js
-              <span className="block text-blue-600 mt-2">Solutions</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Solutions</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               Comprehensive React.js development services for web applications, mobile apps, and enterprise solutions.
@@ -353,8 +320,8 @@ export default function ReactPage() {
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
                   {/* Header */}
                   <div className="flex items-start gap-6 mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                      <span className="text-3xl">{service.icon}</span>
+                    <div className="w-16 h-16 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-2xl flex items-center justify-center group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                      <ServiceIcon emoji={service.icon} size="none" className="h-7 w-7 text-indigo-600" />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-200">
@@ -377,21 +344,21 @@ export default function ReactPage() {
                   </div>
 
                   {/* Details Grid */}
-                  <div className="grid grid-cols-4 gap-4 pt-6 border-t border-slate-200">
+                  <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200 sm:grid-cols-4">
                     <div className="text-center">
-                      <div className="text-sm font-bold text-blue-600 mb-1">{service.pricing}</div>
+                      <div className="text-sm font-semibold text-slate-900 mb-1">{service.pricing}</div>
                       <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-sm font-bold text-green-600 mb-1">{service.timeline}</div>
+                      <div className="text-sm font-semibold text-slate-900 mb-1">{service.timeline}</div>
                       <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-sm font-bold text-purple-600 mb-1">{service.complexity}</div>
+                      <div className="text-sm font-semibold text-slate-900 mb-1">{service.complexity}</div>
                       <div className="text-xs text-slate-500 uppercase tracking-wide">Complexity</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-sm font-bold text-orange-600 mb-1">{service.components}</div>
+                      <div className="text-sm font-semibold text-slate-900 mb-1">{service.components}</div>
                       <div className="text-xs text-slate-500 uppercase tracking-wide">Components</div>
                     </div>
                   </div>
@@ -406,13 +373,13 @@ export default function ReactPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               React Ecosystem
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Complete React
-              <span className="block text-blue-600 mt-2">Technology Stack</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Technology Stack</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               We work with the entire React ecosystem to build robust and scalable applications.
@@ -429,7 +396,7 @@ export default function ReactPage() {
                   <div className="grid grid-cols-1 gap-4">
                     {category.tools.map((tool, toolIndex) => (
                       <div key={toolIndex} className="flex items-center gap-4 p-4 bg-slate-50 rounded-xl hover:bg-blue-50 transition-all duration-200">
-                        <div className="text-2xl">{tool.icon}</div>
+                        <ServiceIcon emoji={tool.icon} size="md" />
                         <div className="flex-1">
                           <h4 className="font-semibold text-slate-900">{tool.name}</h4>
                           <p className="text-sm text-slate-600">{tool.description}</p>
@@ -448,13 +415,13 @@ export default function ReactPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Our Process
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               React Development
-              <span className="block text-blue-600 mt-2">Process</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Process</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               Our systematic approach ensures high-quality React applications delivered on time and within budget.
@@ -469,8 +436,8 @@ export default function ReactPage() {
                     <div className="inline-block bg-blue-50 text-blue-700 px-3 py-1 rounded-lg text-sm font-bold mb-3 border border-blue-200">
                       {step.step}
                     </div>
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                      <span className="text-2xl">{step.icon}</span>
+                    <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                      <ServiceIcon emoji={step.icon} size="none" className="h-6 w-6 text-indigo-600" />
                     </div>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
@@ -491,13 +458,13 @@ export default function ReactPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Deliverables
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               What You&apos;ll
-              <span className="block text-blue-600 mt-2">Receive</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Receive</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               Complete React development deliverables that provide everything needed for successful deployment.
@@ -508,8 +475,8 @@ export default function ReactPage() {
             {deliverables.map((deliverable, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mb-4 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                    <span className="text-2xl">{deliverable.icon}</span>
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                    <ServiceIcon emoji={deliverable.icon} size="none" className="h-6 w-6 text-indigo-600" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
                     {deliverable.title}
@@ -528,13 +495,13 @@ export default function ReactPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Why React.js
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Benefits of
-              <span className="block text-blue-600 mt-2">React.js</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">React.js</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               React.js provides significant advantages for building modern web applications.
@@ -545,8 +512,8 @@ export default function ReactPage() {
             {benefits.map((benefit, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mb-4 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                    <span className="text-2xl">{benefit.icon}</span>
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                    <ServiceIcon emoji={benefit.icon} size="none" className="h-6 w-6 text-indigo-600" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
                     {benefit.title}
@@ -565,13 +532,13 @@ export default function ReactPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Use Cases
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Perfect For
-              <span className="block text-blue-600 mt-2">These Projects</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">These Projects</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               React.js is ideal for a wide range of web application development scenarios.
@@ -582,8 +549,8 @@ export default function ReactPage() {
             {useCases.map((useCase, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mb-4 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                    <span className="text-2xl">{useCase.icon}</span>
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                    <ServiceIcon emoji={useCase.icon} size="none" className="h-6 w-6 text-indigo-600" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
                     {useCase.title}
@@ -602,13 +569,13 @@ export default function ReactPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-slate-200">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
               Performance Features
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Optimized
-              <span className="block text-blue-600 mt-2">Performance</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Performance</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
               We implement advanced performance optimization techniques for lightning-fast React applications.
@@ -619,8 +586,8 @@ export default function ReactPage() {
             {performanceFeatures.map((feature, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center mb-4 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                    <span className="text-2xl">{feature.icon}</span>
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                    <ServiceIcon emoji={feature.icon} size="none" className="h-6 w-6 text-indigo-600" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
                     {feature.title}
@@ -647,12 +614,12 @@ export default function ReactPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
               Start React Project
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
+            </Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
               View Portfolio
-            </button>
+            </Link>
           </div>
         </div>
       </section>

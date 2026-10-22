@@ -238,8 +238,8 @@ export default function ZohoStrategyFormModal({
                   onClick={onClose}
                   className="shrink-0 rounded-lg bg-white/10 p-1.5 text-white/90 ring-1 ring-white/15 transition-colors hover:bg-white/20"
                   aria-label="Close"
-                  whileHover={reduced ? undefined : { scale: 1.05 }}
-                  whileTap={reduced ? undefined : { scale: 0.95 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <X className="h-4 w-4" />
                 </motion.button>
@@ -249,8 +249,8 @@ export default function ZohoStrategyFormModal({
             <motion.div
               className="bg-gradient-to-b from-slate-50/80 to-white px-4 py-3.5"
               variants={reduced ? undefined : contentStagger}
-              initial={reduced ? false : 'hidden'}
-              animate={reduced ? undefined : 'show'}
+              initial='hidden'
+              animate='show'
             >
               <motion.div variants={reduced ? undefined : contentItem}>
                 <ZohoStrategyForm

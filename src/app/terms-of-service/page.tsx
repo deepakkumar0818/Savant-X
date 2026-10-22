@@ -1,52 +1,31 @@
-'use client';
-
 import Link from 'next/link';
+import Footer from '@/components/Footer';
+import { COMPANY } from '@/lib/company';
+import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
+import PageHero from '@/components/hero/PageHero';
+import { FileText } from 'lucide-react';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Terms of Service',
+  description:
+    'The terms and conditions that govern the use of the SavantX Technologies website and services.',
+  path: '/terms-of-service',
+});
 
 export default function TermsOfServicePage() {
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50/30 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-slate-50/30 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-50/20 rounded-full blur-3xl"></div>
-      </div>
-
-      {/* Professional Hero Section */}
-      <section className="relative z-10 pt-24 pb-16 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center">
-            {/* Professional Badge */}
-            <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-md text-sm font-medium mb-8 border border-slate-200">
-              <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
-              Legal Information
-            </div>
-
-            {/* Professional Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight tracking-tight">
-              Terms of
-              <span className="block text-blue-600 mt-2">
-                Service
-              </span>
-            </h1>
-
-            {/* Professional Subtitle */}
-            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8 font-light">
-              These terms and conditions outline the rules and regulations for the use of SavantX Technologies Pvt Ltd&apos;s website and services. 
-              By accessing our services, you accept these terms in full.
-            </p>
-
-            {/* Last Updated */}
-            <div className="flex items-center justify-center text-slate-500 text-sm">
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              Last updated: December 2024
-            </div>
-          </div>
-        </div>
-      </section>
+    <div className="min-h-screen bg-white">
+      <PageHero
+        compact
+        eyebrow="Legal information"
+        eyebrowIcon={FileText}
+        title="Terms of"
+        highlight="Service"
+        description="These terms and conditions outline the rules and regulations for the use of SavantX Technologies Pvt Ltd's website and services. By accessing our services, you accept these terms in full."
+        note="Last updated: December 2024"
+      />
 
       {/* Table of Contents */}
       <section className="relative z-10 py-12">
@@ -419,7 +398,9 @@ export default function TermsOfServicePage() {
                       </svg>
                     </div>
                     <h4 className="font-semibold mb-2">Email</h4>
-                    <p className="text-blue-100">contact@thesavantx.com</p>
+                    <p className="text-blue-100 break-all">
+                      <a href={`mailto:${COMPANY.email}`} className="hover:underline">{COMPANY.email}</a>
+                    </p>
                   </div>
                   <div className="text-center">
                     <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -428,8 +409,9 @@ export default function TermsOfServicePage() {
                       </svg>
                     </div>
                     <h4 className="font-semibold mb-2">Phone</h4>
-                    <p className="text-blue-100">+91 9056425289</p>
-                    <p className="text-blue-100">+91 7018318078</p>
+                    <p className="text-blue-100">
+                      <a href={COMPANY.phone.href} className="hover:underline">{COMPANY.phone.display}</a>
+                    </p>
                   </div>
                   <div className="text-center">
                     <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -457,6 +439,8 @@ export default function TermsOfServicePage() {
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }

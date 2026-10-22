@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import {
   Building2,
   CheckCircle2,
@@ -13,6 +13,7 @@ import {
   User,
 } from 'lucide-react';
 import ZohoCrmAnalytics from '@/components/zoho/ZohoCrmAnalytics';
+import { fetchWithTimeout } from '@/lib/fetchWithTimeout';
 
 type FormData = {
   fullName: string;
@@ -50,18 +51,20 @@ function FieldWrap({
   icon: Icon,
   label,
   labelClassName,
+  htmlFor,
   children,
 }: {
   icon: typeof User;
   label: string;
   labelClassName: string;
+  htmlFor: string;
   children: React.ReactNode;
 }) {
   return (
     <div>
-      <label className={labelClassName}>{label}</label>
+      <label htmlFor={htmlFor} className={labelClassName}>{label}</label>
       <div className="relative">
-        <Icon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+        <Icon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden />
         {children}
       </div>
     </div>
@@ -78,6 +81,7 @@ export default function ZohoStrategyForm({
   accentFrom = '#226DB4',
   accentTo = '#1a5f9e',
 }: Props) {
+  const fid = useId();
   const [formData, setFormData] = useState<FormData>(() => emptyForm(defaultZohoApps));
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -107,7 +111,7 @@ export default function ZohoStrategyForm({
           ? new URLSearchParams(window.location.search).get('service')
           : null;
 
-      const res = await fetch('/api/zoho-form', {
+      const res = await fetchWithTimeout('/api/zoho-form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -193,30 +197,30 @@ export default function ZohoStrategyForm({
           {isPopup ? (
             popup ? (
               <>
-                <FieldWrap icon={User} label="Full Name *" labelClassName={labelClass}>
-                  <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} required className={fieldClass} placeholder="Your name" suppressHydrationWarning />
+                <FieldWrap icon={User} label="Full Name *" labelClassName={labelClass} htmlFor={`${fid}-fullName`}>
+                  <input id={`${fid}-fullName`} type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} required className={fieldClass} placeholder="Your name" suppressHydrationWarning />
                 </FieldWrap>
-                <FieldWrap icon={Building2} label="Company *" labelClassName={labelClass}>
-                  <input type="text" name="companyName" value={formData.companyName} onChange={handleInputChange} required className={fieldClass} placeholder="Company" suppressHydrationWarning />
+                <FieldWrap icon={Building2} label="Company *" labelClassName={labelClass} htmlFor={`${fid}-companyName`}>
+                  <input id={`${fid}-companyName`} type="text" name="companyName" value={formData.companyName} onChange={handleInputChange} required className={fieldClass} placeholder="Company" suppressHydrationWarning />
                 </FieldWrap>
               </>
             ) : (
               <>
                 <div>
-                  <label className={labelClass}>Full Name *</label>
-                  <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} required className={fieldClass} placeholder="Your name" suppressHydrationWarning />
+                  <label htmlFor={`${fid}-fullName`} className={labelClass}>Full Name *</label>
+                  <input id={`${fid}-fullName`} type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} required className={fieldClass} placeholder="Your name" suppressHydrationWarning />
                 </div>
                 <div>
-                  <label className={labelClass}>Company *</label>
-                  <input type="text" name="companyName" value={formData.companyName} onChange={handleInputChange} required className={fieldClass} placeholder="Company" suppressHydrationWarning />
+                  <label htmlFor={`${fid}-companyName`} className={labelClass}>Company *</label>
+                  <input id={`${fid}-companyName`} type="text" name="companyName" value={formData.companyName} onChange={handleInputChange} required className={fieldClass} placeholder="Company" suppressHydrationWarning />
                 </div>
               </>
             )
           ) : (
             <>
               <div>
-                <label className={labelClass}>Full Name *</label>
-                <input
+                <label htmlFor={`${fid}-fullName`} className={labelClass}>Full Name *</label>
+                <input id={`${fid}-fullName`}
                   type="text"
                   name="fullName"
                   value={formData.fullName}
@@ -228,8 +232,8 @@ export default function ZohoStrategyForm({
                 />
               </div>
               <div>
-                <label className={labelClass}>Company Name *</label>
-                <input
+                <label htmlFor={`${fid}-companyName`} className={labelClass}>Company Name *</label>
+                <input id={`${fid}-companyName`}
                   type="text"
                   name="companyName"
                   value={formData.companyName}
@@ -246,22 +250,22 @@ export default function ZohoStrategyForm({
         <div className={`grid gap-2.5 ${isPopup ? 'grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 sm:gap-4'}`}>
           {popup ? (
             <>
-              <FieldWrap icon={Mail} label="Email *" labelClassName={labelClass}>
-                <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className={fieldClass} placeholder="you@company.com" suppressHydrationWarning />
+              <FieldWrap icon={Mail} label="Email *" labelClassName={labelClass} htmlFor={`${fid}-email`}>
+                <input id={`${fid}-email`} type="email" name="email" value={formData.email} onChange={handleInputChange} required className={fieldClass} placeholder="you@company.com" suppressHydrationWarning />
               </FieldWrap>
-              <FieldWrap icon={Phone} label="Phone *" labelClassName={labelClass}>
-                <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required className={fieldClass} placeholder="+91 98765 43210" suppressHydrationWarning />
+              <FieldWrap icon={Phone} label="Phone *" labelClassName={labelClass} htmlFor={`${fid}-phone`}>
+                <input id={`${fid}-phone`} type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required className={fieldClass} placeholder="+91 98765 43210" suppressHydrationWarning />
               </FieldWrap>
             </>
           ) : (
             <>
               <div>
-                <label className={labelClass}>Email *</label>
-                <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className={fieldClass} placeholder="you@company.com" suppressHydrationWarning />
+                <label htmlFor={`${fid}-email`} className={labelClass}>Email *</label>
+                <input id={`${fid}-email`} type="email" name="email" value={formData.email} onChange={handleInputChange} required className={fieldClass} placeholder="you@company.com" suppressHydrationWarning />
               </div>
               <div>
-                <label className={labelClass}>Phone *</label>
-                <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required className={fieldClass} placeholder={compact ? '+91 98765 43210' : '+1 234 567 8900'} suppressHydrationWarning />
+                <label htmlFor={`${fid}-phone`} className={labelClass}>Phone *</label>
+                <input id={`${fid}-phone`} type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required className={fieldClass} placeholder={compact ? '+91 98765 43210' : '+1 234 567 8900'} suppressHydrationWarning />
               </div>
             </>
           )}
@@ -269,30 +273,30 @@ export default function ZohoStrategyForm({
         {isPopup ? (
           popup ? (
             <div className="grid grid-cols-2 gap-3">
-              <FieldWrap icon={Layers} label="Zoho Apps" labelClassName={labelClass}>
-                <input type="text" name="zohoApps" value={formData.zohoApps} onChange={handleInputChange} className={fieldClass} placeholder="e.g. CRM, Books" suppressHydrationWarning />
+              <FieldWrap icon={Layers} label="Zoho Apps" labelClassName={labelClass} htmlFor={`${fid}-zohoApps`}>
+                <input id={`${fid}-zohoApps`} type="text" name="zohoApps" value={formData.zohoApps} onChange={handleInputChange} className={fieldClass} placeholder="e.g. CRM, Books" suppressHydrationWarning />
               </FieldWrap>
-              <FieldWrap icon={Target} label="Your Goal" labelClassName={labelClass}>
-                <input type="text" name="lookingToBuild" value={formData.lookingToBuild} onChange={handleInputChange} className={fieldClass} placeholder="Brief goal" suppressHydrationWarning />
+              <FieldWrap icon={Target} label="Your Goal" labelClassName={labelClass} htmlFor={`${fid}-lookingToBuild`}>
+                <input id={`${fid}-lookingToBuild`} type="text" name="lookingToBuild" value={formData.lookingToBuild} onChange={handleInputChange} className={fieldClass} placeholder="Brief goal" suppressHydrationWarning />
               </FieldWrap>
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-2.5">
               <div>
-                <label className={labelClass}>Zoho Apps</label>
-                <input type="text" name="zohoApps" value={formData.zohoApps} onChange={handleInputChange} className={fieldClass} placeholder="e.g. CRM, Books" suppressHydrationWarning />
+                <label htmlFor={`${fid}-zohoApps`} className={labelClass}>Zoho Apps</label>
+                <input id={`${fid}-zohoApps`} type="text" name="zohoApps" value={formData.zohoApps} onChange={handleInputChange} className={fieldClass} placeholder="e.g. CRM, Books" suppressHydrationWarning />
               </div>
               <div>
-                <label className={labelClass}>Your Goal</label>
-                <input type="text" name="lookingToBuild" value={formData.lookingToBuild} onChange={handleInputChange} className={fieldClass} placeholder="Brief goal" suppressHydrationWarning />
+                <label htmlFor={`${fid}-lookingToBuild`} className={labelClass}>Your Goal</label>
+                <input id={`${fid}-lookingToBuild`} type="text" name="lookingToBuild" value={formData.lookingToBuild} onChange={handleInputChange} className={fieldClass} placeholder="Brief goal" suppressHydrationWarning />
               </div>
             </div>
           )
         ) : (
           <>
             <div>
-              <label className={labelClass}>Which Zoho Apps Are You Using?</label>
-              <input
+              <label htmlFor={`${fid}-zohoApps`} className={labelClass}>Which Zoho Apps Are You Using?</label>
+              <input id={`${fid}-zohoApps`}
                 type="text"
                 name="zohoApps"
                 value={formData.zohoApps}
@@ -303,8 +307,8 @@ export default function ZohoStrategyForm({
               />
             </div>
             <div>
-              <label className={labelClass}>What Are You Looking To Build?</label>
-              <textarea
+              <label htmlFor={`${fid}-lookingToBuild`} className={labelClass}>What Are You Looking To Build?</label>
+              <textarea id={`${fid}-lookingToBuild`}
                 name="lookingToBuild"
                 value={formData.lookingToBuild}
                 onChange={handleInputChange}

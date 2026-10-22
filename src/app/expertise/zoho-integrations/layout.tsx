@@ -1,28 +1,26 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Zoho Integrations — Setup, Customization & App Development | SavantX',
-  description:
-    'Official Zoho Development Partner. Complete Zoho CRM, Books, Creator, Desk, Analytics, Recruit, Inventory, Projects, Campaigns & SalesIQ setup, customization, and automation by SavantX.',
+  ...pageMetadata({
+    title: 'Zoho CRM, Creator & Deluge Development Services',
+    description:
+      'Zoho CRM implementation, Zoho Creator and Deluge development, workflow automation and Zoho integrations by SavantX. Membership from ₹14,999/month and fixed-price packages.',
+    path: '/expertise/zoho-integrations',
+  }),
   keywords: [
-    'Zoho partner India',
+    'Zoho development services',
+    'Zoho Deluge development',
+    'Zoho workflow automation',
+    'Zoho developer India',
     'Zoho CRM implementation',
     'Zoho customization',
     'Zoho Creator development',
+    'Deluge scripting',
     'Zoho Books setup',
     'Zoho integrations',
     'SavantX Zoho',
   ],
-  alternates: {
-    canonical: 'https://www.savantxtechnologies.com/expertise/zoho-integrations/',
-  },
-  openGraph: {
-    title: 'Zoho Integrations — Setup, Customization & App Development | SavantX',
-    description:
-      'From CRM to Creator, Books to Recruit — SavantX designs, builds, and automates your entire Zoho ecosystem.',
-    url: 'https://www.savantxtechnologies.com/expertise/zoho-integrations/',
-    type: 'website',
-  },
 };
 
 export default function ZohoIntegrationsLayout({

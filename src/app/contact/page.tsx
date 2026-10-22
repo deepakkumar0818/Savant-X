@@ -4,6 +4,11 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import Footer from '@/components/Footer';
 import AnimatedCounter from '@/components/AnimatedCounter';
+import SupportModal from '@/components/forms/SupportModal';
+import PageHero from '@/components/hero/PageHero';
+import { Mail, MapPin, MessageSquare, Phone } from 'lucide-react';
+import { COMPANY, COMPANY_METRICS, OFFICES, formatOfficeAddress, officeMapUrl } from '@/lib/company';
+import { fetchWithTimeout } from '@/lib/fetchWithTimeout';
 
 const LocationsMap = dynamic(() => import('@/components/LocationsMap'), { ssr: false });
 
@@ -16,19 +21,14 @@ export default function ContactPage() {
     service: '',
     hardwareService: '',
     message: '',
-    budget: ''
+    budget: '',
+    website: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   const [isSupportOpen, setIsSupportOpen] = useState(false);
-  const [supportFormData, setSupportFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => {
@@ -47,39 +47,45 @@ export default function ContactPage() {
     });
   };
 
-  const handleSupportInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setSupportFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSupportSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Support form submitted:', supportFormData);
-    alert('Thank you for contacting support! We will get back to you soon.');
-    setIsSupportOpen(false);
-    setSupportFormData({ name: '', email: '', subject: '', message: '' });
+  const optionLabel = (selectId: string, value: string) => {
+    if (!value) return '';
+    const select = document.getElementById(selectId) as HTMLSelectElement | null;
+    return select?.querySelector<HTMLOptionElement>(`option[value="${value}"]`)?.textContent?.trim() || value;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setIsSubmitting(true);
     setSubmitStatus('idle');
-    
+    setErrorMessage('');
+
+    const service = [optionLabel('service', formData.service), optionLabel('hardwareService', formData.hardwareService)]
+      .filter(Boolean)
+      .join(' — ');
+
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetchWithTimeout('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          kind: 'enquiry',
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          service: `${service} — via Contact page`,
+          budget: optionLabel('budget', formData.budget),
+          message: formData.message,
+          website: formData.website,
+        }),
       });
+      const data = (await response.json().catch(() => ({}))) as { error?: string };
 
       if (response.ok) {
         setSubmitStatus('success');
-        // Reset form after success
         setFormData({
           name: '',
           email: '',
@@ -88,13 +94,15 @@ export default function ContactPage() {
           service: '',
           hardwareService: '',
           message: '',
-          budget: ''
+          budget: '',
+          website: ''
         });
       } else {
+        // Keep what the visitor typed so they can retry.
+        setErrorMessage(data.error || '');
         setSubmitStatus('error');
       }
-    } catch (error) {
-      console.error('Error submitting form:', error);
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -102,103 +110,74 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50 relative overflow-hidden">
-      {/* 3D Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-200/20 to-indigo-300/20 rounded-full blur-3xl transform rotate-12"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-indigo-200/20 to-blue-300/20 rounded-full blur-3xl transform -rotate-12"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-blue-200/15 to-indigo-300/15 rounded-full blur-3xl"></div>
-      </div>
-
-      {/* 3D Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Floating Contact Icons */}
-        <div className="absolute top-20 left-12 w-16 h-16 bg-gradient-to-br from-blue-500/30 to-indigo-600/30 rounded-full flex items-center justify-center transform rotate-8 animate-float-slow shadow-lg">
-          <svg className="w-8 h-8 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-        </div>
-
-        <div className="absolute top-32 right-20 w-12 h-12 bg-gradient-to-br from-indigo-500/30 to-blue-600/30 rounded-full flex items-center justify-center transform -rotate-6 animate-float-medium shadow-lg">
-          <svg className="w-6 h-6 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-          </svg>
-        </div>
-
-        <div className="absolute bottom-32 left-20 w-14 h-14 bg-gradient-to-br from-blue-600/30 to-indigo-700/30 rounded-full flex items-center justify-center transform rotate-4 animate-float-slow shadow-lg">
-          <svg className="w-7 h-7 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-        </div>
-
-        <div className="absolute bottom-20 right-16 w-10 h-10 bg-gradient-to-br from-indigo-500/30 to-blue-600/30 rounded-full flex items-center justify-center transform -rotate-12 animate-float-medium shadow-lg">
-          <svg className="w-5 h-5 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        </div>
-      </div>
-
-      {/* Hero Section */}
-      <section className="relative z-10 pt-20 pb-16 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-scale-in shadow-lg">
-              <svg className="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-              </svg>
-              Get In Touch
-            </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 tracking-tight drop-shadow-lg">
-              Let&apos;s Build Something
-              <span className="block bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                Amazing Together
-              </span>
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              Ready to transform your ideas into reality? We&apos;re here to help you achieve your digital goals with cutting-edge technology solutions.
-            </p>
-          </div>
-
-          {/* Contact Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8 max-w-4xl mx-auto mb-16 px-4 lg:px-0">
-            <div className="bg-white/70 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg md:shadow-xl border border-blue-200/60 transform hover:scale-105 transition-all duration-500 ease-out group">
-              <div className="text-2xl md:text-3xl font-bold text-blue-600 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
-                <AnimatedCounter end={24} suffix="hrs" duration={1600} />
+    <div className="min-h-screen bg-white relative overflow-hidden">
+      <PageHero
+        eyebrow="Get in touch"
+        eyebrowIcon={MessageSquare}
+        title="Let's build something"
+        highlight="great together"
+        description="Tell us about your website, app, Zoho CRM or hardware project. We'll get back to you with next steps and a clear plan."
+        primaryCta={{ label: 'Start your project', href: '#contact-form' }}
+        secondaryCta={null}
+        aside={
+          <div className="animate-fade-in-up delay-200 mx-auto w-full max-w-md lg:mr-0">
+            <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white/95 shadow-[0_24px_60px_-30px_rgba(30,58,138,0.35)] backdrop-blur-sm">
+              <div className="border-b border-slate-100 px-5 py-3.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                Reach us directly
               </div>
-              <div className="text-slate-600 font-medium text-sm md:text-base">Response Time</div>
-            </div>
-            <div className="bg-white/70 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg md:shadow-xl border border-blue-200/60 transform hover:scale-105 transition-all duration-500 ease-out group">
-              <div className="text-2xl md:text-3xl font-bold text-blue-600 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
-                <AnimatedCounter end={98} suffix="%" duration={2200} />
-              </div>
-              <div className="text-slate-600 font-medium text-sm md:text-base">Client Satisfaction</div>
-            </div>
-            <div className="bg-white/70 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg md:shadow-xl border border-blue-200/60 transform hover:scale-105 transition-all duration-500 ease-out group">
-              <div className="text-2xl md:text-3xl font-bold text-blue-600 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
-                <AnimatedCounter end={200} suffix="+" duration={2800} />
-              </div>
-              <div className="text-slate-600 font-medium text-sm md:text-base">Projects Delivered</div>
+              <ul className="divide-y divide-slate-100 text-sm">
+                <li>
+                  <a href={COMPANY.phone.href} className="flex items-center gap-3 px-5 py-4 text-slate-700 transition-colors hover:bg-indigo-50/50 hover:text-indigo-700">
+                    <Phone className="h-[1.1rem] w-[1.1rem] shrink-0 text-indigo-500" aria-hidden />
+                    <span className="font-medium">{COMPANY.phone.display}</span>
+                  </a>
+                </li>
+                <li>
+                  <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-3 px-5 py-4 text-slate-700 transition-colors hover:bg-indigo-50/50 hover:text-indigo-700">
+                    <Mail className="h-[1.1rem] w-[1.1rem] shrink-0 text-indigo-500" aria-hidden />
+                    <span className="break-all font-medium">{COMPANY.email}</span>
+                  </a>
+                </li>
+                {OFFICES.map((office) => (
+                  <li key={office.id}>
+                    <a href={officeMapUrl(office)} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 px-5 py-4 text-slate-700 transition-colors hover:bg-indigo-50/50 hover:text-indigo-700">
+                      <MapPin className="mt-0.5 h-[1.1rem] w-[1.1rem] shrink-0 text-indigo-500" aria-hidden />
+                      <span>
+                        <span className="block font-medium">{office.name}</span>
+                        <span className="text-slate-500">{formatOfficeAddress(office)}</span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-        </div>
-      </section>
+        }
+        stats={[
+          { value: <AnimatedCounter end={24} suffix="hrs" duration={1600} />, label: 'Response Time' },
+          { value: <AnimatedCounter end={98} suffix="%" duration={2200} />, label: 'Client Satisfaction' },
+          {
+            value: <AnimatedCounter end={COMPANY_METRICS[0].value} suffix={COMPANY_METRICS[0].suffix} duration={2800} />,
+            label: COMPANY_METRICS[0].label,
+          },
+        ]}
+      />
 
       {/* Contact Form and Info Section */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12">
+      <section id="contact-form" className="scroll-mt-24 relative z-10 py-20 px-6 sm:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             
             {/* Contact Form */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 md:p-10 shadow-2xl border border-white/20 flex flex-col">
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 md:p-10 shadow-2xl border border-white/20 flex flex-col lg:self-start">
               <div className="mb-8">
                 <h2 className="text-3xl font-bold text-slate-900 mb-4">Start Your Project</h2>
                 <p className="text-slate-600 text-lg">Tell us about your vision and we&apos;ll make it happen.</p>
               </div>
 
+              <div aria-live="polite">
               {submitStatus === 'success' && (
-                <div className="mb-6 p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-400 text-green-700 rounded-xl animate-scale-in shadow-lg">
+                <div role="status" className="mb-6 p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-400 text-green-700 rounded-xl animate-scale-in shadow-lg">
                   <div className="flex items-center gap-3">
                     <div className="relative">
                       <div className="absolute inset-0 bg-green-400 rounded-full animate-ping opacity-75"></div>
@@ -210,24 +189,30 @@ export default function ContactPage() {
                     </div>
                     <div className="flex-1">
                       <p className="font-semibold text-lg mb-1">Message Sent Successfully!</p>
-                      <p className="text-sm">Thank you! We&apos;ll get back to you within 24 hours.</p>
+                      <p className="text-sm">Thank you! We&apos;ll get back to you soon.</p>
                     </div>
                   </div>
                 </div>
               )}
 
               {submitStatus === 'error' && (
-                <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-xl">
+                <div role="alert" className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-xl">
                   <div className="flex items-center gap-2">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                     </svg>
-                    Sorry, there was an error sending your message. Please try again or contact us directly.
+                    {errorMessage || 'Sorry, there was an error sending your message. Please try again or contact us directly.'}
                   </div>
                 </div>
               )}
+              </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="relative space-y-6">
+                {/* Honeypot: hidden from people, tempting to bots. */}
+                <div className="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden>
+                  <label htmlFor="website">Website</label>
+                  <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" value={formData.website} onChange={handleInputChange} />
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2">
@@ -266,7 +251,7 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="company" className="block text-sm font-semibold text-slate-700 mb-2">
-                      Company
+                      Company *
                     </label>
                     <input
                       type="text"
@@ -274,6 +259,8 @@ export default function ContactPage() {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
+                      required
+                      autoComplete="organization"
                       suppressHydrationWarning
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-slate-900 bg-white"
                       placeholder="Your company name"
@@ -291,7 +278,7 @@ export default function ContactPage() {
                       onChange={handleInputChange}
                       suppressHydrationWarning
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-slate-900 bg-white"
-                      placeholder="+1 (555) 123-4567"
+                      placeholder="+91 …"
                     />
                   </div>
                 </div>
@@ -363,7 +350,7 @@ export default function ContactPage() {
                       <option value="embedded-systems">Embedded Systems Development</option>
                       <option value="pcb-design">PCB Design & Circuit Engineering</option>
                       <option value="firmware-development">Firmware Development</option>
-                      <option value="product-development">3D Printing and Designing</option>
+                      <option value="3d-printing-design">3D Printing and Designing</option>
                       <option value="hardware-prototyping">Hardware Prototyping & Testing</option>
                       <option value="industrial-automation">Industrial Automation</option>
                       <option value="electronics-design">Electronics Design & Integration</option>
@@ -389,69 +376,6 @@ export default function ContactPage() {
                    />
                  </div>
 
-                 {/* Animated Illustration - Fills remaining space */}
-                 <div className="relative mt-6 h-80 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-xl overflow-hidden border border-blue-100">
-                   <div className="absolute inset-0 flex items-center justify-center">
-                     <div className="relative w-full h-full">
-                       {/* Animated Background Elements */}
-                       <div className="absolute top-6 left-6 w-24 h-24 bg-blue-200/30 rounded-full blur-xl animate-pulse"></div>
-                       <div className="absolute bottom-6 right-6 w-28 h-28 bg-indigo-200/30 rounded-full blur-xl animate-pulse" style={{ animationDelay: '0.3s' }}></div>
-                       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-purple-200/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '0.7s' }}></div>
-                       <div className="absolute top-16 right-12 w-20 h-20 bg-blue-300/20 rounded-full blur-lg animate-pulse" style={{ animationDelay: '1s' }}></div>
-                       <div className="absolute bottom-16 left-12 w-18 h-18 bg-indigo-300/20 rounded-full blur-lg animate-pulse" style={{ animationDelay: '1.3s' }}></div>
-                       
-                       {/* Animated Icons - Larger and more spread out */}
-                       <div className="absolute top-12 left-12 animate-float-slow">
-                         <svg className="w-12 h-12 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                         </svg>
-                       </div>
-                       <div className="absolute top-16 right-16 animate-float-medium">
-                         <svg className="w-11 h-11 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                         </svg>
-                       </div>
-                       <div className="absolute bottom-16 left-16 animate-float-slow" style={{ animationDelay: '0.5s' }}>
-                         <svg className="w-10 h-10 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                         </svg>
-                       </div>
-                       <div className="absolute bottom-20 right-14 animate-float-medium" style={{ animationDelay: '0.7s' }}>
-                         <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                         </svg>
-                       </div>
-                       
-                       {/* Additional floating elements */}
-                       <div className="absolute top-1/3 right-1/3 animate-float-medium" style={{ animationDelay: '1.2s' }}>
-                         <svg className="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                         </svg>
-                       </div>
-                       <div className="absolute bottom-1/3 left-1/3 animate-float-slow" style={{ animationDelay: '0.9s' }}>
-                         <svg className="w-9 h-9 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                         </svg>
-                       </div>
-                       <div className="absolute top-1/4 left-1/4 animate-float-medium" style={{ animationDelay: '1.5s' }}>
-                         <svg className="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                         </svg>
-                       </div>
-                       <div className="absolute bottom-1/4 right-1/4 animate-float-slow" style={{ animationDelay: '1.1s' }}>
-                         <svg className="w-8 h-8 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                         </svg>
-                       </div>
-                       
-                       {/* Center Text with better styling */}
-                       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-10 bg-white/70 backdrop-blur-sm px-8 py-4 rounded-2xl border border-white/50 shadow-xl">
-                         <p className="text-base font-bold text-slate-700 mb-1">Let&apos;s Build Together</p>
-                         <p className="text-sm text-slate-600">Innovation • Excellence • Results</p>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
 
                 <button
                   type="submit"
@@ -486,8 +410,8 @@ export default function ContactPage() {
                 <h3 className="text-2xl font-bold text-slate-900 mb-6">Get In Touch</h3>
                 
                 <div className="space-y-6">
-                  <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl hover:shadow-lg transition-all duration-300">
-                    <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start gap-4 p-4 rounded-2xl border border-slate-200/80 bg-white hover:border-indigo-200 hover:shadow-md transition-all duration-300">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 [&>svg]:text-indigo-600">
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
@@ -495,14 +419,14 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold text-slate-900 mb-1">Email Us</h4>
                       <p className="text-slate-600 text-sm mb-2">Send us an email anytime</p>
-                      <a href="mailto:contact@savantxtechnologies.com" className="text-blue-600 hover:text-blue-700 font-medium">
-                      contact@savantxtechnologies.com
+                      <a href={`mailto:${COMPANY.email}`} className="text-indigo-600 hover:text-indigo-700 font-medium break-all">
+                        {COMPANY.email}
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-purple-50 to-purple-100 rounded-2xl hover:shadow-lg transition-all duration-300">
-                    <div className="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start gap-4 p-4 rounded-2xl border border-slate-200/80 bg-white hover:border-indigo-200 hover:shadow-md transition-all duration-300">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 [&>svg]:text-indigo-600">
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
@@ -510,19 +434,14 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold text-slate-900 mb-1">Call Us</h4>
                       <p className="text-slate-600 text-sm mb-2">Mon-Fri 9AM-6PM IST</p>
-                      <div className="space-y-1">
-                        <a href="tel:+919888244166" className="block text-purple-600 hover:text-purple-700 font-medium">
-                          +91 9888244166
-                        </a>
-                        <a href="tel:+919888344166" className="block text-purple-600 hover:text-purple-700 font-medium">
-                          +91 9888344166
-                        </a>
-                      </div>
+                      <a href={COMPANY.phone.href} className="block text-indigo-600 hover:text-indigo-700 font-medium">
+                        {COMPANY.phone.display}
+                      </a>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-green-50 to-green-100 rounded-2xl hover:shadow-lg transition-all duration-300">
-                    <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start gap-4 p-4 rounded-2xl border border-slate-200/80 bg-white hover:border-indigo-200 hover:shadow-md transition-all duration-300">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 [&>svg]:text-indigo-600">
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -531,29 +450,26 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold text-slate-900 mb-1">Visit Us</h4>
                       <p className="text-slate-600 text-sm mb-2">Our office locations</p>
-                      <div className="space-y-3">
-                        <div className="text-green-600 font-medium text-sm">
-                          <p className="font-semibold text-slate-800">Headquarters:</p>
-                          <p>Panchanpur, Tekari<br />Gaya, Bihar, 824236</p>
-                        </div>
-                        <div className="text-green-600 font-medium text-sm">
-                          <p className="font-semibold text-slate-800">Bangalore Office:</p>
-                          <p>Whitefield, Bangalore<br />Karnataka, 560066</p>
-                        </div>
-                        <div className="text-green-600 font-medium text-sm">
-                          <p className="font-semibold text-slate-800">Hyderabad Office:</p>
-                          <p>Hitech City, Hyderabad<br />Telangana, 500081</p>
-                        </div>
-                        <div className="text-green-600 font-medium text-sm">
-                          <p className="font-semibold text-slate-800">Other Locations:</p>
-                          <p>USA, Canada, UAE<br />Nepal, Singapore</p>
-                        </div>
-                      </div>
+                      <ul className="space-y-3">
+                        {OFFICES.map((office) => (
+                          <li key={office.id} className="text-slate-600 text-sm">
+                            <p className="font-semibold text-slate-800">{office.name}</p>
+                            <a
+                              href={officeMapUrl(office)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:text-indigo-700 hover:underline"
+                            >
+                              {formatOfficeAddress(office)}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-4 bg-gradient-to-r from-orange-50 to-orange-100 rounded-2xl hover:shadow-lg transition-all duration-300">
-                    <div className="w-12 h-12 bg-orange-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-start gap-4 p-4 rounded-2xl border border-slate-200/80 bg-white hover:border-indigo-200 hover:shadow-md transition-all duration-300">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 [&>svg]:text-indigo-600">
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
@@ -561,7 +477,7 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold text-slate-900 mb-1">Business Hours</h4>
                       <p className="text-slate-600 text-sm mb-2">When we&apos;re available</p>
-                      <div className="text-orange-600 font-medium text-sm">
+                      <div className="text-slate-600 text-sm">
                         <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
                         <p>Sat: 10:00 AM - 4:00 PM</p>
                         <p>Sun: Closed</p>
@@ -612,13 +528,13 @@ export default function ContactPage() {
               <svg className="w-4 h-4 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
               </svg>
-              Global Presence
+              Our Offices
             </div>
             <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
-              Find Us Around the World
+              Find Us in India
             </h2>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              We have a global presence with offices and operations in multiple countries. Click on any location to explore.
+              Visit us at our offices in {OFFICES.map((o) => o.city).join(' and ')}. Select a location to see it on the map.
             </p>
           </div>
           <LocationsMap />
@@ -695,110 +611,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Support Popup Modal */}
-      {isSupportOpen && (
-        <div className="fixed inset-0 bg-white/20 backdrop-blur-md flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6">
-              {/* Modal Header */}
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-2xl font-bold text-slate-900">Contact Support</h3>
-                <button 
-                  onClick={() => setIsSupportOpen(false)}
-                  className="text-slate-400 hover:text-slate-600 transition-colors"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-
-              {/* Modal Form */}
-              <form onSubmit={handleSupportSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="support-name" className="block text-sm font-medium text-slate-700 mb-1">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="support-name"
-                    name="name"
-                    value={supportFormData.name}
-                    onChange={handleSupportInputChange}
-                    required
-                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-900 bg-white"
-                    placeholder="Enter your full name"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="support-email" className="block text-sm font-medium text-slate-700 mb-1">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="support-email"
-                    name="email"
-                    value={supportFormData.email}
-                    onChange={handleSupportInputChange}
-                    required
-                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-900 bg-white"
-                    placeholder="Enter your email address"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="support-subject" className="block text-sm font-medium text-slate-700 mb-1">
-                    Subject *
-                  </label>
-                  <input
-                    type="text"
-                    id="support-subject"
-                    name="subject"
-                    value={supportFormData.subject}
-                    onChange={handleSupportInputChange}
-                    required
-                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-900 bg-white"
-                    placeholder="What can we help you with?"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="support-message" className="block text-sm font-medium text-slate-700 mb-1">
-                    Message *
-                  </label>
-                  <textarea
-                    id="support-message"
-                    name="message"
-                    value={supportFormData.message}
-                    onChange={handleSupportInputChange}
-                    required
-                    rows={4}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-900 bg-white"
-                    placeholder="Please describe your issue or question..."
-                  />
-                </div>
-
-                <div className="flex gap-3 pt-4">
-                  <button
-                    type="button"
-                    onClick={() => setIsSupportOpen(false)}
-                    className="flex-1 px-4 py-2 border border-slate-300 text-slate-700 rounded-md hover:bg-slate-50 transition-colors"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-                  >
-                    Send Support Request
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
+      <SupportModal open={isSupportOpen} onClose={() => setIsSupportOpen(false)} />
 
       <Footer />
     </div>

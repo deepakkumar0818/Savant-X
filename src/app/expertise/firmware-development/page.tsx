@@ -1,7 +1,18 @@
-'use client';
-
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
+import { COMPANY } from '@/lib/company';
+import PageHero from '@/components/hero/PageHero';
+import { Cpu } from 'lucide-react';
+import ServiceIcon from '@/components/ui/ServiceIcon';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Firmware Development',
+  description:
+    'Reliable, efficient and secure firmware for microcontrollers and embedded systems.',
+  path: '/expertise/firmware-development',
+});
 
 export default function FirmwareDevelopmentPage() {
   const features = [
@@ -162,60 +173,30 @@ export default function FirmwareDevelopmentPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-indigo-50 to-slate-50">
-      {/* Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-purple-400/20 to-indigo-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-violet-400/20 to-purple-600/20 rounded-full blur-3xl"></div>
-      </div>
+    <div className="min-h-screen bg-white">
 
-      {/* Hero Section */}
-      <section className="relative z-10 pt-32 pb-20 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-purple-200">
-              <span className="text-lg">⚙️</span>
-              Firmware Development
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
-              Expert Firmware Development &
-              <span className="block text-purple-600 mt-2">Embedded Software</span>
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
-              Professional firmware development services for microcontrollers and embedded systems. 
-              We create reliable, efficient, and secure firmware that powers your hardware products.
-            </p>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">150+</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Firmware Projects</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-indigo-600 mb-2">1M+</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Lines of Code</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-violet-600 mb-2">99.9%</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Reliability</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-fuchsia-600 mb-2">6-12</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Week Delivery</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Firmware Development"
+        eyebrowIcon={Cpu}
+        title="Expert Firmware Development &"
+        highlight="Embedded Software"
+        description="Professional firmware development services for microcontrollers and embedded systems. We create reliable, efficient, and secure firmware that powers your hardware products."
+        highlights={["Real-time Systems", "Driver Development", "RTOS Integration", "Bootloader Development"]}
+        stats={[
+          { value: COMPANY.foundingYear, label: "Founded" },
+          { value: "1M+", label: "Lines of Code" },
+          { value: "99.9%", label: "Reliability" },
+          { value: "6-12", label: "Week Delivery" },
+        ]}
+      />
 
       {/* Features */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Firmware
-              <span className="block text-purple-600 mt-2">Capabilities</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Capabilities</span>
             </h2>
           </div>
 
@@ -223,8 +204,8 @@ export default function FirmwareDevelopmentPage() {
             {features.map((feature, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-purple-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl flex items-center justify-center mb-4 group-hover:from-purple-200 group-hover:to-purple-300 transition-all duration-300">
-                    <span className="text-2xl">{feature.icon}</span>
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                    <ServiceIcon emoji={feature.icon} size="none" className="h-6 w-6 text-indigo-600" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors duration-200">
                     {feature.title}
@@ -243,9 +224,9 @@ export default function FirmwareDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Firmware
-              <span className="block text-purple-600 mt-2">Types</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Types</span>
             </h2>
           </div>
 
@@ -253,8 +234,8 @@ export default function FirmwareDevelopmentPage() {
             {firmwareTypes.map((type, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-purple-200/50 transition-all duration-300 h-full">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${type.color} rounded-2xl flex items-center justify-center mb-6`}>
-                    <span className="text-3xl">{type.icon}</span>
+                  <div className={`w-16 h-16 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-2xl flex items-center justify-center mb-6`}>
+                    <ServiceIcon emoji={type.icon} size="none" className="h-7 w-7 text-indigo-600" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors duration-200">
                     {type.title}
@@ -281,16 +262,16 @@ export default function FirmwareDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Technical
-              <span className="block text-purple-600 mt-2">Expertise</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Expertise</span>
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {capabilities.map((capability, index) => (
               <div key={index} className="bg-white border border-slate-200 rounded-xl p-6 shadow-lg hover:shadow-xl hover:border-purple-200/50 transition-all duration-300">
-                <div className="text-2xl mb-3">{capability.icon}</div>
+                <ServiceIcon emoji={capability.icon} size="md" className="mb-3" />
                 <h3 className="text-sm font-semibold text-purple-600 mb-2 uppercase tracking-wide">
                   {capability.title}
                 </h3>
@@ -307,9 +288,9 @@ export default function FirmwareDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Industry
-              <span className="block text-purple-600 mt-2">Expertise</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Expertise</span>
             </h2>
           </div>
 
@@ -317,7 +298,7 @@ export default function FirmwareDevelopmentPage() {
             {expertiseAreas.map((area, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-purple-200/50 transition-all duration-300 h-full">
-                  <div className="text-4xl mb-4">{area.icon}</div>
+                  <ServiceIcon emoji={area.icon} size="lg" className="mb-4" />
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors duration-200">
                     {area.title}
                   </h3>
@@ -335,9 +316,9 @@ export default function FirmwareDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Technology
-              <span className="block text-purple-600 mt-2">Stack</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Stack</span>
             </h2>
           </div>
 
@@ -349,7 +330,9 @@ export default function FirmwareDevelopmentPage() {
                     <img 
                       src={tech.icon} 
                       alt={`${tech.name} icon`}
-                      className="w-full h-full object-contain rounded-lg"
+                      loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-contain rounded-lg"
                     />
                   </div>
                   <h3 className="text-sm font-bold text-slate-900 mb-1 group-hover:text-purple-600 transition-colors duration-200">
@@ -367,9 +350,9 @@ export default function FirmwareDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Development
-              <span className="block text-purple-600 mt-2">Process</span>
+              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Process</span>
             </h2>
           </div>
 
@@ -381,8 +364,8 @@ export default function FirmwareDevelopmentPage() {
                     <div className="inline-block bg-purple-50 text-purple-700 px-3 py-1 rounded-lg text-sm font-bold mb-3 border border-purple-200">
                       {step.step}
                     </div>
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl flex items-center justify-center group-hover:from-purple-200 group-hover:to-purple-300 transition-all duration-300">
-                      <span className="text-2xl">{step.icon}</span>
+                    <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                      <ServiceIcon emoji={step.icon} size="none" className="h-6 w-6 text-indigo-600" />
                     </div>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors duration-200">
@@ -411,16 +394,12 @@ export default function FirmwareDevelopmentPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
-              <button className="bg-white text-purple-600 px-8 py-4 rounded-xl hover:bg-purple-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="bg-white text-purple-600 px-8 py-4 rounded-xl hover:bg-purple-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
                 Start Your Project
-              </button>
-            </Link>
-            <Link href="/contact">
-              <button className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-purple-600 transition-all duration-200 font-semibold text-lg">
+              </Link>
+            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-purple-600 transition-all duration-200 font-semibold text-lg">
                 Schedule Consultation
-              </button>
-            </Link>
+              </Link>
           </div>
         </div>
       </section>
@@ -429,4 +408,3 @@ export default function FirmwareDevelopmentPage() {
     </div>
   );
 }
-

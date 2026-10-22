@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useInView } from '@/lib/useInView';
+import { usePageVisible } from '@/lib/usePageVisible';
 
 const companyNames = [
   'Legal Palz',
@@ -18,23 +20,13 @@ const SLOT_COUNT = 5;
 
 export default function CompaniesSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef);
+  const pageVisible = usePageVisible();
   const [offset, setOffset] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { rootMargin: '80px' }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!inView) return;
+    if (!inView || !pageVisible) return;
 
     let revealTimeout: ReturnType<typeof setTimeout>;
 
@@ -44,23 +36,22 @@ export default function CompaniesSection() {
         setOffset((o) => (o + 1) % companyNames.length);
         setIsTransitioning(false);
       }, 320);
-    }, 3200);
+    }, 5000);
 
     return () => {
       clearInterval(interval);
       clearTimeout(revealTimeout);
     };
-  }, [inView]);
+  }, [inView, pageVisible]);
 
   return (
     <section
       ref={sectionRef}
-      className="scroll-section relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/80 to-indigo-50/90 px-6 py-20 pb-24 sm:px-8 sm:pb-28 lg:px-12 lg:pb-32"
+      className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/80 to-indigo-50/90 px-6 py-20 pb-24 sm:px-8 sm:pb-28 lg:px-12 lg:pb-32 [content-visibility:auto] [contain-intrinsic-size:auto_520px]"
     >
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-        <div className="absolute -right-40 -top-40 h-80 w-80 rounded-full bg-blue-200/25 blur-3xl motion-safe:animate-float-gentle" />
-        <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-indigo-200/25 blur-3xl motion-safe:animate-float-gentle motion-safe:delay-500" />
-        <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-slate-200/20 blur-3xl motion-safe:animate-float-gentle motion-safe:delay-1000" />
+        <div className="absolute -right-40 -top-40 h-80 w-80 rounded-full bg-blue-200/20 blur-2xl" />
+        <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-indigo-200/20 blur-2xl" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl">

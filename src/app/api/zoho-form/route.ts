@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { submitZohoLeadToGoogleSheet } from '@/lib/zohoGoogleSheet';
 import { submitZohoLeadToCrm, validateZohoLeadPayload } from '@/lib/zohoCrmWebToLead';
+import { clientKey, isDuplicateSubmission, isRateLimited, rememberSubmission } from '@/lib/submissionGuard';
 
 /**
  * Proxies Zoho strategy form submissions to Zoho CRM and Google Sheets in parallel.
@@ -35,6 +36,18 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: validationError }, { status: 400 });
     }
 
+    if (isRateLimited(clientKey(request.headers))) {
+      return NextResponse.json(
+        { error: 'Too many submissions. Please wait a few minutes and try again.' },
+        { status: 429 }
+      );
+    }
+
+    const dedupeKey = ['zoho-form', payload.email, payload.mobile, payload.description];
+    if (isDuplicateSubmission(dedupeKey)) {
+      return NextResponse.json({ message: 'We already received this request. We will be in touch soon.' });
+    }
+
     const sheetPayload = {
       fullName: payload.lastName,
       companyName: payload.company,
@@ -65,6 +78,8 @@ export async function POST(request: NextRequest) {
       console.error('Google Sheet submission failed:', sheet.message);
     }
 
+    if (crm.ok || sheet.ok) rememberSubmission(dedupeKey);
+
     if (crm.ok) {
       return NextResponse.json({ message: crm.message });
     }
@@ -80,7 +95,7 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   } catch (err) {
-    console.error('Zoho form proxy error:', err);
+    console.error('Zoho form proxy error:', err instanceof Error ? err.message : 'unknown error');
     return NextResponse.json(
       { error: 'Network error. Please try again or contact us directly.' },
       { status: 500 }

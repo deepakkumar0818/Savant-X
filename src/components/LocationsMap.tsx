@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { OFFICES, formatOfficeAddress } from '@/lib/company';
 
 // Fix for default marker icons in Next.js
 if (typeof window !== 'undefined') {
@@ -23,64 +24,14 @@ interface Location {
   type: 'office' | 'headquarters' | 'location';
 }
 
-const locations: Location[] = [
-  {
-    id: 'bangalore',
-    name: 'Bangalore Office',
-    address: 'Whitefield, Bangalore, Karnataka, 560066, India',
-    coordinates: [12.9716, 77.5946],
-    type: 'office'
-  },
-  {
-    id: 'hyderabad',
-    name: 'Hyderabad Office',
-    address: 'Hitech City, Hyderabad, Telangana, 500081, India',
-    coordinates: [17.4486, 78.3908],
-    type: 'office'
-  },
-  {
-    id: 'headquarters',
-    name: 'Headquarters',
-    address: 'Panchanpur, Tekari, Gaya, Bihar, 824236, India',
-    coordinates: [24.9366, 84.8425],
-    type: 'headquarters'
-  },
-  {
-    id: 'usa',
-    name: 'United States Office',
-    address: '1234 Technology Drive, Suite 500, San Francisco, CA 94105, USA',
-    coordinates: [37.7749, -122.4194],
-    type: 'location'
-  },
-  {
-    id: 'canada',
-    name: 'Canada Office',
-    address: '456 Innovation Boulevard, Suite 1200, Toronto, ON M5H 2N2, Canada',
-    coordinates: [43.6532, -79.3832],
-    type: 'location'
-  },
-  {
-    id: 'uae',
-    name: 'UAE Office',
-    address: 'Business Bay Tower, Floor 25, Office 2501, Dubai, UAE',
-    coordinates: [25.2048, 55.2708],
-    type: 'location'
-  },
-  {
-    id: 'nepal',
-    name: 'Nepal Office',
-    address: 'Thamel, Kathmandu, Nepal',
-    coordinates: [27.7172, 85.3240],
-    type: 'location'
-  },
-  {
-    id: 'singapore',
-    name: 'Singapore Office',
-    address: 'One Marina Boulevard, Level 15, Singapore 018989',
-    coordinates: [1.2801, 103.8509],
-    type: 'location'
-  }
-];
+// Only verified offices are published; see src/lib/company.ts.
+const locations: Location[] = OFFICES.map((office) => ({
+  id: office.id,
+  name: office.name,
+  address: formatOfficeAddress(office),
+  coordinates: office.coordinates,
+  type: office.type,
+}));
 
 // Component to handle map view changes
 function MapViewUpdater({ center, zoom }: { center: [number, number]; zoom: number }) {
@@ -130,8 +81,8 @@ const createCustomIcon = (type: Location['type']) => {
 
 export default function LocationsMap() {
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
-  const [mapCenter, setMapCenter] = useState<[number, number]>([28.3949, 84.1240]);
-  const [mapZoom, setMapZoom] = useState(3);
+  const [mapCenter, setMapCenter] = useState<[number, number]>([27.8, 80.8]);
+  const [mapZoom, setMapZoom] = useState(5);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

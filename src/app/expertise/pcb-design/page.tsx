@@ -1,7 +1,18 @@
-'use client';
-
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
+import { COMPANY } from '@/lib/company';
+import PageHero from '@/components/hero/PageHero';
+import { CircuitBoard } from 'lucide-react';
+import ServiceIcon from '@/components/ui/ServiceIcon';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'PCB Design & Layout',
+  description:
+    'Production-ready PCB design and circuit board layout, from simple prototypes to complex multi-layer boards.',
+  path: '/expertise/pcb-design',
+});
 
 export default function PcbDesignPage() {
   const features = [
@@ -129,58 +140,28 @@ export default function PcbDesignPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-slate-50">
-      {/* Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-green-400/20 to-emerald-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-teal-400/20 to-green-600/20 rounded-full blur-3xl"></div>
-      </div>
+    <div className="min-h-screen bg-white">
 
-      {/* Hero Section */}
-      <section className="relative z-10 pt-32 pb-20 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-green-200">
-              <span className="text-lg">🔌</span>
-              PCB Design & Layout
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
-              Professional PCB Design &
-              <span className="block text-green-600 mt-2">Circuit Board Layout</span>
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
-              Custom printed circuit board design services from simple prototypes to complex multi-layer boards. 
-              We deliver production-ready PCBs optimized for performance, reliability, and manufacturing.
-            </p>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-green-600 mb-2">200+</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">PCB Designs</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-600 mb-2">16+</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Layer Capability</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-teal-600 mb-2">98%</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">First Pass Yield</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-lime-600 mb-2">2-4</div>
-              <div className="text-sm font-medium text-slate-600 uppercase tracking-wide">Week Turnaround</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="PCB Design & Layout"
+        eyebrowIcon={CircuitBoard}
+        title="Professional PCB Design &"
+        highlight="Circuit Board Layout"
+        description="Custom printed circuit board design services from simple prototypes to complex multi-layer boards. We deliver production-ready PCBs optimized for performance, reliability, and manufacturing."
+        highlights={["Custom PCB Layout", "Multi-layer Boards", "Signal Integrity", "Thermal Management"]}
+        stats={[
+          { value: COMPANY.foundingYear, label: "Founded" },
+          { value: "16+", label: "Layer Capability" },
+          { value: "98%", label: "First Pass Yield" },
+          { value: "2-4", label: "Week Turnaround" },
+        ]}
+      />
 
       {/* Features */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               PCB Design
               <span className="block text-green-600 mt-2">Capabilities</span>
             </h2>
@@ -190,8 +171,8 @@ export default function PcbDesignPage() {
             {features.map((feature, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-green-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center mb-4 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
-                    <span className="text-2xl">{feature.icon}</span>
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                    <ServiceIcon emoji={feature.icon} size="none" className="h-6 w-6 text-indigo-600" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-green-600 transition-colors duration-200">
                     {feature.title}
@@ -210,7 +191,7 @@ export default function PcbDesignPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               PCB
               <span className="block text-green-600 mt-2">Types & Solutions</span>
             </h2>
@@ -220,8 +201,8 @@ export default function PcbDesignPage() {
             {pcbTypes.map((type, index) => (
               <div key={index} className="group">
                 <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-green-200/50 transition-all duration-300 h-full">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${type.color} rounded-2xl flex items-center justify-center mb-6`}>
-                    <span className="text-3xl">{type.icon}</span>
+                  <div className={`w-16 h-16 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-2xl flex items-center justify-center mb-6`}>
+                    <ServiceIcon emoji={type.icon} size="none" className="h-7 w-7 text-indigo-600" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-green-600 transition-colors duration-200">
                     {type.title}
@@ -248,7 +229,7 @@ export default function PcbDesignPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Technical
               <span className="block text-green-600 mt-2">Specifications</span>
             </h2>
@@ -273,7 +254,7 @@ export default function PcbDesignPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Design
               <span className="block text-green-600 mt-2">Tools</span>
             </h2>
@@ -287,7 +268,9 @@ export default function PcbDesignPage() {
                     <img 
                       src={tech.icon} 
                       alt={`${tech.name} icon`}
-                      className="w-full h-full object-contain rounded-lg"
+                      loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-contain rounded-lg"
                     />
                   </div>
                   <h3 className="text-sm font-bold text-slate-900 mb-1 group-hover:text-green-600 transition-colors duration-200">
@@ -305,7 +288,7 @@ export default function PcbDesignPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
               Design
               <span className="block text-green-600 mt-2">Process</span>
             </h2>
@@ -319,8 +302,8 @@ export default function PcbDesignPage() {
                     <div className="inline-block bg-green-50 text-green-700 px-3 py-1 rounded-lg text-sm font-bold mb-3 border border-green-200">
                       {step.step}
                     </div>
-                    <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
-                      <span className="text-2xl">{step.icon}</span>
+                    <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
+                      <ServiceIcon emoji={step.icon} size="none" className="h-6 w-6 text-indigo-600" />
                     </div>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-green-600 transition-colors duration-200">
@@ -349,16 +332,12 @@ export default function PcbDesignPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
-              <button className="bg-white text-green-600 px-8 py-4 rounded-xl hover:bg-green-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
+            <Link href="/contact" className="bg-white text-green-600 px-8 py-4 rounded-xl hover:bg-green-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
                 Start Your Project
-              </button>
-            </Link>
-            <Link href="/contact">
-              <button className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-green-600 transition-all duration-200 font-semibold text-lg">
+              </Link>
+            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-green-600 transition-all duration-200 font-semibold text-lg">
                 Request Quote
-              </button>
-            </Link>
+              </Link>
           </div>
         </div>
       </section>
@@ -367,4 +346,3 @@ export default function PcbDesignPage() {
     </div>
   );
 }
-

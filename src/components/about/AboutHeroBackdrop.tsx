@@ -1,5 +1,3 @@
-'use client';
-
 /** Subtle white grid + soft glow for the About hero. */
 export default function AboutHeroBackdrop() {
   return (
