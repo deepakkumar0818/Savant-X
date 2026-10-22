@@ -20,6 +20,7 @@ import HeroPremiumBackdrop from '@/components/hero/HeroPremiumBackdrop';
 import SelectServiceLink from '@/components/zoho/landing/SelectServiceLink';
 import TrackedLink from '@/components/zoho/landing/TrackedLink';
 import ZohoEnquiryForm from '@/components/zoho/landing/ZohoEnquiryForm';
+import ZohoLeadPopup from '@/components/zoho/landing/ZohoLeadPopup';
 import ZohoHeroVisual from '@/components/zoho/landing/ZohoHeroVisual';
 import AppShowcase from '@/components/zoho/landing/AppShowcase';
 import IntegrationEnterprise from '@/components/zoho/landing/IntegrationEnterprise';
@@ -374,11 +375,12 @@ export default function ZohoIntegrationsPage() {
             </ul>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-white shadow-[0_24px_60px_-34px_rgba(30,58,138,0.35)]">
-            <ZohoEnquiryForm />
+            <ZohoEnquiryForm listenForServiceLinks={false} />
           </div>
         </div>
       </section>
 
+      <ZohoLeadPopup />
       <Footer />
     </div>
   );

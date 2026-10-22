@@ -59,16 +59,16 @@ export default function ConsultationModal({ open, onClose, source }: Props) {
     setStatus({ state: 'submitting' });
 
     try {
-      const res = await fetchWithTimeout('/api/contact', {
+      const res = await fetchWithTimeout('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          kind: 'enquiry',
           name: form.name,
           email: form.email,
           company: form.company,
           phone: form.phone,
-          service: [form.projectType || 'Consultation request', `via ${source}`].join(' — '),
+          service: form.projectType || 'Consultation request',
+          source,
           message: form.message,
           website: form.website,
         }),

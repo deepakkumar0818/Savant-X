@@ -1,7 +1,37 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { submitZohoLeadToGoogleSheet } from '@/lib/zohoGoogleSheet';
-import { submitZohoLeadToCrm, validateZohoLeadPayload } from '@/lib/zohoCrmWebToLead';
+import { submitZohoLeadToCrm, validateZohoLeadPayload, type ZohoLeadPayload } from '@/lib/zohoCrmWebToLead';
+import { buildLeadRecord, ZohoError } from '@/lib/zohoLeads';
+import { getZohoClient } from '@/lib/zohoLeadService';
 import { clientKey, isDuplicateSubmission, isRateLimited, rememberSubmission } from '@/lib/submissionGuard';
+
+/** Creates the CRM lead through the Zoho API when OAuth is configured, otherwise through Web-to-Lead. */
+async function createCrmLead(payload: ZohoLeadPayload): Promise<{ ok: boolean; message: string }> {
+  const client = getZohoClient();
+  if (!client) return submitZohoLeadToCrm(payload);
+  try {
+    await client.createLead(
+      buildLeadRecord(
+        {
+          name: payload.lastName,
+          email: payload.email ?? '',
+          phone: payload.mobile ?? '',
+          company: payload.company,
+          message: payload.description?.trim() ?? '',
+          service: payload.service ?? '',
+          budget: '',
+          source: 'Zoho strategy form',
+          zohoApps: payload.interestZohoApps?.trim().slice(0, 255),
+        },
+        client.leadSource
+      ),
+      (dropped) => console.error(`[zoho-form] created without an optional field Zoho rejected: ${dropped}`)
+    );
+    return { ok: true, message: "Thank you! We've received your request and will reach out soon." };
+  } catch (error) {
+    return { ok: false, message: error instanceof ZohoError ? `Zoho CRM ${error.kind}: ${error.detail}` : 'Zoho CRM request failed.' };
+  }
+}
 
 /**
  * Proxies Zoho strategy form submissions to Zoho CRM and Google Sheets in parallel.
@@ -58,7 +88,7 @@ export async function POST(request: NextRequest) {
     };
 
     const [crmResult, sheetResult] = await Promise.allSettled([
-      submitZohoLeadToCrm(payload),
+      createCrmLead(payload),
       submitZohoLeadToGoogleSheet(sheetPayload),
     ]);
 
@@ -81,7 +111,7 @@ export async function POST(request: NextRequest) {
     if (crm.ok || sheet.ok) rememberSubmission(dedupeKey);
 
     if (crm.ok) {
-      return NextResponse.json({ message: crm.message });
+      return NextResponse.json({ message: "Thank you! We've received your request and will reach out soon." });
     }
 
     if (sheet.ok) {
@@ -91,7 +121,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: crm.message || sheet.message || 'Submission failed. Please try again.' },
+      { error: 'Submission failed. Please try again, or email or call us directly.' },
       { status: 500 }
     );
   } catch (err) {

@@ -6,8 +6,8 @@ import type { ServiceId } from './data';
 export const SELECT_SERVICE_EVENT = 'zoho:select-service';
 
 /**
- * Jumps to the enquiry form and pre-selects a service. Without JavaScript it is
- * still a plain link to #enquiry. `event` is sent to analytics on click.
+ * Opens the lead popup (or jumps to the enquiry form) with a service pre-selected.
+ * Without JavaScript it is still a plain link to #enquiry. `event` is sent to analytics on click.
  */
 export default function SelectServiceLink({
   service,
@@ -24,9 +24,11 @@ export default function SelectServiceLink({
     <a
       href="#enquiry"
       className={className}
-      onClick={() => {
+      onClick={(e) => {
         trackEvent(event, { service, page: 'zoho' });
-        window.dispatchEvent(new CustomEvent<ServiceId>(SELECT_SERVICE_EVENT, { detail: service }));
+        // The lead popup cancels the event when it opens, so the page does not also jump to #enquiry.
+        const handled = !window.dispatchEvent(new CustomEvent<ServiceId>(SELECT_SERVICE_EVENT, { detail: service, cancelable: true }));
+        if (handled) e.preventDefault();
       }}
     >
       {children}

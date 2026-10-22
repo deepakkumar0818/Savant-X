@@ -10,7 +10,13 @@ const FOCUSABLE =
  * Escape closes, background scroll is locked, focus moves into the dialog,
  * Tab stays inside it, and focus returns to the trigger on close.
  */
-export function useDialog(open: boolean, onClose: () => void, panelRef: RefObject<HTMLElement | null>) {
+export function useDialog(
+  open: boolean,
+  onClose: () => void,
+  panelRef: RefObject<HTMLElement | null>,
+  /** Focus the panel instead of its first field, e.g. when the dialog was not opened by the visitor (no keyboard pop-up on phones). */
+  focusPanel = false
+) {
   const onCloseRef = useRef(onClose);
   onCloseRef.current = onClose;
 
@@ -23,7 +29,7 @@ export function useDialog(open: boolean, onClose: () => void, panelRef: RefObjec
 
     const panel = panelRef.current;
     const firstField = panel?.querySelector<HTMLElement>('input:not([type="hidden"]):not([tabindex="-1"]), textarea, select');
-    (firstField ?? panel)?.focus();
+    (focusPanel ? panel : (firstField ?? panel))?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -54,5 +60,5 @@ export function useDialog(open: boolean, onClose: () => void, panelRef: RefObjec
       document.body.style.overflow = previousOverflow;
       trigger?.focus?.();
     };
-  }, [open, panelRef]);
+  }, [open, panelRef, focusPanel]);
 }

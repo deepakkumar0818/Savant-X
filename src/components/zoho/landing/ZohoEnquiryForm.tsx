@@ -6,6 +6,9 @@ import { CheckCircle2, Loader2 } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
 import { BUDGET_OPTIONS, SERVICE_OPTIONS, type ServiceId } from './data';
 import { SELECT_SERVICE_EVENT } from './SelectServiceLink';
+
+/** Fired on window once the server confirms a lead was delivered. */
+export const LEAD_SENT_EVENT = 'zoho:lead-sent';
 import { fetchWithTimeout } from '@/lib/fetchWithTimeout';
 
 type Fields = {
@@ -49,16 +52,31 @@ function validate(f: Fields) {
 const inputClass =
   'mt-1.5 block w-full rounded-lg border bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20';
 
-/** Zoho enquiry form. Submits to /api/contact, which creates a Zoho CRM lead and emails the team. */
-export default function ZohoEnquiryForm() {
+/** Zoho enquiry form. Submits to /api/leads, which creates a Zoho CRM lead and then emails the team. */
+export default function ZohoEnquiryForm({
+  service,
+  listenForServiceLinks = true,
+}: {
+  /** Pre-selects this service, and again whenever it changes. */
+  service?: ServiceId;
+  /** Follow the page's "Get started" buttons. Off when the lead popup handles them instead. */
+  listenForServiceLinks?: boolean;
+} = {}) {
   const id = useId();
   const nameRef = useRef<HTMLInputElement>(null);
-  const [form, setForm] = useState<Fields>(EMPTY);
+  const [form, setForm] = useState<Fields>(() => ({ ...EMPTY, service: service ?? '' }));
   const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({});
   const [status, setStatus] = useState<Status>({ state: 'idle' });
 
+  useEffect(() => {
+    if (!service) return;
+    setForm((f) => ({ ...f, service }));
+    setErrors((e) => ({ ...e, service: undefined }));
+  }, [service]);
+
   // "Get started" buttons elsewhere on the page pre-select a service.
   useEffect(() => {
+    if (!listenForServiceLinks) return;
     const onSelect = (event: Event) => {
       const service = (event as CustomEvent<ServiceId>).detail;
       setForm((f) => ({ ...f, service }));
@@ -68,7 +86,7 @@ export default function ZohoEnquiryForm() {
     };
     window.addEventListener(SELECT_SERVICE_EVENT, onSelect);
     return () => window.removeEventListener(SELECT_SERVICE_EVENT, onSelect);
-  }, []);
+  }, [listenForServiceLinks]);
 
   const update = <K extends keyof Fields>(key: K, value: Fields[K]) => {
     setForm((f) => ({ ...f, [key]: value }));
@@ -91,18 +109,18 @@ export default function ZohoEnquiryForm() {
     setStatus({ state: 'submitting' });
     const serviceLabel = SERVICE_OPTIONS.find((s) => s.id === form.service)?.label ?? form.service;
     try {
-      const res = await fetchWithTimeout('/api/contact', {
+      const res = await fetchWithTimeout('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          kind: 'enquiry',
           name: form.name,
           email: form.email,
           company: form.company,
           phone: form.phone,
           service: serviceLabel.startsWith('ERP: ') ? serviceLabel : `Zoho: ${serviceLabel}`,
           budget: form.budget,
-          message: ['[Zoho page enquiry]', form.message, ...campaignParams()].join('\n'),
+          message: [form.message, ...campaignParams()].join('\n'),
+          source: 'Zoho page',
           website: form.website,
         }),
       });
@@ -115,6 +133,7 @@ export default function ZohoEnquiryForm() {
       trackEvent('generate_lead', { form: 'zoho_consultation', service: form.service, budget: form.budget });
       setStatus({ state: 'success', message: data.message || 'Thank you! We have received your enquiry.' });
       setForm(EMPTY);
+      window.dispatchEvent(new Event(LEAD_SENT_EVENT));
     } catch {
       setStatus({ state: 'error', message: 'Network error. Please check your connection and try again.' });
     }
