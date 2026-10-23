@@ -6,6 +6,7 @@ import { AlertCircle, CalendarDays, CheckCircle2, Loader2, X } from 'lucide-reac
 import { useDialog } from '@/lib/useDialog';
 import { trackEvent } from '@/lib/analytics';
 import { fetchWithTimeout } from '@/lib/fetchWithTimeout';
+import { BUDGETS, campaignParams, EMAIL_PATTERN, MIN_MESSAGE, PHONE_PATTERN } from './leadForm';
 
 /**
  * Each label maps to a Lead Type / IT Lead Subcategory in Zoho CRM (see classifyService in
@@ -23,17 +24,10 @@ const SERVICES = [
   'Not sure yet',
 ] as const;
 
-/** Same ranges as the Zoho page, so CRM Priority is set the same way (Low / Medium / High). */
-const BUDGETS = ['Under ₹10,000', '₹10,000 – ₹25,000', '₹25,000 – ₹50,000', '₹50,000 – ₹1,00,000', 'Above ₹1,00,000', 'Not sure yet'] as const;
-
 type Fields = { name: string; email: string; phone: string; company: string; service: string; budget: string; message: string; website: string };
 type Status = { state: 'idle' } | { state: 'submitting' } | { state: 'success'; message: string } | { state: 'error'; message: string };
 
 const EMPTY: Fields = { name: '', email: '', phone: '', company: '', service: '', budget: '', message: '', website: '' };
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const PHONE_PATTERN = /^\+?[\d\s()-]{7,20}$/;
-const MIN_MESSAGE = 20;
-const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid'];
 
 const input =
   'mt-1.5 block w-full rounded-xl border bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 transition focus:border-indigo-400 focus:outline-none focus:ring-4 focus:ring-indigo-100';
@@ -48,12 +42,6 @@ function validate(f: Fields) {
   if (!f.budget) errors.budget = 'Please choose a budget range.';
   if (f.message.trim().length < MIN_MESSAGE) errors.message = `Please tell us about your project in at least ${MIN_MESSAGE} characters.`;
   return errors;
-}
-
-/** Campaign parameters on the current URL, so the lead keeps its source. */
-function campaignParams() {
-  const params = new URLSearchParams(window.location.search);
-  return UTM_KEYS.filter((k) => params.get(k)).map((k) => `${k}: ${params.get(k)}`);
 }
 
 /**

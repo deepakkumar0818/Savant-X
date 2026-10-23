@@ -1,101 +1,153 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { AlertCircle, ArrowRight, CheckCircle2, Loader2, Lock, MonitorSmartphone, Send } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 import { fetchWithTimeout } from '@/lib/fetchWithTimeout';
+import { BUDGETS, campaignParams, EMAIL_PATTERN, MIN_MESSAGE, PHONE_PATTERN } from '@/components/forms/leadForm';
 
-const EMPTY_FORM = {
-  name: '',
-  email: '',
-  company: '',
-  phone: '',
-  service: '',
-  hardwareService: '',
-  message: '',
-  budget: '',
-  website: '',
+/**
+ * Each label maps to a Lead Type / IT Lead Subcategory in Zoho CRM (see classifyService in
+ * src/lib/zohoLeads.ts). Keep the keywords if you reword them.
+ */
+const SERVICES = [
+  'Website Development',
+  'Mobile App Development',
+  'Zoho Development',
+  'ERP Solutions',
+  'AI / ML & Analytics',
+  'Automation & Integrations',
+  'Shopify Store',
+  'Hardware & Electronics',
+  'Not sure yet',
+] as const;
+const HARDWARE = 'Hardware & Electronics';
+
+/** Each maps to an Electronics Lead Subcategory in Zoho CRM. */
+const HARDWARE_SERVICES = [
+  'IoT Solutions',
+  'Embedded Systems Development',
+  'PCB Design & Circuit Engineering',
+  'Firmware Development',
+  '3D Printing and Designing',
+  'Hardware Prototyping & Testing',
+  'Industrial Automation',
+  'Electronics Design & Integration',
+  'Complete Product Development',
+] as const;
+
+type Fields = {
+  name: string;
+  email: string;
+  company: string;
+  phone: string;
+  service: string;
+  hardwareService: string;
+  budget: string;
+  message: string;
+  website: string; // honeypot
 };
 
+const EMPTY_FORM: Fields = { name: '', email: '', company: '', phone: '', service: '', hardwareService: '', budget: '', message: '', website: '' };
+
+type Status = { state: 'idle' } | { state: 'submitting' } | { state: 'success' } | { state: 'error'; message: string };
+
 const FIELD =
-  'w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 transition focus:border-indigo-400 focus:outline-none focus:ring-4 focus:ring-indigo-100';
+  'w-full rounded-xl border bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 transition focus:border-indigo-400 focus:outline-none focus:ring-4 focus:ring-indigo-100';
 const LABEL = 'mb-1.5 block text-sm font-semibold text-slate-700';
 
-function Required() {
-  return (
-    <span className="text-rose-500" aria-hidden>
-      {' '}
-      *
-    </span>
-  );
+function validate(f: Fields) {
+  const errors: Partial<Record<keyof Fields, string>> = {};
+  if (!f.name.trim()) errors.name = 'Please enter your name.';
+  if (!EMAIL_PATTERN.test(f.email.trim())) errors.email = 'Please enter a valid email address.';
+  if (!f.company.trim()) errors.company = 'Please enter your company name.';
+  if (!PHONE_PATTERN.test(f.phone.trim())) errors.phone = 'Please enter a phone number so we can reach you.';
+  if (!f.service) errors.service = 'Please choose the service you are interested in.';
+  if (!f.budget) errors.budget = 'Please choose a budget range.';
+  if (f.service === HARDWARE && !f.hardwareService) errors.hardwareService = 'Please choose the hardware service.';
+  if (f.message.trim().length < MIN_MESSAGE) errors.message = `Please tell us about your project in at least ${MIN_MESSAGE} characters.`;
+  return errors;
 }
 
 /** Contact page enquiry form. Success is shown only once /api/leads confirms Zoho CRM created the lead. */
 export default function ContactForm() {
-  const [formData, setFormData] = useState(EMPTY_FORM);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
+  const id = useId();
+  const [form, setForm] = useState<Fields>(EMPTY_FORM);
+  const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({});
+  const [status, setStatus] = useState<Status>({ state: 'idle' });
+  const submitting = status.state === 'submitting';
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => {
-      // Reset hardwareService when service is changed to non-hardware option
-      if (name === 'service' && value !== 'hardware-development') {
-        return { ...prev, [name]: value, hardwareService: '' };
-      }
-      return { ...prev, [name]: value };
-    });
-  };
-
-  const optionLabel = (selectId: string, value: string) => {
-    if (!value) return '';
-    const select = document.getElementById(selectId) as HTMLSelectElement | null;
-    return select?.querySelector<HTMLOptionElement>(`option[value="${value}"]`)?.textContent?.trim() || value;
+  const update = (key: keyof Fields, value: string) => {
+    // A non-hardware service clears the hardware choice.
+    setForm((f) => ({ ...f, [key]: value, ...(key === 'service' && value !== HARDWARE ? { hardwareService: '' } : {}) }));
+    if (errors[key]) setErrors((e) => ({ ...e, [key]: undefined }));
+    if (status.state === 'error' || status.state === 'success') setStatus({ state: 'idle' });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isSubmitting) return;
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-    setErrorMessage('');
+    if (submitting) return;
+    const found = validate(form);
+    setErrors(found);
+    const first = Object.keys(found)[0];
+    if (first) {
+      document.getElementById(`${id}-${first}`)?.focus();
+      return;
+    }
 
-    const service = [optionLabel('service', formData.service), optionLabel('hardwareService', formData.hardwareService)]
-      .filter(Boolean)
-      .join(' — ');
-
+    setStatus({ state: 'submitting' });
     try {
       const response = await fetchWithTimeout('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          phone: formData.phone,
-          service,
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          phone: form.phone,
+          service: [form.service, form.hardwareService].filter(Boolean).join(' — '),
+          budget: form.budget,
+          message: [form.message.trim(), ...campaignParams()].join('\n'),
           source: 'Contact page',
-          budget: optionLabel('budget', formData.budget),
-          message: formData.message,
-          website: formData.website,
+          website: form.website,
         }),
       });
       const data = (await response.json().catch(() => ({}))) as { error?: string };
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        setFormData(EMPTY_FORM);
-      } else {
+      if (!response.ok) {
         // Keep what the visitor typed so they can retry.
-        setErrorMessage(data.error || '');
-        setSubmitStatus('error');
+        setStatus({ state: 'error', message: data.error || 'Sorry, there was an error sending your message. Please try again or contact us directly.' });
+        return;
       }
+      trackEvent('generate_lead', { form: 'contact', service: form.service, budget: form.budget });
+      setStatus({ state: 'success' });
+      setForm(EMPTY_FORM);
     } catch {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
+      setStatus({ state: 'error', message: 'Network error. Please check your connection and try again. Your details are still here.' });
     }
   };
+
+  const field = (key: keyof Fields) => ({
+    id: `${id}-${key}`,
+    name: key,
+    'aria-invalid': errors[key] ? true : undefined,
+    'aria-describedby': errors[key] ? `${id}-${key}-error` : undefined,
+    className: `${FIELD} ${errors[key] ? 'border-rose-400' : 'border-slate-200'}`,
+  });
+  const error = (key: keyof Fields) =>
+    errors[key] ? (
+      <p id={`${id}-${key}-error`} className="mt-1.5 text-xs font-medium text-rose-600">
+        {errors[key]}
+      </p>
+    ) : null;
+  const label = (key: keyof Fields, text: string) => (
+    <label htmlFor={`${id}-${key}`} className={LABEL}>
+      {text}
+      <span className="text-rose-500" aria-hidden>
+        {' '}
+        *
+      </span>
+    </label>
+  );
 
   return (
     <div className="rounded-3xl bg-white p-6 shadow-[0_24px_60px_-35px_rgba(79,70,229,0.4)] ring-1 ring-slate-200/80 sm:p-8">
@@ -110,7 +162,7 @@ export default function ContactForm() {
       </div>
 
       <div aria-live="polite">
-        {submitStatus === 'success' && (
+        {status.state === 'success' && (
           <div role="status" className="mt-6 flex items-start gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-emerald-800">
             <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0" aria-hidden />
             <div>
@@ -119,127 +171,101 @@ export default function ContactForm() {
             </div>
           </div>
         )}
-        {submitStatus === 'error' && (
+        {status.state === 'error' && (
           <div role="alert" className="mt-6 flex items-start gap-3 rounded-2xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-700">
             <AlertCircle className="mt-0.5 h-5 w-5 shrink-0" aria-hidden />
-            {errorMessage || 'Sorry, there was an error sending your message. Please try again or contact us directly.'}
+            {status.message}
           </div>
         )}
       </div>
 
-      <form onSubmit={handleSubmit} className="relative mt-7 space-y-5">
+      <form noValidate onSubmit={handleSubmit} className="relative mt-7 space-y-5">
         {/* Honeypot: hidden from people, tempting to bots. */}
         <div className="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden>
-          <label htmlFor="website">Website</label>
-          <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" value={formData.website} onChange={handleInputChange} />
+          <label htmlFor={`${id}-website`}>Website</label>
+          <input id={`${id}-website`} type="text" tabIndex={-1} autoComplete="off" value={form.website} onChange={(e) => update('website', e.target.value)} />
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div>
-            <label htmlFor="name" className={LABEL}>
-              Full Name
-              <Required />
-            </label>
-            <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required autoComplete="name" suppressHydrationWarning className={FIELD} placeholder="Your full name" />
+            {label('name', 'Full Name')}
+            <input {...field('name')} type="text" autoComplete="name" value={form.name} onChange={(e) => update('name', e.target.value)} placeholder="Your full name" />
+            {error('name')}
           </div>
           <div>
-            <label htmlFor="email" className={LABEL}>
-              Email Address
-              <Required />
-            </label>
-            <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} required autoComplete="email" suppressHydrationWarning className={FIELD} placeholder="you@company.com" />
+            {label('email', 'Email Address')}
+            <input {...field('email')} type="email" autoComplete="email" value={form.email} onChange={(e) => update('email', e.target.value)} placeholder="you@company.com" />
+            {error('email')}
           </div>
           <div>
-            <label htmlFor="company" className={LABEL}>
-              Company
-              <Required />
-            </label>
-            <input type="text" id="company" name="company" value={formData.company} onChange={handleInputChange} required autoComplete="organization" suppressHydrationWarning className={FIELD} placeholder="Your company name" />
+            {label('company', 'Company')}
+            <input {...field('company')} type="text" autoComplete="organization" value={form.company} onChange={(e) => update('company', e.target.value)} placeholder="Your company name" />
+            {error('company')}
           </div>
           <div>
-            <label htmlFor="phone" className={LABEL}>
-              Phone Number
-            </label>
-            <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleInputChange} autoComplete="tel" suppressHydrationWarning className={FIELD} placeholder="+91 …" />
+            {label('phone', 'Phone Number')}
+            <input {...field('phone')} type="tel" inputMode="tel" autoComplete="tel" value={form.phone} onChange={(e) => update('phone', e.target.value)} placeholder="+91 …" />
+            {error('phone')}
           </div>
           <div>
-            <label htmlFor="service" className={LABEL}>
-              Service Interested
-              <Required />
-            </label>
-            <select id="service" name="service" value={formData.service} onChange={handleInputChange} required suppressHydrationWarning className={FIELD}>
+            {label('service', 'Service Interested')}
+            <select {...field('service')} value={form.service} onChange={(e) => update('service', e.target.value)}>
               <option value="">Select a service</option>
-              <option value="web-development">Web Development</option>
-              <option value="mobile-apps">Mobile Applications</option>
-              <option value="ai-analytics">AI & Analytics</option>
-              <option value="enterprise-solutions">Enterprise Solutions</option>
-              <option value="hardware-development">Hardware & Electronics</option>
-              <option value="zoho-integration">Zoho Integration</option>
-              <option value="consulting">Consulting</option>
-              <option value="other">Other</option>
+              {SERVICES.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
             </select>
+            {error('service')}
           </div>
           <div>
-            <label htmlFor="budget" className={LABEL}>
-              Budget Range
-            </label>
-            <select id="budget" name="budget" value={formData.budget} onChange={handleInputChange} suppressHydrationWarning className={FIELD}>
+            {label('budget', 'Budget Range')}
+            <select {...field('budget')} value={form.budget} onChange={(e) => update('budget', e.target.value)}>
               <option value="">Select budget range</option>
-              <option value="under-10l">Under ₹10,00,000</option>
-              <option value="10l-25l">₹10,00,000 - ₹25,00,000</option>
-              <option value="25l-50l">₹25,00,000 - ₹50,00,000</option>
-              <option value="50l-1cr">₹50,00,000 - ₹1,00,00,000</option>
-              <option value="over-1cr">Over ₹1,00,00,000</option>
+              {BUDGETS.map((b) => (
+                <option key={b} value={b}>
+                  {b}
+                </option>
+              ))}
             </select>
+            {error('budget')}
           </div>
         </div>
 
-        {formData.service === 'hardware-development' && (
+        {form.service === HARDWARE && (
           <div className="animate-fade-in">
-            <label htmlFor="hardwareService" className={LABEL}>
-              Which Hardware Service?
-              <Required />
-            </label>
-            <select id="hardwareService" name="hardwareService" value={formData.hardwareService} onChange={handleInputChange} required suppressHydrationWarning className={FIELD}>
+            {label('hardwareService', 'Which Hardware Service?')}
+            <select {...field('hardwareService')} value={form.hardwareService} onChange={(e) => update('hardwareService', e.target.value)}>
               <option value="">Select hardware service</option>
-              <option value="iot-solutions">IoT Solutions</option>
-              <option value="embedded-systems">Embedded Systems Development</option>
-              <option value="pcb-design">PCB Design & Circuit Engineering</option>
-              <option value="firmware-development">Firmware Development</option>
-              <option value="3d-printing-design">3D Printing and Designing</option>
-              <option value="hardware-prototyping">Hardware Prototyping & Testing</option>
-              <option value="industrial-automation">Industrial Automation</option>
-              <option value="electronics-design">Electronics Design & Integration</option>
-              <option value="product-development">Complete Product Development</option>
+              {HARDWARE_SERVICES.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
             </select>
+            {error('hardwareService')}
           </div>
         )}
 
         <div>
-          <label htmlFor="message" className={LABEL}>
-            Project Details
-            <Required />
-          </label>
+          {label('message', 'Project Details')}
           <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleInputChange}
-            required
+            {...field('message')}
             rows={5}
-            suppressHydrationWarning
-            className={`${FIELD} resize-none`}
+            value={form.message}
+            onChange={(e) => update('message', e.target.value)}
             placeholder="Tell us about your project, goals, and any specific requirements…"
           />
+          {error('message')}
         </div>
 
         <button
           type="submit"
-          disabled={isSubmitting}
-          suppressHydrationWarning
+          disabled={submitting}
           className="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-indigo-600/25 transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {isSubmitting ? (
+          {submitting ? (
             <>
               <Loader2 className="h-5 w-5 animate-spin" aria-hidden />
               Sending message…

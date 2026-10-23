@@ -5,7 +5,7 @@ The website's enquiry forms create **Leads in Zoho CRM** through the Zoho CRM RE
 | Form | Where | Endpoint |
 |---|---|---|
 | Zoho enquiry form (page + popup) | `/expertise/zoho-integrations` | `POST /api/leads` |
-| Contact form | `/contact` | `POST /api/leads` |
+| Contact form ("Start Your Project") | `/contact` | `POST /api/leads` |
 | Schedule a Consultation popup (`ConsultationDialog`) | Home, About | `POST /api/leads` |
 | Request a demo | `/products` | `POST /api/leads` |
 | Zoho strategy form (also copies to Google Sheets) | Zoho app pages | `POST /api/zoho-form` |
@@ -172,3 +172,7 @@ The tests use Node's built-in test runner (`tests/zoho-leads.test.mjs`) with a s
 - duplicates, double clicks and rate limiting.
 
 They also check that no credential or personal data appears in responses or logs.
+
+## Form options and CRM values
+
+The Contact form and the Schedule a Consultation popup share their budget ranges, phone/email checks and UTM capture (`src/components/forms/leadForm.ts`). Their service labels are worded so `classifyService` maps each one to a CRM picklist value: for example "Mobile App Development" → IT Services / Mobile App, "Hardware & Electronics — PCB Design & Circuit Engineering" → Electronics Hardware / PCB Design. Budgets give Priority Low (up to ₹25,000), Medium (₹25,000 – ₹1,00,000, or not sure) or High (above ₹1,00,000).
