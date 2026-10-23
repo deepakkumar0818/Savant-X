@@ -38,9 +38,10 @@ export async function createLeadFromForm(lead: LeadInput, tag: string): Promise<
   const zoho = getZohoClient();
   if (zoho) {
     try {
-      await zoho.createLead(buildLeadRecord(lead, zoho.leadSource), (dropped) =>
+      const created = await zoho.createLead(buildLeadRecord(lead, zoho.leadSource), (dropped) =>
         console.error(`[${tag}] created without an optional field Zoho rejected: ${dropped}`)
       );
+      console.log(`[${tag}] Zoho CRM lead created: ${created.id}`);
       return { ok: true, message: 'Lead created.' };
     } catch (error) {
       if (!(error instanceof ZohoError && error.kind === 'auth')) {

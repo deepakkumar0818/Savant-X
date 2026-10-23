@@ -543,7 +543,9 @@ export async function handleLeadRequest(req: LeadRequest, deps: LeadDependencies
   try {
     const client = deps.getClient();
     if (client) {
-      await client.createLead(buildLeadRecord(lead, client.leadSource), (dropped) => log(`[leads] created without an optional field Zoho rejected: ${dropped}`));
+      const created = await client.createLead(buildLeadRecord(lead, client.leadSource), (dropped) => log(`[leads] created without an optional field Zoho rejected: ${dropped}`));
+      // The record id only, never the visitor's details, so the server log shows each lead reached the CRM.
+      log(`[leads] Zoho CRM lead created: ${created.id} (from ${lead.source || 'website'})`);
     } else if (deps.fallback) {
       log('[leads] Zoho OAuth is not configured; used the Web-to-Lead fallback.');
       if (!(await deps.fallback(lead))) {
