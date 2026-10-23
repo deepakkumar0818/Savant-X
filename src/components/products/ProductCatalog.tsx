@@ -65,25 +65,33 @@ function ProductDialog({ product, onClose }: { product: Product; onClose: () => 
         </h3>
         <p className="mt-0.5 text-sm font-medium text-indigo-600">{product.subtitle}</p>
         <p className="mt-4 leading-relaxed text-slate-600">{product.description}</p>
-        <h4 className="mt-6 text-sm font-semibold text-slate-900">Key features</h4>
-        <ul className="mt-3 grid gap-2.5 sm:grid-cols-2">
-          {product.features.map((f) => (
-            <li key={f} className="flex items-start gap-2.5 text-sm text-slate-700">
-              <span className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full text-white ${style.check}`}>
-                <Check className="h-2.5 w-2.5" strokeWidth={3.5} aria-hidden />
-              </span>
-              {f}
-            </li>
-          ))}
-        </ul>
-        <h4 className="mt-6 text-sm font-semibold text-slate-900">Built with</h4>
-        <ul className="mt-2 flex flex-wrap gap-2">
-          {product.technology.map((t) => (
-            <li key={t} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
-              {t}
-            </li>
-          ))}
-        </ul>
+        {product.features.length > 0 && (
+          <>
+            <h4 className="mt-6 text-sm font-semibold text-slate-900">Key features</h4>
+            <ul className="mt-3 grid gap-2.5 sm:grid-cols-2">
+              {product.features.map((f) => (
+                <li key={f} className="flex items-start gap-2.5 text-sm text-slate-700">
+                  <span className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full text-white ${style.check}`}>
+                    <Check className="h-2.5 w-2.5" strokeWidth={3.5} aria-hidden />
+                  </span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+        {product.technology.length > 0 && (
+          <>
+            <h4 className="mt-6 text-sm font-semibold text-slate-900">Built with</h4>
+            <ul className="mt-2 flex flex-wrap gap-2">
+              {product.technology.map((t) => (
+                <li key={t} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
         <div className="mt-7 flex flex-col gap-3 sm:flex-row">
           <Link
             href="/contact"

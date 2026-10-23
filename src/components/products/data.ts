@@ -1,21 +1,12 @@
-import {
-  Building2,
-  Calculator,
-  GraduationCap,
-  HeartPulse,
-  Home,
-  School,
-  Search,
-  Truck,
-  UtensilsCrossed,
-  type LucideIcon,
-} from 'lucide-react';
+import { Car, GraduationCap, HeartPulse, School, Truck, UtensilsCrossed, type LucideIcon } from 'lucide-react';
 
 /**
- * SavantX product catalog. Client counts, ratings and prices are deliberately not shown:
- * there is no verified source for them. Add them here only once they are confirmed.
+ * SavantX product catalog, in the order the company wants them shown.
+ * Client counts, ratings and prices are deliberately not shown: there is no verified source
+ * for them. Features are only listed where they have been confirmed; a product with none
+ * yet shows its description and a demo link.
  */
-export type ProductCategory = 'healthcare' | 'food' | 'realestate' | 'education' | 'finance' | 'logistics' | 'business-tools';
+export type ProductCategory = 'education' | 'healthcare' | 'logistics' | 'food' | 'automotive';
 
 export type Product = {
   id: string;
@@ -34,26 +25,35 @@ export type Product = {
 
 export const CATEGORIES: { id: ProductCategory | 'all'; label: string; icon?: LucideIcon }[] = [
   { id: 'all', label: 'All Products' },
-  { id: 'healthcare', label: 'Healthcare', icon: HeartPulse },
-  { id: 'food', label: 'Food & Hospitality', icon: UtensilsCrossed },
-  { id: 'realestate', label: 'Real Estate', icon: Building2 },
   { id: 'education', label: 'Education', icon: GraduationCap },
-  { id: 'finance', label: 'Finance', icon: Calculator },
+  { id: 'healthcare', label: 'Healthcare', icon: HeartPulse },
   { id: 'logistics', label: 'Logistics', icon: Truck },
-  { id: 'business-tools', label: 'Business Tools', icon: Search },
+  { id: 'food', label: 'Food & Hospitality', icon: UtensilsCrossed },
+  { id: 'automotive', label: 'Automotive', icon: Car },
 ];
 
 export const CATEGORY_STYLE: Record<ProductCategory, { label: string; text: string; tile: string; check: string; tint: string }> = {
-  healthcare: { label: 'Healthcare', text: 'text-emerald-600', tile: 'bg-emerald-500', check: 'bg-emerald-500', tint: 'from-emerald-50 to-teal-50' },
-  food: { label: 'Food & Hospitality', text: 'text-orange-600', tile: 'bg-orange-500', check: 'bg-orange-500', tint: 'from-orange-50 to-amber-50' },
-  realestate: { label: 'Real Estate', text: 'text-violet-600', tile: 'bg-violet-500', check: 'bg-violet-500', tint: 'from-violet-50 to-indigo-50' },
   education: { label: 'Education', text: 'text-rose-600', tile: 'bg-rose-500', check: 'bg-rose-500', tint: 'from-rose-50 to-pink-50' },
-  finance: { label: 'Finance', text: 'text-blue-600', tile: 'bg-blue-600', check: 'bg-blue-600', tint: 'from-blue-50 to-sky-50' },
+  healthcare: { label: 'Healthcare', text: 'text-emerald-600', tile: 'bg-emerald-500', check: 'bg-emerald-500', tint: 'from-emerald-50 to-teal-50' },
   logistics: { label: 'Logistics', text: 'text-purple-600', tile: 'bg-purple-600', check: 'bg-purple-600', tint: 'from-purple-50 to-fuchsia-50' },
-  'business-tools': { label: 'Business Tools', text: 'text-indigo-600', tile: 'bg-indigo-600', check: 'bg-indigo-600', tint: 'from-indigo-50 to-blue-50' },
+  food: { label: 'Food & Hospitality', text: 'text-orange-600', tile: 'bg-orange-500', check: 'bg-orange-500', tint: 'from-orange-50 to-amber-50' },
+  automotive: { label: 'Automotive', text: 'text-blue-600', tile: 'bg-blue-600', check: 'bg-blue-600', tint: 'from-blue-50 to-sky-50' },
 };
 
 export const PRODUCTS: Product[] = [
+  {
+    id: 'vidya-setu',
+    name: 'Vidya Setu',
+    subtitle: 'Education Management Platform',
+    category: 'education',
+    // TODO: add confirmed highlights, features, technology and a screenshot.
+    summary: 'A SavantX platform for schools and educational institutions.',
+    description: 'Vidya Setu is a SavantX product for schools and educational institutions. Request a demo to see what it can do for yours.',
+    highlights: [],
+    features: [],
+    technology: [],
+    icon: School,
+  },
   {
     id: 'sehat-setu',
     name: 'Sehat Setu',
@@ -69,45 +69,18 @@ export const PRODUCTS: Product[] = [
     screenshot: { src: '/images/work/sehat-setu-hero.webp', alt: 'Sehat Setu clinic management dashboard', width: 1345, height: 841 },
   },
   {
-    id: 'food-ordering',
-    name: 'Food Ordering App',
-    subtitle: 'Restaurant & Catering Solution',
-    category: 'food',
-    summary: 'Complete food ordering, menu management, delivery tracking and customer engagement.',
+    id: 'fleetmint',
+    name: 'FleetMint',
+    subtitle: 'Fleet Management System',
+    category: 'logistics',
+    summary: 'GPS tracking, maintenance, drivers and routes for your whole fleet.',
     description:
-      'Complete food delivery solution with restaurant management, order tracking, payment processing and real-time delivery updates for a better customer experience.',
-    highlights: ['Menu management', 'Order tracking', 'Payment gateway', 'Restaurant dashboard'],
-    features: ['Menu management', 'Order tracking', 'Payment gateway', 'Delivery management', 'Restaurant dashboard'],
-    technology: ['React Native', 'Express', 'MongoDB'],
-    icon: UtensilsCrossed,
-    screenshot: { src: '/images/work/savantx-eats-dashboard.webp', alt: 'Food ordering app restaurant dashboard', width: 1536, height: 1024 },
-  },
-  {
-    id: 'real-estate',
-    name: 'Real Estate App',
-    subtitle: 'Property Management Solution',
-    category: 'realestate',
-    summary: 'Manage properties, listings, agents and buyer enquiries in one place.',
-    description:
-      'Property management platform with property listings, virtual tours, mortgage calculators and real estate analytics for agents and buyers.',
-    highlights: ['Property listings', 'Virtual tours', 'Agent management', 'Market analytics'],
-    features: ['Property listings', 'Virtual tours', 'Mortgage calculator', 'Agent management', 'Market analytics'],
-    technology: ['Next.js', 'Laravel', 'MySQL'],
-    icon: Home,
-    screenshot: { src: '/images/work/homehub-real-estate-dashboard.webp', alt: 'Real estate app property dashboard', width: 1536, height: 1024 },
-  },
-  {
-    id: 'accounting',
-    name: 'Professional Accounting Software for MNCs',
-    subtitle: 'Enterprise Finance Solution',
-    category: 'finance',
-    summary: 'Accounting for multinational businesses with multi-currency support and compliance.',
-    description:
-      'Enterprise-grade accounting solution for multinational corporations with multi-currency support, compliance management and advanced financial reporting.',
-    highlights: ['Multi-currency support', 'Compliance management', 'Financial reporting', 'Audit trails'],
-    features: ['Multi-currency support', 'Compliance management', 'Financial reporting', 'Tax management', 'Audit trails'],
-    technology: ['React', 'Java', 'Oracle'],
-    icon: Calculator,
+      'Vehicle fleet management solution with GPS tracking, maintenance scheduling, driver management and route optimisation.',
+    highlights: ['GPS tracking', 'Maintenance scheduling', 'Driver management', 'Fuel monitoring'],
+    features: ['GPS tracking', 'Maintenance scheduling', 'Driver management', 'Route optimisation', 'Fuel monitoring'],
+    technology: ['Vue.js', 'Express', 'PostgreSQL'],
+    icon: Truck,
+    screenshot: { src: '/images/work/fleetmint-fleet-management.webp', alt: 'FleetMint fleet management dashboard', width: 1440, height: 820 },
   },
   {
     id: 'student-portal',
@@ -124,57 +97,31 @@ export const PRODUCTS: Product[] = [
     screenshot: { src: '/images/work/savantx-student-portal.webp', alt: 'Student portal dashboard', width: 1536, height: 1024 },
   },
   {
-    id: 'web-scraping',
-    name: 'Web Scraping Tool',
-    subtitle: 'Data Extraction Solution',
-    category: 'business-tools',
-    summary: 'Intelligent data extraction with scheduling, processing and export.',
+    id: 'food-ordering',
+    name: 'Food Ordering App',
+    subtitle: 'Restaurant & Catering Solution',
+    category: 'food',
+    summary: 'Complete food ordering, menu management, delivery tracking and customer engagement.',
     description:
-      'Data extraction platform with intelligent scraping, data processing and automated collection from a range of web sources.',
-    highlights: ['Intelligent scraping', 'Scheduled extraction', 'Data processing', 'Data export'],
-    features: ['Intelligent scraping', 'Data processing', 'Scheduled extraction', 'API integration', 'Data export'],
-    technology: ['Python', 'Scrapy', 'Redis'],
-    icon: Search,
+      'Complete food delivery solution with restaurant management, order tracking, payment processing and real-time delivery updates for a better customer experience.',
+    highlights: ['Menu management', 'Order tracking', 'Payment gateway', 'Restaurant dashboard'],
+    features: ['Menu management', 'Order tracking', 'Payment gateway', 'Delivery management', 'Restaurant dashboard'],
+    technology: ['React Native', 'Express', 'MongoDB'],
+    icon: UtensilsCrossed,
+    screenshot: { src: '/images/work/savantx-eats-dashboard.webp', alt: 'Food ordering app restaurant dashboard', width: 1536, height: 1024 },
   },
   {
-    id: 'school-management',
-    name: 'School Management System',
-    subtitle: 'Complete School Solution',
-    category: 'education',
-    summary: 'Admissions, staff, academics, fees and reports for schools in one system.',
-    description:
-      'Complete school management solution covering student enrolment, staff management, academic planning and administrative operations.',
-    highlights: ['Student management', 'Staff administration', 'Academic planning', 'Fee management'],
-    features: ['Student management', 'Staff administration', 'Academic planning', 'Fee management', 'Report generation'],
-    technology: ['Angular', 'Laravel', 'MySQL'],
-    icon: School,
-  },
-  {
-    id: 'training-management',
-    name: 'Student Training Management System',
-    subtitle: 'Training & Certification Platform',
-    category: 'education',
-    summary: 'Run training programmes, assess skills and track certifications.',
-    description:
-      'Platform for managing training programmes, skill development, certification tracking and progress monitoring for educational institutions.',
-    highlights: ['Training programmes', 'Skill assessment', 'Certification tracking', 'Progress monitoring'],
-    features: ['Training programmes', 'Skill assessment', 'Certification tracking', 'Progress monitoring', 'Resource management'],
-    technology: ['React', 'Node.js', 'MongoDB'],
-    icon: GraduationCap,
-  },
-  {
-    id: 'fleet-management',
-    name: 'Fleet Management System',
-    subtitle: 'Vehicle & Asset Tracking',
-    category: 'logistics',
-    summary: 'GPS tracking, maintenance, drivers and routes for your whole fleet.',
-    description:
-      'Vehicle fleet management solution with GPS tracking, maintenance scheduling, driver management and route optimisation.',
-    highlights: ['GPS tracking', 'Maintenance scheduling', 'Driver management', 'Fuel monitoring'],
-    features: ['GPS tracking', 'Maintenance scheduling', 'Driver management', 'Route optimisation', 'Fuel monitoring'],
-    technology: ['Vue.js', 'Express', 'PostgreSQL'],
-    icon: Truck,
-    screenshot: { src: '/images/work/fleetmint-fleet-management.webp', alt: 'Fleet management dashboard', width: 1440, height: 820 },
+    id: 'garage-management',
+    name: 'Garage Management',
+    subtitle: 'Vehicle Service & Workshop Software',
+    category: 'automotive',
+    // TODO: add confirmed highlights, features, technology and a screenshot.
+    summary: 'A SavantX system for vehicle garages and service workshops.',
+    description: 'Garage Management is a SavantX product for vehicle garages and service workshops. Request a demo to see what it can do for yours.',
+    highlights: [],
+    features: [],
+    technology: [],
+    icon: Car,
   },
 ];
 
