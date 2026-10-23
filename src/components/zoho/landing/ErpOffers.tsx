@@ -13,7 +13,7 @@ const ICONS: Record<ErpVisual, LucideIcon> = {
   improvement: RefreshCw,
 };
 
-// Same 4-column bento rhythm as the Zoho packages: the main ERP offer and the top offer are wide.
+// Same 4-column bento rhythm as the Zoho packages: the main ERP offer and the best offer are wide.
 const WIDE = [false, true, false, false, false, true];
 const THEMES: BentoTheme[] = ['light', 'dark', 'peach', 'blue', 'light', 'dark'];
 
@@ -35,7 +35,7 @@ export default function ErpOffers() {
         benefit: offer.summary,
         deliverables: offer.scope,
         icon: ICONS[offer.visual],
-        badge: offer.top ? 'Top offer' : undefined,
+        badge: offer.top ? 'Best offer' : undefined,
       }))}
       wide={WIDE}
       themes={THEMES}

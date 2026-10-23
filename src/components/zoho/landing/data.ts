@@ -115,13 +115,10 @@ export const PACKAGES: { id: ServiceId; name: string; price: string; benefit: st
     benefit: tx.connect_zoho_to_another_system,
     deliverables: [tx.one_integration_between_two_systems, tx.field_mapping, tx.error_handling_and_alerts, tx.handover_documentation],
   },
-  {
-    id: 'zoho-migration',
-    name: tx.zoho_migration,
-    price: '₹3,999',
-    benefit: tx.move_a_team_of_up,
-    deliverables: [tx.migration_for_up_to_10, tx.user_accounts_and_roles, tx.data_check_after_go_live],
-  },
+];
+
+/** HR, hiring and email packages, shown in their own section after the main packages. */
+export const TEAM_PACKAGES: typeof PACKAGES = [
   {
     id: 'people-setup',
     name: tx.zoho_people_setup,
@@ -135,6 +132,13 @@ export const PACKAGES: { id: ServiceId; name: string; price: string; benefit: st
     price: '₹6,999',
     benefit: tx.complete_setup_to_track_every,
     deliverables: [tx.job_openings_and_hiring_pipeline, tx.career_page_and_application_forms, tx.interview_and_email_templates],
+  },
+  {
+    id: 'zoho-migration',
+    name: tx.zoho_mail_migration,
+    price: '₹3,999',
+    benefit: tx.move_your_team_s_email,
+    deliverables: [tx.migration_for_up_to_15, tx.domain_and_mailbox_setup, tx.existing_emails_moved_to_zoho],
   },
 ];
 
@@ -482,7 +486,6 @@ export const ERP_OFFERS: {
     audience: tx.large_businesses,
     name: tx.erp_continuous_improvement_plan,
     price: '₹39,999',
-    per: '/month',
     summary: tx.ongoing_support_and_enhancements_after,
     scope: [
       tx.agreed_monthly_development_capacity,

@@ -29104,93 +29104,93 @@
       "line": 116,
       "count": 1
     },
-    "zoho_migration": {
+    "zoho_mail_migration": {
       "kind": "name",
-      "group": "PACKAGES",
-      "line": 120,
+      "group": "TEAM_PACKAGES",
+      "line": 138,
       "count": 1
     },
-    "move_a_team_of_up": {
+    "move_your_team_s_email": {
       "kind": "benefit",
-      "group": "PACKAGES",
-      "line": 122,
+      "group": "TEAM_PACKAGES",
+      "line": 140,
       "count": 1
     },
-    "migration_for_up_to_10": {
+    "migration_for_up_to_15": {
       "kind": "deliverables item",
-      "group": "PACKAGES",
-      "line": 123,
+      "group": "TEAM_PACKAGES",
+      "line": 141,
       "count": 1
     },
-    "user_accounts_and_roles": {
+    "domain_and_mailbox_setup": {
       "kind": "deliverables item",
-      "group": "PACKAGES",
-      "line": 123,
+      "group": "TEAM_PACKAGES",
+      "line": 141,
       "count": 1
     },
-    "data_check_after_go_live": {
+    "existing_emails_moved_to_zoho": {
       "kind": "deliverables item",
-      "group": "PACKAGES",
-      "line": 123,
+      "group": "TEAM_PACKAGES",
+      "line": 141,
       "count": 1
     },
     "zoho_people_setup": {
       "kind": "name",
-      "group": "PACKAGES",
+      "group": "TEAM_PACKAGES",
       "line": 127,
       "count": 1
     },
     "run_employee_records_leave_and": {
       "kind": "benefit",
-      "group": "PACKAGES",
+      "group": "TEAM_PACKAGES",
       "line": 129,
       "count": 1
     },
     "employee_records_and_departments": {
       "kind": "deliverables item",
-      "group": "PACKAGES",
+      "group": "TEAM_PACKAGES",
       "line": 130,
       "count": 1
     },
     "leave_and_attendance_setup": {
       "kind": "deliverables item",
-      "group": "PACKAGES",
+      "group": "TEAM_PACKAGES",
       "line": 130,
       "count": 1
     },
     "employee_self_service_access": {
       "kind": "deliverables item",
-      "group": "PACKAGES",
+      "group": "TEAM_PACKAGES",
       "line": 130,
       "count": 1
     },
     "zoho_recruit_setup": {
       "kind": "name",
-      "group": "PACKAGES",
+      "group": "TEAM_PACKAGES",
       "line": 134,
       "count": 1
     },
     "complete_setup_to_track_every": {
       "kind": "benefit",
-      "group": "PACKAGES",
+      "group": "TEAM_PACKAGES",
       "line": 136,
       "count": 1
     },
     "job_openings_and_hiring_pipeline": {
       "kind": "deliverables item",
-      "group": "PACKAGES",
+      "group": "TEAM_PACKAGES",
       "line": 137,
       "count": 1
     },
     "career_page_and_application_forms": {
       "kind": "deliverables item",
-      "group": "PACKAGES",
+      "group": "TEAM_PACKAGES",
       "line": 137,
       "count": 1
     },
     "interview_and_email_templates": {
       "kind": "deliverables item",
-      "group": "PACKAGES",
+      "group": "TEAM_PACKAGES",
       "line": 137,
       "count": 1
     },
@@ -30844,6 +30844,32 @@
       "kind": "paragraph",
       "group": "OfferBento",
       "line": 185,
+      "count": 1
+    }
+  },
+  "components/zoho/landing/TeamPackages.tsx": {
+    "hr_hiring_and_email": {
+      "kind": "eyebrow",
+      "group": "TeamPackages",
+      "line": 22,
+      "count": 1
+    },
+    "set_up_your_team_on": {
+      "kind": "title",
+      "group": "TeamPackages",
+      "line": 23,
+      "count": 1
+    },
+    "fixed_price_setup_for_zoho": {
+      "kind": "description",
+      "group": "TeamPackages",
+      "line": 24,
+      "count": 1
+    },
+    "ask_about_these_setups": {
+      "kind": "label",
+      "group": "TeamPackages",
+      "line": 25,
       "count": 1
     }
   },

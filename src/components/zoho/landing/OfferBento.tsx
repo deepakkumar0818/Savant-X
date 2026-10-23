@@ -67,6 +67,7 @@ export default function OfferBento({
   wide,
   themes,
   footnote,
+  columns = 4,
   headingLevel = 'h3',
   className = 'bg-white',
 }: {
@@ -79,6 +80,8 @@ export default function OfferBento({
   wide: boolean[];
   themes: BentoTheme[];
   footnote: string;
+  /** Desktop columns. With 3, wide cards take one column each and still show their deliverables. */
+  columns?: 3 | 4;
   headingLevel?: 'h2' | 'h3';
   className?: string;
 }) {
@@ -104,7 +107,7 @@ export default function OfferBento({
           </SelectServiceLink>
         </div>
 
-        <ul className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 pointer-fine:[&:has(>li:hover)>li:not(:hover)]:scale-[0.98] pointer-fine:[&:has(>li:hover)>li:not(:hover)]:opacity-60 pointer-fine:[&:has(>li:hover)>li:not(:hover)]:blur-[3px] pointer-fine:[&:has(>li:hover)>li:not(:hover)]:saturate-50">
+        <ul className={`mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 ${columns === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4'} pointer-fine:[&:has(>li:hover)>li:not(:hover)]:scale-[0.98] pointer-fine:[&:has(>li:hover)>li:not(:hover)]:opacity-60 pointer-fine:[&:has(>li:hover)>li:not(:hover)]:blur-[3px] pointer-fine:[&:has(>li:hover)>li:not(:hover)]:saturate-50`}>
           {offers.map((offer, i) => {
             const isWide = wide[i % wide.length];
             const { card, inverse } = BENTO_THEMES[themes[i % themes.length]];
@@ -127,7 +130,7 @@ export default function OfferBento({
               <li
                 key={offer.id}
                 className={`pkg-rise group relative flex h-[24rem] flex-col overflow-hidden rounded-2xl p-6 transition duration-500 ease-out motion-safe:hover:-translate-y-1 ${card} ${
-                  isWide ? 'md:col-span-2' : ''
+                  isWide ? (columns === 3 ? 'md:col-span-2 lg:col-span-1' : 'md:col-span-2') : ''
                 } ${offer.badge ? 'ring-2 ring-amber-400' : ''}`}
               >
                 <div className="flex items-center justify-between gap-2">

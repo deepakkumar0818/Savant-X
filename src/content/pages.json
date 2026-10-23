@@ -272,6 +272,7 @@
         "src/content/text/components/zoho/landing/IntegrationEnterprise.json",
         "src/content/text/components/zoho/landing/MembershipPlan.json",
         "src/content/text/components/zoho/landing/OfferBento.json",
+        "src/content/text/components/zoho/landing/TeamPackages.json",
         "src/content/text/components/zoho/landing/UseCases.json",
         "src/content/text/components/zoho/landing/ZohoEnquiryForm.json",
         "src/content/text/components/zoho/landing/ZohoHeroVisual.json",

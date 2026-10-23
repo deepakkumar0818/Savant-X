@@ -28,11 +28,13 @@ import IntegrationEnterprise from '@/components/zoho/landing/IntegrationEnterpri
 import MembershipPlan from '@/components/zoho/landing/MembershipPlan';
 import UseCases from '@/components/zoho/landing/UseCases';
 import ZohoPackages from '@/components/zoho/landing/ZohoPackages';
+import TeamPackages from '@/components/zoho/landing/TeamPackages';
 import ErpOffers from '@/components/zoho/landing/ErpOffers';
 import {
   FAQS,
   MEMBERSHIP,
   PACKAGES,
+  TEAM_PACKAGES,
   TRUST_APPS,
   WHY,
   ZOHO_LOGOS,
@@ -71,7 +73,7 @@ const structuredData = [
             valueAddedTaxIncluded: false,
           },
         },
-        ...PACKAGES.map((pkg) => ({
+        ...[...PACKAGES, ...TEAM_PACKAGES].map((pkg) => ({
           '@type': 'Offer',
           name: pkg.name,
           description: pkg.benefit,
@@ -233,6 +235,8 @@ export default function ZohoIntegrationsPage() {
       <MembershipPlan />
 
       <ZohoPackages />
+
+      <TeamPackages />
 
       <ErpOffers />
 
