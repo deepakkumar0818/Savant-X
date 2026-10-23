@@ -1,4 +1,12 @@
-import { createZohoClient, readZohoConfig, zohoAppsFromService, type LeadInput, type ZohoClient } from '@/lib/zohoLeads';
+import {
+  buildLeadRecord,
+  createZohoClient,
+  readZohoConfig,
+  ZohoError,
+  zohoAppsFromService,
+  type LeadInput,
+  type ZohoClient,
+} from '@/lib/zohoLeads';
 import { submitZohoLeadToCrm } from '@/lib/zohoCrmWebToLead';
 
 /** Server-side wiring for Zoho CRM Leads. Import only from API routes. */
@@ -19,6 +27,29 @@ export function getZohoClient(): ZohoClient | null {
     clientFor = key;
   }
   return client;
+}
+
+/**
+ * Creates a Lead for forms that don't go through /api/leads (support, newsletter, Zoho strategy).
+ * Uses the API when OAuth is configured, and Web-to-Lead when it isn't or Zoho rejects the token.
+ * `ok` is true only when Zoho accepted the record.
+ */
+export async function createLeadFromForm(lead: LeadInput, tag: string): Promise<{ ok: boolean; message: string }> {
+  const zoho = getZohoClient();
+  if (zoho) {
+    try {
+      await zoho.createLead(buildLeadRecord(lead, zoho.leadSource), (dropped) =>
+        console.error(`[${tag}] created without an optional field Zoho rejected: ${dropped}`)
+      );
+      return { ok: true, message: 'Lead created.' };
+    } catch (error) {
+      if (!(error instanceof ZohoError && error.kind === 'auth')) {
+        return { ok: false, message: error instanceof ZohoError ? `Zoho CRM ${error.kind}: ${error.detail}` : 'Zoho CRM request failed.' };
+      }
+      console.error(`[${tag}] Zoho API auth failed (${error.detail}); using Web-to-Lead`);
+    }
+  }
+  return (await submitViaWebToLead(lead)) ? { ok: true, message: 'Lead created via Web-to-Lead.' } : { ok: false, message: 'Web-to-Lead failed.' };
 }
 
 /** The site's previous Web-to-Lead submission, used only while OAuth is not configured. */

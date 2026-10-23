@@ -17,7 +17,7 @@ type Status = { state: 'idle' } | { state: 'submitting' } | { state: 'success'; 
 const fieldClass =
   'w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500';
 
-/** Support requests are emailed to the team; they are deliberately not created as CRM leads. */
+/** Support requests are emailed to the team and created as Zoho CRM leads (Lead Source: Contact Form). */
 export default function SupportModal({ open, onClose }: Props) {
   const [form, setForm] = useState(EMPTY);
   const [status, setStatus] = useState<Status>({ state: 'idle' });

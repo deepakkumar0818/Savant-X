@@ -1,36 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { submitZohoLeadToGoogleSheet } from '@/lib/zohoGoogleSheet';
-import { submitZohoLeadToCrm, validateZohoLeadPayload, type ZohoLeadPayload } from '@/lib/zohoCrmWebToLead';
-import { buildLeadRecord, ZohoError } from '@/lib/zohoLeads';
-import { getZohoClient } from '@/lib/zohoLeadService';
+import { validateZohoLeadPayload, type ZohoLeadPayload } from '@/lib/zohoCrmWebToLead';
+import { createLeadFromForm } from '@/lib/zohoLeadService';
 import { clientKey, isDuplicateSubmission, isRateLimited, rememberSubmission } from '@/lib/submissionGuard';
 
-/** Creates the CRM lead through the Zoho API when OAuth is configured, otherwise through Web-to-Lead. */
-async function createCrmLead(payload: ZohoLeadPayload): Promise<{ ok: boolean; message: string }> {
-  const client = getZohoClient();
-  if (!client) return submitZohoLeadToCrm(payload);
-  try {
-    await client.createLead(
-      buildLeadRecord(
-        {
-          name: payload.lastName,
-          email: payload.email ?? '',
-          phone: payload.mobile ?? '',
-          company: payload.company,
-          message: payload.description?.trim() ?? '',
-          service: payload.service ?? '',
-          budget: '',
-          source: 'Zoho strategy form',
-          zohoApps: payload.interestZohoApps?.trim().slice(0, 255),
-        },
-        client.leadSource
-      ),
-      (dropped) => console.error(`[zoho-form] created without an optional field Zoho rejected: ${dropped}`)
-    );
-    return { ok: true, message: "Thank you! We've received your request and will reach out soon." };
-  } catch (error) {
-    return { ok: false, message: error instanceof ZohoError ? `Zoho CRM ${error.kind}: ${error.detail}` : 'Zoho CRM request failed.' };
-  }
+/** Creates the CRM lead through the Zoho API, falling back to Web-to-Lead when OAuth is unavailable. */
+function createCrmLead(payload: ZohoLeadPayload): Promise<{ ok: boolean; message: string }> {
+  return createLeadFromForm(
+    {
+      name: payload.lastName,
+      email: payload.email ?? '',
+      phone: payload.mobile ?? '',
+      company: payload.company,
+      message: payload.description?.trim() ?? '',
+      service: payload.service ?? '',
+      budget: '',
+      source: 'Zoho strategy form',
+      zohoApps: payload.interestZohoApps?.trim().slice(0, 255),
+    },
+    'zoho-form'
+  );
 }
 
 /**

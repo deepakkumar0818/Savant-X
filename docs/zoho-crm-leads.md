@@ -7,9 +7,14 @@ The website's enquiry forms create **Leads in Zoho CRM** through the Zoho CRM RE
 | Zoho enquiry form (page + popup) | `/expertise/zoho-integrations` | `POST /api/leads` |
 | Contact form | `/contact` | `POST /api/leads` |
 | Consultation popup | Home, About | `POST /api/leads` |
+| Request a demo | `/products` | `POST /api/leads` |
 | Zoho strategy form (also copies to Google Sheets) | Zoho app pages | `POST /api/zoho-form` |
+| Contact support popup | `/contact` (FAQ) | `POST /api/contact` |
+| Newsletter signup | Footer, every page | `POST /api/contact` |
 
-Support requests and newsletter sign-ups still go to `/api/contact` (email only) and do not create Leads.
+Every form creates a Lead. `/api/contact` and `/api/zoho-form` use `createLeadFromForm` in `src/lib/zohoLeadService.ts`: the API when OAuth is configured, Web-to-Lead when it isn't or the token is rejected.
+
+The CRM has no Lead Type or Lead Source value for support or newsletter, so those Leads have **no Lead Type** and are marked in the Description ("Support request: …" / "Newsletter signup …"). Support uses Lead Source **Contact Form**; newsletter uses **Website**, with the email address as the Last Name (the form only asks for an email). To separate them in reports, add picklist values in the CRM first, then map them in `classifyService`.
 
 ## How a submission is handled
 

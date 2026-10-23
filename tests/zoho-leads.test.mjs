@@ -206,6 +206,25 @@ test('contact page leads use the "Contact Form" lead source', () => {
   assert.equal(buildLeadRecord({ ...VALID, source: 'Contact page' }, 'Website').Lead_Source, 'Contact Form');
 });
 
+test('support and newsletter forms create untyped leads with verified lead sources', () => {
+  const support = buildLeadRecord(
+    { ...VALID, company: '', budget: '', service: '', source: 'Contact page (support form)', message: 'Support request: Login issue\n\nCannot sign in' },
+    'Website'
+  );
+  assert.equal(support.Lead_Source, 'Contact Form');
+  assert.equal(support.Lead_Type, undefined);
+  assert.match(support.Description, /Support request: Login issue/);
+
+  const newsletter = buildLeadRecord(
+    { ...VALID, name: 'reader@example.com', email: 'reader@example.com', phone: '', company: '', budget: '', service: '', source: 'Footer newsletter signup', message: 'Newsletter signup' },
+    'Website'
+  );
+  assert.equal(newsletter.Last_Name, 'reader@example.com');
+  assert.equal(newsletter.Lead_Source, 'Website');
+  assert.equal(newsletter.Lead_Type, undefined);
+  assert.equal(newsletter.Lead_Status, 'Attempted to Contact');
+});
+
 test('lead type and IT subcategory follow the chosen service', () => {
   const cases = [
     ['Web Development', 'IT Services', ['Website Development']],

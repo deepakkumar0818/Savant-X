@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { saveContact } from '@/lib/contactStorage';
-import { submitZohoLeadToCrm, type ZohoLeadSubmitResult } from '@/lib/zohoCrmWebToLead';
+import { createLeadFromForm } from '@/lib/zohoLeadService';
 import { buildEmailHtml, sendNotificationEmail, type Kind } from '@/lib/notificationEmail';
 import {
   clientKey,
@@ -78,24 +78,28 @@ export async function POST(request: NextRequest) {
 
   const emailTask = sendNotificationEmail(subject, buildEmailHtml(kind, f));
 
-  // Only sales enquiries become CRM leads; support and newsletter stay out of the Leads module.
-  const crmTask: Promise<ZohoLeadSubmitResult | null> =
-    kind === 'enquiry'
-      ? submitZohoLeadToCrm({
-          lastName: f.name,
-          company: f.company,
-          email: f.email,
-          mobile: f.phone,
-          service: f.service || undefined,
-          description: [
-            f.service && `Service: ${f.service}`,
-            f.budget && `Budget: ${f.budget}`,
-            f.message,
-          ]
-            .filter(Boolean)
-            .join('\n'),
-        })
-      : Promise.resolve(null);
+  // Every form becomes a CRM lead. Support and newsletter have no Lead Type value in the CRM,
+  // so they are left untyped and marked in the Description. A "contact" source maps to
+  // Lead Source "Contact Form"; the footer newsletter stays "Website".
+  const crmTask = createLeadFromForm(
+    {
+      // A newsletter signup has only an email; Zoho needs a Last Name, so the email is used.
+      name: kind === 'newsletter' ? f.email : f.name,
+      email: f.email,
+      phone: f.phone,
+      company: f.company,
+      service: kind === 'enquiry' ? f.service : '',
+      budget: kind === 'enquiry' ? f.budget : '',
+      message:
+        kind === 'support'
+          ? [`Support request: ${f.subject}`, f.message].join('\n\n')
+          : kind === 'newsletter'
+            ? 'Newsletter signup: please add this address to the SavantX newsletter list.'
+            : f.message,
+      source: kind === 'support' ? 'Contact page (support form)' : kind === 'newsletter' ? 'Footer newsletter signup' : 'Contact page',
+    },
+    `contact:${kind}`
+  );
 
   const [emailResult, crmResult] = await Promise.allSettled([emailTask, crmTask]);
   const email = emailResult.status === 'fulfilled' ? emailResult.value : { ok: false, message: 'Email delivery failed.' };
@@ -103,9 +107,9 @@ export async function POST(request: NextRequest) {
 
   // Log outcomes only — never the visitor's personal details.
   if (!email.ok) console.error(`[contact:${kind}] email not delivered: ${email.message}`);
-  if (crm && !crm.ok) console.error(`[contact:${kind}] Zoho CRM lead not created: ${crm.message}`);
+  if (!crm.ok) console.error(`[contact:${kind}] Zoho CRM lead not created: ${crm.message}`);
 
-  const delivered = email.ok || Boolean(crm?.ok);
+  const delivered = email.ok || crm.ok;
   if (!delivered) {
     return NextResponse.json(
       { error: 'We could not send your message right now. Please try again, or email or call us directly.' },
