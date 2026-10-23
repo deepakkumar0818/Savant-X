@@ -24,7 +24,17 @@ const PROJECT_TYPES = [
   'Other',
 ];
 
-const EMPTY = { name: '', email: '', company: '', phone: '', projectType: '', message: '', website: '' };
+/** Same ranges as the Contact page, sent to the CRM Budget field (and used for Priority). */
+const BUDGETS = [
+  'Under ₹10,00,000',
+  '₹10,00,000 - ₹25,00,000',
+  '₹25,00,000 - ₹50,00,000',
+  '₹50,00,000 - ₹1,00,00,000',
+  'Over ₹1,00,00,000',
+  'Not sure yet',
+];
+
+const EMPTY = { name: '', email: '', company: '', phone: '', projectType: '', budget: '', message: '', website: '' };
 
 type Status = { state: 'idle' } | { state: 'submitting' } | { state: 'success'; message: string } | { state: 'error'; message: string };
 
@@ -67,7 +77,8 @@ export default function ConsultationModal({ open, onClose, source }: Props) {
           email: form.email,
           company: form.company,
           phone: form.phone,
-          service: form.projectType || 'Consultation request',
+          service: form.projectType,
+          budget: form.budget,
           source,
           message: form.message,
           website: form.website,
@@ -194,7 +205,7 @@ export default function ConsultationModal({ open, onClose, source }: Props) {
                   className={fieldClass}
                 />
               </Field>
-              <Field id={`${id}-phone`} label="Phone Number">
+              <Field id={`${id}-phone`} label="Phone Number" required>
                 <input
                   id={`${id}-phone`}
                   type="tel"
@@ -202,6 +213,7 @@ export default function ConsultationModal({ open, onClose, source }: Props) {
                   autoComplete="tel"
                   value={form.phone}
                   onChange={onChange}
+                  required
                   maxLength={40}
                   className={fieldClass}
                   placeholder="+91 …"
@@ -209,16 +221,28 @@ export default function ConsultationModal({ open, onClose, source }: Props) {
               </Field>
             </div>
 
-            <Field id={`${id}-type`} label="What do you need help with?">
-              <select id={`${id}-type`} name="projectType" value={form.projectType} onChange={onChange} className={fieldClass}>
-                <option value="">Select a service (optional)</option>
-                {PROJECT_TYPES.map((type) => (
-                  <option key={type} value={type}>
-                    {type}
-                  </option>
-                ))}
-              </select>
-            </Field>
+            <div className="grid gap-4 md:grid-cols-2">
+              <Field id={`${id}-type`} label="What do you need help with?" required>
+                <select id={`${id}-type`} name="projectType" value={form.projectType} onChange={onChange} required className={fieldClass}>
+                  <option value="">Select a service</option>
+                  {PROJECT_TYPES.map((type) => (
+                    <option key={type} value={type}>
+                      {type}
+                    </option>
+                  ))}
+                </select>
+              </Field>
+              <Field id={`${id}-budget`} label="Budget">
+                <select id={`${id}-budget`} name="budget" value={form.budget} onChange={onChange} className={fieldClass}>
+                  <option value="">Select budget range (optional)</option>
+                  {BUDGETS.map((budget) => (
+                    <option key={budget} value={budget}>
+                      {budget}
+                    </option>
+                  ))}
+                </select>
+              </Field>
+            </div>
 
             <Field id={`${id}-message`} label="Tell us about your project" required>
               <textarea
