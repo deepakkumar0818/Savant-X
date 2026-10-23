@@ -24,7 +24,7 @@ import {
 type Item = { icon: LucideIcon; tile: string; title: string; body: string; href?: string };
 
 const SOFTWARE: Item[] = [
-  { icon: Code2, tile: 'from-blue-500 to-blue-600', title: 'Web & Mobile Development', body: 'Scalable web applications and mobile apps for Android and iOS.', href: '/expertise/web-apps' },
+  { icon: Code2, tile: 'from-blue-500 to-blue-600', title: 'Web & Mobile Development', body: 'Scalable web apps and mobile apps for Android and iOS.', href: '/expertise/web-apps' },
   { icon: Share2, tile: 'from-violet-500 to-purple-600', title: 'Zoho Integrations', body: 'Zoho CRM, Creator and Books setup, customisation and integrations.', href: '/expertise/zoho-integrations' },
   { icon: Cloud, tile: 'from-rose-500 to-pink-600', title: 'Cloud Applications', body: 'Cloud-based platforms for better scalability.' },
   { icon: Building2, tile: 'from-orange-400 to-amber-500', title: 'Enterprise Solutions', body: 'ERP, CRM and business software tailored to your industry.', href: '/products' },
@@ -129,7 +129,7 @@ export default function SolutionsShowcase() {
     <div className="space-y-6 lg:space-y-8">
       <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
         {/* Software */}
-        <article className="relative overflow-hidden rounded-[2rem] bg-[linear-gradient(160deg,#f5f3ff_0%,#eef2ff_45%,#f8fafc_100%)] p-6 ring-1 ring-indigo-100 shadow-[0_30px_70px_-45px_rgba(79,70,229,0.5)] sm:p-8">
+        <article className="relative flex flex-col overflow-hidden rounded-[2rem] bg-[linear-gradient(160deg,#f5f3ff_0%,#eef2ff_45%,#f8fafc_100%)] p-6 ring-1 ring-indigo-100 shadow-[0_30px_70px_-45px_rgba(79,70,229,0.5)] sm:p-8">
           <div className="flex items-start justify-between gap-4">
             <div className="relative z-10 max-w-sm sm:max-w-[58%] xl:max-w-[60%]">
               <p className="inline-flex rounded-full border border-violet-300 bg-white/70 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.14em] text-violet-700">
@@ -154,7 +154,7 @@ export default function SolutionsShowcase() {
               <CardArt src="/images/home/software-solutions.webp" />
             </div>
           </div>
-          <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+          <ul className="mt-7 grid flex-1 auto-rows-fr gap-3 sm:grid-cols-2">
             {SOFTWARE.map((item) => (
               <li key={item.title}>
                 <ServiceTile item={item} hover="group-hover:text-indigo-700" />
@@ -164,7 +164,7 @@ export default function SolutionsShowcase() {
         </article>
 
         {/* Hardware */}
-        <article className="relative overflow-hidden rounded-[2rem] bg-[linear-gradient(160deg,#fff7ed_0%,#fff1f2_50%,#fffbf5_100%)] p-6 ring-1 ring-orange-200/70 shadow-[0_30px_70px_-45px_rgba(234,88,12,0.45)] sm:p-8">
+        <article className="relative flex flex-col overflow-hidden rounded-[2rem] bg-[linear-gradient(160deg,#fff7ed_0%,#fff1f2_50%,#fffbf5_100%)] p-6 ring-1 ring-orange-200/70 shadow-[0_30px_70px_-45px_rgba(234,88,12,0.45)] sm:p-8">
           <div className="flex items-start justify-between gap-4">
             <div className="relative z-10 max-w-sm sm:max-w-[58%] xl:max-w-[60%]">
               <p className="inline-flex rounded-full border border-orange-300 bg-white/70 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.14em] text-orange-700">
@@ -192,7 +192,7 @@ export default function SolutionsShowcase() {
               <CardArt src="/images/home/hardware-solutions.webp" />
             </div>
           </div>
-          <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+          <ul className="mt-7 grid flex-1 auto-rows-fr gap-3 sm:grid-cols-2">
             {HARDWARE.map((item) => (
               <li key={item.title}>
                 <ServiceTile item={item} hover="group-hover:text-orange-600" />
