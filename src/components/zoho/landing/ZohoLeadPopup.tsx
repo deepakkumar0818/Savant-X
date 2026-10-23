@@ -8,24 +8,30 @@ import ZohoEnquiryForm, { LEAD_SENT_EVENT } from './ZohoEnquiryForm';
 import { SELECT_SERVICE_EVENT } from './SelectServiceLink';
 import type { ServiceId } from './data';
 
-/** Remembers that this visitor has already seen the automatic popup (or sent a lead). */
-const SEEN_KEY = 'savantx:zoho-lead-popup';
-const AUTO_OPEN_DELAY_MS = 20_000;
+/** The automatic popup opens once per visit (browser session)… */
+const SHOWN_KEY = 'savantx:zoho-lead-popup:shown';
+/** …and not at all for a week after the visitor has sent a lead. */
+const LEAD_SENT_KEY = 'savantx:zoho-lead-popup:lead-sent';
+const LEAD_SENT_QUIET_MS = 7 * 24 * 60 * 60 * 1000;
+const AUTO_OPEN_DELAY_MS = 15_000;
 const AUTO_OPEN_SCROLL = 0.5;
 
 function alreadySeen() {
   try {
-    return localStorage.getItem(SEEN_KEY) !== null;
+    if (sessionStorage.getItem(SHOWN_KEY)) return true;
+    const sentAt = Number(localStorage.getItem(LEAD_SENT_KEY));
+    return Number.isFinite(sentAt) && sentAt > 0 && Date.now() - sentAt < LEAD_SENT_QUIET_MS;
   } catch {
     return false;
   }
 }
 
-function markSeen(reason: string) {
+function markSeen(reason: 'shown' | 'lead') {
   try {
-    localStorage.setItem(SEEN_KEY, reason);
+    if (reason === 'lead') localStorage.setItem(LEAD_SENT_KEY, String(Date.now()));
+    else sessionStorage.setItem(SHOWN_KEY, '1');
   } catch {
-    // Private mode or blocked storage: the popup may open again on a later visit.
+    // Private mode or blocked storage: the popup may open again later.
   }
 }
 
@@ -40,7 +46,7 @@ function visitorIsBusy() {
  * Lead form in a popup for the Zoho landing page:
  * - every "Book consultation" / package button opens it with that service pre-selected;
  * - a floating button keeps it one tap away;
- * - it opens by itself once per visitor, after 20 seconds or halfway down the page,
+ * - it opens by itself once per visit, after 15 seconds or halfway down the page (not for a week after a lead is sent),
  *   unless they are already filling in the form on the page.
  */
 export default function ZohoLeadPopup() {
