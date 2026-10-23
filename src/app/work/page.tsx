@@ -343,33 +343,45 @@ export default function Work() {
                 </div>
 
                 <div className="flex flex-col rounded-3xl bg-white p-6 shadow-[0_24px_60px_-35px_rgba(15,23,42,0.35)] ring-1 ring-slate-200/70 sm:p-8">
-                  <div aria-live="polite">
-                    <p className="text-sm font-medium text-slate-500">
-                      <span className="text-blue-600">Featured</span> · {categoryName(spotlight.category)}
-                    </p>
-                    <h3 className="mt-3 text-2xl font-bold leading-tight tracking-tight text-slate-900 sm:text-3xl">{spotlight.title}</h3>
-                    <p className="mt-4 text-[15px] leading-relaxed text-slate-600">{spotlight.description}</p>
-                    {spotlight.highlights && (
-                      <ul className="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-                        {spotlight.highlights.map(({ label, icon: Icon, tone }) => (
-                          <li key={label} className="flex items-center gap-2.5 rounded-full bg-slate-50 py-1.5 pl-1.5 pr-3 text-sm font-medium leading-tight text-slate-700 ring-1 ring-slate-100">
-                            <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${TONES[tone]}`}>
-                              <Icon className="h-[18px] w-[18px]" aria-hidden />
-                            </span>
-                            {label}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+                  {/* Every project is rendered in the same cell so the card keeps the size of the
+                      longest one; only the current project is visible. */}
+                  <div aria-live="polite" className="grid flex-1 grid-cols-[minmax(0,1fr)]">
+                    {featuredProjects.map((project, i) => (
+                      <div
+                        key={project.id}
+                        aria-hidden={i !== spotlightIndex}
+                        className={`flex flex-col [grid-area:1/1] ${i === spotlightIndex ? 'product-fade' : 'invisible'}`}
+                      >
+                        <p className="text-sm font-medium text-slate-500">
+                          <span className="text-blue-600">Featured</span> · {categoryName(project.category)}
+                        </p>
+                        <h3 className="mt-3 text-2xl font-bold leading-tight tracking-tight text-slate-900 sm:text-3xl">{project.title}</h3>
+                        <p className="mt-4 text-[15px] leading-relaxed text-slate-600">{project.description}</p>
+                        {project.highlights && (
+                          <ul className="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                            {project.highlights.map(({ label, icon: Icon, tone }) => (
+                              <li key={label} className="flex h-14 items-center gap-2.5 rounded-2xl bg-slate-50 px-2.5 text-sm font-medium leading-tight text-slate-700 ring-1 ring-slate-100">
+                                <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${TONES[tone]}`}>
+                                  <Icon className="h-[18px] w-[18px]" aria-hidden />
+                                </span>
+                                {label}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        <div className="mt-auto flex items-center gap-3 pt-8">
+                          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white">
+                            <ServiceIcon emoji={project.image} size="none" className="h-5 w-5" />
+                          </span>
+                          <span className="min-w-0 flex-1 pr-28">
+                            <span className="block truncate text-sm font-semibold text-slate-900">{project.client || project.title}</span>
+                            <span className="block truncate text-xs text-slate-500">{project.results || COMPANY.name}</span>
+                          </span>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <div className="mt-8 flex items-center gap-3">
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white">
-                      <ServiceIcon emoji={spotlight.image} size="none" className="h-5 w-5" />
-                    </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="block truncate text-sm font-semibold text-slate-900">{spotlight.client || spotlight.title}</span>
-                      <span className="block truncate text-xs text-slate-500">{spotlight.results || COMPANY.name}</span>
-                    </span>
+                  <div className="relative -mt-12 flex h-12 items-center justify-end">
                     <span className="flex gap-2">
                       <button
                         type="button"
