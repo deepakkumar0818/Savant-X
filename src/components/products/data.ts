@@ -44,15 +44,26 @@ export const PRODUCTS: Product[] = [
   {
     id: 'vidya-setu',
     name: 'Vidya Setu',
-    subtitle: 'Education Management Platform',
+    subtitle: 'Online Examination & Olympiad Platform',
     category: 'education',
-    // TODO: add confirmed highlights, features, technology and a screenshot.
-    summary: 'A SavantX platform for schools and educational institutions.',
-    description: 'Vidya Setu is a SavantX product for schools and educational institutions. Request a demo to see what it can do for yours.',
-    highlights: [],
-    features: [],
+    summary: 'Run online exams and paid Olympiads across institutions, with live monitoring and fee collection.',
+    description:
+      'Vidya Setu is an online examination and Olympiad platform. Institutions, staff and students are managed in one place; exams are scheduled, monitored live and reported on; and Olympiad registrations and fees are collected online.',
+    // Taken from the modules in the product's admin dashboard.
+    highlights: ['Online exams & Olympiads', 'Live exam monitoring', 'Olympiad registration & fee collection', 'Reports & analytics'],
+    features: [
+      'Institution management',
+      'Admin, staff & student control',
+      'Exam scheduling & control',
+      'Live exam monitoring',
+      'Olympiad registrations & online fee collection',
+      'Reports & analytics',
+      'Roles & permissions',
+      'Logs & security',
+    ],
     technology: [],
     icon: School,
+    screenshot: { src: '/images/work/vidya-setu-dashboard.webp', alt: 'Vidya Setu super admin dashboard', width: 1536, height: 846 },
   },
   {
     id: 'sehat-setu',
