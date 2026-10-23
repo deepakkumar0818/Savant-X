@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { CheckCircle2, Loader2, Play, Zap } from 'lucide-react';
+import { Play } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import WorkflowAnimation from '@/components/WorkflowAnimation';

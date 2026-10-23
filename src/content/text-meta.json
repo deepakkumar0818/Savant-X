@@ -28621,56 +28621,6 @@
       "count": 1
     }
   },
-  "components/work/WorkPageHero.tsx": {
-    "our_portfolio": {
-      "kind": "paragraph",
-      "group": "WorkPageHero",
-      "line": 34,
-      "count": 1
-    },
-    "the_best_partner_for_shipping": {
-      "kind": "paragraph",
-      "group": "WorkPageHero",
-      "line": 41,
-      "count": 1
-    },
-    "keep_your": {
-      "kind": "heading h1",
-      "group": "WorkPageHero",
-      "line": 45,
-      "count": 1
-    },
-    "work": {
-      "kind": "text",
-      "group": "WorkPageHero",
-      "line": 54,
-      "count": 1
-    },
-    "organized": {
-      "kind": "heading h1",
-      "group": "WorkPageHero",
-      "line": 58,
-      "count": 1
-    },
-    "convenient_secure_delivery_of_every": {
-      "kind": "paragraph",
-      "group": "WorkPageHero",
-      "line": 66,
-      "count": 1
-    },
-    "get_started": {
-      "kind": "link",
-      "group": "WorkPageHero",
-      "line": 74,
-      "count": 1
-    },
-    "view_projects": {
-      "kind": "link",
-      "group": "WorkPageHero",
-      "line": 93,
-      "count": 1
-    }
-  },
   "components/zoho/landing/AppShowcase.tsx": {
     "project_request": {
       "kind": "paragraph",

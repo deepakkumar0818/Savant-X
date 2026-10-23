@@ -48,14 +48,3 @@ export default function SolutionsMegaSectionBackdrop() {
   );
 }
 
-/** @deprecated Kept so existing imports keep typechecking; ambient motion is disabled for scroll perf. */
-export type SolutionsAmbientSpotlight = { x: number; y: number };
-export type SolutionsAmbientParallax = { x: number; y: number };
-
-export function useSolutionsAmbientMotion() {
-  return {
-    spotlight: { x: 50, y: 28 } satisfies SolutionsAmbientSpotlight,
-    parallax: { x: 0, y: 0 } satisfies SolutionsAmbientParallax,
-    handlers: {} as Record<string, never>,
-  };
-}

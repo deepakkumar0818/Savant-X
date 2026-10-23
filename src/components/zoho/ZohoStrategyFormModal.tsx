@@ -30,11 +30,9 @@ type Props = {
   defaultZohoApps?: string;
   title?: string;
   subtitle?: string;
-  submitStyle?: React.CSSProperties;
   accentFrom?: string;
   accentVia?: string;
   accentTo?: string;
-  accentGlow?: string;
 };
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -109,11 +107,9 @@ export default function ZohoStrategyFormModal({
   placement = 'anchor',
   defaultZohoApps = '',
   title = 'Get Your Free Zoho Strategy Call',
-  submitStyle,
   accentFrom = '#226DB4',
   accentVia = '#1e5a96',
   accentTo = '#1a4f82',
-  accentGlow = 'rgba(34, 109, 180, 0.28)',
 }: Props) {
   const reduced = useReducedMotion();
   const panelRef = useRef<HTMLDivElement>(null);

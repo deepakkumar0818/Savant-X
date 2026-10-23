@@ -1,8 +1,6 @@
 /** Zoho CRM Web-to-Lead form configuration (SavantX). */
 export const ZOHO_CRM_WEB_TO_LEAD_URL = 'https://crm.zoho.in/crm/WebToLeadForm';
 
-export const ZOHO_CRM_FORM_ID = '1306132000000687004';
-
 export const ZOHO_CRM_ANALYTICS_SCRIPT =
   'https://crm.zohopublic.in/crm/WebFormAnalyticsServeServlet?rid=81ea50668ef7097f2c074ac1b6b83be0d205f009cd1b87e8006a3a36dd39ed7f337f8b031814bb47ebe64d7c26a3f75cgid83f6281f81d930ee63db03b0d30a63e401926d17ad2eeba9319e983b26bc7162gid53d0a4000545ac6299ab0021c76f02b57e533ffc159a253073155ff6ae520685gid4bcb3abd87f982ac7d154820994b65cbbc11eaad5d89efb4a76ce3e8686795b3&tw=2d1c2cf5232b081a553ea16fd64a4568a661d27f1e9a80c1685d23b1ccbd11a6&version=v2';
 

@@ -796,11 +796,6 @@ export default function ZohoAppPage({ app }: Props) {
         accentFrom={c.gradientFrom}
         accentVia={c.gradientVia}
         accentTo={c.gradientTo}
-        accentGlow={c.glow}
-        submitStyle={{
-          background: `linear-gradient(135deg, ${c.gradientFrom}, ${c.gradientTo})`,
-          boxShadow: `0 12px 28px -10px ${c.glow}`,
-        }}
       />
 
       <Footer />
