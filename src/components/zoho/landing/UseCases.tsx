@@ -1,3 +1,4 @@
+import tx from '@/content/text/components/zoho/landing/UseCases.json';
 import Image from 'next/image';
 import {
   ArrowRight,
@@ -40,7 +41,7 @@ function Sketch({ visual }: { visual: Visual }) {
       return (
         <div className={`${paper} w-full p-2.5`}>
           <div className="flex items-center justify-between">
-            <span className="text-[9px] font-semibold text-slate-700">Leads</span>
+            <span className="text-[9px] font-semibold text-slate-700">{tx.leads}</span>
             <TrendingUp className="h-3.5 w-3.5 text-emerald-500" />
           </div>
           <svg viewBox="0 0 100 40" className="mt-2 h-12 w-full" preserveAspectRatio="none">
@@ -53,15 +54,13 @@ function Sketch({ visual }: { visual: Visual }) {
       return (
         <div className="relative w-full">
           <div className={`${paper} space-y-1.5 p-2.5 pb-6`}>
-            <span className="text-[9px] font-semibold text-slate-700">Quotation</span>
+            <span className="text-[9px] font-semibold text-slate-700">{tx.quotation}</span>
             {bar('w-full', 1)}
             {bar('w-4/5', 2)}
             {bar('w-3/5', 3)}
           </div>
           <span className="absolute -bottom-2 right-1 flex items-center gap-1 rounded-md bg-emerald-500 px-2 py-1 text-[9px] font-bold text-white shadow-md">
-            <Check className="h-3 w-3" strokeWidth={3} />
-            Approved
-          </span>
+            <Check className="h-3 w-3" strokeWidth={3} />{tx.approved}</span>
         </div>
       );
     case 'inventory':
@@ -106,12 +105,12 @@ function Sketch({ visual }: { visual: Visual }) {
     case 'invoice':
       return (
         <div className={`${paper} relative w-full space-y-1.5 p-2.5`}>
-          <span className="text-[9px] font-semibold text-indigo-700">Invoice</span>
+          <span className="text-[9px] font-semibold text-indigo-700">{tx.invoice}</span>
           {bar('w-full', 1)}
           {bar('w-4/5', 2)}
           {bar('w-2/3', 3)}
           {bar('w-1/2', 4)}
-          <span className="absolute right-2 top-2 rounded bg-emerald-500 px-1.5 py-0.5 text-[8px] font-bold text-white">Paid</span>
+          <span className="absolute right-2 top-2 rounded bg-emerald-500 px-1.5 py-0.5 text-[8px] font-bold text-white">{tx.paid}</span>
         </div>
       );
     case 'dashboard':
@@ -134,17 +133,17 @@ function Sketch({ visual }: { visual: Visual }) {
 /** Zoho app logos around a hub, beside the heading. Decorative. */
 function AppsCluster() {
   const apps: { name: string; label: string; pos: string }[] = [
-    { name: 'Zoho CRM', label: 'CRM', pos: 'left-16 top-0' },
-    { name: 'Zoho Books', label: 'Books', pos: 'right-6 top-0' },
-    { name: 'Zoho Desk', label: 'Desk', pos: 'left-0 top-20' },
-    { name: 'Zoho Creator', label: 'Creator', pos: 'right-0 top-24' },
+    { name: tx.zoho_crm, label: 'CRM', pos: 'left-16 top-0' },
+    { name: tx.zoho_books, label: tx.books, pos: 'right-6 top-0' },
+    { name: tx.zoho_desk, label: tx.desk, pos: 'left-0 top-20' },
+    { name: tx.zoho_creator, label: tx.creator, pos: 'right-0 top-24' },
   ];
   return (
     <div aria-hidden className="relative hidden h-44 w-80 shrink-0 lg:block">
       <div className="absolute inset-6 rounded-full bg-indigo-200/40 blur-3xl" />
       <span className="absolute left-1/2 top-1/2 flex h-20 w-32 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-2xl bg-white shadow-[0_20px_45px_-15px_rgba(79,70,229,0.45)] ring-1 ring-slate-200">
-        <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent">Zoho</span>
-        <span className="text-[10px] font-medium text-slate-500">Automated workflows</span>
+        <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent">{tx.zoho}</span>
+        <span className="text-[10px] font-medium text-slate-500">{tx.automated_workflows}</span>
       </span>
       {apps.map(({ name, label, pos }) => (
         <span key={name} className={`absolute ${pos} flex h-16 w-16 flex-col items-center justify-center gap-1 rounded-2xl bg-white shadow-lg ring-1 ring-slate-200/80`}>
@@ -168,16 +167,11 @@ export default function UseCases() {
         <div className="zoho-reveal flex items-center justify-between gap-8">
           <div className="max-w-2xl">
             <p className="inline-flex items-center gap-1.5 rounded-full bg-indigo-100/80 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-indigo-700">
-              <Zap className="h-3.5 w-3.5" aria-hidden />
-              Business use cases
-            </p>
-            <h2 id="use-cases-heading" className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-              Practical workflows we automate with{' '}
-              <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">Zoho</span>
+              <Zap className="h-3.5 w-3.5" aria-hidden />{tx.business_use_cases}</p>
+            <h2 id="use-cases-heading" className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">{tx.practical_workflows_we_automate_with}{' '}
+              <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">{tx.zoho_2}</span>
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-              Typical scenarios, the Zoho apps involved and what the automation is designed to achieve.
-            </p>
+            <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">{tx.typical_scenarios_the_zoho_apps}</p>
           </div>
           <AppsCluster />
         </div>
@@ -197,12 +191,12 @@ export default function UseCases() {
                   <h3 className="text-lg font-bold leading-snug tracking-tight text-slate-900">{uc.title}</h3>
                 </div>
                 <p className="mt-4 text-sm leading-relaxed text-slate-600">
-                  <span className="sr-only">Challenge: </span>
+                  <span className="sr-only">{tx.challenge}{" "}</span>
                   {uc.challenge}
                 </p>
 
                 <div className="mt-5 grid flex-1 grid-cols-[minmax(0,1fr)_7.5rem] items-center gap-4">
-                  <ul className="space-y-2.5" aria-label="Automated workflow">
+                  <ul className="space-y-2.5" aria-label={tx.automated_workflow}>
                     {uc.steps.map((step) => (
                       <li key={step} className="flex items-start gap-2 text-[13px] leading-snug text-slate-700">
                         <span className="mt-px flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-[1.5px] border-violet-500 text-violet-600">
@@ -218,7 +212,7 @@ export default function UseCases() {
                 </div>
 
                 <p className="mt-5 rounded-lg bg-emerald-50 px-3 py-2 text-[13px] text-emerald-800 ring-1 ring-emerald-100">
-                  <span className="font-semibold">Intended outcome: </span>
+                  <span className="font-semibold">{tx.intended_outcome}{" "}</span>
                   {uc.outcome}
                 </p>
 
@@ -228,7 +222,7 @@ export default function UseCases() {
                   className="mt-2 inline-flex items-center gap-1 self-start py-2 text-sm font-semibold text-indigo-700 hover:text-indigo-900"
                 >
                   {uc.apps}
-                  <span className="sr-only"> – discuss this workflow</span>
+                  <span className="sr-only">{" "}{tx.discuss_this_workflow}</span>
                   <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden />
                 </SelectServiceLink>
               </li>

@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/components/NewsletterSignup.json';
 import { useState } from 'react';
 import { fetchWithTimeout } from '@/lib/fetchWithTimeout';
 
@@ -30,19 +31,17 @@ export default function NewsletterSignup() {
 
   return (
     <div className="rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur-sm sm:p-8">
-      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Newsletter</p>
-      <h4 className="mt-2 text-lg font-semibold text-slate-900 sm:text-xl">Engineering &amp; product notes</h4>
-      <p className="mt-1 text-sm text-slate-600">Quarterly updates—no fluff.</p>
+      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{tx.newsletter}</p>
+      <h4 className="mt-2 text-lg font-semibold text-slate-900 sm:text-xl">{tx.engineering_product_notes}</h4>
+      <p className="mt-1 text-sm text-slate-600">{tx.quarterly_updates_no_fluff}</p>
       <form onSubmit={submit} className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-stretch">
-        <label htmlFor="footer-newsletter-email" className="sr-only">
-          Email
-        </label>
+        <label htmlFor="footer-newsletter-email" className="sr-only">{tx.email}</label>
         <input
           id="footer-newsletter-email"
           type="email"
           required
           autoComplete="email"
-          placeholder="Work email"
+          placeholder={tx.work_email}
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
@@ -55,17 +54,14 @@ export default function NewsletterSignup() {
           disabled={status === 'loading'}
           className="inline-flex min-h-[44px] shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 text-sm font-semibold text-white shadow-md transition hover:from-blue-700 hover:to-indigo-700 hover:shadow-lg disabled:opacity-60"
         >
-          {status === 'loading' ? 'Sending…' : 'Subscribe'}
+          {status === 'loading' ? tx.sending : tx.subscribe}
         </button>
       </form>
       <div aria-live="polite">
-      {status === 'ok' && <p role="status" className="mt-2 text-sm text-emerald-700">Thanks — you&apos;re on the list.</p>}
+      {status === 'ok' && <p role="status" className="mt-2 text-sm text-emerald-700">{tx.thanks_you_re_on_the}</p>}
       {status === 'err' && (
-        <p role="alert" className="mt-2 text-sm text-amber-800">
-          Could not subscribe. Try{' '}
-          <a href="/contact" className="font-medium underline underline-offset-2">
-            contact
-          </a>
+        <p role="alert" className="mt-2 text-sm text-amber-800">{tx.could_not_subscribe_try}{' '}
+          <a href="/contact" className="font-medium underline underline-offset-2">{tx.contact}</a>
           .
         </p>
       )}

@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/components/Navbar.json';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -61,53 +62,53 @@ interface ExpertiseGroup {
 
 const EXPERTISE_GROUPS: ExpertiseGroup[] = [
   {
-    title: 'What We Do',
+    title: tx.what_we_do,
     href: '/expertise/what-we-do',
     links: [
-      { label: 'Websites', href: '/expertise/websites', icon: Globe },
-      { label: 'Web Apps', href: '/expertise/web-apps', icon: AppWindow },
-      { label: 'Mobile Apps', href: '/expertise/mobile-apps', icon: Smartphone },
-      { label: 'eCommerce', href: '/expertise/ecommerce', icon: ShoppingCart },
+      { label: tx.websites, href: '/expertise/websites', icon: Globe },
+      { label: tx.web_apps, href: '/expertise/web-apps', icon: AppWindow },
+      { label: tx.mobile_apps, href: '/expertise/mobile-apps', icon: Smartphone },
+      { label: tx.ecommerce, href: '/expertise/ecommerce', icon: ShoppingCart },
     ],
   },
   {
-    title: 'Design & UX',
+    title: tx.design_ux,
     links: [
-      { label: 'User Research', href: '/expertise/user-research', icon: Search },
-      { label: 'UI/UX Design', href: '/expertise/ui-ux-design', icon: Palette },
-      { label: 'Prototyping', href: '/expertise/prototyping', icon: MousePointerClick },
-      { label: 'Design Systems', href: '/expertise/design-systems', icon: Component },
-      { label: '3D Designing', href: '/expertise/3d-designing', icon: Box },
+      { label: tx.user_research, href: '/expertise/user-research', icon: Search },
+      { label: tx.ui_ux_design, href: '/expertise/ui-ux-design', icon: Palette },
+      { label: tx.prototyping, href: '/expertise/prototyping', icon: MousePointerClick },
+      { label: tx.design_systems, href: '/expertise/design-systems', icon: Component },
+      { label: tx.t_3d_designing, href: '/expertise/3d-designing', icon: Box },
     ],
   },
   {
-    title: 'Technology',
+    title: tx.technology,
     links: [
-      { label: 'GenAI', href: '/expertise/genai', icon: Sparkles },
-      { label: 'MERN Stack', href: '/expertise/react', icon: Code },
-      { label: 'Payload CMS', href: '/expertise/payload-cms', icon: Layers },
-      { label: 'Laravel', href: '/expertise/laravel', icon: Server },
-      { label: 'WordPress', href: '/expertise/wordpress', icon: Newspaper },
+      { label: tx.genai, href: '/expertise/genai', icon: Sparkles },
+      { label: tx.mern_stack, href: '/expertise/react', icon: Code },
+      { label: tx.payload_cms, href: '/expertise/payload-cms', icon: Layers },
+      { label: tx.laravel, href: '/expertise/laravel', icon: Server },
+      { label: tx.wordpress, href: '/expertise/wordpress', icon: Newspaper },
     ],
   },
   {
-    title: 'Hardware & Electronics',
+    title: tx.hardware_electronics,
     href: '/expertise/hardware-electronics',
     links: [
-      { label: 'IoT & Embedded Systems', href: '/expertise/iot-embedded-systems', icon: Radio },
-      { label: 'PCB Designing', href: '/expertise/pcb-design', icon: CircuitBoard },
-      { label: 'Product Development', href: '/expertise/product-development', icon: Package },
-      { label: 'Firmware Development', href: '/expertise/firmware-development', icon: Cpu },
+      { label: tx.iot_embedded_systems, href: '/expertise/iot-embedded-systems', icon: Radio },
+      { label: tx.pcb_designing, href: '/expertise/pcb-design', icon: CircuitBoard },
+      { label: tx.product_development, href: '/expertise/product-development', icon: Package },
+      { label: tx.firmware_development, href: '/expertise/firmware-development', icon: Cpu },
     ],
   },
   {
-    title: 'Experience',
+    title: tx.experience,
     links: [
-      { label: 'Commercial', href: '/expertise/commercial', icon: Building2 },
-      { label: 'Not for Profit', href: '/expertise/not-for-profit', icon: HeartHandshake },
-      { label: 'Innovation', href: '/expertise/innovation', icon: Lightbulb },
-      { label: 'Education & Industrial Training', href: '/expertise/education-industrial-training', icon: GraduationCap },
-      { label: 'Community', href: '/expertise/community', icon: UsersRound },
+      { label: tx.commercial, href: '/expertise/commercial', icon: Building2 },
+      { label: tx.not_for_profit, href: '/expertise/not-for-profit', icon: HeartHandshake },
+      { label: tx.innovation, href: '/expertise/innovation', icon: Lightbulb },
+      { label: tx.education_industrial_training, href: '/expertise/education-industrial-training', icon: GraduationCap },
+      { label: tx.community, href: '/expertise/community', icon: UsersRound },
     ],
   },
 ];
@@ -115,10 +116,10 @@ const EXPERTISE_GROUPS: ExpertiseGroup[] = [
 const EXPERTISE_LABEL = 'Expertise';
 
 const defaultNavItems: NavItem[] = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Work', href: '/work' },
-  { label: 'Zoho', href: '/expertise/zoho-integrations' },
+  { label: tx.home, href: '/' },
+  { label: tx.about, href: '/about' },
+  { label: tx.work, href: '/work' },
+  { label: tx.zoho, href: '/expertise/zoho-integrations' },
   {
     label: EXPERTISE_LABEL,
     href: '/expertise',
@@ -127,8 +128,8 @@ const defaultNavItems: NavItem[] = [
       ...group.links.map(({ label, href }) => ({ label, href })),
     ]),
   },
-  { label: 'Products', href: '/products' },
-  { label: 'Contact', href: '/contact' },
+  { label: tx.products, href: '/products' },
+  { label: tx.contact, href: '/contact' },
 ];
 
 function normalizePath(pathname: string | null): string {
@@ -275,7 +276,7 @@ export default function Navbar({
       className={`sticky top-0 z-50 w-full border-b border-slate-100 bg-white transition-[box-shadow,border-color] duration-300 ${
         scrolled ? 'shadow-sm' : 'shadow-none'
       } ${className}`}
-      aria-label="Main"
+      aria-label={tx.main}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
         <div className="flex h-[4.25rem] w-full items-center justify-between gap-4">
@@ -563,9 +564,7 @@ function LetsBuildLink({ onClick, large = false }: { onClick: () => void; large?
           >
             <span className="absolute left-0 top-0 block h-full w-full rotate-45 transform rounded bg-gradient-to-br from-white/40 to-transparent" />
           </span>
-        </span>
-        Let&apos;s Build
-        <svg
+        </span>{tx.let_s_build}<svg
           className={`transform transition-transform duration-300 group-hover:translate-x-0.5 group-hover:rotate-12 ${
             large ? 'h-5 w-5' : 'h-4 w-4'
           }`}

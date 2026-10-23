@@ -1,3 +1,4 @@
+import tx from '@/content/text/components/zoho/landing/AppShowcase.json';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Caveat } from 'next/font/google';
@@ -67,7 +68,7 @@ function AppPreview({ visual }: { visual: AppVisual }) {
             {Array.from({ length: 6 }, (_, i) => line('w-full', 'bg-white/30', i))}
           </div>
           <div className="flex-1 space-y-1.5 p-2">
-            <p className="text-[7px] font-semibold text-slate-700">Project request</p>
+            <p className="text-[7px] font-semibold text-slate-700">{tx.project_request}</p>
             {Array.from({ length: 4 }, (_, i) => (
               <span key={i} className="block h-3 rounded-sm border border-slate-200" />
             ))}
@@ -77,7 +78,7 @@ function AppPreview({ visual }: { visual: AppVisual }) {
     case 'books':
       return (
         <div className={`${frame} space-y-1.5 p-2`}>
-          <p className="text-[7px] font-semibold text-slate-700">Invoices</p>
+          <p className="text-[7px] font-semibold text-slate-700">{tx.invoices}</p>
           {['bg-emerald-400', 'bg-amber-400', 'bg-emerald-400'].map((tone, i) => (
             <div key={i} className="flex items-center gap-1.5">
               {line('w-8')}
@@ -97,7 +98,7 @@ function AppPreview({ visual }: { visual: AppVisual }) {
           <span className="absolute left-1.5 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-md bg-amber-100 text-amber-700">
             <Package className="h-4 w-4" />
           </span>
-          <p className="text-[7px] font-semibold text-slate-700">Stock levels</p>
+          <p className="text-[7px] font-semibold text-slate-700">{tx.stock_levels}</p>
           {['bg-emerald-400 w-6', 'bg-amber-400 w-4', 'bg-rose-400 w-2', 'bg-emerald-400 w-5'].map((bar, i) => (
             <div key={i} className="flex items-center gap-1.5">
               {line('flex-1')}
@@ -113,7 +114,7 @@ function AppPreview({ visual }: { visual: AppVisual }) {
             {Array.from({ length: 5 }, (_, i) => line('w-full', 'bg-white/30', i))}
           </div>
           <div className="flex-1 space-y-1.5 p-2">
-            <p className="text-[7px] font-semibold text-slate-700">Tickets</p>
+            <p className="text-[7px] font-semibold text-slate-700">{tx.tickets}</p>
             {['bg-sky-400', 'bg-amber-400', 'bg-rose-400', 'bg-emerald-400'].map((tone, i) => (
               <div key={i} className="flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full border border-slate-300" />
@@ -164,11 +165,11 @@ function AppPreview({ visual }: { visual: AppVisual }) {
     case 'sign':
       return (
         <div className={`${frame} relative space-y-1.5 p-2`}>
-          <p className="text-[7px] font-semibold text-slate-700">Sales agreement</p>
+          <p className="text-[7px] font-semibold text-slate-700">{tx.sales_agreement}</p>
           {line('w-full', 'bg-slate-100')}
           {line('w-5/6', 'bg-slate-100')}
           {line('w-2/3', 'bg-slate-100')}
-          <span className="absolute right-2 top-7 rounded-full bg-emerald-500 px-1.5 py-0.5 text-[6px] font-bold text-white">Signed</span>
+          <span className="absolute right-2 top-7 rounded-full bg-emerald-500 px-1.5 py-0.5 text-[6px] font-bold text-white">{tx.signed}</span>
           <svg viewBox="0 0 80 24" className="absolute bottom-2 left-3 h-7 w-20 text-slate-800">
             <path d="M2 18 C 10 2, 16 2, 14 16 S 26 22, 30 10 S 40 4, 42 14 S 55 20, 62 8 L 78 6" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
           </svg>
@@ -181,25 +182,21 @@ function AppPreview({ visual }: { visual: AppVisual }) {
 /** Ecosystem sketch beside the heading: a Zoho hub joined to the business areas it serves. */
 function EcosystemSketch() {
   const areas: { label: string; icon: LucideIcon; pos: string; tone: string }[] = [
-    { label: 'Sales', icon: Target, pos: 'left-36 top-0', tone: 'bg-emerald-50 text-emerald-700 ring-emerald-100' },
-    { label: 'Operations', icon: Cog, pos: 'right-0 top-0', tone: 'bg-violet-50 text-violet-700 ring-violet-100' },
-    { label: 'Support', icon: Headphones, pos: 'right-0 top-16', tone: 'bg-rose-50 text-rose-700 ring-rose-100' },
-    { label: 'Finance', icon: BarChart3, pos: 'right-20 bottom-0', tone: 'bg-sky-50 text-sky-700 ring-sky-100' },
+    { label: tx.sales, icon: Target, pos: 'left-36 top-0', tone: 'bg-emerald-50 text-emerald-700 ring-emerald-100' },
+    { label: tx.operations, icon: Cog, pos: 'right-0 top-0', tone: 'bg-violet-50 text-violet-700 ring-violet-100' },
+    { label: tx.support, icon: Headphones, pos: 'right-0 top-16', tone: 'bg-rose-50 text-rose-700 ring-rose-100' },
+    { label: tx.finance, icon: BarChart3, pos: 'right-20 bottom-0', tone: 'bg-sky-50 text-sky-700 ring-sky-100' },
   ];
   return (
     <div aria-hidden className="relative hidden h-40 w-[26rem] shrink-0 lg:block">
-      <p className={`${handwriting.className} absolute left-0 top-6 -rotate-12 text-xl leading-tight text-slate-500`}>
-        Integrated
-        <br />
-        Zoho ecosystem
-      </p>
+      <p className={`${handwriting.className} absolute left-0 top-6 -rotate-12 text-xl leading-tight text-slate-500`}>{tx.integrated}<br />{tx.zoho_ecosystem}</p>
       <svg viewBox="0 0 60 30" className="absolute left-16 top-20 h-8 w-16 text-slate-400">
         <path d="M2 4 C 14 28, 40 28, 56 14" fill="none" stroke="currentColor" strokeWidth="1.5" />
         <path d="M50 12 L57 13 L54 20" fill="none" stroke="currentColor" strokeWidth="1.5" />
       </svg>
       <span className="absolute left-40 top-12 flex h-20 w-28 flex-col items-center justify-center rounded-2xl bg-white shadow-[0_20px_45px_-15px_rgba(79,70,229,0.45)] ring-1 ring-slate-200">
-        <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent">Zoho</span>
-        <span className="text-[10px] font-medium text-slate-500">One connected system</span>
+        <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent">{tx.zoho}</span>
+        <span className="text-[10px] font-medium text-slate-500">{tx.one_connected_system}</span>
       </span>
       {areas.map(({ label, icon: Icon, pos, tone }) => (
         <span key={label} className={`absolute ${pos} flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold ring-1 ${tone}`}>
@@ -219,14 +216,11 @@ export default function AppShowcase() {
       <div className="relative mx-auto max-w-7xl">
         <div className="zoho-reveal flex items-center justify-between gap-8">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600">Zoho applications</p>
-            <h2 id="apps-heading" className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-              What each Zoho app can do for{' '}
-              <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">your business</span>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600">{tx.zoho_applications}</p>
+            <h2 id="apps-heading" className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">{tx.what_each_zoho_app_can}{' '}
+              <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">{tx.your_business}</span>
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-              We implement and customise each of these, and connect them so your teams share the same data.
-            </p>
+            <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">{tx.we_implement_and_customise_each}</p>
           </div>
           <EcosystemSketch />
         </div>

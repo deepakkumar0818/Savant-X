@@ -1,10 +1,11 @@
+import tx from '@/content/text/app/expertise/mobile-apps/layout.json';
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Mobile App Development',
+  title: tx.mobile_app_development,
   description:
-    'iOS and Android mobile applications designed and built by SavantX Technologies to engage users and grow your business.',
+    tx.ios_and_android_mobile_applications,
   path: '/expertise/mobile-apps',
 });
 

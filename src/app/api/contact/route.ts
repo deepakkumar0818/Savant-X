@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { saveContact } from '@/lib/contactStorage';
 import { createLeadFromForm } from '@/lib/zohoLeadService';
 import { buildEmailHtml, sendNotificationEmail, type Kind } from '@/lib/notificationEmail';
 import {
@@ -124,19 +123,6 @@ export async function POST(request: NextRequest) {
   }
 
   rememberSubmission(dedupeKey);
-  try {
-    saveContact({
-      name: f.name || 'Newsletter subscriber',
-      email: f.email,
-      company: f.company,
-      phone: f.phone,
-      service: kind === 'support' ? `Support: ${f.subject}` : kind === 'newsletter' ? 'Newsletter' : f.service,
-      message: f.message,
-      budget: f.budget,
-    });
-  } catch {
-    // Admin copy is best-effort; the message was already delivered.
-  }
 
   return NextResponse.json({
     message:

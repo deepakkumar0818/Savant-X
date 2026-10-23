@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/components/AboutExcellenceSection.json';
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -18,35 +19,35 @@ import AnimatedCounter from '@/components/AnimatedCounter';
 import { COMPANY_METRICS } from '@/lib/company';
 
 const CAPABILITIES = [
-  { label: 'ERP & Manufacturing', Icon: Building2 },
-  { label: 'Zoho integrations', Icon: Puzzle },
-  { label: 'Web & GenAI', Icon: Sparkles },
-  { label: 'IoT & Firmware', Icon: Cpu },
-  { label: 'PCB & Product', Icon: CircuitBoard },
-  { label: 'Mobile apps', Icon: Smartphone },
+  { label: tx.erp_manufacturing, Icon: Building2 },
+  { label: tx.zoho_integrations, Icon: Puzzle },
+  { label: tx.web_genai, Icon: Sparkles },
+  { label: tx.iot_firmware, Icon: Cpu },
+  { label: tx.pcb_product, Icon: CircuitBoard },
+  { label: tx.mobile_apps, Icon: Smartphone },
 ] as const;
 
 const FEATURES = [
   {
-    title: 'Scalable Solutions',
+    title: tx.scalable_solutions,
     description:
-      'Built to handle growing business demands with secure, future-ready technology and seamless performance.',
+      tx.built_to_handle_growing_business,
     Icon: TrendingUp,
     iconWrap: 'bg-gradient-to-br from-blue-600 to-indigo-600 shadow-blue-600/25',
     row: 'border-blue-100/90 bg-gradient-to-r from-blue-50/90 via-white to-indigo-50/50',
   },
   {
-    title: 'Expert Development Team',
+    title: tx.expert_development_team,
     description:
-      'Skilled professionals delivering high-quality software and hardware solutions with industry best practices.',
+      tx.skilled_professionals_delivering_high_qu,
     Icon: UsersRound,
     iconWrap: 'bg-gradient-to-br from-indigo-600 to-violet-600 shadow-indigo-600/25',
     row: 'border-indigo-100/90 bg-gradient-to-r from-indigo-50/90 via-white to-violet-50/50',
   },
   {
-    title: 'Reliable & Transparent Service',
+    title: tx.reliable_transparent_service,
     description:
-      'Clear communication, timely delivery, and dependable support to ensure smooth project execution.',
+      tx.clear_communication_timely_delivery_and,
     Icon: Handshake,
     iconWrap: 'bg-gradient-to-br from-violet-600 to-purple-600 shadow-violet-600/25',
     row: 'border-violet-100/90 bg-gradient-to-r from-violet-50/90 via-white to-purple-50/50',
@@ -54,8 +55,8 @@ const FEATURES = [
 ] as const;
 
 const METRICS = [
-  { end: 100, suffix: '%', label: 'In-House Team', gradient: 'from-blue-600 to-indigo-600' },
-  { end: 5, suffix: '+', label: 'Years Experience', gradient: 'from-indigo-600 to-violet-600' },
+  { end: 100, suffix: '%', label: tx.in_house_team, gradient: 'from-blue-600 to-indigo-600' },
+  { end: 5, suffix: '+', label: tx.years_experience, gradient: 'from-indigo-600 to-violet-600' },
   { end: COMPANY_METRICS[0].value, suffix: COMPANY_METRICS[0].suffix, label: COMPANY_METRICS[0].label, gradient: 'from-violet-600 to-purple-600' },
 ] as const;
 
@@ -77,27 +78,16 @@ export default function AboutExcellenceSection() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="space-y-7 sm:space-y-8">
             <p className="inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/95 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-indigo-800 shadow-sm backdrop-blur-sm sm:text-xs">
-              <span className="h-1.5 w-1.5 rounded-full bg-indigo-500 motion-safe:animate-pulse" aria-hidden />
-              Trusted Technology Partner
-            </p>
+              <span className="h-1.5 w-1.5 rounded-full bg-indigo-500 motion-safe:animate-pulse" aria-hidden />{tx.trusted_technology_partner}</p>
 
-            <h2 className="text-3xl font-semibold leading-[1.12] tracking-tight text-slate-900 sm:text-4xl lg:text-5xl xl:text-[3.35rem]">
-              Building Digital{' '}
-              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
-                Excellence
-              </span>
+            <h2 className="text-3xl font-semibold leading-[1.12] tracking-tight text-slate-900 sm:text-4xl lg:text-5xl xl:text-[3.35rem]">{tx.building_digital}{' '}
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.excellence}</span>
             </h2>
 
             <div className="max-w-2xl space-y-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-              <p>
-                We craft exceptional digital experiences and hardware solutions—from web and mobile to{' '}
-                <strong className="font-semibold text-slate-800">ERP manufacturing</strong>, CRM, Zoho
-                integrations, IoT, firmware, and PCB design.
-              </p>
-              <p>
-                Our strength is understanding how your teams work first—then shipping systems that fit operations,
-                not the other way around.
-              </p>
+              <p>{tx.we_craft_exceptional_digital_experiences}{' '}
+                <strong className="font-semibold text-slate-800">{tx.erp_manufacturing_2}</strong>{tx.crm_zoho_integrations_iot_firmware}</p>
+              <p>{tx.our_strength_is_understanding_how}</p>
             </div>
 
             <div className="flex flex-wrap gap-2">
@@ -116,17 +106,13 @@ export default function AboutExcellenceSection() {
               <Link
                 href="/contact"
                 className="group inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-blue-600/25 motion-safe:transition-all motion-safe:duration-300 hover:from-blue-700 hover:to-indigo-700 hover:shadow-xl hover:shadow-indigo-600/25 motion-safe:active:scale-[0.98]"
-              >
-                Start Your Project
-                <ArrowRight className="ml-2 h-5 w-5 motion-safe:transition-transform group-hover:translate-x-1" aria-hidden />
+              >{tx.start_your_project}<ArrowRight className="ml-2 h-5 w-5 motion-safe:transition-transform group-hover:translate-x-1" aria-hidden />
               </Link>
               <Link
                 href="/work"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-slate-300/95 bg-white/90 px-7 py-3.5 text-base font-semibold text-slate-800 shadow-sm backdrop-blur-sm motion-safe:transition-all motion-safe:duration-300 hover:border-indigo-400 hover:text-indigo-800 hover:shadow-md motion-safe:active:scale-[0.98]"
               >
-                <Eye className="h-[1.15rem] w-[1.15rem] opacity-80" aria-hidden />
-                View Our Work
-              </Link>
+                <Eye className="h-[1.15rem] w-[1.15rem] opacity-80" aria-hidden />{tx.view_our_work}</Link>
             </div>
 
             <div className="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-3 sm:gap-4">
@@ -162,18 +148,14 @@ export default function AboutExcellenceSection() {
                   <span className="h-2.5 w-2.5 rounded-full bg-amber-400/90" />
                   <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/95" />
                 </div>
-                <span className="flex-1 text-center font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-slate-500">
-                  savantx-trust
-                </span>
-                <span className="rounded-md border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-emerald-700">
-                  Verified
-                </span>
+                <span className="flex-1 text-center font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-slate-500">{tx.savantx_trust}</span>
+                <span className="rounded-md border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-emerald-700">{tx.verified}</span>
               </div>
 
               <div className="space-y-3 p-4 sm:p-5">
                 <div>
-                  <h3 className="text-lg font-semibold text-slate-900 sm:text-xl">Why Choose SavantX?</h3>
-                  <p className="mt-1 text-sm text-slate-600">Proven expertise across software and hardware</p>
+                  <h3 className="text-lg font-semibold text-slate-900 sm:text-xl">{tx.why_choose_savantx}</h3>
+                  <p className="mt-1 text-sm text-slate-600">{tx.proven_expertise_across_software_and}</p>
                 </div>
 
                 {FEATURES.map(({ title, description, Icon, iconWrap, row }) => (
@@ -198,17 +180,13 @@ export default function AboutExcellenceSection() {
                     <p className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-2xl font-bold tabular-nums text-transparent">
                       <AnimatedCounter end={98} suffix="%" duration={2200} />
                     </p>
-                    <p className="mt-0.5 text-[11px] font-medium uppercase tracking-wide text-slate-500">
-                      Client satisfaction
-                    </p>
+                    <p className="mt-0.5 text-[11px] font-medium uppercase tracking-wide text-slate-500">{tx.client_satisfaction}</p>
                   </div>
                   <div className="rounded-xl border border-violet-100/90 bg-violet-50/60 px-3 py-3 text-center">
                     <p className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-2xl font-bold tabular-nums text-transparent">
                       <AnimatedCounter end={24} suffix="/7" duration={1600} />
                     </p>
-                    <p className="mt-0.5 text-[11px] font-medium uppercase tracking-wide text-slate-500">
-                      Expert support
-                    </p>
+                    <p className="mt-0.5 text-[11px] font-medium uppercase tracking-wide text-slate-500">{tx.expert_support}</p>
                   </div>
                 </div>
               </div>

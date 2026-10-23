@@ -1,3 +1,4 @@
+import tx from '@/content/text/components/zoho/landing/MembershipPlan.json';
 import Image from 'next/image';
 import { Caveat } from 'next/font/google';
 import { ArrowRight, BarChart3, CalendarDays, Check, Clock3, Code2, Coins, Settings, Star, X, Zap } from 'lucide-react';
@@ -7,10 +8,10 @@ import { MEMBERSHIP, ZOHO_LOGOS } from './data';
 const handwriting = Caveat({ subsets: ['latin'], weight: ['500'], display: 'swap' });
 
 const PIPELINE = [
-  { stage: 'New leads', color: 'bg-blue-500', cards: 3 },
-  { stage: 'Qualified', color: 'bg-rose-400', cards: 3 },
-  { stage: 'Proposal', color: 'bg-amber-400', cards: 2 },
-  { stage: 'Won', color: 'bg-emerald-500', cards: 2 },
+  { stage: tx.new_leads, color: 'bg-blue-500', cards: 3 },
+  { stage: tx.qualified, color: 'bg-rose-400', cards: 3 },
+  { stage: tx.proposal, color: 'bg-amber-400', cards: 2 },
+  { stage: tx.won, color: 'bg-emerald-500', cards: 2 },
 ];
 
 /** Decorative CRM pipeline and Creator form windows beside the heading. */
@@ -18,18 +19,12 @@ function PlanIllustration() {
   return (
     <div aria-hidden className="relative hidden h-52 w-[31rem] shrink-0 lg:block">
       <div className="absolute -right-6 -top-8 h-48 w-72 rounded-full bg-indigo-200/50 blur-3xl" />
-      <p className={`${handwriting.className} absolute left-0 top-20 -rotate-12 text-xl leading-tight text-slate-500`}>
-        Your Zoho
-        <br />
-        development partner
-      </p>
+      <p className={`${handwriting.className} absolute left-0 top-20 -rotate-12 text-xl leading-tight text-slate-500`}>{tx.your_zoho}<br />{tx.development_partner}</p>
 
       <div className="absolute left-40 top-2 w-60 rotate-[-2deg] rounded-xl bg-white p-3 shadow-[0_24px_50px_-20px_rgba(30,58,138,0.45)] ring-1 ring-slate-200">
         <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-800">
-          <Image src={ZOHO_LOGOS['Zoho CRM']!} alt="" width={14} height={14} className="h-3.5 w-3.5 object-contain" />
-          Zoho CRM
-        </div>
-        <p className="mt-2 text-[9px] font-semibold text-slate-500">Deals pipeline</p>
+          <Image src={ZOHO_LOGOS['Zoho CRM']!} alt="" width={14} height={14} className="h-3.5 w-3.5 object-contain" />{tx.zoho_crm}</div>
+        <p className="mt-2 text-[9px] font-semibold text-slate-500">{tx.deals_pipeline}</p>
         <div className="mt-1.5 grid grid-cols-4 gap-1.5">
           {PIPELINE.map(({ stage, color, cards }) => (
             <div key={stage}>
@@ -46,11 +41,9 @@ function PlanIllustration() {
         <div className="flex items-center gap-1.5 bg-[#0b1024] px-2.5 py-2 text-[10px] font-semibold text-white">
           <span className="flex h-4 w-4 items-center justify-center rounded bg-white">
             <Image src={ZOHO_LOGOS['Zoho Creator']!} alt="" width={12} height={12} className="h-3 w-3 object-contain" />
-          </span>
-          Zoho Creator
-        </div>
+          </span>{tx.zoho_creator}</div>
         <div className="space-y-1.5 p-2.5">
-          <p className="text-[8px] font-semibold text-slate-700">Project management</p>
+          <p className="text-[8px] font-semibold text-slate-700">{tx.project_management}</p>
           {['Project name', 'Client', 'Status', 'Start date'].map((field) => (
             <div key={field} className="flex items-center gap-2">
               <span className="w-14 text-[7px] text-slate-500">{field}</span>
@@ -78,14 +71,10 @@ export default function MembershipPlan() {
       <div className="relative mx-auto max-w-7xl">
         <div className="zoho-reveal flex items-center justify-between gap-8">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600">Zoho development plans</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-              Choose{' '}
-              <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">how you want</span> to work with us
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-              An ongoing development membership, fixed-price packages for common needs, or a custom quotation for larger projects.
-            </p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600">{tx.zoho_development_plans}</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">{tx.choose}{' '}
+              <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">{tx.how_you_want}</span>{" "}{tx.to_work_with_us}</h2>
+            <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">{tx.an_ongoing_development_membership_fixed}</p>
           </div>
           <PlanIllustration />
         </div>
@@ -104,14 +93,12 @@ export default function MembershipPlan() {
               />
               <div className="relative">
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-indigo-500/30 px-3 py-1 text-xs font-semibold uppercase tracking-wide ring-1 ring-indigo-300/30">
-                  <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" aria-hidden />
-                  Recommended
-                </span>
+                  <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" aria-hidden />{tx.recommended}</span>
                 <h3 id="membership-heading" className="mt-4 text-2xl font-bold tracking-tight sm:text-3xl">
                   {MEMBERSHIP.name}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-300 sm:text-base">{MEMBERSHIP.tagline}</p>
-                <ul className="mt-5 flex flex-wrap gap-2" aria-label="Supported Zoho applications">
+                <ul className="mt-5 flex flex-wrap gap-2" aria-label={tx.supported_zoho_applications}>
                   {MEMBERSHIP.apps.map((app) => (
                     <li key={app} className="flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-sm font-semibold text-slate-900">
                       <Image src={ZOHO_LOGOS[app]!} alt="" width={18} height={18} className="h-[18px] w-[18px] object-contain" />
@@ -121,12 +108,12 @@ export default function MembershipPlan() {
                 </ul>
                 <p className="mt-7 flex items-baseline gap-2">
                   <span className="text-5xl font-bold tracking-tight sm:text-6xl">{MEMBERSHIP.monthly}</span>
-                  <span className="text-lg text-slate-300">/month</span>
+                  <span className="text-lg text-slate-300">{tx.month}</span>
                 </p>
                 <dl className="mt-6 grid gap-4 border-t border-white/10 pt-6 min-[420px]:grid-cols-2">
                   {[
-                    { icon: CalendarDays, label: 'Minimum commitment', value: `${MEMBERSHIP.minimumMonths} months` },
-                    { icon: Coins, label: 'Minimum value', value: MEMBERSHIP.minimumTotal },
+                    { icon: CalendarDays, label: tx.minimum_commitment, value: `${MEMBERSHIP.minimumMonths} months` },
+                    { icon: Coins, label: tx.minimum_value, value: MEMBERSHIP.minimumTotal },
                   ].map(({ icon: Icon, label, value }) => (
                     <div key={label} className="flex items-center gap-3">
                       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/10">
@@ -139,14 +126,12 @@ export default function MembershipPlan() {
                     </div>
                   ))}
                 </dl>
-                <p className="mt-4 text-xs text-slate-400">Prices before applicable taxes. Zoho licences are billed separately by Zoho.</p>
+                <p className="mt-4 text-xs text-slate-400">{tx.prices_before_applicable_taxes_zoho}</p>
                 <SelectServiceLink
                   service="membership"
                   event="membership_cta_click"
                   className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-indigo-600/40 transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 sm:w-auto"
-                >
-                  Get Started
-                  <ArrowRight className="h-4 w-4" aria-hidden />
+                >{tx.get_started}<ArrowRight className="h-4 w-4" aria-hidden />
                 </SelectServiceLink>
               </div>
             </div>
@@ -156,9 +141,7 @@ export default function MembershipPlan() {
               <h4 className="flex items-center gap-3 text-lg font-semibold text-slate-900">
                 <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
                   <Settings className="h-5 w-5" aria-hidden />
-                </span>
-                Development requests included
-              </h4>
+                </span>{tx.development_requests_included}</h4>
               <ul className="mt-5 grid gap-x-6 gap-y-4 sm:grid-cols-2">
                 {MEMBERSHIP.requestTypes.map(({ title, detail }) => (
                   <li key={title} className="flex items-start gap-3">
@@ -176,9 +159,7 @@ export default function MembershipPlan() {
               <h4 className="mt-9 flex items-center gap-3 text-lg font-semibold text-slate-900">
                 <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
                   <Zap className="h-5 w-5" aria-hidden />
-                </span>
-                How requests work
-              </h4>
+                </span>{tx.how_requests_work}</h4>
               <ol className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
                 {MEMBERSHIP.process.map((step, i) => (
                   <li key={step.title} className="relative rounded-xl bg-slate-50/80 px-4 pb-4 pt-6 text-center ring-1 ring-slate-200/70">
@@ -203,7 +184,7 @@ export default function MembershipPlan() {
                 <X className="h-5 w-5" strokeWidth={2.5} aria-hidden />
               </span>
               <div>
-                <h4 className="font-semibold text-slate-900">Not included (quoted separately)</h4>
+                <h4 className="font-semibold text-slate-900">{tx.not_included_quoted_separately}</h4>
                 <ul className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2">
                   {MEMBERSHIP.exclusions.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-slate-700">
@@ -215,8 +196,8 @@ export default function MembershipPlan() {
               </div>
             </div>
             {[
-              { icon: BarChart3, title: 'Development capacity', body: MEMBERSHIP.capacity, tone: 'bg-blue-50/70 ring-blue-100', iconTone: 'bg-blue-100 text-blue-600' },
-              { icon: Clock3, title: 'Response and delivery times', body: MEMBERSHIP.timelines, tone: 'bg-emerald-50/70 ring-emerald-100', iconTone: 'bg-emerald-100 text-emerald-600' },
+              { icon: BarChart3, title: tx.development_capacity, body: MEMBERSHIP.capacity, tone: 'bg-blue-50/70 ring-blue-100', iconTone: 'bg-blue-100 text-blue-600' },
+              { icon: Clock3, title: tx.response_and_delivery_times, body: MEMBERSHIP.timelines, tone: 'bg-emerald-50/70 ring-emerald-100', iconTone: 'bg-emerald-100 text-emerald-600' },
             ].map(({ icon: Icon, title, body, tone, iconTone }) => (
               <div key={title} className={`flex gap-4 rounded-2xl p-6 ring-1 ${tone}`}>
                 <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${iconTone}`}>

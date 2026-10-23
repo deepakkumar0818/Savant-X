@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/wordpress/page.json';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
@@ -8,9 +9,9 @@ import { Newspaper } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'WordPress Development',
+  title: tx.wordpress_development,
   description:
-    'Custom WordPress websites and e-commerce sites that combine strong design with dependable functionality.',
+    tx.custom_wordpress_websites_and_e,
   path: '/expertise/wordpress',
 });
 
@@ -19,46 +20,46 @@ export default function WordPressPage() {
   const wordpressServices = [
     {
       id: 'custom-themes',
-      title: 'Custom WordPress Themes',
+      title: tx.custom_wordpress_themes,
       icon: '🎨',
-      description: 'Bespoke WordPress themes designed and developed to match your brand and business requirements.',
-      features: ['Responsive Design', 'Custom Layouts', 'SEO Optimized', 'Performance Optimized', 'Cross-Browser Compatible', 'Accessibility Compliant'],
-      pricing: 'Starting at $3,500',
+      description: tx.bespoke_wordpress_themes_designed_and,
+      features: [tx.responsive_design, tx.custom_layouts, tx.seo_optimized, tx.performance_optimized, tx.cross_browser_compatible, tx.accessibility_compliant],
+      pricing: tx.starting_at_3_500,
       timeline: '3-6 weeks',
-      complexity: 'Advanced',
+      complexity: tx.advanced,
       features_count: '25+'
     },
     {
       id: 'plugin-development',
-      title: 'WordPress Plugin Development',
+      title: tx.wordpress_plugin_development,
       icon: '🔌',
-      description: 'Custom WordPress plugins to extend functionality and add unique features to your website.',
-      features: ['Custom Functionality', 'Database Integration', 'Admin Interface', 'Security Features', 'API Integration', 'Documentation'],
-      pricing: 'Starting at $2,500',
+      description: tx.custom_wordpress_plugins_to_extend,
+      features: [tx.custom_functionality, tx.database_integration, tx.admin_interface, tx.security_features, tx.api_integration, tx.documentation],
+      pricing: tx.starting_at_2_500,
       timeline: '2-5 weeks',
-      complexity: 'Advanced',
+      complexity: tx.advanced,
       features_count: '20+'
     },
     {
       id: 'ecommerce-woocommerce',
-      title: 'WooCommerce Development',
+      title: tx.woocommerce_development,
       icon: '🛒',
-      description: 'Complete e-commerce solutions using WooCommerce with custom features and integrations.',
-      features: ['Product Management', 'Payment Gateway', 'Shipping Integration', 'Inventory Management', 'Order Processing', 'Analytics'],
-      pricing: 'Starting at $5,000',
+      description: tx.complete_e_commerce_solutions_using,
+      features: [tx.product_management, tx.payment_gateway, tx.shipping_integration, tx.inventory_management, tx.order_processing, tx.analytics],
+      pricing: tx.starting_at_5_000,
       timeline: '4-8 weeks',
-      complexity: 'Enterprise',
+      complexity: tx.enterprise,
       features_count: '40+'
     },
     {
       id: 'multisite-networks',
-      title: 'WordPress Multisite',
+      title: tx.wordpress_multisite,
       icon: '🌐',
-      description: 'WordPress Multisite networks for managing multiple websites from a single installation.',
-      features: ['Multi-Site Management', 'Centralized Updates', 'User Management', 'Custom Domains', 'Shared Resources', 'Network Administration'],
-      pricing: 'Starting at $6,000',
+      description: tx.wordpress_multisite_networks_for_managin,
+      features: [tx.multi_site_management, tx.centralized_updates, tx.user_management, tx.custom_domains, tx.shared_resources, tx.network_administration],
+      pricing: tx.starting_at_6_000,
       timeline: '5-10 weeks',
-      complexity: 'Enterprise',
+      complexity: tx.enterprise,
       features_count: '30+'
     }
   ];
@@ -67,37 +68,37 @@ export default function WordPressPage() {
     {
       category: 'Core Features',
       features: [
-        { name: 'Content Management', icon: '📝', description: 'Powerful content management system with Gutenberg editor' },
-        { name: 'Media Library', icon: '🖼️', description: 'Built-in media library for images, videos, and documents' },
-        { name: 'User Management', icon: '👥', description: 'Flexible user roles and permissions system' },
-        { name: 'SEO Tools', icon: '🔍', description: 'Built-in SEO features and meta tag management' }
+        { name: tx.content_management, icon: '📝', description: tx.powerful_content_management_system_with },
+        { name: tx.media_library, icon: '🖼️', description: tx.built_in_media_library_for },
+        { name: tx.user_management_2, icon: '👥', description: tx.flexible_user_roles_and_permissions },
+        { name: tx.seo_tools, icon: '🔍', description: tx.built_in_seo_features_and }
       ]
     },
     {
       category: 'Development Features',
       features: [
-        { name: 'Custom Post Types', icon: '📋', description: 'Create custom content types for different data structures' },
-        { name: 'Custom Fields', icon: '🔧', description: 'Advanced custom fields for additional data storage' },
-        { name: 'Hooks & Filters', icon: '🎣', description: 'Extensive hook system for customization' },
-        { name: 'REST API', icon: '🌐', description: 'WordPress REST API for headless implementations' }
+        { name: tx.custom_post_types, icon: '📋', description: tx.create_custom_content_types_for },
+        { name: tx.custom_fields, icon: '🔧', description: tx.advanced_custom_fields_for_additional },
+        { name: tx.hooks_filters, icon: '🎣', description: tx.extensive_hook_system_for_customization },
+        { name: tx.rest_api, icon: '🌐', description: tx.wordpress_rest_api_for_headless }
       ]
     },
     {
       category: 'Performance & Security',
       features: [
-        { name: 'Caching System', icon: '⚡', description: 'Built-in caching and optimization features' },
-        { name: 'Security Features', icon: '🔒', description: 'Regular security updates and protection features' },
-        { name: 'Database Optimization', icon: '🗄️', description: 'Optimized database queries and structure' },
-        { name: 'CDN Integration', icon: '🌍', description: 'Content delivery network integration support' }
+        { name: tx.caching_system, icon: '⚡', description: tx.built_in_caching_and_optimization },
+        { name: tx.security_features_2, icon: '🔒', description: tx.regular_security_updates_and_protection },
+        { name: tx.database_optimization, icon: '🗄️', description: tx.optimized_database_queries_and_structure },
+        { name: tx.cdn_integration, icon: '🌍', description: tx.content_delivery_network_integration_sup }
       ]
     },
     {
       category: 'Ecosystem & Plugins',
       features: [
-        { name: 'Plugin Directory', icon: '📦', description: 'Extensive plugin ecosystem with 60,000+ plugins' },
-        { name: 'Theme Directory', icon: '🎨', description: 'Thousands of free and premium themes available' },
-        { name: 'WooCommerce', icon: '🛒', description: 'Most popular e-commerce plugin for WordPress' },
-        { name: 'Third-party Integrations', icon: '🔗', description: 'Integration with popular services and APIs' }
+        { name: tx.plugin_directory, icon: '📦', description: tx.extensive_plugin_ecosystem_with_60 },
+        { name: tx.theme_directory, icon: '🎨', description: tx.thousands_of_free_and_premium },
+        { name: tx.woocommerce, icon: '🛒', description: tx.most_popular_e_commerce_plugin },
+        { name: tx.third_party_integrations, icon: '🔗', description: tx.integration_with_popular_services_and }
       ]
     }
   ];
@@ -105,43 +106,43 @@ export default function WordPressPage() {
   const developmentProcess = [
     {
       step: '01',
-      title: 'Planning & Design',
-      description: 'Understanding requirements and creating wireframes and design mockups.',
+      title: tx.planning_design,
+      description: tx.understanding_requirements_and_creating,
       duration: '1-2 weeks',
       icon: '📋'
     },
     {
       step: '02',
-      title: 'Theme Development',
-      description: 'Building custom WordPress theme with responsive design and functionality.',
+      title: tx.theme_development,
+      description: tx.building_custom_wordpress_theme_with,
       duration: '2-4 weeks',
       icon: '🎨'
     },
     {
       step: '03',
-      title: 'Plugin Development',
-      description: 'Creating custom plugins and extending WordPress functionality.',
+      title: tx.plugin_development,
+      description: tx.creating_custom_plugins_and_extending,
       duration: '1-3 weeks',
       icon: '🔌'
     },
     {
       step: '04',
-      title: 'Content Migration',
-      description: 'Migrating existing content and setting up the website structure.',
+      title: tx.content_migration,
+      description: tx.migrating_existing_content_and_setting,
       duration: '3-7 days',
       icon: '📊'
     },
     {
       step: '05',
-      title: 'Testing & Optimization',
-      description: 'Comprehensive testing, performance optimization, and security review.',
+      title: tx.testing_optimization,
+      description: tx.comprehensive_testing_performance_optimi,
       duration: '3-7 days',
       icon: '🧪'
     },
     {
       step: '06',
-      title: 'Launch & Training',
-      description: 'Website launch, training, and ongoing support setup.',
+      title: tx.launch_training,
+      description: tx.website_launch_training_and_ongoing,
       duration: '2-5 days',
       icon: '🚀'
     }
@@ -149,152 +150,152 @@ export default function WordPressPage() {
 
   const deliverables = [
     {
-      title: 'WordPress Website',
-      description: 'Fully functional WordPress website with custom theme and plugins.',
+      title: tx.wordpress_website,
+      description: tx.fully_functional_wordpress_website_with,
       icon: '🌐'
     },
     {
-      title: 'Custom Theme',
-      description: 'Bespoke WordPress theme tailored to your brand and requirements.',
+      title: tx.custom_theme,
+      description: tx.bespoke_wordpress_theme_tailored_to,
       icon: '🎨'
     },
     {
-      title: 'Custom Plugins',
-      description: 'Custom WordPress plugins with specific functionality and features.',
+      title: tx.custom_plugins,
+      description: tx.custom_wordpress_plugins_with_specific,
       icon: '🔌'
     },
     {
-      title: 'Content Migration',
-      description: 'Safe migration of existing content to the new WordPress site.',
+      title: tx.content_migration_2,
+      description: tx.safe_migration_of_existing_content,
       icon: '📊'
     },
     {
-      title: 'Training & Documentation',
-      description: 'Complete training for your team and comprehensive documentation.',
+      title: tx.training_documentation,
+      description: tx.complete_training_for_your_team,
       icon: '📚'
     },
     {
-      title: 'Maintenance Plan',
-      description: 'Ongoing maintenance, updates, and support for your WordPress site.',
+      title: tx.maintenance_plan,
+      description: tx.ongoing_maintenance_updates_and_support,
       icon: '🔧'
     }
   ];
 
   const benefits = [
     {
-      title: 'User-Friendly',
-      description: 'Intuitive content management system that anyone can use without technical knowledge.',
+      title: tx.user_friendly,
+      description: tx.intuitive_content_management_system_that,
       icon: '😊'
     },
     {
-      title: 'SEO Optimized',
-      description: 'Built-in SEO features and compatibility with popular SEO plugins.',
+      title: tx.seo_optimized_2,
+      description: tx.built_in_seo_features_and_2,
       icon: '🔍'
     },
     {
-      title: 'Flexible & Scalable',
-      description: 'Highly flexible platform that can grow with your business needs.',
+      title: tx.flexible_scalable,
+      description: tx.highly_flexible_platform_that_can,
       icon: '📈'
     },
     {
-      title: 'Cost-Effective',
-      description: 'Open-source platform with no licensing fees and extensive free resources.',
+      title: tx.cost_effective,
+      description: tx.open_source_platform_with_no,
       icon: '💰'
     },
     {
-      title: 'Large Community',
-      description: 'Huge community of developers, designers, and users providing support.',
+      title: tx.large_community,
+      description: tx.huge_community_of_developers_designers,
       icon: '👥'
     },
     {
-      title: 'Regular Updates',
-      description: 'Regular security updates and new features from WordPress core team.',
+      title: tx.regular_updates,
+      description: tx.regular_security_updates_and_new,
       icon: '🔄'
     }
   ];
 
   const useCases = [
     {
-      title: 'Business Websites',
-      description: 'Professional websites for businesses with content management capabilities.',
+      title: tx.business_websites,
+      description: tx.professional_websites_for_businesses_wit,
       icon: '🏢'
     },
     {
-      title: 'Blogs & News Sites',
-      description: 'Content-rich websites for blogging, news, and editorial content.',
+      title: tx.blogs_news_sites,
+      description: tx.content_rich_websites_for_blogging,
       icon: '📰'
     },
     {
-      title: 'E-commerce Stores',
-      description: 'Online stores with WooCommerce for selling products and services.',
+      title: tx.e_commerce_stores,
+      description: tx.online_stores_with_woocommerce_for,
       icon: '🛒'
     },
     {
-      title: 'Portfolio Websites',
-      description: 'Showcase portfolios for creative professionals and agencies.',
+      title: tx.portfolio_websites,
+      description: tx.showcase_portfolios_for_creative_profess,
       icon: '🎨'
     },
     {
-      title: 'Corporate Websites',
-      description: 'Large corporate websites with multiple sections and departments.',
+      title: tx.corporate_websites,
+      description: tx.large_corporate_websites_with_multiple,
       icon: '🏛️'
     },
     {
-      title: 'Educational Sites',
-      description: 'Educational institutions and online learning platforms.',
+      title: tx.educational_sites,
+      description: tx.educational_institutions_and_online_lear,
       icon: '🎓'
     }
   ];
 
   const wordpressTypes = [
     {
-      title: 'WordPress.com',
-      description: 'Hosted WordPress solution with managed hosting and maintenance.',
+      title: tx.wordpress_com,
+      description: tx.hosted_wordpress_solution_with_managed,
       icon: '☁️'
     },
     {
-      title: 'WordPress.org',
-      description: 'Self-hosted WordPress with full control and customization options.',
+      title: tx.wordpress_org,
+      description: tx.self_hosted_wordpress_with_full,
       icon: '🛠️'
     },
     {
-      title: 'Headless WordPress',
-      description: 'WordPress as a headless CMS with custom frontend frameworks.',
+      title: tx.headless_wordpress,
+      description: tx.wordpress_as_a_headless_cms,
       icon: '🔗'
     },
     {
-      title: 'WordPress Multisite',
-      description: 'Network of WordPress sites managed from a single installation.',
+      title: tx.wordpress_multisite_2,
+      description: tx.network_of_wordpress_sites_managed,
       icon: '🌐'
     }
   ];
 
   const popularPlugins = [
-    { name: 'WooCommerce', icon: '🛒', description: 'E-commerce plugin', category: 'E-commerce' },
-    { name: 'Yoast SEO', icon: '🔍', description: 'SEO optimization plugin', category: 'SEO' },
-    { name: 'Elementor', icon: '🎨', description: 'Page builder plugin', category: 'Design' },
-    { name: 'Contact Form 7', icon: '📧', description: 'Contact form plugin', category: 'Forms' },
-    { name: 'WP Rocket', icon: '⚡', description: 'Caching plugin', category: 'Performance' },
-    { name: 'Wordfence', icon: '🔒', description: 'Security plugin', category: 'Security' },
-    { name: 'Akismet', icon: '🚫', description: 'Spam protection', category: 'Security' },
-    { name: 'WP Super Cache', icon: '💾', description: 'Caching plugin', category: 'Performance' }
+    { name: tx.woocommerce_2, icon: '🛒', description: tx.e_commerce_plugin, category: 'E-commerce' },
+    { name: tx.yoast_seo, icon: '🔍', description: tx.seo_optimization_plugin, category: 'SEO' },
+    { name: tx.elementor, icon: '🎨', description: tx.page_builder_plugin, category: 'Design' },
+    { name: tx.contact_form_7, icon: '📧', description: tx.contact_form_plugin, category: 'Forms' },
+    { name: tx.wp_rocket, icon: '⚡', description: tx.caching_plugin, category: 'Performance' },
+    { name: tx.wordfence, icon: '🔒', description: tx.security_plugin, category: 'Security' },
+    { name: tx.akismet, icon: '🚫', description: tx.spam_protection, category: 'Security' },
+    { name: tx.wp_super_cache, icon: '💾', description: tx.caching_plugin, category: 'Performance' }
   ];
 
   return (
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="WordPress Development"
+        eyebrow={tx.wordpress_development_2}
         eyebrowIcon={Newspaper}
-        title="WordPress"
-        highlight="Development"
-        description="We create powerful, custom WordPress websites that combine beautiful design with robust functionality. From simple blogs to complex e-commerce platforms, we deliver WordPress solutions that drive results."
+        title={tx.wordpress}
+        highlight={tx.development}
+        description={tx.we_create_powerful_custom_wordpress}
         highlights={["Custom WordPress Themes", "WordPress Plugin Development", "WooCommerce Development", "WordPress Multisite"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "43%", label: "Web Market Share" },
-          { value: "3-10", label: "Week Delivery" },
-          { value: "Open Source", label: "Free Platform" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "43%", label: tx.web_market_share },
+          { value: "3-10", label: tx.week_delivery },
+          { value: "Open Source", label: tx.free_platform },
         ]}
       />
 
@@ -303,16 +304,10 @@ export default function WordPressPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Services
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              WordPress
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Solutions</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_services}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.wordpress}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.solutions}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Comprehensive WordPress development services for all types of websites and business needs.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.comprehensive_wordpress_development_serv}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -348,19 +343,19 @@ export default function WordPressPage() {
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200 sm:grid-cols-4">
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.timeline}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.complexity}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Complexity</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.complexity}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.features_count}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Features</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.features}</div>
                     </div>
                   </div>
                 </div>
@@ -375,16 +370,10 @@ export default function WordPressPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              WordPress Features
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Powerful
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Features</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.wordpress_features}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.powerful}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.features}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              WordPress provides a comprehensive set of features for modern website development.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.wordpress_provides_a_comprehensive_set}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -417,16 +406,10 @@ export default function WordPressPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              WordPress Types
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              WordPress
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Solutions</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.wordpress_types}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.wordpress}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.solutions}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Different WordPress implementations to meet various business requirements and technical needs.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.different_wordpress_implementations_to_m}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -454,16 +437,10 @@ export default function WordPressPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Popular Plugins
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Essential
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">WordPress Plugins</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.popular_plugins}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.essential}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.wordpress_plugins}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We work with the most popular and reliable WordPress plugins to enhance functionality.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_work_with_the_most}</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
@@ -490,16 +467,10 @@ export default function WordPressPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              WordPress Development
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Process</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.wordpress_development_2}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.process}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our systematic approach ensures high-quality WordPress websites delivered on time and within budget.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_systematic_approach_ensures_high}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -533,16 +504,10 @@ export default function WordPressPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Deliverables
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              What You&apos;ll
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Receive</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.deliverables}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.what_you_ll}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.receive}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Complete WordPress development deliverables that provide everything needed for successful website launch.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.complete_wordpress_development_deliverab}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -570,16 +535,10 @@ export default function WordPressPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Why WordPress
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Benefits of
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">WordPress</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.why_wordpress}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.benefits_of}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.wordpress}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              WordPress provides significant advantages for building modern websites.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.wordpress_provides_significant_advantage}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -607,16 +566,10 @@ export default function WordPressPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Use Cases
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Perfect For
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">These Projects</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.use_cases}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.perfect_for}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.these_projects}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              WordPress is ideal for a wide range of website development scenarios.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.wordpress_is_ideal_for_a}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -642,21 +595,13 @@ export default function WordPressPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Build
-            <span className="block text-blue-100 mt-2">Your WordPress Site?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_build}<span className="block text-blue-100 mt-2">{tx.your_wordpress_site}</span>
           </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">
-            Let&apos;s create a powerful WordPress website that drives results and grows your business.
-          </p>
+          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">{tx.let_s_create_a_powerful}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Start WordPress Project
-            </Link>
-            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-              View Portfolio
-            </Link>
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_wordpress_project}</Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.view_portfolio}</Link>
           </div>
         </div>
       </section>

@@ -1,29 +1,15 @@
 'use client';
 
+import tx from '@/content/text/app/work/page.json';
+import projectCollection from '@/content/collections/projects.json';
+import { cmsIcon } from '@/lib/cms/icons';
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
   ArrowLeft,
   ArrowRight,
-  BarChart3,
-  BellRing,
-  Building2,
-  Calculator,
-  CalendarCheck,
-  CreditCard,
-  Factory,
-  FileText,
-  LayoutDashboard,
-  MapPin,
-  MessagesSquare,
-  Package,
   Phone,
-  ScanEye,
-  ShieldCheck,
-  ShoppingCart,
-  UtensilsCrossed,
-  Wallet,
   type LucideIcon,
 } from 'lucide-react';
 import Footer from '@/components/Footer';
@@ -36,270 +22,25 @@ export default function Work() {
   const [activeFilter, setActiveFilter] = useState('all');
   const [spotlightIndex, setSpotlightIndex] = useState(0);
 
-  const projects: Project[] = [
-    {
-      id: 9,
-      title: "Customized Manufacturing ERP",
-      category: "manufacturing",
-      image: "🏭",
-      description: "Custom ERP for manufacturers that brings sales, purchases, inventory, production, quality control, finance and HR & payroll into one system, with live dashboards for orders, stock and work orders.",
-      technologies: [],
-      client: "",
-      duration: "",
-      results: "",
-      featured: true,
-      highlights: [
-        { label: 'Sales & Purchase', icon: ShoppingCart, tone: 'blue' },
-        { label: 'Inventory Management', icon: Package, tone: 'orange' },
-        { label: 'Production', icon: Factory, tone: 'green' },
-        { label: 'Quality Control', icon: ShieldCheck, tone: 'rose' },
-        { label: 'Finance & HR', icon: Wallet, tone: 'violet' },
-        { label: 'Live Dashboards', icon: LayoutDashboard, tone: 'sky' },
-      ],
-      screenshot: {
-        src: "/images/work/manufacturing-erp-dashboard.webp",
-        width: 1536,
-        height: 1024,
-        alt: "Manufacturing ERP dashboard showing sales, purchases, inventory value, order status, production, quality control and recent orders",
-      },
-    },
-    {
-      id: 1,
-      title: "Sehat Setu",
-      category: "healthcare",
-      image: "🏥",
-      description: "Comprehensive healthcare management platform enabling patients to book appointments, manage medical records, and communicate with healthcare providers seamlessly.",
-      technologies: ["React", "Node.js", "PostgreSQL", "Express"],
-      client: "MediCare Solutions",
-      duration: "4 months",
-      results: "150+ active users",
-      featured: true,
-      highlights: [
-        { label: 'Appointment Booking', icon: CalendarCheck, tone: 'blue' },
-        { label: 'Medical Records', icon: FileText, tone: 'orange' },
-        { label: 'Provider Communication', icon: MessagesSquare, tone: 'green' },
-        { label: 'Patient Management', icon: ShieldCheck, tone: 'violet' },
-      ],
-      screenshot: {
-        src: "/images/work/sehat-setu-hero.webp",
-        width: 1345,
-        height: 841,
-        alt: "Sehat Setu home page with doctor search, appointment booking and online consultation",
-      },
-    },
-    {
-      id: 2,
-      title: "Food Ordering App",
-      category: "web-mobile",
-      image: "🍕",
-      description: "Complete food delivery solution with restaurant management, order tracking, payment processing, and real-time delivery updates for enhanced customer experience.",
-      technologies: ["React Native", "Express", "MongoDB", "Stripe API"],
-      client: "FoodieHub",
-      duration: "5 months",
-      results: "300+ restaurants onboarded",
-      featured: true,
-      highlights: [
-        { label: 'Restaurant Management', icon: UtensilsCrossed, tone: 'orange' },
-        { label: 'Order Tracking', icon: MapPin, tone: 'blue' },
-        { label: 'Payment Processing', icon: CreditCard, tone: 'green' },
-        { label: 'Real-time Delivery Updates', icon: BellRing, tone: 'violet' },
-      ],
-      screenshot: {
-        src: "/images/work/savantx-eats-dashboard.webp",
-        width: 1536,
-        height: 1024,
-        alt: "SavantX Eats restaurant management dashboard with orders, revenue trend, order status, popular menu items and live deliveries",
-      },
-    },
-    {
-      id: 3,
-      title: "Real Estate App",
-      category: "web-mobile",
-      image: "🏠",
-      description: "Advanced property management platform with property listings, virtual tours, mortgage calculators, and comprehensive real estate analytics for agents and buyers.",
-      technologies: ["Next.js", "Laravel", "MySQL", "Google Maps API"],
-      client: "PropertyMax",
-      duration: "6 months",
-      results: "200+ properties listed",
-      featured: true,
-      highlights: [
-        { label: 'Property Listings', icon: Building2, tone: 'blue' },
-        { label: 'Virtual Tours', icon: ScanEye, tone: 'violet' },
-        { label: 'Mortgage Calculators', icon: Calculator, tone: 'orange' },
-        { label: 'Real Estate Analytics', icon: BarChart3, tone: 'green' },
-      ],
-      screenshot: {
-        src: "/images/work/homehub-real-estate-dashboard.webp",
-        width: 1536,
-        height: 1024,
-        alt: "HomeHub real estate dashboard with property stats, featured listings, property map, sales overview, leads and bookings",
-      },
-    },
-    {
-      id: 5,
-      title: "Web Scraping Tool",
-      category: "data",
-      image: "🕷️",
-      description: "Powerful data extraction platform with intelligent scraping capabilities, data processing, and automated collection from various web sources.",
-      technologies: ["Python", "Scrapy", "Redis", "Celery"],
-      client: "DataInsights Corp",
-      duration: "2 months",
-      results: "100+ data sources integrated",
-      featured: false,
-      hideFromAll: true,
-    },
-    {
-      id: 10,
-      title: "EcoTours India",
-      category: "ui-ux",
-      image: "🌿",
-      description: "UI/UX design for EcoTours India, a travel website showcasing eco-friendly tours across India.",
-      technologies: [],
-      client: "",
-      duration: "",
-      results: "",
-      featured: false,
-    },
-    {
-      id: 4,
-      title: "Student Portal",
-      category: "education",
-      image: "🎓",
-      description: "Comprehensive educational platform providing students with course management, assignment tracking, grade monitoring, and collaborative learning tools.",
-      technologies: ["Vue.js", "Django", "PostgreSQL", "Redis"],
-      client: "EduTech Institute",
-      duration: "3 months",
-      results: "500+ students enrolled",
-      featured: false,
-      screenshot: {
-        src: "/images/work/savantx-student-portal.webp",
-        width: 1536,
-        height: 1024,
-        alt: "SavantX Student Portal dashboard with enrolled courses, assignments, schedule, deadlines, grades and announcements",
-      },
-    },
-    {
-      id: 6,
-      title: "School Management System",
-      category: "education",
-      image: "🏫",
-      description: "Complete educational institution management solution covering student enrollment, staff management, academic planning, and administrative operations.",
-      technologies: ["Angular", "Laravel", "MySQL", "Chart.js"],
-      client: "Bright Future School",
-      duration: "7 months",
-      results: "75+ schools implemented",
-      featured: false
-    },
-    {
-      id: 7,
-      title: "Student Training Management System",
-      category: "education",
-      image: "📚",
-      description: "Specialized platform for managing training programs, skill development, certification tracking, and progress monitoring for educational institutions.",
-      technologies: ["React", "Node.js", "MongoDB", "JWT"],
-      client: "SkillUp Academy",
-      duration: "4 months",
-      results: "120+ training programs",
-      featured: false
-    },
-    {
-      id: 8,
-      title: "Fleet Management System",
-      category: "logistics",
-      image: "🚛",
-      description: "Comprehensive vehicle fleet management solution with GPS tracking, maintenance scheduling, driver management, and route optimization.",
-      technologies: ["Vue.js", "Express", "PostgreSQL", "GPS API"],
-      client: "LogiTrack Solutions",
-      duration: "5 months",
-      results: "80+ vehicles tracked",
-      featured: false,
-      screenshot: {
-        src: "/images/work/fleetmint-fleet-management.webp",
-        width: 1440,
-        height: 820,
-        alt: "Fleetmint fleet management website hero with vehicle routes and tracking stats",
-      },
-    },
-    {
-      id: 11,
-      title: "Logic Mechanics",
-      category: "ui-ux",
-      image: "⚙️",
-      description: "UI/UX design for the Logic Mechanics website, from layout and visual style to responsive screens.",
-      technologies: [],
-      client: "",
-      duration: "",
-      results: "",
-      featured: false,
-      hideFromAll: true,
-    },
-    {
-      id: 12,
-      title: "Pet E-commerce",
-      category: "ui-ux",
-      image: "🐾",
-      description: "UI/UX design for a pet supplies online store, covering product browsing, cart and checkout.",
-      technologies: [],
-      client: "",
-      duration: "",
-      results: "",
-      featured: false,
-      hideFromAll: true,
-    },
-    {
-      id: 13,
-      title: "Real Estate Website",
-      category: "ui-ux",
-      image: "🏡",
-      description: "UI/UX design for a real estate website that makes property listings easy to browse and compare.",
-      technologies: [],
-      client: "",
-      duration: "",
-      results: "",
-      featured: false,
-      hideFromAll: true,
-    },
-    {
-      id: 14,
-      title: "Viz Vigyaan",
-      category: "ui-ux",
-      image: "🔬",
-      description: "UI/UX design for Viz Vigyaan, from layout and visual style to responsive screens.",
-      technologies: [],
-      client: "",
-      duration: "",
-      results: "",
-      featured: false,
-      hideFromAll: true,
-    },
-    {
-      id: 15,
-      title: "Kouton Table Booking App",
-      category: "ui-ux",
-      image: "🍽️",
-      description: "UI/UX design for Kouton, a table booking app for finding restaurants and reserving a table.",
-      technologies: [],
-      client: "",
-      duration: "",
-      results: "",
-      featured: false,
-      hideFromAll: true,
-    }
-  ];
+  // Edited in the admin (Projects); stored in src/content/collections/projects.json.
+  const projects: Project[] = projectCollection.items.map((p) => ({
+    ...p,
+    highlights: p.highlights?.map((h) => ({ ...h, icon: cmsIcon(h.icon), tone: (h.tone in TONES ? h.tone : 'blue') as Tone })),
+  }));
 
   const countIn = (id: string) => projects.filter(p => p.category === id).length;
   const allCategories = [
-    { id: 'all', name: 'All', count: projects.filter(p => !p.hideFromAll).length },
-    { id: 'zoho', name: 'Zoho', count: countIn('zoho') },
-    { id: 'web-mobile', name: 'Web & Mobile', count: countIn('web-mobile') },
-    { id: 'ui-ux', name: 'UI/UX', count: countIn('ui-ux') },
-    { id: 'hardware', name: 'Hardware', count: countIn('hardware') },
-    { id: 'manufacturing', name: 'Manufacturing', count: countIn('manufacturing') },
-    { id: 'healthcare', name: 'Healthcare', count: countIn('healthcare') },
-    { id: 'education', name: 'Education', count: countIn('education') },
-    { id: 'data', name: 'Data Solutions', count: countIn('data') },
-    { id: 'logistics', name: 'Logistics', count: countIn('logistics') },
-    { id: 'finance', name: 'Finance', count: countIn('finance') },
+    { id: 'all', name: tx.all, count: projects.filter(p => !p.hideFromAll).length },
+    { id: 'zoho', name: tx.zoho, count: countIn('zoho') },
+    { id: 'web-mobile', name: tx.web_mobile, count: countIn('web-mobile') },
+    { id: 'ui-ux', name: tx.ui_ux, count: countIn('ui-ux') },
+    { id: 'hardware', name: tx.hardware, count: countIn('hardware') },
+    { id: 'manufacturing', name: tx.manufacturing, count: countIn('manufacturing') },
+    { id: 'healthcare', name: tx.healthcare, count: countIn('healthcare') },
+    { id: 'education', name: tx.education, count: countIn('education') },
+    { id: 'data', name: tx.data_solutions, count: countIn('data') },
+    { id: 'logistics', name: tx.logistics, count: countIn('logistics') },
+    { id: 'finance', name: tx.finance, count: countIn('finance') },
   ];
   // Service filters stay visible even before projects are added; industry filters hide when empty.
   const categories = allCategories.filter(c => c.count > 0 || c.id in SERVICE_PAGES);
@@ -323,16 +64,10 @@ export default function Work() {
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-2xl text-center">
             <p className="flex items-center justify-center gap-4 text-xs font-semibold uppercase tracking-[0.25em] text-blue-600">
-              <span aria-hidden className="h-px w-12 bg-blue-200 sm:w-16" />
-              Featured projects
-              <span aria-hidden className="h-px w-12 bg-blue-200 sm:w-16" />
+              <span aria-hidden className="h-px w-12 bg-blue-200 sm:w-16" />{tx.featured_projects}<span aria-hidden className="h-px w-12 bg-blue-200 sm:w-16" />
             </p>
-            <h2 id="featured-heading" className="mt-4 text-3xl font-bold tracking-[-0.02em] text-slate-900 sm:text-4xl lg:text-5xl">
-              Real Solutions. Real Impact.
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-500 sm:text-lg">
-              Explore some of our recent projects that help businesses streamline operations, improve productivity and drive growth.
-            </p>
+            <h2 id="featured-heading" className="mt-4 text-3xl font-bold tracking-[-0.02em] text-slate-900 sm:text-4xl lg:text-5xl">{tx.real_solutions_real_impact}</h2>
+            <p className="mt-4 text-base leading-relaxed text-slate-500 sm:text-lg">{tx.explore_some_of_our_recent}</p>
           </div>
 
           {spotlight && (
@@ -353,7 +88,7 @@ export default function Work() {
                         className={`flex flex-col [grid-area:1/1] ${i === spotlightIndex ? 'product-fade' : 'invisible'}`}
                       >
                         <p className="text-sm font-medium text-slate-500">
-                          <span className="text-blue-600">Featured</span> · {categoryName(project.category)}
+                          <span className="text-blue-600">{tx.featured}</span> · {categoryName(project.category)}
                         </p>
                         <h3 className="mt-2 text-2xl font-bold leading-tight tracking-tight text-slate-900 sm:text-[1.75rem]">{project.title}</h3>
                         <p className="mt-3 text-[15px] leading-relaxed text-slate-600">{project.description}</p>
@@ -386,7 +121,7 @@ export default function Work() {
                       <button
                         type="button"
                         onClick={() => stepSpotlight(-1)}
-                        aria-label="Previous featured project"
+                        aria-label={tx.previous_featured_project}
                         className="flex h-11 w-11 items-center justify-center rounded-full bg-slate-100 text-slate-700 transition hover:bg-slate-200"
                       >
                         <ArrowLeft className="h-4 w-4" aria-hidden />
@@ -394,7 +129,7 @@ export default function Work() {
                       <button
                         type="button"
                         onClick={() => stepSpotlight(1)}
-                        aria-label="Next featured project"
+                        aria-label={tx.next_featured_project}
                         className="flex h-11 w-11 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg shadow-blue-600/30 transition hover:bg-blue-700"
                       >
                         <ArrowRight className="h-4 w-4" aria-hidden />
@@ -427,13 +162,13 @@ export default function Work() {
       <section id="showcase" className="scroll-mt-24 px-6 py-20 sm:px-8 lg:px-12 lg:py-24">
         <div className="mx-auto max-w-6xl">
           <SectionHeader
-            title="Every project, every industry"
-            description="Solutions we have delivered across sectors and technology stacks. Filter by industry to find work like yours."
-            cta={{ label: 'Start a project', href: '/contact' }}
+            title={tx.every_project_every_industry}
+            description={tx.solutions_we_have_delivered_across}
+            cta={{ label: tx.start_a_project, href: '/contact' }}
           />
 
           <div className="-mx-6 mt-10 overflow-x-auto px-6 pb-2 sm:mx-0 sm:px-0">
-            <div role="group" aria-label="Filter projects by industry" className="flex w-max gap-2 sm:w-auto sm:flex-wrap">
+            <div role="group" aria-label={tx.filter_projects_by_industry} className="flex w-max gap-2 sm:w-auto sm:flex-wrap">
               {categories.map((category) => {
                 const active = activeFilter === category.id;
                 return (
@@ -453,8 +188,7 @@ export default function Work() {
               })}
             </div>
           </div>
-          <p aria-live="polite" className="sr-only">
-            Showing {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}
+          <p aria-live="polite" className="sr-only">{tx.showing}{" "}{filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}
           </p>
 
           <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 pointer-fine:[&:has(>article:hover)>article:not(:hover)]:scale-[0.98] pointer-fine:[&:has(>article:hover)>article:not(:hover)]:opacity-60 pointer-fine:[&:has(>article:hover)>article:not(:hover)]:blur-[3px] pointer-fine:[&:has(>article:hover)>article:not(:hover)]:saturate-50">
@@ -471,24 +205,17 @@ export default function Work() {
 
           {filteredProjects.length === 0 && activeFilter in SERVICE_PAGES && (
             <div className="mt-8 rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-6 py-14 text-center">
-              <p className="text-lg font-semibold text-slate-900">{categoryName(activeFilter)} case studies are coming soon</p>
-              <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-slate-600">
-                We are preparing write-ups of our {categoryName(activeFilter)} work. In the meantime, see what we offer or
-                talk to us about your project.
-              </p>
+              <p className="text-lg font-semibold text-slate-900">{categoryName(activeFilter)}{" "}{tx.case_studies_are_coming_soon}</p>
+              <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-slate-600">{tx.we_are_preparing_write_ups}{" "}{categoryName(activeFilter)}{" "}{tx.work_in_the_meantime_see}</p>
               <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
                 <Link
                   href={SERVICE_PAGES[activeFilter]}
                   className="inline-flex items-center justify-center rounded-lg bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-slate-200 transition hover:ring-slate-300"
-                >
-                  Explore {categoryName(activeFilter)} services
-                </Link>
+                >{tx.explore}{" "}{categoryName(activeFilter)}{" "}{tx.services}</Link>
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
-                >
-                  Start a project
-                </Link>
+                >{tx.start_a_project}</Link>
               </div>
             </div>
           )}
@@ -506,19 +233,13 @@ export default function Work() {
             <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white p-2.5 shadow-[0_10px_40px_-10px_rgba(59,130,246,0.7)]">
               <Image src={COMPANY.logoPath} alt="" width={48} height={48} className="h-full w-full object-contain" />
             </span>
-            <h2 className="mx-auto mt-8 max-w-xl text-3xl font-semibold tracking-[-0.02em] text-white sm:text-4xl">
-              Have a project in mind? Let&apos;s build it together.
-            </h2>
-            <p className="mx-auto mt-4 max-w-md text-slate-300">
-              Tell us what you are building and we will come back with a plan, timeline and estimate.
-            </p>
+            <h2 className="mx-auto mt-8 max-w-xl text-3xl font-semibold tracking-[-0.02em] text-white sm:text-4xl">{tx.have_a_project_in_mind}</h2>
+            <p className="mx-auto mt-4 max-w-md text-slate-300">{tx.tell_us_what_you_are}</p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
                 href="/contact"
                 className="inline-flex items-center rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-slate-100"
-              >
-                Start a project
-              </Link>
+              >{tx.start_a_project}</Link>
               <a
                 href={COMPANY.phone.href}
                 className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-white ring-1 ring-white/20 transition hover:bg-white/10"

@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/components/contact/ContactOffices.json';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { ArrowRight, Building2, ExternalLink, Navigation } from 'lucide-react';
@@ -21,17 +22,12 @@ export default function ContactOffices() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-indigo-50/70 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-indigo-700">
-              <Navigation className="h-3.5 w-3.5" aria-hidden />
-              Our offices
-            </p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-              Find Us in <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">India</span>
+              <Navigation className="h-3.5 w-3.5" aria-hidden />{tx.our_offices}</p>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">{tx.find_us_in}{" "}<span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">{tx.india}</span>
             </h2>
-            <p className="mt-3 text-slate-600">
-              Visit us at our offices in {OFFICES.map((o) => o.city).join(' and ')}. Select a location to see it on the map.
-            </p>
+            <p className="mt-3 text-slate-600">{tx.visit_us_at_our_offices}{" "}{OFFICES.map((o) => o.city).join(' and ')}{tx.select_a_location_to_see}</p>
           </div>
-          <div role="group" aria-label="Choose an office" className="flex gap-2">
+          <div role="group" aria-label={tx.choose_an_office} className="flex gap-2">
             {OFFICES.map((office) => (
               <button
                 key={office.id}
@@ -44,8 +40,7 @@ export default function ContactOffices() {
                     : 'bg-white text-slate-700 ring-1 ring-slate-200 hover:text-indigo-700 hover:ring-indigo-200'
                 }`}
               >
-                {office.city} Office
-              </button>
+                {office.city}{" "}{tx.office}</button>
             ))}
           </div>
         </div>
@@ -73,7 +68,7 @@ export default function ContactOffices() {
                         <span
                           className={`rounded-md px-2 py-0.5 text-[11px] font-bold text-white ${office.type === 'headquarters' ? 'bg-rose-500' : 'bg-emerald-500'}`}
                         >
-                          {office.type === 'headquarters' ? 'HQ' : 'Branch'}
+                          {office.type === 'headquarters' ? 'HQ' : tx.branch}
                         </span>
                       </span>
                       <span className="mt-1 block text-sm text-slate-500">{formatOfficeAddress(office)}</span>
@@ -96,9 +91,7 @@ export default function ContactOffices() {
               target="_blank"
               rel="noopener noreferrer"
               className="absolute bottom-4 right-4 z-[500] inline-flex min-h-11 items-center gap-2 rounded-xl bg-white px-4 text-sm font-semibold text-indigo-700 shadow-lg ring-1 ring-slate-200 transition hover:bg-indigo-50"
-            >
-              View {selected.city} on Google Maps
-              <ExternalLink className="h-4 w-4" aria-hidden />
+            >{tx.view}{" "}{selected.city}{" "}{tx.on_google_maps}<ExternalLink className="h-4 w-4" aria-hidden />
             </a>
           </div>
         </div>

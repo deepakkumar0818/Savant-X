@@ -1,0 +1,79 @@
+{
+  "budgets": [
+    "Under ₹10,000",
+    "₹10,000 – ₹25,000",
+    "₹25,000 – ₹50,000",
+    "₹50,000 – ₹1,00,000",
+    "Above ₹1,00,000",
+    "Not sure yet"
+  ],
+  "consultation": {
+    "services": [
+      "Website Development",
+      "Mobile App Development",
+      "Zoho Development",
+      "ERP Solutions",
+      "AI / ML & Analytics",
+      "Automation & Integrations",
+      "Shopify Store",
+      "IoT & Embedded Hardware",
+      "Not sure yet"
+    ]
+  },
+  "contact": {
+    "services": [
+      "Website Development",
+      "Mobile App Development",
+      "Zoho Development",
+      "ERP Solutions",
+      "AI / ML & Analytics",
+      "Automation & Integrations",
+      "Shopify Store",
+      "Hardware & Electronics",
+      "Not sure yet"
+    ],
+    "hardwareService": "Hardware & Electronics",
+    "hardwareServices": [
+      "IoT Solutions",
+      "Embedded Systems Development",
+      "PCB Design & Circuit Engineering",
+      "Firmware Development",
+      "3D Printing and Designing",
+      "Hardware Prototyping & Testing",
+      "Industrial Automation",
+      "Electronics Design & Integration",
+      "Complete Product Development"
+    ]
+  },
+  "zoho": {
+    "serviceLabels": {
+      "consultation": "Free consultation (not sure yet)",
+      "membership": "Zoho Development Membership",
+      "crm-quickstart": "Zoho CRM QuickStart",
+      "creator-mini-app": "Zoho Creator Mini-App",
+      "books-setup": "Zoho Books Setup",
+      "workflow-automation": "Workflow Automation",
+      "zoho-integration": "Zoho Integration",
+      "zoho-migration": "Zoho Migration (up to 10 users)",
+      "people-setup": "Zoho People Setup",
+      "recruit-setup": "Zoho Recruit Setup",
+      "automation-integrations": "Business Automation & Integrations",
+      "enterprise": "Enterprise Zoho Solution",
+      "erp-starter": "ERP: Manufacturing ERP Starter",
+      "erp-custom": "ERP: Custom Manufacturing ERP",
+      "erp-discovery": "ERP: Enterprise ERP Discovery Sprint",
+      "erp-integration": "ERP: Integration & Automation Program",
+      "erp-multi-department": "ERP: Multi-Department ERP Implementation",
+      "erp-improvement": "ERP: Continuous Improvement Plan"
+    },
+    "budgets": [
+      "Under ₹10,000",
+      "₹10,000 – ₹25,000",
+      "₹25,000 – ₹50,000",
+      "₹50,000 – ₹1,00,000",
+      "Above ₹1,00,000",
+      "Monthly membership (₹14,999/month)",
+      "Not sure yet"
+    ]
+  }
+}

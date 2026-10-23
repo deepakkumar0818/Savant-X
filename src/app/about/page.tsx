@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/app/about/page.json';
 import Link from 'next/link';
 import { useState } from 'react';
 import Footer from '@/components/Footer';
@@ -14,38 +15,38 @@ export default function About() {
   const [showAllTechnologies, setShowAllTechnologies] = useState(false);
 
   const softwareTechnologies = [
-    { name: "React", icon: "/images/icons/react1.png" },
-    { name: "Next.js", icon: "/images/icons/nextjs.png" },
-    { name: "TypeScript", icon: "/images/icons/ts1.jpeg" },
-    { name: "Node.js", icon: "/images/icons/nodejs1.png" },
-    { name: "Python", icon: "/images/icons/python1.png" },
+    { name: tx.react, icon: "/images/icons/react1.png" },
+    { name: tx.next_js, icon: "/images/icons/nextjs.png" },
+    { name: tx.typescript, icon: "/images/icons/ts1.jpeg" },
+    { name: tx.node_js, icon: "/images/icons/nodejs1.png" },
+    { name: tx.python, icon: "/images/icons/python1.png" },
     { name: "AWS", icon: "/images/icons/aws1.png" },
-    { name: "Docker", icon: "/images/icons/docker.png" },
-    { name: "MongoDB", icon: "/images/icons/mongodb.png" },
-    { name: "PostgreSQL", icon: "/images/icons/postgresql.png" },
-    { name: "Redis", icon: "/images/icons/redis.png" },
-    { name: "GraphQL", icon: "/images/icons/Graphql1.png" },
-    { name: "Kubernetes", icon: "/images/icons/kubernatives.png" },
-    { name: "FreeRTOS", icon: "/images/icons/freeRtos.jpeg" },
-    { name: "Git", icon: "/images/icons/github.png" },
-    { name: "TensorFlow", icon: "/images/icons/tensorFlow.jpeg" },
-    { name: "PyTorch", icon: "/images/icons/pytorch.png" },
-    { name: "GenAI", icon: "/images/icons/genai.png" },
-    { name: "Langchain", icon: "/images/icons/langchain.png" }
+    { name: tx.docker, icon: "/images/icons/docker.png" },
+    { name: tx.mongodb, icon: "/images/icons/mongodb.png" },
+    { name: tx.postgresql, icon: "/images/icons/postgresql.png" },
+    { name: tx.redis, icon: "/images/icons/redis.png" },
+    { name: tx.graphql, icon: "/images/icons/Graphql1.png" },
+    { name: tx.kubernetes, icon: "/images/icons/kubernatives.png" },
+    { name: tx.freertos, icon: "/images/icons/freeRtos.jpeg" },
+    { name: tx.git, icon: "/images/icons/github.png" },
+    { name: tx.tensorflow, icon: "/images/icons/tensorFlow.jpeg" },
+    { name: tx.pytorch, icon: "/images/icons/pytorch.png" },
+    { name: tx.genai, icon: "/images/icons/genai.png" },
+    { name: tx.langchain, icon: "/images/icons/langchain.png" }
   ];
 
   const hardwareTechnologies = [
     { name: "ESP32", icon: "/images/icons/esp32_1.jpeg" },
-    { name: "Arduino", icon: "/images/icons/ardunio1.png" },
+    { name: tx.arduino, icon: "/images/icons/ardunio1.png" },
     { name: "STM32", icon: "/images/icons/stm32.jpeg" },
-    { name: "Raspberry Pi", icon: "/images/icons/raspberrypi.jpeg" },
-    { name: "PIC / AVR", icon: "/images/icons/AVR.png" },
-    { name: "Zephyr RTOS", icon: "/images/icons/Zephyr.jpeg" },
-    { name: "AWS IoT Core", icon: "/images/icons/AwsIot.jpeg" },
-    { name: "Google Cloud IoT", icon: "/images/icons/googleCloud.png" },
-    { name: "KiCAD", icon: "/images/icons/kicad1.png" },
-    { name: "DipTrace", icon: "/images/icons/Diptrace.jpeg" },
-    { name: "SolidWorks", icon: "/images/icons/SolidWorks.png" }
+    { name: tx.raspberry_pi, icon: "/images/icons/raspberrypi.jpeg" },
+    { name: tx.pic_avr, icon: "/images/icons/AVR.png" },
+    { name: tx.zephyr_rtos, icon: "/images/icons/Zephyr.jpeg" },
+    { name: tx.aws_iot_core, icon: "/images/icons/AwsIot.jpeg" },
+    { name: tx.google_cloud_iot, icon: "/images/icons/googleCloud.png" },
+    { name: tx.kicad, icon: "/images/icons/kicad1.png" },
+    { name: tx.diptrace, icon: "/images/icons/Diptrace.jpeg" },
+    { name: tx.solidworks, icon: "/images/icons/SolidWorks.png" }
   ];
 
   return (
@@ -60,12 +61,8 @@ export default function About() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-              Technology Stack
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Cutting-edge tools and frameworks we use to build exceptional digital solutions.
-            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight">{tx.technology_stack}</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.cutting_edge_tools_and_frameworks}</p>
           </div>
 
           {(() => {
@@ -95,14 +92,10 @@ export default function About() {
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
                   {/* Category Labels as Grid Items */}
                   <div className="col-span-2 md:col-span-2 lg:col-span-3 flex items-center gap-3 border-l-4 border-blue-600 pl-4">
-                    <h4 className="text-base md:text-lg font-bold text-blue-600">
-                      Software Technologies
-                    </h4>
+                    <h4 className="text-base md:text-lg font-bold text-blue-600">{tx.software_technologies}</h4>
                   </div>
                   <div className="col-span-2 md:col-span-2 lg:col-span-3 flex items-center gap-3 border-l-4 border-orange-600 pl-4">
-                    <h4 className="text-base md:text-lg font-bold text-orange-600">
-                      Hardware & IoT Technology
-                    </h4>
+                    <h4 className="text-base md:text-lg font-bold text-orange-600">{tx.hardware_iot_technology}</h4>
                   </div>
 
                   {/* Technology Cards */}
@@ -147,7 +140,7 @@ export default function About() {
               onClick={() => setShowAllTechnologies(!showAllTechnologies)}
               className="group inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105"
             >
-              <span>{showAllTechnologies ? 'Show Less' : 'See More Technologies'}</span>
+              <span>{showAllTechnologies ? tx.show_less : tx.see_more_technologies}</span>
               <svg 
                 className={`w-5 h-5 transform transition-transform duration-300 ${showAllTechnologies ? 'rotate-180' : ''}`}
                 fill="none" 
@@ -165,17 +158,11 @@ export default function About() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12">
         <div className="max-w-4xl mx-auto">
           <div className="text-center bg-blue-600 rounded-lg p-12">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Ready to Work With Us?
-            </h2>
-            <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
-              Let&apos;s discuss your project and see how SavantX can help you achieve your digital goals.
-            </p>
+            <h2 className="text-3xl font-bold text-white mb-4">{tx.ready_to_work_with_us}</h2>
+            <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">{tx.let_s_discuss_your_project}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="group bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-300 ease-out font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl">
-                <span className="flex items-center justify-center gap-2">
-                  Start Your Project
-                  <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span className="flex items-center justify-center gap-2">{tx.start_your_project}<svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </span>
@@ -187,9 +174,7 @@ export default function About() {
                 <span className="flex items-center justify-center gap-2">
                   <svg className="w-5 h-5 transform group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  Schedule Consultation
-                </span>
+                  </svg>{tx.schedule_consultation}</span>
               </button>
             </div>
           </div>

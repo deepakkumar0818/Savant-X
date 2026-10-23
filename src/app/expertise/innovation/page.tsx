@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/innovation/page.json';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
@@ -8,9 +9,9 @@ import { Lightbulb } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Innovation & Emerging Technology',
+  title: tx.innovation_emerging_technology,
   description:
-    'Applied innovation with AI, IoT, AR/VR and other emerging technologies to keep your business ahead.',
+    tx.applied_innovation_with_ai_iot,
   path: '/expertise/innovation',
 });
 
@@ -19,46 +20,46 @@ export default function InnovationPage() {
   const innovationServices = [
     {
       id: 'ai-ml',
-      title: 'AI & Machine Learning',
+      title: tx.ai_machine_learning,
       icon: '🤖',
-      description: 'Cutting-edge artificial intelligence and machine learning solutions to automate processes and gain insights.',
-      features: ['Machine Learning Models', 'Natural Language Processing', 'Computer Vision', 'Predictive Analytics', 'Chatbots & Virtual Assistants', 'Data Science'],
-      pricing: 'Starting at $15,000',
+      description: tx.cutting_edge_artificial_intelligence_and,
+      features: [tx.machine_learning_models, tx.natural_language_processing, tx.computer_vision, tx.predictive_analytics, tx.chatbots_virtual_assistants, tx.data_science],
+      pricing: tx.starting_at_15_000,
       timeline: '8-16 weeks',
-      complexity: 'Advanced',
+      complexity: tx.advanced,
       features_count: '40+'
     },
     {
       id: 'blockchain',
-      title: 'Blockchain Solutions',
+      title: tx.blockchain_solutions,
       icon: '⛓️',
-      description: 'Blockchain and cryptocurrency solutions for secure, decentralized applications and smart contracts.',
-      features: ['Smart Contracts', 'DeFi Applications', 'NFT Platforms', 'Cryptocurrency Wallets', 'Supply Chain Tracking', 'Identity Verification'],
-      pricing: 'Starting at $20,000',
+      description: tx.blockchain_and_cryptocurrency_solutions,
+      features: [tx.smart_contracts, tx.defi_applications, tx.nft_platforms, tx.cryptocurrency_wallets, tx.supply_chain_tracking, tx.identity_verification],
+      pricing: tx.starting_at_20_000,
       timeline: '10-20 weeks',
-      complexity: 'Enterprise',
+      complexity: tx.enterprise,
       features_count: '35+'
     },
     {
       id: 'iot',
-      title: 'IoT & Connected Devices',
+      title: tx.iot_connected_devices,
       icon: '🌐',
-      description: 'Internet of Things solutions connecting devices and sensors for smart automation and data collection.',
-      features: ['Device Connectivity', 'Real-time Monitoring', 'Sensor Integration', 'Data Analytics', 'Remote Control', 'Predictive Maintenance'],
-      pricing: 'Starting at $12,000',
+      description: tx.internet_of_things_solutions_connecting,
+      features: [tx.device_connectivity, tx.real_time_monitoring, tx.sensor_integration, tx.data_analytics, tx.remote_control, tx.predictive_maintenance],
+      pricing: tx.starting_at_12_000,
       timeline: '6-12 weeks',
-      complexity: 'Advanced',
+      complexity: tx.advanced,
       features_count: '30+'
     },
     {
       id: 'ar-vr',
-      title: 'AR/VR & Metaverse',
+      title: tx.ar_vr_metaverse,
       icon: '🥽',
-      description: 'Augmented and virtual reality experiences for immersive user interactions and virtual environments.',
-      features: ['Virtual Reality Apps', 'Augmented Reality', '3D Modeling', 'Immersive Experiences', 'Virtual Training', 'Metaverse Integration'],
-      pricing: 'Starting at $18,000',
+      description: tx.augmented_and_virtual_reality_experience,
+      features: [tx.virtual_reality_apps, tx.augmented_reality, tx.t_3d_modeling, tx.immersive_experiences, tx.virtual_training, tx.metaverse_integration],
+      pricing: tx.starting_at_18_000,
       timeline: '12-24 weeks',
-      complexity: 'Enterprise',
+      complexity: tx.enterprise,
       features_count: '45+'
     }
   ];
@@ -67,37 +68,37 @@ export default function InnovationPage() {
     {
       category: 'Emerging Technologies',
       technologies: [
-        { name: 'Artificial Intelligence', icon: '🧠', description: 'AI-powered solutions and automation' },
-        { name: 'Machine Learning', icon: '📊', description: 'Predictive analytics and data insights' },
-        { name: 'Blockchain', icon: '⛓️', description: 'Decentralized and secure applications' },
-        { name: 'Quantum Computing', icon: '⚛️', description: 'Next-generation computing power' }
+        { name: tx.artificial_intelligence, icon: '🧠', description: tx.ai_powered_solutions_and_automation },
+        { name: tx.machine_learning, icon: '📊', description: tx.predictive_analytics_and_data_insights },
+        { name: tx.blockchain, icon: '⛓️', description: tx.decentralized_and_secure_applications },
+        { name: tx.quantum_computing, icon: '⚛️', description: tx.next_generation_computing_power }
       ]
     },
     {
       category: 'Digital Transformation',
       technologies: [
-        { name: 'Cloud Computing', icon: '☁️', description: 'Scalable cloud infrastructure and services' },
-        { name: 'Edge Computing', icon: '🔗', description: 'Distributed computing at the edge' },
-        { name: 'Microservices', icon: '🧩', description: 'Modular and scalable architecture' },
-        { name: 'API Integration', icon: '🔌', description: 'Seamless system integration' }
+        { name: tx.cloud_computing, icon: '☁️', description: tx.scalable_cloud_infrastructure_and_servic },
+        { name: tx.edge_computing, icon: '🔗', description: tx.distributed_computing_at_the_edge },
+        { name: tx.microservices, icon: '🧩', description: tx.modular_and_scalable_architecture },
+        { name: tx.api_integration, icon: '🔌', description: tx.seamless_system_integration }
       ]
     },
     {
       category: 'User Experience',
       technologies: [
-        { name: 'AR/VR', icon: '🥽', description: 'Immersive user experiences' },
-        { name: 'Voice Interfaces', icon: '🎤', description: 'Voice-activated applications' },
-        { name: 'Gesture Control', icon: '👋', description: 'Touch-free interaction systems' },
-        { name: 'Brain-Computer Interface', icon: '🧠', description: 'Direct neural interaction' }
+        { name: tx.ar_vr, icon: '🥽', description: tx.immersive_user_experiences },
+        { name: tx.voice_interfaces, icon: '🎤', description: tx.voice_activated_applications },
+        { name: tx.gesture_control, icon: '👋', description: tx.touch_free_interaction_systems },
+        { name: tx.brain_computer_interface, icon: '🧠', description: tx.direct_neural_interaction }
       ]
     },
     {
       category: 'Data & Analytics',
       technologies: [
-        { name: 'Big Data', icon: '📈', description: 'Large-scale data processing and analysis' },
-        { name: 'Real-time Analytics', icon: '⚡', description: 'Live data processing and insights' },
-        { name: 'Data Visualization', icon: '📊', description: 'Interactive data presentation' },
-        { name: 'Predictive Modeling', icon: '🔮', description: 'Future trend prediction' }
+        { name: tx.big_data, icon: '📈', description: tx.large_scale_data_processing_and },
+        { name: tx.real_time_analytics, icon: '⚡', description: tx.live_data_processing_and_insights },
+        { name: tx.data_visualization, icon: '📊', description: tx.interactive_data_presentation },
+        { name: tx.predictive_modeling, icon: '🔮', description: tx.future_trend_prediction }
       ]
     }
   ];
@@ -105,43 +106,43 @@ export default function InnovationPage() {
   const innovationProcess = [
     {
       step: '01',
-      title: 'Innovation Discovery',
-      description: 'Exploring cutting-edge technologies and identifying innovation opportunities.',
+      title: tx.innovation_discovery,
+      description: tx.exploring_cutting_edge_technologies_and,
       duration: '2-3 weeks',
       icon: '🔍'
     },
     {
       step: '02',
-      title: 'Technology Research',
-      description: 'Deep research into emerging technologies and their potential applications.',
+      title: tx.technology_research,
+      description: tx.deep_research_into_emerging_technologies,
       duration: '2-4 weeks',
       icon: '🔬'
     },
     {
       step: '03',
-      title: 'Prototype Development',
-      description: 'Creating proof-of-concept prototypes to validate innovative ideas.',
+      title: tx.prototype_development,
+      description: tx.creating_proof_of_concept_prototypes,
       duration: '4-8 weeks',
       icon: '🧪'
     },
     {
       step: '04',
-      title: 'Technology Integration',
-      description: 'Integrating innovative technologies with existing systems and workflows.',
+      title: tx.technology_integration,
+      description: tx.integrating_innovative_technologies_with,
       duration: '6-12 weeks',
       icon: '⚙️'
     },
     {
       step: '05',
-      title: 'Testing & Optimization',
-      description: 'Rigorous testing and optimization of innovative solutions.',
+      title: tx.testing_optimization,
+      description: tx.rigorous_testing_and_optimization_of,
       duration: '2-4 weeks',
       icon: '🧪'
     },
     {
       step: '06',
-      title: 'Innovation Deployment',
-      description: 'Deploying innovative solutions with ongoing support and evolution.',
+      title: tx.innovation_deployment,
+      description: tx.deploying_innovative_solutions_with_ongo,
       duration: '1-2 weeks',
       icon: '🚀'
     }
@@ -149,155 +150,155 @@ export default function InnovationPage() {
 
   const deliverables = [
     {
-      title: 'Innovation Strategy',
-      description: 'Comprehensive strategy for implementing cutting-edge technologies.',
+      title: tx.innovation_strategy,
+      description: tx.comprehensive_strategy_for_implementing,
       icon: '📋'
     },
     {
-      title: 'Prototype Solutions',
-      description: 'Working prototypes demonstrating innovative concepts and capabilities.',
+      title: tx.prototype_solutions,
+      description: tx.working_prototypes_demonstrating_innovat,
       icon: '🧪'
     },
     {
-      title: 'Technology Integration',
-      description: 'Seamless integration of innovative technologies with existing systems.',
+      title: tx.technology_integration_2,
+      description: tx.seamless_integration_of_innovative_techn,
       icon: '⚙️'
     },
     {
-      title: 'Performance Analytics',
-      description: 'Advanced analytics and monitoring for innovative solutions.',
+      title: tx.performance_analytics,
+      description: tx.advanced_analytics_and_monitoring_for,
       icon: '📊'
     },
     {
-      title: 'Innovation Training',
-      description: 'Training programs for teams to work with new technologies.',
+      title: tx.innovation_training,
+      description: tx.training_programs_for_teams_to,
       icon: '🎓'
     },
     {
-      title: 'Future Roadmap',
-      description: 'Strategic roadmap for continued innovation and technology evolution.',
+      title: tx.future_roadmap,
+      description: tx.strategic_roadmap_for_continued_innovati,
       icon: '🗺️'
     }
   ];
 
   const benefits = [
     {
-      title: 'Competitive Advantage',
-      description: 'Stay ahead of the competition with cutting-edge technology solutions.',
+      title: tx.competitive_advantage,
+      description: tx.stay_ahead_of_the_competition,
       icon: '🏆'
     },
     {
-      title: 'Future-Proof Solutions',
-      description: 'Build solutions that adapt and evolve with technological advancements.',
+      title: tx.future_proof_solutions,
+      description: tx.build_solutions_that_adapt_and,
       icon: '🔮'
     },
     {
-      title: 'Enhanced Efficiency',
-      description: 'Automate processes and improve efficiency with innovative technologies.',
+      title: tx.enhanced_efficiency,
+      description: tx.automate_processes_and_improve_efficienc,
       icon: '⚡'
     },
     {
-      title: 'Better User Experience',
-      description: 'Deliver exceptional user experiences with modern, intuitive interfaces.',
+      title: tx.better_user_experience,
+      description: tx.deliver_exceptional_user_experiences_wit,
       icon: '😊'
     },
     {
-      title: 'Data-Driven Insights',
-      description: 'Leverage advanced analytics for better decision-making and insights.',
+      title: tx.data_driven_insights,
+      description: tx.leverage_advanced_analytics_for_better,
       icon: '📊'
     },
     {
-      title: 'Scalable Architecture',
-      description: 'Build solutions that scale with your business growth and demands.',
+      title: tx.scalable_architecture,
+      description: tx.build_solutions_that_scale_with,
       icon: '📈'
     }
   ];
 
   const innovationTypes = [
     {
-      title: 'Disruptive Innovation',
-      description: 'Game-changing solutions that transform entire industries and markets.',
+      title: tx.disruptive_innovation,
+      description: tx.game_changing_solutions_that_transform,
       icon: '💥'
     },
     {
-      title: 'Incremental Innovation',
-      description: 'Continuous improvements and enhancements to existing products and services.',
+      title: tx.incremental_innovation,
+      description: tx.continuous_improvements_and_enhancements,
       icon: '🔄'
     },
     {
-      title: 'Process Innovation',
-      description: 'Innovative approaches to business processes and operational efficiency.',
+      title: tx.process_innovation,
+      description: tx.innovative_approaches_to_business_proces,
       icon: '⚙️'
     },
     {
-      title: 'Product Innovation',
-      description: 'New products and features that meet evolving customer needs.',
+      title: tx.product_innovation,
+      description: tx.new_products_and_features_that,
       icon: '🆕'
     }
   ];
 
   const emergingTech = [
     {
-      title: 'Artificial Intelligence',
-      description: 'Machine learning, natural language processing, and intelligent automation.',
+      title: tx.artificial_intelligence_2,
+      description: tx.machine_learning_natural_language_proces,
       icon: '🤖'
     },
     {
-      title: 'Blockchain Technology',
-      description: 'Decentralized applications, smart contracts, and cryptocurrency solutions.',
+      title: tx.blockchain_technology,
+      description: tx.decentralized_applications_smart_contrac,
       icon: '⛓️'
     },
     {
-      title: 'Internet of Things',
-      description: 'Connected devices, smart sensors, and IoT ecosystem development.',
+      title: tx.internet_of_things,
+      description: tx.connected_devices_smart_sensors_and,
       icon: '🌐'
     },
     {
-      title: 'Augmented Reality',
-      description: 'AR applications, immersive experiences, and mixed reality solutions.',
+      title: tx.augmented_reality_2,
+      description: tx.ar_applications_immersive_experiences_an,
       icon: '🥽'
     },
     {
-      title: 'Edge Computing',
-      description: 'Distributed computing, real-time processing, and edge AI applications.',
+      title: tx.edge_computing_2,
+      description: tx.distributed_computing_real_time_processi,
       icon: '🔗'
     },
     {
-      title: 'Quantum Computing',
-      description: 'Quantum algorithms, cryptography, and next-generation computing.',
+      title: tx.quantum_computing_2,
+      description: tx.quantum_algorithms_cryptography_and_next,
       icon: '⚛️'
     }
   ];
 
   const innovationMetrics = [
     {
-      title: 'Time to Market',
-      description: 'Accelerate product development and reduce time to market with innovative approaches.',
+      title: tx.time_to_market,
+      description: tx.accelerate_product_development_and_reduc,
       icon: '⏱️'
     },
     {
-      title: 'Innovation ROI',
-      description: 'Measure return on investment for innovation initiatives and technology adoption.',
+      title: tx.innovation_roi,
+      description: tx.measure_return_on_investment_for,
       icon: '💰'
     },
     {
-      title: 'Technology Adoption',
-      description: 'Track adoption rates and user engagement with innovative solutions.',
+      title: tx.technology_adoption,
+      description: tx.track_adoption_rates_and_user,
       icon: '📈'
     },
     {
-      title: 'Patent Portfolio',
-      description: 'Build intellectual property through innovative solutions and technology patents.',
+      title: tx.patent_portfolio,
+      description: tx.build_intellectual_property_through_inno,
       icon: '📜'
     },
     {
-      title: 'Market Disruption',
-      description: 'Measure market impact and disruption caused by innovative solutions.',
+      title: tx.market_disruption,
+      description: tx.measure_market_impact_and_disruption,
       icon: '🌊'
     },
     {
-      title: 'Future Readiness',
-      description: 'Assess readiness for future technological changes and market shifts.',
+      title: tx.future_readiness,
+      description: tx.assess_readiness_for_future_technologica,
       icon: '🔮'
     }
   ];
@@ -306,17 +307,17 @@ export default function InnovationPage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="Innovation Solutions"
+        eyebrow={tx.innovation_solutions}
         eyebrowIcon={Lightbulb}
-        title="Innovation"
-        highlight="Experience"
-        description="We push the boundaries of technology with cutting-edge innovation solutions. From AI and blockchain to AR/VR and IoT, we help you stay ahead of the curve with next-generation technologies."
+        title={tx.innovation}
+        highlight={tx.experience}
+        description={tx.we_push_the_boundaries_of}
         highlights={["AI & Machine Learning", "Blockchain Solutions", "IoT & Connected Devices", "AR/VR & Metaverse"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "15+", label: "Patents Filed" },
-          { value: "8-24", label: "Week Delivery" },
-          { value: "Future-Ready", label: "Solutions" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "15+", label: tx.patents_filed },
+          { value: "8-24", label: tx.week_delivery },
+          { value: "Future-Ready", label: tx.solutions },
         ]}
       />
 
@@ -325,16 +326,10 @@ export default function InnovationPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Services
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Innovation
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Solutions</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_services}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.innovation}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.solutions}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Cutting-edge technology solutions that drive innovation and transform businesses.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.cutting_edge_technology_solutions_that}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -370,19 +365,19 @@ export default function InnovationPage() {
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200 sm:grid-cols-4">
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.timeline}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.complexity}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Complexity</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.complexity}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.features_count}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Features</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.features}</div>
                     </div>
                   </div>
                 </div>
@@ -397,16 +392,10 @@ export default function InnovationPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Innovation Areas
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Cutting-Edge
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Technologies</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.innovation_areas}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.cutting_edge}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.technologies}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We specialize in the latest technologies that are shaping the future of business and society.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_specialize_in_the_latest}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -439,16 +428,10 @@ export default function InnovationPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Emerging Technologies
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Next-Generation
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Solutions</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.emerging_technologies}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.next_generation}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.solutions}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Leading-edge technologies that are transforming industries and creating new opportunities.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.leading_edge_technologies_that_are}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -476,16 +459,10 @@ export default function InnovationPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Types of Innovation
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Innovation
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Approaches</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.types_of_innovation}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.innovation}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.approaches}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Different approaches to innovation that drive transformation and competitive advantage.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.different_approaches_to_innovation_that}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -513,16 +490,10 @@ export default function InnovationPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Innovation
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Development Process</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.innovation}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.development_process}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our systematic approach to innovation ensures cutting-edge solutions that deliver real value.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_systematic_approach_to_innovation}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -556,16 +527,10 @@ export default function InnovationPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Innovation Metrics
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Measuring
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Innovation Success</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.innovation_metrics}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.measuring}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.innovation_success}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Key metrics to track and measure the success of innovation initiatives and technology adoption.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.key_metrics_to_track_and}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -593,16 +558,10 @@ export default function InnovationPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Deliverables
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              What You&apos;ll
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Receive</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.deliverables}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.what_you_ll}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.receive}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Complete innovation development deliverables that provide cutting-edge solutions and future-ready technology.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.complete_innovation_development_delivera}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -630,16 +589,10 @@ export default function InnovationPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Why Innovation Solutions
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Benefits of
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Innovation Technology</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.why_innovation_solutions}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.benefits_of}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.innovation_technology}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Innovation technology provides significant advantages for businesses looking to stay competitive and future-ready.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.innovation_technology_provides_significa}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -665,21 +618,13 @@ export default function InnovationPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Innovate
-            <span className="block text-blue-100 mt-2">with Cutting-Edge Technology?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_innovate}<span className="block text-blue-100 mt-2">{tx.with_cutting_edge_technology}</span>
           </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">
-            Let&apos;s work together to build innovative solutions that transform your business and drive future success.
-          </p>
+          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">{tx.let_s_work_together_to}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Start Innovation Project
-            </Link>
-            <Link href="#technologies" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-              Explore Technologies
-            </Link>
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_innovation_project}</Link>
+            <Link href="#technologies" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.explore_technologies}</Link>
           </div>
         </div>
       </section>

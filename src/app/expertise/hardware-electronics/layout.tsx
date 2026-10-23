@@ -1,10 +1,11 @@
+import tx from '@/content/text/app/expertise/hardware-electronics/layout.json';
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Hardware & Electronics Development',
+  title: tx.hardware_electronics_development,
   description:
-    'Custom electronics, PCBs and embedded systems for IoT devices and industrial automation, designed by SavantX Technologies.',
+    tx.custom_electronics_pcbs_and_embedded,
   path: '/expertise/hardware-electronics',
 });
 

@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/education-industrial-training/page.json';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
@@ -8,9 +9,9 @@ import { GraduationCap } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Education & Industrial Training',
+  title: tx.education_industrial_training,
   description:
-    'Industrial training and internship programmes that bridge academic learning and industry requirements.',
+    tx.industrial_training_and_internship_progr,
   path: '/expertise/education-industrial-training',
 });
 
@@ -19,46 +20,46 @@ export default function EducationIndustrialTrainingPage() {
   const educationServices = [
     {
       id: 'industrial-training',
-      title: 'Industrial Training',
+      title: tx.industrial_training,
       icon: '🏭',
-      description: 'Comprehensive industrial training programs for students and professionals to gain real-world experience.',
-      features: ['Hands-on Projects', 'Industry Mentorship', 'Technical Skills', 'Software Training', 'Industry Visits', 'Certification'],
-      pricing: 'Starting at $2,000',
+      description: tx.comprehensive_industrial_training_progra,
+      features: [tx.hands_on_projects, tx.industry_mentorship, tx.technical_skills, tx.software_training, tx.industry_visits, tx.certification],
+      pricing: tx.starting_at_2_000,
       timeline: '4-12 weeks',
-      complexity: 'Standard',
+      complexity: tx.standard,
       features_count: '20+'
     },
     {
       id: 'internship-programs',
-      title: 'Internship Programs',
+      title: tx.internship_programs,
       icon: '👨‍💼',
-      description: 'Structured internship programs providing practical experience in real industry projects and workflows.',
-      features: ['Real Projects', 'Industry Exposure', 'Skill Development', 'Networking', 'Portfolio Building', 'Job Placement'],
-      pricing: 'Starting at $1,500',
+      description: tx.structured_internship_programs_providing,
+      features: [tx.real_projects, tx.industry_exposure, tx.skill_development, tx.networking, tx.portfolio_building, tx.job_placement],
+      pricing: tx.starting_at_1_500,
       timeline: '8-24 weeks',
-      complexity: 'Standard',
+      complexity: tx.standard,
       features_count: '25+'
     },
     {
       id: 'skill-development',
-      title: 'Skill Development',
+      title: tx.skill_development,
       icon: '🎯',
-      description: 'Focused skill development programs to bridge the gap between academic knowledge and industry requirements.',
-      features: ['Technical Training', 'Soft Skills', 'Industry Tools', 'Best Practices', 'Project Management', 'Team Collaboration'],
-      pricing: 'Starting at $1,200',
+      description: tx.focused_skill_development_programs_to,
+      features: [tx.technical_training, tx.soft_skills, tx.industry_tools, tx.best_practices, tx.project_management, tx.team_collaboration],
+      pricing: tx.starting_at_1_200,
       timeline: '3-8 weeks',
-      complexity: 'Standard',
+      complexity: tx.standard,
       features_count: '18+'
     },
     {
       id: 'career-guidance',
-      title: 'Career Guidance',
+      title: tx.career_guidance,
       icon: '🎓',
-      description: 'Professional career guidance and mentorship to help students and graduates make informed career decisions.',
-      features: ['Career Counseling', 'Industry Insights', 'Resume Building', 'Interview Prep', 'Job Search', 'Networking'],
-      pricing: 'Starting at $800',
+      description: tx.professional_career_guidance_and_mentors,
+      features: [tx.career_counseling, tx.industry_insights, tx.resume_building, tx.interview_prep, tx.job_search, tx.networking],
+      pricing: tx.starting_at_800,
       timeline: '2-6 weeks',
-      complexity: 'Basic',
+      complexity: tx.basic,
       features_count: '15+'
     }
   ];
@@ -67,74 +68,74 @@ export default function EducationIndustrialTrainingPage() {
     {
       category: 'Technical Training',
       programs: [
-        { name: 'Web Development', icon: '💻', description: 'Full-stack web development training' },
-        { name: 'Mobile App Development', icon: '📱', description: 'iOS and Android app development' },
-        { name: 'Data Science', icon: '📊', description: 'Data analysis and machine learning' },
-        { name: 'Cloud Computing', icon: '☁️', description: 'AWS, Azure, and Google Cloud' },
-        { name: 'DevOps', icon: '⚙️', description: 'CI/CD, Docker, Kubernetes' },
-        { name: 'Cybersecurity', icon: '🔒', description: 'Security best practices and tools' }
+        { name: tx.web_development, icon: '💻', description: tx.full_stack_web_development_training },
+        { name: tx.mobile_app_development, icon: '📱', description: tx.ios_and_android_app_development },
+        { name: tx.data_science, icon: '📊', description: tx.data_analysis_and_machine_learning },
+        { name: tx.cloud_computing, icon: '☁️', description: tx.aws_azure_and_google_cloud },
+        { name: tx.devops, icon: '⚙️', description: tx.ci_cd_docker_kubernetes },
+        { name: tx.cybersecurity, icon: '🔒', description: tx.security_best_practices_and_tools }
       ]
     },
     {
       category: 'Industry Exposure',
       programs: [
-        { name: 'Industry Visits', icon: '🏢', description: 'Visit real companies and see operations' },
-        { name: 'Guest Lectures', icon: '🎤', description: 'Industry experts sharing insights' },
-        { name: 'Case Studies', icon: '📋', description: 'Real-world problem-solving scenarios' },
-        { name: 'Project Simulations', icon: '🎮', description: 'Simulated industry projects' },
-        { name: 'Networking Events', icon: '🤝', description: 'Connect with industry professionals' },
-        { name: 'Job Shadowing', icon: '👥', description: 'Shadow professionals in their work' }
+        { name: tx.industry_visits_2, icon: '🏢', description: tx.visit_real_companies_and_see },
+        { name: tx.guest_lectures, icon: '🎤', description: tx.industry_experts_sharing_insights },
+        { name: tx.case_studies, icon: '📋', description: tx.real_world_problem_solving_scenarios },
+        { name: tx.project_simulations, icon: '🎮', description: tx.simulated_industry_projects },
+        { name: tx.networking_events, icon: '🤝', description: tx.connect_with_industry_professionals },
+        { name: tx.job_shadowing, icon: '👥', description: tx.shadow_professionals_in_their_work }
       ]
     },
     {
       category: 'Soft Skills',
       programs: [
-        { name: 'Communication', icon: '💬', description: 'Effective communication skills' },
-        { name: 'Leadership', icon: '👑', description: 'Leadership and management skills' },
-        { name: 'Teamwork', icon: '🤝', description: 'Collaboration and team building' },
-        { name: 'Problem Solving', icon: '🧩', description: 'Critical thinking and analysis' },
-        { name: 'Time Management', icon: '⏰', description: 'Productivity and organization' },
-        { name: 'Presentation Skills', icon: '🎯', description: 'Public speaking and presenting' }
+        { name: tx.communication, icon: '💬', description: tx.effective_communication_skills },
+        { name: tx.leadership, icon: '👑', description: tx.leadership_and_management_skills },
+        { name: tx.teamwork, icon: '🤝', description: tx.collaboration_and_team_building },
+        { name: tx.problem_solving, icon: '🧩', description: tx.critical_thinking_and_analysis },
+        { name: tx.time_management, icon: '⏰', description: tx.productivity_and_organization },
+        { name: tx.presentation_skills, icon: '🎯', description: tx.public_speaking_and_presenting }
       ]
     },
     {
       category: 'Certification',
       programs: [
-        { name: 'Industry Certificates', icon: '🏆', description: 'Recognized industry certifications' },
-        { name: 'Skill Assessments', icon: '📝', description: 'Comprehensive skill evaluations' },
-        { name: 'Portfolio Reviews', icon: '📁', description: 'Professional portfolio development' },
-        { name: 'Mock Interviews', icon: '🎤', description: 'Interview preparation and practice' },
-        { name: 'Resume Building', icon: '📄', description: 'Professional resume creation' },
-        { name: 'LinkedIn Optimization', icon: '💼', description: 'Professional profile enhancement' }
+        { name: tx.industry_certificates, icon: '🏆', description: tx.recognized_industry_certifications },
+        { name: tx.skill_assessments, icon: '📝', description: tx.comprehensive_skill_evaluations },
+        { name: tx.portfolio_reviews, icon: '📁', description: tx.professional_portfolio_development },
+        { name: tx.mock_interviews, icon: '🎤', description: tx.interview_preparation_and_practice },
+        { name: tx.resume_building_2, icon: '📄', description: tx.professional_resume_creation },
+        { name: tx.linkedin_optimization, icon: '💼', description: tx.professional_profile_enhancement }
       ]
     }
   ];
 
   const internshipTypes = [
     {
-      title: 'Summer Internships',
-      description: 'Intensive summer programs for students during vacation periods.',
+      title: tx.summer_internships,
+      description: tx.intensive_summer_programs_for_students,
       icon: '☀️',
       duration: '8-12 weeks',
       target: 'Students'
     },
     {
-      title: 'Semester Internships',
-      description: 'Long-term internships integrated with academic semesters.',
+      title: tx.semester_internships,
+      description: tx.long_term_internships_integrated_with,
       icon: '📚',
       duration: '16-24 weeks',
       target: 'Graduates'
     },
     {
-      title: 'Part-time Internships',
-      description: 'Flexible part-time internships for working students.',
+      title: tx.part_time_internships,
+      description: tx.flexible_part_time_internships_for,
       icon: '⏰',
       duration: '12-20 weeks',
       target: 'Working Students'
     },
     {
-      title: 'Research Internships',
-      description: 'Research-focused internships for academic and industry research.',
+      title: tx.research_internships,
+      description: tx.research_focused_internships_for_academi,
       icon: '🔬',
       duration: '6-12 weeks',
       target: 'Researchers'
@@ -144,43 +145,43 @@ export default function EducationIndustrialTrainingPage() {
   const developmentProcess = [
     {
       step: '01',
-      title: 'Assessment & Planning',
-      description: 'Assessing student skills and creating personalized training plans.',
-      duration: '1 week',
+      title: tx.assessment_planning,
+      description: tx.assessing_student_skills_and_creating,
+      duration: tx.t_1_week,
       icon: '📋'
     },
     {
       step: '02',
-      title: 'Curriculum Design',
-      description: 'Designing comprehensive curriculum based on industry requirements.',
+      title: tx.curriculum_design,
+      description: tx.designing_comprehensive_curriculum_based,
       duration: '1-2 weeks',
       icon: '📚'
     },
     {
       step: '03',
-      title: 'Training Delivery',
-      description: 'Delivering hands-on training with real-world projects.',
+      title: tx.training_delivery,
+      description: tx.delivering_hands_on_training_with,
       duration: '4-20 weeks',
       icon: '🎓'
     },
     {
       step: '04',
-      title: 'Industry Exposure',
-      description: 'Providing industry visits, guest lectures, and networking.',
+      title: tx.industry_exposure_2,
+      description: tx.providing_industry_visits_guest_lectures,
       duration: '2-4 weeks',
       icon: '🏢'
     },
     {
       step: '05',
-      title: 'Project Work',
-      description: 'Students work on real industry projects with mentorship.',
+      title: tx.project_work,
+      description: tx.students_work_on_real_industry,
       duration: '2-8 weeks',
       icon: '💼'
     },
     {
       step: '06',
-      title: 'Assessment & Placement',
-      description: 'Final assessment, certification, and job placement assistance.',
+      title: tx.assessment_placement,
+      description: tx.final_assessment_certification_and_job,
       duration: '1-2 weeks',
       icon: '🎯'
     }
@@ -188,143 +189,143 @@ export default function EducationIndustrialTrainingPage() {
 
   const deliverables = [
     {
-      title: 'Training Programs',
-      description: 'Comprehensive training programs tailored to industry needs.',
+      title: tx.training_programs,
+      description: tx.comprehensive_training_programs_tailored,
       icon: '📚'
     },
     {
-      title: 'Industry Projects',
-      description: 'Real-world projects that provide practical experience.',
+      title: tx.industry_projects,
+      description: tx.real_world_projects_that_provide,
       icon: '💼'
     },
     {
-      title: 'Certifications',
-      description: 'Industry-recognized certificates and skill assessments.',
+      title: tx.certifications,
+      description: tx.industry_recognized_certificates_and_ski,
       icon: '🏆'
     },
     {
-      title: 'Mentorship',
-      description: 'One-on-one mentorship from industry professionals.',
+      title: tx.mentorship,
+      description: tx.one_on_one_mentorship_from,
       icon: '👨‍🏫'
     },
     {
-      title: 'Career Support',
-      description: 'Resume building, interview prep, and job placement assistance.',
+      title: tx.career_support,
+      description: tx.resume_building_interview_prep_and,
       icon: '🎯'
     },
     {
-      title: 'Networking',
-      description: 'Access to industry professionals and networking opportunities.',
+      title: tx.networking_2,
+      description: tx.access_to_industry_professionals_and,
       icon: '🤝'
     }
   ];
 
   const benefits = [
     {
-      title: 'Industry Readiness',
-      description: 'Students become industry-ready with practical skills and experience.',
+      title: tx.industry_readiness,
+      description: tx.students_become_industry_ready_with,
       icon: '🚀'
     },
     {
-      title: 'Career Advancement',
-      description: 'Enhanced career prospects with industry exposure and networking.',
+      title: tx.career_advancement,
+      description: tx.enhanced_career_prospects_with_industry,
       icon: '📈'
     },
     {
-      title: 'Skill Development',
-      description: 'Comprehensive development of technical and soft skills.',
+      title: tx.skill_development_2,
+      description: tx.comprehensive_development_of_technical_a,
       icon: '🎯'
     },
     {
-      title: 'Real-world Experience',
-      description: 'Hands-on experience with real industry projects and tools.',
+      title: tx.real_world_experience,
+      description: tx.hands_on_experience_with_real,
       icon: '💼'
     },
     {
-      title: 'Professional Network',
-      description: 'Building valuable connections with industry professionals.',
+      title: tx.professional_network,
+      description: tx.building_valuable_connections_with_indus,
       icon: '🤝'
     },
     {
-      title: 'Job Placement',
-      description: 'Assistance with job placement and career opportunities.',
+      title: tx.job_placement_2,
+      description: tx.assistance_with_job_placement_and,
       icon: '🎓'
     }
   ];
 
   const targetAudience = [
     {
-      title: 'Engineering Students',
-      description: 'B.Tech, M.Tech, and other engineering students seeking industry exposure.',
+      title: tx.engineering_students,
+      description: tx.b_tech_m_tech_and,
       icon: '👨‍🎓'
     },
     {
-      title: 'Computer Science Graduates',
-      description: 'CS graduates looking to gain practical industry experience.',
+      title: tx.computer_science_graduates,
+      description: tx.cs_graduates_looking_to_gain,
       icon: '💻'
     },
     {
-      title: 'MBA Students',
-      description: 'Management students seeking industry training and internships.',
+      title: tx.mba_students,
+      description: tx.management_students_seeking_industry_tra,
       icon: '📊'
     },
     {
-      title: 'Recent Graduates',
-      description: 'Fresh graduates looking to bridge the gap between academics and industry.',
+      title: tx.recent_graduates,
+      description: tx.fresh_graduates_looking_to_bridge,
       icon: '🎓'
     },
     {
-      title: 'Career Changers',
-      description: 'Professionals looking to transition into technology careers.',
+      title: tx.career_changers,
+      description: tx.professionals_looking_to_transition_into,
       icon: '🔄'
     },
     {
-      title: 'Working Professionals',
-      description: 'Working professionals seeking skill enhancement and career growth.',
+      title: tx.working_professionals,
+      description: tx.working_professionals_seeking_skill_enha,
       icon: '👔'
     }
   ];
 
   const industryPartners = [
-    { name: 'Tech Giants', icon: '🏢', description: 'Microsoft, Google, Amazon partnerships' },
-    { name: 'Startups', icon: '🚀', description: 'Emerging tech startups and unicorns' },
-    { name: 'Consulting Firms', icon: '💼', description: 'McKinsey, Deloitte, PwC collaborations' },
-    { name: 'Banking & Finance', icon: '🏦', description: 'Banks and financial institutions' },
-    { name: 'E-commerce', icon: '🛒', description: 'Online retail and marketplace platforms' },
-    { name: 'Healthcare Tech', icon: '🏥', description: 'Healthcare technology companies' },
-    { name: 'Manufacturing', icon: '🏭', description: 'Industrial and manufacturing companies' },
-    { name: 'Government', icon: '🏛️', description: 'Government agencies and departments' }
+    { name: tx.tech_giants, icon: '🏢', description: tx.microsoft_google_amazon_partnerships },
+    { name: tx.startups, icon: '🚀', description: tx.emerging_tech_startups_and_unicorns },
+    { name: tx.consulting_firms, icon: '💼', description: tx.mckinsey_deloitte_pwc_collaborations },
+    { name: tx.banking_finance, icon: '🏦', description: tx.banks_and_financial_institutions },
+    { name: tx.e_commerce, icon: '🛒', description: tx.online_retail_and_marketplace_platforms },
+    { name: tx.healthcare_tech, icon: '🏥', description: tx.healthcare_technology_companies },
+    { name: tx.manufacturing, icon: '🏭', description: tx.industrial_and_manufacturing_companies },
+    { name: tx.government, icon: '🏛️', description: tx.government_agencies_and_departments }
   ];
 
   const successMetrics = [
     {
-      title: 'Placement Rate',
-      description: '95%+ job placement rate for trained students.',
+      title: tx.placement_rate,
+      description: tx.t_95_job_placement_rate_for,
       icon: '📈'
     },
     {
-      title: 'Industry Satisfaction',
-      description: 'High satisfaction ratings from industry partners.',
+      title: tx.industry_satisfaction,
+      description: tx.high_satisfaction_ratings_from_industry,
       icon: '😊'
     },
     {
-      title: 'Skill Enhancement',
-      description: 'Significant improvement in technical and soft skills.',
+      title: tx.skill_enhancement,
+      description: tx.significant_improvement_in_technical_and,
       icon: '🎯'
     },
     {
-      title: 'Career Growth',
-      description: 'Faster career progression for program graduates.',
+      title: tx.career_growth,
+      description: tx.faster_career_progression_for_program,
       icon: '🚀'
     },
     {
-      title: 'Industry Recognition',
-      description: 'Recognition from leading industry organizations.',
+      title: tx.industry_recognition,
+      description: tx.recognition_from_leading_industry_organi,
       icon: '🏆'
     },
     {
-      title: 'Alumni Network',
-      description: 'Strong alumni network and continued support.',
+      title: tx.alumni_network,
+      description: tx.strong_alumni_network_and_continued,
       icon: '🤝'
     }
   ];
@@ -333,17 +334,17 @@ export default function EducationIndustrialTrainingPage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="Education & Industrial Training"
+        eyebrow={tx.education_industrial_training_2}
         eyebrowIcon={GraduationCap}
-        title="Industrial Training"
-        highlight="& Internships"
-        description="Bridge the gap between academic knowledge and industry requirements with our comprehensive industrial training and internship programs designed for students and professionals."
+        title={tx.industrial_training_2}
+        highlight={tx.internships}
+        description={tx.bridge_the_gap_between_academic}
         highlights={["Industrial Training", "Internship Programs", "Skill Development", "Career Guidance"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "95%", label: "Placement Rate" },
-          { value: "4-24", label: "Week Programs" },
-          { value: "50+", label: "Industry Partners" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "95%", label: tx.placement_rate_2 },
+          { value: "4-24", label: tx.week_programs },
+          { value: "50+", label: tx.industry_partners },
         ]}
       />
 
@@ -352,16 +353,10 @@ export default function EducationIndustrialTrainingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Services
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Education & Training
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Programs</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_services}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.education_training}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.programs}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Comprehensive industrial training and internship programs designed to prepare students for industry success.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.comprehensive_industrial_training_and_in}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -397,19 +392,19 @@ export default function EducationIndustrialTrainingPage() {
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200 sm:grid-cols-4">
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Duration</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.duration}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.complexity}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Complexity</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.complexity}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.features_count}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Features</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.features}</div>
                     </div>
                   </div>
                 </div>
@@ -424,16 +419,10 @@ export default function EducationIndustrialTrainingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Training Programs
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Comprehensive
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Training Programs</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.training_programs_2}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.comprehensive}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.training_programs_2}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our training programs cover technical skills, industry exposure, soft skills, and certifications.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_training_programs_cover_technical}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -466,16 +455,10 @@ export default function EducationIndustrialTrainingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Internship Types
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Flexible
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Internship Programs</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.internship_types}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.flexible}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.internship_programs_2}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Various internship formats to accommodate different schedules and career goals.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.various_internship_formats_to_accommodat}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -507,16 +490,10 @@ export default function EducationIndustrialTrainingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Target Audience
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Who Can
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Benefit</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.target_audience}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.who_can}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.benefit}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our programs are designed for students, graduates, and professionals at various career stages.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_programs_are_designed_for}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -544,16 +521,10 @@ export default function EducationIndustrialTrainingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Industry Partners
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Leading
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Industry Partners</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.industry_partners}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.leading}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.industry_partners}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We partner with leading companies across various industries to provide real-world experience.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_partner_with_leading_companies}</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
@@ -577,16 +548,10 @@ export default function EducationIndustrialTrainingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Training & Internship
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Development Process</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.training_internship}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.development_process}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our systematic approach ensures comprehensive training and successful career preparation.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_systematic_approach_ensures_comprehe}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -620,16 +585,10 @@ export default function EducationIndustrialTrainingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Success Metrics
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Measuring
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Program Success</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.success_metrics}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.measuring}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.program_success}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Key metrics that demonstrate the effectiveness and impact of our training programs.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.key_metrics_that_demonstrate_the}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -657,16 +616,10 @@ export default function EducationIndustrialTrainingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Deliverables
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              What You&apos;ll
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Receive</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.deliverables}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.what_you_ll}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.receive}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Complete training and internship deliverables that prepare students for industry success.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.complete_training_and_internship_deliver}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -694,16 +647,10 @@ export default function EducationIndustrialTrainingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Why Education Training
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Benefits of
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Industrial Training</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.why_education_training}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.benefits_of}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.industrial_training_2}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Industrial training and internships provide significant advantages for career development and industry readiness.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.industrial_training_and_internships_prov}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -729,21 +676,13 @@ export default function EducationIndustrialTrainingPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Start Your
-            <span className="block text-blue-100 mt-2">Industrial Training Journey?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_start_your}<span className="block text-blue-100 mt-2">{tx.industrial_training_journey}</span>
           </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">
-            Join our comprehensive industrial training and internship programs to gain real-world experience and advance your career.
-          </p>
+          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">{tx.join_our_comprehensive_industrial_traini}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Apply for Training
-            </Link>
-            <Link href="#programs" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-              View Programs
-            </Link>
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.apply_for_training}</Link>
+            <Link href="#programs" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.view_programs}</Link>
           </div>
         </div>
       </section>

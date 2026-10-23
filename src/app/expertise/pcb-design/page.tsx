@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/pcb-design/page.json';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -8,84 +9,84 @@ import { CircuitBoard } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'PCB Design & Layout',
+  title: tx.pcb_design_layout,
   description:
-    'Production-ready PCB design and circuit board layout, from simple prototypes to complex multi-layer boards.',
+    tx.production_ready_pcb_design_and,
   path: '/expertise/pcb-design',
 });
 
 export default function PcbDesignPage() {
   const features = [
     {
-      title: 'Custom PCB Layout',
-      description: 'Tailored circuit board designs optimized for performance, cost, and manufacturing.',
+      title: tx.custom_pcb_layout,
+      description: tx.tailored_circuit_board_designs_optimized,
       icon: '🔧'
     },
     {
-      title: 'Multi-layer Boards',
-      description: 'Complex multi-layer PCB designs up to 16+ layers for advanced applications.',
+      title: tx.multi_layer_boards,
+      description: tx.complex_multi_layer_pcb_designs,
       icon: '📐'
     },
     {
-      title: 'Signal Integrity',
-      description: 'High-speed PCB design with proper signal integrity and EMC considerations.',
+      title: tx.signal_integrity,
+      description: tx.high_speed_pcb_design_with,
       icon: '⚡'
     },
     {
-      title: 'Thermal Management',
-      description: 'Optimized thermal design for heat dissipation and component protection.',
+      title: tx.thermal_management,
+      description: tx.optimized_thermal_design_for_heat,
       icon: '🌡️'
     },
     {
-      title: '3D Visualization',
-      description: '3D PCB models and mechanical integration with enclosures.',
+      title: tx.t_3d_visualization,
+      description: tx.t_3d_pcb_models_and_mechanical,
       icon: '📦'
     },
     {
-      title: 'DFM Analysis',
-      description: 'Design for Manufacturing checks to ensure production-ready PCBs.',
+      title: tx.dfm_analysis,
+      description: tx.design_for_manufacturing_checks_to,
       icon: '✅'
     }
   ];
 
   const technologies = [
-    { name: 'KiCAD', icon: '/images/icons/kicad1.png', description: 'Open-source PCB tool' },
-    { name: 'DipTrace', icon: '/images/icons/Diptrace.jpeg', description: 'PCB layout software' },
-    { name: 'SolidWorks', icon: '/images/icons/SolidWorks.png', description: '3D mechanical design' },
-    { name: 'Arduino', icon: '/images/icons/ardunio1.png', description: 'Development platform' },
-    { name: 'ESP32', icon: '/images/icons/esp32_1.jpeg', description: 'IoT microcontroller' },
-    { name: 'STM32', icon: '/images/icons/stm32.jpeg', description: 'ARM Cortex MCU' },
-    { name: 'Raspberry Pi', icon: '/images/icons/raspberrypi.jpeg', description: 'Single-board computer' },
-    { name: 'AVR', icon: '/images/icons/AVR.png', description: 'Microcontrollers' }
+    { name: tx.kicad, icon: '/images/icons/kicad1.png', description: tx.open_source_pcb_tool },
+    { name: tx.diptrace, icon: '/images/icons/Diptrace.jpeg', description: tx.pcb_layout_software },
+    { name: tx.solidworks, icon: '/images/icons/SolidWorks.png', description: tx.t_3d_mechanical_design },
+    { name: tx.arduino, icon: '/images/icons/ardunio1.png', description: tx.development_platform },
+    { name: 'ESP32', icon: '/images/icons/esp32_1.jpeg', description: tx.iot_microcontroller },
+    { name: 'STM32', icon: '/images/icons/stm32.jpeg', description: tx.arm_cortex_mcu },
+    { name: tx.raspberry_pi, icon: '/images/icons/raspberrypi.jpeg', description: tx.single_board_computer },
+    { name: 'AVR', icon: '/images/icons/AVR.png', description: tx.microcontrollers }
   ];
 
   const pcbTypes = [
     {
-      title: 'Single & Double Layer PCBs',
-      description: 'Simple and cost-effective PCB solutions for basic circuits and prototypes.',
+      title: tx.single_double_layer_pcbs,
+      description: tx.simple_and_cost_effective_pcb,
       icon: '📄',
-      features: ['Quick turnaround', 'Low cost', 'Simple routing', 'Prototype friendly'],
+      features: [tx.quick_turnaround, tx.low_cost, tx.simple_routing, tx.prototype_friendly],
       color: 'from-green-500 to-green-600'
     },
     {
-      title: 'Multi-layer PCBs',
-      description: 'Complex PCB designs with multiple layers for high-density applications.',
+      title: tx.multi_layer_pcbs,
+      description: tx.complex_pcb_designs_with_multiple,
       icon: '📚',
-      features: ['4-16+ layers', 'High-speed design', 'Complex routing', 'Industrial grade'],
+      features: ['4-16+ layers', tx.high_speed_design, tx.complex_routing, tx.industrial_grade],
       color: 'from-blue-500 to-blue-600'
     },
     {
-      title: 'Flex & Rigid-Flex PCBs',
-      description: 'Flexible and rigid-flex PCB designs for space-constrained applications.',
+      title: tx.flex_rigid_flex_pcbs,
+      description: tx.flexible_and_rigid_flex_pcb,
       icon: '🌊',
-      features: ['Bendable circuits', 'Space saving', 'Wearable devices', 'Medical applications'],
+      features: [tx.bendable_circuits, tx.space_saving, tx.wearable_devices, tx.medical_applications],
       color: 'from-purple-500 to-purple-600'
     },
     {
-      title: 'High-Speed PCBs',
-      description: 'Specialized designs for high-frequency and high-speed digital signals.',
+      title: tx.high_speed_pcbs,
+      description: tx.specialized_designs_for_high_frequency,
       icon: '⚡',
-      features: ['Impedance control', 'Signal integrity', 'Low crosstalk', 'RF applications'],
+      features: [tx.impedance_control, tx.signal_integrity_2, tx.low_crosstalk, tx.rf_applications],
       color: 'from-orange-500 to-orange-600'
     }
   ];
@@ -93,67 +94,67 @@ export default function PcbDesignPage() {
   const processSteps = [
     {
       step: '01',
-      title: 'Schematic Design',
-      description: 'Creating detailed circuit schematics with component selection and specifications.',
+      title: tx.schematic_design,
+      description: tx.creating_detailed_circuit_schematics_wit,
       duration: '1-2 weeks',
       icon: '📋'
     },
     {
       step: '02',
-      title: 'PCB Layout',
-      description: 'Translating schematics into optimized PCB layouts with proper routing.',
+      title: tx.pcb_layout,
+      description: tx.translating_schematics_into_optimized_pc,
       duration: '2-3 weeks',
       icon: '🎨'
     },
     {
       step: '03',
-      title: 'Design Verification',
-      description: 'DRC, ERC checks, signal integrity analysis, and thermal simulation.',
-      duration: '1 week',
+      title: tx.design_verification,
+      description: tx.drc_erc_checks_signal_integrity,
+      duration: tx.t_1_week,
       icon: '✅'
     },
     {
       step: '04',
-      title: 'Gerber Generation',
-      description: 'Creating manufacturing files including Gerber, drill files, and BOM.',
+      title: tx.gerber_generation,
+      description: tx.creating_manufacturing_files_including_g,
       duration: '2-3 days',
       icon: '📁'
     },
     {
       step: '05',
-      title: 'Manufacturing Support',
-      description: 'Assisting with PCB fabrication, assembly, and testing support.',
-      duration: 'Ongoing',
+      title: tx.manufacturing_support,
+      description: tx.assisting_with_pcb_fabrication_assembly,
+      duration: tx.ongoing,
       icon: '🏭'
     }
   ];
 
   const capabilities = [
-    { title: 'Board Size', value: 'Up to 1000mm x 500mm' },
-    { title: 'Layer Count', value: 'Up to 16+ layers' },
-    { title: 'Min Trace Width', value: '3 mil (0.075mm)' },
-    { title: 'Min Via Size', value: '8 mil (0.2mm)' },
-    { title: 'Surface Finish', value: 'HASL, ENIG, OSP, Immersion Silver' },
-    { title: 'Copper Weight', value: '0.5 - 3 oz' },
-    { title: 'Solder Mask', value: 'Green, Black, White, Red, Blue, Yellow' },
-    { title: 'Silkscreen', value: 'White, Black' }
+    { title: tx.board_size, value: 'Up to 1000mm x 500mm' },
+    { title: tx.layer_count, value: 'Up to 16+ layers' },
+    { title: tx.min_trace_width, value: '3 mil (0.075mm)' },
+    { title: tx.min_via_size, value: '8 mil (0.2mm)' },
+    { title: tx.surface_finish, value: 'HASL, ENIG, OSP, Immersion Silver' },
+    { title: tx.copper_weight, value: '0.5 - 3 oz' },
+    { title: tx.solder_mask, value: 'Green, Black, White, Red, Blue, Yellow' },
+    { title: tx.silkscreen, value: 'White, Black' }
   ];
 
   return (
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="PCB Design & Layout"
+        eyebrow={tx.pcb_design_layout_2}
         eyebrowIcon={CircuitBoard}
-        title="Professional PCB Design &"
-        highlight="Circuit Board Layout"
-        description="Custom printed circuit board design services from simple prototypes to complex multi-layer boards. We deliver production-ready PCBs optimized for performance, reliability, and manufacturing."
+        title={tx.professional_pcb_design}
+        highlight={tx.circuit_board_layout}
+        description={tx.custom_printed_circuit_board_design}
         highlights={["Custom PCB Layout", "Multi-layer Boards", "Signal Integrity", "Thermal Management"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "16+", label: "Layer Capability" },
-          { value: "98%", label: "First Pass Yield" },
-          { value: "2-4", label: "Week Turnaround" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "16+", label: tx.layer_capability },
+          { value: "98%", label: tx.first_pass_yield },
+          { value: "2-4", label: tx.week_turnaround },
         ]}
       />
 
@@ -161,9 +162,7 @@ export default function PcbDesignPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              PCB Design
-              <span className="block text-green-600 mt-2">Capabilities</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.pcb_design}<span className="block text-green-600 mt-2">{tx.capabilities}</span>
             </h2>
           </div>
 
@@ -191,9 +190,7 @@ export default function PcbDesignPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              PCB
-              <span className="block text-green-600 mt-2">Types & Solutions</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.pcb}<span className="block text-green-600 mt-2">{tx.types_solutions}</span>
             </h2>
           </div>
 
@@ -229,9 +226,7 @@ export default function PcbDesignPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Technical
-              <span className="block text-green-600 mt-2">Specifications</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.technical}<span className="block text-green-600 mt-2">{tx.specifications}</span>
             </h2>
           </div>
 
@@ -254,9 +249,7 @@ export default function PcbDesignPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Design
-              <span className="block text-green-600 mt-2">Tools</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.design}<span className="block text-green-600 mt-2">{tx.tools}</span>
             </h2>
           </div>
 
@@ -288,9 +281,7 @@ export default function PcbDesignPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Design
-              <span className="block text-green-600 mt-2">Process</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.design}<span className="block text-green-600 mt-2">{tx.process}</span>
             </h2>
           </div>
 
@@ -323,21 +314,13 @@ export default function PcbDesignPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-green-600 via-emerald-700 to-teal-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Design Your
-            <span className="block text-green-100 mt-2">Custom PCB?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_design_your}<span className="block text-green-100 mt-2">{tx.custom_pcb}</span>
           </h2>
-          <p className="text-xl text-green-100 mb-8 leading-relaxed font-light">
-            Let&apos;s discuss your PCB requirements and create production-ready circuit boards that meet your specifications.
-          </p>
+          <p className="text-xl text-green-100 mb-8 leading-relaxed font-light">{tx.let_s_discuss_your_pcb}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-green-600 px-8 py-4 rounded-xl hover:bg-green-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-                Start Your Project
-              </Link>
-            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-green-600 transition-all duration-200 font-semibold text-lg">
-                Request Quote
-              </Link>
+            <Link href="/contact" className="bg-white text-green-600 px-8 py-4 rounded-xl hover:bg-green-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_your_project}</Link>
+            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-green-600 transition-all duration-200 font-semibold text-lg">{tx.request_quote}</Link>
           </div>
         </div>
       </section>

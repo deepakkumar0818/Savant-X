@@ -1,39 +1,40 @@
 'use client';
 
+import tx from '@/content/text/components/contact/ContactFaq.json';
 import { useId, useState } from 'react';
 import { HelpCircle, MessageCircle, Plus } from 'lucide-react';
 import SupportModal from '@/components/forms/SupportModal';
 
 const FAQS = [
   {
-    question: 'How long does a typical project take?',
+    question: tx.how_long_does_a_typical,
     answer:
-      'Project timelines vary based on complexity and scope. Simple websites take 2-4 weeks, while complex applications can take 3-6 months. We provide detailed timelines during the initial consultation.',
+      tx.project_timelines_vary_based_on,
   },
   {
-    question: 'Do you provide ongoing support after project completion?',
+    question: tx.do_you_provide_ongoing_support,
     answer:
-      'Yes. We offer maintenance and support after launch, including regular updates, security patches and performance monitoring, agreed with you as part of the project.',
+      tx.yes_we_offer_maintenance_and,
   },
   {
-    question: 'What technologies do you specialize in?',
+    question: tx.what_technologies_do_you_specialize,
     answer:
-      'We specialize in modern web technologies including React, Next.js, Node.js, Python, and cloud platforms like AWS. We also work with mobile technologies like React Native and Flutter.',
+      tx.we_specialize_in_modern_web,
   },
   {
-    question: 'How do you ensure project quality?',
+    question: tx.how_do_you_ensure_project,
     answer:
-      'We follow industry best practices, test thoroughly, review code and keep you involved with regular demos, so problems are caught early rather than after launch.',
+      tx.we_follow_industry_best_practices,
   },
   {
-    question: 'Can you work with our existing systems?',
+    question: tx.can_you_work_with_our,
     answer:
-      'Absolutely. We integrate with existing systems and can work with legacy technologies while modernizing your infrastructure, connecting them through APIs where possible.',
+      tx.absolutely_we_integrate_with_existing,
   },
   {
-    question: 'What is your development process?',
+    question: tx.what_is_your_development_process,
     answer:
-      'We follow an agile development methodology with regular sprints, client feedback loops, and iterative improvements. Our process includes planning, design, development, testing, and deployment phases.',
+      tx.we_follow_an_agile_development,
   },
 ];
 
@@ -72,20 +73,16 @@ export default function ContactFaq() {
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-indigo-50/70 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-indigo-700">
-              <HelpCircle className="h-3.5 w-3.5" aria-hidden />
-              Frequently asked questions
-            </p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">Common Questions</h2>
-            <p className="mt-3 text-slate-600">Find answers to the most commonly asked questions about our services and process.</p>
+              <HelpCircle className="h-3.5 w-3.5" aria-hidden />{tx.frequently_asked_questions}</p>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">{tx.common_questions}</h2>
+            <p className="mt-3 text-slate-600">{tx.find_answers_to_the_most}</p>
           </div>
           <button
             type="button"
             onClick={() => setIsSupportOpen(true)}
             className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 self-start rounded-full px-6 text-sm font-semibold text-indigo-700 ring-1 ring-indigo-300 transition hover:bg-indigo-50 sm:self-auto"
           >
-            <MessageCircle className="h-4 w-4" aria-hidden />
-            Ask support
-          </button>
+            <MessageCircle className="h-4 w-4" aria-hidden />{tx.ask_support}</button>
         </div>
 
         {/* Two independent columns so opening an answer does not stretch its neighbour. */}

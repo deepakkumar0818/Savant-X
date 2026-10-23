@@ -1,0 +1,23 @@
+{
+  "network_error_please_check_your": "Network error. Please check your connection and try again. Your details are still here.",
+  "request_a_demo": "Request a demo",
+  "see_the_product_in_action": "See the product in action. Our team will contact you to schedule it.",
+  "close": "Close",
+  "our_team_will_call_or": "Our team will call or email you to arrange a time for your demo.",
+  "back_to_products": "Back to products",
+  "website": "Website",
+  "product": "Product",
+  "select_a_product": "Select a product",
+  "not_sure_yet": "Not sure yet",
+  "full_name": "Full name",
+  "email": "Email",
+  "phone": "Phone",
+  "organisation": "Organisation",
+  "optional": "(optional)",
+  "anything_we_should_know": "Anything we should know?",
+  "for_example_number_of_users": "For example: number of users, preferred time for the demo.",
+  "sending": "Sending…",
+  "request_my_demo": "Request my demo",
+  "we_use_these_details_only": "We use these details only to arrange your demo. See our",
+  "privacy_policy": "privacy policy"
+}

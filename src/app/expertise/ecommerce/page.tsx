@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/ecommerce/page.json';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -8,9 +9,9 @@ import { ShoppingCart } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'E-commerce Development',
+  title: tx.e_commerce_development,
   description:
-    'Conversion-focused e-commerce stores, from Shopify to fully custom platforms, built by SavantX Technologies.',
+    tx.conversion_focused_e_commerce_stores,
   path: '/expertise/ecommerce',
 });
 
@@ -19,41 +20,41 @@ export default function EcommercePage() {
   const ecommerceTypes = [
     {
       id: 'shopify',
-      title: 'Shopify Development',
+      title: tx.shopify_development,
       icon: '🛍️',
-      description: 'Custom Shopify stores with advanced functionality and seamless user experience.',
-      features: ['Custom Themes', 'App Integration', 'Payment Gateway', 'Inventory Management', 'SEO Optimization', 'Mobile Responsive'],
-      pricing: 'Starting at $8,000',
+      description: tx.custom_shopify_stores_with_advanced,
+      features: [tx.custom_themes, tx.app_integration, tx.payment_gateway, tx.inventory_management, tx.seo_optimization, tx.mobile_responsive],
+      pricing: tx.starting_at_8_000,
       timeline: '4-6 weeks',
       color: 'green'
     },
     {
       id: 'woocommerce',
-      title: 'WooCommerce Solutions',
+      title: tx.woocommerce_solutions,
       icon: '🛒',
-      description: 'WordPress-based e-commerce solutions with unlimited customization possibilities.',
-      features: ['WordPress Integration', 'Custom Plugins', 'Payment Processing', 'Product Management', 'Order Tracking', 'Analytics'],
-      pricing: 'Starting at $6,000',
+      description: tx.wordpress_based_e_commerce_solutions,
+      features: [tx.wordpress_integration, tx.custom_plugins, tx.payment_processing, tx.product_management, tx.order_tracking, tx.analytics],
+      pricing: tx.starting_at_6_000,
       timeline: '3-5 weeks',
       color: 'purple'
     },
     {
       id: 'custom',
-      title: 'Custom E-commerce',
+      title: tx.custom_e_commerce,
       icon: '🏪',
-      description: 'Fully custom e-commerce platforms built from scratch for unique business needs.',
-      features: ['Custom Design', 'Unique Features', 'Scalable Architecture', 'API Integration', 'Advanced Analytics', 'Multi-vendor Support'],
-      pricing: 'Starting at $15,000',
+      description: tx.fully_custom_e_commerce_platforms,
+      features: [tx.custom_design, tx.unique_features, tx.scalable_architecture, tx.api_integration, tx.advanced_analytics, tx.multi_vendor_support],
+      pricing: tx.starting_at_15_000,
       timeline: '8-12 weeks',
       color: 'blue'
     },
     {
       id: 'headless',
-      title: 'Headless Commerce',
+      title: tx.headless_commerce,
       icon: '⚡',
-      description: 'Modern headless e-commerce solutions with API-first architecture.',
-      features: ['API-First', 'Multi-Channel', 'Performance Optimized', 'Flexible Frontend', 'Omnichannel', 'Future-Proof'],
-      pricing: 'Starting at $20,000',
+      description: tx.modern_headless_e_commerce_solutions,
+      features: [tx.api_first, tx.multi_channel, tx.performance_optimized, tx.flexible_frontend, tx.omnichannel, tx.future_proof],
+      pricing: tx.starting_at_20_000,
       timeline: '10-16 weeks',
       color: 'orange'
     }
@@ -61,33 +62,33 @@ export default function EcommercePage() {
 
   const features = [
     {
-      title: 'Product Catalog',
-      description: 'Comprehensive product management with categories, variants, and inventory tracking.',
+      title: tx.product_catalog,
+      description: tx.comprehensive_product_management_with_ca,
       icon: '📦'
     },
     {
-      title: 'Shopping Cart',
-      description: 'Seamless cart functionality with save for later, wishlist, and quick checkout.',
+      title: tx.shopping_cart,
+      description: tx.seamless_cart_functionality_with_save,
       icon: '🛒'
     },
     {
-      title: 'Payment Gateway',
-      description: 'Secure payment processing with multiple payment options and fraud protection.',
+      title: tx.payment_gateway_2,
+      description: tx.secure_payment_processing_with_multiple,
       icon: '💳'
     },
     {
-      title: 'Order Management',
-      description: 'Complete order lifecycle management from placement to fulfillment.',
+      title: tx.order_management,
+      description: tx.complete_order_lifecycle_management_from,
       icon: '📋'
     },
     {
-      title: 'Customer Portal',
-      description: 'Self-service customer accounts with order history and profile management.',
+      title: tx.customer_portal,
+      description: tx.self_service_customer_accounts_with,
       icon: '👤'
     },
     {
-      title: 'Analytics Dashboard',
-      description: 'Comprehensive analytics and reporting for business insights.',
+      title: tx.analytics_dashboard,
+      description: tx.comprehensive_analytics_and_reporting_fo,
       icon: '📊'
     }
   ];
@@ -95,80 +96,80 @@ export default function EcommercePage() {
   const platforms = [
     {
       id: 'shopify',
-      name: 'Shopify',
+      name: tx.shopify,
       icon: '🛍️',
-      description: 'Leading e-commerce platform with powerful built-in features',
-      features: ['Easy Setup', 'App Store', 'Payment Processing', 'Inventory Management', 'Mobile Apps', '24/7 Support'],
-      pricing: 'From $29/month',
-      pros: ['User-friendly', 'Reliable hosting', 'Great support'],
-      cons: ['Transaction fees', 'Limited customization']
+      description: tx.leading_e_commerce_platform_with,
+      features: [tx.easy_setup, tx.app_store, tx.payment_processing_2, tx.inventory_management_2, tx.mobile_apps, tx.t_24_7_support],
+      pricing: tx.from_29_month,
+      pros: [tx.user_friendly, tx.reliable_hosting, tx.great_support],
+      cons: [tx.transaction_fees, tx.limited_customization]
     },
     {
       id: 'woocommerce',
-      name: 'WooCommerce',
+      name: tx.woocommerce,
       icon: '🛒',
-      description: 'Flexible WordPress-based e-commerce solution',
-      features: ['WordPress Integration', 'Free Core', 'Unlimited Customization', 'SEO Friendly', 'Large Community', 'Flexible Hosting'],
-      pricing: 'Free + hosting',
-      pros: ['Highly customizable', 'SEO optimized', 'Cost effective'],
-      cons: ['Requires maintenance', 'Hosting dependent']
+      description: tx.flexible_wordpress_based_e_commerce,
+      features: [tx.wordpress_integration_2, tx.free_core, tx.unlimited_customization, tx.seo_friendly, tx.large_community, tx.flexible_hosting],
+      pricing: tx.free_hosting,
+      pros: [tx.highly_customizable, tx.seo_optimized, tx.cost_effective],
+      cons: [tx.requires_maintenance, tx.hosting_dependent]
     },
     {
       id: 'magento',
-      name: 'Magento',
+      name: tx.magento,
       icon: '🏢',
-      description: 'Enterprise-grade e-commerce platform for large businesses',
-      features: ['Enterprise Features', 'Multi-store', 'Advanced SEO', 'B2B Capabilities', 'Scalable', 'API Rich'],
-      pricing: 'From $22,000/year',
-      pros: ['Enterprise features', 'Highly scalable', 'Powerful'],
-      cons: ['Complex setup', 'Expensive', 'Requires expertise']
+      description: tx.enterprise_grade_e_commerce_platform,
+      features: [tx.enterprise_features, tx.multi_store, tx.advanced_seo, tx.b2b_capabilities, tx.scalable, tx.api_rich],
+      pricing: tx.from_22_000_year,
+      pros: [tx.enterprise_features_2, tx.highly_scalable, tx.powerful],
+      cons: [tx.complex_setup, tx.expensive, tx.requires_expertise]
     }
   ];
 
   const technologies = [
-    { name: 'React', icon: '⚛️', description: 'Frontend framework', category: 'Frontend' },
-    { name: 'Next.js', icon: '⚡', description: 'Full-stack framework', category: 'Frontend' },
-    { name: 'Node.js', icon: '🟢', description: 'Backend runtime', category: 'Backend' },
-    { name: 'Stripe', icon: '💳', description: 'Payment processing', category: 'Payments' },
-    { name: 'PayPal', icon: '🅿️', description: 'Payment gateway', category: 'Payments' },
-    { name: 'MongoDB', icon: '🍃', description: 'NoSQL database', category: 'Database' },
-    { name: 'PostgreSQL', icon: '🐘', description: 'Relational database', category: 'Database' },
-    { name: 'AWS', icon: '☁️', description: 'Cloud hosting', category: 'Cloud' }
+    { name: tx.react, icon: '⚛️', description: tx.frontend_framework, category: 'Frontend' },
+    { name: tx.next_js, icon: '⚡', description: tx.full_stack_framework, category: 'Frontend' },
+    { name: tx.node_js, icon: '🟢', description: tx.backend_runtime, category: 'Backend' },
+    { name: tx.stripe, icon: '💳', description: tx.payment_processing_3, category: 'Payments' },
+    { name: tx.paypal, icon: '🅿️', description: tx.payment_gateway_3, category: 'Payments' },
+    { name: tx.mongodb, icon: '🍃', description: tx.nosql_database, category: 'Database' },
+    { name: tx.postgresql, icon: '🐘', description: tx.relational_database, category: 'Database' },
+    { name: 'AWS', icon: '☁️', description: tx.cloud_hosting, category: 'Cloud' }
   ];
 
   const processSteps = [
     {
       step: '01',
-      title: 'Discovery & Strategy',
-      description: 'Understanding your business model and defining the e-commerce strategy.',
+      title: tx.discovery_strategy,
+      description: tx.understanding_your_business_model_and,
       duration: '1-2 weeks',
       icon: '🔍'
     },
     {
       step: '02',
-      title: 'Platform Selection',
-      description: 'Choosing the right e-commerce platform based on your requirements.',
-      duration: '1 week',
+      title: tx.platform_selection,
+      description: tx.choosing_the_right_e_commerce,
+      duration: tx.t_1_week,
       icon: '🎯'
     },
     {
       step: '03',
-      title: 'Design & UX',
-      description: 'Creating user-friendly interfaces optimized for conversions.',
+      title: tx.design_ux,
+      description: tx.creating_user_friendly_interfaces_optimi,
       duration: '2-3 weeks',
       icon: '🎨'
     },
     {
       step: '04',
-      title: 'Development',
-      description: 'Building your e-commerce platform with modern technologies.',
+      title: tx.development,
+      description: tx.building_your_e_commerce_platform,
       duration: '4-8 weeks',
       icon: '💻'
     },
     {
       step: '05',
-      title: 'Testing & Launch',
-      description: 'Comprehensive testing and launching your online store.',
+      title: tx.testing_launch,
+      description: tx.comprehensive_testing_and_launching_your,
       duration: '1-2 weeks',
       icon: '🚀'
     }
@@ -176,33 +177,33 @@ export default function EcommercePage() {
 
   const integrations = [
     {
-      title: 'Payment Gateways',
-      description: 'Stripe, PayPal, Square, and other payment processors',
+      title: tx.payment_gateways,
+      description: tx.stripe_paypal_square_and_other,
       icon: '💳'
     },
     {
-      title: 'Shipping Providers',
-      description: 'FedEx, UPS, DHL, and local shipping integrations',
+      title: tx.shipping_providers,
+      description: tx.fedex_ups_dhl_and_local,
       icon: '🚚'
     },
     {
-      title: 'Email Marketing',
-      description: 'Mailchimp, Klaviyo, and other email platforms',
+      title: tx.email_marketing,
+      description: tx.mailchimp_klaviyo_and_other_email,
       icon: '📧'
     },
     {
-      title: 'Analytics',
-      description: 'Google Analytics, Facebook Pixel, and conversion tracking',
+      title: tx.analytics_2,
+      description: tx.google_analytics_facebook_pixel_and,
       icon: '📈'
     },
     {
-      title: 'Inventory Management',
-      description: 'Real-time inventory tracking and management systems',
+      title: tx.inventory_management_3,
+      description: tx.real_time_inventory_tracking_and,
       icon: '📦'
     },
     {
-      title: 'CRM Integration',
-      description: 'Salesforce, HubSpot, and customer relationship management',
+      title: tx.crm_integration,
+      description: tx.salesforce_hubspot_and_customer_relation,
       icon: '👥'
     }
   ];
@@ -211,17 +212,17 @@ export default function EcommercePage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="E-commerce Development"
+        eyebrow={tx.e_commerce_development_2}
         eyebrowIcon={ShoppingCart}
-        title="E-commerce"
-        highlight="Solutions"
-        description="We build powerful, conversion-optimized e-commerce platforms that drive sales and grow your online business. From Shopify stores to custom solutions, we deliver exceptional online shopping experiences."
+        title={tx.e_commerce}
+        highlight={tx.solutions}
+        description={tx.we_build_powerful_conversion_optimized}
         highlights={["Shopify Development", "WooCommerce Solutions", "Custom E-commerce", "Headless Commerce"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "40%", label: "Avg. Conversion Increase" },
-          { value: "3-12", label: "Week Delivery" },
-          { value: "99.9%", label: "Uptime" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "40%", label: tx.avg_conversion_increase },
+          { value: "3-12", label: tx.week_delivery },
+          { value: "99.9%", label: tx.uptime },
         ]}
       />
 
@@ -230,16 +231,10 @@ export default function EcommercePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Solutions
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              E-commerce
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Platform Types</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_solutions}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.e_commerce}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.platform_types}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              From ready-made platforms to custom solutions, we offer the perfect e-commerce solution for your business needs.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.from_ready_made_platforms_to}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -280,11 +275,11 @@ export default function EcommercePage() {
                   <div className="flex items-center justify-between pt-6 border-t border-slate-200">
                     <div>
                       <div className="text-lg font-bold text-blue-600 mb-1">{type.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
                     </div>
                     <div className="text-right">
                       <div className="text-lg font-bold text-green-600 mb-1">{type.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.timeline}</div>
                     </div>
                   </div>
                 </div>
@@ -299,16 +294,10 @@ export default function EcommercePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Platform Comparison
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Popular
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">E-commerce Platforms</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.platform_comparison}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.popular}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.e_commerce_platforms}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We work with all major e-commerce platforms to deliver the best solution for your business.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_work_with_all_major}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -329,7 +318,7 @@ export default function EcommercePage() {
                   {/* Pricing */}
                   <div className="text-center mb-6 p-4 bg-slate-50 rounded-xl">
                     <div className="text-lg font-bold text-blue-600 mb-1">{platform.pricing}</div>
-                    <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
+                    <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
                   </div>
 
                   {/* Features */}
@@ -345,7 +334,7 @@ export default function EcommercePage() {
                   {/* Pros & Cons */}
                   <div className="space-y-3 pt-6 border-t border-slate-200">
                     <div>
-                      <h4 className="text-sm font-semibold text-green-600 mb-2">Pros</h4>
+                      <h4 className="text-sm font-semibold text-green-600 mb-2">{tx.pros}</h4>
                       <div className="space-y-1">
                         {platform.pros.map((pro, proIndex) => (
                           <div key={proIndex} className="flex items-center gap-2">
@@ -356,7 +345,7 @@ export default function EcommercePage() {
                       </div>
                     </div>
                     <div>
-                      <h4 className="text-sm font-semibold text-orange-600 mb-2">Cons</h4>
+                      <h4 className="text-sm font-semibold text-orange-600 mb-2">{tx.cons}</h4>
                       <div className="space-y-1">
                         {platform.cons.map((con, conIndex) => (
                           <div key={conIndex} className="flex items-center gap-2">
@@ -379,16 +368,10 @@ export default function EcommercePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Key Features
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              E-commerce
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Features</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.key_features}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.e_commerce}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.features}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Comprehensive e-commerce functionality to power your online business.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.comprehensive_e_commerce_functionality_t}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -416,16 +399,10 @@ export default function EcommercePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Integrations
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Third-Party
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Integrations</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.integrations}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.third_party}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.integrations}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Seamlessly integrate with your favorite tools and services.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.seamlessly_integrate_with_your_favorite}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -453,16 +430,10 @@ export default function EcommercePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Technology Stack
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              E-commerce
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Technologies</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.technology_stack}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.e_commerce}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.technologies}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Modern technologies powering your e-commerce success.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.modern_technologies_powering_your_e}</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
@@ -489,16 +460,10 @@ export default function EcommercePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              How We Build
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">E-commerce Stores</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.how_we_build}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.e_commerce_stores}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our proven 5-step process ensures your e-commerce store is delivered on time and optimized for conversions.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_proven_5_step_process}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -530,24 +495,14 @@ export default function EcommercePage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Launch Your
-            <span className="block text-blue-100 mt-2">E-commerce Store?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_launch_your}<span className="block text-blue-100 mt-2">{tx.e_commerce_store}</span>
           </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">
-            Let&apos;s discuss your e-commerce requirements and create a powerful online store that drives sales and grows your business.
-          </p>
+          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">{tx.let_s_discuss_your_e}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Start Your Store
-            </Link>
-            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-                Schedule Demo
-              </Link>
-            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-              View Portfolio
-            </Link>
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_your_store}</Link>
+            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.schedule_demo}</Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.view_portfolio}</Link>
           </div>
         </div>
       </section>

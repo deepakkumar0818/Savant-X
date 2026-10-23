@@ -1,0 +1,21 @@
+{
+  "network_error_please_check_your": "Network error. Please check your connection and try again.",
+  "next_step_our_zoho_team": "Next step: our Zoho team will review your requirements and contact you by email or phone to arrange your free consultation.",
+  "send_another_enquiry": "Send another enquiry",
+  "website": "Website",
+  "full_name": "Full name",
+  "business_email": "Business email",
+  "company": "Company",
+  "phone": "Phone",
+  "optional": "(optional)",
+  "service": "Service",
+  "select_a_service": "Select a service",
+  "budget_range": "Budget range",
+  "select_a_budget": "Select a budget",
+  "what_business_challenge_do_you": "What business challenge do you want to solve?",
+  "for_example_we_use_zoho": "For example: we use Zoho CRM but follow-ups are missed, and we want quotes sent from CRM with manager approval.",
+  "sending": "Sending…",
+  "book_free_consultation": "Book free consultation",
+  "we_use_these_details_only": "We use these details only to respond to your enquiry. See our",
+  "privacy_policy": "privacy policy"
+}

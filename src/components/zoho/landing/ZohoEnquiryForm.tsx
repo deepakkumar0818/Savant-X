@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/components/zoho/landing/ZohoEnquiryForm.json';
 import { useEffect, useId, useRef, useState } from 'react';
 import Link from 'next/link';
 import { CheckCircle2, Loader2 } from 'lucide-react';
@@ -117,7 +118,8 @@ export default function ZohoEnquiryForm({
           email: form.email,
           company: form.company,
           phone: form.phone,
-          service: serviceLabel.startsWith('ERP: ') ? serviceLabel : `Zoho: ${serviceLabel}`,
+          // ERP packages are sent as they are; everything else is tagged as a Zoho service.
+          service: form.service.startsWith('erp-') ? serviceLabel : `Zoho: ${serviceLabel}`,
           budget: form.budget,
           message: [form.message, ...campaignParams()].join('\n'),
           source: 'Zoho page',
@@ -135,7 +137,7 @@ export default function ZohoEnquiryForm({
       setForm(EMPTY);
       window.dispatchEvent(new Event(LEAD_SENT_EVENT));
     } catch {
-      setStatus({ state: 'error', message: 'Network error. Please check your connection and try again.' });
+      setStatus({ state: 'error', message: tx.network_error_please_check_your });
     }
   };
 
@@ -146,17 +148,12 @@ export default function ZohoEnquiryForm({
           <CheckCircle2 className="h-6 w-6" aria-hidden />
         </span>
         <p className="mt-4 text-lg font-semibold text-slate-900">{status.message}</p>
-        <p className="mt-2 max-w-sm text-sm text-slate-600">
-          Next step: our Zoho team will review your requirements and contact you by email or phone to arrange
-          your free consultation.
-        </p>
+        <p className="mt-2 max-w-sm text-sm text-slate-600">{tx.next_step_our_zoho_team}</p>
         <button
           type="button"
           onClick={() => setStatus({ state: 'idle' })}
           className="mt-6 rounded-lg px-4 py-2 text-sm font-semibold text-indigo-700 ring-1 ring-indigo-200 transition hover:bg-indigo-50"
-        >
-          Send another enquiry
-        </button>
+        >{tx.send_another_enquiry}</button>
       </div>
     );
   }
@@ -178,7 +175,7 @@ export default function ZohoEnquiryForm({
   return (
     <form noValidate onSubmit={onSubmit} className="grid gap-5 p-6 sm:grid-cols-2 sm:p-8">
       <div className="hidden" aria-hidden>
-        <label htmlFor={`${id}-website`}>Website</label>
+        <label htmlFor={`${id}-website`}>{tx.website}</label>
         <input
           id={`${id}-website`}
           name="website"
@@ -190,9 +187,7 @@ export default function ZohoEnquiryForm({
       </div>
 
       <div>
-        <label htmlFor={`${id}-name`} className="text-sm font-medium text-slate-700">
-          Full name
-        </label>
+        <label htmlFor={`${id}-name`} className="text-sm font-medium text-slate-700">{tx.full_name}</label>
         <input
           ref={nameRef}
           {...field('name')}
@@ -204,9 +199,7 @@ export default function ZohoEnquiryForm({
         {error('name')}
       </div>
       <div>
-        <label htmlFor={`${id}-email`} className="text-sm font-medium text-slate-700">
-          Business email
-        </label>
+        <label htmlFor={`${id}-email`} className="text-sm font-medium text-slate-700">{tx.business_email}</label>
         <input
           {...field('email')}
           type="email"
@@ -218,9 +211,7 @@ export default function ZohoEnquiryForm({
         {error('email')}
       </div>
       <div>
-        <label htmlFor={`${id}-company`} className="text-sm font-medium text-slate-700">
-          Company
-        </label>
+        <label htmlFor={`${id}-company`} className="text-sm font-medium text-slate-700">{tx.company}</label>
         <input
           {...field('company')}
           autoComplete="organization"
@@ -231,8 +222,7 @@ export default function ZohoEnquiryForm({
         {error('company')}
       </div>
       <div>
-        <label htmlFor={`${id}-phone`} className="text-sm font-medium text-slate-700">
-          Phone <span className="font-normal text-slate-400">(optional)</span>
+        <label htmlFor={`${id}-phone`} className="text-sm font-medium text-slate-700">{tx.phone}{" "}<span className="font-normal text-slate-400">{tx.optional}</span>
         </label>
         <input
           {...field('phone')}
@@ -246,16 +236,14 @@ export default function ZohoEnquiryForm({
         {error('phone')}
       </div>
       <div>
-        <label htmlFor={`${id}-service`} className="text-sm font-medium text-slate-700">
-          Service
-        </label>
+        <label htmlFor={`${id}-service`} className="text-sm font-medium text-slate-700">{tx.service}</label>
         <select
           {...field('service')}
           value={form.service}
           onChange={(e) => update('service', e.target.value as ServiceId)}
           className={`${inputClass} ${border('service')}`}
         >
-          <option value="">Select a service</option>
+          <option value="">{tx.select_a_service}</option>
           {SERVICE_OPTIONS.map((s) => (
             <option key={s.id} value={s.id}>
               {s.label}
@@ -265,16 +253,14 @@ export default function ZohoEnquiryForm({
         {error('service')}
       </div>
       <div>
-        <label htmlFor={`${id}-budget`} className="text-sm font-medium text-slate-700">
-          Budget range
-        </label>
+        <label htmlFor={`${id}-budget`} className="text-sm font-medium text-slate-700">{tx.budget_range}</label>
         <select
           {...field('budget')}
           value={form.budget}
           onChange={(e) => update('budget', e.target.value)}
           className={`${inputClass} ${border('budget')}`}
         >
-          <option value="">Select a budget</option>
+          <option value="">{tx.select_a_budget}</option>
           {BUDGET_OPTIONS.map((b) => (
             <option key={b} value={b}>
               {b}
@@ -284,15 +270,13 @@ export default function ZohoEnquiryForm({
         {error('budget')}
       </div>
       <div className="sm:col-span-2">
-        <label htmlFor={`${id}-message`} className="text-sm font-medium text-slate-700">
-          What business challenge do you want to solve?
-        </label>
+        <label htmlFor={`${id}-message`} className="text-sm font-medium text-slate-700">{tx.what_business_challenge_do_you}</label>
         <textarea
           {...field('message')}
           rows={4}
           value={form.message}
           onChange={(e) => update('message', e.target.value)}
-          placeholder="For example: we use Zoho CRM but follow-ups are missed, and we want quotes sent from CRM with manager approval."
+          placeholder={tx.for_example_we_use_zoho}
           className={`${inputClass} ${border('message')} resize-y`}
         />
         {error('message')}
@@ -310,13 +294,10 @@ export default function ZohoEnquiryForm({
           className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-600/20 transition hover:from-blue-700 hover:to-indigo-700 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
         >
           {submitting && <Loader2 className="h-4 w-4 animate-spin" aria-hidden />}
-          {submitting ? 'Sending…' : 'Book free consultation'}
+          {submitting ? tx.sending : tx.book_free_consultation}
         </button>
-        <p className="mt-3 text-xs text-slate-500">
-          We use these details only to respond to your enquiry. See our{' '}
-          <Link href="/privacy-policy" className="font-medium text-indigo-700 underline-offset-2 hover:underline">
-            privacy policy
-          </Link>
+        <p className="mt-3 text-xs text-slate-500">{tx.we_use_these_details_only}{' '}
+          <Link href="/privacy-policy" className="font-medium text-indigo-700 underline-offset-2 hover:underline">{tx.privacy_policy}</Link>
           .
         </p>
       </div>

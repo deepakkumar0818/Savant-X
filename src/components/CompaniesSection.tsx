@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/components/CompaniesSection.json';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useInView } from '@/lib/useInView';
@@ -63,15 +64,9 @@ export default function CompaniesSection() {
                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                 clipRule="evenodd"
               />
-            </svg>
-            Trusted partners
-          </div>
-          <h2 className="animate-fade-in-up max-w-4xl text-balance text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
-            We design, build and ship
-            <span className="mt-2 block bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
-              world-class digital products
-            </span>
-            <span className="mt-2 block text-slate-800">for forward-thinking brands.</span>
+            </svg>{tx.trusted_partners}</div>
+          <h2 className="animate-fade-in-up max-w-4xl text-balance text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">{tx.we_design_build_and_ship}<span className="mt-2 block bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.world_class_digital_products}</span>
+            <span className="mt-2 block text-slate-800">{tx.for_forward_thinking_brands}</span>
           </h2>
         </div>
 
@@ -108,15 +103,11 @@ export default function CompaniesSection() {
         </div>
 
         <div className="delay-600 relative z-20 mt-14 text-center animate-fade-in-up sm:mt-16">
-          <p className="mx-auto mb-8 max-w-xl text-lg leading-relaxed text-slate-600">
-            Join these industry leaders in transforming your digital presence
-          </p>
+          <p className="mx-auto mb-8 max-w-xl text-lg leading-relaxed text-slate-600">{tx.join_these_industry_leaders_in}</p>
           <Link
             href="/contact"
             className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-blue-600/25 ring-2 ring-white/30 transition-all duration-300 hover:from-blue-700 hover:to-indigo-700 hover:shadow-xl motion-safe:hover:scale-[1.02]"
-          >
-            Start your project
-            <svg
+          >{tx.start_your_project}<svg
               className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
               fill="none"
               stroke="currentColor"

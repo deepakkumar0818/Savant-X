@@ -1,3 +1,4 @@
+import tx from '@/content/text/components/zoho/landing/ErpOffers.json';
 import { Boxes, Building2, ClipboardList, Factory, Plug, RefreshCw, type LucideIcon } from 'lucide-react';
 import OfferBento from './OfferBento';
 import type { BentoTheme } from './bentoThemes';
@@ -21,10 +22,10 @@ export default function ErpOffers() {
   return (
     <OfferBento
       id="erp-offers"
-      eyebrow="ERP for manufacturers & large businesses"
-      title="ERP offers that grow with your operations"
-      description="From a focused starter ERP to multi-department rollouts and ongoing improvement. Scope is agreed before we quote."
-      cta={{ label: 'Talk to us about ERP', service: 'consultation' }}
+      eyebrow={tx.erp_for_manufacturers_large_businesses}
+      title={tx.erp_offers_that_grow_with}
+      description={tx.from_a_focused_starter_erp}
+      cta={{ label: tx.talk_to_us_about_erp, service: 'consultation' }}
       offers={ERP_OFFERS.map((offer) => ({
         id: offer.id,
         tag: `${offer.audience} · ${offer.label}`,

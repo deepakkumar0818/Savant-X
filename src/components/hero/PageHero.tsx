@@ -1,3 +1,4 @@
+import tx from '@/content/text/components/hero/PageHero.json';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, Eye, type LucideIcon } from 'lucide-react';
 import HeroPremiumBackdrop from '@/components/hero/HeroPremiumBackdrop';
@@ -38,8 +39,8 @@ export default function PageHero({
   title,
   highlight,
   description,
-  primaryCta = { label: 'Start a project', href: '/contact' },
-  secondaryCta = { label: 'View our work', href: '/work' },
+  primaryCta = { label: tx.start_a_project, href: '/contact' },
+  secondaryCta = { label: tx.view_our_work, href: '/work' },
   highlights,
   highlightsTitle = 'What we deliver',
   stats,

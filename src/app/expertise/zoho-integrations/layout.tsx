@@ -1,25 +1,26 @@
+import tx from '@/content/text/app/expertise/zoho-integrations/layout.json';
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: 'Zoho CRM, Creator & Deluge Development Services',
+    title: tx.zoho_crm_creator_deluge_development,
     description:
-      'Zoho CRM implementation, Zoho Creator and Deluge development, workflow automation and Zoho integrations by SavantX. Membership from ₹14,999/month and fixed-price packages.',
+      tx.zoho_crm_implementation_zoho_creator,
     path: '/expertise/zoho-integrations',
   }),
   keywords: [
-    'Zoho development services',
-    'Zoho Deluge development',
-    'Zoho workflow automation',
-    'Zoho developer India',
-    'Zoho CRM implementation',
-    'Zoho customization',
-    'Zoho Creator development',
-    'Deluge scripting',
-    'Zoho Books setup',
-    'Zoho integrations',
-    'SavantX Zoho',
+    tx.zoho_development_services,
+    tx.zoho_deluge_development,
+    tx.zoho_workflow_automation,
+    tx.zoho_developer_india,
+    tx.zoho_crm_implementation,
+    tx.zoho_customization,
+    tx.zoho_creator_development,
+    tx.deluge_scripting,
+    tx.zoho_books_setup,
+    tx.zoho_integrations,
+    tx.savantx_zoho,
   ],
 };
 

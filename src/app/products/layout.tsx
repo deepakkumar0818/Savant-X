@@ -1,10 +1,11 @@
+import tx from '@/content/text/app/products/layout.json';
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Products',
+  title: tx.products,
   description:
-    'Explore the SavantX Technologies product catalog: business software that helps organisations in healthcare, logistics, education and more scale and operate efficiently.',
+    tx.explore_the_savantx_technologies_product,
   path: '/products',
 });
 

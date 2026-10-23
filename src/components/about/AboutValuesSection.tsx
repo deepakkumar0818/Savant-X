@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/components/about/AboutValuesSection.json';
 import Image from 'next/image';
 import { ArrowRight, Award, Handshake, Lightbulb, Target, type LucideIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -14,30 +15,30 @@ type Value = {
 
 const VALUES: Value[] = [
   {
-    title: 'Innovation First',
+    title: tx.innovation_first,
     description:
-      'We embrace cutting-edge technologies and creative solutions to stay ahead of the curve and solve complex business challenges.',
+      tx.we_embrace_cutting_edge_technologies,
     icon: Lightbulb,
     art: '/images/about/values/innovation.webp',
   },
   {
-    title: 'Client Success',
+    title: tx.client_success,
     description:
-      "Your success is our success. We're committed to delivering solutions that drive real business value and measurable results.",
+      tx.your_success_is_our_success,
     icon: Target,
     art: '/images/about/values/client-success.webp',
   },
   {
-    title: 'Quality Excellence',
+    title: tx.quality_excellence,
     description:
-      'We maintain the highest standards in everything we do, from clean code and reliable systems to exceptional user experiences.',
+      tx.we_maintain_the_highest_standards,
     icon: Award,
     art: '/images/about/values/quality.webp',
   },
   {
-    title: 'Collaborative Partnership',
+    title: tx.collaborative_partnership,
     description:
-      'We work closely with our clients as true partners, ensuring transparency, open communication and long-term growth.',
+      tx.we_work_closely_with_our,
     icon: Handshake,
     art: '/images/about/values/partnership.webp',
   },
@@ -114,17 +115,10 @@ export default function AboutValuesSection() {
         variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
       >
         <motion.div variants={fadeUp} className="mx-auto mb-12 max-w-2xl text-center sm:mb-14">
-          <p className="mb-4 inline-flex items-center rounded-full border border-indigo-200/90 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-indigo-700 shadow-sm">
-            Our values
-          </p>
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
-            The principles that guide
-            <span className="block bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">everything we do.</span>
+          <p className="mb-4 inline-flex items-center rounded-full border border-indigo-200/90 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-indigo-700 shadow-sm">{tx.our_values}</p>
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-tight">{tx.the_principles_that_guide}<span className="block bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.everything_we_do}</span>
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-600">
-            These values shape our decisions, our work and our culture, helping us build long-term relationships and deliver real impact for our
-            clients.
-          </p>
+          <p className="mt-4 text-base leading-relaxed text-slate-600">{tx.these_values_shape_our_decisions}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">

@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/commercial/page.json';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
@@ -8,9 +9,9 @@ import { Building2 } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Commercial Solutions',
+  title: tx.commercial_solutions,
   description:
-    'Technology for commercial organisations, from e-commerce platforms to SaaS applications, built by SavantX Technologies.',
+    tx.technology_for_commercial_organisations,
   path: '/expertise/commercial',
 });
 
@@ -19,46 +20,46 @@ export default function CommercialPage() {
   const commercialServices = [
     {
       id: 'ecommerce',
-      title: 'E-commerce Solutions',
+      title: tx.e_commerce_solutions,
       icon: '🛒',
-      description: 'Complete e-commerce platforms with payment processing, inventory management, and order fulfillment.',
-      features: ['Online Store Setup', 'Payment Gateway Integration', 'Inventory Management', 'Order Processing', 'Customer Management', 'Analytics & Reporting'],
-      pricing: 'Starting at $8,000',
+      description: tx.complete_e_commerce_platforms_with,
+      features: [tx.online_store_setup, tx.payment_gateway_integration, tx.inventory_management, tx.order_processing, tx.customer_management, tx.analytics_reporting],
+      pricing: tx.starting_at_8_000,
       timeline: '6-12 weeks',
-      complexity: 'Enterprise',
+      complexity: tx.enterprise,
       features_count: '50+'
     },
     {
       id: 'business-websites',
-      title: 'Business Websites',
+      title: tx.business_websites,
       icon: '🏢',
-      description: 'Professional corporate websites designed to establish credibility and drive business growth.',
-      features: ['Corporate Design', 'Content Management', 'SEO Optimization', 'Contact Forms', 'Analytics Integration', 'Mobile Responsive'],
-      pricing: 'Starting at $4,500',
+      description: tx.professional_corporate_websites_designed,
+      features: [tx.corporate_design, tx.content_management, tx.seo_optimization, tx.contact_forms, tx.analytics_integration, tx.mobile_responsive],
+      pricing: tx.starting_at_4_500,
       timeline: '4-8 weeks',
-      complexity: 'Advanced',
+      complexity: tx.advanced,
       features_count: '30+'
     },
     {
       id: 'saas-platforms',
-      title: 'SaaS Platforms',
+      title: tx.saas_platforms,
       icon: '☁️',
-      description: 'Software-as-a-Service applications with subscription management and user authentication.',
-      features: ['User Authentication', 'Subscription Management', 'Dashboard Analytics', 'API Integration', 'Multi-tenancy', 'Payment Processing'],
-      pricing: 'Starting at $15,000',
+      description: tx.software_as_a_service_applications,
+      features: [tx.user_authentication, tx.subscription_management, tx.dashboard_analytics, tx.api_integration, tx.multi_tenancy, tx.payment_processing],
+      pricing: tx.starting_at_15_000,
       timeline: '10-20 weeks',
-      complexity: 'Enterprise',
+      complexity: tx.enterprise,
       features_count: '75+'
     },
     {
       id: 'marketplace',
-      title: 'Marketplace Platforms',
+      title: tx.marketplace_platforms,
       icon: '🏪',
-      description: 'Multi-vendor marketplace platforms connecting buyers and sellers with secure transactions.',
-      features: ['Multi-vendor Support', 'Commission Management', 'Escrow System', 'Vendor Dashboard', 'Buyer Protection', 'Dispute Resolution'],
-      pricing: 'Starting at $20,000',
+      description: tx.multi_vendor_marketplace_platforms_conne,
+      features: [tx.multi_vendor_support, tx.commission_management, tx.escrow_system, tx.vendor_dashboard, tx.buyer_protection, tx.dispute_resolution],
+      pricing: tx.starting_at_20_000,
       timeline: '12-24 weeks',
-      complexity: 'Enterprise',
+      complexity: tx.enterprise,
       features_count: '100+'
     }
   ];
@@ -67,37 +68,37 @@ export default function CommercialPage() {
     {
       category: 'Retail & E-commerce',
       industries: [
-        { name: 'Online Stores', icon: '🛍️', description: 'Complete online retail solutions' },
-        { name: 'Fashion & Apparel', icon: '👗', description: 'Fashion e-commerce platforms' },
-        { name: 'Electronics', icon: '📱', description: 'Electronics and gadget stores' },
-        { name: 'Home & Garden', icon: '🏠', description: 'Home improvement and garden centers' }
+        { name: tx.online_stores, icon: '🛍️', description: tx.complete_online_retail_solutions },
+        { name: tx.fashion_apparel, icon: '👗', description: tx.fashion_e_commerce_platforms },
+        { name: tx.electronics, icon: '📱', description: tx.electronics_and_gadget_stores },
+        { name: tx.home_garden, icon: '🏠', description: tx.home_improvement_and_garden_centers }
       ]
     },
     {
       category: 'Professional Services',
       industries: [
-        { name: 'Legal Services', icon: '⚖️', description: 'Law firms and legal consultancies' },
-        { name: 'Healthcare', icon: '🏥', description: 'Medical practices and healthcare providers' },
-        { name: 'Financial Services', icon: '💰', description: 'Banks, insurance, and financial advisors' },
-        { name: 'Real Estate', icon: '🏘️', description: 'Real estate agencies and property management' }
+        { name: tx.legal_services, icon: '⚖️', description: tx.law_firms_and_legal_consultancies },
+        { name: tx.healthcare, icon: '🏥', description: tx.medical_practices_and_healthcare_provide },
+        { name: tx.financial_services, icon: '💰', description: tx.banks_insurance_and_financial_advisors },
+        { name: tx.real_estate, icon: '🏘️', description: tx.real_estate_agencies_and_property }
       ]
     },
     {
       category: 'Technology & Innovation',
       industries: [
-        { name: 'SaaS Companies', icon: '💻', description: 'Software-as-a-Service platforms' },
-        { name: 'Tech Startups', icon: '🚀', description: 'Technology startup companies' },
-        { name: 'Consulting Firms', icon: '📊', description: 'Business and technology consultants' },
-        { name: 'Manufacturing', icon: '🏭', description: 'Manufacturing and industrial companies' }
+        { name: tx.saas_companies, icon: '💻', description: tx.software_as_a_service_platforms },
+        { name: tx.tech_startups, icon: '🚀', description: tx.technology_startup_companies },
+        { name: tx.consulting_firms, icon: '📊', description: tx.business_and_technology_consultants },
+        { name: tx.manufacturing, icon: '🏭', description: tx.manufacturing_and_industrial_companies }
       ]
     },
     {
       category: 'Service Industries',
       industries: [
-        { name: 'Restaurants', icon: '🍽️', description: 'Restaurants and food service' },
-        { name: 'Travel & Tourism', icon: '✈️', description: 'Travel agencies and tourism' },
-        { name: 'Education', icon: '🎓', description: 'Educational institutions and training' },
-        { name: 'Entertainment', icon: '🎬', description: 'Media and entertainment companies' }
+        { name: tx.restaurants, icon: '🍽️', description: tx.restaurants_and_food_service },
+        { name: tx.travel_tourism, icon: '✈️', description: tx.travel_agencies_and_tourism },
+        { name: tx.education, icon: '🎓', description: tx.educational_institutions_and_training },
+        { name: tx.entertainment, icon: '🎬', description: tx.media_and_entertainment_companies }
       ]
     }
   ];
@@ -105,206 +106,206 @@ export default function CommercialPage() {
   const developmentProcess = [
     {
       step: '01',
-      title: 'Business Analysis',
-      description: 'Understanding your business model, target audience, and commercial objectives.',
+      title: tx.business_analysis,
+      description: tx.understanding_your_business_model_target,
       duration: '1-2 weeks',
       icon: '📊'
     },
     {
       step: '02',
-      title: 'Strategy & Planning',
-      description: 'Developing commercial strategy and technical architecture for maximum ROI.',
+      title: tx.strategy_planning,
+      description: tx.developing_commercial_strategy_and_techn,
       duration: '1-2 weeks',
       icon: '🎯'
     },
     {
       step: '03',
-      title: 'Design & UX',
-      description: 'Creating user-centric designs that drive conversions and business growth.',
+      title: tx.design_ux,
+      description: tx.creating_user_centric_designs_that,
       duration: '2-4 weeks',
       icon: '🎨'
     },
     {
       step: '04',
-      title: 'Development & Integration',
-      description: 'Building robust commercial applications with payment and business integrations.',
+      title: tx.development_integration,
+      description: tx.building_robust_commercial_applications,
       duration: '4-12 weeks',
       icon: '⚙️'
     },
     {
       step: '05',
-      title: 'Testing & Optimization',
-      description: 'Comprehensive testing and performance optimization for commercial success.',
+      title: tx.testing_optimization,
+      description: tx.comprehensive_testing_and_performance_op,
       duration: '1-2 weeks',
       icon: '🧪'
     },
     {
       step: '06',
-      title: 'Launch & Growth',
-      description: 'Launching your commercial platform with growth strategies and analytics.',
-      duration: '1 week',
+      title: tx.launch_growth,
+      description: tx.launching_your_commercial_platform_with,
+      duration: tx.t_1_week,
       icon: '🚀'
     }
   ];
 
   const deliverables = [
     {
-      title: 'Commercial Platform',
-      description: 'Fully functional commercial website or application ready for business operations.',
+      title: tx.commercial_platform,
+      description: tx.fully_functional_commercial_website_or,
       icon: '🏢'
     },
     {
-      title: 'Payment Integration',
-      description: 'Secure payment processing with multiple payment gateways and methods.',
+      title: tx.payment_integration,
+      description: tx.secure_payment_processing_with_multiple,
       icon: '💳'
     },
     {
-      title: 'Analytics Dashboard',
-      description: 'Comprehensive business analytics and reporting dashboard.',
+      title: tx.analytics_dashboard,
+      description: tx.comprehensive_business_analytics_and_rep,
       icon: '📊'
     },
     {
-      title: 'Admin Panel',
-      description: 'Complete administrative interface for managing business operations.',
+      title: tx.admin_panel,
+      description: tx.complete_administrative_interface_for_ma,
       icon: '🎛️'
     },
     {
-      title: 'Business Training',
-      description: 'Training for your team on using the commercial platform effectively.',
+      title: tx.business_training,
+      description: tx.training_for_your_team_on,
       icon: '🎓'
     },
     {
-      title: 'Growth Strategy',
-      description: 'Digital marketing and growth strategies for commercial success.',
+      title: tx.growth_strategy,
+      description: tx.digital_marketing_and_growth_strategies,
       icon: '📈'
     }
   ];
 
   const benefits = [
     {
-      title: 'Revenue Growth',
-      description: 'Drive sales and revenue through optimized commercial platforms and strategies.',
+      title: tx.revenue_growth,
+      description: tx.drive_sales_and_revenue_through,
       icon: '💰'
     },
     {
-      title: 'Market Expansion',
-      description: 'Expand your market reach with online presence and digital commerce capabilities.',
+      title: tx.market_expansion,
+      description: tx.expand_your_market_reach_with,
       icon: '🌍'
     },
     {
-      title: 'Operational Efficiency',
-      description: 'Streamline business operations with automated processes and integrations.',
+      title: tx.operational_efficiency,
+      description: tx.streamline_business_operations_with_auto,
       icon: '⚡'
     },
     {
-      title: 'Customer Experience',
-      description: 'Enhance customer experience with user-friendly interfaces and seamless transactions.',
+      title: tx.customer_experience,
+      description: tx.enhance_customer_experience_with_user,
       icon: '😊'
     },
     {
-      title: 'Data-Driven Decisions',
-      description: 'Make informed business decisions with comprehensive analytics and reporting.',
+      title: tx.data_driven_decisions,
+      description: tx.make_informed_business_decisions_with,
       icon: '📊'
     },
     {
-      title: 'Competitive Advantage',
-      description: 'Stay ahead of competition with modern technology and innovative solutions.',
+      title: tx.competitive_advantage,
+      description: tx.stay_ahead_of_competition_with,
       icon: '🏆'
     }
   ];
 
   const commercialFeatures = [
     {
-      title: 'Payment Processing',
-      description: 'Secure payment gateways with multiple payment methods and fraud protection.',
+      title: tx.payment_processing_2,
+      description: tx.secure_payment_gateways_with_multiple,
       icon: '💳'
     },
     {
-      title: 'Inventory Management',
-      description: 'Real-time inventory tracking and automated stock management systems.',
+      title: tx.inventory_management_2,
+      description: tx.real_time_inventory_tracking_and,
       icon: '📦'
     },
     {
-      title: 'Customer Management',
-      description: 'Comprehensive CRM integration for customer relationship management.',
+      title: tx.customer_management_2,
+      description: tx.comprehensive_crm_integration_for_custom,
       icon: '👥'
     },
     {
-      title: 'Order Management',
-      description: 'Complete order processing from placement to fulfillment and tracking.',
+      title: tx.order_management,
+      description: tx.complete_order_processing_from_placement,
       icon: '📋'
     },
     {
-      title: 'Analytics & Reporting',
-      description: 'Business intelligence with detailed analytics and performance reporting.',
+      title: tx.analytics_reporting_2,
+      description: tx.business_intelligence_with_detailed_anal,
       icon: '📊'
     },
     {
-      title: 'Multi-channel Support',
-      description: 'Support for multiple sales channels including web, mobile, and third-party platforms.',
+      title: tx.multi_channel_support,
+      description: tx.support_for_multiple_sales_channels,
       icon: '📱'
     }
   ];
 
   const successMetrics = [
     {
-      title: 'Conversion Rate',
-      description: 'Optimize conversion rates through user experience and conversion funnel analysis.',
+      title: tx.conversion_rate,
+      description: tx.optimize_conversion_rates_through_user,
       icon: '📈'
     },
     {
-      title: 'Customer Acquisition',
-      description: 'Implement strategies to acquire new customers and grow your customer base.',
+      title: tx.customer_acquisition,
+      description: tx.implement_strategies_to_acquire_new,
       icon: '🎯'
     },
     {
-      title: 'Revenue Per Customer',
-      description: 'Increase average revenue per customer through upselling and cross-selling.',
+      title: tx.revenue_per_customer,
+      description: tx.increase_average_revenue_per_customer,
       icon: '💰'
     },
     {
-      title: 'Customer Retention',
-      description: 'Improve customer retention through loyalty programs and engagement strategies.',
+      title: tx.customer_retention,
+      description: tx.improve_customer_retention_through_loyal,
       icon: '🔄'
     },
     {
-      title: 'Operational Cost',
-      description: 'Reduce operational costs through automation and efficient business processes.',
+      title: tx.operational_cost,
+      description: tx.reduce_operational_costs_through_automat,
       icon: '💸'
     },
     {
-      title: 'Market Share',
-      description: 'Grow market share through competitive positioning and market expansion.',
+      title: tx.market_share,
+      description: tx.grow_market_share_through_competitive,
       icon: '🏆'
     }
   ];
 
   const technologies = [
-    { name: 'React/Next.js', icon: '⚛️', description: 'Modern frontend frameworks', category: 'Frontend' },
-    { name: 'Laravel/PHP', icon: '🔥', description: 'Robust backend development', category: 'Backend' },
-    { name: 'Node.js', icon: '🟢', description: 'Scalable server-side JavaScript', category: 'Backend' },
-    { name: 'WooCommerce', icon: '🛒', description: 'E-commerce platform', category: 'E-commerce' },
-    { name: 'Shopify', icon: '🛍️', description: 'E-commerce solution', category: 'E-commerce' },
-    { name: 'Stripe', icon: '💳', description: 'Payment processing', category: 'Payments' },
-    { name: 'PayPal', icon: '🔵', description: 'Payment gateway', category: 'Payments' },
-    { name: 'Google Analytics', icon: '📊', description: 'Web analytics', category: 'Analytics' }
+    { name: tx.react_next_js, icon: '⚛️', description: tx.modern_frontend_frameworks, category: 'Frontend' },
+    { name: tx.laravel_php, icon: '🔥', description: tx.robust_backend_development, category: 'Backend' },
+    { name: tx.node_js, icon: '🟢', description: tx.scalable_server_side_javascript, category: 'Backend' },
+    { name: tx.woocommerce, icon: '🛒', description: tx.e_commerce_platform, category: 'E-commerce' },
+    { name: tx.shopify, icon: '🛍️', description: tx.e_commerce_solution, category: 'E-commerce' },
+    { name: tx.stripe, icon: '💳', description: tx.payment_processing_3, category: 'Payments' },
+    { name: tx.paypal, icon: '🔵', description: tx.payment_gateway, category: 'Payments' },
+    { name: tx.google_analytics, icon: '📊', description: tx.web_analytics, category: 'Analytics' }
   ];
 
   return (
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="Commercial Solutions"
+        eyebrow={tx.commercial_solutions_2}
         eyebrowIcon={Building2}
-        title="Commercial"
-        highlight="Experience"
-        description="We specialize in building commercial solutions that drive business growth and revenue. From e-commerce platforms to SaaS applications, we deliver technology that powers commercial success."
+        title={tx.commercial}
+        highlight={tx.experience}
+        description={tx.we_specialize_in_building_commercial}
         highlights={["E-commerce Solutions", "Business Websites", "SaaS Platforms", "Marketplace Platforms"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "$50M+", label: "Revenue Generated" },
-          { value: "4-24", label: "Week Delivery" },
-          { value: "98%", label: "Success Rate" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "$50M+", label: tx.revenue_generated },
+          { value: "4-24", label: tx.week_delivery },
+          { value: "98%", label: tx.success_rate },
         ]}
       />
 
@@ -313,16 +314,10 @@ export default function CommercialPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Services
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Commercial
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Solutions</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_services}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.commercial}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.solutions}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Comprehensive commercial development services designed to drive business growth and revenue.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.comprehensive_commercial_development_ser}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -358,19 +353,19 @@ export default function CommercialPage() {
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200 sm:grid-cols-4">
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.timeline}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.complexity}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Complexity</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.complexity}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.features_count}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Features</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.features}</div>
                     </div>
                   </div>
                 </div>
@@ -385,16 +380,10 @@ export default function CommercialPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Industries We Serve
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Commercial
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Industries</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.industries_we_serve}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.commercial}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.industries}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We have extensive experience working with various commercial industries and business models.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_have_extensive_experience_working}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -427,16 +416,10 @@ export default function CommercialPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Commercial Features
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Essential
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Features</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.commercial_features}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.essential}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.features}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Key features that power commercial success and drive business growth.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.key_features_that_power_commercial}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -464,16 +447,10 @@ export default function CommercialPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Commercial Development
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Process</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.commercial_development}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.process}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our systematic approach ensures commercial success and maximum return on investment.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_systematic_approach_ensures_commerci}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -507,16 +484,10 @@ export default function CommercialPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Success Metrics
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Measuring
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Commercial Success</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.success_metrics}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.measuring}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.commercial_success}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Key performance indicators that drive commercial success and business growth.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.key_performance_indicators_that_drive}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -544,16 +515,10 @@ export default function CommercialPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Technologies
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Commercial
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Technologies</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.technologies}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.commercial}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.technologies}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We use cutting-edge technologies to build scalable and secure commercial solutions.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_use_cutting_edge_technologies}</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
@@ -580,16 +545,10 @@ export default function CommercialPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Deliverables
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              What You&apos;ll
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Receive</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.deliverables}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.what_you_ll}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.receive}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Complete commercial development deliverables that provide everything needed for business success.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.complete_commercial_development_delivera}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -617,16 +576,10 @@ export default function CommercialPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Why Commercial Solutions
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Benefits of
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Commercial Development</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.why_commercial_solutions}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.benefits_of}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.commercial_development}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Commercial development provides significant advantages for business growth and success.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.commercial_development_provides_signific}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -652,21 +605,13 @@ export default function CommercialPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Build
-            <span className="block text-blue-100 mt-2">Your Commercial Solution?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_build}<span className="block text-blue-100 mt-2">{tx.your_commercial_solution}</span>
           </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">
-            Let&apos;s create a commercial platform that drives revenue growth and business success.
-          </p>
+          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">{tx.let_s_create_a_commercial}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Start Commercial Project
-            </Link>
-            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-              View Case Studies
-            </Link>
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_commercial_project}</Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.view_case_studies}</Link>
           </div>
         </div>
       </section>

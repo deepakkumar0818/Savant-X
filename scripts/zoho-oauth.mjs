@@ -2,7 +2,7 @@
 // Zoho OAuth setup and checks for the website's Zoho CRM Leads integration (India data centre).
 // Runs locally only; nothing here is deployed. See docs/zoho-crm-leads.md.
 //
-//   npm run zoho:oauth -- url [--inspect]   Consent URL for a Server-based app (needs ZOHO_REDIRECT_URI)
+//   npm run zoho:oauth -- url               Consent URL for a Server-based app (needs ZOHO_REDIRECT_URI)
 //   npm run zoho:oauth -- exchange [code]   Exchange a grant code; saves ZOHO_REFRESH_TOKEN to .env.local
 //   npm run zoho:oauth -- check             Verify OAuth works (creates nothing in CRM)
 //   npm run zoho:oauth -- inspect           Compare the website's field mapping with the live Leads fields
@@ -89,7 +89,8 @@ const [command, arg] = process.argv.slice(2);
 if (command === 'url') {
   requireClient();
   if (!redirectUri) fail(`Set ZOHO_REDIRECT_URI in ${ENV_FILE} to the redirect URI registered for your Server-based app.`);
-  const scope = process.argv.includes('--inspect') ? `${LEADS_SCOPE},${FIELDS_SCOPE}` : LEADS_SCOPE;
+  // Lead creation + the admin's Leads page (read, status updates) + picklist checks.
+  const scope = `${LEADS_SCOPE},ZohoCRM.modules.leads.READ,ZohoCRM.modules.leads.UPDATE,${FIELDS_SCOPE}`;
   const url = new URL(`${accounts}/oauth/v2/auth`);
   url.search = new URLSearchParams({
     scope,

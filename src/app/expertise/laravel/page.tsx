@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/laravel/page.json';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
@@ -8,9 +9,9 @@ import { Server } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Laravel Development',
+  title: tx.laravel_development,
   description:
-    'Robust, secure Laravel and PHP web applications and APIs built by SavantX Technologies.',
+    tx.robust_secure_laravel_and_php,
   path: '/expertise/laravel',
 });
 
@@ -19,46 +20,46 @@ export default function LaravelPage() {
   const laravelServices = [
     {
       id: 'web-apps',
-      title: 'Laravel Web Applications',
+      title: tx.laravel_web_applications,
       icon: '💻',
-      description: 'Robust, scalable web applications built with Laravel framework for optimal performance and security.',
-      features: ['MVC Architecture', 'Eloquent ORM', 'Authentication System', 'API Development', 'Queue Management', 'Testing Suite'],
-      pricing: 'Starting at $6,000',
+      description: tx.robust_scalable_web_applications_built,
+      features: [tx.mvc_architecture, tx.eloquent_orm, tx.authentication_system, tx.api_development, tx.queue_management, tx.testing_suite],
+      pricing: tx.starting_at_6_000,
       timeline: '6-12 weeks',
-      complexity: 'Advanced',
+      complexity: tx.advanced,
       features_count: '50+'
     },
     {
       id: 'api-development',
-      title: 'Laravel API Development',
+      title: tx.laravel_api_development,
       icon: '🔗',
-      description: 'RESTful and GraphQL APIs with comprehensive documentation and authentication.',
-      features: ['RESTful APIs', 'GraphQL APIs', 'API Documentation', 'Rate Limiting', 'OAuth Authentication', 'API Versioning'],
-      pricing: 'Starting at $4,500',
+      description: tx.restful_and_graphql_apis_with,
+      features: [tx.restful_apis, tx.graphql_apis, tx.api_documentation, tx.rate_limiting, tx.oauth_authentication, tx.api_versioning],
+      pricing: tx.starting_at_4_500,
       timeline: '4-8 weeks',
-      complexity: 'Advanced',
+      complexity: tx.advanced,
       features_count: '30+'
     },
     {
       id: 'ecommerce',
-      title: 'Laravel E-commerce',
+      title: tx.laravel_e_commerce,
       icon: '🛒',
-      description: 'Feature-rich e-commerce platforms with payment integration and order management.',
-      features: ['Product Management', 'Shopping Cart', 'Payment Gateway', 'Order Processing', 'Inventory Management', 'Admin Dashboard'],
-      pricing: 'Starting at $15,000',
+      description: tx.feature_rich_e_commerce_platforms,
+      features: [tx.product_management, tx.shopping_cart, tx.payment_gateway, tx.order_processing, tx.inventory_management, tx.admin_dashboard],
+      pricing: tx.starting_at_15_000,
       timeline: '10-20 weeks',
-      complexity: 'Enterprise',
+      complexity: tx.enterprise,
       features_count: '100+'
     },
     {
       id: 'cms-platforms',
-      title: 'Laravel CMS Platforms',
+      title: tx.laravel_cms_platforms,
       icon: '📝',
-      description: 'Custom content management systems with flexible content structures and admin interfaces.',
-      features: ['Content Management', 'User Management', 'Role-Based Access', 'Media Library', 'SEO Tools', 'Multi-Language Support'],
-      pricing: 'Starting at $8,000',
+      description: tx.custom_content_management_systems_with,
+      features: [tx.content_management, tx.user_management, tx.role_based_access, tx.media_library, tx.seo_tools, tx.multi_language_support],
+      pricing: tx.starting_at_8_000,
       timeline: '8-16 weeks',
-      complexity: 'Enterprise',
+      complexity: tx.enterprise,
       features_count: '75+'
     }
   ];
@@ -67,37 +68,37 @@ export default function LaravelPage() {
     {
       category: 'Core Framework',
       tools: [
-        { name: 'Laravel Framework', icon: '🔥', description: 'Modern PHP framework for web artisans' },
-        { name: 'Eloquent ORM', icon: '🗄️', description: 'Beautiful, simple ActiveRecord implementation' },
-        { name: 'Artisan CLI', icon: '⚡', description: 'Command-line interface for Laravel' },
-        { name: 'Blade Templates', icon: '🎨', description: 'Lightweight template engine' }
+        { name: tx.laravel_framework, icon: '🔥', description: tx.modern_php_framework_for_web },
+        { name: tx.eloquent_orm_2, icon: '🗄️', description: tx.beautiful_simple_activerecord_implementa },
+        { name: tx.artisan_cli, icon: '⚡', description: tx.command_line_interface_for_laravel },
+        { name: tx.blade_templates, icon: '🎨', description: tx.lightweight_template_engine }
       ]
     },
     {
       category: 'Authentication & Security',
       tools: [
-        { name: 'Laravel Sanctum', icon: '🔐', description: 'Lightweight API authentication' },
-        { name: 'Laravel Passport', icon: '🛡️', description: 'OAuth2 server implementation' },
-        { name: 'Laravel Breeze', icon: '💨', description: 'Minimal authentication scaffolding' },
-        { name: 'Laravel Jetstream', icon: '✈️', description: 'Beautiful authentication scaffolding' }
+        { name: tx.laravel_sanctum, icon: '🔐', description: tx.lightweight_api_authentication },
+        { name: tx.laravel_passport, icon: '🛡️', description: tx.oauth2_server_implementation },
+        { name: tx.laravel_breeze, icon: '💨', description: tx.minimal_authentication_scaffolding },
+        { name: tx.laravel_jetstream, icon: '✈️', description: tx.beautiful_authentication_scaffolding }
       ]
     },
     {
       category: 'Development Tools',
       tools: [
-        { name: 'Laravel Mix', icon: '🎵', description: 'Asset compilation and bundling' },
-        { name: 'Laravel Valet', icon: '🚗', description: 'Laravel development environment' },
-        { name: 'Laravel Telescope', icon: '🔭', description: 'Debug and monitor your application' },
-        { name: 'Laravel Horizon', icon: '🌅', description: 'Dashboard and configuration for queues' }
+        { name: tx.laravel_mix, icon: '🎵', description: tx.asset_compilation_and_bundling },
+        { name: tx.laravel_valet, icon: '🚗', description: tx.laravel_development_environment },
+        { name: tx.laravel_telescope, icon: '🔭', description: tx.debug_and_monitor_your_application },
+        { name: tx.laravel_horizon, icon: '🌅', description: tx.dashboard_and_configuration_for_queues }
       ]
     },
     {
       category: 'Testing & Deployment',
       tools: [
-        { name: 'PHPUnit', icon: '🧪', description: 'Testing framework for PHP' },
-        { name: 'Laravel Dusk', icon: '🌅', description: 'Browser automation and testing' },
-        { name: 'Laravel Forge', icon: '🔨', description: 'Server provisioning and deployment' },
-        { name: 'Laravel Envoyer', icon: '📤', description: 'Zero-downtime deployment' }
+        { name: tx.phpunit, icon: '🧪', description: tx.testing_framework_for_php },
+        { name: tx.laravel_dusk, icon: '🌅', description: tx.browser_automation_and_testing },
+        { name: tx.laravel_forge, icon: '🔨', description: tx.server_provisioning_and_deployment },
+        { name: tx.laravel_envoyer, icon: '📤', description: tx.zero_downtime_deployment }
       ]
     }
   ];
@@ -105,176 +106,176 @@ export default function LaravelPage() {
   const developmentProcess = [
     {
       step: '01',
-      title: 'Project Planning',
-      description: 'Requirements analysis and Laravel project architecture planning.',
+      title: tx.project_planning,
+      description: tx.requirements_analysis_and_laravel_projec,
       duration: '1-2 weeks',
       icon: '📋'
     },
     {
       step: '02',
-      title: 'Database Design',
-      description: 'Designing database schema and relationships using Eloquent models.',
+      title: tx.database_design,
+      description: tx.designing_database_schema_and_relationsh,
       duration: '1-2 weeks',
       icon: '🗄️'
     },
     {
       step: '03',
-      title: 'Backend Development',
-      description: 'Building Laravel backend with controllers, models, and business logic.',
+      title: tx.backend_development,
+      description: tx.building_laravel_backend_with_controller,
       duration: '3-8 weeks',
       icon: '⚙️'
     },
     {
       step: '04',
-      title: 'API Development',
-      description: 'Creating RESTful or GraphQL APIs with authentication and documentation.',
+      title: tx.api_development_2,
+      description: tx.creating_restful_or_graphql_apis,
       duration: '2-4 weeks',
       icon: '🔗'
     },
     {
       step: '05',
-      title: 'Testing & Optimization',
-      description: 'Comprehensive testing and performance optimization.',
+      title: tx.testing_optimization,
+      description: tx.comprehensive_testing_and_performance_op,
       duration: '1-2 weeks',
       icon: '🧪'
     },
     {
       step: '06',
-      title: 'Deployment & Maintenance',
-      description: 'Production deployment and ongoing maintenance support.',
-      duration: '1 week',
+      title: tx.deployment_maintenance,
+      description: tx.production_deployment_and_ongoing_mainte,
+      duration: tx.t_1_week,
       icon: '🚀'
     }
   ];
 
   const deliverables = [
     {
-      title: 'Laravel Application',
-      description: 'Fully functional Laravel application with modern architecture.',
+      title: tx.laravel_application,
+      description: tx.fully_functional_laravel_application_wit,
       icon: '🔥'
     },
     {
-      title: 'API Documentation',
-      description: 'Comprehensive API documentation with examples and testing.',
+      title: tx.api_documentation_2,
+      description: tx.comprehensive_api_documentation_with_exa,
       icon: '📚'
     },
     {
-      title: 'Database Schema',
-      description: 'Optimized database design with migrations and seeders.',
+      title: tx.database_schema,
+      description: tx.optimized_database_design_with_migration,
       icon: '🗄️'
     },
     {
-      title: 'Testing Suite',
-      description: 'Complete testing suite with unit and feature tests.',
+      title: tx.testing_suite_2,
+      description: tx.complete_testing_suite_with_unit,
       icon: '🧪'
     },
     {
-      title: 'Admin Panel',
-      description: 'Custom admin interface for content and user management.',
+      title: tx.admin_panel,
+      description: tx.custom_admin_interface_for_content,
       icon: '🎛️'
     },
     {
-      title: 'Deployment Setup',
-      description: 'Production-ready deployment configuration and documentation.',
+      title: tx.deployment_setup,
+      description: tx.production_ready_deployment_configuratio,
       icon: '🚀'
     }
   ];
 
   const benefits = [
     {
-      title: 'Elegant Syntax',
-      description: 'Clean, expressive syntax that makes development enjoyable and efficient.',
+      title: tx.elegant_syntax,
+      description: tx.clean_expressive_syntax_that_makes,
       icon: '✨'
     },
     {
-      title: 'Rich Ecosystem',
-      description: 'Extensive package ecosystem and Laravel-specific tools.',
+      title: tx.rich_ecosystem,
+      description: tx.extensive_package_ecosystem_and_laravel,
       icon: '🌐'
     },
     {
-      title: 'Built-in Security',
-      description: 'Built-in security features including CSRF protection and encryption.',
+      title: tx.built_in_security,
+      description: tx.built_in_security_features_including,
       icon: '🔒'
     },
     {
-      title: 'Scalable Architecture',
-      description: 'Modular architecture that scales from small projects to enterprise applications.',
+      title: tx.scalable_architecture,
+      description: tx.modular_architecture_that_scales_from,
       icon: '📈'
     },
     {
-      title: 'Active Community',
-      description: 'Large, active community with extensive documentation and support.',
+      title: tx.active_community,
+      description: tx.large_active_community_with_extensive,
       icon: '👥'
     },
     {
-      title: 'Rapid Development',
-      description: 'Artisan commands and scaffolding tools for rapid application development.',
+      title: tx.rapid_development,
+      description: tx.artisan_commands_and_scaffolding_tools,
       icon: '⚡'
     }
   ];
 
   const useCases = [
     {
-      title: 'SaaS Applications',
-      description: 'Software-as-a-Service applications with multi-tenancy and subscription management.',
+      title: tx.saas_applications,
+      description: tx.software_as_a_service_applications,
       icon: '☁️'
     },
     {
-      title: 'Enterprise Web Apps',
-      description: 'Complex enterprise applications with advanced business logic.',
+      title: tx.enterprise_web_apps,
+      description: tx.complex_enterprise_applications_with_adv,
       icon: '🏢'
     },
     {
-      title: 'E-commerce Platforms',
-      description: 'Online stores with payment processing and inventory management.',
+      title: tx.e_commerce_platforms,
+      description: tx.online_stores_with_payment_processing,
       icon: '🛒'
     },
     {
-      title: 'Content Management',
-      description: 'Custom CMS platforms with flexible content structures.',
+      title: tx.content_management_2,
+      description: tx.custom_cms_platforms_with_flexible,
       icon: '📝'
     },
     {
-      title: 'API Services',
-      description: 'Backend API services for mobile and web applications.',
+      title: tx.api_services,
+      description: tx.backend_api_services_for_mobile,
       icon: '🔗'
     },
     {
-      title: 'Financial Systems',
-      description: 'Banking and financial applications with high security requirements.',
+      title: tx.financial_systems,
+      description: tx.banking_and_financial_applications_with,
       icon: '💰'
     }
   ];
 
   const laravelFeatures = [
     {
-      title: 'Eloquent ORM',
-      description: 'Beautiful, simple ActiveRecord implementation for database operations.',
+      title: tx.eloquent_orm_3,
+      description: tx.beautiful_simple_activerecord_implementa_2,
       icon: '🗄️'
     },
     {
-      title: 'Blade Templating',
-      description: 'Lightweight, powerful templating engine with inheritance and sections.',
+      title: tx.blade_templating,
+      description: tx.lightweight_powerful_templating_engine_w,
       icon: '🎨'
     },
     {
-      title: 'Queue System',
-      description: 'Robust queue system for background job processing.',
+      title: tx.queue_system,
+      description: tx.robust_queue_system_for_background,
       icon: '⏳'
     },
     {
-      title: 'Event Broadcasting',
-      description: 'Real-time event broadcasting using WebSockets.',
+      title: tx.event_broadcasting,
+      description: tx.real_time_event_broadcasting_using,
       icon: '📡'
     },
     {
-      title: 'Task Scheduling',
-      description: 'Built-in task scheduler for cron-like job scheduling.',
+      title: tx.task_scheduling,
+      description: tx.built_in_task_scheduler_for,
       icon: '⏰'
     },
     {
-      title: 'Caching System',
-      description: 'Flexible caching system supporting multiple cache drivers.',
+      title: tx.caching_system,
+      description: tx.flexible_caching_system_supporting_multi,
       icon: '💾'
     }
   ];
@@ -283,17 +284,17 @@ export default function LaravelPage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="Laravel Development"
+        eyebrow={tx.laravel_development_2}
         eyebrowIcon={Server}
-        title="Laravel"
-        highlight="Development"
-        description="We build robust, scalable web applications using Laravel framework. From simple APIs to complex enterprise solutions, we deliver exceptional PHP applications with modern architecture."
+        title={tx.laravel}
+        highlight={tx.development}
+        description={tx.we_build_robust_scalable_web}
         highlights={["Laravel Web Applications", "Laravel API Development", "Laravel E-commerce", "Laravel CMS Platforms"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "100%", label: "Secure" },
-          { value: "6-20", label: "Week Delivery" },
-          { value: "PHP 8.2+", label: "Latest Version" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "100%", label: tx.secure },
+          { value: "6-20", label: tx.week_delivery },
+          { value: "PHP 8.2+", label: tx.latest_version },
         ]}
       />
 
@@ -302,16 +303,10 @@ export default function LaravelPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Services
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Laravel
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Solutions</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_services}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.laravel}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.solutions}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Comprehensive Laravel development services for web applications, APIs, and enterprise solutions.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.comprehensive_laravel_development_servic}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -347,19 +342,19 @@ export default function LaravelPage() {
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200 sm:grid-cols-4">
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.timeline}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.complexity}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Complexity</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.complexity}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.features_count}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Features</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.features}</div>
                     </div>
                   </div>
                 </div>
@@ -374,16 +369,10 @@ export default function LaravelPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Laravel Ecosystem
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Complete Laravel
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Technology Stack</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.laravel_ecosystem}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.complete_laravel}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.technology_stack}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We work with the entire Laravel ecosystem to build robust and scalable applications.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_work_with_the_entire}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -416,16 +405,10 @@ export default function LaravelPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Laravel Development
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Process</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.laravel_development_2}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.process}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our systematic approach ensures high-quality Laravel applications delivered on time and within budget.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_systematic_approach_ensures_high}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -459,16 +442,10 @@ export default function LaravelPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Laravel Features
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Powerful
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Features</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.laravel_features}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.powerful}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.features}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Laravel provides a comprehensive set of features for modern web application development.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.laravel_provides_a_comprehensive_set}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -496,16 +473,10 @@ export default function LaravelPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Deliverables
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              What You&apos;ll
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Receive</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.deliverables}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.what_you_ll}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.receive}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Complete Laravel development deliverables that provide everything needed for successful deployment.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.complete_laravel_development_deliverable}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -533,16 +504,10 @@ export default function LaravelPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Why Laravel
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Benefits of
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Laravel</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.why_laravel}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.benefits_of}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.laravel}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Laravel provides significant advantages for building modern web applications.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.laravel_provides_significant_advantages}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -570,16 +535,10 @@ export default function LaravelPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Use Cases
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Perfect For
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">These Projects</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.use_cases}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.perfect_for}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.these_projects}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Laravel is ideal for a wide range of web application development scenarios.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.laravel_is_ideal_for_a}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -605,21 +564,13 @@ export default function LaravelPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Build
-            <span className="block text-blue-100 mt-2">Your Laravel App?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_build}<span className="block text-blue-100 mt-2">{tx.your_laravel_app}</span>
           </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">
-            Let&apos;s create a powerful Laravel application that delivers exceptional performance and scalability.
-          </p>
+          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">{tx.let_s_create_a_powerful}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Start Laravel Project
-            </Link>
-            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-              View Portfolio
-            </Link>
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_laravel_project}</Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.view_portfolio}</Link>
           </div>
         </div>
       </section>

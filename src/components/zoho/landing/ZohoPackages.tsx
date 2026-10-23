@@ -1,3 +1,4 @@
+import tx from '@/content/text/components/zoho/landing/ZohoPackages.json';
 import { ArrowRightLeft, Plug, Users, Workflow, type LucideIcon } from 'lucide-react';
 import OfferBento from './OfferBento';
 import type { BentoTheme } from './bentoThemes';
@@ -23,10 +24,10 @@ export default function ZohoPackages() {
   return (
     <OfferBento
       id="packages"
-      eyebrow="Fixed-price packages"
-      title="Start small. Get results fast."
-      description="Clear scope and a starting price for the most common Zoho needs. Final quote depends on scope."
-      cta={{ label: 'Not sure? Ask us', service: 'consultation' }}
+      eyebrow={tx.fixed_price_packages}
+      title={tx.start_small_get_results_fast}
+      description={tx.clear_scope_and_a_starting}
+      cta={{ label: tx.not_sure_ask_us, service: 'consultation' }}
       offers={PACKAGES.map((pkg) => ({ ...pkg, ...PACKAGE_STYLE[pkg.id] }))}
       wide={WIDE}
       themes={THEMES}

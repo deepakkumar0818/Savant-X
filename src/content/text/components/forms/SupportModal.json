@@ -1,0 +1,18 @@
+{
+  "we_could_not_reach_the": "We could not reach the server. Check your connection and try again — your message is still here.",
+  "contact_support": "Contact Support",
+  "close_dialog": "Close dialog",
+  "close": "Close",
+  "website": "Website",
+  "full_name": "Full Name",
+  "enter_your_full_name": "Enter your full name",
+  "email_address": "Email Address",
+  "enter_your_email_address": "Enter your email address",
+  "subject": "Subject",
+  "what_can_we_help_you": "What can we help you with?",
+  "message": "Message",
+  "please_describe_your_issue_or": "Please describe your issue or question...",
+  "cancel": "Cancel",
+  "sending": "Sending…",
+  "send_support_request": "Send Support Request"
+}

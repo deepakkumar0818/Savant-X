@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/user-research/page.json';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
@@ -8,9 +9,9 @@ import { Search } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'User Research',
+  title: tx.user_research,
   description:
-    'User interviews, usability testing and research that turn assumptions into evidence-based product decisions.',
+    tx.user_interviews_usability_testing_and,
   path: '/expertise/user-research',
 });
 
@@ -19,146 +20,146 @@ export default function UserResearchPage() {
   const researchMethods = [
     {
       id: 'interviews',
-      title: 'User Interviews',
+      title: tx.user_interviews,
       icon: '👥',
-      description: 'One-on-one conversations to understand user needs, motivations, and pain points.',
-      features: ['In-depth Insights', 'Behavioral Understanding', 'Pain Point Discovery', 'User Journey Mapping', 'Qualitative Data', 'Empathy Building'],
-      duration: '1-2 hours per session',
+      description: tx.one_on_one_conversations_to,
+      features: [tx.in_depth_insights, tx.behavioral_understanding, tx.pain_point_discovery, tx.user_journey_mapping, tx.qualitative_data, tx.empathy_building],
+      duration: tx.t_1_2_hours_per_session,
       participants: '5-10 users',
-      cost: 'Starting at $2,500'
+      cost: tx.starting_at_2_500
     },
     {
       id: 'surveys',
-      title: 'User Surveys',
+      title: tx.user_surveys,
       icon: '📊',
-      description: 'Quantitative research to gather data from large user groups efficiently.',
-      features: ['Large Sample Size', 'Statistical Analysis', 'Quick Data Collection', 'Demographic Insights', 'Trend Identification', 'Scalable Research'],
+      description: tx.quantitative_research_to_gather_data,
+      features: [tx.large_sample_size, tx.statistical_analysis, tx.quick_data_collection, tx.demographic_insights, tx.trend_identification, tx.scalable_research],
       duration: '2-4 weeks',
       participants: '100-1000+ users',
-      cost: 'Starting at $1,500'
+      cost: tx.starting_at_1_500
     },
     {
       id: 'usability',
-      title: 'Usability Testing',
+      title: tx.usability_testing,
       icon: '🔍',
-      description: 'Observing users interact with your product to identify usability issues.',
-      features: ['Task-based Testing', 'Error Identification', 'Performance Metrics', 'User Behavior Analysis', 'Interface Evaluation', 'Improvement Recommendations'],
-      duration: '1-2 hours per session',
+      description: tx.observing_users_interact_with_your,
+      features: [tx.task_based_testing, tx.error_identification, tx.performance_metrics, tx.user_behavior_analysis, tx.interface_evaluation, tx.improvement_recommendations],
+      duration: tx.t_1_2_hours_per_session,
       participants: '5-8 users',
-      cost: 'Starting at $3,000'
+      cost: tx.starting_at_3_000
     },
     {
       id: 'analytics',
-      title: 'Analytics Analysis',
+      title: tx.analytics_analysis,
       icon: '📈',
-      description: 'Data-driven insights from user behavior and interaction patterns.',
-      features: ['Behavior Tracking', 'Conversion Analysis', 'User Flow Mapping', 'Performance Metrics', 'A/B Testing', 'Data Visualization'],
+      description: tx.data_driven_insights_from_user,
+      features: [tx.behavior_tracking, tx.conversion_analysis, tx.user_flow_mapping, tx.performance_metrics, tx.a_b_testing, tx.data_visualization],
       duration: '2-3 weeks',
-      participants: 'All users',
-      cost: 'Starting at $2,000'
+      participants: tx.all_users,
+      cost: tx.starting_at_2_000
     }
   ];
 
   const researchPhases = [
     {
       phase: '01',
-      title: 'Planning & Setup',
-      description: 'Define research objectives, select methods, and prepare research materials.',
+      title: tx.planning_setup,
+      description: tx.define_research_objectives_select_method,
       duration: '1-2 weeks',
       icon: '📋'
     },
     {
       phase: '02',
-      title: 'Recruitment',
-      description: 'Identify and recruit target users based on your personas and criteria.',
+      title: tx.recruitment,
+      description: tx.identify_and_recruit_target_users,
       duration: '1-2 weeks',
       icon: '👥'
     },
     {
       phase: '03',
-      title: 'Data Collection',
-      description: 'Conduct research sessions and gather insights from participants.',
+      title: tx.data_collection,
+      description: tx.conduct_research_sessions_and_gather,
       duration: '2-4 weeks',
       icon: '🎯'
     },
     {
       phase: '04',
-      title: 'Analysis & Synthesis',
-      description: 'Analyze findings and create actionable insights and recommendations.',
+      title: tx.analysis_synthesis,
+      description: tx.analyze_findings_and_create_actionable,
       duration: '1-2 weeks',
       icon: '📊'
     },
     {
       phase: '05',
-      title: 'Reporting & Presentation',
-      description: 'Deliver comprehensive research reports and present findings to stakeholders.',
-      duration: '1 week',
+      title: tx.reporting_presentation,
+      description: tx.deliver_comprehensive_research_reports_a,
+      duration: tx.t_1_week,
       icon: '📄'
     }
   ];
 
   const deliverables = [
     {
-      title: 'User Personas',
-      description: 'Detailed profiles of your target users based on research findings.',
+      title: tx.user_personas,
+      description: tx.detailed_profiles_of_your_target,
       icon: '👤'
     },
     {
-      title: 'User Journey Maps',
-      description: 'Visual representation of user interactions with your product.',
+      title: tx.user_journey_maps,
+      description: tx.visual_representation_of_user_interactio,
       icon: '🗺️'
     },
     {
-      title: 'Pain Point Analysis',
-      description: 'Identified problems and friction points in the user experience.',
+      title: tx.pain_point_analysis,
+      description: tx.identified_problems_and_friction_points,
       icon: '⚠️'
     },
     {
-      title: 'Usability Report',
-      description: 'Detailed findings from usability testing with actionable recommendations.',
+      title: tx.usability_report,
+      description: tx.detailed_findings_from_usability_testing,
       icon: '📋'
     },
     {
-      title: 'Research Insights',
-      description: 'Key findings and strategic recommendations for product improvement.',
+      title: tx.research_insights,
+      description: tx.key_findings_and_strategic_recommendatio,
       icon: '💡'
     },
     {
-      title: 'Competitive Analysis',
-      description: 'Analysis of competitor products and user experience patterns.',
+      title: tx.competitive_analysis,
+      description: tx.analysis_of_competitor_products_and,
       icon: '🔍'
     }
   ];
 
   const benefits = [
     {
-      title: 'Data-Driven Decisions',
-      description: 'Make informed product decisions based on real user data and insights.',
+      title: tx.data_driven_decisions,
+      description: tx.make_informed_product_decisions_based,
       icon: '📊'
     },
     {
-      title: 'Improved User Experience',
-      description: 'Identify and solve user problems to create better experiences.',
+      title: tx.improved_user_experience,
+      description: tx.identify_and_solve_user_problems,
       icon: '✨'
     },
     {
-      title: 'Reduced Development Costs',
-      description: 'Catch issues early to avoid expensive redesigns later.',
+      title: tx.reduced_development_costs,
+      description: tx.catch_issues_early_to_avoid,
       icon: '💰'
     },
     {
-      title: 'Increased User Satisfaction',
-      description: 'Build products that truly meet user needs and expectations.',
+      title: tx.increased_user_satisfaction,
+      description: tx.build_products_that_truly_meet,
       icon: '😊'
     },
     {
-      title: 'Competitive Advantage',
-      description: 'Understand users better than competitors to gain market advantage.',
+      title: tx.competitive_advantage,
+      description: tx.understand_users_better_than_competitors,
       icon: '🏆'
     },
     {
-      title: 'Risk Mitigation',
-      description: 'Validate assumptions and reduce the risk of product failure.',
+      title: tx.risk_mitigation,
+      description: tx.validate_assumptions_and_reduce_the,
       icon: '🛡️'
     }
   ];
@@ -167,17 +168,17 @@ export default function UserResearchPage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="User Research"
+        eyebrow={tx.user_research_2}
         eyebrowIcon={Search}
-        title="User"
-        highlight="Research"
-        description="We conduct comprehensive user research to understand your audience, validate assumptions, and create data-driven solutions that truly meet user needs and drive business success."
+        title={tx.user}
+        highlight={tx.research}
+        description={tx.we_conduct_comprehensive_user_research}
         highlights={["User Interviews", "User Surveys", "Usability Testing", "Analytics Analysis"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "95%", label: "Success Rate" },
-          { value: "2-6", label: "Week Delivery" },
-          { value: "1000+", label: "Users Researched" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "95%", label: tx.success_rate },
+          { value: "2-6", label: tx.week_delivery },
+          { value: "1000+", label: tx.users_researched },
         ]}
       />
 
@@ -186,16 +187,10 @@ export default function UserResearchPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Research Methods
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              User Research
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Methodologies</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.research_methods}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.user_research_2}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.methodologies}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We use proven research methods to gather deep insights about your users and their needs.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_use_proven_research_methods}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -231,15 +226,15 @@ export default function UserResearchPage() {
                   <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200">
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{method.duration}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Duration</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.duration}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{method.participants}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Participants</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.participants}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{method.cost}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Cost</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_cost}</div>
                     </div>
                   </div>
                 </div>
@@ -254,16 +249,10 @@ export default function UserResearchPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Research
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Process</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.research}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.process}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our systematic approach ensures thorough research and actionable insights.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_systematic_approach_ensures_thorough}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -297,16 +286,10 @@ export default function UserResearchPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Research Deliverables
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              What You&apos;ll
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Receive</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.research_deliverables}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.what_you_ll}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.receive}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Comprehensive research deliverables that provide actionable insights for your product development.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.comprehensive_research_deliverables_that}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -334,16 +317,10 @@ export default function UserResearchPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Why User Research
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Benefits of
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">User Research</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.why_user_research}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.benefits_of}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.user_research_2}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              User research provides invaluable insights that drive product success and user satisfaction.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.user_research_provides_invaluable_insigh}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -369,21 +346,13 @@ export default function UserResearchPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Understand
-            <span className="block text-purple-100 mt-2">Your Users?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_understand}<span className="block text-purple-100 mt-2">{tx.your_users}</span>
           </h2>
-          <p className="text-xl text-purple-100 mb-8 leading-relaxed font-light">
-            Let&apos;s conduct comprehensive user research to create products that truly meet your users&apos; needs.
-          </p>
+          <p className="text-xl text-purple-100 mb-8 leading-relaxed font-light">{tx.let_s_conduct_comprehensive_user}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-purple-600 px-8 py-4 rounded-xl hover:bg-purple-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Start Research Project
-            </Link>
-            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-purple-600 transition-all duration-200 font-semibold text-lg">
-              View Case Studies
-            </Link>
+            <Link href="/contact" className="bg-white text-purple-600 px-8 py-4 rounded-xl hover:bg-purple-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_research_project}</Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-purple-600 transition-all duration-200 font-semibold text-lg">{tx.view_case_studies}</Link>
           </div>
         </div>
       </section>

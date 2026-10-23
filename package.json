@@ -10,7 +10,9 @@
     "export": "next build && next export",
     "lint": "eslint",
     "test": "node --experimental-strip-types --no-warnings --test \"tests/*.test.mjs\"",
-    "zoho:oauth": "node --experimental-strip-types --no-warnings scripts/zoho-oauth.mjs"
+    "zoho:oauth": "node --experimental-strip-types --no-warnings scripts/zoho-oauth.mjs",
+    "cms:index": "node scripts/cms-index.mjs",
+    "cms:extract": "node scripts/cms-extract-text.mjs ."
   },
   "dependencies": {
     "framer-motion": "^12.38.0",

@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/components/products/ProductCatalog.json';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -55,7 +56,7 @@ function ProductDialog({ product, onClose, onRequestDemo }: { product: Product; 
         <button
           type="button"
           onClick={onClose}
-          aria-label="Close"
+          aria-label={tx.close}
           className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-slate-600 shadow ring-1 ring-slate-200 transition hover:text-slate-900"
         >
           <X className="h-5 w-5" aria-hidden />
@@ -69,7 +70,7 @@ function ProductDialog({ product, onClose, onRequestDemo }: { product: Product; 
         <p className="mt-4 leading-relaxed text-slate-600">{product.description}</p>
         {product.features.length > 0 && (
           <>
-            <h4 className="mt-6 text-sm font-semibold text-slate-900">Key features</h4>
+            <h4 className="mt-6 text-sm font-semibold text-slate-900">{tx.key_features}</h4>
             <ul className="mt-3 grid gap-2.5 sm:grid-cols-2">
               {product.features.map((f) => (
                 <li key={f} className="flex items-start gap-2.5 text-sm text-slate-700">
@@ -84,7 +85,7 @@ function ProductDialog({ product, onClose, onRequestDemo }: { product: Product; 
         )}
         {product.technology.length > 0 && (
           <>
-            <h4 className="mt-6 text-sm font-semibold text-slate-900">Built with</h4>
+            <h4 className="mt-6 text-sm font-semibold text-slate-900">{tx.built_with}</h4>
             <ul className="mt-2 flex flex-wrap gap-2">
               {product.technology.map((t) => (
                 <li key={t} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
@@ -99,17 +100,13 @@ function ProductDialog({ product, onClose, onRequestDemo }: { product: Product; 
             type="button"
             onClick={onRequestDemo}
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 px-6 py-3 font-semibold text-white shadow-lg shadow-indigo-600/25 transition hover:brightness-110"
-          >
-            Request a demo
-            <ArrowRight className="h-4 w-4" aria-hidden />
+          >{tx.request_a_demo}<ArrowRight className="h-4 w-4" aria-hidden />
           </button>
           <button
             type="button"
             onClick={onClose}
             className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 font-semibold text-slate-800 ring-1 ring-slate-200 transition hover:ring-indigo-300"
-          >
-            Back to catalog
-          </button>
+          >{tx.back_to_catalog}</button>
         </div>
       </div>
     </div>
@@ -151,29 +148,26 @@ export default function ProductCatalog() {
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-            <p className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-indigo-700">
-              Explore by category
-            </p>
-            <h2 id="catalog-heading" className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              Find the right solution for{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">your business</span>
+            <p className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-indigo-700">{tx.explore_by_category}</p>
+            <h2 id="catalog-heading" className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{tx.find_the_right_solution_for}{' '}
+              <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">{tx.your_business}</span>
             </h2>
-            <p className="mt-3 text-slate-600">Browse our products by industry or business function to quickly find what you need.</p>
+            <p className="mt-3 text-slate-600">{tx.browse_our_products_by_industry}</p>
           </div>
           <label className="relative block w-full lg:w-80">
-            <span className="sr-only">Search products</span>
+            <span className="sr-only">{tx.search_products}</span>
             <input
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search products…"
+              placeholder={tx.search_products_2}
               className="h-12 w-full rounded-xl border border-slate-200 bg-white pl-4 pr-11 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100"
             />
             <Search className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden />
           </label>
         </div>
 
-        <div role="group" aria-label="Filter by category" className="-mx-4 mt-8 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:px-0 [&::-webkit-scrollbar]:hidden">
+        <div role="group" aria-label={tx.filter_by_category} className="-mx-4 mt-8 flex gap-2 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:px-0 [&::-webkit-scrollbar]:hidden">
           {CATEGORIES.map(({ id, label, icon: Icon }) => {
             const active = category === id;
             const count = id === 'all' ? PRODUCTS.length : PRODUCTS.filter((p) => p.category === id).length;
@@ -198,13 +192,12 @@ export default function ProductCatalog() {
         </div>
 
         <p aria-live="polite" className="sr-only">
-          {results.length} {results.length === 1 ? 'product' : 'products'} shown
-        </p>
+          {results.length} {results.length === 1 ? 'product' : 'products'}{" "}{tx.shown}</p>
 
         {results.length === 0 ? (
           <div className="mt-10 rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-14 text-center">
-            <p className="font-semibold text-slate-900">No products match “{query}”.</p>
-            <p className="mt-1 text-sm text-slate-500">Try another word, or tell us what you need and we will build it.</p>
+            <p className="font-semibold text-slate-900">{tx.no_products_match}{query}”.</p>
+            <p className="mt-1 text-sm text-slate-500">{tx.try_another_word_or_tell}</p>
             <div className="mt-5 flex justify-center gap-3">
               <button
                 type="button"
@@ -213,12 +206,8 @@ export default function ProductCatalog() {
                   setCategory('all');
                 }}
                 className="rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 ring-1 ring-slate-200 hover:ring-indigo-300"
-              >
-                Show all products
-              </button>
-              <Link href="/contact" className="rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700">
-                Ask for a custom solution
-              </Link>
+              >{tx.show_all_products}</button>
+              <Link href="/contact" className="rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700">{tx.ask_for_a_custom_solution}</Link>
             </div>
           </div>
         ) : (
@@ -251,18 +240,14 @@ export default function ProductCatalog() {
                         type="button"
                         onClick={() => setOpenId(product.id)}
                         className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-3 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:brightness-110"
-                      >
-                        Learn more
-                        <span className="sr-only"> about {product.name}</span>
+                      >{tx.learn_more}<span className="sr-only">{" "}{tx.about}{" "}{product.name}</span>
                         <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                       </button>
                       <button
                         type="button"
                         onClick={() => setDemoFor(product.id)}
                         className="inline-flex items-center justify-center rounded-lg bg-white px-3 py-2.5 text-sm font-semibold text-slate-800 ring-1 ring-slate-200 transition hover:text-indigo-700 hover:ring-indigo-300"
-                      >
-                        Request demo
-                        <span className="sr-only"> of {product.name}</span>
+                      >{tx.request_demo}<span className="sr-only">{" "}{tx.of}{" "}{product.name}</span>
                       </button>
                     </div>
                   </div>

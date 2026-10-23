@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/what-we-do/page.json';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -8,9 +9,9 @@ import { LayoutGrid } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'What We Do',
+  title: tx.what_we_do,
   description:
-    'Websites, web applications, mobile apps and e-commerce built by SavantX Technologies to help businesses grow.',
+    tx.websites_web_applications_mobile_apps,
   path: '/expertise/what-we-do',
 });
 
@@ -19,46 +20,46 @@ export default function WhatWeDoPage() {
   const services = [
     {
       id: 'websites',
-      title: 'Websites',
+      title: tx.websites,
       icon: '✈️',
-      description: 'Professional websites that establish credibility and drive business growth.',
-      features: ['Corporate Websites', 'Portfolio Sites', 'Landing Pages', 'Blog Platforms'],
+      description: tx.professional_websites_that_establish_cre,
+      features: [tx.corporate_websites, tx.portfolio_sites, tx.landing_pages, tx.blog_platforms],
       href: '/expertise/websites',
       color: 'blue'
     },
     {
       id: 'webapps',
-      title: 'Web Apps',
+      title: tx.web_apps,
       icon: '💎',
-      description: 'Custom web applications that streamline your business operations.',
-      features: ['SaaS Platforms', 'Admin Dashboards', 'E-commerce Solutions', 'CRM Systems'],
+      description: tx.custom_web_applications_that_streamline,
+      features: [tx.saas_platforms, tx.admin_dashboards, tx.e_commerce_solutions, tx.crm_systems],
       href: '/expertise/web-apps',
       color: 'purple'
     },
     {
       id: 'mobile',
-      title: 'Mobile Apps',
+      title: tx.mobile_apps,
       icon: '📱',
-      description: 'Native and cross-platform mobile applications for iOS and Android.',
-      features: ['iOS Apps', 'Android Apps', 'React Native', 'Flutter Development'],
+      description: tx.native_and_cross_platform_mobile,
+      features: [tx.ios_apps, tx.android_apps, tx.react_native, tx.flutter_development],
       href: '/expertise/mobile-apps',
       color: 'green'
     },
     {
       id: 'ecommerce',
-      title: 'E-commerce',
+      title: tx.e_commerce,
       icon: '🛒',
-      description: 'Complete e-commerce solutions that convert visitors into customers.',
-      features: ['Online Stores', 'Payment Integration', 'Inventory Management', 'Order Processing'],
+      description: tx.complete_e_commerce_solutions_that,
+      features: [tx.online_stores, tx.payment_integration, tx.inventory_management, tx.order_processing],
       href: '/expertise/ecommerce',
       color: 'orange'
     },
     {
       id: 'data',
-      title: 'Data Visualization',
+      title: tx.data_visualization,
       icon: '🔄',
-      description: 'Interactive dashboards and data visualization solutions.',
-      features: ['Business Intelligence', 'Analytics Dashboards', 'Real-time Data', 'Custom Reports'],
+      description: tx.interactive_dashboards_and_data_visualiz,
+      features: [tx.business_intelligence, tx.analytics_dashboards, tx.real_time_data, tx.custom_reports],
       href: '/expertise/zoho-integrations/zoho-analytics',
       color: 'cyan'
     }
@@ -67,22 +68,22 @@ export default function WhatWeDoPage() {
   const expertise = [
     {
       category: 'Frontend Development',
-      technologies: ['React', 'Next.js', 'Vue.js', 'Angular', 'TypeScript', 'Tailwind CSS'],
+      technologies: [tx.react, tx.next_js, tx.vue_js, tx.angular, tx.typescript, tx.tailwind_css],
       icon: '🎨'
     },
     {
       category: 'Backend Development',
-      technologies: ['Node.js', 'Python', 'PHP', 'Java', 'PostgreSQL', 'MongoDB'],
+      technologies: [tx.node_js, tx.python, 'PHP', tx.java, tx.postgresql, tx.mongodb],
       icon: '⚙️'
     },
     {
       category: 'Mobile Development',
-      technologies: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Ionic', 'Xamarin'],
+      technologies: [tx.react_native_2, tx.flutter, tx.swift, tx.kotlin, tx.ionic, tx.xamarin],
       icon: '📱'
     },
     {
       category: 'Cloud & DevOps',
-      technologies: ['AWS', 'Azure', 'Docker', 'Kubernetes', 'CI/CD', 'Serverless'],
+      technologies: ['AWS', tx.azure, tx.docker, tx.kubernetes, tx.ci_cd, tx.serverless],
       icon: '☁️'
     }
   ];
@@ -90,32 +91,32 @@ export default function WhatWeDoPage() {
   const process = [
     {
       step: '01',
-      title: 'Discovery',
-      description: 'Understanding your business goals and requirements',
+      title: tx.discovery,
+      description: tx.understanding_your_business_goals_and,
       icon: '🔍'
     },
     {
       step: '02',
-      title: 'Strategy',
-      description: 'Creating a roadmap and technical architecture',
+      title: tx.strategy,
+      description: tx.creating_a_roadmap_and_technical,
       icon: '📋'
     },
     {
       step: '03',
-      title: 'Design',
-      description: 'Crafting user-centered designs and experiences',
+      title: tx.design,
+      description: tx.crafting_user_centered_designs_and,
       icon: '🎨'
     },
     {
       step: '04',
-      title: 'Development',
-      description: 'Building with modern technologies and best practices',
+      title: tx.development,
+      description: tx.building_with_modern_technologies_and,
       icon: '💻'
     },
     {
       step: '05',
-      title: 'Launch',
-      description: 'Testing, deployment, and go-live support',
+      title: tx.launch,
+      description: tx.testing_deployment_and_go_live,
       icon: '🚀'
     }
   ];
@@ -124,17 +125,17 @@ export default function WhatWeDoPage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="What We Do"
+        eyebrow={tx.what_we_do_2}
         eyebrowIcon={LayoutGrid}
-        title="What We"
-        highlight="Do Best"
-        description="We are a full-service digital agency specializing in creating exceptional web experiences, mobile applications, and custom software solutions that drive business growth."
+        title={tx.what_we}
+        highlight={tx.do_best}
+        description={tx.we_are_a_full_service}
         highlights={["Websites", "Web Apps", "Mobile Apps", "E-commerce"]}
         stats={[
           { value: `${COMPANY_METRICS[0].value}${COMPANY_METRICS[0].suffix}`, label: COMPANY_METRICS[0].label },
           { value: `${COMPANY_METRICS[1].value}${COMPANY_METRICS[1].suffix}`, label: COMPANY_METRICS[1].label },
-          { value: "5+", label: "Years Experience" },
-          { value: "24/7", label: "Support" },
+          { value: "5+", label: tx.years_experience },
+          { value: "24/7", label: tx.support },
         ]}
       />
 
@@ -143,16 +144,10 @@ export default function WhatWeDoPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Services
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Complete Digital
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Solutions</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_services}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.complete_digital}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.solutions}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              From concept to launch, we provide end-to-end digital solutions that help your business thrive.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.from_concept_to_launch_we}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -191,9 +186,7 @@ export default function WhatWeDoPage() {
 
                     {/* Learn More */}
                     <div className="flex items-center gap-2 mt-6 pt-4 border-t border-slate-200">
-                      <span className="text-sm font-semibold text-blue-600 group-hover:text-blue-700 transition-colors duration-200">
-                        Learn More
-                      </span>
+                      <span className="text-sm font-semibold text-blue-600 group-hover:text-blue-700 transition-colors duration-200">{tx.learn_more}</span>
                       <svg className="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
@@ -211,16 +204,10 @@ export default function WhatWeDoPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Technology Stack
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Our Technical
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Expertise</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.technology_stack}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.our_technical}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.expertise}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We work with cutting-edge technologies to deliver robust, scalable, and maintainable solutions.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_work_with_cutting_edge}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -257,16 +244,10 @@ export default function WhatWeDoPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              How We
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Work</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.how_we}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.work}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our proven 5-step process ensures your project is delivered on time and exceeds expectations.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_proven_5_step_process}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -300,24 +281,14 @@ export default function WhatWeDoPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Start Your
-            <span className="block text-blue-100 mt-2">Next Project?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_start_your}<span className="block text-blue-100 mt-2">{tx.next_project}</span>
           </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">
-            Let&apos;s discuss your ideas and create something amazing together.
-          </p>
+          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">{tx.let_s_discuss_your_ideas}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Get Started
-            </Link>
-            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-                Schedule Demo
-              </Link>
-            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-              View Portfolio
-            </Link>
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.get_started}</Link>
+            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.schedule_demo}</Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.view_portfolio}</Link>
           </div>
         </div>
       </section>

@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/payload-cms/page.json';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
@@ -8,9 +9,9 @@ import { Layers } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Payload CMS Development',
+  title: tx.payload_cms_development,
   description:
-    'Flexible, developer-friendly content management systems built on Payload CMS.',
+    tx.flexible_developer_friendly_content_mana,
   path: '/expertise/payload-cms',
 });
 
@@ -19,46 +20,46 @@ export default function PayloadCMSPage() {
   const payloadServices = [
     {
       id: 'headless',
-      title: 'Headless CMS Setup',
+      title: tx.headless_cms_setup,
       icon: '🔄',
-      description: 'Modern headless CMS implementation with API-first architecture for maximum flexibility.',
-      features: ['API-First Architecture', 'Content Management', 'Multi-Site Support', 'Custom Fields', 'Media Management', 'User Permissions'],
-      pricing: 'Starting at $3,500',
+      description: tx.modern_headless_cms_implementation_with,
+      features: [tx.api_first_architecture, tx.content_management, tx.multi_site_support, tx.custom_fields, tx.media_management, tx.user_permissions],
+      pricing: tx.starting_at_3_500,
       timeline: '2-4 weeks',
-      complexity: 'Standard',
+      complexity: tx.standard,
       features_count: '20+'
     },
     {
       id: 'custom-fields',
-      title: 'Custom Field Development',
+      title: tx.custom_field_development,
       icon: '🛠️',
-      description: 'Custom field types and complex data structures tailored to your content needs.',
-      features: ['Custom Field Types', 'Conditional Logic', 'Validation Rules', 'Rich Text Editor', 'File Uploads', 'Relationship Fields'],
-      pricing: 'Starting at $2,500',
+      description: tx.custom_field_types_and_complex,
+      features: [tx.custom_field_types, tx.conditional_logic, tx.validation_rules, tx.rich_text_editor, tx.file_uploads, tx.relationship_fields],
+      pricing: tx.starting_at_2_500,
       timeline: '1-3 weeks',
-      complexity: 'Advanced',
+      complexity: tx.advanced,
       features_count: '15+'
     },
     {
       id: 'api-integration',
-      title: 'API Integration',
+      title: tx.api_integration,
       icon: '🔗',
-      description: 'Seamless integration with frontend applications and third-party services.',
-      features: ['REST API', 'GraphQL API', 'Webhooks', 'Authentication', 'Rate Limiting', 'API Documentation'],
-      pricing: 'Starting at $2,000',
+      description: tx.seamless_integration_with_frontend_appli,
+      features: [tx.rest_api, tx.graphql_api, tx.webhooks, tx.authentication, tx.rate_limiting, tx.api_documentation],
+      pricing: tx.starting_at_2_000,
       timeline: '1-2 weeks',
-      complexity: 'Standard',
+      complexity: tx.standard,
       features_count: '12+'
     },
     {
       id: 'enterprise',
-      title: 'Enterprise CMS',
+      title: tx.enterprise_cms,
       icon: '🏢',
-      description: 'Scalable enterprise-grade CMS solution with advanced features and security.',
-      features: ['Multi-Tenant Architecture', 'Advanced Security', 'Workflow Management', 'Audit Logs', 'Performance Optimization', 'Custom Admin UI'],
-      pricing: 'Starting at $8,000',
+      description: tx.scalable_enterprise_grade_cms_solution,
+      features: [tx.multi_tenant_architecture, tx.advanced_security, tx.workflow_management, tx.audit_logs, tx.performance_optimization, tx.custom_admin_ui],
+      pricing: tx.starting_at_8_000,
       timeline: '6-12 weeks',
-      complexity: 'Enterprise',
+      complexity: tx.enterprise,
       features_count: '50+'
     }
   ];
@@ -67,37 +68,37 @@ export default function PayloadCMSPage() {
     {
       category: 'Core Features',
       features: [
-        { name: 'TypeScript Support', icon: '📘', description: 'Full TypeScript support for type-safe development' },
-        { name: 'Custom Fields', icon: '🔧', description: 'Flexible field types and validation' },
-        { name: 'Rich Text Editor', icon: '📝', description: 'Advanced rich text editing capabilities' },
-        { name: 'Media Management', icon: '🖼️', description: 'Comprehensive media handling and optimization' }
+        { name: tx.typescript_support, icon: '📘', description: tx.full_typescript_support_for_type },
+        { name: tx.custom_fields_2, icon: '🔧', description: tx.flexible_field_types_and_validation },
+        { name: tx.rich_text_editor_2, icon: '📝', description: tx.advanced_rich_text_editing_capabilities },
+        { name: tx.media_management_2, icon: '🖼️', description: tx.comprehensive_media_handling_and_optimiz }
       ]
     },
     {
       category: 'Developer Experience',
       features: [
-        { name: 'REST & GraphQL APIs', icon: '🌐', description: 'Both REST and GraphQL API support' },
-        { name: 'Webhooks', icon: '🎣', description: 'Real-time event notifications' },
-        { name: 'Authentication', icon: '🔐', description: 'Built-in authentication and authorization' },
-        { name: 'Plugin System', icon: '🧩', description: 'Extensible plugin architecture' }
+        { name: tx.rest_graphql_apis, icon: '🌐', description: tx.both_rest_and_graphql_api },
+        { name: tx.webhooks_2, icon: '🎣', description: tx.real_time_event_notifications },
+        { name: tx.authentication_2, icon: '🔐', description: tx.built_in_authentication_and_authorizatio },
+        { name: tx.plugin_system, icon: '🧩', description: tx.extensible_plugin_architecture }
       ]
     },
     {
       category: 'Content Management',
       features: [
-        { name: 'Version Control', icon: '📚', description: 'Content versioning and history tracking' },
-        { name: 'Draft System', icon: '📄', description: 'Draft and publish workflow' },
-        { name: 'Bulk Operations', icon: '⚡', description: 'Bulk content management operations' },
-        { name: 'Search & Filter', icon: '🔍', description: 'Advanced search and filtering capabilities' }
+        { name: tx.version_control, icon: '📚', description: tx.content_versioning_and_history_tracking },
+        { name: tx.draft_system, icon: '📄', description: tx.draft_and_publish_workflow },
+        { name: tx.bulk_operations, icon: '⚡', description: tx.bulk_content_management_operations },
+        { name: tx.search_filter, icon: '🔍', description: tx.advanced_search_and_filtering_capabiliti }
       ]
     },
     {
       category: 'Deployment & Scaling',
       features: [
-        { name: 'Cloud Deployment', icon: '☁️', description: 'Easy deployment to cloud platforms' },
-        { name: 'Database Support', icon: '🗄️', description: 'MongoDB and PostgreSQL support' },
-        { name: 'CDN Integration', icon: '🌍', description: 'Content delivery network integration' },
-        { name: 'Performance Monitoring', icon: '📊', description: 'Built-in performance monitoring' }
+        { name: tx.cloud_deployment, icon: '☁️', description: tx.easy_deployment_to_cloud_platforms },
+        { name: tx.database_support, icon: '🗄️', description: tx.mongodb_and_postgresql_support },
+        { name: tx.cdn_integration, icon: '🌍', description: tx.content_delivery_network_integration },
+        { name: tx.performance_monitoring, icon: '📊', description: tx.built_in_performance_monitoring }
       ]
     }
   ];
@@ -105,43 +106,43 @@ export default function PayloadCMSPage() {
   const developmentProcess = [
     {
       step: '01',
-      title: 'Requirements Analysis',
-      description: 'Understanding your content structure and CMS requirements.',
+      title: tx.requirements_analysis,
+      description: tx.understanding_your_content_structure_and,
       duration: '3-5 days',
       icon: '🔍'
     },
     {
       step: '02',
-      title: 'Schema Design',
-      description: 'Designing content schemas and field structures.',
+      title: tx.schema_design,
+      description: tx.designing_content_schemas_and_field,
       duration: '5-7 days',
       icon: '🏗️'
     },
     {
       step: '03',
-      title: 'CMS Configuration',
-      description: 'Setting up Payload CMS with custom configurations.',
+      title: tx.cms_configuration,
+      description: tx.setting_up_payload_cms_with,
       duration: '3-5 days',
       icon: '⚙️'
     },
     {
       step: '04',
-      title: 'Custom Development',
-      description: 'Building custom fields, plugins, and integrations.',
+      title: tx.custom_development,
+      description: tx.building_custom_fields_plugins_and,
       duration: '1-3 weeks',
       icon: '🛠️'
     },
     {
       step: '05',
-      title: 'Content Migration',
-      description: 'Migrating existing content to Payload CMS.',
+      title: tx.content_migration,
+      description: tx.migrating_existing_content_to_payload,
       duration: '3-7 days',
       icon: '📊'
     },
     {
       step: '06',
-      title: 'Testing & Deployment',
-      description: 'Testing and deploying the CMS solution.',
+      title: tx.testing_deployment,
+      description: tx.testing_and_deploying_the_cms,
       duration: '3-5 days',
       icon: '🚀'
     }
@@ -149,132 +150,132 @@ export default function PayloadCMSPage() {
 
   const deliverables = [
     {
-      title: 'Payload CMS Setup',
-      description: 'Fully configured Payload CMS with custom schemas and fields.',
+      title: tx.payload_cms_setup,
+      description: tx.fully_configured_payload_cms_with,
       icon: '🔄'
     },
     {
-      title: 'Custom Admin UI',
-      description: 'Tailored admin interface for content management.',
+      title: tx.custom_admin_ui_2,
+      description: tx.tailored_admin_interface_for_content,
       icon: '🎨'
     },
     {
-      title: 'API Documentation',
-      description: 'Comprehensive API documentation and examples.',
+      title: tx.api_documentation_2,
+      description: tx.comprehensive_api_documentation_and_exam,
       icon: '📚'
     },
     {
-      title: 'Content Migration',
-      description: 'Safe migration of existing content to Payload CMS.',
+      title: tx.content_migration_2,
+      description: tx.safe_migration_of_existing_content,
       icon: '📊'
     },
     {
-      title: 'Training & Support',
-      description: 'Complete training for your content management team.',
+      title: tx.training_support,
+      description: tx.complete_training_for_your_content,
       icon: '🎓'
     },
     {
-      title: 'Maintenance Plan',
-      description: 'Ongoing support and maintenance for your CMS.',
+      title: tx.maintenance_plan,
+      description: tx.ongoing_support_and_maintenance_for,
       icon: '🔧'
     }
   ];
 
   const benefits = [
     {
-      title: 'Developer-Friendly',
-      description: 'Built by developers, for developers with modern tools and practices.',
+      title: tx.developer_friendly,
+      description: tx.built_by_developers_for_developers,
       icon: '👨‍💻'
     },
     {
-      title: 'Type-Safe',
-      description: 'Full TypeScript support ensures type safety throughout your application.',
+      title: tx.type_safe,
+      description: tx.full_typescript_support_ensures_type,
       icon: '🛡️'
     },
     {
-      title: 'Flexible Architecture',
-      description: 'Headless architecture allows integration with any frontend framework.',
+      title: tx.flexible_architecture,
+      description: tx.headless_architecture_allows_integration,
       icon: '🔀'
     },
     {
-      title: 'Scalable Performance',
-      description: 'Optimized for performance with efficient database queries and caching.',
+      title: tx.scalable_performance,
+      description: tx.optimized_for_performance_with_efficient,
       icon: '⚡'
     },
     {
-      title: 'Cost-Effective',
-      description: 'Open-source solution with no licensing fees or vendor lock-in.',
+      title: tx.cost_effective,
+      description: tx.open_source_solution_with_no,
       icon: '💰'
     },
     {
-      title: 'Future-Proof',
-      description: 'Modern architecture ensures long-term viability and updates.',
+      title: tx.future_proof,
+      description: tx.modern_architecture_ensures_long_term,
       icon: '🔮'
     }
   ];
 
   const useCases = [
     {
-      title: 'Corporate Websites',
-      description: 'Content management for corporate websites and marketing pages.',
+      title: tx.corporate_websites,
+      description: tx.content_management_for_corporate_website,
       icon: '🏢'
     },
     {
-      title: 'E-commerce Platforms',
-      description: 'Product catalog and content management for online stores.',
+      title: tx.e_commerce_platforms,
+      description: tx.product_catalog_and_content_management,
       icon: '🛒'
     },
     {
-      title: 'Blog & News Sites',
-      description: 'Publishing platform for blogs, news, and editorial content.',
+      title: tx.blog_news_sites,
+      description: tx.publishing_platform_for_blogs_news,
       icon: '📰'
     },
     {
-      title: 'Documentation Sites',
-      description: 'Technical documentation and knowledge base management.',
+      title: tx.documentation_sites,
+      description: tx.technical_documentation_and_knowledge_ba,
       icon: '📖'
     },
     {
-      title: 'Portfolio Websites',
-      description: 'Showcase portfolios and creative content management.',
+      title: tx.portfolio_websites,
+      description: tx.showcase_portfolios_and_creative_content,
       icon: '🎨'
     },
     {
-      title: 'Multi-Site Networks',
-      description: 'Managing multiple websites from a single CMS instance.',
+      title: tx.multi_site_networks,
+      description: tx.managing_multiple_websites_from_a,
       icon: '🌐'
     }
   ];
 
   const integrations = [
     {
-      title: 'Frontend Frameworks',
-      description: 'Seamless integration with React, Next.js, Vue, and other frameworks.',
+      title: tx.frontend_frameworks,
+      description: tx.seamless_integration_with_react_next,
       icon: '⚛️'
     },
     {
-      title: 'E-commerce Platforms',
-      description: 'Integration with Shopify, WooCommerce, and custom e-commerce solutions.',
+      title: tx.e_commerce_platforms_2,
+      description: tx.integration_with_shopify_woocommerce_and,
       icon: '🛒'
     },
     {
-      title: 'Analytics Tools',
-      description: 'Connect with Google Analytics, Mixpanel, and other analytics platforms.',
+      title: tx.analytics_tools,
+      description: tx.connect_with_google_analytics_mixpanel,
       icon: '📊'
     },
     {
-      title: 'Email Marketing',
-      description: 'Integration with Mailchimp, SendGrid, and email marketing tools.',
+      title: tx.email_marketing,
+      description: tx.integration_with_mailchimp_sendgrid_and,
       icon: '📧'
     },
     {
-      title: 'Social Media',
-      description: 'Connect with social media platforms for content syndication.',
+      title: tx.social_media,
+      description: tx.connect_with_social_media_platforms,
       icon: '📱'
     },
     {
-      title: 'Third-Party APIs',
-      description: 'Integration with external services and APIs.',
+      title: tx.third_party_apis,
+      description: tx.integration_with_external_services_and,
       icon: '🔗'
     }
   ];
@@ -283,17 +284,17 @@ export default function PayloadCMSPage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="Payload CMS Development"
+        eyebrow={tx.payload_cms_development_2}
         eyebrowIcon={Layers}
-        title="Payload"
-        highlight="CMS Solutions"
-        description="We build powerful, developer-friendly content management systems using Payload CMS. From simple blogs to complex enterprise solutions, we deliver flexible and scalable CMS platforms."
+        title={tx.payload}
+        highlight={tx.cms_solutions}
+        description={tx.we_build_powerful_developer_friendly}
         highlights={["Headless CMS Setup", "Custom Field Development", "API Integration", "Enterprise CMS"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "100%", label: "Type-Safe" },
-          { value: "2-12", label: "Week Delivery" },
-          { value: "Open Source", label: "No Licensing Fees" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "100%", label: tx.type_safe_2 },
+          { value: "2-12", label: tx.week_delivery },
+          { value: "Open Source", label: tx.no_licensing_fees },
         ]}
       />
 
@@ -302,16 +303,10 @@ export default function PayloadCMSPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Services
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Payload CMS
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Solutions</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_services}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.payload_cms}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.solutions}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Comprehensive Payload CMS development services for all types of content management needs.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.comprehensive_payload_cms_development_se}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -347,19 +342,19 @@ export default function PayloadCMSPage() {
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200 sm:grid-cols-4">
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.timeline}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.complexity}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Complexity</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.complexity}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.features_count}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Features</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.features}</div>
                     </div>
                   </div>
                 </div>
@@ -374,16 +369,10 @@ export default function PayloadCMSPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Payload Features
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Powerful
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Features</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.payload_features}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.powerful}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.features}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Payload CMS provides a comprehensive set of features for modern content management.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.payload_cms_provides_a_comprehensive}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -416,16 +405,10 @@ export default function PayloadCMSPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Payload CMS
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Development Process</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.payload_cms}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.development_process}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our systematic approach ensures robust and scalable Payload CMS solutions.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_systematic_approach_ensures_robust}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -459,16 +442,10 @@ export default function PayloadCMSPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Deliverables
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              What You&apos;ll
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Receive</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.deliverables}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.what_you_ll}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.receive}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Complete Payload CMS deliverables that provide everything needed for content management.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.complete_payload_cms_deliverables_that}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -496,16 +473,10 @@ export default function PayloadCMSPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Why Payload CMS
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Benefits of
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Payload CMS</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.why_payload_cms}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.benefits_of}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.payload_cms}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Payload CMS provides significant advantages for modern content management needs.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.payload_cms_provides_significant_advanta}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -533,16 +504,10 @@ export default function PayloadCMSPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Use Cases
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Perfect For
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">These Projects</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.use_cases}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.perfect_for}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.these_projects}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Payload CMS is ideal for a wide range of content management scenarios.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.payload_cms_is_ideal_for}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -570,16 +535,10 @@ export default function PayloadCMSPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Integrations
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Seamless
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Integrations</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.integrations}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.seamless}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.integrations}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Payload CMS integrates seamlessly with modern development tools and services.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.payload_cms_integrates_seamlessly_with}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -605,21 +564,13 @@ export default function PayloadCMSPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Build
-            <span className="block text-blue-100 mt-2">Your CMS?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_build}<span className="block text-blue-100 mt-2">{tx.your_cms}</span>
           </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">
-            Let&apos;s create a powerful Payload CMS solution that meets your content management needs.
-          </p>
+          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">{tx.let_s_create_a_powerful}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Start CMS Project
-            </Link>
-            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-              View Examples
-            </Link>
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_cms_project}</Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.view_examples}</Link>
           </div>
         </div>
       </section>

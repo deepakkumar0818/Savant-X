@@ -114,7 +114,7 @@ A refresh token belongs to the client that generated the grant code. The client 
 2. Open **Self Client**, or choose **Add Client → Self Client** if there isn't one.
 3. Open the **Client Secret** tab. Put that Client ID and Client Secret in `.env.local`. A Self Client's credentials differ from any Server-based client's.
 4. Open **Generate Code** and fill in the form:
-   - **Scope:** `ZohoCRM.modules.leads.CREATE`. To run `inspect` as well, use `ZohoCRM.modules.leads.CREATE,ZohoCRM.settings.fields.READ`.
+   - **Scope:** `ZohoCRM.modules.leads.CREATE,ZohoCRM.modules.leads.READ,ZohoCRM.modules.leads.UPDATE,ZohoCRM.settings.fields.READ`. Lead creation needs only the first; the admin's Leads page needs READ and UPDATE; `inspect` and the admin's picklist checks need `settings.fields.READ`.
    - **Time duration:** 10 minutes
    - **Description:** "Website leads"
 5. Press **Create**, choose the SavantX CRM organisation if asked, and copy the code.
@@ -126,7 +126,7 @@ A refresh token belongs to the client that generated the grant code. The client 
 1. In <https://api-console.zoho.in>, choose **Add Client → Server-based Applications**.
 2. Enter a name, the homepage URL and an **Authorized Redirect URI**, for example `https://www.savantxtechnologies.com/zoho-oauth-callback`. The page doesn't need to exist; you only copy the code from the address bar.
 3. Put the client ID, secret and redirect URI (`ZOHO_REDIRECT_URI`) in `.env.local`.
-4. Run `npm run zoho:oauth -- url` (or `url --inspect`). Open the URL while signed in as a CRM admin and accept. It requests offline access, so Zoho issues a refresh token.
+4. Run `npm run zoho:oauth -- url` (it requests all four scopes above). Open the URL while signed in as a CRM admin and accept. It requests offline access, so Zoho issues a refresh token.
 5. Copy `code` from the address bar you land on. Within a few minutes, run `npm run zoho:oauth -- exchange` and paste it.
 6. Run `npm run zoho:oauth -- check`.
 

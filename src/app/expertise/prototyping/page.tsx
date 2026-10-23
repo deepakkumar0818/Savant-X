@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/prototyping/page.json';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
@@ -8,9 +9,9 @@ import { MousePointerClick } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Prototyping',
+  title: tx.prototyping,
   description:
-    'Interactive prototypes that validate ideas and user experience before development, reducing product risk.',
+    tx.interactive_prototypes_that_validate_ide,
   path: '/expertise/prototyping',
 });
 
@@ -19,90 +20,90 @@ export default function PrototypingPage() {
   const prototypeTypes = [
     {
       id: 'low-fidelity',
-      title: 'Low-Fidelity Prototypes',
+      title: tx.low_fidelity_prototypes,
       icon: '📝',
-      description: 'Quick, simple prototypes to test basic concepts and user flows.',
-      features: ['Paper Sketches', 'Wireframes', 'Basic Interactions', 'Concept Validation', 'Rapid Iteration', 'Early Feedback'],
-      pricing: 'Starting at $1,500',
+      description: tx.quick_simple_prototypes_to_test,
+      features: [tx.paper_sketches, tx.wireframes, tx.basic_interactions, tx.concept_validation, tx.rapid_iteration, tx.early_feedback],
+      pricing: tx.starting_at_1_500,
       timeline: '1-2 weeks',
-      fidelity: 'Low',
-      interactivity: 'Basic'
+      fidelity: tx.low,
+      interactivity: tx.basic
     },
     {
       id: 'mid-fidelity',
-      title: 'Mid-Fidelity Prototypes',
+      title: tx.mid_fidelity_prototypes,
       icon: '📋',
-      description: 'More detailed prototypes with improved visual design and interactions.',
-      features: ['Enhanced Wireframes', 'Visual Design', 'User Flow Testing', 'Navigation Testing', 'Content Validation', 'Stakeholder Review'],
-      pricing: 'Starting at $2,500',
+      description: tx.more_detailed_prototypes_with_improved,
+      features: [tx.enhanced_wireframes, tx.visual_design, tx.user_flow_testing, tx.navigation_testing, tx.content_validation, tx.stakeholder_review],
+      pricing: tx.starting_at_2_500,
       timeline: '2-3 weeks',
-      fidelity: 'Medium',
-      interactivity: 'Moderate'
+      fidelity: tx.medium,
+      interactivity: tx.moderate
     },
     {
       id: 'high-fidelity',
-      title: 'High-Fidelity Prototypes',
+      title: tx.high_fidelity_prototypes,
       icon: '⚡',
-      description: 'Pixel-perfect prototypes that closely resemble the final product.',
-      features: ['Pixel-Perfect Design', 'Advanced Interactions', 'Animation & Transitions', 'User Testing', 'Developer Handoff', 'Final Validation'],
-      pricing: 'Starting at $4,000',
+      description: tx.pixel_perfect_prototypes_that_closely,
+      features: [tx.pixel_perfect_design, tx.advanced_interactions, tx.animation_transitions, tx.user_testing, tx.developer_handoff, tx.final_validation],
+      pricing: tx.starting_at_4_000,
       timeline: '3-5 weeks',
-      fidelity: 'High',
-      interactivity: 'Advanced'
+      fidelity: tx.high,
+      interactivity: tx.advanced
     },
     {
       id: 'interactive',
-      title: 'Interactive Prototypes',
+      title: tx.interactive_prototypes,
       icon: '🎮',
-      description: 'Fully interactive prototypes with complex user interactions and animations.',
-      features: ['Complex Interactions', 'Micro-animations', 'Advanced User Testing', 'A/B Testing', 'Performance Testing', 'Launch Ready'],
-      pricing: 'Starting at $6,000',
+      description: tx.fully_interactive_prototypes_with_comple,
+      features: [tx.complex_interactions, tx.micro_animations, tx.advanced_user_testing, tx.a_b_testing, tx.performance_testing, tx.launch_ready],
+      pricing: tx.starting_at_6_000,
       timeline: '4-6 weeks',
-      fidelity: 'Premium',
-      interactivity: 'Full'
+      fidelity: tx.premium,
+      interactivity: tx.full
     }
   ];
 
   const prototypingProcess = [
     {
       step: '01',
-      title: 'Requirements & Planning',
-      description: 'Understanding project goals and defining prototype scope.',
+      title: tx.requirements_planning,
+      description: tx.understanding_project_goals_and_defining,
       duration: '1-2 days',
       icon: '📋'
     },
     {
       step: '02',
-      title: 'Wireframing',
-      description: 'Creating basic layouts and information architecture.',
+      title: tx.wireframing,
+      description: tx.creating_basic_layouts_and_information,
       duration: '3-5 days',
       icon: '📐'
     },
     {
       step: '03',
-      title: 'Visual Design',
-      description: 'Applying visual design and brand elements.',
+      title: tx.visual_design_2,
+      description: tx.applying_visual_design_and_brand,
       duration: '5-10 days',
       icon: '🎨'
     },
     {
       step: '04',
-      title: 'Interaction Design',
-      description: 'Adding interactions, animations, and user flows.',
+      title: tx.interaction_design,
+      description: tx.adding_interactions_animations_and_user,
       duration: '5-15 days',
       icon: '⚡'
     },
     {
       step: '05',
-      title: 'Testing & Iteration',
-      description: 'User testing and prototype refinement.',
+      title: tx.testing_iteration,
+      description: tx.user_testing_and_prototype_refinement,
       duration: '3-7 days',
       icon: '🧪'
     },
     {
       step: '06',
-      title: 'Final Delivery',
-      description: 'Handoff to development team with documentation.',
+      title: tx.final_delivery,
+      description: tx.handoff_to_development_team_with,
       duration: '1-2 days',
       icon: '🚀'
     }
@@ -110,110 +111,110 @@ export default function PrototypingPage() {
 
   const deliverables = [
     {
-      title: 'Interactive Prototype',
-      description: 'Clickable prototype with realistic interactions and user flows.',
+      title: tx.interactive_prototype,
+      description: tx.clickable_prototype_with_realistic_inter,
       icon: '⚡'
     },
     {
-      title: 'User Flow Documentation',
-      description: 'Detailed documentation of user journeys and interactions.',
+      title: tx.user_flow_documentation,
+      description: tx.detailed_documentation_of_user_journeys,
       icon: '🗺️'
     },
     {
-      title: 'Design Specifications',
-      description: 'Technical specifications for developers.',
+      title: tx.design_specifications,
+      description: tx.technical_specifications_for_developers,
       icon: '📋'
     },
     {
-      title: 'User Testing Report',
-      description: 'Results from prototype testing with recommendations.',
+      title: tx.user_testing_report,
+      description: tx.results_from_prototype_testing_with,
       icon: '📊'
     },
     {
-      title: 'Animation Guidelines',
-      description: 'Detailed animation specifications and timing.',
+      title: tx.animation_guidelines,
+      description: tx.detailed_animation_specifications_and_ti,
       icon: '🎬'
     },
     {
-      title: 'Component Library',
-      description: 'Reusable design components for development.',
+      title: tx.component_library,
+      description: tx.reusable_design_components_for_developme,
       icon: '🧩'
     }
   ];
 
   const tools = [
-    { name: 'Figma', icon: '🎨', description: 'Collaborative prototyping', category: 'Design' },
-    { name: 'InVision', icon: '🔄', description: 'Interactive prototyping', category: 'Prototyping' },
-    { name: 'Principle', icon: '⚡', description: 'Animation & interaction design', category: 'Animation' },
-    { name: 'Framer', icon: '🚀', description: 'Advanced prototyping', category: 'Advanced' },
-    { name: 'ProtoPie', icon: '🥧', description: 'Sensor-based prototyping', category: 'Mobile' },
-    { name: 'Adobe XD', icon: '🎯', description: 'UX/UI prototyping', category: 'Design' },
-    { name: 'Axure', icon: '🔧', description: 'Complex interaction design', category: 'Enterprise' },
-    { name: 'Marvel', icon: '⚡', description: 'Simple prototyping', category: 'Quick' }
+    { name: tx.figma, icon: '🎨', description: tx.collaborative_prototyping, category: 'Design' },
+    { name: tx.invision, icon: '🔄', description: tx.interactive_prototyping, category: 'Prototyping' },
+    { name: tx.principle, icon: '⚡', description: tx.animation_interaction_design, category: 'Animation' },
+    { name: tx.framer, icon: '🚀', description: tx.advanced_prototyping, category: 'Advanced' },
+    { name: tx.protopie, icon: '🥧', description: tx.sensor_based_prototyping, category: 'Mobile' },
+    { name: tx.adobe_xd, icon: '🎯', description: tx.ux_ui_prototyping, category: 'Design' },
+    { name: tx.axure, icon: '🔧', description: tx.complex_interaction_design, category: 'Enterprise' },
+    { name: tx.marvel, icon: '⚡', description: tx.simple_prototyping, category: 'Quick' }
   ];
 
   const benefits = [
     {
-      title: 'Early Validation',
-      description: 'Test concepts and user flows before development begins.',
+      title: tx.early_validation,
+      description: tx.test_concepts_and_user_flows,
       icon: '✅'
     },
     {
-      title: 'Reduced Development Costs',
-      description: 'Catch issues early to avoid expensive changes later.',
+      title: tx.reduced_development_costs,
+      description: tx.catch_issues_early_to_avoid,
       icon: '💰'
     },
     {
-      title: 'Better User Experience',
-      description: 'Optimize user interactions through iterative testing.',
+      title: tx.better_user_experience,
+      description: tx.optimize_user_interactions_through_itera,
       icon: '😊'
     },
     {
-      title: 'Stakeholder Alignment',
-      description: 'Get clear visual approval from all stakeholders.',
+      title: tx.stakeholder_alignment,
+      description: tx.get_clear_visual_approval_from,
       icon: '🤝'
     },
     {
-      title: 'Faster Development',
-      description: 'Provide developers with clear specifications and interactions.',
+      title: tx.faster_development,
+      description: tx.provide_developers_with_clear_specificat,
       icon: '⚡'
     },
     {
-      title: 'Risk Mitigation',
-      description: 'Identify and solve usability issues before launch.',
+      title: tx.risk_mitigation,
+      description: tx.identify_and_solve_usability_issues,
       icon: '🛡️'
     }
   ];
 
   const useCases = [
     {
-      title: 'Mobile App Development',
-      description: 'Prototype mobile app interactions and user flows.',
+      title: tx.mobile_app_development,
+      description: tx.prototype_mobile_app_interactions_and,
       icon: '📱'
     },
     {
-      title: 'Web Application',
-      description: 'Test complex web application functionality.',
+      title: tx.web_application,
+      description: tx.test_complex_web_application_functionali,
       icon: '💻'
     },
     {
-      title: 'E-commerce Platform',
-      description: 'Validate shopping cart and checkout processes.',
+      title: tx.e_commerce_platform,
+      description: tx.validate_shopping_cart_and_checkout,
       icon: '🛒'
     },
     {
-      title: 'Dashboard Design',
-      description: 'Prototype data visualization and user interactions.',
+      title: tx.dashboard_design,
+      description: tx.prototype_data_visualization_and_user,
       icon: '📊'
     },
     {
-      title: 'Onboarding Flow',
-      description: 'Test user onboarding and tutorial experiences.',
+      title: tx.onboarding_flow,
+      description: tx.test_user_onboarding_and_tutorial,
       icon: '🎯'
     },
     {
-      title: 'Landing Page',
-      description: 'Optimize conversion-focused landing page designs.',
+      title: tx.landing_page,
+      description: tx.optimize_conversion_focused_landing_page,
       icon: '🚀'
     }
   ];
@@ -222,17 +223,17 @@ export default function PrototypingPage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="Interactive Prototyping"
+        eyebrow={tx.interactive_prototyping_2}
         eyebrowIcon={MousePointerClick}
-        title="Prototyping"
-        highlight="Services"
-        description="We create interactive prototypes that bring your ideas to life, validate user experiences, and ensure your products are built right the first time with minimal development risk."
+        title={tx.prototyping_2}
+        highlight={tx.services}
+        description={tx.we_create_interactive_prototypes_that}
         highlights={["Low-Fidelity Prototypes", "Mid-Fidelity Prototypes", "High-Fidelity Prototypes", "Interactive Prototypes"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "60%", label: "Cost Reduction" },
-          { value: "1-6", label: "Week Delivery" },
-          { value: "95%", label: "Stakeholder Approval" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "60%", label: tx.cost_reduction },
+          { value: "1-6", label: tx.week_delivery },
+          { value: "95%", label: tx.stakeholder_approval },
         ]}
       />
 
@@ -241,16 +242,10 @@ export default function PrototypingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Prototype Types
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Prototyping
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Solutions</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.prototype_types}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.prototyping_2}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.solutions}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              From quick concept validation to pixel-perfect prototypes, we deliver the right level of fidelity for your needs.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.from_quick_concept_validation_to}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -286,19 +281,19 @@ export default function PrototypingPage() {
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200 sm:grid-cols-4">
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{type.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{type.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.timeline}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{type.fidelity}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Fidelity</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.fidelity}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{type.interactivity}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Interactivity</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.interactivity}</div>
                     </div>
                   </div>
                 </div>
@@ -313,16 +308,10 @@ export default function PrototypingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Prototyping
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Process</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.prototyping_2}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.process}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our systematic approach ensures high-quality prototypes delivered on time and within budget.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_systematic_approach_ensures_high}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -356,16 +345,10 @@ export default function PrototypingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Deliverables
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              What You&apos;ll
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Receive</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.deliverables}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.what_you_ll}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.receive}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Comprehensive prototyping deliverables that provide everything needed for successful development.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.comprehensive_prototyping_deliverables_t}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -393,16 +376,10 @@ export default function PrototypingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Prototyping Tools
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Professional
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Tools</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.prototyping_tools}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.professional}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.tools}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We use industry-leading prototyping tools to create exceptional interactive experiences.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_use_industry_leading_prototyping}</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
@@ -429,16 +406,10 @@ export default function PrototypingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Why Prototyping
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Benefits of
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Prototyping</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.why_prototyping}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.benefits_of}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.prototyping_2}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Prototyping provides invaluable benefits that improve your product development process.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.prototyping_provides_invaluable_benefits}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -466,16 +437,10 @@ export default function PrototypingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Use Cases
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Perfect For
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">These Projects</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.use_cases}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.perfect_for}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.these_projects}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Prototyping is ideal for a wide range of digital product development scenarios.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.prototyping_is_ideal_for_a}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -501,21 +466,13 @@ export default function PrototypingPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Build
-            <span className="block text-blue-100 mt-2">Your Prototype?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_build}<span className="block text-blue-100 mt-2">{tx.your_prototype}</span>
           </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">
-            Let&apos;s create an interactive prototype that validates your ideas and accelerates your development process.
-          </p>
+          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">{tx.let_s_create_an_interactive}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Start Prototyping
-            </Link>
-            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-              View Examples
-            </Link>
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_prototyping}</Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.view_examples}</Link>
           </div>
         </div>
       </section>

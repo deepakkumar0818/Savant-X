@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/3d-designing/page.json';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
@@ -8,9 +9,9 @@ import { Box } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: '3D Design & Visualisation',
+  title: tx.t_3d_design_visualisation,
   description:
-    'Photorealistic 3D models, animations and visualisations for products, architecture and immersive experiences.',
+    tx.photorealistic_3d_models_animations_and,
   path: '/expertise/3d-designing',
 });
 
@@ -19,69 +20,69 @@ export default function ThreeDDesigningPage() {
   const threeDServices = [
     {
       id: 'product-visualization',
-      title: 'Product 3D Visualization',
+      title: tx.product_3d_visualization,
       icon: '📦',
-      description: 'Photorealistic 3D product renders for marketing, e-commerce, and presentations.',
-      features: ['Product Modeling', 'Material Texturing', 'Lighting Setup', 'Photorealistic Rendering', '360° Views', 'Animation'],
-      pricing: 'Starting at $800',
+      description: tx.photorealistic_3d_product_renders_for,
+      features: [tx.product_modeling, tx.material_texturing, tx.lighting_setup, tx.photorealistic_rendering, tx.t_360_views, tx.animation],
+      pricing: tx.starting_at_800,
       timeline: '1-2 weeks',
-      complexity: 'Standard',
-      formats: 'OBJ, FBX, GLTF'
+      complexity: tx.standard,
+      formats: tx.obj_fbx_gltf
     },
     {
       id: 'architectural-visualization',
-      title: 'Architectural Visualization',
+      title: tx.architectural_visualization,
       icon: '🏗️',
-      description: '3D architectural renders and walkthroughs for buildings and interior spaces.',
-      features: ['Building Modeling', 'Interior Design', 'Landscape Design', 'Virtual Tours', 'Day/Night Renders', 'VR Ready'],
-      pricing: 'Starting at $1,500',
+      description: tx.t_3d_architectural_renders_and_walkthrough,
+      features: [tx.building_modeling, tx.interior_design, tx.landscape_design, tx.virtual_tours, tx.day_night_renders, tx.vr_ready],
+      pricing: tx.starting_at_1_500,
       timeline: '2-4 weeks',
-      complexity: 'Advanced',
-      formats: 'FBX, 3DS, OBJ'
+      complexity: tx.advanced,
+      formats: tx.fbx_3ds_obj
     },
     {
       id: 'character-modeling',
-      title: '3D Character Design',
+      title: tx.t_3d_character_design,
       icon: '🎭',
-      description: 'Custom 3D character creation for games, animations, and virtual experiences.',
-      features: ['Character Modeling', 'Rigging & Skinning', 'Facial Animation', 'Texture Painting', 'Hair & Clothing', 'Game Ready'],
-      pricing: 'Starting at $2,000',
+      description: tx.custom_3d_character_creation_for,
+      features: [tx.character_modeling, tx.rigging_skinning, tx.facial_animation, tx.texture_painting, tx.hair_clothing, tx.game_ready],
+      pricing: tx.starting_at_2_000,
       timeline: '3-5 weeks',
-      complexity: 'Advanced',
-      formats: 'FBX, Blend, OBJ'
+      complexity: tx.advanced,
+      formats: tx.fbx_blend_obj
     },
     {
       id: 'animation',
-      title: '3D Animation',
+      title: tx.t_3d_animation,
       icon: '🎬',
-      description: 'Professional 3D animations for marketing, explainer videos, and entertainment.',
-      features: ['Motion Graphics', 'Character Animation', 'Product Animation', 'Architectural Walkthroughs', 'Visual Effects', 'Post-Production'],
-      pricing: 'Starting at $1,200',
+      description: tx.professional_3d_animations_for_marketing,
+      features: [tx.motion_graphics, tx.character_animation, tx.product_animation, tx.architectural_walkthroughs, tx.visual_effects, tx.post_production],
+      pricing: tx.starting_at_1_200,
       timeline: '2-6 weeks',
-      complexity: 'Advanced',
-      formats: 'MP4, MOV, AVI'
+      complexity: tx.advanced,
+      formats: tx.mp4_mov_avi
     },
     {
       id: 'ar-vr-models',
-      title: 'AR/VR 3D Models',
+      title: tx.ar_vr_3d_models,
       icon: '🥽',
-      description: 'Optimized 3D models for augmented and virtual reality applications.',
-      features: ['Low-Poly Modeling', 'Texture Optimization', 'LOD Creation', 'AR Integration', 'VR Compatibility', 'Performance Optimization'],
-      pricing: 'Starting at $1,500',
+      description: tx.optimized_3d_models_for_augmented,
+      features: [tx.low_poly_modeling, tx.texture_optimization, tx.lod_creation, tx.ar_integration, tx.vr_compatibility, tx.performance_optimization],
+      pricing: tx.starting_at_1_500,
       timeline: '2-4 weeks',
-      complexity: 'Enterprise',
-      formats: 'GLTF, GLB, FBX'
+      complexity: tx.enterprise,
+      formats: tx.gltf_glb_fbx
     },
     {
       id: 'industrial-design',
-      title: 'Industrial 3D Design',
+      title: tx.industrial_3d_design,
       icon: '⚙️',
-      description: '3D modeling and visualization for industrial products and machinery.',
-      features: ['CAD Integration', 'Technical Modeling', 'Assembly Visualization', 'Exploded Views', 'Technical Drawings', 'Manufacturing Ready'],
-      pricing: 'Starting at $2,500',
+      description: tx.t_3d_modeling_and_visualization_for,
+      features: [tx.cad_integration, tx.technical_modeling, tx.assembly_visualization, tx.exploded_views, tx.technical_drawings, tx.manufacturing_ready],
+      pricing: tx.starting_at_2_500,
       timeline: '3-6 weeks',
-      complexity: 'Enterprise',
-      formats: 'STEP, IGES, STL'
+      complexity: tx.enterprise,
+      formats: tx.step_iges_stl
     }
   ];
 
@@ -89,37 +90,37 @@ export default function ThreeDDesigningPage() {
     {
       category: '3D Modeling Software',
       tools: [
-        { name: 'Blender', icon: '🎨', description: 'Open-source 3D creation suite' },
-        { name: 'Maya', icon: '🎭', description: 'Professional 3D animation software' },
-        { name: '3ds Max', icon: '🏗️', description: '3D modeling and rendering' },
-        { name: 'Cinema 4D', icon: '🎬', description: 'Motion graphics and 3D modeling' }
+        { name: tx.blender, icon: '🎨', description: tx.open_source_3d_creation_suite },
+        { name: tx.maya, icon: '🎭', description: tx.professional_3d_animation_software },
+        { name: tx.t_3ds_max, icon: '🏗️', description: tx.t_3d_modeling_and_rendering },
+        { name: tx.cinema_4d, icon: '🎬', description: tx.motion_graphics_and_3d_modeling }
       ]
     },
     {
       category: 'Rendering Engines',
       tools: [
-        { name: 'V-Ray', icon: '✨', description: 'Photorealistic rendering engine' },
-        { name: 'Arnold', icon: '🌟', description: 'Advanced ray-tracing renderer' },
-        { name: 'Octane Render', icon: '⚡', description: 'GPU-accelerated rendering' },
-        { name: 'Cycles', icon: '🔄', description: 'Blender path-tracing engine' }
+        { name: tx.v_ray, icon: '✨', description: tx.photorealistic_rendering_engine },
+        { name: tx.arnold, icon: '🌟', description: tx.advanced_ray_tracing_renderer },
+        { name: tx.octane_render, icon: '⚡', description: tx.gpu_accelerated_rendering },
+        { name: tx.cycles, icon: '🔄', description: tx.blender_path_tracing_engine }
       ]
     },
     {
       category: 'Texturing & Materials',
       tools: [
-        { name: 'Substance Painter', icon: '🖌️', description: '3D texture painting software' },
-        { name: 'Substance Designer', icon: '🎨', description: 'Procedural material creation' },
-        { name: 'Mari', icon: '🌈', description: '3D texture painting for VFX' },
-        { name: 'Quixel Mixer', icon: '🌍', description: '3D texture mixing tool' }
+        { name: tx.substance_painter, icon: '🖌️', description: tx.t_3d_texture_painting_software },
+        { name: tx.substance_designer, icon: '🎨', description: tx.procedural_material_creation },
+        { name: tx.mari, icon: '🌈', description: tx.t_3d_texture_painting_for_vfx },
+        { name: tx.quixel_mixer, icon: '🌍', description: tx.t_3d_texture_mixing_tool }
       ]
     },
     {
       category: 'Specialized Tools',
       tools: [
-        { name: 'ZBrush', icon: '🗿', description: 'Digital sculpting software' },
-        { name: 'Unreal Engine', icon: '🎮', description: 'Real-time 3D creation' },
-        { name: 'Unity', icon: '🎯', description: 'Game engine with 3D tools' },
-        { name: 'Houdini', icon: '🌀', description: 'Procedural 3D animation' }
+        { name: tx.zbrush, icon: '🗿', description: tx.digital_sculpting_software },
+        { name: tx.unreal_engine, icon: '🎮', description: tx.real_time_3d_creation },
+        { name: tx.unity, icon: '🎯', description: tx.game_engine_with_3d_tools },
+        { name: tx.houdini, icon: '🌀', description: tx.procedural_3d_animation }
       ]
     }
   ];
@@ -127,43 +128,43 @@ export default function ThreeDDesigningPage() {
   const designProcess = [
     {
       step: '01',
-      title: 'Concept & Planning',
-      description: 'Understanding requirements, creating concept sketches, and planning the 3D workflow.',
+      title: tx.concept_planning,
+      description: tx.understanding_requirements_creating_conc,
       duration: '2-3 days',
       icon: '📋'
     },
     {
       step: '02',
-      title: '3D Modeling',
-      description: 'Creating the base 3D model with proper topology and structure.',
+      title: tx.t_3d_modeling,
+      description: tx.creating_the_base_3d_model,
       duration: '3-7 days',
       icon: '🎨'
     },
     {
       step: '03',
-      title: 'Texturing & Materials',
-      description: 'Applying textures, materials, and shaders for realistic appearance.',
+      title: tx.texturing_materials,
+      description: tx.applying_textures_materials_and_shaders,
       duration: '2-5 days',
       icon: '🖌️'
     },
     {
       step: '04',
-      title: 'Lighting & Setup',
-      description: 'Setting up lighting, cameras, and scene composition.',
+      title: tx.lighting_setup_2,
+      description: tx.setting_up_lighting_cameras_and,
       duration: '1-3 days',
       icon: '💡'
     },
     {
       step: '05',
-      title: 'Rendering',
-      description: 'High-quality rendering with post-processing and optimization.',
+      title: tx.rendering,
+      description: tx.high_quality_rendering_with_post,
       duration: '2-4 days',
       icon: '✨'
     },
     {
       step: '06',
-      title: 'Delivery & Optimization',
-      description: 'Final file preparation, format conversion, and delivery.',
+      title: tx.delivery_optimization,
+      description: tx.final_file_preparation_format_conversion,
       duration: '1-2 days',
       icon: '🚀'
     }
@@ -171,132 +172,132 @@ export default function ThreeDDesigningPage() {
 
   const deliverables = [
     {
-      title: '3D Models',
-      description: 'High-quality 3D models in multiple formats for various applications.',
+      title: tx.t_3d_models,
+      description: tx.high_quality_3d_models_in,
       icon: '📦'
     },
     {
-      title: 'Textures & Materials',
-      description: 'Complete texture sets and material libraries for your 3D assets.',
+      title: tx.textures_materials,
+      description: tx.complete_texture_sets_and_material,
       icon: '🎨'
     },
     {
-      title: 'Rendered Images',
-      description: 'Photorealistic rendered images in various resolutions and angles.',
+      title: tx.rendered_images,
+      description: tx.photorealistic_rendered_images_in_variou,
       icon: '🖼️'
     },
     {
-      title: 'Animations',
-      description: '3D animations and motion graphics ready for production.',
+      title: tx.animations,
+      description: tx.t_3d_animations_and_motion_graphics,
       icon: '🎬'
     },
     {
-      title: 'Technical Documentation',
-      description: 'Complete documentation including specifications and usage guidelines.',
+      title: tx.technical_documentation,
+      description: tx.complete_documentation_including_specifi,
       icon: '📚'
     },
     {
-      title: 'Source Files',
-      description: 'All source files and project assets for future modifications.',
+      title: tx.source_files,
+      description: tx.all_source_files_and_project,
       icon: '💾'
     }
   ];
 
   const benefits = [
     {
-      title: 'Visual Communication',
-      description: 'Communicate complex ideas and designs through stunning 3D visualizations.',
+      title: tx.visual_communication,
+      description: tx.communicate_complex_ideas_and_designs,
       icon: '👁️'
     },
     {
-      title: 'Cost Efficiency',
-      description: 'Reduce physical prototyping costs with virtual 3D models and renders.',
+      title: tx.cost_efficiency,
+      description: tx.reduce_physical_prototyping_costs_with,
       icon: '💰'
     },
     {
-      title: 'Marketing Impact',
-      description: 'Create compelling marketing materials with photorealistic 3D visuals.',
+      title: tx.marketing_impact,
+      description: tx.create_compelling_marketing_materials_wi,
       icon: '📈'
     },
     {
-      title: 'Iteration Speed',
-      description: 'Quickly iterate and modify designs without physical constraints.',
+      title: tx.iteration_speed,
+      description: tx.quickly_iterate_and_modify_designs,
       icon: '⚡'
     },
     {
-      title: 'Immersive Experiences',
-      description: 'Enable AR/VR experiences with optimized 3D content.',
+      title: tx.immersive_experiences,
+      description: tx.enable_ar_vr_experiences_with,
       icon: '🥽'
     },
     {
-      title: 'Global Reach',
-      description: 'Share 3D content digitally across platforms and devices.',
+      title: tx.global_reach,
+      description: tx.share_3d_content_digitally_across,
       icon: '🌐'
     }
   ];
 
   const useCases = [
     {
-      title: 'E-commerce',
-      description: '3D product visualization for online stores and shopping experiences.',
+      title: tx.e_commerce,
+      description: tx.t_3d_product_visualization_for_online,
       icon: '🛒'
     },
     {
-      title: 'Architecture',
-      description: 'Architectural visualization and virtual property tours.',
+      title: tx.architecture,
+      description: tx.architectural_visualization_and_virtual,
       icon: '🏢'
     },
     {
-      title: 'Gaming',
-      description: '3D assets, characters, and environments for video games.',
+      title: tx.gaming,
+      description: tx.t_3d_assets_characters_and_environments,
       icon: '🎮'
     },
     {
-      title: 'Marketing',
-      description: '3D animations and renders for advertising and promotional content.',
+      title: tx.marketing,
+      description: tx.t_3d_animations_and_renders_for,
       icon: '📢'
     },
     {
-      title: 'Manufacturing',
-      description: 'Product design visualization and technical documentation.',
+      title: tx.manufacturing,
+      description: tx.product_design_visualization_and_technic,
       icon: '🏭'
     },
     {
-      title: 'Education',
-      description: '3D educational content and interactive learning materials.',
+      title: tx.education,
+      description: tx.t_3d_educational_content_and_interactive,
       icon: '📚'
     }
   ];
 
   const threeDCapabilities = [
     {
-      title: 'Photorealistic Rendering',
-      description: 'Create stunning photorealistic renders with advanced lighting and materials.',
+      title: tx.photorealistic_rendering_2,
+      description: tx.create_stunning_photorealistic_renders_w,
       icon: '✨'
     },
     {
-      title: 'Real-time Visualization',
-      description: 'Interactive 3D experiences with real-time rendering capabilities.',
+      title: tx.real_time_visualization,
+      description: tx.interactive_3d_experiences_with_real,
       icon: '⚡'
     },
     {
-      title: 'Animation & Motion',
-      description: 'Professional 3D animations and motion graphics for various media.',
+      title: tx.animation_motion,
+      description: tx.professional_3d_animations_and_motion,
       icon: '🎬'
     },
     {
-      title: 'AR/VR Integration',
-      description: 'Optimized 3D models and scenes for augmented and virtual reality.',
+      title: tx.ar_vr_integration,
+      description: tx.optimized_3d_models_and_scenes,
       icon: '🥽'
     },
     {
-      title: 'Technical Modeling',
-      description: 'Precise technical 3D modeling for engineering and manufacturing.',
+      title: tx.technical_modeling_2,
+      description: tx.precise_technical_3d_modeling_for,
       icon: '⚙️'
     },
     {
-      title: 'Procedural Generation',
-      description: 'Automated 3D content generation using procedural techniques.',
+      title: tx.procedural_generation,
+      description: tx.automated_3d_content_generation_using,
       icon: '🌀'
     }
   ];
@@ -305,17 +306,17 @@ export default function ThreeDDesigningPage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="3D Designing & Visualization"
+        eyebrow={tx.t_3d_designing_visualization}
         eyebrowIcon={Box}
-        title="3D Designing"
-        highlight="Solutions"
-        description="Transform your ideas into stunning 3D reality. We create photorealistic 3D models, animations, and visualizations for products, architecture, games, and immersive experiences."
+        title={tx.t_3d_designing}
+        highlight={tx.solutions}
+        description={tx.transform_your_ideas_into_stunning}
         highlights={["Product 3D Visualization", "Architectural Visualization", "3D Character Design", "3D Animation"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "4K", label: "Resolution" },
-          { value: "1-6", label: "Week Delivery" },
-          { value: "100%", label: "Client Satisfaction" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "4K", label: tx.resolution },
+          { value: "1-6", label: tx.week_delivery },
+          { value: "100%", label: tx.client_satisfaction },
         ]}
       />
 
@@ -324,16 +325,10 @@ export default function ThreeDDesigningPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Services
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              3D Designing
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Services</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_services}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.t_3d_designing}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.services}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Comprehensive 3D design services for products, architecture, characters, and immersive experiences.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.comprehensive_3d_design_services_for}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -369,19 +364,19 @@ export default function ThreeDDesigningPage() {
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200">
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.timeline}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.complexity}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Complexity</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.complexity}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.formats}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Formats</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.formats}</div>
                     </div>
                   </div>
                 </div>
@@ -396,16 +391,10 @@ export default function ThreeDDesigningPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              3D Technology Stack
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Complete 3D
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Tool Ecosystem</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.t_3d_technology_stack}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.complete_3d}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.tool_ecosystem}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We work with industry-leading 3D software and tools to create exceptional results.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_work_with_industry_leading}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -438,16 +427,10 @@ export default function ThreeDDesigningPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              3D Design
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Process</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.t_3d_design}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.process}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our systematic approach ensures high-quality 3D designs delivered on time and within budget.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_systematic_approach_ensures_high}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -481,16 +464,10 @@ export default function ThreeDDesigningPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Deliverables
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              What You&apos;ll
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Receive</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.deliverables}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.what_you_ll}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.receive}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Complete 3D design deliverables that provide everything needed for your project.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.complete_3d_design_deliverables_that}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -518,16 +495,10 @@ export default function ThreeDDesigningPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Why 3D Designing
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Benefits of
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">3D Design</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.why_3d_designing}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.benefits_of}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.t_3d_design}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              3D design provides significant advantages for visualization, marketing, and product development.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.t_3d_design_provides_significant_advantage}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -555,16 +526,10 @@ export default function ThreeDDesigningPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Use Cases
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Perfect For
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">These Applications</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.use_cases}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.perfect_for}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.these_applications}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              3D design is ideal for a wide range of industries and applications.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.t_3d_design_is_ideal_for}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -592,16 +557,10 @@ export default function ThreeDDesigningPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              3D Capabilities
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Advanced 3D
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Capabilities</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.t_3d_capabilities}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.advanced_3d}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.capabilities}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We implement advanced 3D techniques for stunning visual results.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_implement_advanced_3d_techniques}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -627,21 +586,13 @@ export default function ThreeDDesigningPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-cyan-600 via-teal-600 to-blue-600">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Create
-            <span className="block text-cyan-100 mt-2">in 3D?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_create}<span className="block text-cyan-100 mt-2">{tx.in_3d}</span>
           </h2>
-          <p className="text-xl text-cyan-100 mb-8 leading-relaxed font-light">
-            Let&apos;s bring your ideas to life with stunning 3D designs, models, and visualizations.
-          </p>
+          <p className="text-xl text-cyan-100 mb-8 leading-relaxed font-light">{tx.let_s_bring_your_ideas}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-cyan-600 px-8 py-4 rounded-xl hover:bg-cyan-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Start 3D Project
-            </Link>
-            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-cyan-600 transition-all duration-200 font-semibold text-lg">
-              View Portfolio
-            </Link>
+            <Link href="/contact" className="bg-white text-cyan-600 px-8 py-4 rounded-xl hover:bg-cyan-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_3d_project}</Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-cyan-600 transition-all duration-200 font-semibold text-lg">{tx.view_portfolio}</Link>
           </div>
         </div>
       </section>

@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/react/page.json';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
@@ -8,9 +9,9 @@ import { Code } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'MERN Stack & React Development',
+  title: tx.mern_stack_react_development,
   description:
-    'Modern, scalable React and MERN stack applications, from websites to complex business platforms.',
+    tx.modern_scalable_react_and_mern,
   path: '/expertise/react',
 });
 
@@ -19,46 +20,46 @@ export default function ReactPage() {
   const reactServices = [
     {
       id: 'web-apps',
-      title: 'React Web Applications',
+      title: tx.react_web_applications,
       icon: '💻',
-      description: 'Modern, responsive web applications built with React.js for optimal performance and user experience.',
-      features: ['Single Page Applications', 'Component-Based Architecture', 'State Management', 'Routing & Navigation', 'API Integration', 'Performance Optimization'],
-      pricing: 'Starting at $5,000',
+      description: tx.modern_responsive_web_applications_built,
+      features: [tx.single_page_applications, tx.component_based_architecture, tx.state_management, tx.routing_navigation, tx.api_integration, tx.performance_optimization],
+      pricing: tx.starting_at_5_000,
       timeline: '4-8 weeks',
-      complexity: 'Advanced',
+      complexity: tx.advanced,
       components: '50-200'
     },
     {
       id: 'dashboards',
-      title: 'React Dashboards',
+      title: tx.react_dashboards,
       icon: '📊',
-      description: 'Interactive dashboards and admin panels with real-time data visualization and analytics.',
-      features: ['Data Visualization', 'Real-time Updates', 'Interactive Charts', 'User Management', 'Custom Widgets', 'Responsive Design'],
-      pricing: 'Starting at $7,500',
+      description: tx.interactive_dashboards_and_admin_panels,
+      features: [tx.data_visualization, tx.real_time_updates, tx.interactive_charts, tx.user_management, tx.custom_widgets, tx.responsive_design],
+      pricing: tx.starting_at_7_500,
       timeline: '6-10 weeks',
-      complexity: 'Complex',
+      complexity: tx.complex,
       components: '100-300'
     },
     {
       id: 'ecommerce',
-      title: 'React E-commerce',
+      title: tx.react_e_commerce,
       icon: '🛒',
-      description: 'Feature-rich e-commerce platforms with shopping carts, payment integration, and order management.',
-      features: ['Product Catalogs', 'Shopping Cart', 'Payment Gateway', 'Order Management', 'User Accounts', 'Admin Panel'],
-      pricing: 'Starting at $12,000',
+      description: tx.feature_rich_e_commerce_platforms,
+      features: [tx.product_catalogs, tx.shopping_cart, tx.payment_gateway, tx.order_management, tx.user_accounts, tx.admin_panel],
+      pricing: tx.starting_at_12_000,
       timeline: '8-16 weeks',
-      complexity: 'Enterprise',
+      complexity: tx.enterprise,
       components: '200-500'
     },
     {
       id: 'mobile',
-      title: 'React Native Apps',
+      title: tx.react_native_apps,
       icon: '📱',
-      description: 'Cross-platform mobile applications using React Native for iOS and Android.',
-      features: ['Cross-Platform Development', 'Native Performance', 'Push Notifications', 'Offline Support', 'App Store Deployment', 'Device Integration'],
-      pricing: 'Starting at $8,000',
+      description: tx.cross_platform_mobile_applications_using,
+      features: [tx.cross_platform_development, tx.native_performance, tx.push_notifications, tx.offline_support, tx.app_store_deployment, tx.device_integration],
+      pricing: tx.starting_at_8_000,
       timeline: '6-12 weeks',
-      complexity: 'Advanced',
+      complexity: tx.advanced,
       components: '100-400'
     }
   ];
@@ -67,37 +68,37 @@ export default function ReactPage() {
     {
       category: 'Core Libraries',
       tools: [
-        { name: 'React', icon: '⚛️', description: 'UI library for building user interfaces' },
-        { name: 'React Router', icon: '🗺️', description: 'Declarative routing for React applications' },
-        { name: 'React Hooks', icon: '🎣', description: 'State and lifecycle management' },
-        { name: 'React Context', icon: '📦', description: 'Global state management solution' }
+        { name: tx.react, icon: '⚛️', description: tx.ui_library_for_building_user },
+        { name: tx.react_router, icon: '🗺️', description: tx.declarative_routing_for_react_applicatio },
+        { name: tx.react_hooks, icon: '🎣', description: tx.state_and_lifecycle_management },
+        { name: tx.react_context, icon: '📦', description: tx.global_state_management_solution }
       ]
     },
     {
       category: 'State Management',
       tools: [
-        { name: 'Redux', icon: '🔄', description: 'Predictable state container' },
-        { name: 'Zustand', icon: '🐻', description: 'Lightweight state management' },
-        { name: 'Recoil', icon: '⚛️', description: 'Experimental state management' },
-        { name: 'MobX', icon: '📊', description: 'Reactive state management' }
+        { name: tx.redux, icon: '🔄', description: tx.predictable_state_container },
+        { name: tx.zustand, icon: '🐻', description: tx.lightweight_state_management },
+        { name: tx.recoil, icon: '⚛️', description: tx.experimental_state_management },
+        { name: tx.mobx, icon: '📊', description: tx.reactive_state_management }
       ]
     },
     {
       category: 'UI Libraries',
       tools: [
-        { name: 'Material-UI', icon: '🎨', description: 'Google Material Design components' },
-        { name: 'Ant Design', icon: '🐜', description: 'Enterprise-class UI design language' },
-        { name: 'Chakra UI', icon: '⚡', description: 'Simple, modular and accessible' },
-        { name: 'Tailwind CSS', icon: '🎨', description: 'Utility-first CSS framework' }
+        { name: tx.material_ui, icon: '🎨', description: tx.google_material_design_components },
+        { name: tx.ant_design, icon: '🐜', description: tx.enterprise_class_ui_design_language },
+        { name: tx.chakra_ui, icon: '⚡', description: tx.simple_modular_and_accessible },
+        { name: tx.tailwind_css, icon: '🎨', description: tx.utility_first_css_framework }
       ]
     },
     {
       category: 'Testing',
       tools: [
-        { name: 'Jest', icon: '🧪', description: 'JavaScript testing framework' },
-        { name: 'React Testing Library', icon: '🔬', description: 'Simple and complete testing utilities' },
-        { name: 'Cypress', icon: '🌲', description: 'End-to-end testing framework' },
-        { name: 'Storybook', icon: '📚', description: 'Component development environment' }
+        { name: tx.jest, icon: '🧪', description: tx.javascript_testing_framework },
+        { name: tx.react_testing_library, icon: '🔬', description: tx.simple_and_complete_testing_utilities },
+        { name: tx.cypress, icon: '🌲', description: tx.end_to_end_testing_framework },
+        { name: tx.storybook, icon: '📚', description: tx.component_development_environment }
       ]
     }
   ];
@@ -105,43 +106,43 @@ export default function ReactPage() {
   const developmentProcess = [
     {
       step: '01',
-      title: 'Project Setup',
-      description: 'Initializing React project with proper configuration and tooling.',
+      title: tx.project_setup,
+      description: tx.initializing_react_project_with_proper,
       duration: '1-2 days',
       icon: '🚀'
     },
     {
       step: '02',
-      title: 'Component Architecture',
-      description: 'Designing component hierarchy and data flow architecture.',
+      title: tx.component_architecture,
+      description: tx.designing_component_hierarchy_and_data,
       duration: '3-5 days',
       icon: '🏗️'
     },
     {
       step: '03',
-      title: 'UI Development',
-      description: 'Building responsive user interfaces with modern design principles.',
+      title: tx.ui_development,
+      description: tx.building_responsive_user_interfaces_with,
       duration: '2-4 weeks',
       icon: '🎨'
     },
     {
       step: '04',
-      title: 'State Management',
-      description: 'Implementing state management and data flow patterns.',
+      title: tx.state_management_2,
+      description: tx.implementing_state_management_and_data,
       duration: '1-2 weeks',
       icon: '📊'
     },
     {
       step: '05',
-      title: 'API Integration',
-      description: 'Connecting frontend with backend APIs and data services.',
+      title: tx.api_integration_2,
+      description: tx.connecting_frontend_with_backend_apis,
       duration: '1-2 weeks',
       icon: '🔗'
     },
     {
       step: '06',
-      title: 'Testing & Deployment',
-      description: 'Comprehensive testing and production deployment.',
+      title: tx.testing_deployment,
+      description: tx.comprehensive_testing_and_production_dep,
       duration: '3-5 days',
       icon: '🚀'
     }
@@ -149,132 +150,132 @@ export default function ReactPage() {
 
   const deliverables = [
     {
-      title: 'React Application',
-      description: 'Fully functional React application with modern architecture.',
+      title: tx.react_application,
+      description: tx.fully_functional_react_application_with,
       icon: '⚛️'
     },
     {
-      title: 'Component Library',
-      description: 'Reusable React components with comprehensive documentation.',
+      title: tx.component_library,
+      description: tx.reusable_react_components_with_comprehen,
       icon: '🧩'
     },
     {
-      title: 'State Management',
-      description: 'Optimized state management solution for your application.',
+      title: tx.state_management_3,
+      description: tx.optimized_state_management_solution_for,
       icon: '📊'
     },
     {
-      title: 'API Integration',
-      description: 'Complete API integration with error handling and loading states.',
+      title: tx.api_integration_3,
+      description: tx.complete_api_integration_with_error,
       icon: '🔗'
     },
     {
-      title: 'Testing Suite',
-      description: 'Comprehensive testing suite with unit and integration tests.',
+      title: tx.testing_suite,
+      description: tx.comprehensive_testing_suite_with_unit,
       icon: '🧪'
     },
     {
-      title: 'Deployment Setup',
-      description: 'Production-ready deployment configuration and documentation.',
+      title: tx.deployment_setup,
+      description: tx.production_ready_deployment_configuratio,
       icon: '🚀'
     }
   ];
 
   const benefits = [
     {
-      title: 'Component Reusability',
-      description: 'Build reusable components that can be shared across applications.',
+      title: tx.component_reusability,
+      description: tx.build_reusable_components_that_can,
       icon: '🧩'
     },
     {
-      title: 'Virtual DOM',
-      description: 'Fast rendering with React&apos;s efficient virtual DOM implementation.',
+      title: tx.virtual_dom,
+      description: tx.fast_rendering_with_react_apos,
       icon: '⚡'
     },
     {
-      title: 'Rich Ecosystem',
-      description: 'Access to thousands of libraries and tools in the React ecosystem.',
+      title: tx.rich_ecosystem,
+      description: tx.access_to_thousands_of_libraries,
       icon: '🌐'
     },
     {
-      title: 'Developer Experience',
-      description: 'Excellent developer tools and debugging capabilities.',
+      title: tx.developer_experience,
+      description: tx.excellent_developer_tools_and_debugging,
       icon: '🛠️'
     },
     {
-      title: 'Community Support',
-      description: 'Large community and extensive documentation resources.',
+      title: tx.community_support,
+      description: tx.large_community_and_extensive_documentat,
       icon: '👥'
     },
     {
-      title: 'Future-Proof',
-      description: 'Continuously evolving with new features and improvements.',
+      title: tx.future_proof,
+      description: tx.continuously_evolving_with_new_features,
       icon: '🔮'
     }
   ];
 
   const useCases = [
     {
-      title: 'Corporate Websites',
-      description: 'Professional corporate websites with dynamic content management.',
+      title: tx.corporate_websites,
+      description: tx.professional_corporate_websites_with_dyn,
       icon: '🏢'
     },
     {
-      title: 'SaaS Applications',
-      description: 'Software-as-a-Service applications with complex user interfaces.',
+      title: tx.saas_applications,
+      description: tx.software_as_a_service_applications,
       icon: '☁️'
     },
     {
-      title: 'E-commerce Platforms',
-      description: 'Online stores with advanced shopping and payment features.',
+      title: tx.e_commerce_platforms,
+      description: tx.online_stores_with_advanced_shopping,
       icon: '🛒'
     },
     {
-      title: 'Social Media Apps',
-      description: 'Interactive social platforms with real-time features.',
+      title: tx.social_media_apps,
+      description: tx.interactive_social_platforms_with_real,
       icon: '📱'
     },
     {
-      title: 'Analytics Dashboards',
-      description: 'Data visualization and business intelligence platforms.',
+      title: tx.analytics_dashboards,
+      description: tx.data_visualization_and_business_intellig,
       icon: '📊'
     },
     {
-      title: 'Mobile Applications',
-      description: 'Cross-platform mobile apps using React Native.',
+      title: tx.mobile_applications,
+      description: tx.cross_platform_mobile_apps_using,
       icon: '📲'
     }
   ];
 
   const performanceFeatures = [
     {
-      title: 'Code Splitting',
-      description: 'Lazy loading and code splitting for optimal performance.',
+      title: tx.code_splitting,
+      description: tx.lazy_loading_and_code_splitting,
       icon: '✂️'
     },
     {
-      title: 'Memoization',
-      description: 'React.memo and useMemo for preventing unnecessary re-renders.',
+      title: tx.memoization,
+      description: tx.react_memo_and_usememo_for,
       icon: '🧠'
     },
     {
-      title: 'Bundle Optimization',
-      description: 'Webpack optimization and tree shaking for smaller bundles.',
+      title: tx.bundle_optimization,
+      description: tx.webpack_optimization_and_tree_shaking,
       icon: '📦'
     },
     {
-      title: 'Server-Side Rendering',
-      description: 'Next.js integration for SEO and performance benefits.',
+      title: tx.server_side_rendering,
+      description: tx.next_js_integration_for_seo,
       icon: '🖥️'
     },
     {
-      title: 'Progressive Web App',
-      description: 'PWA features for app-like experience in browsers.',
+      title: tx.progressive_web_app,
+      description: tx.pwa_features_for_app_like,
       icon: '📱'
     },
     {
-      title: 'Performance Monitoring',
-      description: 'Real-time performance monitoring and optimization.',
+      title: tx.performance_monitoring,
+      description: tx.real_time_performance_monitoring_and,
       icon: '📈'
     }
   ];
@@ -283,17 +284,17 @@ export default function ReactPage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="React.js Development"
+        eyebrow={tx.react_js_development}
         eyebrowIcon={Code}
-        title="React.js"
-        highlight="Development"
-        description="We build modern, scalable React.js applications with cutting-edge technologies. From simple websites to complex enterprise applications, we deliver exceptional user experiences."
+        title={tx.react_js}
+        highlight={tx.development}
+        description={tx.we_build_modern_scalable_react}
         highlights={["React Web Applications", "React Dashboards", "React E-commerce", "React Native Apps"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "99%", label: "Performance Score" },
-          { value: "4-16", label: "Week Delivery" },
-          { value: "100%", label: "Client Satisfaction" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "99%", label: tx.performance_score },
+          { value: "4-16", label: tx.week_delivery },
+          { value: "100%", label: tx.client_satisfaction },
         ]}
       />
 
@@ -302,16 +303,10 @@ export default function ReactPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Services
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              React.js
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Solutions</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_services}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.react_js}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.solutions}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Comprehensive React.js development services for web applications, mobile apps, and enterprise solutions.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.comprehensive_react_js_development_servi}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -347,19 +342,19 @@ export default function ReactPage() {
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200 sm:grid-cols-4">
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.timeline}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.complexity}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Complexity</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.complexity}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.components}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Components</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.components}</div>
                     </div>
                   </div>
                 </div>
@@ -374,16 +369,10 @@ export default function ReactPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              React Ecosystem
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Complete React
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Technology Stack</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.react_ecosystem}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.complete_react}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.technology_stack}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We work with the entire React ecosystem to build robust and scalable applications.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_work_with_the_entire}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -416,16 +405,10 @@ export default function ReactPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              React Development
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Process</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.react_development}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.process}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our systematic approach ensures high-quality React applications delivered on time and within budget.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_systematic_approach_ensures_high}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -459,16 +442,10 @@ export default function ReactPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Deliverables
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              What You&apos;ll
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Receive</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.deliverables}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.what_you_ll}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.receive}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Complete React development deliverables that provide everything needed for successful deployment.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.complete_react_development_deliverables}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -496,16 +473,10 @@ export default function ReactPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Why React.js
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Benefits of
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">React.js</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.why_react_js}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.benefits_of}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.react_js}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              React.js provides significant advantages for building modern web applications.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.react_js_provides_significant_advantages}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -533,16 +504,10 @@ export default function ReactPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Use Cases
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Perfect For
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">These Projects</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.use_cases}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.perfect_for}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.these_projects}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              React.js is ideal for a wide range of web application development scenarios.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.react_js_is_ideal_for}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -570,16 +535,10 @@ export default function ReactPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Performance Features
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Optimized
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Performance</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.performance_features}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.optimized}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.performance}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We implement advanced performance optimization techniques for lightning-fast React applications.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_implement_advanced_performance_optimi}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -605,21 +564,13 @@ export default function ReactPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Build
-            <span className="block text-blue-100 mt-2">Your React App?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_build}<span className="block text-blue-100 mt-2">{tx.your_react_app}</span>
           </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">
-            Let&apos;s create a modern React.js application that delivers exceptional performance and user experience.
-          </p>
+          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">{tx.let_s_create_a_modern}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Start React Project
-            </Link>
-            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-              View Portfolio
-            </Link>
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_react_project}</Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.view_portfolio}</Link>
           </div>
         </div>
       </section>

@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/app/expertise/design-systems/page.json';
 import Link from 'next/link';
 import { COMPANY } from '@/lib/company';
 import { useState } from 'react';
@@ -14,90 +15,90 @@ export default function DesignSystemsPage() {
   const designSystemTypes = [
     {
       id: 'basic',
-      title: 'Basic Design System',
+      title: tx.basic_design_system,
       icon: '🎨',
-      description: 'Essential design tokens and basic components for consistent branding.',
-      features: ['Color Palette', 'Typography Scale', 'Basic Components', 'Spacing System', 'Brand Guidelines', 'Icon Library'],
-      pricing: 'Starting at $3,500',
+      description: tx.essential_design_tokens_and_basic,
+      features: [tx.color_palette, tx.typography_scale, tx.basic_components, tx.spacing_system, tx.brand_guidelines, tx.icon_library],
+      pricing: tx.starting_at_3_500,
       timeline: '2-4 weeks',
-      complexity: 'Basic',
+      complexity: tx.basic,
       components: '15-25'
     },
     {
       id: 'comprehensive',
-      title: 'Comprehensive Design System',
+      title: tx.comprehensive_design_system,
       icon: '🏗️',
-      description: 'Complete design system with advanced components and documentation.',
-      features: ['Advanced Components', 'Interaction Patterns', 'Animation Library', 'Accessibility Guidelines', 'Usage Documentation', 'Developer Handoff'],
-      pricing: 'Starting at $7,500',
+      description: tx.complete_design_system_with_advanced,
+      features: [tx.advanced_components, tx.interaction_patterns, tx.animation_library, tx.accessibility_guidelines, tx.usage_documentation, tx.developer_handoff],
+      pricing: tx.starting_at_7_500,
       timeline: '4-8 weeks',
-      complexity: 'Advanced',
+      complexity: tx.advanced,
       components: '50-100'
     },
     {
       id: 'enterprise',
-      title: 'Enterprise Design System',
+      title: tx.enterprise_design_system,
       icon: '🏢',
-      description: 'Scalable design system for large organizations with multiple products.',
-      features: ['Multi-Product Support', 'Custom Theming', 'Advanced Patterns', 'Team Training', 'Maintenance Support', 'Version Control'],
-      pricing: 'Starting at $15,000',
+      description: tx.scalable_design_system_for_large,
+      features: [tx.multi_product_support, tx.custom_theming, tx.advanced_patterns, tx.team_training, tx.maintenance_support, tx.version_control],
+      pricing: tx.starting_at_15_000,
       timeline: '8-16 weeks',
-      complexity: 'Enterprise',
+      complexity: tx.enterprise,
       components: '100+'
     },
     {
       id: 'custom',
-      title: 'Custom Design System',
+      title: tx.custom_design_system,
       icon: '⚡',
-      description: 'Tailored design system built specifically for your unique requirements.',
-      features: ['Custom Architecture', 'Brand Integration', 'Specialized Components', 'Advanced Theming', 'Integration Support', 'Ongoing Evolution'],
-      pricing: 'Custom Quote',
+      description: tx.tailored_design_system_built_specificall,
+      features: [tx.custom_architecture, tx.brand_integration, tx.specialized_components, tx.advanced_theming, tx.integration_support, tx.ongoing_evolution],
+      pricing: tx.custom_quote,
       timeline: '6-20 weeks',
-      complexity: 'Custom',
-      components: 'Unlimited'
+      complexity: tx.custom,
+      components: tx.unlimited
     }
   ];
 
   const designSystemProcess = [
     {
       step: '01',
-      title: 'Audit & Analysis',
-      description: 'Analyzing existing designs and identifying patterns and inconsistencies.',
+      title: tx.audit_analysis,
+      description: tx.analyzing_existing_designs_and_identifyi,
       duration: '1-2 weeks',
       icon: '🔍'
     },
     {
       step: '02',
-      title: 'Foundation Setup',
-      description: 'Establishing design tokens, typography, and color foundations.',
+      title: tx.foundation_setup,
+      description: tx.establishing_design_tokens_typography_an,
       duration: '1-2 weeks',
       icon: '🎯'
     },
     {
       step: '03',
-      title: 'Component Design',
-      description: 'Creating reusable components with consistent patterns.',
+      title: tx.component_design,
+      description: tx.creating_reusable_components_with_consis,
       duration: '2-4 weeks',
       icon: '🧩'
     },
     {
       step: '04',
-      title: 'Documentation',
-      description: 'Creating comprehensive documentation and usage guidelines.',
+      title: tx.documentation,
+      description: tx.creating_comprehensive_documentation_and,
       duration: '1-2 weeks',
       icon: '📚'
     },
     {
       step: '05',
-      title: 'Implementation',
-      description: 'Building the design system in your preferred framework.',
+      title: tx.implementation,
+      description: tx.building_the_design_system_in,
       duration: '2-6 weeks',
       icon: '⚙️'
     },
     {
       step: '06',
-      title: 'Training & Handoff',
-      description: 'Training your team and providing ongoing support.',
+      title: tx.training_handoff,
+      description: tx.training_your_team_and_providing,
       duration: '1-2 weeks',
       icon: '🎓'
     }
@@ -105,139 +106,139 @@ export default function DesignSystemsPage() {
 
   const deliverables = [
     {
-      title: 'Design Tokens',
-      description: 'Colors, typography, spacing, and other design variables.',
+      title: tx.design_tokens,
+      description: tx.colors_typography_spacing_and_other,
       icon: '🎨'
     },
     {
-      title: 'Component Library',
-      description: 'Reusable UI components with multiple states and variations.',
+      title: tx.component_library,
+      description: tx.reusable_ui_components_with_multiple,
       icon: '🧩'
     },
     {
-      title: 'Style Guide',
-      description: 'Comprehensive documentation of design principles and usage.',
+      title: tx.style_guide,
+      description: tx.comprehensive_documentation_of_design_pr,
       icon: '📖'
     },
     {
-      title: 'Code Library',
-      description: 'Implementation in React, Vue, or your preferred framework.',
+      title: tx.code_library,
+      description: tx.implementation_in_react_vue_or,
       icon: '💻'
     },
     {
-      title: 'Accessibility Guidelines',
-      description: 'WCAG compliance guidelines and accessibility patterns.',
+      title: tx.accessibility_guidelines_2,
+      description: tx.wcag_compliance_guidelines_and_accessibi,
       icon: '♿'
     },
     {
-      title: 'Brand Integration',
-      description: 'Seamless integration with your brand identity and values.',
+      title: tx.brand_integration_2,
+      description: tx.seamless_integration_with_your_brand,
       icon: '🏷️'
     }
   ];
 
   const systemComponents = {
     'components': [
-      { name: 'Buttons', icon: '🔘', description: 'Primary, secondary, and variant button styles' },
-      { name: 'Forms', icon: '📝', description: 'Input fields, labels, and validation states' },
-      { name: 'Navigation', icon: '🧭', description: 'Menus, breadcrumbs, and navigation patterns' },
-      { name: 'Cards', icon: '🃏', description: 'Content containers with consistent styling' },
-      { name: 'Modals', icon: '🪟', description: 'Overlays, dialogs, and popup components' },
-      { name: 'Tables', icon: '📊', description: 'Data display with sorting and filtering' },
-      { name: 'Charts', icon: '📈', description: 'Data visualization components' },
-      { name: 'Loading States', icon: '⏳', description: 'Spinners, skeletons, and progress indicators' }
+      { name: tx.buttons, icon: '🔘', description: tx.primary_secondary_and_variant_button },
+      { name: tx.forms, icon: '📝', description: tx.input_fields_labels_and_validation },
+      { name: tx.navigation, icon: '🧭', description: tx.menus_breadcrumbs_and_navigation_pattern },
+      { name: tx.cards, icon: '🃏', description: tx.content_containers_with_consistent_styli },
+      { name: tx.modals, icon: '🪟', description: tx.overlays_dialogs_and_popup_components },
+      { name: tx.tables, icon: '📊', description: tx.data_display_with_sorting_and },
+      { name: tx.charts, icon: '📈', description: tx.data_visualization_components },
+      { name: tx.loading_states, icon: '⏳', description: tx.spinners_skeletons_and_progress_indicato }
     ],
     'patterns': [
-      { name: 'Layout Patterns', icon: '📐', description: 'Grid systems and responsive layouts' },
-      { name: 'Interaction Patterns', icon: '👆', description: 'Hover states, focus indicators, and animations' },
-      { name: 'Content Patterns', icon: '📄', description: 'Typography hierarchy and content structure' },
-      { name: 'Navigation Patterns', icon: '🗺️', description: 'User flow and navigation behaviors' },
-      { name: 'Feedback Patterns', icon: '💬', description: 'Success, error, and warning messages' },
-      { name: 'Data Patterns', icon: '📋', description: 'Lists, filters, and data display patterns' }
+      { name: tx.layout_patterns, icon: '📐', description: tx.grid_systems_and_responsive_layouts },
+      { name: tx.interaction_patterns_2, icon: '👆', description: tx.hover_states_focus_indicators_and },
+      { name: tx.content_patterns, icon: '📄', description: tx.typography_hierarchy_and_content_structu },
+      { name: tx.navigation_patterns, icon: '🗺️', description: tx.user_flow_and_navigation_behaviors },
+      { name: tx.feedback_patterns, icon: '💬', description: tx.success_error_and_warning_messages },
+      { name: tx.data_patterns, icon: '📋', description: tx.lists_filters_and_data_display }
     ],
     'tokens': [
-      { name: 'Color System', icon: '🌈', description: 'Primary, secondary, and semantic color palettes' },
-      { name: 'Typography', icon: '🔤', description: 'Font families, sizes, weights, and line heights' },
-      { name: 'Spacing', icon: '📏', description: 'Consistent spacing scale and rhythm' },
-      { name: 'Shadows', icon: '🌫️', description: 'Elevation and depth through shadow tokens' },
-      { name: 'Border Radius', icon: '⭕', description: 'Consistent corner rounding values' },
-      { name: 'Breakpoints', icon: '📱', description: 'Responsive design breakpoints and media queries' }
+      { name: tx.color_system, icon: '🌈', description: tx.primary_secondary_and_semantic_color },
+      { name: tx.typography, icon: '🔤', description: tx.font_families_sizes_weights_and },
+      { name: tx.spacing, icon: '📏', description: tx.consistent_spacing_scale_and_rhythm },
+      { name: tx.shadows, icon: '🌫️', description: tx.elevation_and_depth_through_shadow },
+      { name: tx.border_radius, icon: '⭕', description: tx.consistent_corner_rounding_values },
+      { name: tx.breakpoints, icon: '📱', description: tx.responsive_design_breakpoints_and_media }
     ]
   };
 
   const benefits = [
     {
-      title: 'Design Consistency',
-      description: 'Ensure consistent visual design across all products and platforms.',
+      title: tx.design_consistency,
+      description: tx.ensure_consistent_visual_design_across,
       icon: '🎯'
     },
     {
-      title: 'Faster Development',
-      description: 'Reduce development time with pre-built, tested components.',
+      title: tx.faster_development,
+      description: tx.reduce_development_time_with_pre,
       icon: '⚡'
     },
     {
-      title: 'Better Collaboration',
-      description: 'Improve collaboration between design and development teams.',
+      title: tx.better_collaboration,
+      description: tx.improve_collaboration_between_design_and,
       icon: '🤝'
     },
     {
-      title: 'Scalability',
-      description: 'Easily scale your design system as your product grows.',
+      title: tx.scalability,
+      description: tx.easily_scale_your_design_system,
       icon: '📈'
     },
     {
-      title: 'Brand Cohesion',
-      description: 'Maintain strong brand identity across all touchpoints.',
+      title: tx.brand_cohesion,
+      description: tx.maintain_strong_brand_identity_across,
       icon: '🏷️'
     },
     {
-      title: 'Reduced Maintenance',
-      description: 'Centralized updates reduce maintenance overhead.',
+      title: tx.reduced_maintenance,
+      description: tx.centralized_updates_reduce_maintenance_o,
       icon: '🔧'
     }
   ];
 
   const tools = [
-    { name: 'Figma', icon: '🎨', description: 'Design system creation', category: 'Design' },
-    { name: 'Storybook', icon: '📚', description: 'Component documentation', category: 'Documentation' },
-    { name: 'Zeroheight', icon: '📖', description: 'Design system hub', category: 'Platform' },
-    { name: 'React', icon: '⚛️', description: 'Component implementation', category: 'Framework' },
-    { name: 'Vue', icon: '💚', description: 'Vue.js components', category: 'Framework' },
-    { name: 'Angular', icon: '🔺', description: 'Angular components', category: 'Framework' },
-    { name: 'Styled Components', icon: '💅', description: 'CSS-in-JS styling', category: 'Styling' },
-    { name: 'Tailwind CSS', icon: '🎨', description: 'Utility-first CSS', category: 'Styling' }
+    { name: tx.figma, icon: '🎨', description: tx.design_system_creation, category: 'Design' },
+    { name: tx.storybook, icon: '📚', description: tx.component_documentation, category: 'Documentation' },
+    { name: tx.zeroheight, icon: '📖', description: tx.design_system_hub, category: 'Platform' },
+    { name: tx.react, icon: '⚛️', description: tx.component_implementation, category: 'Framework' },
+    { name: tx.vue, icon: '💚', description: tx.vue_js_components, category: 'Framework' },
+    { name: tx.angular, icon: '🔺', description: tx.angular_components, category: 'Framework' },
+    { name: tx.styled_components, icon: '💅', description: tx.css_in_js_styling, category: 'Styling' },
+    { name: tx.tailwind_css, icon: '🎨', description: tx.utility_first_css, category: 'Styling' }
   ];
 
   const useCases = [
     {
-      title: 'Product Suites',
-      description: 'Maintain consistency across multiple related products.',
+      title: tx.product_suites,
+      description: tx.maintain_consistency_across_multiple_rel,
       icon: '🏢'
     },
     {
-      title: 'Multi-Platform Apps',
-      description: 'Unified design across web, mobile, and desktop.',
+      title: tx.multi_platform_apps,
+      description: tx.unified_design_across_web_mobile,
       icon: '📱'
     },
     {
-      title: 'Large Teams',
-      description: 'Enable multiple designers and developers to work consistently.',
+      title: tx.large_teams,
+      description: tx.enable_multiple_designers_and_developers,
       icon: '👥'
     },
     {
-      title: 'Brand Evolution',
-      description: 'Support brand updates and design evolution over time.',
+      title: tx.brand_evolution,
+      description: tx.support_brand_updates_and_design,
       icon: '🔄'
     },
     {
-      title: 'Rapid Prototyping',
-      description: 'Speed up prototyping with pre-built components.',
+      title: tx.rapid_prototyping,
+      description: tx.speed_up_prototyping_with_pre,
       icon: '⚡'
     },
     {
-      title: 'Quality Assurance',
-      description: 'Ensure design quality and accessibility standards.',
+      title: tx.quality_assurance,
+      description: tx.ensure_design_quality_and_accessibility,
       icon: '✅'
     }
   ];
@@ -246,17 +247,17 @@ export default function DesignSystemsPage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="Design Systems"
+        eyebrow={tx.design_systems}
         eyebrowIcon={Component}
-        title="Design"
-        highlight="Systems"
-        description="We create comprehensive design systems that ensure consistency, scalability, and efficiency across all your digital products and platforms."
+        title={tx.design}
+        highlight={tx.systems}
+        description={tx.we_create_comprehensive_design_systems}
         highlights={["Basic Design System", "Comprehensive Design System", "Enterprise Design System", "Custom Design System"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "70%", label: "Faster Development" },
-          { value: "2-20", label: "Week Delivery" },
-          { value: "100%", label: "Consistency" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "70%", label: tx.faster_development_2 },
+          { value: "2-20", label: tx.week_delivery },
+          { value: "100%", label: tx.consistency },
         ]}
       />
 
@@ -265,16 +266,10 @@ export default function DesignSystemsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              System Types
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Design System
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Solutions</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.system_types}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.design_system}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.solutions}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              From basic design tokens to enterprise-scale systems, we deliver the right level of complexity for your needs.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.from_basic_design_tokens_to}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -310,19 +305,19 @@ export default function DesignSystemsPage() {
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200 sm:grid-cols-4">
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{type.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{type.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.timeline}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{type.complexity}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Complexity</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.complexity}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{type.components}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Components</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.components}</div>
                     </div>
                   </div>
                 </div>
@@ -337,16 +332,10 @@ export default function DesignSystemsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Design System
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Process</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.design_system}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.process}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our systematic approach ensures comprehensive design systems that scale with your organization.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_systematic_approach_ensures_comprehe}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -380,16 +369,10 @@ export default function DesignSystemsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              System Components
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              What&apos;s
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Included</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.system_components}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.what_s}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.included}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Comprehensive design system components that cover all aspects of your digital products.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.comprehensive_design_system_components_t}</p>
           </div>
 
           {/* Category Tabs */}
@@ -437,16 +420,10 @@ export default function DesignSystemsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Deliverables
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              What You&apos;ll
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Receive</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.deliverables}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.what_you_ll}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.receive}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Complete design system deliverables that provide everything needed for consistent product development.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.complete_design_system_deliverables_that}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -474,16 +451,10 @@ export default function DesignSystemsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Why Design Systems
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Benefits of
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Design Systems</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.why_design_systems}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.benefits_of}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.design_systems}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Design systems provide significant advantages for teams and organizations building digital products.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.design_systems_provide_significant_advan}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -511,16 +482,10 @@ export default function DesignSystemsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Design System Tools
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Professional
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Tools</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.design_system_tools}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.professional}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.tools}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We use industry-leading tools to create and maintain comprehensive design systems.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_use_industry_leading_tools}</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
@@ -547,16 +512,10 @@ export default function DesignSystemsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Use Cases
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Perfect For
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">These Scenarios</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.use_cases}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.perfect_for}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.these_scenarios}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Design systems are ideal for organizations building multiple digital products or platforms.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.design_systems_are_ideal_for}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -582,21 +541,13 @@ export default function DesignSystemsPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Build
-            <span className="block text-blue-100 mt-2">Your Design System?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_build}<span className="block text-blue-100 mt-2">{tx.your_design_system}</span>
           </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">
-            Let&apos;s create a comprehensive design system that ensures consistency and scalability across all your products.
-          </p>
+          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">{tx.let_s_create_a_comprehensive}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Start Design System
-            </Link>
-            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-              View Examples
-            </Link>
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_design_system}</Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.view_examples}</Link>
           </div>
         </div>
       </section>

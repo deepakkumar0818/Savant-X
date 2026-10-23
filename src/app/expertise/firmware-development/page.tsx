@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/firmware-development/page.json';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -8,84 +9,84 @@ import { Cpu } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Firmware Development',
+  title: tx.firmware_development,
   description:
-    'Reliable, efficient and secure firmware for microcontrollers and embedded systems.',
+    tx.reliable_efficient_and_secure_firmware,
   path: '/expertise/firmware-development',
 });
 
 export default function FirmwareDevelopmentPage() {
   const features = [
     {
-      title: 'Real-time Systems',
-      description: 'Development of real-time firmware with deterministic behavior and precise timing control.',
+      title: tx.real_time_systems,
+      description: tx.development_of_real_time_firmware,
       icon: '⏱️'
     },
     {
-      title: 'Driver Development',
-      description: 'Low-level drivers for sensors, communication interfaces, and peripheral devices.',
+      title: tx.driver_development,
+      description: tx.low_level_drivers_for_sensors,
       icon: '🔌'
     },
     {
-      title: 'RTOS Integration',
-      description: 'FreeRTOS, Zephyr RTOS, and other real-time operating system implementations.',
+      title: tx.rtos_integration,
+      description: tx.freertos_zephyr_rtos_and_other,
       icon: '⚙️'
     },
     {
-      title: 'Bootloader Development',
-      description: 'Custom bootloaders with OTA updates and secure boot functionality.',
+      title: tx.bootloader_development,
+      description: tx.custom_bootloaders_with_ota_updates,
       icon: '🚀'
     },
     {
-      title: 'Security Implementation',
-      description: 'Secure boot, encryption, authentication, and secure communication protocols.',
+      title: tx.security_implementation,
+      description: tx.secure_boot_encryption_authentication_an,
       icon: '🔒'
     },
     {
-      title: 'Performance Optimization',
-      description: 'Code optimization for speed, power consumption, and memory efficiency.',
+      title: tx.performance_optimization,
+      description: tx.code_optimization_for_speed_power,
       icon: '⚡'
     }
   ];
 
   const technologies = [
-    { name: 'ESP32', icon: '/images/icons/esp32_1.jpeg', description: 'Wi-Fi/BLE microcontroller' },
-    { name: 'Arduino', icon: '/images/icons/ardunio1.png', description: 'Development platform' },
-    { name: 'STM32', icon: '/images/icons/stm32.jpeg', description: 'ARM Cortex MCU' },
-    { name: 'Raspberry Pi', icon: '/images/icons/raspberrypi.jpeg', description: 'Single-board computer' },
-    { name: 'PIC/AVR', icon: '/images/icons/AVR.png', description: 'Microcontrollers' },
-    { name: 'FreeRTOS', icon: '/images/icons/freeRtos.jpeg', description: 'Real-time OS' },
-    { name: 'Zephyr RTOS', icon: '/images/icons/Zephyr.jpeg', description: 'Scalable RTOS' },
-    { name: 'AWS IoT', icon: '/images/icons/AwsIot.jpeg', description: 'Cloud IoT platform' }
+    { name: 'ESP32', icon: '/images/icons/esp32_1.jpeg', description: tx.wi_fi_ble_microcontroller },
+    { name: tx.arduino, icon: '/images/icons/ardunio1.png', description: tx.development_platform },
+    { name: 'STM32', icon: '/images/icons/stm32.jpeg', description: tx.arm_cortex_mcu },
+    { name: tx.raspberry_pi, icon: '/images/icons/raspberrypi.jpeg', description: tx.single_board_computer },
+    { name: tx.pic_avr, icon: '/images/icons/AVR.png', description: tx.microcontrollers },
+    { name: tx.freertos, icon: '/images/icons/freeRtos.jpeg', description: tx.real_time_os },
+    { name: tx.zephyr_rtos, icon: '/images/icons/Zephyr.jpeg', description: tx.scalable_rtos },
+    { name: tx.aws_iot, icon: '/images/icons/AwsIot.jpeg', description: tx.cloud_iot_platform }
   ];
 
   const firmwareTypes = [
     {
-      title: 'Bare-metal Firmware',
-      description: 'Direct hardware control without operating system overhead for maximum performance.',
+      title: tx.bare_metal_firmware,
+      description: tx.direct_hardware_control_without_operatin,
       icon: '⚡',
-      features: ['Direct hardware access', 'Minimal overhead', 'Fast execution', 'Small footprint'],
+      features: [tx.direct_hardware_access, tx.minimal_overhead, tx.fast_execution, tx.small_footprint],
       color: 'from-purple-500 to-purple-600'
     },
     {
-      title: 'RTOS-based Firmware',
-      description: 'Multi-tasking firmware with real-time operating system for complex applications.',
+      title: tx.rtos_based_firmware,
+      description: tx.multi_tasking_firmware_with_real,
       icon: '🔄',
-      features: ['Multi-tasking', 'Priority scheduling', 'Resource management', 'Thread safety'],
+      features: [tx.multi_tasking, tx.priority_scheduling, tx.resource_management, tx.thread_safety],
       color: 'from-blue-500 to-blue-600'
     },
     {
-      title: 'Linux Embedded',
-      description: 'Linux-based embedded systems for high-level functionality and connectivity.',
+      title: tx.linux_embedded,
+      description: tx.linux_based_embedded_systems_for,
       icon: '🐧',
-      features: ['Rich ecosystem', 'Networking support', 'File systems', 'Process management'],
+      features: [tx.rich_ecosystem, tx.networking_support, tx.file_systems, tx.process_management],
       color: 'from-green-500 to-green-600'
     },
     {
-      title: 'IoT Firmware',
-      description: 'Connected device firmware with cloud integration and wireless protocols.',
+      title: tx.iot_firmware,
+      description: tx.connected_device_firmware_with_cloud,
       icon: '🌐',
-      features: ['Wi-Fi/BLE/LoRa', 'Cloud connectivity', 'OTA updates', 'Power optimization'],
+      features: [tx.wi_fi_ble_lora, tx.cloud_connectivity, tx.ota_updates, tx.power_optimization],
       color: 'from-cyan-500 to-cyan-600'
     }
   ];
@@ -93,81 +94,81 @@ export default function FirmwareDevelopmentPage() {
   const processSteps = [
     {
       step: '01',
-      title: 'Requirements Analysis',
-      description: 'Understanding hardware specifications, functional requirements, and constraints.',
-      duration: '1 week',
+      title: tx.requirements_analysis,
+      description: tx.understanding_hardware_specifications_fu,
+      duration: tx.t_1_week,
       icon: '📋'
     },
     {
       step: '02',
-      title: 'Architecture Design',
-      description: 'Designing firmware architecture, modules, and data flow.',
+      title: tx.architecture_design,
+      description: tx.designing_firmware_architecture_modules,
       duration: '1-2 weeks',
       icon: '🎨'
     },
     {
       step: '03',
-      title: 'Core Development',
-      description: 'Implementing firmware core functionality and hardware drivers.',
+      title: tx.core_development,
+      description: tx.implementing_firmware_core_functionality,
       duration: '4-8 weeks',
       icon: '⚙️'
     },
     {
       step: '04',
-      title: 'Testing & Debugging',
-      description: 'Unit testing, integration testing, and hardware-in-the-loop testing.',
+      title: tx.testing_debugging,
+      description: tx.unit_testing_integration_testing_and,
       duration: '2-4 weeks',
       icon: '🔍'
     },
     {
       step: '05',
-      title: 'Optimization & Release',
-      description: 'Performance optimization, code review, and production release.',
+      title: tx.optimization_release,
+      description: tx.performance_optimization_code_review_and,
       duration: '1-2 weeks',
       icon: '🚀'
     }
   ];
 
   const capabilities = [
-    { title: 'Languages', value: 'C, C++, Assembly, Rust', icon: '💻' },
-    { title: 'Architectures', value: 'ARM, AVR, PIC, RISC-V, x86', icon: '🏗️' },
-    { title: 'Communication', value: 'UART, SPI, I2C, CAN, USB, Ethernet', icon: '📡' },
-    { title: 'Wireless', value: 'Wi-Fi, Bluetooth, LoRa, Zigbee, NFC', icon: '📶' },
+    { title: tx.languages, value: 'C, C++, Assembly, Rust', icon: '💻' },
+    { title: tx.architectures, value: 'ARM, AVR, PIC, RISC-V, x86', icon: '🏗️' },
+    { title: tx.communication, value: 'UART, SPI, I2C, CAN, USB, Ethernet', icon: '📡' },
+    { title: tx.wireless, value: 'Wi-Fi, Bluetooth, LoRa, Zigbee, NFC', icon: '📶' },
     { title: 'RTOS', value: 'FreeRTOS, Zephyr, ThreadX, QNX', icon: '⚙️' },
-    { title: 'Tools', value: 'GCC, IAR, Keil, JTAG, SWD', icon: '🔧' },
-    { title: 'Testing', value: 'Unit tests, HIL, Logic analyzers', icon: '🧪' },
-    { title: 'Security', value: 'Encryption, Secure boot, Authentication', icon: '🔒' }
+    { title: tx.tools, value: 'GCC, IAR, Keil, JTAG, SWD', icon: '🔧' },
+    { title: tx.testing, value: 'Unit tests, HIL, Logic analyzers', icon: '🧪' },
+    { title: tx.security, value: 'Encryption, Secure boot, Authentication', icon: '🔒' }
   ];
 
   const expertiseAreas = [
     {
-      title: 'Industrial Automation',
-      description: 'Firmware for PLCs, motor controllers, and industrial sensors.',
+      title: tx.industrial_automation,
+      description: tx.firmware_for_plcs_motor_controllers,
       icon: '🏭'
     },
     {
-      title: 'Consumer Electronics',
-      description: 'Smart home devices, wearables, and connected appliances.',
+      title: tx.consumer_electronics,
+      description: tx.smart_home_devices_wearables_and,
       icon: '📱'
     },
     {
-      title: 'Automotive Systems',
-      description: 'ECU firmware, CAN bus communication, and vehicle diagnostics.',
+      title: tx.automotive_systems,
+      description: tx.ecu_firmware_can_bus_communication,
       icon: '🚗'
     },
     {
-      title: 'Medical Devices',
-      description: 'Regulated firmware for patient monitoring and diagnostic equipment.',
+      title: tx.medical_devices,
+      description: tx.regulated_firmware_for_patient_monitorin,
       icon: '🏥'
     },
     {
-      title: 'Telecommunications',
-      description: 'Network equipment, modems, and communication devices.',
+      title: tx.telecommunications,
+      description: tx.network_equipment_modems_and_communicati,
       icon: '📡'
     },
     {
-      title: 'Energy Management',
-      description: 'Smart meters, battery management systems, and power electronics.',
+      title: tx.energy_management,
+      description: tx.smart_meters_battery_management_systems,
       icon: '🔋'
     }
   ];
@@ -176,17 +177,17 @@ export default function FirmwareDevelopmentPage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="Firmware Development"
+        eyebrow={tx.firmware_development_2}
         eyebrowIcon={Cpu}
-        title="Expert Firmware Development &"
-        highlight="Embedded Software"
-        description="Professional firmware development services for microcontrollers and embedded systems. We create reliable, efficient, and secure firmware that powers your hardware products."
+        title={tx.expert_firmware_development}
+        highlight={tx.embedded_software}
+        description={tx.professional_firmware_development_servic}
         highlights={["Real-time Systems", "Driver Development", "RTOS Integration", "Bootloader Development"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "1M+", label: "Lines of Code" },
-          { value: "99.9%", label: "Reliability" },
-          { value: "6-12", label: "Week Delivery" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "1M+", label: tx.lines_of_code },
+          { value: "99.9%", label: tx.reliability },
+          { value: "6-12", label: tx.week_delivery },
         ]}
       />
 
@@ -194,9 +195,7 @@ export default function FirmwareDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Firmware
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Capabilities</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.firmware}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.capabilities}</span>
             </h2>
           </div>
 
@@ -224,9 +223,7 @@ export default function FirmwareDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Firmware
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Types</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.firmware}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.types}</span>
             </h2>
           </div>
 
@@ -262,9 +259,7 @@ export default function FirmwareDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Technical
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Expertise</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.technical}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.expertise}</span>
             </h2>
           </div>
 
@@ -288,9 +283,7 @@ export default function FirmwareDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Industry
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Expertise</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.industry}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.expertise}</span>
             </h2>
           </div>
 
@@ -316,9 +309,7 @@ export default function FirmwareDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Technology
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Stack</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.technology}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.stack}</span>
             </h2>
           </div>
 
@@ -350,9 +341,7 @@ export default function FirmwareDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Development
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Process</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.development}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.process}</span>
             </h2>
           </div>
 
@@ -385,21 +374,13 @@ export default function FirmwareDevelopmentPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-purple-600 via-indigo-700 to-violet-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Develop
-            <span className="block text-purple-100 mt-2">Professional Firmware?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_develop}<span className="block text-purple-100 mt-2">{tx.professional_firmware}</span>
           </h2>
-          <p className="text-xl text-purple-100 mb-8 leading-relaxed font-light">
-            Let&apos;s discuss your firmware requirements and create reliable embedded software for your hardware products.
-          </p>
+          <p className="text-xl text-purple-100 mb-8 leading-relaxed font-light">{tx.let_s_discuss_your_firmware}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-purple-600 px-8 py-4 rounded-xl hover:bg-purple-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-                Start Your Project
-              </Link>
-            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-purple-600 transition-all duration-200 font-semibold text-lg">
-                Schedule Consultation
-              </Link>
+            <Link href="/contact" className="bg-white text-purple-600 px-8 py-4 rounded-xl hover:bg-purple-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_your_project}</Link>
+            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-purple-600 transition-all duration-200 font-semibold text-lg">{tx.schedule_consultation}</Link>
           </div>
         </div>
       </section>

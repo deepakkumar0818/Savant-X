@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/components/TestimonialCarousel.json';
 import { useState, useEffect, useRef } from 'react';
 import AnimatedCounter from './AnimatedCounter';
 import InlineAnimatedCounter from './InlineAnimatedCounter';
@@ -25,99 +26,99 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Advocate Rahul Sharma",
-    role: "Managing Partner",
-    company: "Legal Palz",
+    name: tx.advocate_rahul_sharma,
+    role: tx.managing_partner,
+    company: tx.legal_palz,
     companyLogo: "LP",
-    content: "SavantX transformed our legal practice with a custom case management system that streamlined our workflow. Their understanding of legal processes and attention to detail is exceptional.",
+    content: tx.savantx_transformed_our_legal_practice,
     rating: 5,
-    industry: "Legal Services",
-    results: "65% increase in case efficiency",
-    location: "New Delhi, India"
+    industry: tx.legal_services,
+    results: tx.t_65_increase_in_case_efficiency,
+    location: tx.new_delhi_india
   },
   {
     id: 2,
-    name: "Dr. Anjali Verma",
-    role: "Principal",
-    company: "St. Paul's Sr. Sec. School",
+    name: tx.dr_anjali_verma,
+    role: tx.principal,
+    company: tx.st_paul_s_sr_sec,
     companyLogo: "SP",
-    content: "The digital transformation SavantX brought to our institution has revolutionized how we manage student data and communicate with parents. Their education management system is truly world-class.",
+    content: tx.the_digital_transformation_savantx_broug,
     rating: 5,
-    industry: "Education",
-    results: "90% improvement in parent engagement",
-    location: "Mumbai, India"
+    industry: tx.education,
+    results: tx.t_90_improvement_in_parent_engagement,
+    location: tx.mumbai_india
   },
   {
     id: 3,
-    name: "Vikram Singh",
-    role: "Chief Editor",
-    company: "Sansani Express",
+    name: tx.vikram_singh,
+    role: tx.chief_editor,
+    company: tx.sansani_express,
     companyLogo: "SE",
-    content: "SavantX developed a robust content management and distribution platform that powers our digital news operations. Their technical expertise and commitment to deadlines is commendable.",
+    content: tx.savantx_developed_a_robust_content,
     rating: 5,
-    industry: "Media & Publishing",
-    results: "200% increase in digital readership",
-    location: "Lucknow, India"
+    industry: tx.media_publishing,
+    results: tx.t_200_increase_in_digital_readership,
+    location: tx.lucknow_india
   },
   {
     id: 4,
-    name: "Rajesh Kumar",
-    role: "Operations Director",
-    company: "RV Logistics",
+    name: tx.rajesh_kumar,
+    role: tx.operations_director,
+    company: tx.rv_logistics,
     companyLogo: "RV",
-    content: "SavantX built an intelligent fleet management system that revolutionized our logistics operations. Real-time tracking, route optimization, and automated scheduling have transformed our business.",
+    content: tx.savantx_built_an_intelligent_fleet,
     rating: 5,
-    industry: "Logistics & Transportation",
-    results: "45% reduction in operational costs",
-    location: "Bangalore, India"
+    industry: tx.logistics_transportation,
+    results: tx.t_45_reduction_in_operational_costs,
+    location: tx.bangalore_india
   },
   {
     id: 5,
-    name: "Priya Malhotra",
-    role: "CEO & Founder",
-    company: "JDN Technologies",
+    name: tx.priya_malhotra,
+    role: tx.ceo_founder,
+    company: tx.jdn_technologies,
     companyLogo: "JT",
-    content: "Working with SavantX has been an incredible experience. They developed custom solutions that perfectly aligned with our business needs and exceeded all our expectations.",
+    content: tx.working_with_savantx_has_been,
     rating: 5,
-    industry: "Technology Solutions",
-    results: "150% growth in client acquisition",
-    location: "Pune, India"
+    industry: tx.technology_solutions,
+    results: tx.t_150_growth_in_client_acquisition,
+    location: tx.pune_india
   },
   {
     id: 6,
-    name: "Anoop Gupta",
-    role: "Managing Director",
-    company: "Anoop Automations",
+    name: tx.anoop_gupta,
+    role: tx.managing_director,
+    company: tx.anoop_automations,
     companyLogo: "AA",
-    content: "SavantX delivered an industrial IoT platform that seamlessly integrated with our automation systems. Their expertise in both hardware and software integration is unmatched.",
+    content: tx.savantx_delivered_an_industrial_iot,
     rating: 5,
-    industry: "Industrial Automation",
-    results: "70% improvement in system efficiency",
-    location: "Noida, India"
+    industry: tx.industrial_automation,
+    results: tx.t_70_improvement_in_system_efficiency,
+    location: tx.noida_india
   },
   {
     id: 7,
-    name: "Sameer Patel",
-    role: "Founder & CEO",
-    company: "Fleet Logic",
+    name: tx.sameer_patel,
+    role: tx.founder_ceo,
+    company: tx.fleet_logic,
     companyLogo: "FL",
-    content: "The vehicle tracking and fleet management solution from SavantX has been a game-changer. Real-time analytics and predictive maintenance have significantly improved our operations.",
+    content: tx.the_vehicle_tracking_and_fleet,
     rating: 5,
-    industry: "Fleet Management",
-    results: "55% reduction in vehicle downtime",
-    location: "Ahmedabad, India"
+    industry: tx.fleet_management,
+    results: tx.t_55_reduction_in_vehicle_downtime,
+    location: tx.ahmedabad_india
   },
   {
     id: 8,
-    name: "Dr. Meera Desai",
-    role: "Director",
-    company: "The Canophilla",
+    name: tx.dr_meera_desai,
+    role: tx.director,
+    company: tx.the_canophilla,
     companyLogo: "TC",
-    content: "SavantX created a beautiful e-commerce platform with integrated booking and customer management. Their attention to detail and understanding of our niche market was exceptional.",
+    content: tx.savantx_created_a_beautiful_e,
     rating: 5,
-    industry: "Pet Care Services",
-    results: "180% increase in online bookings",
-    location: "Chennai, India"
+    industry: tx.pet_care_services,
+    results: tx.t_180_increase_in_online_bookings,
+    location: tx.chennai_india
   }
 ];
 
@@ -223,16 +224,10 @@ export default function TestimonialCarousel() {
           <div className="inline-flex items-center gap-2 bg-slate-100 text-slate-700 px-5 py-2.5 rounded-full text-sm font-medium mb-8 border border-slate-200">
             <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-            </svg>
-            Client Success Stories
-          </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-8 tracking-tight">
-            Trusted by enterprise
-            <span className="block text-blue-600">leaders worldwide</span>
+            </svg>{tx.client_success_stories}</div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-8 tracking-tight">{tx.trusted_by_enterprise}<span className="block text-blue-600">{tx.leaders_worldwide}</span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
-            Discover how leading organizations are achieving remarkable results with our enterprise solutions
-          </p>
+          <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">{tx.discover_how_leading_organizations_are}</p>
         </div>
 
         {/* Carousel Container */}
@@ -327,9 +322,7 @@ export default function TestimonialCarousel() {
                         display: '-webkit-box',
                         WebkitLineClamp: 4,
                         WebkitBoxOrient: 'vertical' as const
-                      }}>
-                        &ldquo;{testimonial.content}&rdquo;
-                      </blockquote>
+                      }}>{tx.text}{testimonial.content}{tx.text_2}</blockquote>
 
                       {/* Results Badge */}
                       <div>
@@ -373,8 +366,8 @@ export default function TestimonialCarousel() {
         {/* Bottom Stats */}
         <div className="mt-20 rounded-3xl border border-slate-200/75 bg-white/80 p-12 shadow-[0_28px_80px_-44px_rgba(30,58,138,0.18)] ring-1 ring-white/95 backdrop-blur-md">
           <div className="text-center mb-12">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">Proven Results Across Industries</h3>
-            <p className="text-slate-600 max-w-2xl mx-auto">Our enterprise solutions deliver measurable impact for organizations worldwide</p>
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">{tx.proven_results_across_industries}</h3>
+            <p className="text-slate-600 max-w-2xl mx-auto">{tx.our_enterprise_solutions_deliver_measura}</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
@@ -399,7 +392,7 @@ export default function TestimonialCarousel() {
               <div className="text-3xl font-bold text-slate-900 mb-2 group-hover:scale-105 transition-transform duration-300">
                 <AnimatedCounter end={98} suffix="%" duration={2200} />
               </div>
-              <div className="text-slate-600 font-medium">Client Satisfaction</div>
+              <div className="text-slate-600 font-medium">{tx.client_satisfaction}</div>
             </div>
             
             <div className="group">
@@ -411,7 +404,7 @@ export default function TestimonialCarousel() {
               <div className="text-3xl font-bold text-slate-900 mb-2 group-hover:scale-105 transition-transform duration-300">
                 <AnimatedCounter end={5} suffix=".0★" duration={1800} />
               </div>
-              <div className="text-slate-600 font-medium">Average Rating</div>
+              <div className="text-slate-600 font-medium">{tx.average_rating}</div>
             </div>
             
             <div className="group">
@@ -423,7 +416,7 @@ export default function TestimonialCarousel() {
               <div className="text-3xl font-bold text-slate-900 mb-2 group-hover:scale-105 transition-transform duration-300">
                 <AnimatedCounter end={24} suffix="/7" duration={1500} />
               </div>
-              <div className="text-slate-600 font-medium">Expert Support</div>
+              <div className="text-slate-600 font-medium">{tx.expert_support}</div>
             </div>
           </div>
         </div>

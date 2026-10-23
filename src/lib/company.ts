@@ -1,29 +1,35 @@
 /**
- * Single source of truth for public company details.
- * Change values here rather than hard-coding them in pages.
+ * Single source of truth for public company details. The values live in
+ * src/content/site.json and are edited from the admin (Settings); pages read them from here.
  */
+
+import site from '@/content/site.json';
 
 export const SITE_URL = 'https://www.savantxtechnologies.com';
 
+/** International phone number as displayed, e.g. "+91 9888244166". */
+function phoneFormats(display: string) {
+  const digits = display.replace(/[^\d+]/g, '');
+  const m = display.trim().match(/^\+(\d{1,3})[\s-]*(.+)$/);
+  return {
+    display,
+    href: `tel:${digits}`,
+    schema: m ? `+${m[1]}-${m[2].replace(/\D/g, '')}` : digits,
+  };
+}
+
+/** Company details, offices, metrics and social links are edited in the admin (src/content/site.json). */
 export const COMPANY = {
-  name: 'SavantX Technologies',
-  legalName: 'SavantX Technologies Pvt Ltd',
-  foundingYear: 2019,
-  phone: {
-    display: '+91 9888244166',
-    href: 'tel:+919888244166',
-    schema: '+91-9888244166',
-  },
-  email: 'zoho@savantxtechnologies.com',
-  logoPath: '/images/logos/Logo.png',
-} as const;
+  name: site.company.name,
+  legalName: site.company.legalName,
+  foundingYear: site.company.foundingYear,
+  phone: phoneFormats(site.company.phone),
+  email: site.company.email,
+  logoPath: site.company.logoPath,
+};
 
 /** Approved company metrics. Do not add unverified counts here. */
-export const COMPANY_METRICS = [
-  // The Zoho page shows this count as CRM solutions; everywhere else it is projects delivered.
-  { value: 80, suffix: '+', label: 'Projects Delivered', zohoLabel: 'CRM Solutions' },
-  { value: 50, suffix: '+', label: 'ERP Systems' },
-] as const;
+export const COMPANY_METRICS: { value: number; suffix: string; label: string; zohoLabel?: string }[] = site.metrics;
 
 export type Office = {
   id: string;
@@ -41,34 +47,13 @@ export type Office = {
   type: 'headquarters' | 'office';
 };
 
-export const OFFICES: Office[] = [
-  {
-    id: 'gaya',
-    city: 'Gaya',
-    name: 'Gaya Office (Headquarters)',
-    streetAddress: 'Panchanpur, Tekari',
-    locality: 'Gaya',
-    region: 'Bihar',
-    postalCode: '824236',
-    country: 'India',
-    countryCode: 'IN',
-    coordinates: [24.9366, 84.8425],
-    type: 'headquarters',
-  },
-  {
-    id: 'mohali',
-    city: 'Mohali',
-    name: 'Mohali Office',
-    streetAddress: 'Sector 71',
-    locality: 'Mohali',
-    region: 'Punjab',
-    postalCode: '160071',
-    country: 'India',
-    countryCode: 'IN',
-    coordinates: [30.7046, 76.7179],
-    type: 'office',
-  },
-];
+export const OFFICES: Office[] = site.offices.map((o) => ({
+  ...o,
+  coordinates: [o.coordinates[0], o.coordinates[1]],
+  type: o.type === 'headquarters' ? 'headquarters' : 'office',
+}));
+
+export const SOCIAL_LINKS = site.social;
 
 export function formatOfficeAddress(office: Office): string {
   return `${office.streetAddress}, ${office.locality}, ${office.region} ${office.postalCode}, ${office.country}`;

@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/components/forms/SupportModal.json';
 import { useId, useRef, useState } from 'react';
 import { AlertCircle, CheckCircle2, Loader2, X } from 'lucide-react';
 import { useDialog } from '@/lib/useDialog';
@@ -62,7 +63,7 @@ export default function SupportModal({ open, onClose }: Props) {
     } catch {
       setStatus({
         state: 'error',
-        message: 'We could not reach the server. Check your connection and try again — your message is still here.',
+        message: tx.we_could_not_reach_the,
       });
     }
   };
@@ -86,13 +87,11 @@ export default function SupportModal({ open, onClose }: Props) {
       >
         <div className="p-6">
           <div className="mb-6 flex items-center justify-between">
-            <h2 id={titleId} className="text-2xl font-bold text-slate-900">
-              Contact Support
-            </h2>
+            <h2 id={titleId} className="text-2xl font-bold text-slate-900">{tx.contact_support}</h2>
             <button
               type="button"
               onClick={close}
-              aria-label="Close dialog"
+              aria-label={tx.close_dialog}
               className="rounded-full p-1 text-slate-400 transition-colors hover:text-slate-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
             >
               <X className="h-6 w-6" aria-hidden />
@@ -107,14 +106,12 @@ export default function SupportModal({ open, onClose }: Props) {
                 type="button"
                 onClick={close}
                 className="rounded-md bg-blue-600 px-6 py-2 text-white transition-colors hover:bg-blue-700"
-              >
-                Close
-              </button>
+              >{tx.close}</button>
             </div>
           ) : (
             <form onSubmit={onSubmit} className="space-y-4">
               <div className="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden>
-                <label htmlFor={`${id}-website`}>Website</label>
+                <label htmlFor={`${id}-website`}>{tx.website}</label>
                 <input
                   id={`${id}-website`}
                   name="website"
@@ -127,8 +124,7 @@ export default function SupportModal({ open, onClose }: Props) {
               </div>
 
               <div>
-                <label htmlFor={`${id}-name`} className="mb-1 block text-sm font-medium text-slate-700">
-                  Full Name <span aria-hidden>*</span>
+                <label htmlFor={`${id}-name`} className="mb-1 block text-sm font-medium text-slate-700">{tx.full_name}{" "}<span aria-hidden>*</span>
                 </label>
                 <input
                   id={`${id}-name`}
@@ -140,13 +136,12 @@ export default function SupportModal({ open, onClose }: Props) {
                   required
                   maxLength={200}
                   className={fieldClass}
-                  placeholder="Enter your full name"
+                  placeholder={tx.enter_your_full_name}
                 />
               </div>
 
               <div>
-                <label htmlFor={`${id}-email`} className="mb-1 block text-sm font-medium text-slate-700">
-                  Email Address <span aria-hidden>*</span>
+                <label htmlFor={`${id}-email`} className="mb-1 block text-sm font-medium text-slate-700">{tx.email_address}{" "}<span aria-hidden>*</span>
                 </label>
                 <input
                   id={`${id}-email`}
@@ -158,13 +153,12 @@ export default function SupportModal({ open, onClose }: Props) {
                   required
                   maxLength={200}
                   className={fieldClass}
-                  placeholder="Enter your email address"
+                  placeholder={tx.enter_your_email_address}
                 />
               </div>
 
               <div>
-                <label htmlFor={`${id}-subject`} className="mb-1 block text-sm font-medium text-slate-700">
-                  Subject <span aria-hidden>*</span>
+                <label htmlFor={`${id}-subject`} className="mb-1 block text-sm font-medium text-slate-700">{tx.subject}{" "}<span aria-hidden>*</span>
                 </label>
                 <input
                   id={`${id}-subject`}
@@ -175,13 +169,12 @@ export default function SupportModal({ open, onClose }: Props) {
                   required
                   maxLength={200}
                   className={fieldClass}
-                  placeholder="What can we help you with?"
+                  placeholder={tx.what_can_we_help_you}
                 />
               </div>
 
               <div>
-                <label htmlFor={`${id}-message`} className="mb-1 block text-sm font-medium text-slate-700">
-                  Message <span aria-hidden>*</span>
+                <label htmlFor={`${id}-message`} className="mb-1 block text-sm font-medium text-slate-700">{tx.message}{" "}<span aria-hidden>*</span>
                 </label>
                 <textarea
                   id={`${id}-message`}
@@ -192,7 +185,7 @@ export default function SupportModal({ open, onClose }: Props) {
                   rows={4}
                   maxLength={5000}
                   className={fieldClass}
-                  placeholder="Please describe your issue or question..."
+                  placeholder={tx.please_describe_your_issue_or}
                 />
               </div>
 
@@ -211,9 +204,7 @@ export default function SupportModal({ open, onClose }: Props) {
                   onClick={close}
                   disabled={submitting}
                   className="flex-1 rounded-md border border-slate-300 px-4 py-2 text-slate-700 transition-colors hover:bg-slate-50 disabled:opacity-60"
-                >
-                  Cancel
-                </button>
+                >{tx.cancel}</button>
                 <button
                   type="submit"
                   disabled={submitting}
@@ -221,7 +212,7 @@ export default function SupportModal({ open, onClose }: Props) {
                   className="inline-flex flex-1 items-center justify-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {submitting && <Loader2 className="h-4 w-4 animate-spin" aria-hidden />}
-                  {submitting ? 'Sending…' : 'Send Support Request'}
+                  {submitting ? tx.sending : tx.send_support_request}
                 </button>
               </div>
             </form>

@@ -1,28 +1,20 @@
 'use client';
 
+import tx from '@/content/text/components/forms/ConsultationDialog.json';
 import { useId, useRef, useState } from 'react';
 import Link from 'next/link';
 import { AlertCircle, CalendarDays, CheckCircle2, Loader2, X } from 'lucide-react';
 import { useDialog } from '@/lib/useDialog';
 import { trackEvent } from '@/lib/analytics';
 import { fetchWithTimeout } from '@/lib/fetchWithTimeout';
+import forms from '@/content/forms.json';
 import { BUDGETS, campaignParams, EMAIL_PATTERN, MIN_MESSAGE, PHONE_PATTERN } from './leadForm';
 
 /**
- * Each label maps to a Lead Type / IT Lead Subcategory in Zoho CRM (see classifyService in
- * src/lib/zohoLeads.ts). Keep the keywords if you reword them.
+ * Service options are edited in the admin (Forms). Each label maps to a Lead Type / IT Lead
+ * Subcategory in Zoho CRM (see classifyService in src/lib/zohoLeads.ts); the admin shows the mapping.
  */
-const SERVICES = [
-  'Website Development',
-  'Mobile App Development',
-  'Zoho Development',
-  'ERP Solutions',
-  'AI / ML & Analytics',
-  'Automation & Integrations',
-  'Shopify Store',
-  'IoT & Embedded Hardware',
-  'Not sure yet',
-] as const;
+const SERVICES: string[] = forms.consultation.services;
 
 type Fields = { name: string; email: string; phone: string; company: string; service: string; budget: string; message: string; website: string };
 type Status = { state: 'idle' } | { state: 'submitting' } | { state: 'success'; message: string } | { state: 'error'; message: string };
@@ -99,7 +91,7 @@ export default function ConsultationDialog({ source, onClose }: { source: string
       trackEvent('generate_lead', { form: 'consultation', service: form.service, budget: form.budget });
       setStatus({ state: 'success', message: data.message || 'Thank you! We have received your request.' });
     } catch {
-      setStatus({ state: 'error', message: 'Network error. Please check your connection and try again. Your details are still here.' });
+      setStatus({ state: 'error', message: tx.network_error_please_check_your });
     }
   };
 
@@ -141,17 +133,15 @@ export default function ConsultationDialog({ source, onClose }: { source: string
               <CalendarDays className="h-5 w-5" aria-hidden />
             </span>
             <div>
-              <h2 id={`${id}-title`} className="text-xl font-bold tracking-tight text-slate-900">
-                Schedule a Consultation
-              </h2>
-              <p className="mt-0.5 text-sm text-slate-500">Tell us about your project. Our team will contact you to set up a call.</p>
+              <h2 id={`${id}-title`} className="text-xl font-bold tracking-tight text-slate-900">{tx.schedule_a_consultation}</h2>
+              <p className="mt-0.5 text-sm text-slate-500">{tx.tell_us_about_your_project}</p>
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
             disabled={submitting}
-            aria-label="Close"
+            aria-label={tx.close}
             className="-mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 disabled:opacity-50"
           >
             <X className="h-5 w-5" aria-hidden />
@@ -164,19 +154,17 @@ export default function ConsultationDialog({ source, onClose }: { source: string
               <CheckCircle2 className="h-6 w-6" aria-hidden />
             </span>
             <p className="mt-4 text-lg font-semibold text-slate-900">{status.message}</p>
-            <p className="mt-2 max-w-sm text-sm text-slate-600">Our team will call or email you to arrange a time for your consultation.</p>
+            <p className="mt-2 max-w-sm text-sm text-slate-600">{tx.our_team_will_call_or}</p>
             <button
               type="button"
               onClick={onClose}
               className="mt-6 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700"
-            >
-              Close
-            </button>
+            >{tx.close}</button>
           </div>
         ) : (
           <form noValidate onSubmit={onSubmit} className="grid gap-4 px-6 py-6 sm:grid-cols-2 sm:px-7">
             <div className="hidden" aria-hidden>
-              <label htmlFor={`${id}-website`}>Website</label>
+              <label htmlFor={`${id}-website`}>{tx.website}</label>
               <input id={`${id}-website`} tabIndex={-1} autoComplete="off" value={form.website} onChange={(e) => update('website', e.target.value)} />
             </div>
 
@@ -212,7 +200,7 @@ export default function ConsultationDialog({ source, onClose }: { source: string
             <div>
               {label('service', 'What do you need help with?')}
               <select {...field('service')} value={form.service} onChange={(e) => update('service', e.target.value)} className={`${input} ${border('service')}`}>
-                <option value="">Select a service</option>
+                <option value="">{tx.select_a_service}</option>
                 {SERVICES.map((s) => (
                   <option key={s} value={s}>
                     {s}
@@ -224,7 +212,7 @@ export default function ConsultationDialog({ source, onClose }: { source: string
             <div>
               {label('budget', 'Budget')}
               <select {...field('budget')} value={form.budget} onChange={(e) => update('budget', e.target.value)} className={`${input} ${border('budget')}`}>
-                <option value="">Select a budget range</option>
+                <option value="">{tx.select_a_budget_range}</option>
                 {BUDGETS.map((b) => (
                   <option key={b} value={b}>
                     {b}
@@ -240,7 +228,7 @@ export default function ConsultationDialog({ source, onClose }: { source: string
                 rows={4}
                 value={form.message}
                 onChange={(e) => update('message', e.target.value)}
-                placeholder="Your goals, timeline, and any specific challenges you'd like to discuss."
+                placeholder={tx.your_goals_timeline_and_any}
                 className={`${input} resize-y ${border('message')}`}
               />
               {error('message')}
@@ -259,13 +247,10 @@ export default function ConsultationDialog({ source, onClose }: { source: string
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 px-6 py-3.5 font-semibold text-white shadow-lg shadow-indigo-600/25 transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
               >
                 {submitting && <Loader2 className="h-4 w-4 animate-spin" aria-hidden />}
-                {submitting ? 'Sending…' : 'Schedule my consultation'}
+                {submitting ? tx.sending : tx.schedule_my_consultation}
               </button>
-              <p className="mt-3 text-center text-xs text-slate-500">
-                We use these details only to arrange your consultation. See our{' '}
-                <Link href="/privacy-policy" className="font-medium text-indigo-700 hover:underline">
-                  privacy policy
-                </Link>
+              <p className="mt-3 text-center text-xs text-slate-500">{tx.we_use_these_details_only}{' '}
+                <Link href="/privacy-policy" className="font-medium text-indigo-700 hover:underline">{tx.privacy_policy}</Link>
                 .
               </p>
             </div>

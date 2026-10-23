@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/genai/page.json';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
@@ -8,9 +9,9 @@ import { Sparkles } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Generative AI Solutions',
+  title: tx.generative_ai_solutions,
   description:
-    'Generative AI solutions from SavantX Technologies that automate processes, generate content and support better decisions.',
+    tx.generative_ai_solutions_from_savantx,
   path: '/expertise/genai',
 });
 
@@ -19,69 +20,69 @@ export default function GenAIPage() {
   const genAIServices = [
     {
       id: 'chatbots',
-      title: 'AI Chatbots & Assistants',
+      title: tx.ai_chatbots_assistants,
       icon: '💬',
-      description: 'Intelligent conversational AI chatbots that understand context and provide natural interactions.',
-      features: ['Natural Language Processing', 'Context Awareness', 'Multi-language Support', 'Integration APIs', 'Analytics Dashboard', 'Custom Training'],
-      pricing: 'Starting at $5,000',
+      description: tx.intelligent_conversational_ai_chatbots_t,
+      features: [tx.natural_language_processing, tx.context_awareness, tx.multi_language_support, tx.integration_apis, tx.analytics_dashboard, tx.custom_training],
+      pricing: tx.starting_at_5_000,
       timeline: '4-8 weeks',
-      complexity: 'Advanced',
-      models: 'GPT-4, Claude, Gemini'
+      complexity: tx.advanced,
+      models: tx.gpt_4_claude_gemini
     },
     {
       id: 'content-generation',
-      title: 'Content Generation',
+      title: tx.content_generation,
       icon: '✍️',
-      description: 'AI-powered content creation for blogs, marketing materials, and documentation.',
-      features: ['Text Generation', 'Image Generation', 'Video Scripts', 'SEO Optimization', 'Brand Voice', 'Multi-format Export'],
-      pricing: 'Starting at $3,500',
+      description: tx.ai_powered_content_creation_for,
+      features: [tx.text_generation, tx.image_generation, tx.video_scripts, tx.seo_optimization, tx.brand_voice, tx.multi_format_export],
+      pricing: tx.starting_at_3_500,
       timeline: '3-6 weeks',
-      complexity: 'Standard',
-      models: 'GPT-4, DALL-E, Midjourney'
+      complexity: tx.standard,
+      models: tx.gpt_4_dall_e_midjourney
     },
     {
       id: 'data-analysis',
-      title: 'AI Data Analysis',
+      title: tx.ai_data_analysis,
       icon: '📊',
-      description: 'Advanced AI analytics and insights from your business data.',
-      features: ['Predictive Analytics', 'Pattern Recognition', 'Automated Reports', 'Data Visualization', 'Anomaly Detection', 'Custom Dashboards'],
-      pricing: 'Starting at $6,000',
+      description: tx.advanced_ai_analytics_and_insights,
+      features: [tx.predictive_analytics, tx.pattern_recognition, tx.automated_reports, tx.data_visualization, tx.anomaly_detection, tx.custom_dashboards],
+      pricing: tx.starting_at_6_000,
       timeline: '5-10 weeks',
-      complexity: 'Enterprise',
-      models: 'Custom Models, GPT-4'
+      complexity: tx.enterprise,
+      models: tx.custom_models_gpt_4
     },
     {
       id: 'automation',
-      title: 'AI Workflow Automation',
+      title: tx.ai_workflow_automation,
       icon: '⚙️',
-      description: 'Intelligent automation solutions that learn and adapt to your business processes.',
-      features: ['Process Automation', 'Smart Routing', 'Decision Making', 'Task Prioritization', 'Error Handling', 'Performance Monitoring'],
-      pricing: 'Starting at $4,500',
+      description: tx.intelligent_automation_solutions_that_le,
+      features: [tx.process_automation, tx.smart_routing, tx.decision_making, tx.task_prioritization, tx.error_handling, tx.performance_monitoring],
+      pricing: tx.starting_at_4_500,
       timeline: '4-8 weeks',
-      complexity: 'Advanced',
-      models: 'Custom AI Models'
+      complexity: tx.advanced,
+      models: tx.custom_ai_models
     },
     {
       id: 'personalization',
-      title: 'AI Personalization',
+      title: tx.ai_personalization,
       icon: '🎯',
-      description: 'Personalized user experiences powered by machine learning and AI.',
-      features: ['User Profiling', 'Recommendation Engine', 'Dynamic Content', 'Behavioral Analysis', 'A/B Testing', 'Real-time Adaptation'],
-      pricing: 'Starting at $5,500',
+      description: tx.personalized_user_experiences_powered_by,
+      features: [tx.user_profiling, tx.recommendation_engine, tx.dynamic_content, tx.behavioral_analysis, tx.a_b_testing, tx.real_time_adaptation],
+      pricing: tx.starting_at_5_500,
       timeline: '5-9 weeks',
-      complexity: 'Enterprise',
-      models: 'Custom ML Models'
+      complexity: tx.enterprise,
+      models: tx.custom_ml_models
     },
     {
       id: 'code-generation',
-      title: 'AI Code Generation',
+      title: tx.ai_code_generation,
       icon: '💻',
-      description: 'AI-powered code generation and development assistance tools.',
-      features: ['Code Completion', 'Bug Detection', 'Refactoring', 'Documentation', 'Test Generation', 'Code Review'],
-      pricing: 'Starting at $7,000',
+      description: tx.ai_powered_code_generation_and,
+      features: [tx.code_completion, tx.bug_detection, tx.refactoring, tx.documentation, tx.test_generation, tx.code_review],
+      pricing: tx.starting_at_7_000,
       timeline: '6-12 weeks',
-      complexity: 'Enterprise',
-      models: 'GPT-4, GitHub Copilot, Custom'
+      complexity: tx.enterprise,
+      models: tx.gpt_4_github_copilot_custom
     }
   ];
 
@@ -89,37 +90,37 @@ export default function GenAIPage() {
     {
       category: 'Large Language Models',
       tools: [
-        { name: 'OpenAI GPT-4', icon: '🤖', description: 'Advanced language model for text generation' },
-        { name: 'Anthropic Claude', icon: '🧠', description: 'Safe and helpful AI assistant' },
-        { name: 'Google Gemini', icon: '💎', description: 'Multimodal AI model' },
-        { name: 'Llama 2', icon: '🦙', description: 'Open-source LLM by Meta' }
+        { name: tx.openai_gpt_4, icon: '🤖', description: tx.advanced_language_model_for_text },
+        { name: tx.anthropic_claude, icon: '🧠', description: tx.safe_and_helpful_ai_assistant },
+        { name: tx.google_gemini, icon: '💎', description: tx.multimodal_ai_model },
+        { name: tx.llama_2, icon: '🦙', description: tx.open_source_llm_by_meta }
       ]
     },
     {
       category: 'Image Generation',
       tools: [
-        { name: 'DALL-E 3', icon: '🎨', description: 'AI image generation from text' },
-        { name: 'Midjourney', icon: '🖼️', description: 'Artistic image creation' },
-        { name: 'Stable Diffusion', icon: '🌈', description: 'Open-source image generation' },
-        { name: 'Adobe Firefly', icon: '🔥', description: 'Creative AI by Adobe' }
+        { name: tx.dall_e_3, icon: '🎨', description: tx.ai_image_generation_from_text },
+        { name: tx.midjourney, icon: '🖼️', description: tx.artistic_image_creation },
+        { name: tx.stable_diffusion, icon: '🌈', description: tx.open_source_image_generation },
+        { name: tx.adobe_firefly, icon: '🔥', description: tx.creative_ai_by_adobe }
       ]
     },
     {
       category: 'AI Frameworks',
       tools: [
-        { name: 'TensorFlow', icon: '🔧', description: 'Machine learning framework' },
-        { name: 'PyTorch', icon: '🔥', description: 'Deep learning research platform' },
-        { name: 'LangChain', icon: '⛓️', description: 'LLM application framework' },
-        { name: 'Hugging Face', icon: '🤗', description: 'AI model library and tools' }
+        { name: tx.tensorflow, icon: '🔧', description: tx.machine_learning_framework },
+        { name: tx.pytorch, icon: '🔥', description: tx.deep_learning_research_platform },
+        { name: tx.langchain, icon: '⛓️', description: tx.llm_application_framework },
+        { name: tx.hugging_face, icon: '🤗', description: tx.ai_model_library_and_tools }
       ]
     },
     {
       category: 'AI Services',
       tools: [
-        { name: 'OpenAI API', icon: '🔌', description: 'GPT models API integration' },
-        { name: 'Azure AI', icon: '☁️', description: 'Microsoft cloud AI services' },
-        { name: 'AWS Bedrock', icon: '🏗️', description: 'Amazon AI foundation models' },
-        { name: 'Google AI', icon: '🔍', description: 'Google Cloud AI platform' }
+        { name: tx.openai_api, icon: '🔌', description: tx.gpt_models_api_integration },
+        { name: tx.azure_ai, icon: '☁️', description: tx.microsoft_cloud_ai_services },
+        { name: tx.aws_bedrock, icon: '🏗️', description: tx.amazon_ai_foundation_models },
+        { name: tx.google_ai, icon: '🔍', description: tx.google_cloud_ai_platform }
       ]
     }
   ];
@@ -127,43 +128,43 @@ export default function GenAIPage() {
   const developmentProcess = [
     {
       step: '01',
-      title: 'Requirements & Use Case',
-      description: 'Understanding your business needs and defining AI use cases.',
+      title: tx.requirements_use_case,
+      description: tx.understanding_your_business_needs_and,
       duration: '3-5 days',
       icon: '🔍'
     },
     {
       step: '02',
-      title: 'Model Selection',
-      description: 'Choosing the right AI models and frameworks for your project.',
+      title: tx.model_selection,
+      description: tx.choosing_the_right_ai_models,
       duration: '5-7 days',
       icon: '🎯'
     },
     {
       step: '03',
-      title: 'Data Preparation',
-      description: 'Collecting, cleaning, and preparing data for AI training.',
+      title: tx.data_preparation,
+      description: tx.collecting_cleaning_and_preparing_data,
       duration: '7-14 days',
       icon: '📊'
     },
     {
       step: '04',
-      title: 'Model Training/Fine-tuning',
-      description: 'Training or fine-tuning AI models for your specific needs.',
+      title: tx.model_training_fine_tuning,
+      description: tx.training_or_fine_tuning_ai,
       duration: '10-20 days',
       icon: '🧠'
     },
     {
       step: '05',
-      title: 'Integration & Testing',
-      description: 'Integrating AI into your systems and comprehensive testing.',
+      title: tx.integration_testing,
+      description: tx.integrating_ai_into_your_systems,
       duration: '7-14 days',
       icon: '🔗'
     },
     {
       step: '06',
-      title: 'Deployment & Monitoring',
-      description: 'Production deployment and continuous monitoring.',
+      title: tx.deployment_monitoring,
+      description: tx.production_deployment_and_continuous_mon,
       duration: '3-5 days',
       icon: '🚀'
     }
@@ -171,132 +172,132 @@ export default function GenAIPage() {
 
   const deliverables = [
     {
-      title: 'AI Solution',
-      description: 'Fully functional AI-powered solution tailored to your needs.',
+      title: tx.ai_solution,
+      description: tx.fully_functional_ai_powered_solution,
       icon: '🤖'
     },
     {
-      title: 'Model Documentation',
-      description: 'Comprehensive documentation for AI models and architecture.',
+      title: tx.model_documentation,
+      description: tx.comprehensive_documentation_for_ai_model,
       icon: '📚'
     },
     {
-      title: 'API Integration',
-      description: 'Complete API integration with your existing systems.',
+      title: tx.api_integration,
+      description: tx.complete_api_integration_with_your,
       icon: '🔌'
     },
     {
-      title: 'Training Data',
-      description: 'Curated and prepared training datasets for your AI models.',
+      title: tx.training_data,
+      description: tx.curated_and_prepared_training_datasets,
       icon: '📊'
     },
     {
-      title: 'Performance Metrics',
-      description: 'Analytics and monitoring tools for AI performance tracking.',
+      title: tx.performance_metrics,
+      description: tx.analytics_and_monitoring_tools_for,
       icon: '📈'
     },
     {
-      title: 'Maintenance Plan',
-      description: 'Ongoing support and model improvement strategies.',
+      title: tx.maintenance_plan,
+      description: tx.ongoing_support_and_model_improvement,
       icon: '🔧'
     }
   ];
 
   const benefits = [
     {
-      title: 'Enhanced Efficiency',
-      description: 'Automate repetitive tasks and processes with intelligent AI solutions.',
+      title: tx.enhanced_efficiency,
+      description: tx.automate_repetitive_tasks_and_processes,
       icon: '⚡'
     },
     {
-      title: 'Better Insights',
-      description: 'Gain deeper insights from your data with AI-powered analytics.',
+      title: tx.better_insights,
+      description: tx.gain_deeper_insights_from_your,
       icon: '🔍'
     },
     {
-      title: 'Cost Reduction',
-      description: 'Reduce operational costs through intelligent automation.',
+      title: tx.cost_reduction,
+      description: tx.reduce_operational_costs_through_intelli,
       icon: '💰'
     },
     {
-      title: 'Scalability',
-      description: 'Scale your operations with AI that adapts to growing demands.',
+      title: tx.scalability,
+      description: tx.scale_your_operations_with_ai,
       icon: '📈'
     },
     {
-      title: 'Personalization',
-      description: 'Deliver personalized experiences to your customers at scale.',
+      title: tx.personalization,
+      description: tx.deliver_personalized_experiences_to_your,
       icon: '🎯'
     },
     {
-      title: 'Innovation',
-      description: 'Stay ahead with cutting-edge AI technologies and capabilities.',
+      title: tx.innovation,
+      description: tx.stay_ahead_with_cutting_edge,
       icon: '🚀'
     }
   ];
 
   const useCases = [
     {
-      title: 'Customer Support',
-      description: 'AI-powered chatbots and virtual assistants for 24/7 customer support.',
+      title: tx.customer_support,
+      description: tx.ai_powered_chatbots_and_virtual,
       icon: '💬'
     },
     {
-      title: 'Content Creation',
-      description: 'Automated content generation for marketing, blogs, and documentation.',
+      title: tx.content_creation,
+      description: tx.automated_content_generation_for_marketi,
       icon: '✍️'
     },
     {
-      title: 'Data Analytics',
-      description: 'Advanced AI analytics for business intelligence and decision making.',
+      title: tx.data_analytics,
+      description: tx.advanced_ai_analytics_for_business,
       icon: '📊'
     },
     {
-      title: 'E-commerce',
-      description: 'Personalized product recommendations and shopping experiences.',
+      title: tx.e_commerce,
+      description: tx.personalized_product_recommendations_and,
       icon: '🛒'
     },
     {
-      title: 'Healthcare',
-      description: 'AI-powered diagnostics, treatment recommendations, and patient care.',
+      title: tx.healthcare,
+      description: tx.ai_powered_diagnostics_treatment_recomme,
       icon: '🏥'
     },
     {
-      title: 'Finance',
-      description: 'Fraud detection, risk analysis, and automated financial services.',
+      title: tx.finance,
+      description: tx.fraud_detection_risk_analysis_and,
       icon: '💳'
     }
   ];
 
   const aiCapabilities = [
     {
-      title: 'Natural Language Processing',
-      description: 'Advanced NLP for understanding and generating human language.',
+      title: tx.natural_language_processing_2,
+      description: tx.advanced_nlp_for_understanding_and,
       icon: '🗣️'
     },
     {
-      title: 'Computer Vision',
-      description: 'Image and video analysis with AI-powered vision models.',
+      title: tx.computer_vision,
+      description: tx.image_and_video_analysis_with,
       icon: '👁️'
     },
     {
-      title: 'Predictive Analytics',
-      description: 'Forecast trends and outcomes with machine learning models.',
+      title: tx.predictive_analytics_2,
+      description: tx.forecast_trends_and_outcomes_with,
       icon: '🔮'
     },
     {
-      title: 'Speech Recognition',
-      description: 'Convert speech to text and enable voice-controlled applications.',
+      title: tx.speech_recognition,
+      description: tx.convert_speech_to_text_and,
       icon: '🎤'
     },
     {
-      title: 'Recommendation Systems',
-      description: 'Personalized recommendations based on user behavior and preferences.',
+      title: tx.recommendation_systems,
+      description: tx.personalized_recommendations_based_on_us,
       icon: '💡'
     },
     {
-      title: 'Anomaly Detection',
-      description: 'Identify unusual patterns and potential issues in real-time.',
+      title: tx.anomaly_detection_2,
+      description: tx.identify_unusual_patterns_and_potential,
       icon: '⚠️'
     }
   ];
@@ -305,17 +306,17 @@ export default function GenAIPage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="Generative AI Development"
+        eyebrow={tx.generative_ai_development}
         eyebrowIcon={Sparkles}
-        title="GenAI"
-        highlight="Solutions"
-        description="Harness the power of Generative AI to transform your business. We build intelligent AI solutions using cutting-edge models like GPT-4, Claude, and Gemini to automate processes, generate content, and deliver exceptional user experiences."
+        title={tx.genai}
+        highlight={tx.solutions}
+        description={tx.harness_the_power_of_generative}
         highlights={["AI Chatbots & Assistants", "Content Generation", "AI Data Analysis", "AI Workflow Automation"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "95%", label: "Accuracy Rate" },
-          { value: "3-12", label: "Week Delivery" },
-          { value: "100%", label: "Client Satisfaction" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "95%", label: tx.accuracy_rate },
+          { value: "3-12", label: tx.week_delivery },
+          { value: "100%", label: tx.client_satisfaction },
         ]}
       />
 
@@ -324,16 +325,10 @@ export default function GenAIPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Services
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              GenAI
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Solutions</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_services}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.genai}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.solutions}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Comprehensive Generative AI development services for chatbots, content generation, data analysis, and automation.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.comprehensive_generative_ai_development}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -369,19 +364,19 @@ export default function GenAIPage() {
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200">
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.timeline}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.complexity}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Complexity</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.complexity}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.models}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">AI Models</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.ai_models}</div>
                     </div>
                   </div>
                 </div>
@@ -396,16 +391,10 @@ export default function GenAIPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              AI Technology Stack
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Complete AI
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Technology Ecosystem</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.ai_technology_stack}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.complete_ai}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.technology_ecosystem}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We work with the latest AI models, frameworks, and platforms to build cutting-edge solutions.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_work_with_the_latest}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -438,16 +427,10 @@ export default function GenAIPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              AI Development
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Process</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.ai_development}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.process}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our systematic approach ensures high-quality AI solutions delivered on time and within budget.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_systematic_approach_ensures_high}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -481,16 +464,10 @@ export default function GenAIPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Deliverables
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              What You&apos;ll
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Receive</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.deliverables}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.what_you_ll}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.receive}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Complete AI development deliverables that provide everything needed for successful deployment.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.complete_ai_development_deliverables_tha}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -518,16 +495,10 @@ export default function GenAIPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Why GenAI
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Benefits of
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Generative AI</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.why_genai}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.benefits_of}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.generative_ai}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Generative AI provides significant advantages for businesses looking to innovate and automate.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.generative_ai_provides_significant_advan}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -555,16 +526,10 @@ export default function GenAIPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Use Cases
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Perfect For
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">These Applications</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.use_cases}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.perfect_for}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.these_applications}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Generative AI is ideal for a wide range of business applications and use cases.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.generative_ai_is_ideal_for}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -592,16 +557,10 @@ export default function GenAIPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              AI Capabilities
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Advanced AI
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Capabilities</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.ai_capabilities}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.advanced_ai}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.capabilities}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We implement advanced AI capabilities for intelligent and responsive applications.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_implement_advanced_ai_capabilities}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -627,21 +586,13 @@ export default function GenAIPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Transform
-            <span className="block text-indigo-100 mt-2">with GenAI?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_transform}<span className="block text-indigo-100 mt-2">{tx.with_genai}</span>
           </h2>
-          <p className="text-xl text-indigo-100 mb-8 leading-relaxed font-light">
-            Let&apos;s create intelligent AI solutions that automate processes, generate content, and deliver exceptional experiences.
-          </p>
+          <p className="text-xl text-indigo-100 mb-8 leading-relaxed font-light">{tx.let_s_create_intelligent_ai}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-indigo-600 px-8 py-4 rounded-xl hover:bg-indigo-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Start AI Project
-            </Link>
-            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-indigo-600 transition-all duration-200 font-semibold text-lg">
-              View Examples
-            </Link>
+            <Link href="/contact" className="bg-white text-indigo-600 px-8 py-4 rounded-xl hover:bg-indigo-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_ai_project}</Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-indigo-600 transition-all duration-200 font-semibold text-lg">{tx.view_examples}</Link>
           </div>
         </div>
       </section>

@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/product-development/page.json';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -8,88 +9,88 @@ import { Package } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Product Development & Engineering',
+  title: tx.product_development_engineering,
   description:
-    'End-to-end hardware product development, from concept and prototyping to manufacturing-ready designs.',
+    tx.end_to_end_hardware_product,
   path: '/expertise/product-development',
 });
 
 export default function ProductDevelopmentPage() {
   const features = [
     {
-      title: 'Concept Design',
-      description: 'Transform your ideas into detailed product concepts with market analysis and feasibility studies.',
+      title: tx.concept_design,
+      description: tx.transform_your_ideas_into_detailed,
       icon: '💡'
     },
     {
-      title: 'Industrial Design',
-      description: 'Create attractive and functional product designs that stand out in the market.',
+      title: tx.industrial_design,
+      description: tx.create_attractive_and_functional_product,
       icon: '🎨'
     },
     {
-      title: 'Prototyping',
-      description: 'Rapid prototyping using 3D printing, CNC machining, and other advanced techniques.',
+      title: tx.prototyping,
+      description: tx.rapid_prototyping_using_3d_printing,
       icon: '🔧'
     },
     {
-      title: 'Engineering Analysis',
-      description: 'FEA, thermal analysis, and simulation to optimize product performance.',
+      title: tx.engineering_analysis,
+      description: tx.fea_thermal_analysis_and_simulation,
       icon: '📊'
     },
     {
-      title: 'Manufacturing Support',
-      description: 'DFM analysis, tooling design, and production process optimization.',
+      title: tx.manufacturing_support,
+      description: tx.dfm_analysis_tooling_design_and,
       icon: '🏭'
     },
     {
-      title: 'Certification Assistance',
-      description: 'Help with FCC, CE, UL, and other regulatory certifications.',
+      title: tx.certification_assistance,
+      description: tx.help_with_fcc_ce_ul,
       icon: '✅'
     }
   ];
 
   const technologies = [
-    { name: 'SolidWorks', icon: '/images/icons/SolidWorks.png', description: '3D CAD software' },
-    { name: 'KiCAD', icon: '/images/icons/kicad1.png', description: 'PCB design tool' },
-    { name: 'DipTrace', icon: '/images/icons/Diptrace.jpeg', description: 'PCB layout software' },
-    { name: 'ESP32', icon: '/images/icons/esp32_1.jpeg', description: 'IoT microcontroller' },
-    { name: 'Arduino', icon: '/images/icons/ardunio1.png', description: 'Development platform' },
-    { name: 'STM32', icon: '/images/icons/stm32.jpeg', description: 'ARM Cortex MCU' },
-    { name: 'Raspberry Pi', icon: '/images/icons/raspberrypi.jpeg', description: 'Single-board computer' },
-    { name: 'FreeRTOS', icon: '/images/icons/freeRtos.jpeg', description: 'Real-time OS' }
+    { name: tx.solidworks, icon: '/images/icons/SolidWorks.png', description: tx.t_3d_cad_software },
+    { name: tx.kicad, icon: '/images/icons/kicad1.png', description: tx.pcb_design_tool },
+    { name: tx.diptrace, icon: '/images/icons/Diptrace.jpeg', description: tx.pcb_layout_software },
+    { name: 'ESP32', icon: '/images/icons/esp32_1.jpeg', description: tx.iot_microcontroller },
+    { name: tx.arduino, icon: '/images/icons/ardunio1.png', description: tx.development_platform },
+    { name: 'STM32', icon: '/images/icons/stm32.jpeg', description: tx.arm_cortex_mcu },
+    { name: tx.raspberry_pi, icon: '/images/icons/raspberrypi.jpeg', description: tx.single_board_computer },
+    { name: tx.freertos, icon: '/images/icons/freeRtos.jpeg', description: tx.real_time_os }
   ];
 
   const developmentPhases = [
     {
-      title: 'Discovery & Ideation',
-      description: 'Market research, user needs analysis, and concept generation.',
+      title: tx.discovery_ideation,
+      description: tx.market_research_user_needs_analysis,
       icon: '🔍',
       duration: '2-4 weeks',
-      deliverables: ['Market Analysis', 'User Personas', 'Concept Sketches', 'Feasibility Study'],
+      deliverables: [tx.market_analysis, tx.user_personas, tx.concept_sketches, tx.feasibility_study],
       color: 'from-blue-500 to-blue-600'
     },
     {
-      title: 'Design & Engineering',
-      description: 'Detailed product design, CAD modeling, and engineering specifications.',
+      title: tx.design_engineering,
+      description: tx.detailed_product_design_cad_modeling,
       icon: '📐',
       duration: '4-8 weeks',
-      deliverables: ['3D CAD Models', 'Technical Drawings', 'BOM', 'Specifications'],
+      deliverables: [tx.t_3d_cad_models, tx.technical_drawings, 'BOM', tx.specifications],
       color: 'from-purple-500 to-purple-600'
     },
     {
-      title: 'Prototyping & Testing',
-      description: 'Building functional prototypes and conducting comprehensive testing.',
+      title: tx.prototyping_testing,
+      description: tx.building_functional_prototypes_and_condu,
       icon: '🔬',
       duration: '4-6 weeks',
-      deliverables: ['Working Prototypes', 'Test Reports', 'Design Iterations', 'Validation'],
+      deliverables: [tx.working_prototypes, tx.test_reports, tx.design_iterations, tx.validation],
       color: 'from-orange-500 to-orange-600'
     },
     {
-      title: 'Manufacturing Preparation',
-      description: 'Production planning, tooling design, and manufacturing documentation.',
+      title: tx.manufacturing_preparation,
+      description: tx.production_planning_tooling_design_and,
       icon: '🏭',
       duration: '3-6 weeks',
-      deliverables: ['Manufacturing Files', 'Assembly Instructions', 'Quality Plans', 'Tooling Design'],
+      deliverables: [tx.manufacturing_files, tx.assembly_instructions, tx.quality_plans, tx.tooling_design],
       color: 'from-green-500 to-green-600'
     }
   ];
@@ -97,36 +98,36 @@ export default function ProductDevelopmentPage() {
   const processSteps = [
     {
       step: '01',
-      title: 'Discovery',
-      description: 'Understanding your product vision, market requirements, and user needs.',
+      title: tx.discovery,
+      description: tx.understanding_your_product_vision_market,
       duration: '1-2 weeks',
       icon: '🎯'
     },
     {
       step: '02',
-      title: 'Concept Design',
-      description: 'Creating multiple design concepts with sketches and 3D visualizations.',
+      title: tx.concept_design_2,
+      description: tx.creating_multiple_design_concepts_with,
       duration: '2-3 weeks',
       icon: '🎨'
     },
     {
       step: '03',
-      title: 'Detailed Design',
-      description: 'Finalizing design with complete CAD models and engineering specifications.',
+      title: tx.detailed_design,
+      description: tx.finalizing_design_with_complete_cad,
       duration: '4-6 weeks',
       icon: '📐'
     },
     {
       step: '04',
-      title: 'Prototyping',
-      description: 'Building and testing functional prototypes with iterative improvements.',
+      title: tx.prototyping_2,
+      description: tx.building_and_testing_functional_prototyp,
       duration: '4-8 weeks',
       icon: '🔧'
     },
     {
       step: '05',
-      title: 'Production',
-      description: 'Manufacturing setup, tooling, and pilot production runs.',
+      title: tx.production,
+      description: tx.manufacturing_setup_tooling_and_pilot,
       duration: '6-12 weeks',
       icon: '🏭'
     }
@@ -134,28 +135,28 @@ export default function ProductDevelopmentPage() {
 
   const productTypes = [
     { 
-      title: 'Consumer Electronics', 
+      title: tx.consumer_electronics, 
       icon: '📱', 
-      description: 'Smart devices, wearables, and connected consumer products.',
-      examples: ['Smart Home Devices', 'Wearable Tech', 'Audio Equipment', 'Mobile Accessories']
+      description: tx.smart_devices_wearables_and_connected,
+      examples: [tx.smart_home_devices, tx.wearable_tech, tx.audio_equipment, tx.mobile_accessories]
     },
     { 
-      title: 'Industrial Equipment', 
+      title: tx.industrial_equipment, 
       icon: '🏭', 
-      description: 'Industrial automation, monitoring, and control systems.',
-      examples: ['Sensor Systems', 'Control Panels', 'Monitoring Devices', 'Automation Tools']
+      description: tx.industrial_automation_monitoring_and_con,
+      examples: [tx.sensor_systems, tx.control_panels, tx.monitoring_devices, tx.automation_tools]
     },
     { 
-      title: 'Medical Devices', 
+      title: tx.medical_devices, 
       icon: '🏥', 
-      description: 'Healthcare and medical product development with regulatory compliance.',
-      examples: ['Patient Monitors', 'Diagnostic Tools', 'Therapy Devices', 'Lab Equipment']
+      description: tx.healthcare_and_medical_product_developme,
+      examples: [tx.patient_monitors, tx.diagnostic_tools, tx.therapy_devices, tx.lab_equipment]
     },
     { 
-      title: 'IoT Products', 
+      title: tx.iot_products, 
       icon: '🌐', 
-      description: 'Internet-connected devices and smart systems.',
-      examples: ['Smart Sensors', 'Connected Appliances', 'Tracking Devices', 'Environmental Monitors']
+      description: tx.internet_connected_devices_and_smart,
+      examples: [tx.smart_sensors, tx.connected_appliances, tx.tracking_devices, tx.environmental_monitors]
     }
   ];
 
@@ -163,16 +164,16 @@ export default function ProductDevelopmentPage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="Product Development"
+        eyebrow={tx.product_development}
         eyebrowIcon={Package}
-        title="End-to-End Product Development &"
-        highlight="Engineering Services"
-        description="From concept to manufacturing, we provide complete product development services. Transform your ideas into market-ready products with our expert engineering and design team."
+        title={tx.end_to_end_product_development}
+        highlight={tx.engineering_services}
+        description={tx.from_concept_to_manufacturing_we}
         highlights={["Concept Design", "Industrial Design", "Prototyping", "Engineering Analysis"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "95%", label: "Success Rate" },
-          { value: "8-16", label: "Week Delivery" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "95%", label: tx.success_rate },
+          { value: "8-16", label: tx.week_delivery },
         ]}
       />
 
@@ -180,9 +181,7 @@ export default function ProductDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Product Development
-              <span className="block text-orange-600 mt-2">Services</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.product_development}<span className="block text-orange-600 mt-2">{tx.services}</span>
             </h2>
           </div>
 
@@ -210,9 +209,7 @@ export default function ProductDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Development
-              <span className="block text-orange-600 mt-2">Phases</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.development}<span className="block text-orange-600 mt-2">{tx.phases}</span>
             </h2>
           </div>
 
@@ -229,11 +226,10 @@ export default function ProductDevelopmentPage() {
                   <p className="text-slate-600 leading-relaxed mb-4">
                     {phase.description}
                   </p>
-                  <div className="text-sm font-semibold text-orange-600 mb-4">
-                    Timeline: {phase.duration}
+                  <div className="text-sm font-semibold text-orange-600 mb-4">{tx.timeline}{" "}{phase.duration}
                   </div>
                   <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-slate-700">Key Deliverables:</h4>
+                    <h4 className="text-sm font-semibold text-slate-700">{tx.key_deliverables}</h4>
                     <div className="grid grid-cols-2 gap-2">
                       {phase.deliverables.map((deliverable, idx) => (
                         <div key={idx} className="flex items-center gap-2">
@@ -254,9 +250,7 @@ export default function ProductDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Product
-              <span className="block text-orange-600 mt-2">Categories</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.product}<span className="block text-orange-600 mt-2">{tx.categories}</span>
             </h2>
           </div>
 
@@ -290,9 +284,7 @@ export default function ProductDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Development
-              <span className="block text-orange-600 mt-2">Tools</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.development}<span className="block text-orange-600 mt-2">{tx.tools}</span>
             </h2>
           </div>
 
@@ -324,9 +316,7 @@ export default function ProductDevelopmentPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Development
-              <span className="block text-orange-600 mt-2">Process</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.development}<span className="block text-orange-600 mt-2">{tx.process}</span>
             </h2>
           </div>
 
@@ -359,21 +349,13 @@ export default function ProductDevelopmentPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-orange-600 via-amber-700 to-red-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Develop Your
-            <span className="block text-orange-100 mt-2">Next Product?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_develop_your}<span className="block text-orange-100 mt-2">{tx.next_product}</span>
           </h2>
-          <p className="text-xl text-orange-100 mb-8 leading-relaxed font-light">
-            Let&apos;s discuss your product idea and create innovative solutions that exceed market expectations.
-          </p>
+          <p className="text-xl text-orange-100 mb-8 leading-relaxed font-light">{tx.let_s_discuss_your_product}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-orange-600 px-8 py-4 rounded-xl hover:bg-orange-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-                Start Your Project
-              </Link>
-            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-orange-600 transition-all duration-200 font-semibold text-lg">
-                Schedule Consultation
-              </Link>
+            <Link href="/contact" className="bg-white text-orange-600 px-8 py-4 rounded-xl hover:bg-orange-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_your_project}</Link>
+            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-orange-600 transition-all duration-200 font-semibold text-lg">{tx.schedule_consultation}</Link>
           </div>
         </div>
       </section>

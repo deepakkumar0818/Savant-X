@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/components/zoho/ZohoStrategyFormModal.json';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { MessageCircle, X } from 'lucide-react';
@@ -171,7 +172,7 @@ export default function ZohoStrategyFormModal({
             type="button"
             className="fixed inset-0 z-50 bg-slate-900/20 backdrop-blur-[2px]"
             onClick={onClose}
-            aria-label="Close form"
+            aria-label={tx.close_form}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -222,22 +223,18 @@ export default function ZohoStrategyFormModal({
                     <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-white/15 ring-1 ring-white/20">
                       <MessageCircle className="h-4 w-4" />
                     </span>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/75">
-                      SavantX
-                    </p>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/75">{tx.savantx}</p>
                   </div>
                   <h2 id="zoho-strategy-modal-title" className="text-[15px] font-bold leading-snug">
                     {title}
                   </h2>
-                  <p className="mt-1 text-[11px] leading-relaxed text-white/80">
-                    Official Zoho Development Partner · Free 30-min strategy call
-                  </p>
+                  <p className="mt-1 text-[11px] leading-relaxed text-white/80">{tx.official_zoho_development_partner_free}</p>
                 </div>
                 <motion.button
                   type="button"
                   onClick={onClose}
                   className="shrink-0 rounded-lg bg-white/10 p-1.5 text-white/90 ring-1 ring-white/15 transition-colors hover:bg-white/20"
-                  aria-label="Close"
+                  aria-label={tx.close}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

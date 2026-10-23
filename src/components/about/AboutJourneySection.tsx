@@ -1,3 +1,4 @@
+import tx from '@/content/text/components/about/AboutJourneySection.json';
 import Image from 'next/image';
 import { BarChart3, Code2, Cpu, Database, Gem, Handshake, Layers, Rocket, Trophy, Users, type LucideIcon } from 'lucide-react';
 import { COMPANY_METRICS } from '@/lib/company';
@@ -5,32 +6,32 @@ import { COMPANY_METRICS } from '@/lib/company';
 const MILESTONES: { year: string; title: string; description: string; icon: LucideIcon }[] = [
   {
     year: '2019',
-    title: 'Company Foundation',
-    description: 'Established SavantX with a mission to deliver technology solutions that create real business value.',
+    title: tx.company_foundation,
+    description: tx.established_savantx_with_a_mission,
     icon: Rocket,
   },
   {
     year: '2020',
-    title: 'First Major Implementations',
-    description: 'Delivered our first Zoho and ERP projects, helping businesses streamline operations and improve efficiency.',
+    title: tx.first_major_implementations,
+    description: tx.delivered_our_first_zoho_and,
     icon: BarChart3,
   },
   {
     year: '2021',
-    title: 'Team Expansion',
-    description: 'Grew our engineering team and expanded into custom software development and system integrations.',
+    title: tx.team_expansion,
+    description: tx.grew_our_engineering_team_and,
     icon: Users,
   },
   {
     year: '2022',
-    title: 'Advanced Capabilities',
-    description: 'Introduced AI and automation solutions, enabling smarter workflows and better decision-making for clients.',
+    title: tx.advanced_capabilities,
+    description: tx.introduced_ai_and_automation_solutions,
     icon: Cpu,
   },
   {
     year: '2024',
-    title: 'Stronger Partnerships',
-    description: 'Built long-term relationships with clients across industries and expanded our presence through strategic collaborations.',
+    title: tx.stronger_partnerships,
+    description: tx.built_long_term_relationships_with,
     icon: Trophy,
   },
 ];
@@ -38,13 +39,13 @@ const MILESTONES: { year: string; title: string; description: string; icon: Luci
 const STATS: { icon: LucideIcon; value: string; label: string }[] = [
   { icon: Layers, value: `${COMPANY_METRICS[1].value}${COMPANY_METRICS[1].suffix}`, label: COMPANY_METRICS[1].label },
   { icon: Database, value: `${COMPANY_METRICS[0].value}${COMPANY_METRICS[0].suffix}`, label: COMPANY_METRICS[0].label },
-  { icon: Code2, value: '25+', label: 'Technologies' },
+  { icon: Code2, value: '25+', label: tx.technologies },
 ];
 
 const PRINCIPLES: { icon: LucideIcon; title: string; body: string }[] = [
-  { icon: Gem, title: 'Engineering Excellence', body: 'Thoughtful, reliable and scalable technical solutions.' },
-  { icon: BarChart3, title: 'Business-First Thinking', body: 'Technology aligned with real operational needs.' },
-  { icon: Handshake, title: 'Long-Term Partnership', body: 'Support that continues beyond launch.' },
+  { icon: Gem, title: tx.engineering_excellence, body: tx.thoughtful_reliable_and_scalable_technic },
+  { icon: BarChart3, title: tx.business_first_thinking, body: tx.technology_aligned_with_real_operational },
+  { icon: Handshake, title: tx.long_term_partnership, body: tx.support_that_continues_beyond_launch },
 ];
 
 const panel = 'rounded-2xl bg-white shadow-[0_20px_45px_-25px_rgba(30,58,138,0.35)] ring-1 ring-slate-200/80';
@@ -57,14 +58,11 @@ export default function AboutJourneySection() {
     >
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-600">Our journey</p>
-          <h2 id="journey-heading" className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
-            From a small team to a technology partner{' '}
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">that helps businesses transform.</span>
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-600">{tx.our_journey}</p>
+          <h2 id="journey-heading" className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-tight">{tx.from_a_small_team_to}{' '}
+            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.that_helps_businesses_transform}</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-600">
-            A journey driven by innovation, people and a commitment to create meaningful impact for our clients.
-          </p>
+          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-600">{tx.a_journey_driven_by_innovation}</p>
         </div>
 
         <div className="mt-14 grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-12">
@@ -76,7 +74,7 @@ export default function AboutJourneySection() {
             <div className="relative overflow-hidden rounded-[1.75rem] shadow-[0_40px_80px_-35px_rgba(30,58,138,0.5)] ring-1 ring-slate-900/5">
               <Image
                 src="/images/about/savantx-team-collaboration.jpg"
-                alt="SavantX team collaborating on a project"
+                alt={tx.savantx_team_collaborating_on_a}
                 width={1448}
                 height={1086}
                 sizes="(min-width: 1024px) 45vw, 90vw"
@@ -89,8 +87,8 @@ export default function AboutJourneySection() {
                 <BarChart3 className="h-5 w-5" aria-hidden />
               </span>
               <span>
-                <span className="block text-sm font-semibold text-slate-900">Collaborative problem solving</span>
-                <span className="block text-xs text-slate-500">Turning ideas into real solutions</span>
+                <span className="block text-sm font-semibold text-slate-900">{tx.collaborative_problem_solving}</span>
+                <span className="block text-xs text-slate-500">{tx.turning_ideas_into_real_solutions}</span>
               </span>
             </div>
 

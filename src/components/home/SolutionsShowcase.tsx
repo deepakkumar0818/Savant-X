@@ -1,3 +1,4 @@
+import tx from '@/content/text/components/home/SolutionsShowcase.json';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -24,28 +25,28 @@ import {
 type Item = { icon: LucideIcon; tile: string; title: string; body: string; href?: string };
 
 const SOFTWARE: Item[] = [
-  { icon: Code2, tile: 'from-blue-500 to-blue-600', title: 'Web & Mobile Development', body: 'Scalable web apps and mobile apps for Android and iOS.', href: '/expertise/web-apps' },
-  { icon: Share2, tile: 'from-violet-500 to-purple-600', title: 'Zoho Integrations', body: 'Zoho CRM, Creator and Books setup, customisation and integrations.', href: '/expertise/zoho-integrations' },
-  { icon: Cloud, tile: 'from-rose-500 to-pink-600', title: 'Cloud Applications', body: 'Cloud-based platforms for better scalability.' },
-  { icon: Building2, tile: 'from-orange-400 to-amber-500', title: 'Enterprise Solutions', body: 'ERP, CRM and business software tailored to your industry.', href: '/products' },
-  { icon: ShoppingCart, tile: 'from-emerald-500 to-green-600', title: 'E-commerce Solutions', body: 'Feature-rich online stores that drive growth.', href: '/expertise/ecommerce' },
-  { icon: Settings, tile: 'from-indigo-500 to-blue-600', title: 'Custom Software', body: 'Tailored solutions for your unique challenges.', href: '/expertise/product-development' },
+  { icon: Code2, tile: 'from-blue-500 to-blue-600', title: tx.web_mobile_development, body: tx.scalable_web_apps_and_mobile, href: '/expertise/web-apps' },
+  { icon: Share2, tile: 'from-violet-500 to-purple-600', title: tx.zoho_integrations, body: tx.zoho_crm_creator_and_books, href: '/expertise/zoho-integrations' },
+  { icon: Cloud, tile: 'from-rose-500 to-pink-600', title: tx.cloud_applications, body: tx.cloud_based_platforms_for_better },
+  { icon: Building2, tile: 'from-orange-400 to-amber-500', title: tx.enterprise_solutions, body: tx.erp_crm_and_business_software, href: '/products' },
+  { icon: ShoppingCart, tile: 'from-emerald-500 to-green-600', title: tx.e_commerce_solutions, body: tx.feature_rich_online_stores_that, href: '/expertise/ecommerce' },
+  { icon: Settings, tile: 'from-indigo-500 to-blue-600', title: tx.custom_software, body: tx.tailored_solutions_for_your_unique, href: '/expertise/product-development' },
 ];
 
 const HARDWARE: Item[] = [
-  { icon: Cpu, tile: 'from-rose-500 to-pink-600', title: 'IoT & Embedded Systems', body: 'Smart, connected devices for real-time solutions.', href: '/expertise/iot-embedded-systems' },
-  { icon: Radio, tile: 'from-emerald-500 to-green-600', title: 'Sensor Integration', body: 'Accurate data collection for varied environments.' },
-  { icon: Cog, tile: 'from-orange-400 to-amber-500', title: 'PCB Design & Prototyping', body: 'Custom PCB design and hardware prototyping.', href: '/expertise/pcb-design' },
-  { icon: Printer, tile: 'from-violet-500 to-purple-600', title: '3D Printing & Designing', body: '3D design, modelling and printed prototypes.', href: '/expertise/3d-designing' },
-  { icon: Box, tile: 'from-sky-500 to-blue-600', title: 'Firmware Development', body: 'Optimised and reliable firmware.', href: '/expertise/firmware-development' },
-  { icon: Settings, tile: 'from-pink-500 to-rose-600', title: 'Custom Hardware', body: 'Tailored hardware for special requirements.', href: '/expertise/hardware-electronics' },
+  { icon: Cpu, tile: 'from-rose-500 to-pink-600', title: tx.iot_embedded_systems, body: tx.smart_connected_devices_for_real, href: '/expertise/iot-embedded-systems' },
+  { icon: Radio, tile: 'from-emerald-500 to-green-600', title: tx.sensor_integration, body: tx.accurate_data_collection_for_varied },
+  { icon: Cog, tile: 'from-orange-400 to-amber-500', title: tx.pcb_design_prototyping, body: tx.custom_pcb_design_and_hardware, href: '/expertise/pcb-design' },
+  { icon: Printer, tile: 'from-violet-500 to-purple-600', title: tx.t_3d_printing_designing, body: tx.t_3d_design_modelling_and_printed, href: '/expertise/3d-designing' },
+  { icon: Box, tile: 'from-sky-500 to-blue-600', title: tx.firmware_development, body: tx.optimised_and_reliable_firmware, href: '/expertise/firmware-development' },
+  { icon: Settings, tile: 'from-pink-500 to-rose-600', title: tx.custom_hardware, body: tx.tailored_hardware_for_special_requiremen, href: '/expertise/hardware-electronics' },
 ];
 
 const INTEGRATION: Item[] = [
-  { icon: Plug, tile: 'bg-violet-50 text-violet-600', title: 'Third-party Integrations', body: 'Connect your existing tools and systems.' },
-  { icon: Workflow, tile: 'bg-orange-50 text-orange-500', title: 'Business Process Automation', body: 'Automate workflows for better efficiency.' },
-  { icon: BarChart3, tile: 'bg-emerald-50 text-emerald-600', title: 'Consulting & Implementation', body: 'Expert guidance from planning to deployment.' },
-  { icon: Headphones, tile: 'bg-sky-50 text-sky-600', title: 'Ongoing Support', body: 'Reliable support to keep operations smooth.' },
+  { icon: Plug, tile: 'bg-violet-50 text-violet-600', title: tx.third_party_integrations, body: tx.connect_your_existing_tools_and },
+  { icon: Workflow, tile: 'bg-orange-50 text-orange-500', title: tx.business_process_automation, body: tx.automate_workflows_for_better_efficiency },
+  { icon: BarChart3, tile: 'bg-emerald-50 text-emerald-600', title: tx.consulting_implementation, body: tx.expert_guidance_from_planning_to },
+  { icon: Headphones, tile: 'bg-sky-50 text-sky-600', title: tx.ongoing_support, body: tx.reliable_support_to_keep_operations },
 ];
 
 function ServiceTile({ item, hover }: { item: Item; hover: string }) {
@@ -132,22 +133,15 @@ export default function SolutionsShowcase() {
         <article className="relative flex flex-col overflow-hidden rounded-[2rem] bg-[linear-gradient(160deg,#f5f3ff_0%,#eef2ff_45%,#f8fafc_100%)] p-6 ring-1 ring-indigo-100 shadow-[0_30px_70px_-45px_rgba(79,70,229,0.5)] sm:p-8">
           <div className="flex items-start justify-between gap-4">
             <div className="relative z-10 max-w-sm sm:max-w-[58%] xl:max-w-[60%]">
-              <p className="inline-flex rounded-full border border-violet-300 bg-white/70 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.14em] text-violet-700">
-                Software solutions
-              </p>
-              <h3 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-900">
-                Build smarter{' '}
-                <span className="block bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">digital experiences</span>
+              <p className="inline-flex rounded-full border border-violet-300 bg-white/70 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.14em] text-violet-700">{tx.software_solutions}</p>
+              <h3 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-900">{tx.build_smarter}{' '}
+                <span className="block bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">{tx.digital_experiences}</span>
               </h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-slate-600">
-                Modern web and mobile applications, business platforms and enterprise software tailored to your goals.
-              </p>
+              <p className="mt-3 text-[15px] leading-relaxed text-slate-600">{tx.modern_web_and_mobile_applications}</p>
               <Link
                 href="/expertise/what-we-do"
                 className="mt-5 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 transition hover:brightness-110"
-              >
-                Explore software solutions
-                <ArrowRight className="h-4 w-4" aria-hidden />
+              >{tx.explore_software_solutions}<ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
             </div>
             <div className="hidden sm:block">
@@ -167,25 +161,17 @@ export default function SolutionsShowcase() {
         <article className="relative flex flex-col overflow-hidden rounded-[2rem] bg-[linear-gradient(160deg,#fff7ed_0%,#fff1f2_50%,#fffbf5_100%)] p-6 ring-1 ring-orange-200/70 shadow-[0_30px_70px_-45px_rgba(234,88,12,0.45)] sm:p-8">
           <div className="flex items-start justify-between gap-4">
             <div className="relative z-10 max-w-sm sm:max-w-[58%] xl:max-w-[60%]">
-              <p className="inline-flex rounded-full border border-orange-300 bg-white/70 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.14em] text-orange-700">
-                Hardware solutions
-              </p>
-              <h3 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-900">
-                Innovative hardware{' '}
-                <span className="block">
-                  for{' '}
-                  <span className="bg-gradient-to-r from-orange-500 to-rose-500 bg-clip-text text-transparent">real-world impact</span>
+              <p className="inline-flex rounded-full border border-orange-300 bg-white/70 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.14em] text-orange-700">{tx.hardware_solutions}</p>
+              <h3 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-slate-900">{tx.innovative_hardware}{' '}
+                <span className="block">{tx.for}{' '}
+                  <span className="bg-gradient-to-r from-orange-500 to-rose-500 bg-clip-text text-transparent">{tx.real_world_impact}</span>
                 </span>
               </h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-slate-600">
-                From IoT devices to embedded systems, we design and develop reliable hardware solutions for diverse industries.
-              </p>
+              <p className="mt-3 text-[15px] leading-relaxed text-slate-600">{tx.from_iot_devices_to_embedded}</p>
               <Link
                 href="/expertise/hardware-electronics"
                 className="mt-5 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:brightness-110"
-              >
-                Explore hardware solutions
-                <ArrowRight className="h-4 w-4" aria-hidden />
+              >{tx.explore_hardware_solutions}<ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
             </div>
             <div className="hidden sm:block">
@@ -205,21 +191,14 @@ export default function SolutionsShowcase() {
       {/* Integration & consulting */}
       <article className="grid items-center gap-8 overflow-hidden rounded-[2rem] bg-[linear-gradient(120deg,#f0fdf4_0%,#f0f9ff_50%,#f5f3ff_100%)] p-6 ring-1 ring-emerald-100 shadow-[0_30px_70px_-45px_rgba(16,185,129,0.45)] sm:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-6">
         <div>
-          <p className="inline-flex rounded-full border border-emerald-300 bg-white/70 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.14em] text-emerald-700">
-            Integration &amp; consulting
-          </p>
-          <h3 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Connect. <span className="text-blue-600">Automate.</span> <span className="text-emerald-600">Grow.</span>
+          <p className="inline-flex rounded-full border border-emerald-300 bg-white/70 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.14em] text-emerald-700">{tx.integration_consulting}</p>
+          <h3 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{tx.connect}{" "}<span className="text-blue-600">{tx.automate}</span> <span className="text-emerald-600">{tx.grow}</span>
           </h3>
-          <p className="mt-3 text-[15px] leading-relaxed text-slate-600">
-            Seamless integration, expert consulting and automation to streamline your business operations.
-          </p>
+          <p className="mt-3 text-[15px] leading-relaxed text-slate-600">{tx.seamless_integration_expert_consulting_a}</p>
           <Link
             href="/expertise/zoho-integrations"
             className="mt-5 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/30 transition hover:brightness-110"
-          >
-            Explore integration &amp; consulting
-            <ArrowRight className="h-4 w-4" aria-hidden />
+          >{tx.explore_integration_consulting}<ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
         </div>
 

@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/app/expertise/web-apps/page.json';
 import { useState, useEffect } from 'react';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
@@ -22,90 +23,90 @@ export default function WebAppsPage() {
   const webAppTypes = [
     {
       id: 'saas',
-      title: 'SaaS Platforms',
+      title: tx.saas_platforms,
       icon: '☁️',
-      description: 'Complete Software-as-a-Service solutions with user management, billing, and analytics.',
-      features: ['User Authentication', 'Subscription Management', 'Payment Processing', 'Analytics Dashboard', 'API Integration', 'Multi-tenancy'],
-      pricing: 'Starting at $15,000',
+      description: tx.complete_software_as_a_service,
+      features: [tx.user_authentication, tx.subscription_management, tx.payment_processing, tx.analytics_dashboard, tx.api_integration, tx.multi_tenancy],
+      pricing: tx.starting_at_15_000,
       timeline: '8-12 weeks',
       gradient: 'from-blue-500 to-cyan-500'
     },
     {
       id: 'dashboard',
-      title: 'Admin Dashboards',
+      title: tx.admin_dashboards,
       icon: '📊',
-      description: 'Comprehensive admin panels for managing business operations and data.',
-      features: ['Data Visualization', 'User Management', 'Content Management', 'Report Generation', 'Real-time Updates', 'Role-based Access'],
-      pricing: 'Starting at $8,000',
+      description: tx.comprehensive_admin_panels_for_managing,
+      features: [tx.data_visualization, tx.user_management, tx.content_management, tx.report_generation, tx.real_time_updates, tx.role_based_access],
+      pricing: tx.starting_at_8_000,
       timeline: '4-6 weeks',
       gradient: 'from-purple-500 to-pink-500'
     },
     {
       id: 'crm',
-      title: 'CRM Systems',
+      title: tx.crm_systems,
       icon: '👥',
-      description: 'Customer relationship management systems to streamline sales and support.',
-      features: ['Lead Management', 'Contact Database', 'Sales Pipeline', 'Email Integration', 'Task Management', 'Reporting Tools'],
-      pricing: 'Starting at $12,000',
+      description: tx.customer_relationship_management_systems,
+      features: [tx.lead_management, tx.contact_database, tx.sales_pipeline, tx.email_integration, tx.task_management, tx.reporting_tools],
+      pricing: tx.starting_at_12_000,
       timeline: '6-8 weeks',
       gradient: 'from-green-500 to-emerald-500'
     },
     {
       id: 'ecommerce',
-      title: 'E-commerce Platforms',
+      title: tx.e_commerce_platforms,
       icon: '🛒',
-      description: 'Full-featured online stores with inventory management and payment processing.',
-      features: ['Product Catalog', 'Shopping Cart', 'Payment Gateway', 'Order Management', 'Inventory Tracking', 'Customer Portal'],
-      pricing: 'Starting at $10,000',
+      description: tx.full_featured_online_stores_with,
+      features: [tx.product_catalog, tx.shopping_cart, tx.payment_gateway, tx.order_management, tx.inventory_tracking, tx.customer_portal],
+      pricing: tx.starting_at_10_000,
       timeline: '6-10 weeks',
       gradient: 'from-orange-500 to-red-500'
     }
   ];
 
   const technologies = [
-    { name: 'React', icon: '⚛️', description: 'Modern UI library', color: 'blue' },
-    { name: 'Next.js', icon: '⚡', description: 'Full-stack framework', color: 'black' },
-    { name: 'Node.js', icon: '🟢', description: 'Backend runtime', color: 'green' },
-    { name: 'TypeScript', icon: '🔷', description: 'Type-safe development', color: 'blue' },
-    { name: 'PostgreSQL', icon: '🐘', description: 'Reliable database', color: 'blue' },
-    { name: 'Redis', icon: '🔴', description: 'Caching solution', color: 'red' },
-    { name: 'AWS', icon: '☁️', description: 'Cloud infrastructure', color: 'orange' },
-    { name: 'Docker', icon: '🐳', description: 'Containerization', color: 'blue' }
+    { name: tx.react, icon: '⚛️', description: tx.modern_ui_library, color: 'blue' },
+    { name: tx.next_js, icon: '⚡', description: tx.full_stack_framework, color: 'black' },
+    { name: tx.node_js, icon: '🟢', description: tx.backend_runtime, color: 'green' },
+    { name: tx.typescript, icon: '🔷', description: tx.type_safe_development, color: 'blue' },
+    { name: tx.postgresql, icon: '🐘', description: tx.reliable_database, color: 'blue' },
+    { name: tx.redis, icon: '🔴', description: tx.caching_solution, color: 'red' },
+    { name: 'AWS', icon: '☁️', description: tx.cloud_infrastructure, color: 'orange' },
+    { name: tx.docker, icon: '🐳', description: tx.containerization, color: 'blue' }
   ];
 
   const processSteps = [
     {
       step: '01',
-      title: 'Discovery & Analysis',
-      description: 'Deep dive into your business requirements and technical specifications.',
+      title: tx.discovery_analysis,
+      description: tx.deep_dive_into_your_business,
       duration: '1-2 weeks',
       icon: '🔍'
     },
     {
       step: '02',
-      title: 'Architecture Design',
-      description: 'Creating scalable system architecture and database design.',
+      title: tx.architecture_design,
+      description: tx.creating_scalable_system_architecture_an,
       duration: '1-2 weeks',
       icon: '🏗️'
     },
     {
       step: '03',
-      title: 'UI/UX Design',
-      description: 'Designing intuitive user interfaces and user experience flows.',
+      title: tx.ui_ux_design,
+      description: tx.designing_intuitive_user_interfaces_and,
       duration: '2-3 weeks',
       icon: '🎨'
     },
     {
       step: '04',
-      title: 'Development',
-      description: 'Building the application with modern technologies and best practices.',
+      title: tx.development,
+      description: tx.building_the_application_with_modern,
       duration: '4-8 weeks',
       icon: '💻'
     },
     {
       step: '05',
-      title: 'Testing & Deployment',
-      description: 'Comprehensive testing and deployment to production environment.',
+      title: tx.testing_deployment,
+      description: tx.comprehensive_testing_and_deployment_to,
       duration: '1-2 weeks',
       icon: '🚀'
     }
@@ -113,33 +114,33 @@ export default function WebAppsPage() {
 
   const features = [
     {
-      title: 'Scalable Architecture',
-      description: 'Built to handle growth from day one with cloud-native architecture.',
+      title: tx.scalable_architecture,
+      description: tx.built_to_handle_growth_from,
       icon: '📈'
     },
     {
-      title: 'Real-time Updates',
-      description: 'Live data synchronization and real-time notifications.',
+      title: tx.real_time_updates_2,
+      description: tx.live_data_synchronization_and_real,
       icon: '⚡'
     },
     {
-      title: 'Security First',
-      description: 'Enterprise-grade security with encryption and authentication.',
+      title: tx.security_first,
+      description: tx.enterprise_grade_security_with_encryptio,
       icon: '🔒'
     },
     {
-      title: 'Mobile Responsive',
-      description: 'Perfect experience across all devices and screen sizes.',
+      title: tx.mobile_responsive,
+      description: tx.perfect_experience_across_all_devices,
       icon: '📱'
     },
     {
-      title: 'API Integration',
-      description: 'Seamless integration with third-party services and APIs.',
+      title: tx.api_integration_2,
+      description: tx.seamless_integration_with_third_party,
       icon: '🔌'
     },
     {
-      title: 'Analytics & Insights',
-      description: 'Comprehensive analytics and business intelligence features.',
+      title: tx.analytics_insights,
+      description: tx.comprehensive_analytics_and_business_int,
       icon: '📊'
     }
   ];
@@ -148,11 +149,11 @@ export default function WebAppsPage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="Web Application Development"
+        eyebrow={tx.web_application_development}
         eyebrowIcon={AppWindow}
-        title="Custom Web"
-        highlight="Applications"
-        description="We build powerful, scalable web applications that streamline your business operations, enhance productivity, and drive growth through innovative technology solutions."
+        title={tx.custom_web}
+        highlight={tx.applications}
+        description={tx.we_build_powerful_scalable_web}
         highlights={["SaaS Platforms", "Admin Dashboards", "CRM Systems", "E-commerce Platforms"]}
       />
 
@@ -161,16 +162,10 @@ export default function WebAppsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Solutions
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Web Application
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Types</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_solutions}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.web_application}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.types}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              From SaaS platforms to custom business applications, we deliver solutions that transform your operations.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.from_saas_platforms_to_custom}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -212,11 +207,11 @@ export default function WebAppsPage() {
                   <div className="flex items-center justify-between pt-6 border-t border-slate-200">
                     <div>
                       <div className="text-lg font-bold text-blue-600 mb-1">{app.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
                     </div>
                     <div className="text-right">
                       <div className="text-lg font-bold text-green-600 mb-1">{app.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.timeline}</div>
                     </div>
                   </div>
                 </div>
@@ -231,16 +226,10 @@ export default function WebAppsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Technology Stack
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Modern
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Technologies</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.technology_stack}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.modern}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.technologies}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We use cutting-edge technologies to build robust, scalable, and maintainable web applications.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_use_cutting_edge_technologies}</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
@@ -270,12 +259,8 @@ export default function WebAppsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Key Features
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Why Choose Our
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Web Applications</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.key_features}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.why_choose_our}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.web_applications}</span>
             </h2>
           </div>
 
@@ -310,16 +295,10 @@ export default function WebAppsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              How We Build
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Web Applications</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.how_we_build}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.web_applications}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our proven 5-step process ensures your web application is delivered on time and exceeds expectations.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_proven_5_step_process}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -357,24 +336,14 @@ export default function WebAppsPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Build Your
-            <span className="block text-blue-100 mt-2">Custom Web App?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_build_your}<span className="block text-blue-100 mt-2">{tx.custom_web_app}</span>
           </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">
-            Let&apos;s discuss your requirements and create a powerful web application that transforms your business.
-          </p>
+          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">{tx.let_s_discuss_your_requirements}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Start Your Project
-            </Link>
-            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-                Schedule Demo
-              </Link>
-            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-              View Portfolio
-            </Link>
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_your_project}</Link>
+            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.schedule_demo}</Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.view_portfolio}</Link>
           </div>
         </div>
       </section>

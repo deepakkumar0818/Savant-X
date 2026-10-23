@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/layout.json';
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
@@ -57,9 +58,9 @@ const organizationSchema = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "SavantX Technologies | Software, Zoho CRM & Electronics Engineering",
+  title: tx.savantx_technologies_software_zoho_crm,
   description:
-    "SavantX Technologies builds websites, web and mobile apps, Zoho CRM and ERP solutions, and IoT, embedded and PCB hardware for growing businesses.",
+    tx.savantx_technologies_builds_websites_web,
   applicationName: COMPANY.name,
   openGraph: {
     siteName: COMPANY.name,

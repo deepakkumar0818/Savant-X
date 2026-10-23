@@ -1,40 +1,23 @@
 'use client';
 
+import tx from '@/content/text/components/contact/ContactForm.json';
 import { useId, useState } from 'react';
 import { AlertCircle, ArrowRight, CheckCircle2, Loader2, Lock, MonitorSmartphone, Send } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
 import { fetchWithTimeout } from '@/lib/fetchWithTimeout';
+import forms from '@/content/forms.json';
 import { BUDGETS, campaignParams, EMAIL_PATTERN, MIN_MESSAGE, PHONE_PATTERN } from '@/components/forms/leadForm';
 
 /**
- * Each label maps to a Lead Type / IT Lead Subcategory in Zoho CRM (see classifyService in
- * src/lib/zohoLeads.ts). Keep the keywords if you reword them.
+ * Service options are edited in the admin (Forms). Each label maps to a Lead Type / IT Lead
+ * Subcategory in Zoho CRM (see classifyService in src/lib/zohoLeads.ts); the admin shows the mapping.
  */
-const SERVICES = [
-  'Website Development',
-  'Mobile App Development',
-  'Zoho Development',
-  'ERP Solutions',
-  'AI / ML & Analytics',
-  'Automation & Integrations',
-  'Shopify Store',
-  'Hardware & Electronics',
-  'Not sure yet',
-] as const;
-const HARDWARE = 'Hardware & Electronics';
+const SERVICES: string[] = forms.contact.services;
+/** The service that shows the second "Which hardware service?" list. */
+const HARDWARE = forms.contact.hardwareService;
 
 /** Each maps to an Electronics Lead Subcategory in Zoho CRM. */
-const HARDWARE_SERVICES = [
-  'IoT Solutions',
-  'Embedded Systems Development',
-  'PCB Design & Circuit Engineering',
-  'Firmware Development',
-  '3D Printing and Designing',
-  'Hardware Prototyping & Testing',
-  'Industrial Automation',
-  'Electronics Design & Integration',
-  'Complete Product Development',
-] as const;
+const HARDWARE_SERVICES: string[] = forms.contact.hardwareServices;
 
 type Fields = {
   name: string;
@@ -122,7 +105,7 @@ export default function ContactForm() {
       setStatus({ state: 'success' });
       setForm(EMPTY_FORM);
     } catch {
-      setStatus({ state: 'error', message: 'Network error. Please check your connection and try again. Your details are still here.' });
+      setStatus({ state: 'error', message: tx.network_error_please_check_your });
     }
   };
 
@@ -156,8 +139,8 @@ export default function ContactForm() {
           <MonitorSmartphone className="h-6 w-6" aria-hidden />
         </span>
         <div>
-          <h2 className="text-2xl font-bold tracking-tight text-slate-900">Start Your Project</h2>
-          <p className="mt-1 text-sm text-slate-500">Tell us about your project and we&apos;ll make it happen.</p>
+          <h2 className="text-2xl font-bold tracking-tight text-slate-900">{tx.start_your_project}</h2>
+          <p className="mt-1 text-sm text-slate-500">{tx.tell_us_about_your_project}</p>
         </div>
       </div>
 
@@ -166,8 +149,8 @@ export default function ContactForm() {
           <div role="status" className="mt-6 flex items-start gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-emerald-800">
             <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0" aria-hidden />
             <div>
-              <p className="font-semibold">Message sent successfully</p>
-              <p className="text-sm">Thank you! We&apos;ll get back to you soon.</p>
+              <p className="font-semibold">{tx.message_sent_successfully}</p>
+              <p className="text-sm">{tx.thank_you_we_ll_get}</p>
             </div>
           </div>
         )}
@@ -182,14 +165,14 @@ export default function ContactForm() {
       <form noValidate onSubmit={handleSubmit} className="relative mt-7 space-y-5">
         {/* Honeypot: hidden from people, tempting to bots. */}
         <div className="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden>
-          <label htmlFor={`${id}-website`}>Website</label>
+          <label htmlFor={`${id}-website`}>{tx.website}</label>
           <input id={`${id}-website`} type="text" tabIndex={-1} autoComplete="off" value={form.website} onChange={(e) => update('website', e.target.value)} />
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div>
             {label('name', 'Full Name')}
-            <input {...field('name')} type="text" autoComplete="name" value={form.name} onChange={(e) => update('name', e.target.value)} placeholder="Your full name" />
+            <input {...field('name')} type="text" autoComplete="name" value={form.name} onChange={(e) => update('name', e.target.value)} placeholder={tx.your_full_name} />
             {error('name')}
           </div>
           <div>
@@ -199,7 +182,7 @@ export default function ContactForm() {
           </div>
           <div>
             {label('company', 'Company')}
-            <input {...field('company')} type="text" autoComplete="organization" value={form.company} onChange={(e) => update('company', e.target.value)} placeholder="Your company name" />
+            <input {...field('company')} type="text" autoComplete="organization" value={form.company} onChange={(e) => update('company', e.target.value)} placeholder={tx.your_company_name} />
             {error('company')}
           </div>
           <div>
@@ -210,7 +193,7 @@ export default function ContactForm() {
           <div>
             {label('service', 'Service Interested')}
             <select {...field('service')} value={form.service} onChange={(e) => update('service', e.target.value)}>
-              <option value="">Select a service</option>
+              <option value="">{tx.select_a_service}</option>
               {SERVICES.map((s) => (
                 <option key={s} value={s}>
                   {s}
@@ -222,7 +205,7 @@ export default function ContactForm() {
           <div>
             {label('budget', 'Budget Range')}
             <select {...field('budget')} value={form.budget} onChange={(e) => update('budget', e.target.value)}>
-              <option value="">Select budget range</option>
+              <option value="">{tx.select_budget_range}</option>
               {BUDGETS.map((b) => (
                 <option key={b} value={b}>
                   {b}
@@ -237,7 +220,7 @@ export default function ContactForm() {
           <div className="animate-fade-in">
             {label('hardwareService', 'Which Hardware Service?')}
             <select {...field('hardwareService')} value={form.hardwareService} onChange={(e) => update('hardwareService', e.target.value)}>
-              <option value="">Select hardware service</option>
+              <option value="">{tx.select_hardware_service}</option>
               {HARDWARE_SERVICES.map((s) => (
                 <option key={s} value={s}>
                   {s}
@@ -255,7 +238,7 @@ export default function ContactForm() {
             rows={5}
             value={form.message}
             onChange={(e) => update('message', e.target.value)}
-            placeholder="Tell us about your project, goals, and any specific requirements…"
+            placeholder={tx.tell_us_about_your_project_2}
           />
           {error('message')}
         </div>
@@ -267,21 +250,15 @@ export default function ContactForm() {
         >
           {submitting ? (
             <>
-              <Loader2 className="h-5 w-5 animate-spin" aria-hidden />
-              Sending message…
-            </>
+              <Loader2 className="h-5 w-5 animate-spin" aria-hidden />{tx.sending_message}</>
           ) : (
             <>
-              <Send className="h-5 w-5" aria-hidden />
-              Send Message
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+              <Send className="h-5 w-5" aria-hidden />{tx.send_message}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
             </>
           )}
         </button>
         <p className="flex items-center justify-center gap-1.5 text-xs text-slate-500">
-          <Lock className="h-3.5 w-3.5" aria-hidden />
-          We respect your privacy. Your information is only used to reply to you.
-        </p>
+          <Lock className="h-3.5 w-3.5" aria-hidden />{tx.we_respect_your_privacy_your}</p>
       </form>
     </div>
   );

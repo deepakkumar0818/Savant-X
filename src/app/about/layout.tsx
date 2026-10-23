@@ -1,10 +1,11 @@
+import tx from '@/content/text/app/about/layout.json';
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'About Us',
+  title: tx.about_us,
   description:
-    'Founded in 2019, SavantX Technologies delivers software, Zoho CRM and ERP solutions, and electronics engineering from its offices in Gaya and Mohali, India.',
+    tx.founded_in_2019_savantx_technologies,
   path: '/about',
 });
 

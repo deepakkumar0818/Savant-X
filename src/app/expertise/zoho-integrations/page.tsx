@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/zoho-integrations/page.json';
 import Image from 'next/image';
 import {
   ArrowRight,
@@ -159,25 +160,15 @@ export default function ZohoIntegrationsPage() {
         <HeroPremiumBackdrop gridGlowActive={false} />
         <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
           <div className="text-center lg:text-left">
-            <p className="animate-fade-in-up inline-flex items-center gap-2 rounded-lg bg-white/95 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-600 shadow-sm ring-1 ring-slate-200/70 sm:text-xs sm:tracking-[0.2em]">
-              Zoho development &amp; implementation
-            </p>
-            <h1 className="animate-fade-in-up delay-100 mt-6 text-[2.15rem] font-semibold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem]">
-              Make Zoho work the way{' '}
-              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">your business works.</span>
+            <p className="animate-fade-in-up inline-flex items-center gap-2 rounded-lg bg-white/95 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-600 shadow-sm ring-1 ring-slate-200/70 sm:text-xs sm:tracking-[0.2em]">{tx.zoho_development_implementation}</p>
+            <h1 className="animate-fade-in-up delay-100 mt-6 text-[2.15rem] font-semibold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem]">{tx.make_zoho_work_the_way}{' '}
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.your_business_works}</span>
             </h1>
-            <p className="animate-fade-in-up delay-200 mx-auto mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg lg:mx-0">
-              Customize Zoho CRM, build powerful Zoho Creator applications, automate workflows, and connect your business systems with
-              solutions designed around your operations.
-            </p>
+            <p className="animate-fade-in-up delay-200 mx-auto mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg lg:mx-0">{tx.customize_zoho_crm_build_powerful}</p>
             <div className="animate-fade-in-up delay-300 mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
-              <SelectServiceLink service="consultation" className={primaryButton}>
-                Book Free Consultation
-                <ArrowRight className="h-4 w-4" aria-hidden />
+              <SelectServiceLink service="consultation" className={primaryButton}>{tx.book_free_consultation}<ArrowRight className="h-4 w-4" aria-hidden />
               </SelectServiceLink>
-              <TrackedLink href="#plans" event="plans_cta_click" className={secondaryButton}>
-                Explore Development Plans
-              </TrackedLink>
+              <TrackedLink href="#plans" event="plans_cta_click" className={secondaryButton}>{tx.explore_development_plans}</TrackedLink>
             </div>
             <ul className="animate-fade-in-up delay-400 mt-8 flex flex-col items-center gap-x-6 gap-y-2.5 text-sm font-medium text-slate-700 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start">
               {['Zoho CRM & Creator', 'Workflow Automation', 'Business Integrations'].map((item) => (
@@ -189,9 +180,7 @@ export default function ZohoIntegrationsPage() {
                 </li>
               ))}
             </ul>
-            <p className="animate-fade-in-up delay-500 mt-6 text-sm text-slate-500">
-              Building business software since {COMPANY.foundingYear} · Offices in {OFFICES.map((o) => o.city).join(' and ')}, India
-            </p>
+            <p className="animate-fade-in-up delay-500 mt-6 text-sm text-slate-500">{tx.building_business_software_since}{" "}{COMPANY.foundingYear}{" "}{tx.offices_in}{" "}{OFFICES.map((o) => o.city).join(' and ')}{tx.india}</p>
           </div>
           <div className="animate-fade-in-up delay-300">
             <ZohoHeroVisual />
@@ -210,21 +199,15 @@ export default function ZohoIntegrationsPage() {
               <div className="flex flex-col gap-1 text-slate-300 sm:flex-row sm:items-baseline sm:gap-6">
                 <p>
                   <span className="text-3xl font-semibold tracking-tight text-white">{MEMBERSHIP.monthly}</span>
-                  <span className="text-sm">/month</span>
+                  <span className="text-sm">{tx.month}</span>
                 </p>
-                <p className="text-sm">
-                  Minimum commitment: {MEMBERSHIP.minimumMonths} months
-                  <br />
-                  Total commitment: {MEMBERSHIP.minimumTotal} before applicable taxes
-                </p>
+                <p className="text-sm">{tx.minimum_commitment}{" "}{MEMBERSHIP.minimumMonths}{" "}{tx.months}<br />{tx.total_commitment}{" "}{MEMBERSHIP.minimumTotal}{" "}{tx.before_applicable_taxes}</p>
               </div>
               <TrackedLink
                 href="#membership"
                 event="membership_cta_click"
                 className="inline-flex items-center justify-center gap-2 self-start rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-indigo-50 lg:self-auto"
-              >
-                View Membership Details
-                <ArrowRight className="h-4 w-4" aria-hidden />
+              >{tx.view_membership_details}<ArrowRight className="h-4 w-4" aria-hidden />
               </TrackedLink>
             </div>
           </div>
@@ -234,9 +217,7 @@ export default function ZohoIntegrationsPage() {
       {/* 2. Trust strip */}
       <section aria-labelledby="zoho-apps-strip" className="border-y border-slate-200/70 bg-slate-50/70 px-6 py-10 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
-          <h2 id="zoho-apps-strip" className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-            Zoho applications we work with
-          </h2>
+          <h2 id="zoho-apps-strip" className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{tx.zoho_applications_we_work_with}</h2>
           <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
             {TRUST_APPS.map((app) => (
               <li key={app} className="flex items-center gap-2.5 text-sm font-semibold text-slate-700">
@@ -270,8 +251,8 @@ export default function ZohoIntegrationsPage() {
           <div>
             <SectionHeading
               id="why-heading"
-              eyebrow="Why SavantX"
-              title="A development team that knows Zoho inside out"
+              eyebrow={tx.why_savantx}
+              title={tx.a_development_team_that_knows}
               description={`Building business software since ${COMPANY.foundingYear}, from offices in ${OFFICES.map((o) => o.city).join(' and ')}.`}
             />
             <dl className="zoho-reveal mt-8 grid max-w-sm grid-cols-2 gap-4">
@@ -304,7 +285,7 @@ export default function ZohoIntegrationsPage() {
       {/* 8. FAQ: native <details> gives keyboard and screen-reader support without extra script. */}
       <section id="faq" aria-labelledby="faq-heading" className="scroll-mt-24 bg-slate-50 px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto max-w-3xl">
-          <SectionHeading id="faq-heading" center eyebrow="FAQ" title="Questions about working with us on Zoho" />
+          <SectionHeading id="faq-heading" center eyebrow="FAQ" title={tx.questions_about_working_with_us} />
           <div className="mt-10 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white">
             {FAQS.map((faq) => (
               <details key={faq.q} className="group px-6 [&_summary::-webkit-details-marker]:hidden">
@@ -324,22 +305,14 @@ export default function ZohoIntegrationsPage() {
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl bg-[#0b1024] px-6 py-16 text-center sm:py-20">
           <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_45%_70%_at_20%_0%,rgba(59,130,246,0.35),transparent_70%),radial-gradient(ellipse_45%_70%_at_80%_100%,rgba(139,92,246,0.35),transparent_70%)]" />
           <div className="relative">
-            <h2 className="mx-auto max-w-2xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Ready to Make Zoho Work Better for Your Business?
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-slate-300">
-              Tell us about your workflows, challenges and goals. Our team will help you identify the right Zoho solution.
-            </p>
+            <h2 className="mx-auto max-w-2xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">{tx.ready_to_make_zoho_work}</h2>
+            <p className="mx-auto mt-4 max-w-xl text-slate-300">{tx.tell_us_about_your_workflows}</p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <SelectServiceLink
                 service="consultation"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-indigo-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40"
-              >
-                Book Free Consultation
-              </SelectServiceLink>
-              <TrackedLink href="#plans" event="plans_cta_click" className={darkSecondaryButton}>
-                Explore Development Plans
-              </TrackedLink>
+              >{tx.book_free_consultation}</SelectServiceLink>
+              <TrackedLink href="#plans" event="plans_cta_click" className={darkSecondaryButton}>{tx.explore_development_plans}</TrackedLink>
             </div>
           </div>
         </div>
@@ -351,9 +324,9 @@ export default function ZohoIntegrationsPage() {
           <div>
             <SectionHeading
               id="enquiry-heading"
-              eyebrow="Free consultation"
-              title="Tell us about your Zoho project"
-              description="Share a few details and our Zoho team will get back to you to arrange a consultation. There is no obligation to go ahead."
+              eyebrow={tx.free_consultation}
+              title={tx.tell_us_about_your_zoho}
+              description={tx.share_a_few_details_and}
             />
             <ul className="mt-8 space-y-4 text-sm">
               <li>

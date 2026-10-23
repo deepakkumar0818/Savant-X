@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/products/page.json';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -24,24 +25,24 @@ import RequestDemoButton from '@/components/products/RequestDemoButton';
 import { COMPANY_METRICS } from '@/lib/company';
 
 const STATS: { icon: LucideIcon; value: string; label: string }[] = [
-  { icon: Boxes, value: String(PRODUCTS.length), label: 'Ready-made products' },
-  { icon: Building2, value: String(CATEGORIES.length - 1), label: 'Industries served' },
+  { icon: Boxes, value: String(PRODUCTS.length), label: tx.ready_made_products },
+  { icon: Building2, value: String(CATEGORIES.length - 1), label: tx.industries_served },
   { icon: Database, value: `${COMPANY_METRICS[0].value}${COMPANY_METRICS[0].suffix}`, label: COMPANY_METRICS[0].label },
   { icon: Layers, value: `${COMPANY_METRICS[1].value}${COMPANY_METRICS[1].suffix}`, label: COMPANY_METRICS[1].label },
 ];
 
 const WHY: { icon: LucideIcon; tone: string; title: string; body: string }[] = [
-  { icon: Building2, tone: 'bg-blue-50 text-blue-600', title: 'Industry focused', body: 'Products designed around real workflows in healthcare, education, real estate and more.' },
-  { icon: Zap, tone: 'bg-orange-50 text-orange-500', title: 'Quick to deploy', body: 'Start from a working product and adapt it, instead of building from scratch.' },
-  { icon: ShieldCheck, tone: 'bg-emerald-50 text-emerald-600', title: 'Scalable & secure', body: 'Built on proven technology that grows with your users and data.' },
-  { icon: Headphones, tone: 'bg-violet-50 text-violet-600', title: 'Ongoing support', body: 'Our team stays with you after launch for fixes and improvements.' },
+  { icon: Building2, tone: 'bg-blue-50 text-blue-600', title: tx.industry_focused, body: tx.products_designed_around_real_workflows },
+  { icon: Zap, tone: 'bg-orange-50 text-orange-500', title: tx.quick_to_deploy, body: tx.start_from_a_working_product },
+  { icon: ShieldCheck, tone: 'bg-emerald-50 text-emerald-600', title: tx.scalable_secure, body: tx.built_on_proven_technology_that },
+  { icon: Headphones, tone: 'bg-violet-50 text-violet-600', title: tx.ongoing_support, body: tx.our_team_stays_with_you },
 ];
 
 const STEPS: { icon: LucideIcon; title: string; body: string }[] = [
-  { icon: Search, title: 'Choose a product', body: 'Browse the catalog and shortlist what fits.' },
-  { icon: MousePointerClick, title: 'Request a demo', body: 'See the product in action with our team.' },
-  { icon: Settings2, title: 'Get started', body: 'We set it up and customise it for you.' },
-  { icon: BarChart3, title: 'Grow your business', body: 'Use it, measure it and improve it with us.' },
+  { icon: Search, title: tx.choose_a_product, body: tx.browse_the_catalog_and_shortlist },
+  { icon: MousePointerClick, title: tx.request_a_demo, body: tx.see_the_product_in_action },
+  { icon: Settings2, title: tx.get_started, body: tx.we_set_it_up_and },
+  { icon: BarChart3, title: tx.grow_your_business, body: tx.use_it_measure_it_and },
 ];
 
 const eyebrow = 'inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-white px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-indigo-700';
@@ -57,31 +58,23 @@ export default function ProductsPage() {
         <div className="mx-auto max-w-7xl">
           <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <div className="hero-enter">
-              <p className={eyebrow}>Our products</p>
-              <h1 className="mt-5 text-[2.3rem] font-bold leading-[1.08] tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem]">
-                Powerful software solutions for{' '}
-                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">every business</span>
+              <p className={eyebrow}>{tx.our_products}</p>
+              <h1 className="mt-5 text-[2.3rem] font-bold leading-[1.08] tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem]">{tx.powerful_software_solutions_for}{' '}
+                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.every_business}</span>
               </h1>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
-                From healthcare to education, real estate to logistics — discover ready-to-use and customisable software designed to simplify your
-                operations and accelerate growth.
-              </p>
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">{tx.from_healthcare_to_education_real}</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a href="#catalog" className={primary}>
-                  Browse products
-                  <ArrowRight className="h-4 w-4" aria-hidden />
+                <a href="#catalog" className={primary}>{tx.browse_products}<ArrowRight className="h-4 w-4" aria-hidden />
                 </a>
                 <RequestDemoButton className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 font-semibold text-indigo-700 shadow-sm ring-1 ring-indigo-200 transition hover:ring-indigo-400">
-                  <CalendarDays className="h-4 w-4" aria-hidden />
-                  Request a demo
-                </RequestDemoButton>
+                  <CalendarDays className="h-4 w-4" aria-hidden />{tx.request_a_demo_2}</RequestDemoButton>
               </div>
             </div>
             <div className="hero-enter relative mx-auto w-full max-w-[450px] [--hero-delay:0.08s] lg:mr-0">
               <div aria-hidden className="absolute inset-6 -z-10 rounded-full bg-violet-200/50 blur-3xl" />
               <Image
                 src="/images/products/products-hero-dashboard.webp"
-                alt="Illustration of a SavantX product dashboard on a laptop and phone"
+                alt={tx.illustration_of_a_savantx_product}
                 width={450}
                 height={304}
                 priority
@@ -113,11 +106,10 @@ export default function ProductsPage() {
       <section aria-labelledby="why-heading" className="bg-[linear-gradient(180deg,#ffffff_0%,#f6f7ff_100%)] px-4 py-20 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-2xl text-center">
-            <p className={eyebrow}>Why choose SavantX products</p>
-            <h2 id="why-heading" className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              Built for businesses that <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">want more</span>
+            <p className={eyebrow}>{tx.why_choose_savantx_products}</p>
+            <h2 id="why-heading" className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{tx.built_for_businesses_that}{" "}<span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">{tx.want_more}</span>
             </h2>
-            <p className="mt-3 text-slate-600">Our products are designed with a focus on usability, scalability and real business impact.</p>
+            <p className="mt-3 text-slate-600">{tx.our_products_are_designed_with}</p>
           </div>
           <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {WHY.map(({ icon: Icon, tone, title, body }) => (
@@ -136,14 +128,11 @@ export default function ProductsPage() {
           {/* How it works */}
           <div className="mt-20 grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,2.2fr)] lg:items-center">
             <div>
-              <p className={eyebrow}>How it works</p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">
-                Get started in just a <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">few steps</span>
+              <p className={eyebrow}>{tx.how_it_works}</p>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">{tx.get_started_in_just_a}{" "}<span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">{tx.few_steps}</span>
               </h2>
-              <p className="mt-3 text-slate-600">From choosing a product to going live, we keep it simple.</p>
-              <Link href="/contact" className={`${primary} mt-6`}>
-                Talk to our team
-                <ArrowRight className="h-4 w-4" aria-hidden />
+              <p className="mt-3 text-slate-600">{tx.from_choosing_a_product_to}</p>
+              <Link href="/contact" className={`${primary} mt-6`}>{tx.talk_to_our_team}<ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
             </div>
             <ol className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -166,9 +155,8 @@ export default function ProductsPage() {
           {/* Trusted by */}
           <div className="mt-20 grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,2.2fr)] lg:items-center">
             <div>
-              <p className={eyebrow}>Trusted by businesses</p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">
-                Helping businesses <span className="block bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">across industries</span>
+              <p className={eyebrow}>{tx.trusted_by_businesses}</p>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">{tx.helping_businesses}{" "}<span className="block bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">{tx.across_industries}</span>
               </h2>
             </div>
             <ul className="flex flex-wrap items-center gap-x-8 gap-y-5">
@@ -193,19 +181,15 @@ export default function ProductsPage() {
               <Rocket className="h-8 w-8" aria-hidden />
             </span>
             <div>
-              <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Ready to transform your business?</h2>
-              <p className="mt-2 max-w-xl text-indigo-100">Explore the complete catalog, or ask us for a custom solution built around your needs.</p>
+              <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{tx.ready_to_transform_your_business}</h2>
+              <p className="mt-2 max-w-xl text-indigo-100">{tx.explore_the_complete_catalog_or}</p>
             </div>
           </div>
           <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
-            <a href="#catalog" className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 font-semibold text-indigo-700 transition hover:bg-indigo-50">
-              Browse all products
-              <ArrowRight className="h-4 w-4" aria-hidden />
+            <a href="#catalog" className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 font-semibold text-indigo-700 transition hover:bg-indigo-50">{tx.browse_all_products}<ArrowRight className="h-4 w-4" aria-hidden />
             </a>
             <RequestDemoButton className="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 font-semibold text-white ring-1 ring-white/60 transition hover:bg-white/10">
-              <CalendarDays className="h-4 w-4" aria-hidden />
-              Request a demo
-            </RequestDemoButton>
+              <CalendarDays className="h-4 w-4" aria-hidden />{tx.request_a_demo_2}</RequestDemoButton>
           </div>
         </div>
       </section>

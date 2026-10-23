@@ -1,4 +1,6 @@
-import { Car, GraduationCap, HeartPulse, School, Truck, UtensilsCrossed, type LucideIcon } from 'lucide-react';
+import { Car, GraduationCap, HeartPulse, Truck, UtensilsCrossed, type LucideIcon } from 'lucide-react';
+import collection from '@/content/collections/products.json';
+import { cmsIcon } from '@/lib/cms/icons';
 
 /**
  * SavantX product catalog, in the order the company wants them shown.
@@ -40,115 +42,11 @@ export const CATEGORY_STYLE: Record<ProductCategory, { label: string; text: stri
   automotive: { label: 'Automotive', text: 'text-blue-600', tile: 'bg-blue-600', check: 'bg-blue-600', tint: 'from-blue-50 to-sky-50' },
 };
 
-export const PRODUCTS: Product[] = [
-  {
-    id: 'vidya-setu',
-    name: 'Vidya Setu',
-    subtitle: 'Online Examination & Olympiad Platform',
-    category: 'education',
-    summary: 'Run online exams and paid Olympiads across institutions, with live monitoring and fee collection.',
-    description:
-      'Vidya Setu is an online examination and Olympiad platform. Institutions, staff and students are managed in one place; exams are scheduled, monitored live and reported on; and Olympiad registrations and fees are collected online.',
-    // Taken from the modules in the product's admin dashboard.
-    highlights: ['Online exams & Olympiads', 'Live exam monitoring', 'Olympiad registration & fee collection', 'Reports & analytics'],
-    features: [
-      'Institution management',
-      'Admin, staff & student control',
-      'Exam scheduling & control',
-      'Live exam monitoring',
-      'Olympiad registrations & online fee collection',
-      'Reports & analytics',
-      'Roles & permissions',
-      'Logs & security',
-    ],
-    technology: [],
-    icon: School,
-    screenshot: { src: '/images/work/vidya-setu-dashboard.webp', alt: 'Vidya Setu super admin dashboard', width: 1536, height: 846 },
-  },
-  {
-    id: 'sehat-setu',
-    name: 'Sehat Setu',
-    subtitle: 'Clinic & Hospital Management System',
-    category: 'healthcare',
-    summary: 'Complete healthcare management with patient records, appointments, telemedicine and more.',
-    description:
-      'Comprehensive healthcare management platform enabling patients to book appointments, manage medical records and communicate with healthcare providers seamlessly.',
-    highlights: ['Patient records', 'Appointment scheduling', 'Telemedicine support', 'Prescription management'],
-    features: ['Online booking', 'Patient records', 'Appointment scheduling', 'Prescription management', 'Telemedicine support'],
-    technology: ['React', 'Node.js', 'PostgreSQL'],
-    icon: HeartPulse,
-    screenshot: { src: '/images/work/sehat-setu-hero.webp', alt: 'Sehat Setu clinic management dashboard', width: 1345, height: 841 },
-  },
-  {
-    id: 'fleetmint',
-    name: 'FleetMint',
-    subtitle: 'Fleet Management System',
-    category: 'logistics',
-    summary: 'GPS tracking, maintenance, drivers and routes for your whole fleet.',
-    description:
-      'Vehicle fleet management solution with GPS tracking, maintenance scheduling, driver management and route optimisation.',
-    highlights: ['GPS tracking', 'Maintenance scheduling', 'Driver management', 'Fuel monitoring'],
-    features: ['GPS tracking', 'Maintenance scheduling', 'Driver management', 'Route optimisation', 'Fuel monitoring'],
-    technology: ['Vue.js', 'Express', 'PostgreSQL'],
-    icon: Truck,
-    screenshot: { src: '/images/work/fleetmint-fleet-management.webp', alt: 'FleetMint fleet management dashboard', width: 1440, height: 820 },
-  },
-  {
-    id: 'student-portal',
-    name: 'Student Portal',
-    subtitle: 'Education Management System',
-    category: 'education',
-    summary: 'One platform for students to manage courses, assignments, grades and resources.',
-    description:
-      'Educational platform giving students course management, assignment tracking, grade monitoring and collaborative learning tools.',
-    highlights: ['Course management', 'Assignment tracking', 'Grade portal', 'Discussion forums'],
-    features: ['Course management', 'Assignment tracking', 'Grade portal', 'Discussion forums', 'Resource library'],
-    technology: ['Vue.js', 'Django', 'PostgreSQL'],
-    icon: GraduationCap,
-    screenshot: { src: '/images/work/savantx-student-portal.webp', alt: 'Student portal dashboard', width: 1536, height: 1024 },
-  },
-  {
-    id: 'food-ordering',
-    name: 'Food Ordering App',
-    subtitle: 'Restaurant & Catering Solution',
-    category: 'food',
-    summary: 'Complete food ordering, menu management, delivery tracking and customer engagement.',
-    description:
-      'Complete food delivery solution with restaurant management, order tracking, payment processing and real-time delivery updates for a better customer experience.',
-    highlights: ['Menu management', 'Order tracking', 'Payment gateway', 'Restaurant dashboard'],
-    features: ['Menu management', 'Order tracking', 'Payment gateway', 'Delivery management', 'Restaurant dashboard'],
-    technology: ['React Native', 'Express', 'MongoDB'],
-    icon: UtensilsCrossed,
-    screenshot: { src: '/images/work/savantx-eats-dashboard.webp', alt: 'Food ordering app restaurant dashboard', width: 1536, height: 1024 },
-  },
-  {
-    id: 'garage-management',
-    name: 'Garage Management',
-    subtitle: 'Vehicle Service & Workshop Software',
-    category: 'automotive',
-    summary: 'Run your garage end to end: appointments, job cards, inspections, estimates, inventory and billing.',
-    description:
-      'Garage Management is a complete system for vehicle garages and service workshops, across one or many branches. Book appointments, open job cards, run inspection checklists, get estimates approved by customers, manage parts and suppliers, and bill with cash, UPI, card or bank payments.',
-    // Taken from the modules in the product's dashboard.
-    highlights: ['Job cards & service workflow', 'Inspections & checklists', 'Estimates & customer approvals', 'Billing, invoices & payments'],
-    features: [
-      'Garages & branches',
-      'Customer & vehicle history',
-      'Appointments & calendar',
-      'Job cards & service workflow',
-      '27-point inspections & checklists',
-      'Estimates & customer approvals',
-      'Inventory, purchase & suppliers',
-      'Services & pricing',
-      'Billing, invoices & payments (cash, UPI, card, bank)',
-      'Staff & shift planning',
-      'Notifications & reminders',
-      'Reports & analytics',
-    ],
-    technology: [],
-    icon: Car,
-    screenshot: { src: '/images/work/garage-management-dashboard.webp', alt: 'Garage Management System dashboard', width: 1536, height: 777 },
-  },
-];
+/** Edited in the admin (Products); stored in src/content/collections/products.json. */
+export const PRODUCTS: Product[] = collection.items.map((p) => ({
+  ...p,
+  category: (p.category in CATEGORY_STYLE ? p.category : 'education') as ProductCategory,
+  icon: cmsIcon(p.icon),
+}));
 
-export const TRUSTED_BY = ['Legal Palz', "St. Paul's School", 'Sansani Express', 'RV Logistics', 'JDN Technologies'];
+export const TRUSTED_BY: string[] = collection.trustedBy;

@@ -1,10 +1,11 @@
+import tx from '@/content/text/app/contact/layout.json';
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Contact Us',
+  title: tx.contact_us,
   description:
-    'Talk to SavantX Technologies about your website, app, Zoho CRM or hardware project. Call +91 9888244166 or email zoho@savantxtechnologies.com.',
+    tx.talk_to_savantx_technologies_about,
   path: '/contact',
 });
 

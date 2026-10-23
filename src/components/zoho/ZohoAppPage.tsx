@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/components/zoho/ZohoAppPage.json';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
@@ -150,12 +151,10 @@ export default function ZohoAppPage({ app }: Props) {
         />
 
         <div className="relative z-10 mx-auto max-w-7xl">
-          <nav aria-label="Breadcrumb" className="mb-4 sm:mb-5">
+          <nav aria-label={tx.breadcrumb} className="mb-4 sm:mb-5">
             <ol className="flex flex-wrap items-center gap-1.5 text-sm text-slate-500">
               <li>
-                <Link href="/" className="transition-colors hover:opacity-80" style={{ color: 'inherit' }}>
-                  Home
-                </Link>
+                <Link href="/" className="transition-colors hover:opacity-80" style={{ color: 'inherit' }}>{tx.home}</Link>
               </li>
               <li aria-hidden>
                 <ChevronRight className="h-3.5 w-3.5 text-slate-300" />
@@ -164,9 +163,7 @@ export default function ZohoAppPage({ app }: Props) {
                 <Link
                   href="/expertise/zoho-integrations/"
                   className="transition-colors hover:opacity-80"
-                >
-                  Zoho Integrations
-                </Link>
+                >{tx.zoho_integrations}</Link>
               </li>
               <li aria-hidden>
                 <ChevronRight className="h-3.5 w-3.5 text-slate-300" />
@@ -200,9 +197,7 @@ export default function ZohoAppPage({ app }: Props) {
                 variants={fadeUp}
                 className="text-xs font-semibold uppercase tracking-[0.2em]"
                 style={{ color: c.badgeText }}
-              >
-                Inspired by {app.name} · Implemented by SavantX
-              </motion.p>
+              >{tx.inspired_by}{" "}{app.name}{" "}{tx.implemented_by_savantx}</motion.p>
 
               <motion.h1
                 variants={fadeUp}
@@ -253,21 +248,17 @@ export default function ZohoAppPage({ app }: Props) {
                   href="#overview"
                   className="inline-flex items-center justify-center gap-2 rounded-xl border bg-white px-7 py-3.5 text-base font-semibold text-slate-800 shadow-sm transition-all hover:bg-slate-50"
                   style={{ borderColor: c.softBorder }}
-                >
-                  Explore capabilities
-                </a>
+                >{tx.explore_capabilities}</a>
               </motion.div>
 
-              <motion.p variants={fadeUp} className="mt-4 text-xs text-slate-500">
-                Official product:{' '}
+              <motion.p variants={fadeUp} className="mt-4 text-xs text-slate-500">{tx.official_product}{' '}
                 <a
                   href={theme.officialUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 font-medium underline-offset-2 hover:underline"
                   style={{ color: c.badgeText }}
-                >
-                  zoho.com/{app.shortName.toLowerCase()}
+                >{tx.zoho_com}{app.shortName.toLowerCase()}
                   <ExternalLink className="h-3 w-3" />
                 </a>
               </motion.p>
@@ -311,12 +302,8 @@ export default function ZohoAppPage({ app }: Props) {
                 </div>
                 <div className="flex items-center justify-between gap-3 border-t border-slate-100 bg-white/95 px-5 py-4 backdrop-blur-md">
                   <div>
-                    <p className="text-sm font-semibold text-slate-900">
-                      Official Zoho Development Partner
-                    </p>
-                    <p className="text-xs text-slate-500">
-                      Setup · Customization · Automation · Support
-                    </p>
+                    <p className="text-sm font-semibold text-slate-900">{tx.official_zoho_development_partner}</p>
+                    <p className="text-xs text-slate-500">{tx.setup_customization_automation_support}</p>
                   </div>
                   <div
                     className="hidden h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-slate-50 ring-1 sm:flex"
@@ -370,14 +357,11 @@ export default function ZohoAppPage({ app }: Props) {
               variants={fadeUp}
               className="text-xs font-semibold uppercase tracking-[0.2em]"
               style={{ color: c.badgeText }}
-            >
-              Overview
-            </motion.p>
+            >{tx.overview}</motion.p>
             <motion.h2
               variants={fadeUp}
               className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl"
-            >
-              Why businesses choose{' '}
+            >{tx.why_businesses_choose}{' '}
               <span
                 style={{
                   background: `linear-gradient(135deg, ${c.gradientFrom}, ${c.gradientTo})`,
@@ -423,7 +407,7 @@ export default function ZohoAppPage({ app }: Props) {
               />
             </div>
             <div className="p-6" style={{ background: c.soft }}>
-              <p className="text-sm font-semibold text-slate-900">Who {app.shortName} is for</p>
+              <p className="text-sm font-semibold text-slate-900">{tx.who}{" "}{app.shortName}{" "}{tx.is_for}</p>
               <ul className="mt-4 space-y-3">
                 {app.whoItsFor.map((item) => (
                   <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed text-slate-600">
@@ -444,16 +428,9 @@ export default function ZohoAppPage({ app }: Props) {
             <p
               className="text-xs font-semibold uppercase tracking-[0.2em]"
               style={{ color: c.badgeText }}
-            >
-              Common challenges
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-              Problems {app.shortName} solves
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-              If these sound familiar, a properly implemented {app.name} system can change how your team
-              works.
-            </p>
+            >{tx.common_challenges}</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">{tx.problems}{" "}{app.shortName}{" "}{tx.solves}</h2>
+            <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">{tx.if_these_sound_familiar_a}{" "}{app.name}{" "}{tx.system_can_change_how_your}</p>
           </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
             {app.challenges.map((challenge, i) => (
@@ -494,13 +471,8 @@ export default function ZohoAppPage({ app }: Props) {
             >
               {theme.capabilitiesEyebrow}
             </p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-              What {app.shortName} unlocks for your team
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-              Core capabilities we configure, customize, and connect as part of a complete {app.name}{' '}
-              rollout — aligned with how Zoho presents the product.
-            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">{tx.what}{" "}{app.shortName}{" "}{tx.unlocks_for_your_team}</h2>
+            <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">{tx.core_capabilities_we_configure_customize}{" "}{app.name}{' '}{tx.rollout_aligned_with_how_zoho}</p>
           </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {app.features.map((feature, i) => {
@@ -557,12 +529,8 @@ export default function ZohoAppPage({ app }: Props) {
             <p
               className="text-xs font-semibold uppercase tracking-[0.2em]"
               style={{ color: c.badgeText }}
-            >
-              Use cases
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-              Built for real business scenarios
-            </h2>
+            >{tx.use_cases}</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">{tx.built_for_real_business_scenarios}</h2>
           </div>
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             {app.useCases.map((useCase) => (
@@ -589,13 +557,8 @@ export default function ZohoAppPage({ app }: Props) {
             className="mt-14 rounded-3xl border bg-white/95 p-8 shadow-sm sm:p-10"
             style={{ borderColor: c.softBorder }}
           >
-            <h3 className="text-xl font-semibold text-slate-900">
-              How {app.name} connects in your Zoho stack
-            </h3>
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
-              Like on Zoho&apos;s own product pages, {app.shortName} is strongest when it shares data across
-              the ecosystem — we wire those connections for you.
-            </p>
+            <h3 className="text-xl font-semibold text-slate-900">{tx.how}{" "}{app.name}{" "}{tx.connects_in_your_zoho_stack}</h3>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">{tx.like_on_zoho_s_own}{" "}{app.shortName}{" "}{tx.is_strongest_when_it_shares}</p>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
               {app.integrations.map((item) => (
                 <li
@@ -620,16 +583,9 @@ export default function ZohoAppPage({ app }: Props) {
               <p
                 className="text-xs font-semibold uppercase tracking-[0.2em]"
                 style={{ color: c.badgeText }}
-              >
-                SavantX expertise
-              </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-                How we implement {app.name} for you
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-slate-600">
-                We don&apos;t just turn the app on. We design it around your process, automate the busywork,
-                train your team, and stay available when you need changes.
-              </p>
+              >{tx.savantx_expertise}</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">{tx.how_we_implement}{" "}{app.name}{" "}{tx.for_you}</h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600">{tx.we_don_t_just_turn}</p>
               <ul className="mt-8 space-y-3">
                 {app.whatWeDo.map((item) => (
                   <li
@@ -645,11 +601,8 @@ export default function ZohoAppPage({ app }: Props) {
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold text-slate-900">Our implementation process</h3>
-              <p className="mt-2 text-sm text-slate-600">
-                A clear path from discovery to adoption — so {app.shortName} becomes daily habit, not
-                shelfware.
-              </p>
+              <h3 className="text-xl font-semibold text-slate-900">{tx.our_implementation_process}</h3>
+              <p className="mt-2 text-sm text-slate-600">{tx.a_clear_path_from_discovery}{" "}{app.shortName}{" "}{tx.becomes_daily_habit_not_shelfware}</p>
               <ol className="mt-8 space-y-4">
                 {app.processSteps.map((step, i) => (
                   <li
@@ -678,7 +631,7 @@ export default function ZohoAppPage({ app }: Props) {
                 className="mt-8 rounded-2xl border p-6"
                 style={{ borderColor: c.softBorder, background: c.soft }}
               >
-                <p className="text-sm font-semibold text-slate-900">Results you can expect</p>
+                <p className="text-sm font-semibold text-slate-900">{tx.results_you_can_expect}</p>
                 <ul className="mt-4 space-y-2.5">
                   {app.outcomes.map((outcome) => (
                     <li key={outcome} className="flex items-center gap-2 text-sm text-slate-700">
@@ -695,13 +648,9 @@ export default function ZohoAppPage({ app }: Props) {
                     background: `linear-gradient(135deg, ${c.gradientFrom}, ${c.gradientTo})`,
                     boxShadow: `0 12px 28px -10px ${c.glow}`,
                   }}
-                >
-                  Book Your Free Strategy Call
-                  <ArrowRight className="h-4 w-4" />
+                >{tx.book_your_free_strategy_call}<ArrowRight className="h-4 w-4" />
                 </button>
-                <p className="mt-2 text-center text-xs text-slate-500">
-                  No commitment · 30-minute Zoho system audit
-                </p>
+                <p className="mt-2 text-center text-xs text-slate-500">{tx.no_commitment_30_minute_zoho}</p>
               </div>
             </div>
           </div>
@@ -715,15 +664,10 @@ export default function ZohoAppPage({ app }: Props) {
             <p
               className="text-xs font-semibold uppercase tracking-[0.2em]"
               style={{ color: c.badgeText }}
-            >
-              FAQ
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-              Frequently asked questions about {app.name}
+            >{tx.faq}</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">{tx.frequently_asked_questions_about}{" "}{app.name}
             </h2>
-            <p className="mt-4 text-base text-slate-600">
-              Straight answers about implementation, customization, and how SavantX helps.
-            </p>
+            <p className="mt-4 text-base text-slate-600">{tx.straight_answers_about_implementation_cu}</p>
           </div>
           <div className="mt-10 space-y-3">
             {app.faqs.map((faq, i) => {
@@ -774,16 +718,9 @@ export default function ZohoAppPage({ app }: Props) {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_65%_at_50%_-10%,rgb(255_255_255_/_0.16),transparent_55%),linear-gradient(to_bottom,rgb(15_23_42_/_0.1),transparent_40%,rgb(15_23_42_/_0.22)_100%)]" />
           <div className="relative px-6 py-12 text-center sm:px-10 sm:py-14">
             <p className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/95 backdrop-blur-md">
-              <Sparkles className="h-3.5 w-3.5" />
-              Free Zoho strategy call
-            </p>
-            <h2 className="mx-auto mt-4 max-w-2xl text-2xl font-semibold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Ready to put {app.name} to work the right way?
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/85 sm:text-base">
-              Tell us where you are today — new setup, messy configuration, or custom app needs — and
-              we&apos;ll map the fastest path forward on a free 30-minute call.
-            </p>
+              <Sparkles className="h-3.5 w-3.5" />{tx.free_zoho_strategy_call}</p>
+            <h2 className="mx-auto mt-4 max-w-2xl text-2xl font-semibold tracking-tight text-white sm:text-3xl lg:text-4xl">{tx.ready_to_put}{" "}{app.name}{" "}{tx.to_work_the_right_way}</h2>
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/85 sm:text-base">{tx.tell_us_where_you_are}</p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <button
                 type="button"
@@ -797,9 +734,7 @@ export default function ZohoAppPage({ app }: Props) {
               <Link
                 href="/expertise/zoho-integrations/"
                 className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-8 py-3.5 text-base font-semibold text-white backdrop-blur-md transition-colors hover:bg-white/15"
-              >
-                View all Zoho apps
-              </Link>
+              >{tx.view_all_zoho_apps}</Link>
             </div>
           </div>
         </div>
@@ -808,12 +743,8 @@ export default function ZohoAppPage({ app }: Props) {
       {/* Related */}
       <section className="px-4 pb-20 pt-4 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-center text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
-            Explore more Zoho apps
-          </h2>
-          <p className="mt-3 text-center text-slate-600">
-            Each page is styled after that product&apos;s official Zoho experience.
-          </p>
+          <h2 className="text-center text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">{tx.explore_more_zoho_apps}</h2>
+          <p className="mt-3 text-center text-slate-600">{tx.each_page_is_styled_after}</p>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
             {related.map((relatedApp) => {
               const rt = getZohoAppTheme(relatedApp.slug);
@@ -848,9 +779,7 @@ export default function ZohoAppPage({ app }: Props) {
                   <span
                     className="mt-1 text-xs font-medium opacity-0 transition-opacity group-hover:opacity-100"
                     style={{ color: rt.colors.badgeText }}
-                  >
-                    Learn more →
-                  </span>
+                  >{tx.learn_more}</span>
                 </Link>
               );
             })}

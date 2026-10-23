@@ -1,0 +1,64 @@
+{
+  "company": {
+    "name": "SavantX Technologies",
+    "legalName": "SavantX Technologies Pvt Ltd",
+    "foundingYear": 2019,
+    "phone": "+91 9888244166",
+    "email": "zoho@savantxtechnologies.com",
+    "logoPath": "/images/logos/Logo.png"
+  },
+  "metrics": [
+    {
+      "value": 80,
+      "suffix": "+",
+      "label": "Projects Delivered",
+      "zohoLabel": "CRM Solutions"
+    },
+    {
+      "value": 50,
+      "suffix": "+",
+      "label": "ERP Systems"
+    }
+  ],
+  "offices": [
+    {
+      "id": "gaya",
+      "city": "Gaya",
+      "name": "Gaya Office (Headquarters)",
+      "streetAddress": "Panchanpur, Tekari",
+      "locality": "Gaya",
+      "region": "Bihar",
+      "postalCode": "824236",
+      "country": "India",
+      "countryCode": "IN",
+      "coordinates": [
+        24.9366,
+        84.8425
+      ],
+      "type": "headquarters"
+    },
+    {
+      "id": "mohali",
+      "city": "Mohali",
+      "name": "Mohali Office",
+      "streetAddress": "Sector 71",
+      "locality": "Mohali",
+      "region": "Punjab",
+      "postalCode": "160071",
+      "country": "India",
+      "countryCode": "IN",
+      "coordinates": [
+        30.7046,
+        76.7179
+      ],
+      "type": "office"
+    }
+  ],
+  "social": {
+    "x": "https://x.com/Savantxtech",
+    "linkedin": "https://www.linkedin.com/company/savantxtechnologies/posts/?feedView=all",
+    "facebook": "https://www.facebook.com/savantxtechnologies",
+    "instagram": "https://www.instagram.com/savantxtechnologies/",
+    "threads": "https://www.threads.net/@savantxtechnologies"
+  }
+}

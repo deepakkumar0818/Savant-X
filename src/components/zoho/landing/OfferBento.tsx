@@ -1,3 +1,4 @@
+import tx from '@/content/text/components/zoho/landing/OfferBento.json';
 import Image from 'next/image';
 import { ArrowRight, Check, Sparkles, type LucideIcon } from 'lucide-react';
 import SelectServiceLink from './SelectServiceLink';
@@ -110,16 +111,14 @@ export default function OfferBento({
             const chip = inverse ? 'bg-white/10 text-white ring-1 ring-white/15' : 'bg-white/80 text-slate-700 ring-1 ring-slate-200';
             const chips = (
               <div className={`relative z-10 flex flex-wrap items-center gap-2 text-xs font-medium ${isWide ? 'mt-4' : ''}`}>
-                <span className={`rounded-full px-2.5 py-1 backdrop-blur ${chip}`}>Scope-based quote</span>
+                <span className={`rounded-full px-2.5 py-1 backdrop-blur ${chip}`}>{tx.scope_based_quote}</span>
                 <SelectServiceLink
                   service={offer.id}
                   event="package_cta_click"
                   className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 ${
                     inverse ? 'bg-white text-slate-900 hover:bg-indigo-50' : 'bg-slate-900 text-white hover:bg-slate-700'
                   }`}
-                >
-                  Get started
-                  <span className="sr-only"> with {offer.name}</span>
+                >{tx.get_started}<span className="sr-only">{" "}{tx.with}{" "}{offer.name}</span>
                   <ArrowRight className="h-3 w-3" aria-hidden />
                 </SelectServiceLink>
               </div>
@@ -159,7 +158,7 @@ export default function OfferBento({
                         <span className="h-2 w-2 rounded-full bg-rose-400" aria-hidden />
                         <span className="h-2 w-2 rounded-full bg-amber-400" aria-hidden />
                         <span className="h-2 w-2 rounded-full bg-emerald-400" aria-hidden />
-                        <span className="mx-auto rounded-md bg-slate-100 px-3 py-0.5 text-[10px] text-slate-500">Typical deliverables</span>
+                        <span className="mx-auto rounded-md bg-slate-100 px-3 py-0.5 text-[10px] text-slate-500">{tx.typical_deliverables}</span>
                       </div>
                       <div className="flex items-center gap-2.5 px-4 pt-4">
                         <Mark offer={offer} inverse={false} size="sm" />
@@ -182,7 +181,7 @@ export default function OfferBento({
                     <div className="flex flex-1 items-center justify-center transition-transform duration-500 motion-safe:group-hover:scale-105">
                       <Mark offer={offer} inverse={inverse} size="lg" />
                     </div>
-                    <p className="sr-only">Includes: {offer.deliverables.join(', ')}.</p>
+                    <p className="sr-only">{tx.includes}{" "}{offer.deliverables.join(', ')}.</p>
                     {chips}
                   </>
                 )}

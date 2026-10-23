@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/contact/page.json';
 import Image from 'next/image';
 import type { CSSProperties } from 'react';
 import {
@@ -24,16 +25,16 @@ import ContactFaq from '@/components/contact/ContactFaq';
 import { COMPANY, COMPANY_METRICS, OFFICES, formatOfficeAddress, officeMapUrl } from '@/lib/company';
 
 const HERO_STATS: { icon: LucideIcon; value: string; label: string }[] = [
-  { icon: Clock, value: '24hrs', label: 'Response time' },
+  { icon: Clock, value: '24hrs', label: tx.response_time },
   { icon: Users, value: `${COMPANY_METRICS[0].value}${COMPANY_METRICS[0].suffix}`, label: COMPANY_METRICS[0].label },
   { icon: FileText, value: `${COMPANY_METRICS[1].value}${COMPANY_METRICS[1].suffix}`, label: COMPANY_METRICS[1].label },
 ];
 
 const REASONS: { icon: LucideIcon; title: string; text: string; tile: string }[] = [
-  { icon: MessagesSquare, title: 'Clear Communication', text: "You'll always know the project status.", tile: 'bg-blue-50 text-blue-600' },
-  { icon: CalendarCheck, title: 'On-Time Delivery', text: 'We value your time and deadlines.', tile: 'bg-emerald-50 text-emerald-600' },
-  { icon: Cpu, title: 'Expert Team', text: 'Experienced in web, mobile, Zoho and hardware.', tile: 'bg-orange-50 text-orange-600' },
-  { icon: Headphones, title: 'Ongoing Support', text: 'We are here even after the project.', tile: 'bg-violet-50 text-violet-600' },
+  { icon: MessagesSquare, title: tx.clear_communication, text: tx.you_ll_always_know_the, tile: 'bg-blue-50 text-blue-600' },
+  { icon: CalendarCheck, title: tx.on_time_delivery, text: tx.we_value_your_time_and, tile: 'bg-emerald-50 text-emerald-600' },
+  { icon: Cpu, title: tx.expert_team, text: tx.experienced_in_web_mobile_zoho, tile: 'bg-orange-50 text-orange-600' },
+  { icon: Headphones, title: tx.ongoing_support, text: tx.we_are_here_even_after, tile: 'bg-violet-50 text-violet-600' },
 ];
 
 const delay = (s: number) => ({ '--hero-delay': `${s}s` }) as CSSProperties;
@@ -71,36 +72,26 @@ export default function ContactPage() {
               className="hero-enter inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-white/70 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-indigo-700"
               style={delay(0)}
             >
-              <Send className="h-3.5 w-3.5" aria-hidden />
-              Get in touch
-            </p>
+              <Send className="h-3.5 w-3.5" aria-hidden />{tx.get_in_touch}</p>
             <h1
               className="hero-enter mt-6 text-[2.6rem] font-bold leading-[1.05] tracking-[-0.035em] text-slate-950 sm:text-6xl lg:text-[3.3rem] xl:text-[3.8rem]"
               style={delay(0.05)}
-            >
-              Let&apos;s build something
-              <br />
-              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">great together</span>
+            >{tx.let_s_build_something}<br />
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.great_together}</span>
             </h1>
-            <p className="hero-enter mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg" style={delay(0.1)}>
-              Tell us about your idea, website, app, Zoho CRM or hardware project. We&apos;ll get back to you with the next steps and a clear plan.
-            </p>
+            <p className="hero-enter mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg" style={delay(0.1)}>{tx.tell_us_about_your_idea}</p>
             <div className="hero-enter mt-8 flex flex-col gap-3 sm:flex-row" style={delay(0.15)}>
               <a
                 href="#contact-form"
                 className="group inline-flex items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 px-7 py-3.5 font-semibold text-white shadow-lg shadow-indigo-600/30 transition hover:brightness-110"
               >
-                <Send className="h-4 w-4" aria-hidden />
-                Start Your Project
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+                <Send className="h-4 w-4" aria-hidden />{tx.start_your_project}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
               </a>
               <a
                 href={COMPANY.phone.href}
                 className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-white px-7 py-3.5 font-semibold text-indigo-700 shadow-sm ring-1 ring-slate-200 transition hover:ring-indigo-200"
               >
-                <Phone className="h-4 w-4" aria-hidden />
-                Call Us
-              </a>
+                <Phone className="h-4 w-4" aria-hidden />{tx.call_us}</a>
             </div>
             <ul className="hero-enter mt-10 grid grid-cols-1 gap-5 min-[480px]:grid-cols-3" style={delay(0.2)}>
               {HERO_STATS.map(({ icon: Icon, value, label }) => (
@@ -120,7 +111,7 @@ export default function ContactPage() {
           <div className="relative -mx-6 sm:mx-0 lg:-mr-10">
             <Image
               src="/images/contact/contact-hero.webp"
-              alt="A developer at a desk planning a project, beside the services SavantX offers: web and mobile apps, Zoho implementation, hardware and IoT, system integration, and consulting and support"
+              alt={tx.a_developer_at_a_desk}
               width={1200}
               height={800}
               priority
@@ -142,22 +133,22 @@ export default function ContactPage() {
                 <LayoutGrid className="h-6 w-6" aria-hidden />
               </span>
               <div>
-                <h2 className="text-2xl font-bold tracking-tight text-slate-900">Get in Touch</h2>
-                <p className="mt-1 text-sm text-slate-500">Choose a convenient way to reach us.</p>
+                <h2 className="text-2xl font-bold tracking-tight text-slate-900">{tx.get_in_touch_2}</h2>
+                <p className="mt-1 text-sm text-slate-500">{tx.choose_a_convenient_way_to}</p>
               </div>
             </div>
 
             <div className="mt-6 space-y-3">
-              <InfoCard icon={Mail} title="Email Us" href={`mailto:${COMPANY.email}`}>
-                <span className="mt-0.5 block text-slate-500">Send us an email anytime.</span>
+              <InfoCard icon={Mail} title={tx.email_us} href={`mailto:${COMPANY.email}`}>
+                <span className="mt-0.5 block text-slate-500">{tx.send_us_an_email_anytime}</span>
                 <span className="mt-1 block break-all font-semibold text-indigo-600">{COMPANY.email}</span>
               </InfoCard>
-              <InfoCard icon={Phone} title="Call Us" href={COMPANY.phone.href}>
-                <span className="mt-0.5 block text-slate-500">Mon - Fri, 9:00 AM - 6:00 PM IST</span>
+              <InfoCard icon={Phone} title={tx.call_us} href={COMPANY.phone.href}>
+                <span className="mt-0.5 block text-slate-500">{tx.mon_fri_9_00_am}</span>
                 <span className="mt-1 block font-semibold text-indigo-600">{COMPANY.phone.display}</span>
               </InfoCard>
-              <InfoCard icon={MapPin} title="Visit Us" href={officeMapUrl(OFFICES[0])} external>
-                <span className="mt-0.5 block text-slate-500">Our office locations</span>
+              <InfoCard icon={MapPin} title={tx.visit_us} href={officeMapUrl(OFFICES[0])} external>
+                <span className="mt-0.5 block text-slate-500">{tx.our_office_locations}</span>
                 {OFFICES.map((office) => (
                   <span key={office.id} className="mt-2 block">
                     <span className="block font-semibold text-slate-800">{office.name}</span>
@@ -170,14 +161,14 @@ export default function ContactPage() {
                   <Clock className="h-5 w-5" aria-hidden />
                 </span>
                 <div className="text-sm">
-                  <h3 className="font-bold text-slate-900">Business Hours</h3>
+                  <h3 className="font-bold text-slate-900">{tx.business_hours}</h3>
                   <dl className="mt-1 grid grid-cols-[auto_1fr] gap-x-3 gap-y-0.5 text-slate-500">
-                    <dt>Mon - Fri:</dt>
-                    <dd>9:00 AM - 6:00 PM</dd>
-                    <dt>Sat:</dt>
-                    <dd>10:00 AM - 4:00 PM</dd>
-                    <dt>Sun:</dt>
-                    <dd>Closed</dd>
+                    <dt>{tx.mon_fri}</dt>
+                    <dd>{tx.t_9_00_am_6_00}</dd>
+                    <dt>{tx.sat}</dt>
+                    <dd>{tx.t_10_00_am_4_00}</dd>
+                    <dt>{tx.sun}</dt>
+                    <dd>{tx.closed}</dd>
                   </dl>
                 </div>
               </div>
@@ -193,24 +184,22 @@ export default function ContactPage() {
             <Zap className="h-7 w-7" aria-hidden />
           </span>
           <div className="flex-1">
-            <h2 className="text-xl font-bold sm:text-2xl">Quick Response Guarantee</h2>
-            <p className="mt-1.5 max-w-xl text-sm text-indigo-100 sm:text-base">
-              We promise to respond to all enquiries within 24 hours, and usually much sooner during business hours.
-            </p>
+            <h2 className="text-xl font-bold sm:text-2xl">{tx.quick_response_guarantee}</h2>
+            <p className="mt-1.5 max-w-xl text-sm text-indigo-100 sm:text-base">{tx.we_promise_to_respond_to}</p>
           </div>
           <div className="grid grid-cols-2 gap-3 sm:min-w-[22rem] [&>div]:px-3 sm:[&>div]:px-4">
             <div className="flex items-center gap-3 rounded-2xl bg-white/90 px-4 py-3 text-indigo-700">
               <Mail className="h-5 w-5 shrink-0" aria-hidden />
               <span>
-                <span className="block text-xl font-bold">24hrs</span>
-                <span className="block text-xs text-slate-500">Response promise</span>
+                <span className="block text-xl font-bold">{tx.t_24hrs}</span>
+                <span className="block text-xs text-slate-500">{tx.response_promise}</span>
               </span>
             </div>
             <div className="flex items-center gap-3 rounded-2xl bg-white/90 px-4 py-3 text-indigo-700">
               <CalendarCheck className="h-5 w-5 shrink-0" aria-hidden />
               <span>
-                <span className="block whitespace-nowrap text-xl font-bold">Mon–Sat</span>
-                <span className="block text-xs text-slate-500">Working days</span>
+                <span className="block whitespace-nowrap text-xl font-bold">{tx.mon_sat}</span>
+                <span className="block text-xs text-slate-500">{tx.working_days}</span>
               </span>
             </div>
           </div>
@@ -223,12 +212,9 @@ export default function ContactPage() {
       <section className="px-6 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <p className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-indigo-50/70 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-indigo-700">
-            <Users className="h-3.5 w-3.5" aria-hidden />
-            Why work with us
-          </p>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-            More than a service, a{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">long-term partner</span>
+            <Users className="h-3.5 w-3.5" aria-hidden />{tx.why_work_with_us}</p>
+          <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">{tx.more_than_a_service_a}{' '}
+            <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">{tx.long_term_partner}</span>
           </h2>
           <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {REASONS.map(({ icon: Icon, title, text, tile }) => (
@@ -256,16 +242,14 @@ export default function ContactPage() {
             <Send className="h-8 w-8" aria-hidden />
           </span>
           <div className="relative flex-1">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-200">Ready to get started?</p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">Let&apos;s turn your idea into a powerful solution.</h2>
-            <p className="mt-2 text-indigo-100">Get in touch with our team and take the first step today.</p>
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-200">{tx.ready_to_get_started}</p>
+            <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">{tx.let_s_turn_your_idea}</h2>
+            <p className="mt-2 text-indigo-100">{tx.get_in_touch_with_our}</p>
           </div>
           <a
             href="#contact-form"
             className="relative inline-flex items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 font-semibold text-indigo-800 shadow-lg transition hover:bg-indigo-50"
-          >
-            Start Your Project
-            <ArrowRight className="h-4 w-4" aria-hidden />
+          >{tx.start_your_project}<ArrowRight className="h-4 w-4" aria-hidden />
           </a>
         </div>
       </section>

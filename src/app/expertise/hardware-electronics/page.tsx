@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/app/expertise/hardware-electronics/page.json';
 import { useState } from 'react';
 import { COMPANY } from '@/lib/company';
 import Footer from '@/components/Footer';
@@ -14,109 +15,109 @@ export default function HardwareElectronicsPage() {
   const hardwareTypes = [
     {
       id: 'iot',
-      title: 'IoT & Embedded Systems',
+      title: tx.iot_embedded_systems,
       icon: '🌐',
-      description: 'Smart connected devices and embedded systems that bring intelligence to everyday objects and industrial applications.',
-      features: ['Smart Sensors', 'Wireless Connectivity', 'Power Management', 'Secure Protocols', 'Real-time Processing', 'Edge Computing'],
-      pricing: 'Starting at $8,000',
+      description: tx.smart_connected_devices_and_embedded,
+      features: [tx.smart_sensors, tx.wireless_connectivity, tx.power_management, tx.secure_protocols, tx.real_time_processing, tx.edge_computing],
+      pricing: tx.starting_at_8_000,
       timeline: '6-12 weeks',
-      platforms: ['ESP32', 'Arduino', 'STM32']
+      platforms: ['ESP32', tx.arduino, 'STM32']
     },
     {
       id: 'pcb',
-      title: 'PCB Design & Layout',
+      title: tx.pcb_design_layout,
       icon: '🔧',
-      description: 'Custom printed circuit board design and layout services for electronic products with optimized performance and reliability.',
-      features: ['Custom PCB Layout', 'Signal Integrity', 'Thermal Management', '3D Modeling', 'Multi-layer Boards', 'High-speed Design'],
-      pricing: 'Starting at $5,000',
+      description: tx.custom_printed_circuit_board_design,
+      features: [tx.custom_pcb_layout, tx.signal_integrity, tx.thermal_management, tx.t_3d_modeling, tx.multi_layer_boards, tx.high_speed_design],
+      pricing: tx.starting_at_5_000,
       timeline: '4-8 weeks',
-      platforms: ['KiCAD', 'DipTrace', 'Altium']
+      platforms: [tx.kicad, tx.diptrace, tx.altium]
     },
     {
       id: 'product',
-      title: 'Product Development',
+      title: tx.product_development,
       icon: '🚀',
-      description: 'End-to-end product development from concept to manufacturing, including industrial design and market-ready solutions.',
-      features: ['Concept Design', 'Prototyping', 'Manufacturing', 'Testing & Validation', 'Certification', 'Production Support'],
-      pricing: 'Starting at $15,000',
+      description: tx.end_to_end_product_development,
+      features: [tx.concept_design, tx.prototyping, tx.manufacturing, tx.testing_validation, tx.certification, tx.production_support],
+      pricing: tx.starting_at_15_000,
       timeline: '8-16 weeks',
-      platforms: ['SolidWorks', 'Fusion 360', 'CAD']
+      platforms: [tx.solidworks, tx.fusion_360, 'CAD']
     },
     {
       id: 'firmware',
-      title: 'Firmware Development',
+      title: tx.firmware_development,
       icon: '⚙️',
-      description: 'Low-level software development for microcontrollers and embedded systems with optimized performance and reliability.',
-      features: ['Real-time Systems', 'Driver Development', 'Security Features', 'Performance Optimization', 'RTOS', 'Bootloader'],
-      pricing: 'Starting at $10,000',
+      description: tx.low_level_software_development_for,
+      features: [tx.real_time_systems, tx.driver_development, tx.security_features, tx.performance_optimization, 'RTOS', tx.bootloader],
+      pricing: tx.starting_at_10_000,
       timeline: '6-12 weeks',
-      platforms: ['C/C++', 'Assembly', 'FreeRTOS']
+      platforms: [tx.c_c, tx.assembly, tx.freertos]
     }
   ];
 
   const technologies = [
-    { name: 'ESP32', icon: '/images/icons/esp32_1.jpeg', description: 'IoT microcontroller', category: 'Hardware' },
-    { name: 'Arduino', icon: '/images/icons/ardunio1.png', description: 'Development platform', category: 'Hardware' },
-    { name: 'STM32', icon: '/images/icons/stm32.jpeg', description: 'ARM Cortex MCU', category: 'Hardware' },
-    { name: 'KiCAD', icon: '/images/icons/kicad1.png', description: 'PCB design tool', category: 'PCB Design' },
-    { name: 'DipTrace', icon: '/images/icons/Diptrace.jpeg', description: 'PCB layout software', category: 'PCB Design' },
-    { name: 'SolidWorks', icon: '/images/icons/SolidWorks.png', description: '3D CAD software', category: 'CAD' },
-    { name: 'Raspberry Pi', icon: '🥧', description: 'Single-board computer', category: 'Hardware' },
-    { name: 'FreeRTOS', icon: '⚡', description: 'Real-time OS', category: 'Firmware' }
+    { name: 'ESP32', icon: '/images/icons/esp32_1.jpeg', description: tx.iot_microcontroller, category: 'Hardware' },
+    { name: tx.arduino_2, icon: '/images/icons/ardunio1.png', description: tx.development_platform, category: 'Hardware' },
+    { name: 'STM32', icon: '/images/icons/stm32.jpeg', description: tx.arm_cortex_mcu, category: 'Hardware' },
+    { name: tx.kicad_2, icon: '/images/icons/kicad1.png', description: tx.pcb_design_tool, category: 'PCB Design' },
+    { name: tx.diptrace_2, icon: '/images/icons/Diptrace.jpeg', description: tx.pcb_layout_software, category: 'PCB Design' },
+    { name: tx.solidworks_2, icon: '/images/icons/SolidWorks.png', description: tx.t_3d_cad_software, category: 'CAD' },
+    { name: tx.raspberry_pi, icon: '🥧', description: tx.single_board_computer, category: 'Hardware' },
+    { name: tx.freertos_2, icon: '⚡', description: tx.real_time_os, category: 'Firmware' }
   ];
 
   const platforms = [
     {
       id: 'iot',
-      name: 'IoT Solutions',
+      name: tx.iot_solutions,
       icon: '🌐',
-      description: 'Connected devices and smart systems',
-      features: ['Wi-Fi/Bluetooth', 'Cloud Integration', 'Sensor Networks', 'Remote Monitoring', 'Data Analytics', 'Low Power'],
-      stats: { projects: '50+', devices: '10K+', uptime: '99.9%' }
+      description: tx.connected_devices_and_smart_systems,
+      features: [tx.wi_fi_bluetooth, tx.cloud_integration, tx.sensor_networks, tx.remote_monitoring, tx.data_analytics, tx.low_power],
+      stats: { projects: '50+', devices: tx.t_10k, uptime: '99.9%' }
     },
     {
       id: 'embedded',
-      name: 'Embedded Systems',
+      name: tx.embedded_systems,
       icon: '🔌',
-      description: 'Specialized computing systems for specific tasks',
-      features: ['Real-time Processing', 'Hardware Integration', 'Custom Protocols', 'Firmware Development', 'System Optimization', 'Testing'],
-      stats: { projects: '40+', products: '8K+', reliability: '99.5%' }
+      description: tx.specialized_computing_systems_for_specif,
+      features: [tx.real_time_processing_2, tx.hardware_integration, tx.custom_protocols, tx.firmware_development_2, tx.system_optimization, tx.testing],
+      stats: { projects: '40+', products: tx.t_8k, reliability: '99.5%' }
     }
   ];
 
   const processSteps = [
     {
       step: '01',
-      title: 'Requirements Analysis',
-      description: 'Understanding your hardware specifications and technical requirements.',
+      title: tx.requirements_analysis,
+      description: tx.understanding_your_hardware_specificatio,
       duration: '1-2 weeks',
       icon: '📋'
     },
     {
       step: '02',
-      title: 'Design & Schematic',
-      description: 'Creating circuit diagrams, PCB layouts, and 3D models.',
+      title: tx.design_schematic,
+      description: tx.creating_circuit_diagrams_pcb_layouts,
       duration: '2-4 weeks',
       icon: '🎨'
     },
     {
       step: '03',
-      title: 'Prototyping',
-      description: 'Building and testing initial prototypes for validation.',
+      title: tx.prototyping_2,
+      description: tx.building_and_testing_initial_prototypes,
       duration: '2-4 weeks',
       icon: '🔧'
     },
     {
       step: '04',
-      title: 'Testing & Validation',
-      description: 'Comprehensive testing including EMC, safety, and reliability.',
+      title: tx.testing_validation_2,
+      description: tx.comprehensive_testing_including_emc_safe,
       duration: '2-3 weeks',
       icon: '🧪'
     },
     {
       step: '05',
-      title: 'Production Support',
-      description: 'Manufacturing support and certification assistance.',
+      title: tx.production_support_2,
+      description: tx.manufacturing_support_and_certification,
       duration: '2-4 weeks',
       icon: '🏭'
     }
@@ -124,33 +125,33 @@ export default function HardwareElectronicsPage() {
 
   const features = [
     {
-      title: 'Custom PCB Design',
-      description: 'Tailored printed circuit board designs optimized for your specific requirements.',
+      title: tx.custom_pcb_design,
+      description: tx.tailored_printed_circuit_board_designs,
       icon: '🔧'
     },
     {
-      title: 'IoT Integration',
-      description: 'Seamless connectivity with cloud platforms and mobile applications.',
+      title: tx.iot_integration,
+      description: tx.seamless_connectivity_with_cloud_platfor,
       icon: '🌐'
     },
     {
-      title: 'Firmware Development',
-      description: 'Robust, efficient firmware for microcontrollers and embedded systems.',
+      title: tx.firmware_development_3,
+      description: tx.robust_efficient_firmware_for_microcontr,
       icon: '⚙️'
     },
     {
-      title: 'Rapid Prototyping',
-      description: 'Fast iteration cycles to validate concepts and designs.',
+      title: tx.rapid_prototyping,
+      description: tx.fast_iteration_cycles_to_validate,
       icon: '⚡'
     },
     {
-      title: 'Certification Support',
-      description: 'Assistance with FCC, CE, and other regulatory certifications.',
+      title: tx.certification_support,
+      description: tx.assistance_with_fcc_ce_and,
       icon: '✅'
     },
     {
-      title: 'Manufacturing Ready',
-      description: 'Production-ready designs with complete documentation.',
+      title: tx.manufacturing_ready,
+      description: tx.production_ready_designs_with_complete,
       icon: '🏭'
     }
   ];
@@ -159,16 +160,16 @@ export default function HardwareElectronicsPage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="Hardware & Electronics"
+        eyebrow={tx.hardware_electronics}
         eyebrowIcon={CircuitBoard}
-        title="Electronics &"
-        highlight="Hardware Development"
-        description="We design and develop custom electronics, PCBs, and embedded systems that power innovative products. From IoT devices to industrial automation, we bring your hardware ideas to life."
+        title={tx.electronics}
+        highlight={tx.hardware_development}
+        description={tx.we_design_and_develop_custom}
         highlights={["IoT & Embedded Systems", "PCB Design & Layout", "Product Development", "Firmware Development"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "6-16", label: "Week Delivery" },
-          { value: "24/7", label: "Support" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "6-16", label: tx.week_delivery },
+          { value: "24/7", label: tx.support },
         ]}
       />
 
@@ -177,16 +178,10 @@ export default function HardwareElectronicsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Solutions
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Hardware
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Development Services</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_solutions}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.hardware}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.development_services}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              From circuit design to firmware development, we offer comprehensive hardware engineering services.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.from_circuit_design_to_firmware}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -231,11 +226,11 @@ export default function HardwareElectronicsPage() {
                   <div className="flex items-center justify-between pt-6 border-t border-slate-200">
                     <div>
                       <div className="text-lg font-bold text-cyan-600 mb-1">{type.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
                     </div>
                     <div className="text-right">
                       <div className="text-lg font-bold text-green-600 mb-1">{type.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.timeline}</div>
                     </div>
                   </div>
                 </div>
@@ -250,12 +245,8 @@ export default function HardwareElectronicsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Specializations
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              IoT & Embedded
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Systems</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.specializations}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.iot_embedded}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.systems}</span>
             </h2>
           </div>
 
@@ -299,21 +290,21 @@ export default function HardwareElectronicsPage() {
                   <div className="grid grid-cols-3 gap-4 mb-6 p-4 bg-slate-50 rounded-xl">
                     <div className="text-center">
                       <div className="text-lg font-bold text-cyan-600 mb-1">{platform.stats.projects || platform.stats.devices}</div>
-                      <div className="text-xs text-slate-600 uppercase tracking-wide">{platform.stats.projects ? 'Projects' : 'Devices'}</div>
+                      <div className="text-xs text-slate-600 uppercase tracking-wide">{platform.stats.projects ? tx.projects : tx.devices}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-lg font-bold text-green-600 mb-1">{platform.stats.devices || platform.stats.products}</div>
-                      <div className="text-xs text-slate-600 uppercase tracking-wide">{platform.stats.devices ? 'Devices' : 'Products'}</div>
+                      <div className="text-xs text-slate-600 uppercase tracking-wide">{platform.stats.devices ? tx.devices : tx.products}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-lg font-bold text-orange-600 mb-1">{platform.stats.uptime || platform.stats.reliability}</div>
-                      <div className="text-xs text-slate-600 uppercase tracking-wide">{platform.stats.uptime ? 'Uptime' : 'Reliability'}</div>
+                      <div className="text-xs text-slate-600 uppercase tracking-wide">{platform.stats.uptime ? tx.uptime : tx.reliability}</div>
                     </div>
                   </div>
 
                   {/* Features */}
                   <div className="space-y-3">
-                    <h4 className="text-sm font-semibold text-slate-700 uppercase tracking-wide">Key Features</h4>
+                    <h4 className="text-sm font-semibold text-slate-700 uppercase tracking-wide">{tx.key_features}</h4>
                     <div className="grid grid-cols-2 gap-2">
                       {platform.features.map((feature, index) => (
                         <div key={index} className="flex items-center gap-2">
@@ -335,16 +326,10 @@ export default function HardwareElectronicsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Technology Stack
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Hardware
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Technologies</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.technology_stack}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.hardware}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.technologies}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We use industry-leading tools and platforms for electronics and hardware development.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_use_industry_leading_tools}</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
@@ -383,12 +368,8 @@ export default function HardwareElectronicsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Key Features
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Why Choose Our
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Hardware Services</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.key_features}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.why_choose_our}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.hardware_services}</span>
             </h2>
           </div>
 
@@ -417,16 +398,10 @@ export default function HardwareElectronicsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              How We Develop
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Hardware Products</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.how_we_develop}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.hardware_products}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our proven 5-step process ensures your hardware product is delivered on time with exceptional quality.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_proven_5_step_process}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -458,24 +433,14 @@ export default function HardwareElectronicsPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-cyan-600 via-cyan-700 to-cyan-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Build Your
-            <span className="block text-cyan-100 mt-2">Hardware Product?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_build_your}<span className="block text-cyan-100 mt-2">{tx.hardware_product}</span>
           </h2>
-          <p className="text-xl text-cyan-100 mb-8 leading-relaxed font-light">
-            Let&apos;s discuss your hardware requirements and create innovative electronics solutions that exceed expectations.
-          </p>
+          <p className="text-xl text-cyan-100 mb-8 leading-relaxed font-light">{tx.let_s_discuss_your_hardware}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-cyan-600 px-8 py-4 rounded-xl hover:bg-cyan-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-                Start Your Project
-              </Link>
-            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-cyan-600 transition-all duration-200 font-semibold text-lg">
-                Schedule Consultation
-              </Link>
-            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-cyan-600 transition-all duration-200 font-semibold text-lg">
-                View Portfolio
-              </Link>
+            <Link href="/contact" className="bg-white text-cyan-600 px-8 py-4 rounded-xl hover:bg-cyan-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_your_project}</Link>
+            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-cyan-600 transition-all duration-200 font-semibold text-lg">{tx.schedule_consultation}</Link>
+            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-cyan-600 transition-all duration-200 font-semibold text-lg">{tx.view_portfolio}</Link>
           </div>
         </div>
       </section>

@@ -1,12 +1,13 @@
+import tx from '@/content/text/components/zoho/landing/ZohoHeroVisual.json';
 import Image from 'next/image';
 import { Check, GitBranch, Mail, Zap } from 'lucide-react';
 import { ZOHO_LOGOS } from './data';
 
 const PIPELINE = [
-  { stage: 'Qualified', dot: 'bg-sky-500', deals: [['Metro Infra', '2.4L'], ['Apex Foods', '1.1L']] },
-  { stage: 'Proposal', dot: 'bg-indigo-500', deals: [['Nova Retail', '5.6L'], ['Bright Labs', '3.2L']] },
-  { stage: 'Negotiation', dot: 'bg-violet-500', deals: [['Orbit Hotels', '8.0L']] },
-  { stage: 'Won', dot: 'bg-emerald-500', deals: [['Zen Clinics', '6.3L']] },
+  { stage: tx.qualified, dot: 'bg-sky-500', deals: [['Metro Infra', '2.4L'], ['Apex Foods', '1.1L']] },
+  { stage: tx.proposal, dot: 'bg-indigo-500', deals: [['Nova Retail', '5.6L'], ['Bright Labs', '3.2L']] },
+  { stage: tx.negotiation, dot: 'bg-violet-500', deals: [['Orbit Hotels', '8.0L']] },
+  { stage: tx.won, dot: 'bg-emerald-500', deals: [['Zen Clinics', '6.3L']] },
 ];
 
 function Logo({ app, className }: { app: string; className: string }) {
@@ -27,8 +28,8 @@ export default function ZohoHeroVisual() {
       <div className="overflow-hidden rounded-2xl bg-white shadow-[0_30px_70px_-30px_rgba(30,27,75,0.45)] ring-1 ring-slate-900/10">
         <div className="flex items-center gap-2 border-b border-slate-100 px-4 py-2.5">
           <Logo app="Zoho CRM" className="h-5 w-5" />
-          <span className="text-[11px] font-semibold text-slate-800">Deals pipeline</span>
-          <span className="ml-auto rounded-md bg-slate-100 px-2 py-0.5 text-[9px] font-medium text-slate-500">This quarter</span>
+          <span className="text-[11px] font-semibold text-slate-800">{tx.deals_pipeline}</span>
+          <span className="ml-auto rounded-md bg-slate-100 px-2 py-0.5 text-[9px] font-medium text-slate-500">{tx.this_quarter}</span>
         </div>
         <div className="grid grid-cols-4 gap-2 p-3">
           {PIPELINE.map((col) => (
@@ -54,7 +55,7 @@ export default function ZohoHeroVisual() {
       <div className="relative -mt-10 ml-auto w-[68%] overflow-hidden rounded-2xl bg-white shadow-[0_30px_60px_-25px_rgba(30,27,75,0.5)] ring-1 ring-slate-900/10 sm:-mt-14">
         <div className="flex items-center gap-2 border-b border-slate-100 px-4 py-2.5">
           <Logo app="Zoho Creator" className="h-5 w-5" />
-          <span className="text-[11px] font-semibold text-slate-800">Service request app</span>
+          <span className="text-[11px] font-semibold text-slate-800">{tx.service_request_app}</span>
         </div>
         <div className="grid grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] gap-3 p-3">
           <div className="space-y-2">
@@ -64,12 +65,10 @@ export default function ZohoHeroVisual() {
                 <div className="mt-0.5 h-4 rounded border border-slate-200 bg-slate-50" />
               </div>
             ))}
-            <div className="rounded-md bg-gradient-to-r from-blue-600 to-indigo-600 py-1 text-center text-[9px] font-semibold text-white">
-              Submit
-            </div>
+            <div className="rounded-md bg-gradient-to-r from-blue-600 to-indigo-600 py-1 text-center text-[9px] font-semibold text-white">{tx.submit}</div>
           </div>
           <div className="rounded-lg bg-slate-50 p-2">
-            <p className="text-[8px] font-semibold uppercase tracking-wider text-slate-400">Approval</p>
+            <p className="text-[8px] font-semibold uppercase tracking-wider text-slate-400">{tx.approval}</p>
             {['Submitted', 'Manager review', 'Approved'].map((step, i) => (
               <p key={step} className="mt-1.5 flex items-center gap-1.5 text-[9px] font-medium text-slate-700">
                 <span
@@ -88,11 +87,11 @@ export default function ZohoHeroVisual() {
 
       {/* Workflow nodes */}
       <div className="absolute -left-4 bottom-6 hidden w-44 rounded-xl bg-white/95 p-3 shadow-xl ring-1 ring-slate-900/10 backdrop-blur sm:block lg:-left-10">
-        <p className="text-[8px] font-semibold uppercase tracking-wider text-indigo-600">Workflow</p>
+        <p className="text-[8px] font-semibold uppercase tracking-wider text-indigo-600">{tx.workflow}</p>
         {[
-          { icon: Zap, label: 'Deal moves to Won' },
-          { icon: GitBranch, label: 'Create invoice in Books' },
-          { icon: Mail, label: 'Email the customer' },
+          { icon: Zap, label: tx.deal_moves_to_won },
+          { icon: GitBranch, label: tx.create_invoice_in_books },
+          { icon: Mail, label: tx.email_the_customer },
         ].map(({ icon: Icon, label }, i) => (
           <div key={label}>
             {i > 0 && <span className="ml-[11px] block h-2.5 border-l border-dashed border-indigo-300" />}

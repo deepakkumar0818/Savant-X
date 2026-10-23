@@ -1,10 +1,11 @@
+import tx from '@/content/text/app/expertise/web-apps/layout.json';
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Custom Web Application Development',
+  title: tx.custom_web_application_development,
   description:
-    'Scalable custom web applications that streamline business operations and improve productivity, built by SavantX Technologies.',
+    tx.scalable_custom_web_applications_that,
   path: '/expertise/web-apps',
 });
 

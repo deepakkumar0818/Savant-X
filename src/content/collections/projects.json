@@ -1,0 +1,364 @@
+{
+  "items": [
+    {
+      "id": 9,
+      "title": "Customized Manufacturing ERP",
+      "category": "manufacturing",
+      "image": "🏭",
+      "description": "Custom ERP for manufacturers that brings sales, purchases, inventory, production, quality control, finance and HR & payroll into one system, with live dashboards for orders, stock and work orders.",
+      "technologies": [],
+      "client": "",
+      "duration": "",
+      "results": "",
+      "featured": true,
+      "highlights": [
+        {
+          "label": "Sales & Purchase",
+          "icon": "ShoppingCart",
+          "tone": "blue"
+        },
+        {
+          "label": "Inventory Management",
+          "icon": "Package",
+          "tone": "orange"
+        },
+        {
+          "label": "Production",
+          "icon": "Factory",
+          "tone": "green"
+        },
+        {
+          "label": "Quality Control",
+          "icon": "ShieldCheck",
+          "tone": "rose"
+        },
+        {
+          "label": "Finance & HR",
+          "icon": "Wallet",
+          "tone": "violet"
+        },
+        {
+          "label": "Live Dashboards",
+          "icon": "LayoutDashboard",
+          "tone": "sky"
+        }
+      ],
+      "screenshot": {
+        "src": "/images/work/manufacturing-erp-dashboard.webp",
+        "alt": "Manufacturing ERP dashboard showing sales, purchases, inventory value, order status, production, quality control and recent orders",
+        "width": 1536,
+        "height": 1024
+      }
+    },
+    {
+      "id": 1,
+      "title": "Sehat Setu",
+      "category": "healthcare",
+      "image": "🏥",
+      "description": "Comprehensive healthcare management platform enabling patients to book appointments, manage medical records, and communicate with healthcare providers seamlessly.",
+      "technologies": [
+        "React",
+        "Node.js",
+        "PostgreSQL",
+        "Express"
+      ],
+      "client": "MediCare Solutions",
+      "duration": "4 months",
+      "results": "150+ active users",
+      "featured": true,
+      "highlights": [
+        {
+          "label": "Appointment Booking",
+          "icon": "CalendarCheck",
+          "tone": "blue"
+        },
+        {
+          "label": "Medical Records",
+          "icon": "FileText",
+          "tone": "orange"
+        },
+        {
+          "label": "Provider Communication",
+          "icon": "MessagesSquare",
+          "tone": "green"
+        },
+        {
+          "label": "Patient Management",
+          "icon": "ShieldCheck",
+          "tone": "violet"
+        }
+      ],
+      "screenshot": {
+        "src": "/images/work/sehat-setu-hero.webp",
+        "alt": "Sehat Setu home page with doctor search, appointment booking and online consultation",
+        "width": 1345,
+        "height": 841
+      }
+    },
+    {
+      "id": 2,
+      "title": "Food Ordering App",
+      "category": "web-mobile",
+      "image": "🍕",
+      "description": "Complete food delivery solution with restaurant management, order tracking, payment processing, and real-time delivery updates for enhanced customer experience.",
+      "technologies": [
+        "React Native",
+        "Express",
+        "MongoDB",
+        "Stripe API"
+      ],
+      "client": "FoodieHub",
+      "duration": "5 months",
+      "results": "300+ restaurants onboarded",
+      "featured": true,
+      "highlights": [
+        {
+          "label": "Restaurant Management",
+          "icon": "UtensilsCrossed",
+          "tone": "orange"
+        },
+        {
+          "label": "Order Tracking",
+          "icon": "MapPin",
+          "tone": "blue"
+        },
+        {
+          "label": "Payment Processing",
+          "icon": "CreditCard",
+          "tone": "green"
+        },
+        {
+          "label": "Real-time Delivery Updates",
+          "icon": "BellRing",
+          "tone": "violet"
+        }
+      ],
+      "screenshot": {
+        "src": "/images/work/savantx-eats-dashboard.webp",
+        "alt": "SavantX Eats restaurant management dashboard with orders, revenue trend, order status, popular menu items and live deliveries",
+        "width": 1536,
+        "height": 1024
+      }
+    },
+    {
+      "id": 3,
+      "title": "Real Estate App",
+      "category": "web-mobile",
+      "image": "🏠",
+      "description": "Advanced property management platform with property listings, virtual tours, mortgage calculators, and comprehensive real estate analytics for agents and buyers.",
+      "technologies": [
+        "Next.js",
+        "Laravel",
+        "MySQL",
+        "Google Maps API"
+      ],
+      "client": "PropertyMax",
+      "duration": "6 months",
+      "results": "200+ properties listed",
+      "featured": true,
+      "highlights": [
+        {
+          "label": "Property Listings",
+          "icon": "Building2",
+          "tone": "blue"
+        },
+        {
+          "label": "Virtual Tours",
+          "icon": "ScanEye",
+          "tone": "violet"
+        },
+        {
+          "label": "Mortgage Calculators",
+          "icon": "Calculator",
+          "tone": "orange"
+        },
+        {
+          "label": "Real Estate Analytics",
+          "icon": "BarChart3",
+          "tone": "green"
+        }
+      ],
+      "screenshot": {
+        "src": "/images/work/homehub-real-estate-dashboard.webp",
+        "alt": "HomeHub real estate dashboard with property stats, featured listings, property map, sales overview, leads and bookings",
+        "width": 1536,
+        "height": 1024
+      }
+    },
+    {
+      "id": 5,
+      "title": "Web Scraping Tool",
+      "category": "data",
+      "image": "🕷️",
+      "description": "Powerful data extraction platform with intelligent scraping capabilities, data processing, and automated collection from various web sources.",
+      "technologies": [
+        "Python",
+        "Scrapy",
+        "Redis",
+        "Celery"
+      ],
+      "client": "DataInsights Corp",
+      "duration": "2 months",
+      "results": "100+ data sources integrated",
+      "featured": false,
+      "hideFromAll": true
+    },
+    {
+      "id": 10,
+      "title": "EcoTours India",
+      "category": "ui-ux",
+      "image": "🌿",
+      "description": "UI/UX design for EcoTours India, a travel website showcasing eco-friendly tours across India.",
+      "technologies": [],
+      "client": "",
+      "duration": "",
+      "results": "",
+      "featured": false
+    },
+    {
+      "id": 4,
+      "title": "Student Portal",
+      "category": "education",
+      "image": "🎓",
+      "description": "Comprehensive educational platform providing students with course management, assignment tracking, grade monitoring, and collaborative learning tools.",
+      "technologies": [
+        "Vue.js",
+        "Django",
+        "PostgreSQL",
+        "Redis"
+      ],
+      "client": "EduTech Institute",
+      "duration": "3 months",
+      "results": "500+ students enrolled",
+      "featured": false,
+      "screenshot": {
+        "src": "/images/work/savantx-student-portal.webp",
+        "alt": "SavantX Student Portal dashboard with enrolled courses, assignments, schedule, deadlines, grades and announcements",
+        "width": 1536,
+        "height": 1024
+      }
+    },
+    {
+      "id": 6,
+      "title": "School Management System",
+      "category": "education",
+      "image": "🏫",
+      "description": "Complete educational institution management solution covering student enrollment, staff management, academic planning, and administrative operations.",
+      "technologies": [
+        "Angular",
+        "Laravel",
+        "MySQL",
+        "Chart.js"
+      ],
+      "client": "Bright Future School",
+      "duration": "7 months",
+      "results": "75+ schools implemented",
+      "featured": false
+    },
+    {
+      "id": 7,
+      "title": "Student Training Management System",
+      "category": "education",
+      "image": "📚",
+      "description": "Specialized platform for managing training programs, skill development, certification tracking, and progress monitoring for educational institutions.",
+      "technologies": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "JWT"
+      ],
+      "client": "SkillUp Academy",
+      "duration": "4 months",
+      "results": "120+ training programs",
+      "featured": false
+    },
+    {
+      "id": 8,
+      "title": "Fleet Management System",
+      "category": "logistics",
+      "image": "🚛",
+      "description": "Comprehensive vehicle fleet management solution with GPS tracking, maintenance scheduling, driver management, and route optimization.",
+      "technologies": [
+        "Vue.js",
+        "Express",
+        "PostgreSQL",
+        "GPS API"
+      ],
+      "client": "LogiTrack Solutions",
+      "duration": "5 months",
+      "results": "80+ vehicles tracked",
+      "featured": false,
+      "screenshot": {
+        "src": "/images/work/fleetmint-fleet-management.webp",
+        "alt": "Fleetmint fleet management website hero with vehicle routes and tracking stats",
+        "width": 1440,
+        "height": 820
+      }
+    },
+    {
+      "id": 11,
+      "title": "Logic Mechanics",
+      "category": "ui-ux",
+      "image": "⚙️",
+      "description": "UI/UX design for the Logic Mechanics website, from layout and visual style to responsive screens.",
+      "technologies": [],
+      "client": "",
+      "duration": "",
+      "results": "",
+      "featured": false,
+      "hideFromAll": true
+    },
+    {
+      "id": 12,
+      "title": "Pet E-commerce",
+      "category": "ui-ux",
+      "image": "🐾",
+      "description": "UI/UX design for a pet supplies online store, covering product browsing, cart and checkout.",
+      "technologies": [],
+      "client": "",
+      "duration": "",
+      "results": "",
+      "featured": false,
+      "hideFromAll": true
+    },
+    {
+      "id": 13,
+      "title": "Real Estate Website",
+      "category": "ui-ux",
+      "image": "🏡",
+      "description": "UI/UX design for a real estate website that makes property listings easy to browse and compare.",
+      "technologies": [],
+      "client": "",
+      "duration": "",
+      "results": "",
+      "featured": false,
+      "hideFromAll": true
+    },
+    {
+      "id": 14,
+      "title": "Viz Vigyaan",
+      "category": "ui-ux",
+      "image": "🔬",
+      "description": "UI/UX design for Viz Vigyaan, from layout and visual style to responsive screens.",
+      "technologies": [],
+      "client": "",
+      "duration": "",
+      "results": "",
+      "featured": false,
+      "hideFromAll": true
+    },
+    {
+      "id": 15,
+      "title": "Kouton Table Booking App",
+      "category": "ui-ux",
+      "image": "🍽️",
+      "description": "UI/UX design for Kouton, a table booking app for finding restaurants and reserving a table.",
+      "technologies": [],
+      "client": "",
+      "duration": "",
+      "results": "",
+      "featured": false,
+      "hideFromAll": true
+    }
+  ]
+}

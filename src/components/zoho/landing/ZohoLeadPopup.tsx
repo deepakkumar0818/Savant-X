@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/components/zoho/landing/ZohoLeadPopup.json';
 import { useEffect, useRef, useState } from 'react';
 import { CalendarCheck, X } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
@@ -143,9 +144,7 @@ export default function ZohoLeadPopup() {
           open || inlineFormVisible ? 'pointer-events-none translate-y-4 opacity-0' : 'translate-y-0 opacity-100'
         }`}
       >
-        <CalendarCheck className="h-4 w-4" aria-hidden />
-        Get a free consultation
-      </button>
+        <CalendarCheck className="h-4 w-4" aria-hidden />{tx.get_a_free_consultation}</button>
 
       {mounted && (
         <div
@@ -168,16 +167,14 @@ export default function ZohoLeadPopup() {
           >
             <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-slate-100 bg-white/95 px-6 py-5 backdrop-blur sm:px-8">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-indigo-600">Free consultation</p>
-                <h2 id="zoho-lead-popup-title" className="mt-1 text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
-                  Tell us about your Zoho project
-                </h2>
-                <p className="mt-1 text-sm text-slate-500">Share a few details and our Zoho team will get back to you. No obligation.</p>
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-indigo-600">{tx.free_consultation}</p>
+                <h2 id="zoho-lead-popup-title" className="mt-1 text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">{tx.tell_us_about_your_zoho}</h2>
+                <p className="mt-1 text-sm text-slate-500">{tx.share_a_few_details_and}</p>
               </div>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                aria-label="Close"
+                aria-label={tx.close}
                 className="-mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-slate-500 transition hover:bg-slate-100 hover:text-slate-900"
               >
                 <X className="h-5 w-5" aria-hidden />

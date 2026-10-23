@@ -9,7 +9,8 @@ import type { NextRequest } from 'next/server';
  * or from anywhere but localhost.
  */
 
-export const LEADS_SCOPES = 'ZohoCRM.modules.leads.CREATE,ZohoCRM.settings.fields.READ';
+// CREATE: website forms. READ + UPDATE: the admin's Leads page. fields.READ: picklist checks.
+export const LEADS_SCOPES = 'ZohoCRM.modules.leads.CREATE,ZohoCRM.modules.leads.READ,ZohoCRM.modules.leads.UPDATE,ZohoCRM.settings.fields.READ';
 export const STATE_COOKIE = 'zoho_oauth_state';
 
 /** Only in `next dev`, and only when the browser is on this machine. */

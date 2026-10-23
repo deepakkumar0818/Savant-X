@@ -1,3 +1,4 @@
+import tx from '@/content/text/components/zoho/landing/IntegrationEnterprise.json';
 import Image from 'next/image';
 import { ArrowRight, Check, ChevronRight, Cloud, Globe, Share2, type LucideIcon } from 'lucide-react';
 import SelectServiceLink from './SelectServiceLink';
@@ -8,13 +9,13 @@ type HubNode = { label: string; logo?: string; icon?: LucideIcon };
 // 3 x 3 grid around the Zoho hub, read left to right, top to bottom (centre cell skipped).
 const HUB_NODES: HubNode[] = [
   { label: 'CRM', logo: ZOHO_LOGOS['Zoho CRM'] },
-  { label: 'Books', logo: ZOHO_LOGOS['Zoho Books'] },
-  { label: 'Creator', logo: ZOHO_LOGOS['Zoho Creator'] },
-  { label: 'Inventory', logo: ZOHO_LOGOS['Zoho Inventory'] },
-  { label: 'Desk', logo: ZOHO_LOGOS['Zoho Desk'] },
-  { label: 'Your website', icon: Globe },
-  { label: 'External apps', icon: Cloud },
-  { label: 'APIs & webhooks', icon: Share2 },
+  { label: tx.books, logo: ZOHO_LOGOS['Zoho Books'] },
+  { label: tx.creator, logo: ZOHO_LOGOS['Zoho Creator'] },
+  { label: tx.inventory, logo: ZOHO_LOGOS['Zoho Inventory'] },
+  { label: tx.desk, logo: ZOHO_LOGOS['Zoho Desk'] },
+  { label: tx.your_website, icon: Globe },
+  { label: tx.external_apps, icon: Cloud },
+  { label: tx.apis_webhooks, icon: Share2 },
 ];
 const CELL_CENTRES = [16.7, 50, 83.3];
 
@@ -45,8 +46,8 @@ function IntegrationHub() {
               key="hub"
               className="flex flex-col items-center justify-center rounded-2xl bg-white shadow-[0_20px_45px_-15px_rgba(79,70,229,0.55)] ring-1 ring-indigo-100"
             >
-              <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent">Zoho</span>
-              <span className="mt-0.5 text-[10px] font-medium text-slate-500">Your hub</span>
+              <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent">{tx.zoho}</span>
+              <span className="mt-0.5 text-[10px] font-medium text-slate-500">{tx.your_hub}</span>
             </div>
           ) : (
             <div
@@ -73,13 +74,9 @@ function OperationsDashboard() {
   return (
     <div aria-hidden className="relative mx-auto h-64 w-full max-w-[20rem]">
       <div className="absolute left-0 top-0 flex items-center gap-2 rounded-xl bg-white px-3 py-2 text-xs font-semibold text-slate-900 shadow-lg">
-        <Image src={ZOHO_LOGOS['Zoho CRM']!} alt="" width={18} height={18} className="h-[18px] w-[18px] object-contain" />
-        Zoho CRM
-      </div>
+        <Image src={ZOHO_LOGOS['Zoho CRM']!} alt="" width={18} height={18} className="h-[18px] w-[18px] object-contain" />{tx.zoho_crm}</div>
       <div className="absolute right-0 top-2 z-10 flex items-center gap-2 rounded-xl bg-white px-3 py-2 text-xs font-semibold text-slate-900 shadow-lg">
-        <Image src={ZOHO_LOGOS['Zoho Creator']!} alt="" width={18} height={18} className="h-[18px] w-[18px] object-contain" />
-        Zoho Creator
-      </div>
+        <Image src={ZOHO_LOGOS['Zoho Creator']!} alt="" width={18} height={18} className="h-[18px] w-[18px] object-contain" />{tx.zoho_creator}</div>
 
       <div className="absolute bottom-0 left-0 right-14 top-12 -rotate-2 overflow-hidden rounded-xl bg-[#111733] ring-1 ring-indigo-400/30 shadow-[0_30px_60px_-20px_rgba(79,70,229,0.6)]">
         <div className="flex h-full">
@@ -89,7 +86,7 @@ function OperationsDashboard() {
             ))}
           </div>
           <div className="flex-1 p-3">
-            <p className="text-[9px] font-semibold text-white/80">Operations dashboard</p>
+            <p className="text-[9px] font-semibold text-white/80">{tx.operations_dashboard}</p>
             <div className="mt-2 grid grid-cols-3 gap-1.5">
               {['Sales orders', 'Production', 'Inventory'].map((label) => (
                 <div key={label} className="rounded-md bg-white/5 p-1.5 ring-1 ring-white/10">
@@ -134,11 +131,11 @@ function ProblemSolution({ problem, solution, dark = false }: { problem: string;
   return (
     <dl className="mt-8 grid gap-5 text-sm leading-relaxed sm:grid-cols-2 sm:gap-8 sm:text-[15px]">
       <div>
-        <dt className={dt}>The problem</dt>
+        <dt className={dt}>{tx.the_problem}</dt>
         <dd className={dd}>{problem}</dd>
       </div>
       <div>
-        <dt className={dt}>What we do</dt>
+        <dt className={dt}>{tx.what_we_do}</dt>
         <dd className={dd}>{solution}</dd>
       </div>
     </dl>
@@ -148,26 +145,23 @@ function ProblemSolution({ problem, solution, dark = false }: { problem: string;
 /** Integration service and enterprise Zoho solutions, side by side. */
 export default function IntegrationEnterprise() {
   return (
-    <section aria-label="Integrations and enterprise solutions" className="px-6 pt-20 sm:px-8 lg:px-12 lg:pt-28">
+    <section aria-label={tx.integrations_and_enterprise_solutions} className="px-6 pt-20 sm:px-8 lg:px-12 lg:pt-28">
       <div className="mx-auto grid max-w-7xl gap-5 xl:grid-cols-2">
         {/* Integrations */}
         <article className="zoho-reveal relative flex flex-col overflow-hidden rounded-3xl bg-[linear-gradient(160deg,#ffffff_0%,#eef2ff_50%,#dbeafe_100%)] p-7 ring-1 ring-slate-200/80 shadow-[0_30px_70px_-45px_rgba(30,58,138,0.5)] sm:p-10">
           <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_17rem] md:items-center xl:grid-cols-[minmax(0,1fr)_15rem] 2xl:grid-cols-[minmax(0,1fr)_17rem]">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600">Business automation &amp; integrations</p>
-              <h3 className="mt-4 text-3xl font-bold tracking-tight xl:text-[1.75rem] 2xl:text-3xl text-slate-900">
-                Connect Zoho to the systems{' '}
-                <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">you already use</span>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600">{tx.business_automation_integrations}</p>
+              <h3 className="mt-4 text-3xl font-bold tracking-tight xl:text-[1.75rem] 2xl:text-3xl text-slate-900">{tx.connect_zoho_to_the_systems}{' '}
+                <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">{tx.you_already_use}</span>
               </h3>
-              <p className="mt-4 text-slate-600">
-                Starting at <span className="font-bold text-slate-900">{INTEGRATION.price}</span> before applicable taxes.
-              </p>
+              <p className="mt-4 text-slate-600">{tx.starting_at}{" "}<span className="font-bold text-slate-900">{INTEGRATION.price}</span>{" "}{tx.before_applicable_taxes}</p>
               </div>
             <IntegrationHub />
           </div>
           <ProblemSolution problem={INTEGRATION.problem} solution={INTEGRATION.solution} />
 
-          <ul className="mt-8 flex flex-wrap gap-2" aria-label="Integration options">
+          <ul className="mt-8 flex flex-wrap gap-2" aria-label={tx.integration_options}>
             {INTEGRATION.nodes.map((node) => (
               <li key={node} className="rounded-full bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200">
                 {node}
@@ -179,13 +173,9 @@ export default function IntegrationEnterprise() {
             <SelectServiceLink
               service="automation-integrations"
               className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/30 transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 sm:text-base"
-            >
-              Plan an integration
-              <ArrowRight className="h-4 w-4" aria-hidden />
+            >{tx.plan_an_integration}<ArrowRight className="h-4 w-4" aria-hidden />
             </SelectServiceLink>
-            <a href="#use-cases" className="inline-flex items-center gap-1 py-2 text-sm font-semibold text-indigo-600 hover:text-indigo-800">
-              View integration examples
-              <ChevronRight className="h-4 w-4" aria-hidden />
+            <a href="#use-cases" className="inline-flex items-center gap-1 py-2 text-sm font-semibold text-indigo-600 hover:text-indigo-800">{tx.view_integration_examples}<ChevronRight className="h-4 w-4" aria-hidden />
             </a>
           </div>
         </article>
@@ -198,12 +188,11 @@ export default function IntegrationEnterprise() {
           />
           <div className="relative grid gap-8 md:grid-cols-[minmax(0,1fr)_17rem] md:items-center xl:grid-cols-[minmax(0,1fr)_15rem] 2xl:grid-cols-[minmax(0,1fr)_17rem]">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-300">Enterprise Zoho solutions</p>
-              <h3 className="mt-4 text-3xl font-bold tracking-tight xl:text-[1.75rem] 2xl:text-3xl">
-                One Zoho system for{' '}
-                <span className="bg-gradient-to-r from-amber-300 to-orange-500 bg-clip-text text-transparent">complex operations</span>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-300">{tx.enterprise_zoho_solutions}</p>
+              <h3 className="mt-4 text-3xl font-bold tracking-tight xl:text-[1.75rem] 2xl:text-3xl">{tx.one_zoho_system_for}{' '}
+                <span className="bg-gradient-to-r from-amber-300 to-orange-500 bg-clip-text text-transparent">{tx.complex_operations}</span>
               </h3>
-              <p className="mt-4 text-slate-300">Custom quotation based on agreed scope and milestones.</p>
+              <p className="mt-4 text-slate-300">{tx.custom_quotation_based_on_agreed}</p>
               </div>
             <OperationsDashboard />
           </div>
@@ -226,13 +215,9 @@ export default function IntegrationEnterprise() {
             <SelectServiceLink
               service="enterprise"
               className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-slate-900 transition hover:bg-indigo-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40 sm:text-base"
-            >
-              Discuss Your Enterprise Project
-              <ArrowRight className="h-4 w-4" aria-hidden />
+            >{tx.discuss_your_enterprise_project}<ArrowRight className="h-4 w-4" aria-hidden />
             </SelectServiceLink>
-            <a href="#why" className="inline-flex items-center gap-1 py-2 text-sm font-semibold text-white hover:text-indigo-200">
-              View our approach
-              <ChevronRight className="h-4 w-4" aria-hidden />
+            <a href="#why" className="inline-flex items-center gap-1 py-2 text-sm font-semibold text-white hover:text-indigo-200">{tx.view_our_approach}<ChevronRight className="h-4 w-4" aria-hidden />
             </a>
           </div>
         </article>

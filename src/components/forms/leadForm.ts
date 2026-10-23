@@ -1,7 +1,11 @@
 /** Shared by the website's lead forms that post to /api/leads. */
+import forms from '@/content/forms.json';
 
-/** Same ranges as the Zoho page, so CRM Priority is set the same way (Low / Medium / High). */
-export const BUDGETS = ['Under ₹10,000', '₹10,000 – ₹25,000', '₹25,000 – ₹50,000', '₹50,000 – ₹1,00,000', 'Above ₹1,00,000', 'Not sure yet'] as const;
+/**
+ * Budget ranges (edited in the admin: Forms). Priority in Zoho CRM is worked out from these,
+ * so keep the ₹ amounts in them (see priorityFromBudget in src/lib/zohoLeads.ts).
+ */
+export const BUDGETS: string[] = forms.budgets;
 
 export const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 export const PHONE_PATTERN = /^\+?[\d\s()-]{7,20}$/;

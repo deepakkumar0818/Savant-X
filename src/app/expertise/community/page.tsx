@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/community/page.json';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
@@ -8,9 +9,9 @@ import { UsersRound } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Community Platforms',
+  title: tx.community_platforms,
   description:
-    'Online community platforms that connect people and encourage meaningful interaction around shared interests.',
+    tx.online_community_platforms_that_connect,
   path: '/expertise/community',
 });
 
@@ -19,46 +20,46 @@ export default function CommunityPage() {
   const communityServices = [
     {
       id: 'community-platforms',
-      title: 'Community Platforms',
+      title: tx.community_platforms_2,
       icon: '🌐',
-      description: 'Build and manage online community platforms that connect people and foster meaningful relationships.',
-      features: ['Forums & Discussions', 'User Profiles', 'Moderation Tools', 'Event Management', 'Content Sharing', 'Community Analytics'],
-      pricing: 'Starting at $8,000',
+      description: tx.build_and_manage_online_community,
+      features: [tx.forums_discussions, tx.user_profiles, tx.moderation_tools, tx.event_management, tx.content_sharing, tx.community_analytics],
+      pricing: tx.starting_at_8_000,
       timeline: '8-16 weeks',
-      complexity: 'Advanced',
+      complexity: tx.advanced,
       features_count: '35+'
     },
     {
       id: 'social-networks',
-      title: 'Social Networks',
+      title: tx.social_networks,
       icon: '👥',
-      description: 'Custom social networking platforms tailored to specific communities and interests.',
-      features: ['Social Feed', 'Friend Connections', 'Messaging System', 'Groups & Communities', 'Content Creation', 'Privacy Controls'],
-      pricing: 'Starting at $12,000',
+      description: tx.custom_social_networking_platforms_tailo,
+      features: [tx.social_feed, tx.friend_connections, tx.messaging_system, tx.groups_communities, tx.content_creation, tx.privacy_controls],
+      pricing: tx.starting_at_12_000,
       timeline: '12-24 weeks',
-      complexity: 'Enterprise',
+      complexity: tx.enterprise,
       features_count: '45+'
     },
     {
       id: 'membership-sites',
-      title: 'Membership Sites',
+      title: tx.membership_sites,
       icon: '🎫',
-      description: 'Exclusive membership platforms with tiered access, premium content, and member benefits.',
-      features: ['Membership Tiers', 'Premium Content', 'Payment Integration', 'Member Dashboard', 'Access Control', 'Subscription Management'],
-      pricing: 'Starting at $6,000',
+      description: tx.exclusive_membership_platforms_with_tier,
+      features: [tx.membership_tiers, tx.premium_content, tx.payment_integration, tx.member_dashboard, tx.access_control, tx.subscription_management],
+      pricing: tx.starting_at_6_000,
       timeline: '6-12 weeks',
-      complexity: 'Standard',
+      complexity: tx.standard,
       features_count: '25+'
     },
     {
       id: 'event-communities',
-      title: 'Event Communities',
+      title: tx.event_communities,
       icon: '🎪',
-      description: 'Community platforms focused on events, conferences, and gatherings with networking features.',
-      features: ['Event Listings', 'Registration System', 'Networking Tools', 'Live Streaming', 'Event Analytics', 'Feedback System'],
-      pricing: 'Starting at $5,000',
+      description: tx.community_platforms_focused_on_events,
+      features: [tx.event_listings, tx.registration_system, tx.networking_tools, tx.live_streaming, tx.event_analytics, tx.feedback_system],
+      pricing: tx.starting_at_5_000,
       timeline: '5-10 weeks',
-      complexity: 'Standard',
+      complexity: tx.standard,
       features_count: '30+'
     }
   ];
@@ -67,78 +68,78 @@ export default function CommunityPage() {
     {
       category: 'Professional Communities',
       types: [
-        { name: 'Industry Networks', icon: '🏢', description: 'Professional networks for specific industries' },
-        { name: 'Freelancer Platforms', icon: '💼', description: 'Platforms connecting freelancers and clients' },
-        { name: 'Mentorship Networks', icon: '👨‍🏫', description: 'Mentor-mentee matching platforms' },
-        { name: 'Skill Sharing', icon: '🎯', description: 'Communities for sharing and learning skills' },
-        { name: 'Job Boards', icon: '💼', description: 'Community-driven job posting and application' },
-        { name: 'Professional Events', icon: '🎤', description: 'Event platforms for professional gatherings' }
+        { name: tx.industry_networks, icon: '🏢', description: tx.professional_networks_for_specific_indus },
+        { name: tx.freelancer_platforms, icon: '💼', description: tx.platforms_connecting_freelancers_and_cli },
+        { name: tx.mentorship_networks, icon: '👨‍🏫', description: tx.mentor_mentee_matching_platforms },
+        { name: tx.skill_sharing, icon: '🎯', description: tx.communities_for_sharing_and_learning },
+        { name: tx.job_boards, icon: '💼', description: tx.community_driven_job_posting_and },
+        { name: tx.professional_events, icon: '🎤', description: tx.event_platforms_for_professional_gatheri }
       ]
     },
     {
       category: 'Interest-Based Communities',
       types: [
-        { name: 'Hobby Groups', icon: '🎨', description: 'Communities around shared hobbies and interests' },
-        { name: 'Learning Communities', icon: '📚', description: 'Educational and learning-focused platforms' },
-        { name: 'Creative Networks', icon: '🎭', description: 'Platforms for artists and creative professionals' },
-        { name: 'Sports Communities', icon: '⚽', description: 'Sports teams and fan communities' },
-        { name: 'Tech Communities', icon: '💻', description: 'Technology and developer communities' },
-        { name: 'Health & Wellness', icon: '🧘', description: 'Health, fitness, and wellness communities' }
+        { name: tx.hobby_groups, icon: '🎨', description: tx.communities_around_shared_hobbies_and },
+        { name: tx.learning_communities, icon: '📚', description: tx.educational_and_learning_focused_platfor },
+        { name: tx.creative_networks, icon: '🎭', description: tx.platforms_for_artists_and_creative },
+        { name: tx.sports_communities, icon: '⚽', description: tx.sports_teams_and_fan_communities },
+        { name: tx.tech_communities, icon: '💻', description: tx.technology_and_developer_communities },
+        { name: tx.health_wellness, icon: '🧘', description: tx.health_fitness_and_wellness_communities }
       ]
     },
     {
       category: 'Geographic Communities',
       types: [
-        { name: 'Local Communities', icon: '🏘️', description: 'Location-based community platforms' },
-        { name: 'Neighborhood Networks', icon: '🏠', description: 'Local neighborhood communication platforms' },
-        { name: 'City Events', icon: '🌆', description: 'City-wide event and activity platforms' },
-        { name: 'Regional Groups', icon: '🗺️', description: 'Regional community organization platforms' },
-        { name: 'Virtual Meetups', icon: '🌐', description: 'Online meetup and gathering platforms' },
-        { name: 'Cultural Exchange', icon: '🌍', description: 'Cultural and international exchange platforms' }
+        { name: tx.local_communities, icon: '🏘️', description: tx.location_based_community_platforms },
+        { name: tx.neighborhood_networks, icon: '🏠', description: tx.local_neighborhood_communication_platfor },
+        { name: tx.city_events, icon: '🌆', description: tx.city_wide_event_and_activity },
+        { name: tx.regional_groups, icon: '🗺️', description: tx.regional_community_organization_platform },
+        { name: tx.virtual_meetups, icon: '🌐', description: tx.online_meetup_and_gathering_platforms },
+        { name: tx.cultural_exchange, icon: '🌍', description: tx.cultural_and_international_exchange_plat }
       ]
     },
     {
       category: 'Specialized Communities',
       types: [
-        { name: 'Support Groups', icon: '🤝', description: 'Support and peer assistance communities' },
-        { name: 'Parenting Networks', icon: '👶', description: 'Parenting advice and support platforms' },
-        { name: 'Elderly Communities', icon: '👴', description: 'Communities for senior citizens' },
-        { name: 'Student Networks', icon: '🎓', description: 'Student and educational communities' },
-        { name: 'Volunteer Platforms', icon: '🙋', description: 'Volunteer coordination and management' },
-        { name: 'Crisis Support', icon: '🆘', description: 'Emergency and crisis support communities' }
+        { name: tx.support_groups, icon: '🤝', description: tx.support_and_peer_assistance_communities },
+        { name: tx.parenting_networks, icon: '👶', description: tx.parenting_advice_and_support_platforms },
+        { name: tx.elderly_communities, icon: '👴', description: tx.communities_for_senior_citizens },
+        { name: tx.student_networks, icon: '🎓', description: tx.student_and_educational_communities },
+        { name: tx.volunteer_platforms, icon: '🙋', description: tx.volunteer_coordination_and_management },
+        { name: tx.crisis_support, icon: '🆘', description: tx.emergency_and_crisis_support_communities }
       ]
     }
   ];
 
   const communityFeatures = [
     {
-      title: 'User Management',
-      description: 'Comprehensive user registration, profiles, and authentication systems.',
+      title: tx.user_management,
+      description: tx.comprehensive_user_registration_profiles,
       icon: '👤'
     },
     {
-      title: 'Content Moderation',
-      description: 'AI-powered and human moderation tools to maintain community standards.',
+      title: tx.content_moderation,
+      description: tx.ai_powered_and_human_moderation,
       icon: '🛡️'
     },
     {
-      title: 'Real-time Chat',
-      description: 'Instant messaging, group chats, and video conferencing capabilities.',
+      title: tx.real_time_chat,
+      description: tx.instant_messaging_group_chats_and,
       icon: '💬'
     },
     {
-      title: 'Event Management',
-      description: 'Create, manage, and promote community events and gatherings.',
+      title: tx.event_management_2,
+      description: tx.create_manage_and_promote_community,
       icon: '📅'
     },
     {
-      title: 'Content Sharing',
-      description: 'Rich media sharing, blogs, forums, and knowledge base features.',
+      title: tx.content_sharing_2,
+      description: tx.rich_media_sharing_blogs_forums,
       icon: '📤'
     },
     {
-      title: 'Analytics Dashboard',
-      description: 'Community insights, engagement metrics, and growth analytics.',
+      title: tx.analytics_dashboard,
+      description: tx.community_insights_engagement_metrics_an,
       icon: '📊'
     }
   ];
@@ -146,177 +147,177 @@ export default function CommunityPage() {
   const developmentProcess = [
     {
       step: '01',
-      title: 'Community Discovery',
-      description: 'Understanding community needs, goals, and target audience.',
+      title: tx.community_discovery,
+      description: tx.understanding_community_needs_goals_and,
       duration: '1-2 weeks',
       icon: '🔍'
     },
     {
       step: '02',
-      title: 'Platform Architecture',
-      description: 'Designing scalable community platform architecture and user flows.',
+      title: tx.platform_architecture,
+      description: tx.designing_scalable_community_platform_ar,
       duration: '2-3 weeks',
       icon: '🏗️'
     },
     {
       step: '03',
-      title: 'Feature Development',
-      description: 'Building core community features and user management systems.',
+      title: tx.feature_development,
+      description: tx.building_core_community_features_and,
       duration: '8-20 weeks',
       icon: '⚙️'
     },
     {
       step: '04',
-      title: 'Community Tools',
-      description: 'Implementing moderation, analytics, and community management tools.',
+      title: tx.community_tools,
+      description: tx.implementing_moderation_analytics_and_co,
       duration: '2-4 weeks',
       icon: '🛠️'
     },
     {
       step: '05',
-      title: 'Testing & Launch',
-      description: 'Comprehensive testing, community onboarding, and platform launch.',
+      title: tx.testing_launch,
+      description: tx.comprehensive_testing_community_onboardi,
       duration: '2-3 weeks',
       icon: '🚀'
     },
     {
       step: '06',
-      title: 'Community Growth',
-      description: 'Ongoing support, community management, and growth strategies.',
-      duration: 'Ongoing',
+      title: tx.community_growth,
+      description: tx.ongoing_support_community_management_and,
+      duration: tx.ongoing,
       icon: '📈'
     }
   ];
 
   const deliverables = [
     {
-      title: 'Community Platform',
-      description: 'Full-featured community platform with user management and engagement tools.',
+      title: tx.community_platform,
+      description: tx.full_featured_community_platform_with,
       icon: '🌐'
     },
     {
-      title: 'Mobile Apps',
-      description: 'iOS and Android mobile applications for community access.',
+      title: tx.mobile_apps,
+      description: tx.ios_and_android_mobile_applications,
       icon: '📱'
     },
     {
-      title: 'Admin Dashboard',
-      description: 'Comprehensive admin panel for community management and moderation.',
+      title: tx.admin_dashboard,
+      description: tx.comprehensive_admin_panel_for_community,
       icon: '⚙️'
     },
     {
-      title: 'Analytics System',
-      description: 'Advanced analytics and reporting for community insights.',
+      title: tx.analytics_system,
+      description: tx.advanced_analytics_and_reporting_for,
       icon: '📊'
     },
     {
-      title: 'Moderation Tools',
-      description: 'Content moderation and community management tools.',
+      title: tx.moderation_tools_2,
+      description: tx.content_moderation_and_community_managem,
       icon: '🛡️'
     },
     {
-      title: 'Integration APIs',
-      description: 'APIs for third-party integrations and custom functionality.',
+      title: tx.integration_apis,
+      description: tx.apis_for_third_party_integrations,
       icon: '🔌'
     }
   ];
 
   const benefits = [
     {
-      title: 'Community Engagement',
-      description: 'Build active, engaged communities that drive meaningful interactions.',
+      title: tx.community_engagement,
+      description: tx.build_active_engaged_communities_that,
       icon: '💬'
     },
     {
-      title: 'User Retention',
-      description: 'Increase user retention through community features and social connections.',
+      title: tx.user_retention,
+      description: tx.increase_user_retention_through_communit,
       icon: '🔄'
     },
     {
-      title: 'Content Generation',
-      description: 'User-generated content that enriches your platform and reduces content costs.',
+      title: tx.content_generation,
+      description: tx.user_generated_content_that_enriches,
       icon: '📝'
     },
     {
-      title: 'Brand Loyalty',
-      description: 'Strong community connections lead to increased brand loyalty and advocacy.',
+      title: tx.brand_loyalty,
+      description: tx.strong_community_connections_lead_to,
       icon: '❤️'
     },
     {
-      title: 'Market Research',
-      description: 'Direct access to user feedback and insights for product development.',
+      title: tx.market_research,
+      description: tx.direct_access_to_user_feedback,
       icon: '🔍'
     },
     {
-      title: 'Revenue Generation',
-      description: 'Multiple monetization opportunities through community features and memberships.',
+      title: tx.revenue_generation,
+      description: tx.multiple_monetization_opportunities_thro,
       icon: '💰'
     }
   ];
 
   const communityMetrics = [
     {
-      title: 'User Engagement',
-      description: 'Measure daily active users, session duration, and interaction rates.',
+      title: tx.user_engagement,
+      description: tx.measure_daily_active_users_session,
       icon: '📈'
     },
     {
-      title: 'Community Growth',
-      description: 'Track member acquisition, retention rates, and community expansion.',
+      title: tx.community_growth_2,
+      description: tx.track_member_acquisition_retention_rates,
       icon: '🌱'
     },
     {
-      title: 'Content Activity',
-      description: 'Monitor posts, comments, shares, and user-generated content creation.',
+      title: tx.content_activity,
+      description: tx.monitor_posts_comments_shares_and,
       icon: '📊'
     },
     {
-      title: 'Event Participation',
-      description: 'Track event attendance, registration rates, and community gatherings.',
+      title: tx.event_participation,
+      description: tx.track_event_attendance_registration_rate,
       icon: '🎪'
     },
     {
-      title: 'Moderation Efficiency',
-      description: 'Measure content moderation effectiveness and community safety metrics.',
+      title: tx.moderation_efficiency,
+      description: tx.measure_content_moderation_effectiveness,
       icon: '🛡️'
     },
     {
-      title: 'Revenue Impact',
-      description: 'Analyze community impact on revenue, subscriptions, and monetization.',
+      title: tx.revenue_impact,
+      description: tx.analyze_community_impact_on_revenue,
       icon: '💎'
     }
   ];
 
   const communityTechnologies = [
-    { name: 'React', icon: '⚛️', description: 'Frontend development framework', category: 'Frontend' },
-    { name: 'Node.js', icon: '🟢', description: 'Backend server runtime', category: 'Backend' },
-    { name: 'MongoDB', icon: '🍃', description: 'NoSQL database for community data', category: 'Database' },
-    { name: 'Socket.io', icon: '🔌', description: 'Real-time communication', category: 'Real-time' },
-    { name: 'Redis', icon: '🔴', description: 'Caching and session management', category: 'Cache' },
-    { name: 'AWS', icon: '☁️', description: 'Cloud infrastructure and hosting', category: 'Cloud' },
-    { name: 'Stripe', icon: '💳', description: 'Payment processing for memberships', category: 'Payments' },
-    { name: 'SendGrid', icon: '📧', description: 'Email notifications and marketing', category: 'Email' }
+    { name: tx.react, icon: '⚛️', description: tx.frontend_development_framework, category: 'Frontend' },
+    { name: tx.node_js, icon: '🟢', description: tx.backend_server_runtime, category: 'Backend' },
+    { name: tx.mongodb, icon: '🍃', description: tx.nosql_database_for_community_data, category: 'Database' },
+    { name: tx.socket_io, icon: '🔌', description: tx.real_time_communication, category: 'Real-time' },
+    { name: tx.redis, icon: '🔴', description: tx.caching_and_session_management, category: 'Cache' },
+    { name: 'AWS', icon: '☁️', description: tx.cloud_infrastructure_and_hosting, category: 'Cloud' },
+    { name: tx.stripe, icon: '💳', description: tx.payment_processing_for_memberships, category: 'Payments' },
+    { name: tx.sendgrid, icon: '📧', description: tx.email_notifications_and_marketing, category: 'Email' }
   ];
 
   const successStories = [
     {
-      title: 'Professional Network',
-      description: 'Built a 10,000+ member professional networking platform with job matching and mentorship features.',
+      title: tx.professional_network,
+      description: tx.built_a_10_000_member,
       icon: '💼'
     },
     {
-      title: 'Learning Community',
-      description: 'Created an educational community with 5,000+ active learners and instructor collaboration tools.',
+      title: tx.learning_community,
+      description: tx.created_an_educational_community_with,
       icon: '🎓'
     },
     {
-      title: 'Local Community',
-      description: 'Developed a neighborhood platform connecting 2,000+ local residents with events and services.',
+      title: tx.local_community,
+      description: tx.developed_a_neighborhood_platform_connec,
       icon: '🏘️'
     },
     {
-      title: 'Hobby Network',
-      description: 'Launched a creative community platform with 8,000+ artists sharing and collaborating on projects.',
+      title: tx.hobby_network,
+      description: tx.launched_a_creative_community_platform,
       icon: '🎨'
     }
   ];
@@ -325,17 +326,17 @@ export default function CommunityPage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="Community Solutions"
+        eyebrow={tx.community_solutions}
         eyebrowIcon={UsersRound}
-        title="Community"
-        highlight="Experience"
-        description="Build thriving online communities that connect people, foster relationships, and create meaningful interactions. Our community platforms bring people together around shared interests and goals."
+        title={tx.community}
+        highlight={tx.experience}
+        description={tx.build_thriving_online_communities_that}
         highlights={["Community Platforms", "Social Networks", "Membership Sites", "Event Communities"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "500K+", label: "Active Users" },
-          { value: "95%", label: "User Satisfaction" },
-          { value: "24/7", label: "Community Support" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "500K+", label: tx.active_users },
+          { value: "95%", label: tx.user_satisfaction },
+          { value: "24/7", label: tx.community_support },
         ]}
       />
 
@@ -344,16 +345,10 @@ export default function CommunityPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Services
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Community
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Solutions</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_services}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.community}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.solutions}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Comprehensive community platform solutions designed to connect people and build lasting relationships.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.comprehensive_community_platform_solutio}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -389,19 +384,19 @@ export default function CommunityPage() {
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200 sm:grid-cols-4">
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.timeline}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.complexity}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Complexity</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.complexity}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.features_count}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Features</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.features}</div>
                     </div>
                   </div>
                 </div>
@@ -416,16 +411,10 @@ export default function CommunityPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Community Types
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Types of
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Communities</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.community_types}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.types_of}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.communities}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We build communities for various purposes, from professional networks to interest-based groups.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_build_communities_for_various}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -458,16 +447,10 @@ export default function CommunityPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Community Features
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Essential
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Features</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.community_features}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.essential}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.features}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Comprehensive features that make communities engaging, safe, and easy to manage.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.comprehensive_features_that_make_communi}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -495,16 +478,10 @@ export default function CommunityPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Success Stories
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Community
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Success Stories</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.success_stories}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.community}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.success_stories}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Real examples of thriving communities we&apos;ve built and the impact they&apos;ve created.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.real_examples_of_thriving_communities}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -532,16 +509,10 @@ export default function CommunityPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Community
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Development Process</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.community}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.development_process}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our systematic approach ensures successful community platform development and launch.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_systematic_approach_ensures_successf}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -575,16 +546,10 @@ export default function CommunityPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Community Metrics
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Measuring
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Community Success</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.community_metrics}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.measuring}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.community_success}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Key metrics to track and measure the health and success of your community platform.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.key_metrics_to_track_and}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -612,16 +577,10 @@ export default function CommunityPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Community Technologies
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Technology
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Stack</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.community_technologies}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.technology}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.stack}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Modern technologies and tools we use to build scalable and engaging community platforms.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.modern_technologies_and_tools_we}</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
@@ -648,16 +607,10 @@ export default function CommunityPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Deliverables
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              What You&apos;ll
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Receive</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.deliverables}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.what_you_ll}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.receive}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Complete community platform deliverables that provide engagement and growth capabilities.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.complete_community_platform_deliverables}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -685,16 +638,10 @@ export default function CommunityPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Why Community Platforms
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Benefits of
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Community Building</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.why_community_platforms}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.benefits_of}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.community_building}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Community platforms provide significant advantages for engagement, retention, and business growth.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.community_platforms_provide_significant}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -720,21 +667,13 @@ export default function CommunityPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Build Your
-            <span className="block text-blue-100 mt-2">Community Platform?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_build_your}<span className="block text-blue-100 mt-2">{tx.community_platform_2}</span>
           </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">
-            Let&apos;s work together to create a thriving community platform that connects people and drives meaningful engagement.
-          </p>
+          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">{tx.let_s_work_together_to}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Start Community Project
-            </Link>
-            <Link href="#community-types" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-              View Community Types
-            </Link>
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_community_project}</Link>
+            <Link href="#community-types" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.view_community_types}</Link>
           </div>
         </div>
       </section>

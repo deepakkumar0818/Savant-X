@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/not-for-profit/page.json';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import type { Metadata } from 'next';
@@ -8,9 +9,9 @@ import { HeartHandshake } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Not-for-Profit Technology',
+  title: tx.not_for_profit_technology,
   description:
-    'Technology solutions that help nonprofit organisations amplify their impact and focus on their mission.',
+    tx.technology_solutions_that_help_nonprofit,
   path: '/expertise/not-for-profit',
 });
 
@@ -19,46 +20,46 @@ export default function NotForProfitPage() {
   const nonprofitServices = [
     {
       id: 'donation-platforms',
-      title: 'Donation Platforms',
+      title: tx.donation_platforms,
       icon: '💝',
-      description: 'Secure and user-friendly donation platforms to maximize fundraising efforts and donor engagement.',
-      features: ['Online Donations', 'Recurring Giving', 'Donor Management', 'Campaign Tracking', 'Receipt Generation', 'Analytics Dashboard'],
-      pricing: 'Starting at $3,500',
+      description: tx.secure_and_user_friendly_donation,
+      features: [tx.online_donations, tx.recurring_giving, tx.donor_management, tx.campaign_tracking, tx.receipt_generation, tx.analytics_dashboard],
+      pricing: tx.starting_at_3_500,
       timeline: '4-8 weeks',
-      complexity: 'Advanced',
+      complexity: tx.advanced,
       features_count: '25+'
     },
     {
       id: 'volunteer-management',
-      title: 'Volunteer Management',
+      title: tx.volunteer_management,
       icon: '👥',
-      description: 'Comprehensive volunteer management systems to coordinate volunteers and track their contributions.',
-      features: ['Volunteer Registration', 'Event Scheduling', 'Time Tracking', 'Skills Matching', 'Communication Tools', 'Impact Reporting'],
-      pricing: 'Starting at $2,500',
+      description: tx.comprehensive_volunteer_management_syste,
+      features: [tx.volunteer_registration, tx.event_scheduling, tx.time_tracking, tx.skills_matching, tx.communication_tools, tx.impact_reporting],
+      pricing: tx.starting_at_2_500,
       timeline: '3-6 weeks',
-      complexity: 'Standard',
+      complexity: tx.standard,
       features_count: '20+'
     },
     {
       id: 'member-portals',
-      title: 'Member Portals',
+      title: tx.member_portals,
       icon: '🏛️',
-      description: 'Member-focused portals for organizations to engage with their community and manage memberships.',
-      features: ['Member Registration', 'Profile Management', 'Event Registration', 'Resource Library', 'Discussion Forums', 'Payment Processing'],
-      pricing: 'Starting at $4,000',
+      description: tx.member_focused_portals_for_organizations,
+      features: [tx.member_registration, tx.profile_management, tx.event_registration, tx.resource_library, tx.discussion_forums, tx.payment_processing],
+      pricing: tx.starting_at_4_000,
       timeline: '5-10 weeks',
-      complexity: 'Advanced',
+      complexity: tx.advanced,
       features_count: '30+'
     },
     {
       id: 'grant-management',
-      title: 'Grant Management',
+      title: tx.grant_management,
       icon: '📋',
-      description: 'Streamlined grant management systems for tracking applications, reporting, and compliance.',
-      features: ['Grant Applications', 'Document Management', 'Progress Tracking', 'Reporting Tools', 'Compliance Monitoring', 'Deadline Alerts'],
-      pricing: 'Starting at $5,000',
+      description: tx.streamlined_grant_management_systems_for,
+      features: [tx.grant_applications, tx.document_management, tx.progress_tracking, tx.reporting_tools, tx.compliance_monitoring, tx.deadline_alerts],
+      pricing: tx.starting_at_5_000,
       timeline: '6-12 weeks',
-      complexity: 'Enterprise',
+      complexity: tx.enterprise,
       features_count: '40+'
     }
   ];
@@ -67,37 +68,37 @@ export default function NotForProfitPage() {
     {
       category: 'Social Services',
       organizations: [
-        { name: 'Homeless Shelters', icon: '🏠', description: 'Supporting vulnerable populations' },
-        { name: 'Food Banks', icon: '🍎', description: 'Fighting hunger and food insecurity' },
-        { name: 'Mental Health', icon: '🧠', description: 'Mental health support and advocacy' },
-        { name: 'Domestic Violence', icon: '🛡️', description: 'Supporting survivors and prevention' }
+        { name: tx.homeless_shelters, icon: '🏠', description: tx.supporting_vulnerable_populations },
+        { name: tx.food_banks, icon: '🍎', description: tx.fighting_hunger_and_food_insecurity },
+        { name: tx.mental_health, icon: '🧠', description: tx.mental_health_support_and_advocacy },
+        { name: tx.domestic_violence, icon: '🛡️', description: tx.supporting_survivors_and_prevention }
       ]
     },
     {
       category: 'Education & Youth',
       organizations: [
-        { name: 'Schools & Universities', icon: '🎓', description: 'Educational institutions and programs' },
-        { name: 'Youth Development', icon: '🌟', description: 'Youth mentoring and development' },
-        { name: 'Literacy Programs', icon: '📚', description: 'Reading and literacy initiatives' },
-        { name: 'STEM Education', icon: '🔬', description: 'Science, technology, engineering, math' }
+        { name: tx.schools_universities, icon: '🎓', description: tx.educational_institutions_and_programs },
+        { name: tx.youth_development, icon: '🌟', description: tx.youth_mentoring_and_development },
+        { name: tx.literacy_programs, icon: '📚', description: tx.reading_and_literacy_initiatives },
+        { name: tx.stem_education, icon: '🔬', description: tx.science_technology_engineering_math }
       ]
     },
     {
       category: 'Healthcare & Medical',
       organizations: [
-        { name: 'Medical Research', icon: '🔬', description: 'Medical research and clinical trials' },
-        { name: 'Patient Support', icon: '🏥', description: 'Patient care and support services' },
-        { name: 'Public Health', icon: '💊', description: 'Public health initiatives' },
-        { name: 'Accessibility', icon: '♿', description: 'Healthcare accessibility advocacy' }
+        { name: tx.medical_research, icon: '🔬', description: tx.medical_research_and_clinical_trials },
+        { name: tx.patient_support, icon: '🏥', description: tx.patient_care_and_support_services },
+        { name: tx.public_health, icon: '💊', description: tx.public_health_initiatives },
+        { name: tx.accessibility, icon: '♿', description: tx.healthcare_accessibility_advocacy }
       ]
     },
     {
       category: 'Environmental & Conservation',
       organizations: [
-        { name: 'Environmental Protection', icon: '🌱', description: 'Environmental conservation' },
-        { name: 'Wildlife Conservation', icon: '🐾', description: 'Wildlife and habitat protection' },
-        { name: 'Climate Action', icon: '🌍', description: 'Climate change initiatives' },
-        { name: 'Sustainable Development', icon: '♻️', description: 'Sustainable development projects' }
+        { name: tx.environmental_protection, icon: '🌱', description: tx.environmental_conservation },
+        { name: tx.wildlife_conservation, icon: '🐾', description: tx.wildlife_and_habitat_protection },
+        { name: tx.climate_action, icon: '🌍', description: tx.climate_change_initiatives },
+        { name: tx.sustainable_development, icon: '♻️', description: tx.sustainable_development_projects }
       ]
     }
   ];
@@ -105,206 +106,206 @@ export default function NotForProfitPage() {
   const developmentProcess = [
     {
       step: '01',
-      title: 'Mission Understanding',
-      description: 'Understanding your organization&apos;s mission, values, and impact goals.',
+      title: tx.mission_understanding,
+      description: tx.understanding_your_organization_apos_s,
       duration: '1-2 weeks',
       icon: '🎯'
     },
     {
       step: '02',
-      title: 'Stakeholder Analysis',
-      description: 'Identifying key stakeholders including donors, volunteers, and beneficiaries.',
+      title: tx.stakeholder_analysis,
+      description: tx.identifying_key_stakeholders_including_d,
       duration: '1-2 weeks',
       icon: '👥'
     },
     {
       step: '03',
-      title: 'Impact Strategy',
-      description: 'Developing technology strategy to maximize social impact and efficiency.',
+      title: tx.impact_strategy,
+      description: tx.developing_technology_strategy_to_maximi,
       duration: '1-2 weeks',
       icon: '📊'
     },
     {
       step: '04',
-      title: 'Solution Development',
-      description: 'Building custom solutions tailored to nonprofit needs and constraints.',
+      title: tx.solution_development,
+      description: tx.building_custom_solutions_tailored_to,
       duration: '3-10 weeks',
       icon: '🛠️'
     },
     {
       step: '05',
-      title: 'Training & Support',
-      description: 'Comprehensive training for staff and volunteers on using the platform.',
+      title: tx.training_support,
+      description: tx.comprehensive_training_for_staff_and,
       duration: '1-2 weeks',
       icon: '🎓'
     },
     {
       step: '06',
-      title: 'Impact Measurement',
-      description: 'Implementing tools to measure and report on social impact.',
-      duration: '1 week',
+      title: tx.impact_measurement,
+      description: tx.implementing_tools_to_measure_and,
+      duration: tx.t_1_week,
       icon: '📈'
     }
   ];
 
   const deliverables = [
     {
-      title: 'Nonprofit Platform',
-      description: 'Custom platform designed specifically for nonprofit operations and impact.',
+      title: tx.nonprofit_platform,
+      description: tx.custom_platform_designed_specifically_fo,
       icon: '💝'
     },
     {
-      title: 'Donor Management',
-      description: 'Comprehensive donor relationship management and communication tools.',
+      title: tx.donor_management_2,
+      description: tx.comprehensive_donor_relationship_managem,
       icon: '💌'
     },
     {
-      title: 'Impact Reporting',
-      description: 'Tools for measuring, tracking, and reporting on social impact.',
+      title: tx.impact_reporting_2,
+      description: tx.tools_for_measuring_tracking_and,
       icon: '📊'
     },
     {
-      title: 'Volunteer Coordination',
-      description: 'Systems for managing volunteers and coordinating their activities.',
+      title: tx.volunteer_coordination,
+      description: tx.systems_for_managing_volunteers_and,
       icon: '👥'
     },
     {
-      title: 'Training & Documentation',
-      description: 'Complete training materials and documentation for your team.',
+      title: tx.training_documentation,
+      description: tx.complete_training_materials_and_document,
       icon: '📚'
     },
     {
-      title: 'Ongoing Support',
-      description: 'Continued support and maintenance at nonprofit-friendly rates.',
+      title: tx.ongoing_support,
+      description: tx.continued_support_and_maintenance_at,
       icon: '🤝'
     }
   ];
 
   const benefits = [
     {
-      title: 'Mission Amplification',
-      description: 'Technology solutions that amplify your organization&apos;s impact and reach.',
+      title: tx.mission_amplification,
+      description: tx.technology_solutions_that_amplify_your,
       icon: '📢'
     },
     {
-      title: 'Cost Efficiency',
-      description: 'Affordable solutions designed specifically for nonprofit budgets.',
+      title: tx.cost_efficiency,
+      description: tx.affordable_solutions_designed_specifical,
       icon: '💰'
     },
     {
-      title: 'Donor Engagement',
-      description: 'Enhanced donor engagement and retention through better communication tools.',
+      title: tx.donor_engagement,
+      description: tx.enhanced_donor_engagement_and_retention,
       icon: '💝'
     },
     {
-      title: 'Operational Efficiency',
-      description: 'Streamlined operations to focus more resources on your mission.',
+      title: tx.operational_efficiency,
+      description: tx.streamlined_operations_to_focus_more,
       icon: '⚡'
     },
     {
-      title: 'Impact Measurement',
-      description: 'Better tools to measure, track, and communicate your social impact.',
+      title: tx.impact_measurement_2,
+      description: tx.better_tools_to_measure_track,
       icon: '📈'
     },
     {
-      title: 'Community Building',
-      description: 'Stronger community connections and volunteer engagement.',
+      title: tx.community_building,
+      description: tx.stronger_community_connections_and_volun,
       icon: '🤝'
     }
   ];
 
   const nonprofitFeatures = [
     {
-      title: 'Donation Processing',
-      description: 'Secure, tax-deductible donation processing with receipt generation.',
+      title: tx.donation_processing,
+      description: tx.secure_tax_deductible_donation_processin,
       icon: '💳'
     },
     {
-      title: 'Volunteer Coordination',
-      description: 'Complete volunteer management from registration to impact tracking.',
+      title: tx.volunteer_coordination_2,
+      description: tx.complete_volunteer_management_from_regis,
       icon: '👥'
     },
     {
-      title: 'Event Management',
-      description: 'Fundraising event management and participant coordination.',
+      title: tx.event_management,
+      description: tx.fundraising_event_management_and_partici,
       icon: '🎪'
     },
     {
-      title: 'Grant Tracking',
-      description: 'Grant application and compliance tracking systems.',
+      title: tx.grant_tracking,
+      description: tx.grant_application_and_compliance_trackin,
       icon: '📋'
     },
     {
-      title: 'Impact Reporting',
-      description: 'Comprehensive reporting on programs and social impact.',
+      title: tx.impact_reporting_3,
+      description: tx.comprehensive_reporting_on_programs_and,
       icon: '📊'
     },
     {
-      title: 'Communication Tools',
-      description: 'Multi-channel communication with donors, volunteers, and beneficiaries.',
+      title: tx.communication_tools_2,
+      description: tx.multi_channel_communication_with_donors,
       icon: '📢'
     }
   ];
 
   const impactAreas = [
     {
-      title: 'Fundraising',
-      description: 'Increase fundraising effectiveness and donor retention rates.',
+      title: tx.fundraising,
+      description: tx.increase_fundraising_effectiveness_and_d,
       icon: '💰'
     },
     {
-      title: 'Volunteer Engagement',
-      description: 'Better volunteer recruitment, coordination, and retention.',
+      title: tx.volunteer_engagement,
+      description: tx.better_volunteer_recruitment_coordinatio,
       icon: '🌟'
     },
     {
-      title: 'Program Delivery',
-      description: 'More efficient program delivery and beneficiary support.',
+      title: tx.program_delivery,
+      description: tx.more_efficient_program_delivery_and,
       icon: '🎯'
     },
     {
-      title: 'Administrative Efficiency',
-      description: 'Reduce administrative overhead and focus on mission.',
+      title: tx.administrative_efficiency,
+      description: tx.reduce_administrative_overhead_and_focus,
       icon: '⚡'
     },
     {
-      title: 'Impact Measurement',
-      description: 'Better measurement and communication of social impact.',
+      title: tx.impact_measurement_3,
+      description: tx.better_measurement_and_communication_of,
       icon: '📊'
     },
     {
-      title: 'Community Outreach',
-      description: 'Expand community reach and engagement.',
+      title: tx.community_outreach,
+      description: tx.expand_community_reach_and_engagement,
       icon: '🌍'
     }
   ];
 
   const nonprofitTechnologies = [
-    { name: 'WordPress', icon: '🌐', description: 'Content management and websites', category: 'CMS' },
-    { name: 'Salesforce', icon: '☁️', description: 'CRM for nonprofit organizations', category: 'CRM' },
-    { name: 'Stripe', icon: '💳', description: 'Payment processing for donations', category: 'Payments' },
-    { name: 'Mailchimp', icon: '📧', description: 'Email marketing and communication', category: 'Marketing' },
-    { name: 'Google Analytics', icon: '📊', description: 'Website and impact analytics', category: 'Analytics' },
-    { name: 'Zoom', icon: '📹', description: 'Virtual meetings and events', category: 'Communication' },
-    { name: 'Slack', icon: '💬', description: 'Team communication and collaboration', category: 'Collaboration' },
-    { name: 'Airtable', icon: '📋', description: 'Database and project management', category: 'Database' }
+    { name: tx.wordpress, icon: '🌐', description: tx.content_management_and_websites, category: 'CMS' },
+    { name: tx.salesforce, icon: '☁️', description: tx.crm_for_nonprofit_organizations, category: 'CRM' },
+    { name: tx.stripe, icon: '💳', description: tx.payment_processing_for_donations, category: 'Payments' },
+    { name: tx.mailchimp, icon: '📧', description: tx.email_marketing_and_communication, category: 'Marketing' },
+    { name: tx.google_analytics, icon: '📊', description: tx.website_and_impact_analytics, category: 'Analytics' },
+    { name: tx.zoom, icon: '📹', description: tx.virtual_meetings_and_events, category: 'Communication' },
+    { name: tx.slack, icon: '💬', description: tx.team_communication_and_collaboration, category: 'Collaboration' },
+    { name: tx.airtable, icon: '📋', description: tx.database_and_project_management, category: 'Database' }
   ];
 
   return (
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="Not for Profit Solutions"
+        eyebrow={tx.not_for_profit_solutions}
         eyebrowIcon={HeartHandshake}
-        title="Not for Profit"
-        highlight="Experience"
-        description="We're passionate about supporting nonprofit organizations with technology solutions that amplify their impact. Our nonprofit-friendly approach helps you focus on your mission while we handle the technology."
+        title={tx.not_for_profit}
+        highlight={tx.experience}
+        description={tx.we_re_passionate_about_supporting}
         highlights={["Donation Platforms", "Volunteer Management", "Member Portals", "Grant Management"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "$10M+", label: "Funds Raised" },
-          { value: "3-12", label: "Week Delivery" },
-          { value: "Pro Bono", label: "Support Available" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "$10M+", label: tx.funds_raised },
+          { value: "3-12", label: tx.week_delivery },
+          { value: "Pro Bono", label: tx.support_available },
         ]}
       />
 
@@ -313,16 +314,10 @@ export default function NotForProfitPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Services
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Nonprofit
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Solutions</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_services}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.nonprofit}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.solutions}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Specialized technology solutions designed to support nonprofit organizations and maximize their impact.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.specialized_technology_solutions_designe}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -358,19 +353,19 @@ export default function NotForProfitPage() {
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200 sm:grid-cols-4">
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Starting Price</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Timeline</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.timeline}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.complexity}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Complexity</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.complexity}</div>
                     </div>
                     <div className="text-center">
                       <div className="text-sm font-semibold text-slate-900 mb-1">{service.features_count}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">Features</div>
+                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.features}</div>
                     </div>
                   </div>
                 </div>
@@ -385,16 +380,10 @@ export default function NotForProfitPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Sectors We Serve
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Nonprofit
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Sectors</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.sectors_we_serve}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.nonprofit}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.sectors}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We have extensive experience working with various nonprofit sectors and understanding their unique needs.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_have_extensive_experience_working}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -427,16 +416,10 @@ export default function NotForProfitPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Nonprofit Features
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Essential
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Features</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.nonprofit_features}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.essential}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.features}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Key features specifically designed for nonprofit organizations to maximize their impact.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.key_features_specifically_designed_for}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -464,16 +447,10 @@ export default function NotForProfitPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Our Process
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Nonprofit Development
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Process</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.nonprofit_development}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.process}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our nonprofit-focused approach ensures solutions that align with your mission and maximize impact.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_nonprofit_focused_approach_ensures}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -507,16 +484,10 @@ export default function NotForProfitPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Impact Areas
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Measuring
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Social Impact</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.impact_areas}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.measuring}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.social_impact}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Key areas where technology can amplify your organization&apos;s impact and effectiveness.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.key_areas_where_technology_can}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -544,16 +515,10 @@ export default function NotForProfitPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Nonprofit Technologies
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Technology
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Solutions</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.nonprofit_technologies}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.technology}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.solutions}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              We work with nonprofit-friendly technologies that are cost-effective and easy to use.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_work_with_nonprofit_friendly}</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
@@ -580,16 +545,10 @@ export default function NotForProfitPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Deliverables
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              What You&apos;ll
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Receive</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.deliverables}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.what_you_ll}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.receive}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Complete nonprofit development deliverables designed to support your mission and impact.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.complete_nonprofit_development_deliverab}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -617,16 +576,10 @@ export default function NotForProfitPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>
-              Why Nonprofit Solutions
-            </div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Benefits of
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Nonprofit Technology</span>
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.why_nonprofit_solutions}</div>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.benefits_of}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.nonprofit_technology}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Technology solutions specifically designed to support nonprofit organizations and amplify their impact.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.technology_solutions_specifically_design}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -652,21 +605,13 @@ export default function NotForProfitPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Amplify
-            <span className="block text-blue-100 mt-2">Your Impact?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_amplify}<span className="block text-blue-100 mt-2">{tx.your_impact}</span>
           </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">
-            Let&apos;s work together to create technology solutions that amplify your organization&apos;s mission and maximize your social impact.
-          </p>
+          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">{tx.let_s_work_together_to}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-              Start Nonprofit Project
-            </Link>
-            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-              Learn About Pro Bono
-            </Link>
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_nonprofit_project}</Link>
+            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.learn_about_pro_bono}</Link>
           </div>
         </div>
       </section>

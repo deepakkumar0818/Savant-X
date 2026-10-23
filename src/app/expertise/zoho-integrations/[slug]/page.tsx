@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/zoho-integrations/[slug]/page.json';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Script from 'next/script';
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const app = getZohoApp(slug);
   if (!app) {
-    return { title: 'Zoho App | SavantX' };
+    return { title: tx.zoho_app_savantx };
   }
 
   const canonical = `${SITE_URL}/expertise/zoho-integrations/${app.slug}/`;

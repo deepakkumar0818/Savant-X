@@ -1,3 +1,4 @@
+import tx from '@/content/text/app/expertise/iot-embedded-systems/page.json';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -8,129 +9,129 @@ import { Radio } from 'lucide-react';
 import ServiceIcon from '@/components/ui/ServiceIcon';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'IoT & Embedded Systems',
+  title: tx.iot_embedded_systems,
   description:
-    'Connected IoT devices and embedded systems, from smart sensors to industrial automation, designed by SavantX Technologies.',
+    tx.connected_iot_devices_and_embedded,
   path: '/expertise/iot-embedded-systems',
 });
 
 export default function IotEmbeddedSystemsPage() {
   const features = [
     {
-      title: 'Smart Sensors Integration',
-      description: 'Connect and manage various sensors for temperature, humidity, motion, and environmental monitoring.',
+      title: tx.smart_sensors_integration,
+      description: tx.connect_and_manage_various_sensors,
       icon: '📡'
     },
     {
-      title: 'Wireless Connectivity',
-      description: 'Wi-Fi, Bluetooth, LoRa, and cellular connectivity options for seamless communication.',
+      title: tx.wireless_connectivity,
+      description: tx.wi_fi_bluetooth_lora_and,
       icon: '📶'
     },
     {
-      title: 'Cloud Integration',
-      description: 'Seamless integration with AWS IoT, Google Cloud IoT, and Azure IoT platforms.',
+      title: tx.cloud_integration,
+      description: tx.seamless_integration_with_aws_iot,
       icon: '☁️'
     },
     {
-      title: 'Real-time Processing',
-      description: 'Edge computing capabilities for instant data processing and decision-making.',
+      title: tx.real_time_processing,
+      description: tx.edge_computing_capabilities_for_instant,
       icon: '⚡'
     },
     {
-      title: 'Power Management',
-      description: 'Optimized power consumption for battery-operated and energy-efficient devices.',
+      title: tx.power_management,
+      description: tx.optimized_power_consumption_for_battery,
       icon: '🔋'
     },
     {
-      title: 'Secure Protocols',
-      description: 'End-to-end encryption, secure boot, and authentication for IoT devices.',
+      title: tx.secure_protocols,
+      description: tx.end_to_end_encryption_secure,
       icon: '🔒'
     }
   ];
 
   const technologies = [
-    { name: 'ESP32', icon: '/images/icons/esp32_1.jpeg', description: 'Wi-Fi/BLE microcontroller' },
-    { name: 'Arduino', icon: '/images/icons/ardunio1.png', description: 'Development platform' },
-    { name: 'STM32', icon: '/images/icons/stm32.jpeg', description: 'ARM Cortex MCU' },
-    { name: 'Raspberry Pi', icon: '/images/icons/raspberrypi.jpeg', description: 'Single-board computer' },
-    { name: 'PIC/AVR', icon: '/images/icons/AVR.png', description: 'Microcontrollers' },
-    { name: 'FreeRTOS', icon: '/images/icons/freeRtos.jpeg', description: 'Real-time OS' },
-    { name: 'Zephyr RTOS', icon: '/images/icons/Zephyr.jpeg', description: 'Scalable RTOS' },
-    { name: 'AWS IoT', icon: '/images/icons/AwsIot.jpeg', description: 'Cloud IoT platform' }
+    { name: 'ESP32', icon: '/images/icons/esp32_1.jpeg', description: tx.wi_fi_ble_microcontroller },
+    { name: tx.arduino, icon: '/images/icons/ardunio1.png', description: tx.development_platform },
+    { name: 'STM32', icon: '/images/icons/stm32.jpeg', description: tx.arm_cortex_mcu },
+    { name: tx.raspberry_pi, icon: '/images/icons/raspberrypi.jpeg', description: tx.single_board_computer },
+    { name: tx.pic_avr, icon: '/images/icons/AVR.png', description: tx.microcontrollers },
+    { name: tx.freertos, icon: '/images/icons/freeRtos.jpeg', description: tx.real_time_os },
+    { name: tx.zephyr_rtos, icon: '/images/icons/Zephyr.jpeg', description: tx.scalable_rtos },
+    { name: tx.aws_iot, icon: '/images/icons/AwsIot.jpeg', description: tx.cloud_iot_platform }
   ];
 
   const processSteps = [
     {
       step: '01',
-      title: 'Requirements Analysis',
-      description: 'Understanding your IoT solution needs and technical specifications.',
+      title: tx.requirements_analysis,
+      description: tx.understanding_your_iot_solution_needs,
       duration: '1-2 weeks',
       icon: '📋'
     },
     {
       step: '02',
-      title: 'Architecture Design',
-      description: 'Designing system architecture, communication protocols, and data flow.',
+      title: tx.architecture_design,
+      description: tx.designing_system_architecture_communicat,
       duration: '2-3 weeks',
       icon: '🎨'
     },
     {
       step: '03',
-      title: 'Development & Integration',
-      description: 'Building firmware, integrating sensors, and cloud connectivity.',
+      title: tx.development_integration,
+      description: tx.building_firmware_integrating_sensors_an,
       duration: '4-6 weeks',
       icon: '⚙️'
     },
     {
       step: '04',
-      title: 'Testing & Security',
-      description: 'Comprehensive testing including security audits and performance optimization.',
+      title: tx.testing_security,
+      description: tx.comprehensive_testing_including_security,
       duration: '2-3 weeks',
       icon: '🔒'
     },
     {
       step: '05',
-      title: 'Deployment & Support',
-      description: 'Device deployment, monitoring setup, and ongoing technical support.',
-      duration: 'Ongoing',
+      title: tx.deployment_support,
+      description: tx.device_deployment_monitoring_setup_and,
+      duration: tx.ongoing,
       icon: '🚀'
     }
   ];
 
   const useCases = [
     {
-      title: 'Smart Home Automation',
-      description: 'Connected lighting, climate control, security systems, and appliances.',
+      title: tx.smart_home_automation,
+      description: tx.connected_lighting_climate_control_secur,
       icon: '🏠',
       color: 'from-blue-500 to-blue-600'
     },
     {
-      title: 'Industrial IoT',
-      description: 'Equipment monitoring, predictive maintenance, and factory automation.',
+      title: tx.industrial_iot,
+      description: tx.equipment_monitoring_predictive_maintena,
       icon: '🏭',
       color: 'from-orange-500 to-orange-600'
     },
     {
-      title: 'Agriculture Tech',
-      description: 'Soil monitoring, irrigation control, and crop health tracking systems.',
+      title: tx.agriculture_tech,
+      description: tx.soil_monitoring_irrigation_control_and,
       icon: '🌾',
       color: 'from-green-500 to-green-600'
     },
     {
-      title: 'Healthcare Devices',
-      description: 'Patient monitoring, wearable health trackers, and medical equipment IoT.',
+      title: tx.healthcare_devices,
+      description: tx.patient_monitoring_wearable_health_track,
       icon: '🏥',
       color: 'from-red-500 to-red-600'
     },
     {
-      title: 'Smart Cities',
-      description: 'Traffic management, waste management, and environmental monitoring.',
+      title: tx.smart_cities,
+      description: tx.traffic_management_waste_management_and,
       icon: '🌆',
       color: 'from-purple-500 to-purple-600'
     },
     {
-      title: 'Asset Tracking',
-      description: 'GPS tracking, fleet management, and supply chain visibility solutions.',
+      title: tx.asset_tracking,
+      description: tx.gps_tracking_fleet_management_and,
       icon: '📦',
       color: 'from-cyan-500 to-cyan-600'
     }
@@ -140,17 +141,17 @@ export default function IotEmbeddedSystemsPage() {
     <div className="min-h-screen bg-white">
 
       <PageHero
-        eyebrow="IoT & Embedded Systems"
+        eyebrow={tx.iot_embedded_systems_2}
         eyebrowIcon={Radio}
-        title="Smart Connected Devices &"
-        highlight="Embedded Systems"
-        description="We design and develop intelligent IoT solutions and embedded systems that connect the physical and digital worlds. From smart sensors to industrial automation, we create innovative connected products."
+        title={tx.smart_connected_devices}
+        highlight={tx.embedded_systems}
+        description={tx.we_design_and_develop_intelligent}
         highlights={["Smart Sensors Integration", "Wireless Connectivity", "Cloud Integration", "Real-time Processing"]}
         stats={[
-          { value: COMPANY.foundingYear, label: "Founded" },
-          { value: "100K+", label: "Devices Deployed" },
-          { value: "99.9%", label: "Uptime" },
-          { value: "24/7", label: "Monitoring" },
+          { value: COMPANY.foundingYear, label: tx.founded },
+          { value: "100K+", label: tx.devices_deployed },
+          { value: "99.9%", label: tx.uptime },
+          { value: "24/7", label: tx.monitoring },
         ]}
       />
 
@@ -158,13 +159,9 @@ export default function IotEmbeddedSystemsPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Core
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Capabilities</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.core}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.capabilities}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Comprehensive IoT and embedded systems development services.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.comprehensive_iot_and_embedded_systems}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -191,13 +188,9 @@ export default function IotEmbeddedSystemsPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Industry
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Applications</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.industry}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.applications}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              IoT solutions tailored for various industries and use cases.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.iot_solutions_tailored_for_various}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -224,13 +217,9 @@ export default function IotEmbeddedSystemsPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Technology
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Stack</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.technology}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.stack}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Industry-leading platforms and tools for IoT development.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.industry_leading_platforms_and_tools}</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
@@ -261,13 +250,9 @@ export default function IotEmbeddedSystemsPage() {
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
-              Development
-              {' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">Process</span>
+            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.development}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.process}</span>
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">
-              Our proven 5-step process for IoT and embedded systems development.
-            </p>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_proven_5_step_process}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -299,21 +284,13 @@ export default function IotEmbeddedSystemsPage() {
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-            Ready to Build Your
-            <span className="block text-blue-100 mt-2">IoT Solution?</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_build_your}<span className="block text-blue-100 mt-2">{tx.iot_solution}</span>
           </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">
-            Let&apos;s discuss your IoT requirements and create intelligent connected devices that transform your business.
-          </p>
+          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">{tx.let_s_discuss_your_iot}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
-                Start Your Project
-              </Link>
-            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">
-                Schedule Consultation
-              </Link>
+            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_your_project}</Link>
+            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.schedule_consultation}</Link>
           </div>
         </div>
       </section>

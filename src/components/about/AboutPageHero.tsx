@@ -1,3 +1,4 @@
+import tx from '@/content/text/components/about/AboutPageHero.json';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, BarChart3, Code2, Layers, Play, Users } from 'lucide-react';
@@ -14,9 +15,9 @@ const PARTNER_BRANDS = [
 ] as const;
 
 const STATS = [
-  { icon: Layers, end: COMPANY_METRICS[1].value, suffix: COMPANY_METRICS[1].suffix, label: COMPANY_METRICS[1].label, note: 'Delivered across industries' },
-  { icon: Code2, end: 25, suffix: '+', label: 'Technologies mastered', note: 'Modern and scalable solutions' },
-  { icon: BarChart3, end: 75, suffix: '%', label: 'Delivery efficiency', note: 'With proven processes' },
+  { icon: Layers, end: COMPANY_METRICS[1].value, suffix: COMPANY_METRICS[1].suffix, label: COMPANY_METRICS[1].label, note: tx.delivered_across_industries },
+  { icon: Code2, end: 25, suffix: '+', label: tx.technologies_mastered, note: tx.modern_and_scalable_solutions },
+  { icon: BarChart3, end: 75, suffix: '%', label: tx.delivery_efficiency, note: tx.with_proven_processes },
 ];
 
 const floatingCard =
@@ -25,7 +26,7 @@ const floatingCard =
 function PartnerStrip() {
   return (
     <div className="mt-14 border-t border-slate-200/70 pt-8 sm:mt-16 sm:pt-10">
-      <p className="mb-6 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">Trusted by industry leaders</p>
+      <p className="mb-6 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">{tx.trusted_by_industry_leaders}</p>
       <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 sm:gap-x-0">
         {PARTNER_BRANDS.map((name, i) => (
           <li
@@ -55,37 +56,26 @@ export default function AboutPageHero() {
         <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-10 xl:gap-16">
           {/* Copy */}
           <div className="hero-enter">
-            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-indigo-600">
-              About SavantX
-              <span aria-hidden className="h-0.5 w-10 rounded-full bg-gradient-to-r from-indigo-500 to-violet-400" />
+            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-indigo-600">{tx.about_savantx}<span aria-hidden className="h-0.5 w-10 rounded-full bg-gradient-to-r from-indigo-500 to-violet-400" />
             </p>
 
-            <h1 className="mt-5 max-w-xl text-[2.4rem] font-bold leading-[1.08] tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem] xl:text-[3.75rem]">
-              Building your
-              <span className="block font-serif font-normal italic text-slate-800">digital excellence</span>
-              <span className="block bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">at every layer.</span>
+            <h1 className="mt-5 max-w-xl text-[2.4rem] font-bold leading-[1.08] tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem] xl:text-[3.75rem]">{tx.building_your}<span className="block font-serif font-normal italic text-slate-800">{tx.digital_excellence}</span>
+              <span className="block bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.at_every_layer}</span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-[1.075rem]">
-              We craft exceptional digital experiences that transform businesses and drive growth — from web and mobile solutions to IoT, firmware
-              and AI-powered systems.
-            </p>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-[1.075rem]">{tx.we_craft_exceptional_digital_experiences}</p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
                 href="/contact"
                 className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 px-7 py-3.5 text-[15px] font-semibold text-white shadow-lg shadow-indigo-600/30 transition hover:brightness-110 motion-safe:active:scale-[0.98]"
-              >
-                Discuss Your Project
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+              >{tx.discuss_your_project}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
               </Link>
               <Link
                 href="/work"
                 className="inline-flex items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white px-7 py-3.5 text-[15px] font-semibold text-slate-900 shadow-sm transition hover:border-indigo-200 hover:text-indigo-700 hover:shadow-md motion-safe:active:scale-[0.98]"
               >
-                <Play className="h-4 w-4 fill-current" aria-hidden />
-                View Our Work
-              </Link>
+                <Play className="h-4 w-4 fill-current" aria-hidden />{tx.view_our_work}</Link>
             </div>
 
             <ul className="mt-10 grid gap-3 sm:grid-cols-3">
@@ -117,7 +107,7 @@ export default function AboutPageHero() {
             <div className="relative overflow-hidden rounded-[1.75rem] shadow-[0_40px_80px_-35px_rgba(30,58,138,0.55)] ring-1 ring-slate-900/5">
               <Image
                 src="/images/about/savantx-team-collaboration.jpg"
-                alt="SavantX team members working together around laptops in the office"
+                alt={tx.savantx_team_members_working_together}
                 width={1448}
                 height={1086}
                 sizes="(min-width: 1024px) 40vw, 90vw"
@@ -131,8 +121,8 @@ export default function AboutPageHero() {
                 <Users className="h-5 w-5" aria-hidden />
               </span>
               <span>
-                <span className="block text-sm font-semibold text-slate-900">Cross-functional teams</span>
-                <span className="block text-xs text-slate-500">Design · Develop · Deliver</span>
+                <span className="block text-sm font-semibold text-slate-900">{tx.cross_functional_teams}</span>
+                <span className="block text-xs text-slate-500">{tx.design_develop_deliver}</span>
               </span>
             </div>
 
@@ -141,8 +131,8 @@ export default function AboutPageHero() {
                 <BarChart3 className="h-5 w-5" aria-hidden />
               </span>
               <span>
-                <span className="block text-sm font-semibold text-slate-900">Turning ideas into impact</span>
-                <span className="block text-xs text-slate-500">With technology and teamwork</span>
+                <span className="block text-sm font-semibold text-slate-900">{tx.turning_ideas_into_impact}</span>
+                <span className="block text-xs text-slate-500">{tx.with_technology_and_teamwork}</span>
               </span>
             </div>
           </div>

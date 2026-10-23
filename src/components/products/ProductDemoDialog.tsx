@@ -1,5 +1,6 @@
 'use client';
 
+import tx from '@/content/text/components/products/ProductDemoDialog.json';
 import { useId, useRef, useState } from 'react';
 import Link from 'next/link';
 import { AlertCircle, CalendarDays, CheckCircle2, Loader2, X } from 'lucide-react';
@@ -90,7 +91,7 @@ export default function ProductDemoDialog({ productId, onClose }: { productId: s
       trackEvent('generate_lead', { form: 'product_demo', product: form.product });
       setStatus({ state: 'success', message: data.message || 'Thank you! We have received your demo request.' });
     } catch {
-      setStatus({ state: 'error', message: 'Network error. Please check your connection and try again. Your details are still here.' });
+      setStatus({ state: 'error', message: tx.network_error_please_check_your });
     }
   };
 
@@ -127,17 +128,15 @@ export default function ProductDemoDialog({ productId, onClose }: { productId: s
               <CalendarDays className="h-5 w-5" aria-hidden />
             </span>
             <div>
-              <h2 id={`${id}-title`} className="text-xl font-bold tracking-tight text-slate-900">
-                Request a demo
-              </h2>
-              <p className="mt-0.5 text-sm text-slate-500">See the product in action. Our team will contact you to schedule it.</p>
+              <h2 id={`${id}-title`} className="text-xl font-bold tracking-tight text-slate-900">{tx.request_a_demo}</h2>
+              <p className="mt-0.5 text-sm text-slate-500">{tx.see_the_product_in_action}</p>
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
             disabled={submitting}
-            aria-label="Close"
+            aria-label={tx.close}
             className="-mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 disabled:opacity-50"
           >
             <X className="h-5 w-5" aria-hidden />
@@ -150,54 +149,48 @@ export default function ProductDemoDialog({ productId, onClose }: { productId: s
               <CheckCircle2 className="h-6 w-6" aria-hidden />
             </span>
             <p className="mt-4 text-lg font-semibold text-slate-900">{status.message}</p>
-            <p className="mt-2 max-w-sm text-sm text-slate-600">Our team will call or email you to arrange a time for your demo.</p>
+            <p className="mt-2 max-w-sm text-sm text-slate-600">{tx.our_team_will_call_or}</p>
             <button
               type="button"
               onClick={onClose}
               className="mt-6 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700"
-            >
-              Back to products
-            </button>
+            >{tx.back_to_products}</button>
           </div>
         ) : (
           <form noValidate onSubmit={onSubmit} className="grid gap-4 px-6 py-6 sm:grid-cols-2 sm:px-7">
             <div className="hidden" aria-hidden>
-              <label htmlFor={`${id}-website`}>Website</label>
+              <label htmlFor={`${id}-website`}>{tx.website}</label>
               <input id={`${id}-website`} tabIndex={-1} autoComplete="off" value={form.website} onChange={(e) => update('website', e.target.value)} />
             </div>
 
             <div className="sm:col-span-2">
-              <label htmlFor={`${id}-product`} className="text-sm font-semibold text-slate-700">
-                Product <span className="text-rose-500">*</span>
+              <label htmlFor={`${id}-product`} className="text-sm font-semibold text-slate-700">{tx.product}{" "}<span className="text-rose-500">*</span>
               </label>
               <select {...field('product')} value={form.product} onChange={(e) => update('product', e.target.value)} className={`${input} ${border('product')}`}>
-                <option value="">Select a product</option>
+                <option value="">{tx.select_a_product}</option>
                 {PRODUCTS.map((p) => (
                   <option key={p.id} value={p.id}>
                     {p.name} — {p.subtitle}
                   </option>
                 ))}
-                <option value={NOT_SURE}>Not sure yet</option>
+                <option value={NOT_SURE}>{tx.not_sure_yet}</option>
               </select>
               {error('product')}
             </div>
             <div>
-              <label htmlFor={`${id}-name`} className="text-sm font-semibold text-slate-700">
-                Full name <span className="text-rose-500">*</span>
+              <label htmlFor={`${id}-name`} className="text-sm font-semibold text-slate-700">{tx.full_name}{" "}<span className="text-rose-500">*</span>
               </label>
               <input {...field('name')} autoComplete="name" value={form.name} onChange={(e) => update('name', e.target.value)} className={`${input} ${border('name')}`} />
               {error('name')}
             </div>
             <div>
-              <label htmlFor={`${id}-email`} className="text-sm font-semibold text-slate-700">
-                Email <span className="text-rose-500">*</span>
+              <label htmlFor={`${id}-email`} className="text-sm font-semibold text-slate-700">{tx.email}{" "}<span className="text-rose-500">*</span>
               </label>
               <input {...field('email')} type="email" autoComplete="email" value={form.email} onChange={(e) => update('email', e.target.value)} className={`${input} ${border('email')}`} />
               {error('email')}
             </div>
             <div>
-              <label htmlFor={`${id}-phone`} className="text-sm font-semibold text-slate-700">
-                Phone <span className="text-rose-500">*</span>
+              <label htmlFor={`${id}-phone`} className="text-sm font-semibold text-slate-700">{tx.phone}{" "}<span className="text-rose-500">*</span>
               </label>
               <input
                 {...field('phone')}
@@ -212,21 +205,19 @@ export default function ProductDemoDialog({ productId, onClose }: { productId: s
               {error('phone')}
             </div>
             <div>
-              <label htmlFor={`${id}-company`} className="text-sm font-semibold text-slate-700">
-                Organisation <span className="font-normal text-slate-400">(optional)</span>
+              <label htmlFor={`${id}-company`} className="text-sm font-semibold text-slate-700">{tx.organisation}{" "}<span className="font-normal text-slate-400">{tx.optional}</span>
               </label>
               <input {...field('company')} autoComplete="organization" value={form.company} onChange={(e) => update('company', e.target.value)} className={`${input} border-slate-200`} />
             </div>
             <div className="sm:col-span-2">
-              <label htmlFor={`${id}-message`} className="text-sm font-semibold text-slate-700">
-                Anything we should know? <span className="font-normal text-slate-400">(optional)</span>
+              <label htmlFor={`${id}-message`} className="text-sm font-semibold text-slate-700">{tx.anything_we_should_know}{" "}<span className="font-normal text-slate-400">{tx.optional}</span>
               </label>
               <textarea
                 {...field('message')}
                 rows={3}
                 value={form.message}
                 onChange={(e) => update('message', e.target.value)}
-                placeholder="For example: number of users, preferred time for the demo."
+                placeholder={tx.for_example_number_of_users}
                 className={`${input} resize-y border-slate-200`}
               />
             </div>
@@ -244,13 +235,10 @@ export default function ProductDemoDialog({ productId, onClose }: { productId: s
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 px-6 py-3.5 font-semibold text-white shadow-lg shadow-indigo-600/25 transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
               >
                 {submitting && <Loader2 className="h-4 w-4 animate-spin" aria-hidden />}
-                {submitting ? 'Sending…' : 'Request my demo'}
+                {submitting ? tx.sending : tx.request_my_demo}
               </button>
-              <p className="mt-3 text-center text-xs text-slate-500">
-                We use these details only to arrange your demo. See our{' '}
-                <Link href="/privacy-policy" className="font-medium text-indigo-700 hover:underline">
-                  privacy policy
-                </Link>
+              <p className="mt-3 text-center text-xs text-slate-500">{tx.we_use_these_details_only}{' '}
+                <Link href="/privacy-policy" className="font-medium text-indigo-700 hover:underline">{tx.privacy_policy}</Link>
                 .
               </p>
             </div>

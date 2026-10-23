@@ -1,10 +1,11 @@
+import tx from '@/content/text/app/(home)/layout.json';
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'SavantX Technologies | Software, Zoho CRM & Electronics Engineering',
+  title: tx.savantx_technologies_software_zoho_crm,
   description:
-    'SavantX Technologies builds websites, web and mobile apps, Zoho CRM and ERP solutions, and IoT, embedded and PCB hardware for growing businesses. Offices in Gaya and Mohali, India.',
+    tx.savantx_technologies_builds_websites_web,
   path: '/',
 });
 
