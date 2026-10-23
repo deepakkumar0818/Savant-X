@@ -16,7 +16,6 @@ import {
   Settings,
   Share2,
   ShoppingCart,
-  Smartphone,
   Wifi,
   Workflow,
   type LucideIcon,
@@ -25,8 +24,8 @@ import {
 type Item = { icon: LucideIcon; tile: string; title: string; body: string; href?: string };
 
 const SOFTWARE: Item[] = [
-  { icon: Code2, tile: 'from-blue-500 to-blue-600', title: 'Web Development', body: 'Custom, scalable and secure web applications.', href: '/expertise/web-apps' },
-  { icon: Smartphone, tile: 'from-violet-500 to-purple-600', title: 'Mobile Development', body: 'High-performance mobile apps for Android and iOS.', href: '/expertise/mobile-apps' },
+  { icon: Code2, tile: 'from-blue-500 to-blue-600', title: 'Web & Mobile Development', body: 'Scalable web applications and mobile apps for Android and iOS.', href: '/expertise/web-apps' },
+  { icon: Share2, tile: 'from-violet-500 to-purple-600', title: 'Zoho Integrations', body: 'Zoho CRM, Creator and Books setup, customisation and integrations.', href: '/expertise/zoho-integrations' },
   { icon: Cloud, tile: 'from-rose-500 to-pink-600', title: 'Cloud Applications', body: 'Cloud-based platforms for better scalability.' },
   { icon: Building2, tile: 'from-orange-400 to-amber-500', title: 'Enterprise Solutions', body: 'ERP, CRM and business software tailored to your industry.', href: '/products' },
   { icon: ShoppingCart, tile: 'from-emerald-500 to-green-600', title: 'E-commerce Solutions', body: 'Feature-rich online stores that drive growth.', href: '/expertise/ecommerce' },
