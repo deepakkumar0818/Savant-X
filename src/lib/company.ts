@@ -20,7 +20,8 @@ export const COMPANY = {
 
 /** Approved company metrics. Do not add unverified counts here. */
 export const COMPANY_METRICS = [
-  { value: 80, suffix: '+', label: 'CRM Solutions' },
+  // The Zoho page shows this count as CRM solutions; everywhere else it is projects delivered.
+  { value: 80, suffix: '+', label: 'Projects Delivered', zohoLabel: 'CRM Solutions' },
   { value: 50, suffix: '+', label: 'ERP Systems' },
 ] as const;
 

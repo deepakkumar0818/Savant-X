@@ -277,7 +277,7 @@ export default function ZohoIntegrationsPage() {
             <dl className="zoho-reveal mt-8 grid max-w-sm grid-cols-2 gap-4">
               {COMPANY_METRICS.map((m) => (
                 <div key={m.label} className="flex flex-col rounded-2xl border border-slate-200 bg-white p-5">
-                  <dt className="text-sm text-slate-600">{m.label}</dt>
+                  <dt className="text-sm text-slate-600">{'zohoLabel' in m ? m.zohoLabel : m.label}</dt>
                   <dd className="order-first bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-3xl font-semibold text-transparent">
                     {m.value}
                     {m.suffix}
