@@ -60,6 +60,8 @@ The API names and picklist values below come from the SavantX CRM. Fields marked
 | Automation, workflow or integration | `Automation` |
 | Shopify | `Shopify` |
 
+**Demo requests** from the Products page are recorded with Lead Type `Request For Demo`, and IT Lead Subcategory set to the product chosen: `Vidya Setu`, `Sehat Setu`, `FleetMint`, `Student Portal`, `Food Ordering App` or `Garage Management`. Subcategory is left empty for "Not sure yet". If you rename a product, rename it in the CRM picklist too.
+
 The rules live in `classifyService` and `priorityFromBudget` in `src/lib/zohoLeads.ts`; change them there. **Picklists must be sent as stored values, not labels.** Zoho stores an "actual value" behind each label shown in CRM, and in this CRM some differ: Lead Status "New Lead" is stored as `Attempted to Contact`, and Priority "High" as `ShutDown`. `inspect` lists both, and it was checked against the live CRM on 23 Oct 2026.
 
 If Zoho ever rejects one of the internal or optional fields, the lead is created without that field rather than lost. That could happen if a picklist value is renamed in CRM, for example. The server log then records `created without an optional field Zoho rejected: INVALID_DATA field=…`.

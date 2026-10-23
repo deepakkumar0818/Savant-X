@@ -64,8 +64,23 @@ export const LEAD_FIELDS = {
     Lead_Source: ['Website', 'Contact Form'],
     Lead_Status: ['Attempted to Contact'], // shown in CRM as "New Lead"
     Rating: ['ShutDown', 'Medium', 'Low'], // shown in CRM as "High", "Medium", "Low"
-    Lead_Type: ['IT Services', 'Electronics Hardware', 'Both'],
-    IT_Lead_Subcategory1: ['Website Development', 'Zoho Development', 'Mobile App', 'AI / ML', 'Automation', 'Shopify', 'ERP'],
+    Lead_Type: ['IT Services', 'Electronics Hardware', 'Both', 'Request For Demo'],
+    IT_Lead_Subcategory1: [
+      'Website Development',
+      'Zoho Development',
+      'Mobile App',
+      'AI / ML',
+      'Automation',
+      'Shopify',
+      'ERP',
+      // SavantX products, used for demo requests from the Products page.
+      'Vidya Setu',
+      'Sehat Setu',
+      'FleetMint',
+      'Student Portal',
+      'Food Ordering App',
+      'Garage Management',
+    ],
     Electronics_Lead_Subcategory1: ['Embedded Systems', 'PCB Design', 'IoT', 'Industrial Hardware', '3D Printing', 'Product Development', 'Automation'],
   },
 } as const;
@@ -241,6 +256,14 @@ export function buildLeadRecord(lead: LeadInput, leadSource: string, now: Date =
 /** Lead Type and IT Lead Subcategory picklist values, worked out from the service the visitor chose. */
 export function classifyService(lead: Pick<LeadInput, 'service' | 'source'>): { leadType?: LeadType; itSubcategories: ItSubcategory[]; electronicsSubcategories: ElectronicsSubcategory[] } {
   const service = lead.service;
+
+  // Demo requests from the Products page: "Product demo: <product name>".
+  const demo = service.match(/^Product demo:\s*(.+)$/i);
+  if (demo) {
+    const product = LEAD_FIELDS.picklists.IT_Lead_Subcategory1.find((v) => v.toLowerCase() === demo[1].trim().toLowerCase());
+    return { leadType: 'Request For Demo', itSubcategories: product ? [product] : [], electronicsSubcategories: [] };
+  }
+
   const hardware = /hardware|electronic|\biot\b|embedded|pcb|firmware|3d print|prototyp|industrial automation/i.test(service);
   const it = new Set<ItSubcategory>();
   if (/zoho|\bcrm\b|creator|books|people setup|recruit|membership/i.test(`${service} ${lead.source}`)) it.add('Zoho Development');

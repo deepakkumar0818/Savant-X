@@ -180,13 +180,21 @@ test('only verified API names and picklist values are ever sent', () => {
   }
 });
 
-test('product demo requests become IT Services leads from the website', () => {
+test('product demo requests are "Request For Demo" leads tagged with the product', () => {
   const record = buildLeadRecord(
     { ...VALID, company: '', budget: '', service: 'Product demo: Vidya Setu', source: 'Products page', message: 'Demo requested for: Vidya Setu' },
     'Website'
   );
   assert.equal(record.Lead_Source, 'Website');
-  assert.equal(record.Lead_Type, 'IT Services');
+  assert.equal(record.Lead_Type, 'Request For Demo');
+  assert.deepEqual(record.IT_Lead_Subcategory1, ['Vidya Setu']);
+  assert.equal(record.Electronics_Lead_Subcategory1, undefined);
+  for (const product of ['Sehat Setu', 'FleetMint', 'Student Portal', 'Food Ordering App', 'Garage Management']) {
+    assert.deepEqual(buildLeadRecord({ ...VALID, service: `Product demo: ${product}`, source: 'Products page' }, 'Website').IT_Lead_Subcategory1, [product]);
+  }
+  const notSure = buildLeadRecord({ ...VALID, service: 'Product demo: Not sure yet', source: 'Products page' }, 'Website');
+  assert.equal(notSure.Lead_Type, 'Request For Demo');
+  assert.equal(notSure.IT_Lead_Subcategory1, undefined);
   assert.equal(record.Lead_Status, 'Attempted to Contact');
   assert.equal(record.Company, 'Website Enquiry');
   assert.match(record.Description, /Demo requested for: Vidya Setu/);
