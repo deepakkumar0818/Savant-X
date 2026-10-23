@@ -53,7 +53,6 @@ export const LEAD_FIELDS = {
     'Rating',
     'Lead_Type',
     'IT_Lead_Subcategory1',
-  'Electronics_Lead_Subcategory1',
     'Electronics_Lead_Subcategory1',
     'Budget',
     'Interest_Zoho_Apps',
@@ -112,6 +111,7 @@ const OPTIONAL_FIELDS = new Set<keyof ZohoLeadRecord>([
   'Rating',
   'Lead_Type',
   'IT_Lead_Subcategory1',
+  'Electronics_Lead_Subcategory1',
   'Budget',
   'Interest_Zoho_Apps',
   'Contact_Date',
@@ -377,7 +377,8 @@ export function createZohoClient(config: ZohoConfig, fetchImpl: FetchLike = fetc
     const res = await call(`${config.apiDomain}/crm/v8/Leads`, {
       method: 'POST',
       headers: { Authorization: `Zoho-oauthtoken ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ data: [record] }),
+      // Insert Records API (v8). Run the CRM's own automation for website leads too.
+      body: JSON.stringify({ data: [record], trigger: ['workflow', 'approval', 'blueprint'] }),
     });
     return { res, data: await readJson(res) };
   }
