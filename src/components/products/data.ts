@@ -126,13 +126,28 @@ export const PRODUCTS: Product[] = [
     name: 'Garage Management',
     subtitle: 'Vehicle Service & Workshop Software',
     category: 'automotive',
-    // TODO: add confirmed highlights, features, technology and a screenshot.
-    summary: 'A SavantX system for vehicle garages and service workshops.',
-    description: 'Garage Management is a SavantX product for vehicle garages and service workshops. Request a demo to see what it can do for yours.',
-    highlights: [],
-    features: [],
+    summary: 'Run your garage end to end: appointments, job cards, inspections, estimates, inventory and billing.',
+    description:
+      'Garage Management is a complete system for vehicle garages and service workshops, across one or many branches. Book appointments, open job cards, run inspection checklists, get estimates approved by customers, manage parts and suppliers, and bill with cash, UPI, card or bank payments.',
+    // Taken from the modules in the product's dashboard.
+    highlights: ['Job cards & service workflow', 'Inspections & checklists', 'Estimates & customer approvals', 'Billing, invoices & payments'],
+    features: [
+      'Garages & branches',
+      'Customer & vehicle history',
+      'Appointments & calendar',
+      'Job cards & service workflow',
+      '27-point inspections & checklists',
+      'Estimates & customer approvals',
+      'Inventory, purchase & suppliers',
+      'Services & pricing',
+      'Billing, invoices & payments (cash, UPI, card, bank)',
+      'Staff & shift planning',
+      'Notifications & reminders',
+      'Reports & analytics',
+    ],
     technology: [],
     icon: Car,
+    screenshot: { src: '/images/work/garage-management-dashboard.webp', alt: 'Garage Management System dashboard', width: 1536, height: 777 },
   },
 ];
 
