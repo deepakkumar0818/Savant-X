@@ -20,6 +20,7 @@ import {
 import Footer from '@/components/Footer';
 import ProductCatalog from '@/components/products/ProductCatalog';
 import { CATEGORIES, PRODUCTS, TRUSTED_BY } from '@/components/products/data';
+import RequestDemoButton from '@/components/products/RequestDemoButton';
 import { COMPANY_METRICS } from '@/lib/company';
 
 const STATS: { icon: LucideIcon; value: string; label: string }[] = [
@@ -70,13 +71,10 @@ export default function ProductsPage() {
                   Browse products
                   <ArrowRight className="h-4 w-4" aria-hidden />
                 </a>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 font-semibold text-indigo-700 shadow-sm ring-1 ring-indigo-200 transition hover:ring-indigo-400"
-                >
+                <RequestDemoButton className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 font-semibold text-indigo-700 shadow-sm ring-1 ring-indigo-200 transition hover:ring-indigo-400">
                   <CalendarDays className="h-4 w-4" aria-hidden />
                   Request a demo
-                </Link>
+                </RequestDemoButton>
               </div>
             </div>
             <div className="hero-enter relative mx-auto w-full max-w-[450px] [--hero-delay:0.08s] lg:mr-0">
@@ -204,13 +202,10 @@ export default function ProductsPage() {
               Browse all products
               <ArrowRight className="h-4 w-4" aria-hidden />
             </a>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 font-semibold text-white ring-1 ring-white/60 transition hover:bg-white/10"
-            >
+            <RequestDemoButton className="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 font-semibold text-white ring-1 ring-white/60 transition hover:bg-white/10">
               <CalendarDays className="h-4 w-4" aria-hidden />
               Request a demo
-            </Link>
+            </RequestDemoButton>
           </div>
         </div>
       </section>

@@ -2,10 +2,12 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowRight, Check, Search, X } from 'lucide-react';
 import { useDialog } from '@/lib/useDialog';
 import { CATEGORIES, CATEGORY_STYLE, PRODUCTS, type Product, type ProductCategory } from './data';
+import ProductDemoDialog from './ProductDemoDialog';
+import { REQUEST_DEMO_EVENT } from './RequestDemoButton';
 
 function ProductVisual({ product, large = false }: { product: Product; large?: boolean }) {
   const style = CATEGORY_STYLE[product.category];
@@ -35,7 +37,7 @@ function ProductVisual({ product, large = false }: { product: Product; large?: b
   );
 }
 
-function ProductDialog({ product, onClose }: { product: Product; onClose: () => void }) {
+function ProductDialog({ product, onClose, onRequestDemo }: { product: Product; onClose: () => void; onRequestDemo: () => void }) {
   const panelRef = useRef<HTMLDivElement>(null);
   useDialog(true, onClose, panelRef);
   const style = CATEGORY_STYLE[product.category];
@@ -93,13 +95,14 @@ function ProductDialog({ product, onClose }: { product: Product; onClose: () => 
           </>
         )}
         <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/contact"
+          <button
+            type="button"
+            onClick={onRequestDemo}
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 px-6 py-3 font-semibold text-white shadow-lg shadow-indigo-600/25 transition hover:brightness-110"
           >
             Request a demo
             <ArrowRight className="h-4 w-4" aria-hidden />
-          </Link>
+          </button>
           <button
             type="button"
             onClick={onClose}
@@ -118,6 +121,19 @@ export default function ProductCatalog() {
   const [category, setCategory] = useState<ProductCategory | 'all'>('all');
   const [query, setQuery] = useState('');
   const [openId, setOpenId] = useState<string | null>(null);
+  /** Product the demo form is open for ('' = none chosen yet); null when closed. */
+  const [demoFor, setDemoFor] = useState<string | null>(null);
+
+  // "Request a demo" buttons elsewhere on the page open the same form.
+  useEffect(() => {
+    const onRequest = (event: Event) => {
+      event.preventDefault();
+      setOpenId(null);
+      setDemoFor((event as CustomEvent<string>).detail ?? '');
+    };
+    window.addEventListener(REQUEST_DEMO_EVENT, onRequest);
+    return () => window.removeEventListener(REQUEST_DEMO_EVENT, onRequest);
+  }, []);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -240,13 +256,14 @@ export default function ProductCatalog() {
                         <span className="sr-only"> about {product.name}</span>
                         <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                       </button>
-                      <Link
-                        href="/contact"
+                      <button
+                        type="button"
+                        onClick={() => setDemoFor(product.id)}
                         className="inline-flex items-center justify-center rounded-lg bg-white px-3 py-2.5 text-sm font-semibold text-slate-800 ring-1 ring-slate-200 transition hover:text-indigo-700 hover:ring-indigo-300"
                       >
                         Request demo
                         <span className="sr-only"> of {product.name}</span>
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </li>
@@ -255,7 +272,17 @@ export default function ProductCatalog() {
           </ul>
         )}
       </div>
-      {open && <ProductDialog product={open} onClose={() => setOpenId(null)} />}
+      {open && (
+        <ProductDialog
+          product={open}
+          onClose={() => setOpenId(null)}
+          onRequestDemo={() => {
+            setOpenId(null);
+            setDemoFor(open.id);
+          }}
+        />
+      )}
+      {demoFor !== null && <ProductDemoDialog key={demoFor} productId={demoFor} onClose={() => setDemoFor(null)} />}
     </section>
   );
 }

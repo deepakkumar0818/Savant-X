@@ -180,6 +180,20 @@ test('only verified API names and picklist values are ever sent', () => {
   }
 });
 
+test('product demo requests become IT Services leads from the website', () => {
+  const record = buildLeadRecord(
+    { ...VALID, company: '', budget: '', service: 'Product demo: Vidya Setu', source: 'Products page', message: 'Demo requested for: Vidya Setu' },
+    'Website'
+  );
+  assert.equal(record.Lead_Source, 'Website');
+  assert.equal(record.Lead_Type, 'IT Services');
+  assert.equal(record.Lead_Status, 'Attempted to Contact');
+  assert.equal(record.Company, 'Website Enquiry');
+  assert.match(record.Description, /Demo requested for: Vidya Setu/);
+  assert.match(record.Description, /Service: Product demo: Vidya Setu/);
+  assert.match(record.Description, /Submitted from: Products page/);
+});
+
 test('contact page leads use the "Contact Form" lead source', () => {
   assert.equal(buildLeadRecord({ ...VALID, source: 'Contact page' }, 'Website').Lead_Source, 'Contact Form');
 });
