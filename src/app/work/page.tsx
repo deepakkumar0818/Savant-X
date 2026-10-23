@@ -320,7 +320,7 @@ export default function Work() {
       <WorkHero />
 
       <section aria-labelledby="featured-heading" className="relative px-6 pt-16 sm:px-8 lg:px-12 lg:pt-20">
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-2xl text-center">
             <p className="flex items-center justify-center gap-4 text-xs font-semibold uppercase tracking-[0.25em] text-blue-600">
               <span aria-hidden className="h-px w-12 bg-blue-200 sm:w-16" />
@@ -337,9 +337,9 @@ export default function Work() {
 
           {spotlight && (
             <>
-              <div className="mt-12 grid grid-cols-1 items-center gap-8 lg:-mx-4 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:gap-6 2xl:-mx-16">
-                <div key={spotlight.id} className="animate-fade-in-up min-w-0">
-                  <LaptopVisual project={spotlight} />
+              <div className="mx-auto mt-12 grid max-w-7xl grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1.75fr)_minmax(0,1fr)] lg:gap-6">
+                <div className="min-w-0 lg:-ml-6">
+                  <LaptopVisual projects={featuredProjects} index={spotlightIndex} />
                 </div>
 
                 <div className="flex flex-col rounded-3xl bg-white p-6 shadow-[0_24px_60px_-35px_rgba(15,23,42,0.35)] ring-1 ring-slate-200/70 sm:p-8">
@@ -352,9 +352,9 @@ export default function Work() {
                     {spotlight.highlights && (
                       <ul className="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                         {spotlight.highlights.map(({ label, icon: Icon, tone }) => (
-                          <li key={label} className="flex items-center gap-2 rounded-full bg-slate-50 py-1.5 pl-1.5 pr-3 text-[13px] font-medium leading-tight text-slate-700 ring-1 ring-slate-100">
-                            <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${TONES[tone]}`}>
-                              <Icon className="h-3.5 w-3.5" aria-hidden />
+                          <li key={label} className="flex items-center gap-2.5 rounded-full bg-slate-50 py-1.5 pl-1.5 pr-3 text-sm font-medium leading-tight text-slate-700 ring-1 ring-slate-100">
+                            <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${TONES[tone]}`}>
+                              <Icon className="h-[18px] w-[18px]" aria-hidden />
                             </span>
                             {label}
                           </li>
@@ -577,30 +577,43 @@ const TONES: Record<Tone, string> = {
 /** Screen area of /images/work/laptop-frame.webp (transparent there), as % of the frame. */
 const LAPTOP_SCREEN = { left: '15.16%', top: '9.47%', width: '69.79%', height: '76.55%' };
 
-/** The project's screenshot on a laptop: it sits behind the frame's transparent screen. */
-function LaptopVisual({ project }: { project: Project }) {
+/**
+ * Featured screenshots on a laptop. The frame stays put; only the screen content slides
+ * when the project changes. Screenshots sit behind the frame's transparent screen.
+ */
+function LaptopVisual({ projects, index }: { projects: Project[]; index: number }) {
   return (
-    <div className="relative mx-auto aspect-[2/1] w-full max-w-4xl">
+    <div className="relative mx-auto aspect-[2/1] w-full">
       <div className="absolute flex flex-col overflow-hidden bg-white" style={LAPTOP_SCREEN}>
         <div className="flex shrink-0 items-center gap-1 px-2 py-1 sm:gap-1.5 sm:px-3 sm:py-1.5" aria-hidden>
           <span className="h-1.5 w-1.5 rounded-full bg-rose-400 sm:h-2 sm:w-2" />
           <span className="h-1.5 w-1.5 rounded-full bg-amber-400 sm:h-2 sm:w-2" />
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 sm:h-2 sm:w-2" />
         </div>
-        <div className="relative min-h-0 flex-1">
-          {project.screenshot ? (
-            <Image
-              src={project.screenshot.src}
-              alt={project.screenshot.alt}
-              fill
-              sizes="(min-width: 1024px) 620px, 70vw"
-              className="object-cover object-top"
-            />
-          ) : (
-            <div className="absolute inset-0 overflow-hidden">
-              <ProjectMock category={project.category} />
-            </div>
-          )}
+        <div className="relative min-h-0 flex-1 overflow-hidden">
+          <div
+            className="flex h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+            style={{ transform: `translateX(-${index * 100}%)` }}
+          >
+            {projects.map((project, i) => (
+              <div key={project.id} className="relative h-full w-full shrink-0" aria-hidden={i !== index}>
+                {project.screenshot ? (
+                  <Image
+                    src={project.screenshot.src}
+                    alt={project.screenshot.alt}
+                    fill
+                    loading="eager"
+                    sizes="(min-width: 1024px) 680px, 70vw"
+                    className="object-cover object-top"
+                  />
+                ) : (
+                  <div className="absolute inset-0 overflow-hidden">
+                    <ProjectMock category={project.category} />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <Image
@@ -609,7 +622,7 @@ function LaptopVisual({ project }: { project: Project }) {
         width={1400}
         height={700}
         priority
-        sizes="(min-width: 1024px) 860px, 100vw"
+        sizes="(min-width: 1024px) 900px, 100vw"
         className="pointer-events-none relative h-auto w-full select-none drop-shadow-[0_30px_40px_rgba(15,23,42,0.18)]"
       />
     </div>
