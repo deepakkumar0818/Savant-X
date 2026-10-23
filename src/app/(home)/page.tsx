@@ -5,7 +5,7 @@ import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Building2, Cpu, CircuitBoard, Eye, Puzzle, Smartphone, Sparkles } from 'lucide-react';
 import Footer from '@/components/Footer';
-import ConsultationModal from '@/components/forms/ConsultationModal';
+import ConsultationDialog from '@/components/forms/ConsultationDialog';
 import CompaniesSection from '@/components/CompaniesSection';
 import SolutionsShowcase from '@/components/home/SolutionsShowcase';
 import AnimatedCounter from '@/components/AnimatedCounter';
@@ -384,11 +384,7 @@ export default function Home() {
       {/* Testimonials Section */}
       <TestimonialCarousel />
 
-      <ConsultationModal
-        open={isConsultationOpen}
-        onClose={() => setIsConsultationOpen(false)}
-        source="Home page"
-      />
+      {isConsultationOpen && <ConsultationDialog source="Home page" onClose={() => setIsConsultationOpen(false)} />}
 
       <Footer />
     </div>

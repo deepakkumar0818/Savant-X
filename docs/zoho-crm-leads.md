@@ -6,7 +6,7 @@ The website's enquiry forms create **Leads in Zoho CRM** through the Zoho CRM RE
 |---|---|---|
 | Zoho enquiry form (page + popup) | `/expertise/zoho-integrations` | `POST /api/leads` |
 | Contact form | `/contact` | `POST /api/leads` |
-| Consultation popup | Home, About | `POST /api/leads` |
+| Schedule a Consultation popup (`ConsultationDialog`) | Home, About | `POST /api/leads` |
 | Request a demo | `/products` | `POST /api/leads` |
 | Zoho strategy form (also copies to Google Sheets) | Zoho app pages | `POST /api/zoho-form` |
 | Contact support popup | `/contact` (FAQ) | `POST /api/contact` |

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import Footer from '@/components/Footer';
-import ConsultationModal from '@/components/forms/ConsultationModal';
+import ConsultationDialog from '@/components/forms/ConsultationDialog';
 
 import AboutPageHero from '@/components/about/AboutPageHero';
 import AboutJourneySection from '@/components/about/AboutJourneySection';
@@ -196,11 +196,7 @@ export default function About() {
         </div>
       </section>
 
-      <ConsultationModal
-        open={isConsultationOpen}
-        onClose={() => setIsConsultationOpen(false)}
-        source="About page"
-      />
+      {isConsultationOpen && <ConsultationDialog source="About page" onClose={() => setIsConsultationOpen(false)} />}
 
       <Footer />
     </div>
