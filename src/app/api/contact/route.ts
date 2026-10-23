@@ -109,10 +109,16 @@ export async function POST(request: NextRequest) {
   if (!email.ok) console.error(`[contact:${kind}] email not delivered: ${email.message}`);
   if (!crm.ok) console.error(`[contact:${kind}] Zoho CRM lead not created: ${crm.message}`);
 
-  const delivered = email.ok || crm.ok;
+  // A newsletter signup only counts once it is saved in Zoho CRM; for support, the team email is enough.
+  const delivered = kind === 'newsletter' ? crm.ok : email.ok || crm.ok;
   if (!delivered) {
     return NextResponse.json(
-      { error: 'We could not send your message right now. Please try again, or email or call us directly.' },
+      {
+        error:
+          kind === 'newsletter'
+            ? 'We could not add you to the list right now. Please try again in a moment.'
+            : 'We could not send your message right now. Please try again, or email or call us directly.',
+      },
       { status: 502 }
     );
   }
