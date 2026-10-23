@@ -16,7 +16,7 @@ import {
   Settings,
   Share2,
   ShoppingCart,
-  Wifi,
+  Printer,
   Workflow,
   type LucideIcon,
 } from 'lucide-react';
@@ -36,7 +36,7 @@ const HARDWARE: Item[] = [
   { icon: Cpu, tile: 'from-rose-500 to-pink-600', title: 'IoT & Embedded Systems', body: 'Smart, connected devices for real-time solutions.', href: '/expertise/iot-embedded-systems' },
   { icon: Radio, tile: 'from-emerald-500 to-green-600', title: 'Sensor Integration', body: 'Accurate data collection for varied environments.' },
   { icon: Cog, tile: 'from-orange-400 to-amber-500', title: 'PCB Design & Prototyping', body: 'Custom PCB design and hardware prototyping.', href: '/expertise/pcb-design' },
-  { icon: Wifi, tile: 'from-violet-500 to-purple-600', title: 'Industrial Automation', body: 'Reliable hardware for automation and control.' },
+  { icon: Printer, tile: 'from-violet-500 to-purple-600', title: '3D Printing & Designing', body: '3D design, modelling and printed prototypes.', href: '/expertise/3d-designing' },
   { icon: Box, tile: 'from-sky-500 to-blue-600', title: 'Firmware Development', body: 'Optimised and reliable firmware.', href: '/expertise/firmware-development' },
   { icon: Settings, tile: 'from-pink-500 to-rose-600', title: 'Custom Hardware', body: 'Tailored hardware for special requirements.', href: '/expertise/hardware-electronics' },
 ];
