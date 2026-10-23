@@ -6,7 +6,25 @@ import Link from 'next/link';
 import {
   ArrowLeft,
   ArrowRight,
+  BarChart3,
+  BellRing,
+  Building2,
+  Calculator,
+  CalendarCheck,
+  CreditCard,
+  Factory,
+  FileText,
+  LayoutDashboard,
+  MapPin,
+  MessagesSquare,
+  Package,
   Phone,
+  ScanEye,
+  ShieldCheck,
+  ShoppingCart,
+  UtensilsCrossed,
+  Wallet,
+  type LucideIcon,
 } from 'lucide-react';
 import Footer from '@/components/Footer';
 import ServiceIcon from '@/components/ui/ServiceIcon';
@@ -18,7 +36,7 @@ export default function Work() {
   const [activeFilter, setActiveFilter] = useState('all');
   const [spotlightIndex, setSpotlightIndex] = useState(0);
 
-  const projects = [
+  const projects: Project[] = [
     {
       id: 9,
       title: "Customized Manufacturing ERP",
@@ -30,6 +48,14 @@ export default function Work() {
       duration: "",
       results: "",
       featured: true,
+      highlights: [
+        { label: 'Sales & Purchase', icon: ShoppingCart, tone: 'blue' },
+        { label: 'Inventory Management', icon: Package, tone: 'orange' },
+        { label: 'Production', icon: Factory, tone: 'green' },
+        { label: 'Quality Control', icon: ShieldCheck, tone: 'rose' },
+        { label: 'Finance & HR', icon: Wallet, tone: 'violet' },
+        { label: 'Live Dashboards', icon: LayoutDashboard, tone: 'sky' },
+      ],
       screenshot: {
         src: "/images/work/manufacturing-erp-dashboard.webp",
         width: 1536,
@@ -48,6 +74,12 @@ export default function Work() {
       duration: "4 months",
       results: "150+ active users",
       featured: true,
+      highlights: [
+        { label: 'Appointment Booking', icon: CalendarCheck, tone: 'blue' },
+        { label: 'Medical Records', icon: FileText, tone: 'orange' },
+        { label: 'Provider Communication', icon: MessagesSquare, tone: 'green' },
+        { label: 'Patient Management', icon: ShieldCheck, tone: 'violet' },
+      ],
       screenshot: {
         src: "/images/work/sehat-setu-hero.webp",
         width: 1345,
@@ -66,6 +98,12 @@ export default function Work() {
       duration: "5 months",
       results: "300+ restaurants onboarded",
       featured: true,
+      highlights: [
+        { label: 'Restaurant Management', icon: UtensilsCrossed, tone: 'orange' },
+        { label: 'Order Tracking', icon: MapPin, tone: 'blue' },
+        { label: 'Payment Processing', icon: CreditCard, tone: 'green' },
+        { label: 'Real-time Delivery Updates', icon: BellRing, tone: 'violet' },
+      ],
       screenshot: {
         src: "/images/work/savantx-eats-dashboard.webp",
         width: 1536,
@@ -84,6 +122,12 @@ export default function Work() {
       duration: "6 months",
       results: "200+ properties listed",
       featured: true,
+      highlights: [
+        { label: 'Property Listings', icon: Building2, tone: 'blue' },
+        { label: 'Virtual Tours', icon: ScanEye, tone: 'violet' },
+        { label: 'Mortgage Calculators', icon: Calculator, tone: 'orange' },
+        { label: 'Real Estate Analytics', icon: BarChart3, tone: 'green' },
+      ],
       screenshot: {
         src: "/images/work/homehub-real-estate-dashboard.webp",
         width: 1536,
@@ -275,59 +319,95 @@ export default function Work() {
     <div className="min-h-screen bg-white">
       <WorkHero />
 
-      <section className="relative px-6 pt-16 sm:px-8 lg:px-12 lg:pt-20">
+      <section aria-labelledby="featured-heading" className="relative px-6 pt-16 sm:px-8 lg:px-12 lg:pt-20">
         <div className="mx-auto max-w-6xl">
-          {/* Spotlight */}
-          {spotlight && (
-            <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1.45fr)_minmax(0,1fr)]">
-              <div className="relative flex min-h-[19rem] min-w-0 items-center justify-center overflow-hidden rounded-2xl bg-[#070b18] px-4 py-8 sm:px-6 sm:py-10 shadow-[0_30px_60px_-30px_rgba(2,6,23,0.6)] sm:min-h-[22rem]">
-                <div
-                  aria-hidden
-                  className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(59,130,246,0.35),transparent_45%),radial-gradient(circle_at_90%_100%,rgba(139,92,246,0.35),transparent_50%)]"
-                />
-                <div key={spotlight.id} className="animate-fade-in-up relative w-full">
-                  <ProjectVisual project={spotlight} />
-                </div>
-              </div>
-              <div className="flex flex-col rounded-2xl bg-white p-6 shadow-[0_20px_50px_-30px_rgba(15,23,42,0.35)] ring-1 ring-slate-200/70 sm:p-7">
-                <div aria-live="polite" className="flex-1">
-                  <p className="text-xs font-medium text-slate-500">
-                    Featured · {categoryName(spotlight.category)}
-                  </p>
-                  <h2 className="mt-2 text-xl font-semibold tracking-tight text-slate-900">{spotlight.title}</h2>
-                  <p className="mt-3 text-[15px] leading-relaxed text-slate-600">{spotlight.description}</p>
-                </div>
-                <div className="mt-6 flex items-center gap-3">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white">
-                    <ServiceIcon emoji={spotlight.image} size="none" className="h-5 w-5" />
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-sm font-semibold text-slate-900">{spotlight.client || spotlight.title}</span>
-                    {spotlight.results && <span className="block truncate text-xs text-slate-500">{spotlight.results}</span>}
-                  </span>
-                  <span className="flex gap-2">
-                    <button
-                      type="button"
-                      onClick={() => stepSpotlight(-1)}
-                      aria-label="Previous featured project"
-                      className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-700 transition hover:bg-slate-200"
-                    >
-                      <ArrowLeft className="h-4 w-4" aria-hidden />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => stepSpotlight(1)}
-                      aria-label="Next featured project"
-                      className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-700 transition hover:bg-slate-200"
-                    >
-                      <ArrowRight className="h-4 w-4" aria-hidden />
-                    </button>
-                  </span>
-                </div>
-              </div>
-            </div>
-          )}
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="flex items-center justify-center gap-4 text-xs font-semibold uppercase tracking-[0.25em] text-blue-600">
+              <span aria-hidden className="h-px w-12 bg-blue-200 sm:w-16" />
+              Featured projects
+              <span aria-hidden className="h-px w-12 bg-blue-200 sm:w-16" />
+            </p>
+            <h2 id="featured-heading" className="mt-4 text-3xl font-bold tracking-[-0.02em] text-slate-900 sm:text-4xl lg:text-5xl">
+              Real Solutions. Real Impact.
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-slate-500 sm:text-lg">
+              Explore some of our recent projects that help businesses streamline operations, improve productivity and drive growth.
+            </p>
+          </div>
 
+          {spotlight && (
+            <>
+              <div className="mt-12 grid grid-cols-1 items-center gap-8 lg:-mx-4 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:gap-6 2xl:-mx-16">
+                <div key={spotlight.id} className="animate-fade-in-up min-w-0">
+                  <LaptopVisual project={spotlight} />
+                </div>
+
+                <div className="flex flex-col rounded-3xl bg-white p-6 shadow-[0_24px_60px_-35px_rgba(15,23,42,0.35)] ring-1 ring-slate-200/70 sm:p-8">
+                  <div aria-live="polite">
+                    <p className="text-sm font-medium text-slate-500">
+                      <span className="text-blue-600">Featured</span> · {categoryName(spotlight.category)}
+                    </p>
+                    <h3 className="mt-3 text-2xl font-bold leading-tight tracking-tight text-slate-900 sm:text-3xl">{spotlight.title}</h3>
+                    <p className="mt-4 text-[15px] leading-relaxed text-slate-600">{spotlight.description}</p>
+                    {spotlight.highlights && (
+                      <ul className="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                        {spotlight.highlights.map(({ label, icon: Icon, tone }) => (
+                          <li key={label} className="flex items-center gap-2 rounded-full bg-slate-50 py-1.5 pl-1.5 pr-3 text-[13px] font-medium leading-tight text-slate-700 ring-1 ring-slate-100">
+                            <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${TONES[tone]}`}>
+                              <Icon className="h-3.5 w-3.5" aria-hidden />
+                            </span>
+                            {label}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                  <div className="mt-8 flex items-center gap-3">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white">
+                      <ServiceIcon emoji={spotlight.image} size="none" className="h-5 w-5" />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-sm font-semibold text-slate-900">{spotlight.client || spotlight.title}</span>
+                      <span className="block truncate text-xs text-slate-500">{spotlight.results || COMPANY.name}</span>
+                    </span>
+                    <span className="flex gap-2">
+                      <button
+                        type="button"
+                        onClick={() => stepSpotlight(-1)}
+                        aria-label="Previous featured project"
+                        className="flex h-11 w-11 items-center justify-center rounded-full bg-slate-100 text-slate-700 transition hover:bg-slate-200"
+                      >
+                        <ArrowLeft className="h-4 w-4" aria-hidden />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => stepSpotlight(1)}
+                        aria-label="Next featured project"
+                        className="flex h-11 w-11 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg shadow-blue-600/30 transition hover:bg-blue-700"
+                      >
+                        <ArrowRight className="h-4 w-4" aria-hidden />
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-10 flex justify-center gap-2">
+                {featuredProjects.map((p, i) => (
+                  <button
+                    key={p.id}
+                    type="button"
+                    onClick={() => setSpotlightIndex(i)}
+                    aria-label={`Show ${p.title}`}
+                    aria-current={i === spotlightIndex ? 'true' : undefined}
+                    className="flex h-6 items-center"
+                  >
+                    <span className={`block h-1.5 rounded-full transition-all ${i === spotlightIndex ? 'w-8 bg-blue-600' : 'w-6 bg-slate-200 hover:bg-slate-300'}`} />
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
 
@@ -456,6 +536,8 @@ type Project = {
   results: string;
   featured: boolean;
   screenshot?: { src: string; alt: string; width: number; height: number };
+  /** Key modules shown as chips in the featured spotlight. */
+  highlights?: { label: string; icon: LucideIcon; tone: Tone }[];
   /** Listed only under its own filter, not in "All". */
   hideFromAll?: boolean;
 };
@@ -477,6 +559,58 @@ function ProjectVisual({ project }: { project: Project }) {
         height={project.screenshot.height}
         sizes="(min-width: 1024px) 640px, 100vw"
         className="h-auto w-full"
+      />
+    </div>
+  );
+}
+
+type Tone = 'blue' | 'orange' | 'green' | 'rose' | 'violet' | 'sky';
+const TONES: Record<Tone, string> = {
+  blue: 'bg-blue-100 text-blue-600',
+  orange: 'bg-orange-100 text-orange-600',
+  green: 'bg-emerald-100 text-emerald-600',
+  rose: 'bg-rose-100 text-rose-600',
+  violet: 'bg-violet-100 text-violet-600',
+  sky: 'bg-sky-100 text-sky-600',
+};
+
+/** Screen area of /images/work/laptop-frame.webp (transparent there), as % of the frame. */
+const LAPTOP_SCREEN = { left: '15.16%', top: '9.47%', width: '69.79%', height: '76.55%' };
+
+/** The project's screenshot on a laptop: it sits behind the frame's transparent screen. */
+function LaptopVisual({ project }: { project: Project }) {
+  return (
+    <div className="relative mx-auto aspect-[2/1] w-full max-w-4xl">
+      <div className="absolute flex flex-col overflow-hidden bg-white" style={LAPTOP_SCREEN}>
+        <div className="flex shrink-0 items-center gap-1 px-2 py-1 sm:gap-1.5 sm:px-3 sm:py-1.5" aria-hidden>
+          <span className="h-1.5 w-1.5 rounded-full bg-rose-400 sm:h-2 sm:w-2" />
+          <span className="h-1.5 w-1.5 rounded-full bg-amber-400 sm:h-2 sm:w-2" />
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 sm:h-2 sm:w-2" />
+        </div>
+        <div className="relative min-h-0 flex-1">
+          {project.screenshot ? (
+            <Image
+              src={project.screenshot.src}
+              alt={project.screenshot.alt}
+              fill
+              sizes="(min-width: 1024px) 620px, 70vw"
+              className="object-cover object-top"
+            />
+          ) : (
+            <div className="absolute inset-0 overflow-hidden">
+              <ProjectMock category={project.category} />
+            </div>
+          )}
+        </div>
+      </div>
+      <Image
+        src="/images/work/laptop-frame.webp"
+        alt=""
+        width={1400}
+        height={700}
+        priority
+        sizes="(min-width: 1024px) 860px, 100vw"
+        className="pointer-events-none relative h-auto w-full select-none drop-shadow-[0_30px_40px_rgba(15,23,42,0.18)]"
       />
     </div>
   );
