@@ -65,7 +65,7 @@ export default function CompaniesSection() {
                 clipRule="evenodd"
               />
             </svg>{tx.trusted_partners}</div>
-          <h2 className="animate-fade-in-up max-w-4xl text-balance text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">{tx.we_design_build_and_ship}<span className="mt-2 block bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.world_class_digital_products}</span>
+          <h2 className="animate-fade-in-up mx-auto max-w-4xl text-balance text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">{tx.we_design_build_and_ship}<span className="mt-2 block bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.world_class_digital_products}</span>
             <span className="mt-2 block text-slate-800">{tx.for_forward_thinking_brands}</span>
           </h2>
         </div>

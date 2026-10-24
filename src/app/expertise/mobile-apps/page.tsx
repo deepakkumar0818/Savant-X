@@ -1,435 +1,410 @@
-'use client';
-
 import tx from '@/content/text/app/expertise/mobile-apps/page.json';
-import { useState } from 'react';
-import { COMPANY } from '@/lib/company';
-import Footer from '@/components/Footer';
+import Image from 'next/image';
 import Link from 'next/link';
-import PageHero from '@/components/hero/PageHero';
-import { Smartphone } from 'lucide-react';
-import ServiceIcon from '@/components/ui/ServiceIcon';
+import {
+  Apple,
+  ArrowRight,
+  Atom,
+  Bell,
+  Bird,
+  Bot,
+  Box,
+  CalendarDays,
+  ChartColumn,
+  ChartPie,
+  Check,
+  CircleDot,
+  CirclePlay,
+  ClipboardCheck,
+  Clock,
+  Cloud,
+  Code2,
+  Feather,
+  Flag,
+  Flame,
+  Headphones,
+  Hexagon,
+  Layers,
+  Monitor,
+  Palette,
+  Rocket,
+  Search,
+  Smartphone,
+  Triangle,
+  Wifi,
+  Zap,
+  type LucideIcon,
+} from 'lucide-react';
+import Footer from '@/components/Footer';
+import SectionHeading, { GRADIENT_TEXT } from '@/components/expertise/SectionHeading';
+import { COMPANY, COMPANY_METRICS } from '@/lib/company';
+
+const APP_TYPES: { id: string; title: string; icon: LucideIcon; description: string; platforms: string[]; features: string[]; price: string; timeline: string }[] = [
+  {
+    id: 'native',
+    title: tx.native_mobile_apps,
+    icon: Smartphone,
+    description: tx.high_performance_native_applications_bui,
+    platforms: ['iOS', tx.android],
+    features: [tx.kotlin_swift_development, tx.platform_specific_ui_ux, tx.native_performance, tx.app_store_optimization],
+    price: '₹25,000',
+    timeline: '8-16 weeks',
+  },
+  {
+    id: 'cross',
+    title: tx.cross_platform_apps,
+    icon: Layers,
+    description: tx.single_codebase_applications_that_run,
+    platforms: ['iOS', tx.android, tx.web],
+    features: [tx.react_native_flutter, tx.faster_development, tx.cost_effective, tx.consistent_ui_ux],
+    price: '₹18,000',
+    timeline: '6-12 weeks',
+  },
+  {
+    id: 'hybrid',
+    title: tx.hybrid_apps,
+    icon: Box,
+    description: tx.web_based_applications_wrapped_in,
+    platforms: ['iOS', tx.android],
+    features: [tx.ionic_framework7, tx.easy_maintenance, tx.web_technologies, tx.cost_effective],
+    price: '₹12,000',
+    timeline: '4-8 weeks',
+  },
+  {
+    id: 'pwa',
+    title: tx.progressive_web_apps,
+    icon: Monitor,
+    description: tx.web_applications_that_provide_a,
+    platforms: [tx.web, 'iOS', tx.android],
+    features: [tx.offline_functionality, tx.push_notifications, tx.app_like_experience, tx.instant_updates],
+    price: '₹8,000',
+    timeline: '3-6 weeks',
+  },
+];
+
+const PLATFORMS: { id: string; name: string; description: string; icon: LucideIcon; tile: string; screen: string; tools: string[] }[] = [
+  {
+    id: 'ios',
+    name: tx.ios_development,
+    description: tx.native_ios_applications_for_iphone,
+    icon: Apple,
+    tile: 'bg-slate-900 text-white',
+    screen: 'from-indigo-500 via-violet-600 to-fuchsia-500',
+    tools: [tx.swift_swiftui, tx.xcode_ide, tx.ios_sdk, tx.app_store_connect, tx.testflight, tx.core_data],
+  },
+  {
+    id: 'android',
+    name: tx.android_development,
+    description: tx.native_android_applications_for_phones,
+    icon: Bot,
+    tile: 'bg-emerald-500 text-white',
+    screen: 'from-sky-500 via-indigo-600 to-emerald-500',
+    tools: [tx.kotlin_java, tx.android_sdk, tx.android_studio, tx.google_play_console, tx.firebase, tx.room_database],
+  },
+];
+
+const TECHNOLOGIES: { name: string; role: string; icon: LucideIcon; tile: string }[] = [
+  { name: tx.react_native, role: tx.cross_platform_framework, icon: Atom, tile: 'bg-sky-50 text-sky-500' },
+  { name: tx.flutter, role: tx.google_ui_toolkit, icon: Feather, tile: 'bg-blue-50 text-blue-500' },
+  { name: tx.swift, role: tx.ios_development_2, icon: Bird, tile: 'bg-orange-50 text-orange-500' },
+  { name: tx.kotlin, role: tx.android_development_2, icon: Triangle, tile: 'bg-violet-50 text-violet-600' },
+  { name: tx.ionic, role: tx.hybrid_app_framework, icon: CircleDot, tile: 'bg-indigo-50 text-indigo-600' },
+  { name: tx.xamarin, role: tx.cross_platform_platform, icon: Hexagon, tile: 'bg-sky-50 text-sky-600' },
+  { name: tx.firebase_2, role: tx.backend_services, icon: Flame, tile: 'bg-amber-50 text-amber-500' },
+  { name: 'AWS', role: tx.cloud_infrastructure, icon: Cloud, tile: 'bg-orange-50 text-orange-500' },
+];
+
+const BENEFITS: { title: string; description: string; icon: LucideIcon }[] = [
+  { title: tx.native_performance_2, description: tx.optimized_for_each_platform_to, icon: Zap },
+  { title: tx.cross_platform, description: tx.single_codebase_solutions_that_work, icon: Layers },
+  { title: tx.offline_support, description: tx.applications_that_work_even_without, icon: Wifi },
+  { title: tx.push_notifications_2, description: tx.engage_users_with_targeted_notifications, icon: Bell },
+  { title: tx.app_store_optimization_2, description: tx.maximize_visibility_and_downloads_in, icon: ChartColumn },
+  { title: tx.analytics_integration, description: tx.track_user_behavior_and_app, icon: ChartPie },
+];
+
+const PROCESS: { step: string; title: string; description: string; duration: string; icon: LucideIcon }[] = [
+  { step: '01', title: tx.discovery_planning, description: tx.understand_your_business_requirements_an, duration: tx.t_1_2_weeks, icon: Search },
+  { step: '02', title: tx.ui_ux_design, description: tx.create_intuitive_and_engaging_user, duration: tx.t_2_3_weeks, icon: Palette },
+  { step: '03', title: tx.development, description: tx.build_your_mobile_application_with, duration: tx.t_6_10_weeks, icon: Code2 },
+  { step: '04', title: tx.testing_qa, description: tx.comprehensive_testing_across_devices_and, duration: tx.t_1_2_weeks, icon: ClipboardCheck },
+  { step: '05', title: tx.launch_deployment, description: tx.app_store_submission_and_deployment, duration: tx.t_1_2_weeks, icon: Rocket },
+];
+
+const CTA_POINTS: { label: string }[] = [{ label: tx.free_consultation }, { label: tx.detailed_proposal }, { label: tx.no_obligation }];
 
 export default function MobileAppsPage() {
-  const [activePlatform, setActivePlatform] = useState('ios');
-
-  const mobileAppTypes = [
-    {
-      id: 'native',
-      title: tx.native_mobile_apps,
-      icon: '📱',
-      description: tx.high_performance_native_applications_bui,
-      features: [tx.ios_development, tx.android_development, tx.native_performance, tx.platform_specific_ui, tx.hardware_access, tx.app_store_optimization],
-      pricing: tx.starting_at_25_000,
-      timeline: '8-16 weeks',
-      platforms: ['iOS', tx.android]
-    },
-    {
-      id: 'cross',
-      title: tx.cross_platform_apps,
-      icon: '🔄',
-      description: tx.single_codebase_applications_that_run,
-      features: [tx.react_native, tx.flutter_development, tx.code_reusability, tx.faster_development, tx.cost_effective, tx.consistent_ui],
-      pricing: tx.starting_at_18_000,
-      timeline: '6-12 weeks',
-      platforms: ['iOS', tx.android, tx.web]
-    },
-    {
-      id: 'hybrid',
-      title: tx.hybrid_apps,
-      icon: '🌐',
-      description: tx.web_based_applications_wrapped_in,
-      features: [tx.ionic_framework, tx.cordova_phonegap, tx.web_technologies, tx.rapid_development, tx.easy_maintenance, tx.cost_effective],
-      pricing: tx.starting_at_12_000,
-      timeline: '4-8 weeks',
-      platforms: ['iOS', tx.android]
-    },
-    {
-      id: 'pwa',
-      title: tx.progressive_web_apps,
-      icon: '⚡',
-      description: tx.web_applications_that_provide_native,
-      features: [tx.offline_functionality, tx.push_notifications, tx.app_like_experience, tx.no_app_store, tx.instant_updates, tx.seo_friendly],
-      pricing: tx.starting_at_8_000,
-      timeline: '3-6 weeks',
-      platforms: [tx.web, 'iOS', tx.android]
-    }
-  ];
-
-  const technologies = [
-    { name: tx.react_native_2, icon: '⚛️', description: tx.cross_platform_framework, category: 'Cross-Platform' },
-    { name: tx.flutter, icon: '🎯', description: tx.google_s_ui_toolkit, category: 'Cross-Platform' },
-    { name: tx.swift, icon: '🍎', description: tx.ios_development_2, category: 'Native iOS' },
-    { name: tx.kotlin, icon: '🤖', description: tx.android_development_2, category: 'Native Android' },
-    { name: tx.ionic, icon: '⚡', description: tx.hybrid_app_framework, category: 'Hybrid' },
-    { name: tx.xamarin, icon: '🔷', description: tx.microsoft_s_solution, category: 'Cross-Platform' },
-    { name: tx.firebase, icon: '🔥', description: tx.backend_services, category: 'Backend' },
-    { name: 'AWS', icon: '☁️', description: tx.cloud_infrastructure, category: 'Cloud' }
-  ];
-
-  const platforms = [
-    {
-      id: 'ios',
-      name: tx.ios_development_3,
-      icon: '🍎',
-      description: tx.native_ios_applications_for_iphone,
-      features: [tx.swift_objective_c, tx.xcode_ide, tx.ios_sdk, tx.app_store_connect, tx.testflight, tx.core_data],
-      stats: { users: tx.t_1_5b, apps: tx.t_2m, rating: '4.8' }
-    },
-    {
-      id: 'android',
-      name: tx.android_development_3,
-      icon: '🤖',
-      description: tx.native_android_applications_for_phones,
-      features: [tx.kotlin_java, tx.android_studio, tx.android_sdk, tx.google_play_console, tx.firebase_2, tx.room_database],
-      stats: { users: tx.t_3b, apps: tx.t_3m, rating: '4.7' }
-    }
-  ];
-
-  const processSteps = [
-    {
-      step: '01',
-      title: tx.discovery_planning,
-      description: tx.understanding_your_app_requirements_and,
-      duration: '1-2 weeks',
-      icon: '📋'
-    },
-    {
-      step: '02',
-      title: tx.ui_ux_design,
-      description: tx.creating_intuitive_mobile_interfaces_and,
-      duration: '2-3 weeks',
-      icon: '🎨'
-    },
-    {
-      step: '03',
-      title: tx.development,
-      description: tx.building_your_mobile_application_with,
-      duration: '4-10 weeks',
-      icon: '💻'
-    },
-    {
-      step: '04',
-      title: tx.testing_qa,
-      description: tx.comprehensive_testing_across_devices_and,
-      duration: '1-2 weeks',
-      icon: '🧪'
-    },
-    {
-      step: '05',
-      title: tx.launch_deployment,
-      description: tx.app_store_submission_and_launch,
-      duration: '1-2 weeks',
-      icon: '🚀'
-    }
-  ];
-
-  const features = [
-    {
-      title: tx.native_performance_2,
-      description: tx.optimized_for_each_platform_to,
-      icon: '⚡'
-    },
-    {
-      title: tx.cross_platform,
-      description: tx.single_codebase_solutions_that_work,
-      icon: '🔄'
-    },
-    {
-      title: tx.offline_support,
-      description: tx.applications_that_work_even_without,
-      icon: '📱'
-    },
-    {
-      title: tx.push_notifications_2,
-      description: tx.engage_users_with_targeted_notifications,
-      icon: '🔔'
-    },
-    {
-      title: tx.app_store_optimization_2,
-      description: tx.maximize_visibility_and_downloads_in,
-      icon: '📈'
-    },
-    {
-      title: tx.analytics_integration,
-      description: tx.track_user_behavior_and_app,
-      icon: '📊'
-    }
+  const projectsMetric = COMPANY_METRICS[0];
+  const stats: { value: string; label: string; icon: LucideIcon }[] = [
+    { value: String(COMPANY.foundingYear), label: tx.founded, icon: CalendarDays },
+    { value: `${projectsMetric.value}${projectsMetric.suffix}`, label: projectsMetric.label, icon: Flag },
+    { value: '6-16', label: tx.week_delivery, icon: Clock },
+    { value: '24/7', label: tx.support, icon: Headphones },
   ];
 
   return (
     <div className="min-h-screen bg-white">
-
-      <PageHero
-        eyebrow={tx.mobile_app_development}
-        eyebrowIcon={Smartphone}
-        title={tx.mobile}
-        highlight={tx.applications}
-        description={tx.we_create_powerful_user_friendly}
-        highlights={["Native Mobile Apps", "Cross-Platform Apps", "Hybrid Apps", "Progressive Web Apps"]}
-        stats={[
-          { value: COMPANY.foundingYear, label: tx.founded },
-          { value: "4.9", label: tx.app_store_rating },
-          { value: "6-16", label: tx.week_delivery },
-          { value: "24/7", label: tx.support },
-        ]}
-      />
-
-      {/* Mobile App Types */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_solutions}</div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.mobile_app}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.development_types}</span>
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.from_native_apps_to_cross}</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {mobileAppTypes.map((app) => (
-              <div key={app.id} className="group">
-                <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
-                  {/* Header */}
-                  <div className="flex items-start gap-6 mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-2xl flex items-center justify-center group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
-                      <ServiceIcon emoji={app.icon} size="none" className="h-7 w-7 text-indigo-600" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors duration-200">
-                        {app.title}
-                      </h3>
-                      <p className="text-slate-600 leading-relaxed">
-                        {app.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Platforms */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {app.platforms.map((platform, platformIndex) => (
-                      <span key={platformIndex} className="px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-sm font-medium border border-blue-200/50">
-                        {platform}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Features */}
-                  <div className="grid grid-cols-2 gap-3 mb-6">
-                    {app.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
-                        <span className="text-sm text-slate-600">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Pricing & Timeline */}
-                  <div className="flex items-center justify-between pt-6 border-t border-slate-200">
-                    <div>
-                      <div className="text-lg font-bold text-blue-600 mb-1">{app.pricing}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.starting_price}</div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-lg font-bold text-green-600 mb-1">{app.timeline}</div>
-                      <div className="text-xs text-slate-500 uppercase tracking-wide">{tx.timeline}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Platform Tabs */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.platforms}</div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.ios_android}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.development_2}</span>
-            </h2>
-          </div>
-
-          {/* Platform Tabs */}
-          <div className="flex justify-center mb-12">
-            <div className="bg-white border border-slate-200 rounded-xl p-1">
-              {platforms.map((platform) => (
-                <button
-                  key={platform.id}
-                  onClick={() => setActivePlatform(platform.id)}
-                  className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
-                    activePlatform === platform.id
-                      ? 'bg-blue-600 text-white shadow-lg'
-                      : 'text-slate-700 hover:bg-blue-50'
-                  }`}
-                >
-                  <ServiceIcon emoji={platform.icon} size="none" className="mr-2" />
-                  {platform.name}
-                </button>
-              ))}
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#f4f5ff] via-white to-[#ecebff] px-6 pb-16 pt-12 sm:px-8 lg:px-12 lg:pb-20 lg:pt-16">
+        <div aria-hidden className="pointer-events-none absolute -right-40 -top-40 h-[34rem] w-[34rem] rounded-full bg-indigo-200/40 blur-3xl" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-40 -left-32 h-[26rem] w-[26rem] rounded-full bg-blue-100/60 blur-3xl" />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+          <div>
+            <p className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-indigo-700 shadow-sm ring-1 ring-indigo-100">
+              <Smartphone className="h-3.5 w-3.5" aria-hidden />{tx.mobile_app_development}</p>
+            <h1 className="mt-5 text-4xl font-bold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl lg:text-[3.3rem]">{tx.mobile_applications}{" "}<span className={GRADIENT_TEXT}>{tx.that_move_your_business_forward}</span>
+            </h1>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">{tx.we_create_powerful_user_friendly}</p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition hover:brightness-110"
+              >{tx.start_a_project}<ArrowRight className="h-4 w-4" aria-hidden />
+              </Link>
+              <Link
+                href="/work"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-slate-200 transition hover:text-indigo-700 hover:ring-indigo-300"
+              >
+                <CirclePlay className="h-4 w-4 text-indigo-600" aria-hidden />{tx.view_our_work}</Link>
             </div>
           </div>
-
-          {/* Platform Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {platforms.map((platform) => (
-              <div key={platform.id} className={`transition-all duration-300 ${activePlatform === platform.id ? 'opacity-100' : 'opacity-50'}`}>
-                <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-lg">
-                  {/* Platform Header */}
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-2xl flex items-center justify-center">
-                      <ServiceIcon emoji={platform.icon} size="none" className="h-7 w-7 text-indigo-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-slate-900 mb-1">{platform.name}</h3>
-                      <p className="text-slate-600">{platform.description}</p>
-                    </div>
-                  </div>
-
-                  {/* Stats */}
-                  <div className="grid grid-cols-3 gap-4 mb-6 p-4 bg-slate-50 rounded-xl">
-                    <div className="text-center">
-                      <div className="text-lg font-bold text-blue-600 mb-1">{platform.stats.users}</div>
-                      <div className="text-xs text-slate-600 uppercase tracking-wide">{tx.users}</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-lg font-bold text-green-600 mb-1">{platform.stats.apps}</div>
-                      <div className="text-xs text-slate-600 uppercase tracking-wide">{tx.apps}</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-lg font-bold text-purple-600 mb-1">{platform.stats.rating}</div>
-                      <div className="text-xs text-slate-600 uppercase tracking-wide">{tx.rating}</div>
-                    </div>
-                  </div>
-
-                  {/* Features */}
-                  <div className="space-y-3">
-                    <h4 className="text-sm font-semibold text-slate-700 uppercase tracking-wide">{tx.technologies}</h4>
-                    <div className="grid grid-cols-2 gap-2">
-                      {platform.features.map((feature, index) => (
-                        <div key={index} className="flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
-                          <span className="text-sm text-slate-600">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <Image
+            src="/images/mobile-apps/mobile-hero-phones.webp"
+            alt={tx.two_phones_showing_a_health}
+            width={1280}
+            height={853}
+            priority
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="w-full rounded-[2rem] shadow-[0_30px_70px_-30px_rgba(79,70,229,0.45)] ring-1 ring-indigo-100"
+          />
         </div>
+        <ul className="relative mx-auto mt-12 grid max-w-7xl grid-cols-2 gap-4 lg:grid-cols-4">
+          {stats.map(({ value, label, icon: Icon }) => (
+            <li key={label} className="flex items-center gap-3.5 rounded-2xl bg-white p-5 shadow-[0_16px_40px_-24px_rgba(79,70,229,0.35)] ring-1 ring-slate-200/70">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                <Icon className="h-5 w-5" aria-hidden />
+              </span>
+              <span>
+                <span className="block text-2xl font-bold text-slate-900">{value}</span>
+                <span className="block text-sm text-slate-500">{label}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
       </section>
 
-      {/* Technology Stack */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.technology_stack}</div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.mobile}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.technologies}</span>
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.we_use_cutting_edge_mobile}</p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
-            {technologies.map((tech, index) => (
-              <div key={index} className="group">
-                <div className="bg-white border border-slate-200 rounded-2xl p-6 text-center hover:shadow-lg hover:border-blue-200/50 transition-all duration-300 group-hover:scale-105">
-                  <ServiceIcon emoji={tech.icon} size="lg" className="mb-3" />
-                  <h3 className="text-sm font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors duration-200">
-                    {tech.name}
-                  </h3>
-                  <p className="text-xs text-slate-600 mb-2">{tech.description}</p>
-                  <span className="inline-block px-2 py-1 bg-blue-50 text-blue-700 rounded text-xs font-medium">
-                    {tech.category}
+      {/* App types */}
+      <section className="px-6 py-20 sm:px-8 lg:px-12 lg:py-24">
+        <div className="mx-auto max-w-6xl">
+          <SectionHeading
+            eyebrow={tx.our_solutions}
+            title={tx.mobile_app}
+            highlight={tx.development_types}
+            description={tx.from_native_apps_to_cross}
+          />
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            {APP_TYPES.map(({ id, title, icon: Icon, description, platforms, features, price, timeline }) => (
+              <article key={id} className="flex flex-col rounded-2xl bg-white p-6 shadow-[0_12px_40px_-24px_rgba(15,23,42,0.3)] ring-1 ring-slate-200/80 transition hover:-translate-y-1 hover:shadow-[0_24px_50px_-24px_rgba(79,70,229,0.4)] sm:p-7">
+                <div className="flex items-start gap-4">
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100">
+                    <Icon className="h-6 w-6" aria-hidden />
                   </span>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900">{title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-slate-600">{description}</p>
+                    <ul className="mt-3 flex flex-wrap gap-1.5" aria-label={tx.platforms}>
+                      {platforms.map((p) => (
+                        <li key={p} className="rounded-md bg-indigo-50 px-2 py-0.5 text-xs font-medium text-indigo-700">{p}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
+                <ul className="mb-6 mt-6 grid grid-cols-1 gap-x-6 gap-y-2.5 text-sm text-slate-700 sm:grid-cols-2">
+                  {features.map((feature) => (
+                    <li key={feature} className="flex items-center gap-2">
+                      <Check className="h-4 w-4 shrink-0 text-indigo-600" aria-hidden />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-auto flex items-center justify-between gap-4 border-t border-slate-100 pt-5">
+                  <p className="text-base font-bold text-indigo-700">{tx.starting_at}{" "}{price}</p>
+                  <div className="flex items-center gap-3">
+                    <p className="text-right">
+                      <span className="block text-sm font-bold text-emerald-600">{timeline}</span>
+                      <span className="block text-xs text-slate-500">{tx.timeline}</span>
+                    </p>
+                    <Link
+                      href="/contact"
+                      className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-md shadow-indigo-600/30 transition hover:brightness-110"
+                    >
+                      <ArrowRight className="h-4 w-4" aria-hidden />
+                      <span className="sr-only">{tx.enquire_about}{" "}{title}</span>
+                    </Link>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.key_features}</div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.why_choose_our}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.mobile_apps}</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="group">
-                <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center mb-4 group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
-                    <ServiceIcon emoji={feature.icon} size="none" className="h-6 w-6 text-indigo-600" />
+      {/* Platforms */}
+      <section className="bg-slate-50/70 px-6 py-20 sm:px-8 lg:px-12 lg:py-24">
+        <div className="mx-auto max-w-6xl">
+          <SectionHeading
+            eyebrow={tx.platforms}
+            title={tx.ios_android}
+            highlight={tx.development_2}
+            description={tx.we_build_high_quality_native}
+          />
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            {PLATFORMS.map(({ id, name, description, icon: Icon, tile, screen, tools }) => (
+              <article key={id} className="relative flex overflow-hidden rounded-2xl bg-white p-6 ring-1 ring-slate-200/80 sm:p-7">
+                <div className="min-w-0 flex-1 sm:pr-32">
+                  <div className="flex items-center gap-3.5">
+                    <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${tile}`}>
+                      <Icon className="h-6 w-6" aria-hidden />
+                    </span>
+                    <div>
+                      <h3 className="text-lg font-bold text-slate-900">{name}</h3>
+                      <p className="text-sm text-slate-600">{description}</p>
+                    </div>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
-                    {feature.title}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed">
-                    {feature.description}
-                  </p>
+                  <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-slate-500">{tx.technologies}</p>
+                  <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-slate-700">
+                    {tools.map((tool) => (
+                      <li key={tool} className="flex items-center gap-2">
+                        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-600" aria-hidden />
+                        {tool}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
+                <div aria-hidden className="absolute -bottom-10 right-6 hidden w-28 rotate-6 rounded-[1.6rem] bg-slate-900 p-1.5 shadow-xl sm:block">
+                  <div className={`flex aspect-[9/19] items-center justify-center rounded-[1.3rem] bg-gradient-to-br ${screen}`}>
+                    <Icon className="h-9 w-9 text-white/90" />
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Technologies */}
+      <section className="px-6 py-20 sm:px-8 lg:px-12 lg:py-24">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading
+            eyebrow={tx.technology_stack}
+            title={tx.mobile}
+            highlight={tx.technologies}
+            description={tx.we_use_cutting_edge_mobile}
+          />
+          <ul className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-8">
+            {TECHNOLOGIES.map(({ name, role, icon: Icon, tile }) => (
+              <li key={name} className="flex flex-col items-center rounded-2xl bg-white px-3 py-6 text-center ring-1 ring-slate-200/80 transition hover:-translate-y-0.5 hover:shadow-lg">
+                <span className={`flex h-12 w-12 items-center justify-center rounded-xl ${tile}`}>
+                  <Icon className="h-6 w-6" aria-hidden />
+                </span>
+                <span className="mt-4 text-sm font-bold text-slate-900">{name}</span>
+                <span className="mt-1 text-xs leading-snug text-slate-500">{role}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Why choose us */}
+      <section className="bg-slate-50/70 px-6 py-20 sm:px-8 lg:px-12 lg:py-24">
+        <div className="mx-auto max-w-6xl">
+          <SectionHeading
+            eyebrow={tx.key_features}
+            title={tx.why_choose_our}
+            highlight={tx.mobile_apps}
+            description={tx.we_combine_technical_expertise_with}
+          />
+          <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {BENEFITS.map(({ title, description, icon: Icon }) => (
+              <li key={title} className="flex items-start gap-4 rounded-2xl bg-white p-6 ring-1 ring-slate-200/80 transition hover:shadow-lg">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                  <Icon className="h-5 w-5" aria-hidden />
+                </span>
+                <span>
+                  <span className="block text-base font-bold text-slate-900">{title}</span>
+                  <span className="mt-1 block text-sm leading-relaxed text-slate-600">{description}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       {/* Process */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-indigo-200/90 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-indigo-900 shadow-[0_8px_28px_-12px_rgba(79,70,229,0.35)] sm:text-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-indigo-600"></div>{tx.our_process}</div>
-            <h2 className="mb-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">{tx.how_we_build}{' '}<span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.mobile_apps}</span>
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-light">{tx.our_proven_5_step_process}</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {processSteps.map((step, index) => (
-              <div key={index} className="group">
-                <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 h-full text-center">
-                  <div className="flex flex-col items-center mb-4">
-                    <div className="inline-block bg-blue-50 text-blue-700 px-3 py-1 rounded-lg text-sm font-bold mb-3 border border-blue-200">
-                      {step.step}
-                    </div>
-                    <div className="w-12 h-12 bg-gradient-to-br from-indigo-50 to-blue-100 ring-1 ring-indigo-100 rounded-xl flex items-center justify-center group-hover:from-indigo-100 group-hover:to-blue-200 transition-all duration-300">
-                      <ServiceIcon emoji={step.icon} size="none" className="h-6 w-6 text-indigo-600" />
-                    </div>
-                  </div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-200">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed mb-3">
-                    {step.description}
-                  </p>
-                  <div className="text-xs font-medium text-blue-600">{step.duration}</div>
+      <section className="px-6 py-20 sm:px-8 lg:px-12 lg:py-24">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading
+            eyebrow={tx.our_process}
+            title={tx.how_we_build}
+            highlight={tx.mobile_apps}
+            description={tx.our_proven_5_step_process}
+          />
+          <ol className="relative mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
+            <span aria-hidden className="absolute left-[10%] right-[10%] top-7 hidden border-t-2 border-dashed border-indigo-200 lg:block" />
+            {PROCESS.map(({ step, title, description, duration, icon: Icon }) => (
+              <li key={step} className="relative flex flex-col items-center text-center">
+                <span className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full bg-white text-indigo-600 shadow-md ring-4 ring-indigo-50">
+                  <Icon className="h-5 w-5" aria-hidden />
+                </span>
+                <div className="-mt-7 flex w-full flex-1 flex-col items-center rounded-2xl bg-white px-5 pb-6 pt-11 ring-1 ring-slate-200/80">
+                  <span className="text-xs font-semibold text-indigo-600">{step}</span>
+                  <h3 className="mt-1 text-base font-bold text-slate-900">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{description}</p>
+                  <p className="mt-auto pt-4 text-sm font-semibold text-indigo-700">{duration}</p>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">{tx.ready_to_build_your}<span className="block text-blue-100 mt-2">{tx.mobile_app_2}</span>
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 leading-relaxed font-light">{tx.let_s_discuss_your_mobile}</p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">{tx.start_your_project}</Link>
-            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.schedule_demo}</Link>
-            <Link href="/work" className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-200 font-semibold text-lg">{tx.view_portfolio}</Link>
+      {/* CTA */}
+      <section className="px-4 pb-16 sm:px-8 lg:px-12">
+        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-500 px-6 py-12 sm:px-12 lg:py-14">
+          <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rotate-12 rounded-[3rem] bg-white/10" />
+          <div aria-hidden className="pointer-events-none absolute -bottom-20 left-10 h-48 w-48 -rotate-12 rounded-[3rem] bg-white/10" />
+          <div className="relative grid items-center gap-8 lg:grid-cols-2">
+            <div>
+              <p className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white ring-1 ring-white/60">
+                <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden />{tx.let_s_build_together}</p>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">{tx.ready_to_build_your_mobile}</h2>
+              <p className="mt-4 max-w-md text-base leading-relaxed text-indigo-100">{tx.let_s_discuss_your_mobile}</p>
+            </div>
+            <div className="lg:justify-self-end">
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-indigo-700 shadow-lg transition hover:bg-indigo-50"
+                >{tx.start_your_project}<ArrowRight className="h-4 w-4" aria-hidden />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-sm font-semibold text-white ring-1 ring-white/70 transition hover:bg-white/10"
+                >{tx.schedule_demo}</Link>
+                <Link
+                  href="/work"
+                  className="inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-sm font-semibold text-white ring-1 ring-white/70 transition hover:bg-white/10"
+                >{tx.view_portfolio}</Link>
+              </div>
+              <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm text-indigo-50">
+                {CTA_POINTS.map(({ label }) => (
+                  <li key={label} className="flex items-center gap-1.5">
+                    <Check className="h-4 w-4" aria-hidden />
+                    {label}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>

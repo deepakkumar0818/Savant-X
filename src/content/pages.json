@@ -25,7 +25,7 @@
     {
       "route": "/about",
       "page": "app/about/page.tsx",
-      "title": "About Us",
+      "title": "About",
       "text": [
         "src/content/text/app/about/layout.json",
         "src/content/text/app/about/page.json",
@@ -38,7 +38,7 @@
     {
       "route": "/contact",
       "page": "app/contact/page.tsx",
-      "title": "Contact Us",
+      "title": "Contact",
       "text": [
         "src/content/text/app/contact/layout.json",
         "src/content/text/app/contact/page.json",
@@ -59,7 +59,7 @@
     {
       "route": "/expertise/3d-designing",
       "page": "app/expertise/3d-designing/page.tsx",
-      "title": "3D Design & Visualisation",
+      "title": "3d Designing",
       "text": [
         "src/content/text/app/expertise/3d-designing/page.json"
       ]
@@ -67,7 +67,7 @@
     {
       "route": "/expertise/commercial",
       "page": "app/expertise/commercial/page.tsx",
-      "title": "Commercial Solutions",
+      "title": "Commercial",
       "text": [
         "src/content/text/app/expertise/commercial/page.json"
       ]
@@ -75,7 +75,7 @@
     {
       "route": "/expertise/community",
       "page": "app/expertise/community/page.tsx",
-      "title": "Community Platforms",
+      "title": "Community",
       "text": [
         "src/content/text/app/expertise/community/page.json"
       ]
@@ -92,7 +92,7 @@
     {
       "route": "/expertise/ecommerce",
       "page": "app/expertise/ecommerce/page.tsx",
-      "title": "E-commerce Development",
+      "title": "Ecommerce",
       "text": [
         "src/content/text/app/expertise/ecommerce/page.json"
       ]
@@ -100,7 +100,7 @@
     {
       "route": "/expertise/education-industrial-training",
       "page": "app/expertise/education-industrial-training/page.tsx",
-      "title": "Education & Industrial Training",
+      "title": "Education Industrial Training",
       "text": [
         "src/content/text/app/expertise/education-industrial-training/page.json"
       ]
@@ -116,7 +116,7 @@
     {
       "route": "/expertise/genai",
       "page": "app/expertise/genai/page.tsx",
-      "title": "Generative AI Solutions",
+      "title": "Genai",
       "text": [
         "src/content/text/app/expertise/genai/page.json"
       ]
@@ -124,7 +124,7 @@
     {
       "route": "/expertise/hardware-electronics",
       "page": "app/expertise/hardware-electronics/page.tsx",
-      "title": "Hardware & Electronics Development",
+      "title": "Hardware Electronics",
       "text": [
         "src/content/text/app/expertise/hardware-electronics/layout.json",
         "src/content/text/app/expertise/hardware-electronics/page.json"
@@ -133,7 +133,7 @@
     {
       "route": "/expertise/innovation",
       "page": "app/expertise/innovation/page.tsx",
-      "title": "Innovation & Emerging Technology",
+      "title": "Innovation",
       "text": [
         "src/content/text/app/expertise/innovation/page.json"
       ]
@@ -141,7 +141,7 @@
     {
       "route": "/expertise/iot-embedded-systems",
       "page": "app/expertise/iot-embedded-systems/page.tsx",
-      "title": "IoT & Embedded Systems",
+      "title": "Iot Embedded Systems",
       "text": [
         "src/content/text/app/expertise/iot-embedded-systems/page.json"
       ]
@@ -149,7 +149,7 @@
     {
       "route": "/expertise/laravel",
       "page": "app/expertise/laravel/page.tsx",
-      "title": "Laravel Development",
+      "title": "Laravel",
       "text": [
         "src/content/text/app/expertise/laravel/page.json"
       ]
@@ -157,7 +157,7 @@
     {
       "route": "/expertise/mobile-apps",
       "page": "app/expertise/mobile-apps/page.tsx",
-      "title": "Mobile App Development",
+      "title": "Mobile Apps",
       "text": [
         "src/content/text/app/expertise/mobile-apps/layout.json",
         "src/content/text/app/expertise/mobile-apps/page.json"
@@ -166,7 +166,7 @@
     {
       "route": "/expertise/not-for-profit",
       "page": "app/expertise/not-for-profit/page.tsx",
-      "title": "Not-for-Profit Technology",
+      "title": "Not For Profit",
       "text": [
         "src/content/text/app/expertise/not-for-profit/page.json"
       ]
@@ -174,7 +174,7 @@
     {
       "route": "/expertise/payload-cms",
       "page": "app/expertise/payload-cms/page.tsx",
-      "title": "Payload CMS Development",
+      "title": "Payload Cms",
       "text": [
         "src/content/text/app/expertise/payload-cms/page.json"
       ]
@@ -182,7 +182,7 @@
     {
       "route": "/expertise/pcb-design",
       "page": "app/expertise/pcb-design/page.tsx",
-      "title": "PCB Design & Layout",
+      "title": "Pcb Design",
       "text": [
         "src/content/text/app/expertise/pcb-design/page.json"
       ]
@@ -190,7 +190,7 @@
     {
       "route": "/expertise/product-development",
       "page": "app/expertise/product-development/page.tsx",
-      "title": "Product Development & Engineering",
+      "title": "Product Development",
       "text": [
         "src/content/text/app/expertise/product-development/page.json"
       ]
@@ -206,7 +206,7 @@
     {
       "route": "/expertise/react",
       "page": "app/expertise/react/page.tsx",
-      "title": "MERN Stack & React Development",
+      "title": "React",
       "text": [
         "src/content/text/app/expertise/react/page.json"
       ]
@@ -214,7 +214,7 @@
     {
       "route": "/expertise/ui-ux-design",
       "page": "app/expertise/ui-ux-design/page.tsx",
-      "title": "UI/UX Design",
+      "title": "Ui Ux Design",
       "text": [
         "src/content/text/app/expertise/ui-ux-design/page.json"
       ]
@@ -230,7 +230,7 @@
     {
       "route": "/expertise/web-apps",
       "page": "app/expertise/web-apps/page.tsx",
-      "title": "Custom Web Application Development",
+      "title": "Web Apps",
       "text": [
         "src/content/text/app/expertise/web-apps/layout.json",
         "src/content/text/app/expertise/web-apps/page.json"
@@ -239,7 +239,7 @@
     {
       "route": "/expertise/websites",
       "page": "app/expertise/websites/page.tsx",
-      "title": "Website Development",
+      "title": "Websites",
       "text": [
         "src/content/text/app/expertise/websites/page.json"
       ]
@@ -255,7 +255,7 @@
     {
       "route": "/expertise/wordpress",
       "page": "app/expertise/wordpress/page.tsx",
-      "title": "WordPress Development",
+      "title": "Wordpress",
       "text": [
         "src/content/text/app/expertise/wordpress/page.json"
       ]
@@ -263,7 +263,7 @@
     {
       "route": "/expertise/zoho-integrations",
       "page": "app/expertise/zoho-integrations/page.tsx",
-      "title": "Zoho CRM, Creator & Deluge Development Services",
+      "title": "Zoho Integrations",
       "text": [
         "src/content/text/app/expertise/zoho-integrations/layout.json",
         "src/content/text/app/expertise/zoho-integrations/page.json",
@@ -284,7 +284,7 @@
     {
       "route": "/expertise/zoho-integrations/[slug]",
       "page": "app/expertise/zoho-integrations/[slug]/page.tsx",
-      "title": "Zoho CRM, Creator & Deluge Development Services",
+      "title": "[Slug]",
       "text": [
         "src/content/text/app/expertise/zoho-integrations/[slug]/page.json",
         "src/content/text/app/expertise/zoho-integrations/layout.json",
@@ -315,7 +315,7 @@
     {
       "route": "/refund-cancellation",
       "page": "app/refund-cancellation/page.tsx",
-      "title": "Refund & Cancellation Policy",
+      "title": "Refund Cancellation",
       "text": [
         "src/content/text/app/refund-cancellation/page.json"
       ]
@@ -323,7 +323,7 @@
     {
       "route": "/terms-of-service",
       "page": "app/terms-of-service/page.tsx",
-      "title": "Terms of Service",
+      "title": "Terms Of Service",
       "text": [
         "src/content/text/app/terms-of-service/page.json"
       ]
@@ -331,10 +331,11 @@
     {
       "route": "/work",
       "page": "app/work/page.tsx",
-      "title": "Our Work: Zoho Solutions & Custom Software",
+      "title": "Work",
       "text": [
         "src/content/text/app/work/layout.json",
         "src/content/text/app/work/page.json",
+        "src/content/text/components/work/HardwareCapabilities.json",
         "src/content/text/components/work/WorkHero.json"
       ]
     }

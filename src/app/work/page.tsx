@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import Footer from '@/components/Footer';
 import ServiceIcon from '@/components/ui/ServiceIcon';
+import HardwareCapabilities from '@/components/work/HardwareCapabilities';
 import ProjectMock from '@/components/work/ProjectMock';
 import WorkHero from '@/components/work/WorkHero';
 import { COMPANY } from '@/lib/company';
@@ -157,6 +158,8 @@ export default function Work() {
           )}
         </div>
       </section>
+
+      <HardwareCapabilities />
 
       {/* Portfolio Filter Section */}
       <section id="showcase" className="scroll-mt-24 px-6 py-20 sm:px-8 lg:px-12 lg:py-24">

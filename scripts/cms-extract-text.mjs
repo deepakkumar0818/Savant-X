@@ -24,6 +24,7 @@ const IMPORT_NAME = 'tx';
 const INCLUDE_DIRS = ['app', 'components'];
 const EXCLUDE = [
   /^app\/admin\//,
+  /^components\/admin\//,
   /^app\/api\//,
   /\/route\.ts$/,
   /^app\/(robots|sitemap|manifest)\.ts$/,
