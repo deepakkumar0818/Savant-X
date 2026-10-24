@@ -145,7 +145,7 @@ function ProblemSolution({ problem, solution, dark = false }: { problem: string;
 /** Integration service and enterprise Zoho solutions, side by side. */
 export default function IntegrationEnterprise() {
   return (
-    <section aria-label={tx.integrations_and_enterprise_solutions} className="px-6 pt-20 sm:px-8 lg:px-12 lg:pt-28">
+    <section aria-label={tx.integrations_and_enterprise_solutions} className="px-6 pt-12 sm:px-8 lg:px-12 lg:pt-16">
       <div className="mx-auto grid max-w-7xl gap-5 xl:grid-cols-2">
         {/* Integrations */}
         <article className="zoho-reveal relative flex flex-col overflow-hidden rounded-3xl bg-[linear-gradient(160deg,#ffffff_0%,#eef2ff_50%,#dbeafe_100%)] p-7 ring-1 ring-slate-200/80 shadow-[0_30px_70px_-45px_rgba(30,58,138,0.5)] sm:p-10">

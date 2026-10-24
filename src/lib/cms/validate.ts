@@ -86,8 +86,14 @@ export function validateSite(v: unknown) {
   const c = v.company;
   const phone = str(c.phone, 'Phone number', { max: 40 });
   if (!/^\+\d{1,3}[\s-]?\d[\d\s-]{5,16}$/.test(phone.trim())) fail('Phone number must be international format, e.g. +91 9888244166.');
-  const email = str(c.email, 'Email', { max: 200 });
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) fail('Email address is invalid.');
+  const emailOf = (value: unknown, label: string) => {
+    const e = str(value, label, { max: 200 }).trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)) fail(`${label} address is invalid.`);
+    return e;
+  };
+  const email = emailOf(c.email, 'Email');
+  const infoEmail = emailOf(c.infoEmail, 'Info email');
+  const zohoEmail = emailOf(c.zohoEmail, 'Zoho email');
   const foundingYear = Number(c.foundingYear);
   if (!Number.isInteger(foundingYear) || foundingYear < 1900 || foundingYear > new Date().getFullYear()) fail('Founding year is invalid.');
   const logoPath = str(c.logoPath, 'Logo');
@@ -142,7 +148,7 @@ export function validateSite(v: unknown) {
   }
 
   return {
-    company: { name: str(c.name, 'Company name', { max: 120 }), legalName: str(c.legalName, 'Legal name', { max: 160 }), foundingYear, phone: phone.trim(), email: email.trim(), logoPath },
+    company: { name: str(c.name, 'Company name', { max: 120 }), legalName: str(c.legalName, 'Legal name', { max: 160 }), foundingYear, phone: phone.trim(), email, infoEmail, zohoEmail, logoPath },
     metrics,
     offices,
     social,

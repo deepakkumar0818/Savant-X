@@ -4,7 +4,9 @@
     "legalName": "SavantX Technologies Pvt Ltd",
     "foundingYear": 2019,
     "phone": "+91 9888244166",
-    "email": "zoho@savantxtechnologies.com",
+    "email": "contact@savantxtechnologies.com",
+    "infoEmail": "info@savantxtechnologies.com",
+    "zohoEmail": "zoho@savantxtechnologies.com",
     "logoPath": "/images/logos/Logo.png"
   },
   "metrics": [
@@ -41,10 +43,10 @@
       "id": "mohali",
       "city": "Mohali",
       "name": "Mohali Office",
-      "streetAddress": "Sector 71",
+      "streetAddress": "Sector 125",
       "locality": "Mohali",
       "region": "Punjab",
-      "postalCode": "160071",
+      "postalCode": "140301",
       "country": "India",
       "countryCode": "IN",
       "coordinates": [

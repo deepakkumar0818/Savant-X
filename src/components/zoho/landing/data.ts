@@ -1,5 +1,20 @@
 import tx from '@/content/text/components/zoho/landing/data.json';
 import forms from '@/content/forms.json';
+import {
+  BadgeIndianRupee,
+  Building2,
+  CalendarCheck,
+  CalendarClock,
+  Code2,
+  Database,
+  GitBranch,
+  KeyRound,
+  LayoutGrid,
+  Link2,
+  ListOrdered,
+  Wrench,
+  type LucideIcon,
+} from 'lucide-react';
 /**
  * Content for the Zoho landing page (/expertise/zoho-integrations).
  *
@@ -193,14 +208,13 @@ export const TRUST_APPS = [
 /** `slug` links to the existing app page; apps without one link to the enquiry form. */
 export type AppVisual = 'crm' | 'creator' | 'books' | 'inventory' | 'desk' | 'flow' | 'analytics' | 'sign';
 
-export const APP_CARDS: { name: string; slug?: string; service: ServiceId; visual: AppVisual; tagline: string; features: string[] }[] = [
+export const APP_CARDS: { name: string; slug?: string; service: ServiceId; visual: AppVisual; tagline: string }[] = [
   {
     name: tx.zoho_crm_3,
     slug: 'zoho-crm',
     service: 'crm-quickstart',
     visual: 'crm',
     tagline: tx.manage_leads_customers_and_sales,
-    features: [tx.lead_and_deal_management, tx.sales_pipeline_and_forecasting, tx.workflow_automation_3, tx.reports_and_analytics],
   },
   {
     name: tx.zoho_creator_3,
@@ -208,7 +222,6 @@ export const APP_CARDS: { name: string; slug?: string; service: ServiceId; visua
     service: 'creator-mini-app',
     visual: 'creator',
     tagline: tx.build_custom_business_applications_witho,
-    features: [tx.custom_forms_and_workflows, tx.role_based_access, tx.reports_and_dashboards, tx.replace_manual_processes],
   },
   {
     name: tx.zoho_books_2,
@@ -216,7 +229,6 @@ export const APP_CARDS: { name: string; slug?: string; service: ServiceId; visua
     service: 'books-setup',
     visual: 'books',
     tagline: tx.invoicing_payments_and_gst_in,
-    features: [tx.invoicing_and_payments, tx.expense_management, tx.gst_and_tax_compliance, tx.financial_reports],
   },
   {
     name: tx.zoho_inventory_2,
@@ -224,7 +236,6 @@ export const APP_CARDS: { name: string; slug?: string; service: ServiceId; visua
     service: 'automation-integrations',
     visual: 'inventory',
     tagline: tx.track_stock_sales_orders_and,
-    features: [tx.inventory_and_warehouse, tx.sales_and_purchase_orders, tx.stock_tracking_and_alerts, tx.multi_warehouse_support],
   },
   {
     name: tx.zoho_desk_2,
@@ -232,14 +243,12 @@ export const APP_CARDS: { name: string; slug?: string; service: ServiceId; visua
     service: 'workflow-automation',
     visual: 'desk',
     tagline: tx.manage_customer_support_with_tickets,
-    features: [tx.ticket_management, tx.automated_assignment_rules, tx.sla_tracking_and_escalation, tx.knowledge_base_and_reports],
   },
   {
     name: tx.zoho_flow,
     service: 'zoho-integration',
     visual: 'flow',
     tagline: tx.connect_your_apps_and_automate,
-    features: [tx.app_integrations, tx.automated_workflows, tx.data_synchronisation, tx.less_manual_work],
   },
   {
     name: tx.zoho_analytics,
@@ -247,14 +256,12 @@ export const APP_CARDS: { name: string; slug?: string; service: ServiceId; visua
     service: 'automation-integrations',
     visual: 'analytics',
     tagline: tx.turn_your_data_into_clear,
-    features: [tx.interactive_dashboards, tx.business_insights, tx.data_from_multiple_sources, tx.shareable_reports],
   },
   {
     name: tx.zoho_sign,
     service: 'workflow-automation',
     visual: 'sign',
     tagline: tx.send_sign_and_manage_documents,
-    features: [tx.send_documents_for_signature, tx.track_signature_status, tx.legally_valid_e_signatures, tx.works_with_crm_and_other],
   },
 ];
 
@@ -315,62 +322,78 @@ export const USE_CASES: { title: string; challenge: string; apps: string; workfl
   },
 ];
 
-export const WHY = [
-  { title: tx.custom_solutions_for_real_workflows, body: tx.we_configure_zoho_around_how },
-  { title: tx.zoho_crm_and_creator_development, body: tx.from_crm_customisation_to_complete },
-  { title: tx.deluge_scripting_and_api_integrations, body: tx.custom_deluge_functions_and_rest },
-  { title: tx.cross_application_automation, body: tx.crm_books_inventory_desk_and },
-  { title: tx.clear_scope_and_milestones, body: tx.every_project_starts_with_agreed },
-  { title: tx.ongoing_development_and_support, body: tx.keep_improving_after_go_live },
-];
-
-export const FAQS = [
+/** `group` picks the FAQ tab; `icon` is shown beside the question. */
+export const FAQS: { q: string; a: string; group: 'general' | 'technical'; icon: LucideIcon }[] = [
   {
     q: tx.what_does_the_14_999,
+    group: 'general',
+    icon: BadgeIndianRupee,
     a: tx.ongoing_development_on_zoho_crm,
   },
   {
     q: tx.why_is_there_a_three,
+    group: 'general',
+    icon: CalendarClock,
     a: tx.understanding_your_processes_building_ch,
   },
   {
     q: tx.are_zoho_licenses_included,
+    group: 'general',
+    icon: KeyRound,
     a: tx.no_zoho_licences_and_subscriptions,
   },
   {
     q: tx.can_i_request_both_crm,
+    group: 'technical',
+    icon: LayoutGrid,
     a: tx.yes_the_membership_covers_both,
   },
   {
     q: tx.how_are_development_tasks_prioritized,
+    group: 'technical',
+    icon: ListOrdered,
     a: tx.all_requests_go_into_one,
   },
   {
     q: tx.are_complex_integrations_included,
+    group: 'technical',
+    icon: Link2,
     a: tx.smaller_crm_and_creator_integrations,
   },
   {
     q: tx.how_does_enterprise_project_pricing,
+    group: 'general',
+    icon: Building2,
     a: tx.enterprise_projects_are_quoted_individua,
   },
   {
     q: tx.how_can_i_book_a,
+    group: 'general',
+    icon: CalendarCheck,
     a: tx.fill_in_the_enquiry_form,
   },
   {
     q: tx.can_you_work_with_an,
+    group: 'technical',
+    icon: Wrench,
     a: tx.yes_we_start_by_reviewing,
   },
   {
     q: tx.do_you_offer_data_migration,
+    group: 'technical',
+    icon: Database,
     a: tx.yes_both_are_scoped_as,
   },
   {
     q: tx.who_owns_custom_developed_applications,
+    group: 'general',
+    icon: Code2,
     a: tx.ownership_of_custom_applications_and,
   },
   {
     q: tx.how_are_scope_changes_handled,
+    group: 'general',
+    icon: GitBranch,
     a: tx.changes_are_documented_and_estimated,
   },
 ];

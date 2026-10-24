@@ -22,7 +22,7 @@ type Office = {
   type: 'headquarters' | 'office';
 };
 type Site = {
-  company: { name: string; legalName: string; foundingYear: number; phone: string; email: string; logoPath: string };
+  company: { name: string; legalName: string; foundingYear: number; phone: string; email: string; infoEmail: string; zohoEmail: string; logoPath: string };
   metrics: { value: number; suffix: string; label: string; zohoLabel?: string }[];
   offices: Office[];
   social: Record<'x' | 'linkedin' | 'facebook' | 'instagram' | 'threads', string>;
@@ -63,7 +63,9 @@ export default function AdminSettings() {
               <Text label="Company name" value={s.company.name} onChange={(name) => setCompany({ name })} />
               <Text label="Legal name" value={s.company.legalName} onChange={(legalName) => setCompany({ legalName })} />
               <Text label="Phone" value={s.company.phone} onChange={(phone) => setCompany({ phone })} hint="International format, e.g. +91 9888244166. Used for the call links too." />
-              <Text label="Email" type="email" value={s.company.email} onChange={(email) => setCompany({ email })} />
+              <Text label="Email" type="email" value={s.company.email} onChange={(email) => setCompany({ email })} hint="Main contact address." />
+              <Text label="Info email" type="email" value={s.company.infoEmail} onChange={(infoEmail) => setCompany({ infoEmail })} />
+              <Text label="Zoho email" type="email" value={s.company.zohoEmail} onChange={(zohoEmail) => setCompany({ zohoEmail })} hint="Shown only on the Zoho page." />
               <Text label="Founded (year)" type="number" value={s.company.foundingYear} onChange={(v) => setCompany({ foundingYear: Number(v) })} hint="“Years of experience” is worked out from this." />
             </div>
           </Card>

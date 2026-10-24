@@ -139,6 +139,8 @@ export default function CookiePolicy() {
                   <div>
                     <p className="font-semibold text-slate-900">{tx.email}</p>
                     <a href={`mailto:${COMPANY.email}`} className="text-blue-600 hover:underline break-all">{COMPANY.email}</a>
+                      <br />
+                      <a href={`mailto:${COMPANY.infoEmail}`} className="text-blue-600 hover:underline break-all">{COMPANY.infoEmail}</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">

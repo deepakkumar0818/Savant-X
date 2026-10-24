@@ -39,10 +39,12 @@ const REASONS: { icon: LucideIcon; title: string; text: string; tile: string }[]
 
 const delay = (s: number) => ({ '--hero-delay': `${s}s` }) as CSSProperties;
 
-function InfoCard({ icon: Icon, title, href, external, children }: { icon: LucideIcon; title: string; href: string; external?: boolean; children: React.ReactNode }) {
+/** Without `href` the card is not a link, so its children can hold their own links. */
+function InfoCard({ icon: Icon, title, href, external, children }: { icon: LucideIcon; title: string; href?: string; external?: boolean; children: React.ReactNode }) {
+  const Tag = href ? 'a' : 'div';
   return (
-    <a
-      href={href}
+    <Tag
+      {...(href ? { href } : {})}
       {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       className="group flex items-start gap-4 rounded-2xl bg-white p-5 ring-1 ring-slate-200/80 transition hover:shadow-md hover:ring-indigo-200"
     >
@@ -56,7 +58,7 @@ function InfoCard({ icon: Icon, title, href, external, children }: { icon: Lucid
       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-50 text-indigo-600 transition group-hover:bg-indigo-600 group-hover:text-white">
         <ArrowRight className="h-4 w-4" aria-hidden />
       </span>
-    </a>
+    </Tag>
   );
 }
 
@@ -139,9 +141,13 @@ export default function ContactPage() {
             </div>
 
             <div className="mt-6 space-y-3">
-              <InfoCard icon={Mail} title={tx.email_us} href={`mailto:${COMPANY.email}`}>
+              <InfoCard icon={Mail} title={tx.email_us}>
                 <span className="mt-0.5 block text-slate-500">{tx.send_us_an_email_anytime}</span>
-                <span className="mt-1 block break-all font-semibold text-indigo-600">{COMPANY.email}</span>
+                {[COMPANY.email, COMPANY.infoEmail].map((email) => (
+                  <a key={email} href={`mailto:${email}`} className="mt-1 block break-all font-semibold text-indigo-600 hover:underline">
+                    {email}
+                  </a>
+                ))}
               </InfoCard>
               <InfoCard icon={Phone} title={tx.call_us} href={COMPANY.phone.href}>
                 <span className="mt-0.5 block text-slate-500">{tx.mon_fri_9_00_am}</span>

@@ -60,6 +60,8 @@ interface ExpertiseGroup {
   links: ExpertiseLink[];
 }
 
+const HARDWARE_HREF = '/expertise/hardware-electronics';
+
 const EXPERTISE_GROUPS: ExpertiseGroup[] = [
   {
     title: tx.what_we_do,
@@ -93,7 +95,7 @@ const EXPERTISE_GROUPS: ExpertiseGroup[] = [
   },
   {
     title: tx.hardware_electronics,
-    href: '/expertise/hardware-electronics',
+    href: HARDWARE_HREF,
     links: [
       { label: tx.iot_embedded_systems, href: '/expertise/iot-embedded-systems', icon: Radio },
       { label: tx.pcb_designing, href: '/expertise/pcb-design', icon: CircuitBoard },
@@ -128,6 +130,7 @@ const defaultNavItems: NavItem[] = [
       ...group.links.map(({ label, href }) => ({ label, href })),
     ]),
   },
+  { label: tx.hardware, href: HARDWARE_HREF },
   { label: tx.products, href: '/products' },
   { label: tx.contact, href: '/contact' },
 ];
@@ -249,6 +252,12 @@ export default function Navbar({
     if (href === '/') return current === '/' || current === '';
 
     // Zoho has its own top-level item, so Expertise should not also highlight there.
+    // Hardware also has its own top-level item, covering its overview and service pages.
+    const hardwareHrefs = EXPERTISE_GROUPS.find((g) => g.href === HARDWARE_HREF)?.links.map((l) => l.href) ?? [];
+    const onHardware = [HARDWARE_HREF, ...hardwareHrefs].some((h) => matches(current, h));
+    if (item.href === HARDWARE_HREF) return onHardware;
+    if (item.label === EXPERTISE_LABEL && onHardware) return false;
+
     if (item.label === EXPERTISE_LABEL && current.startsWith('/expertise/zoho-integrations')) {
       return false;
     }
@@ -262,7 +271,7 @@ export default function Navbar({
   };
 
   const pillClass = (active: boolean) =>
-    `rounded-full px-3 py-1.5 text-sm font-semibold tracking-wide transition-all duration-300 ease-out motion-safe:hover:scale-105 ${
+    `rounded-full px-2.5 py-1.5 text-sm font-semibold xl:px-3 tracking-wide transition-all duration-300 ease-out motion-safe:hover:scale-105 ${
       active ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-700 hover:bg-slate-50 hover:text-indigo-600'
     }`;
 
@@ -278,7 +287,7 @@ export default function Navbar({
       } ${className}`}
       aria-label={tx.main}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-6 xl:px-12">
         <div className="flex h-[4.25rem] w-full items-center justify-between gap-4">
           {/* Logo */}
           <div className="flex flex-shrink-0 items-center">
@@ -293,7 +302,7 @@ export default function Navbar({
 
           {/* Desktop navigation */}
           <div className="hidden items-center lg:flex" ref={dropdownRef}>
-            <div className="rounded-full border border-slate-200/90 bg-white px-4 py-1.5 shadow-sm">
+            <div className="rounded-full border border-slate-200/90 bg-white px-2 py-1.5 shadow-sm xl:px-4">
               <ul className="flex items-center gap-1">
                 {navItems.map((item) => {
                   const active = isItemActive(item);

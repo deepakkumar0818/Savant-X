@@ -138,11 +138,6 @@ export default function SolutionsShowcase() {
                 <span className="block bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">{tx.digital_experiences}</span>
               </h3>
               <p className="mt-3 text-[15px] leading-relaxed text-slate-600">{tx.modern_web_and_mobile_applications}</p>
-              <Link
-                href="/expertise/what-we-do"
-                className="mt-5 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 transition hover:brightness-110"
-              >{tx.explore_software_solutions}<ArrowRight className="h-4 w-4" aria-hidden />
-              </Link>
             </div>
             <div className="hidden sm:block">
               <CardArt src="/images/home/software-solutions.webp" />
@@ -168,11 +163,6 @@ export default function SolutionsShowcase() {
                 </span>
               </h3>
               <p className="mt-3 text-[15px] leading-relaxed text-slate-600">{tx.from_iot_devices_to_embedded}</p>
-              <Link
-                href="/expertise/hardware-electronics"
-                className="mt-5 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:brightness-110"
-              >{tx.explore_hardware_solutions}<ArrowRight className="h-4 w-4" aria-hidden />
-              </Link>
             </div>
             <div className="hidden sm:block">
               <CardArt src="/images/home/hardware-solutions.webp" />

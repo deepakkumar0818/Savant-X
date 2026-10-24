@@ -25,6 +25,9 @@ export const COMPANY = {
   foundingYear: site.company.foundingYear,
   phone: phoneFormats(site.company.phone),
   email: site.company.email,
+  infoEmail: site.company.infoEmail,
+  /** Shown only on the Zoho pages. */
+  zohoEmail: site.company.zohoEmail,
   logoPath: site.company.logoPath,
 };
 

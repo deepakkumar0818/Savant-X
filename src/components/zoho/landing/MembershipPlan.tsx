@@ -66,7 +66,7 @@ function PlanIllustration() {
 /** The Zoho Development Membership: price card, included requests, process and terms. */
 export default function MembershipPlan() {
   return (
-    <section id="plans" className="relative scroll-mt-24 overflow-hidden px-6 py-20 sm:px-8 lg:px-12 lg:py-28">
+    <section id="plans" className="relative scroll-mt-24 overflow-hidden px-6 py-12 sm:px-8 lg:px-12 lg:py-16">
       <div aria-hidden className="absolute inset-x-0 top-0 h-80 bg-[radial-gradient(ellipse_60%_80%_at_85%_0%,rgba(199,210,254,0.55),transparent_70%)]" />
       <div className="relative mx-auto max-w-7xl">
         <div className="zoho-reveal flex items-center justify-between gap-8">

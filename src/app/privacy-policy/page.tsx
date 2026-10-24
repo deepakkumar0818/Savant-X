@@ -381,6 +381,8 @@ export default function PrivacyPolicyPage() {
                     <h4 className="font-semibold mb-2">{tx.email}</h4>
                     <p className="text-blue-100 break-all">
                       <a href={`mailto:${COMPANY.email}`} className="hover:underline">{COMPANY.email}</a>
+                      <br />
+                      <a href={`mailto:${COMPANY.infoEmail}`} className="hover:underline">{COMPANY.infoEmail}</a>
                     </p>
                   </div>
                   <div className="text-center">

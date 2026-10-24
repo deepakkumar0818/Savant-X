@@ -88,7 +88,7 @@ export default function OfferBento({
   const Heading = headingLevel;
   const CardHeading = headingLevel === 'h2' ? 'h3' : 'h4';
   return (
-    <section id={id} aria-labelledby={`${id}-heading`} className={`scroll-mt-24 px-6 py-20 sm:px-8 lg:px-12 lg:py-28 ${className}`}>
+    <section id={id} aria-labelledby={`${id}-heading`} className={`scroll-mt-24 px-6 py-12 sm:px-8 lg:px-12 lg:py-16 ${className}`}>
       <style>{styles}</style>
       <div className="mx-auto max-w-7xl">
         <div className="pkg-rise flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">

@@ -6,6 +6,7 @@ import {
   Boxes,
   Calculator,
   Check,
+  ChevronDown,
   ClipboardCheck,
   FileCheck2,
   Headphones,
@@ -17,7 +18,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import SelectServiceLink from './SelectServiceLink';
-import { USE_CASES, ZOHO_LOGOS } from './data';
+import { USE_CASES } from './data';
 
 type Visual = 'leads' | 'quote' | 'inventory' | 'support' | 'invoice' | 'dashboard';
 
@@ -129,106 +130,108 @@ function Sketch({ visual }: { visual: Visual }) {
       );
   }
 }
-
-/** Zoho app logos around a hub, beside the heading. Decorative. */
-function AppsCluster() {
-  const apps: { name: string; label: string; pos: string }[] = [
-    { name: tx.zoho_crm, label: 'CRM', pos: 'left-16 top-0' },
-    { name: tx.zoho_books, label: tx.books, pos: 'right-6 top-0' },
-    { name: tx.zoho_desk, label: tx.desk, pos: 'left-0 top-20' },
-    { name: tx.zoho_creator, label: tx.creator, pos: 'right-0 top-24' },
-  ];
-  return (
-    <div aria-hidden className="relative hidden h-44 w-80 shrink-0 lg:block">
-      <div className="absolute inset-6 rounded-full bg-indigo-200/40 blur-3xl" />
-      <span className="absolute left-1/2 top-1/2 flex h-20 w-32 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-2xl bg-white shadow-[0_20px_45px_-15px_rgba(79,70,229,0.45)] ring-1 ring-slate-200">
-        <span className="bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent">{tx.zoho}</span>
-        <span className="text-[10px] font-medium text-slate-500">{tx.automated_workflows}</span>
-      </span>
-      {apps.map(({ name, label, pos }) => (
-        <span key={name} className={`absolute ${pos} flex h-16 w-16 flex-col items-center justify-center gap-1 rounded-2xl bg-white shadow-lg ring-1 ring-slate-200/80`}>
-          <Image src={ZOHO_LOGOS[name]!} alt="" width={26} height={26} className="h-[26px] w-[26px] object-contain" />
-          <span className="text-[10px] font-semibold text-slate-700">{label}</span>
-        </span>
-      ))}
-    </div>
-  );
-}
-
-/** Practical Zoho automation scenarios with the workflow and apps involved. */
+/** Practical Zoho automation scenarios: a summary list beside an example workflow, with the full scenarios on request. */
 export default function UseCases() {
   return (
     <section
       id="use-cases"
       aria-labelledby="use-cases-heading"
-      className="relative scroll-mt-24 overflow-hidden bg-[linear-gradient(180deg,#f5f3ff_0%,#f8fafc_40%,#f8fafc_100%)] px-6 py-20 sm:px-8 lg:px-12 lg:py-28"
+      className="relative scroll-mt-24 overflow-hidden bg-[linear-gradient(180deg,#f5f3ff_0%,#f8fafc_45%,#f8fafc_100%)] px-6 py-14 sm:px-8 lg:px-12 lg:py-20"
     >
       <div className="relative mx-auto max-w-7xl">
-        <div className="zoho-reveal flex items-center justify-between gap-8">
-          <div className="max-w-2xl">
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-14">
+          <Image
+            src="/images/zoho/zoho-auto-assign-workflow.webp"
+            alt={tx.example_zoho_workflow_when_a}
+            width={1400}
+            height={700}
+            sizes="(min-width: 1024px) 52vw, 100vw"
+            className="zoho-reveal w-full rounded-3xl"
+          />
+          <div className="zoho-reveal">
             <p className="inline-flex items-center gap-1.5 rounded-full bg-indigo-100/80 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-indigo-700">
-              <Zap className="h-3.5 w-3.5" aria-hidden />{tx.business_use_cases}</p>
-            <h2 id="use-cases-heading" className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">{tx.practical_workflows_we_automate_with}{' '}
-              <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">{tx.zoho_2}</span>
+              <Zap className="h-3.5 w-3.5" aria-hidden />
+              {tx.business_use_cases}
+            </p>
+            <h2 id="use-cases-heading" className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.6rem] lg:leading-tight">
+              {tx.practical_workflows_we_automate_with}{' '}
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.zoho_2}</span>
             </h2>
             <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">{tx.typical_scenarios_the_zoho_apps}</p>
+            <ul className="mt-6 space-y-3">
+              {USE_CASES.map((uc) => (
+                <li key={uc.title} className="flex items-center gap-2.5 text-sm font-medium text-slate-700 sm:text-base">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-white">
+                    <Check className="h-3 w-3" strokeWidth={3} aria-hidden />
+                  </span>
+                  {uc.title}
+                </li>
+              ))}
+            </ul>
           </div>
-          <AppsCluster />
         </div>
 
-        <ul className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {USE_CASES.map((uc, i) => {
-            const { icon: Icon, tone, visual } = STYLE[i % STYLE.length];
-            return (
-              <li
-                key={uc.title}
-                className="zoho-reveal group flex flex-col rounded-2xl bg-white/90 p-6 ring-1 ring-slate-200/80 shadow-[0_20px_50px_-35px_rgba(79,70,229,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:ring-indigo-200 motion-reduce:hover:translate-y-0"
-              >
-                <div className="flex items-center gap-3">
-                  <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ring-1 ${tone}`}>
-                    <Icon className="h-5 w-5" aria-hidden />
-                  </span>
-                  <h3 className="text-lg font-bold leading-snug tracking-tight text-slate-900">{uc.title}</h3>
-                </div>
-                <p className="mt-4 text-sm leading-relaxed text-slate-600">
-                  <span className="sr-only">{tx.challenge}{" "}</span>
-                  {uc.challenge}
-                </p>
-
-                <div className="mt-5 grid flex-1 grid-cols-[minmax(0,1fr)_7.5rem] items-center gap-4">
-                  <ul className="space-y-2.5" aria-label={tx.automated_workflow}>
-                    {uc.steps.map((step) => (
-                      <li key={step} className="flex items-start gap-2 text-[13px] leading-snug text-slate-700">
-                        <span className="mt-px flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-[1.5px] border-violet-500 text-violet-600">
-                          <Check className="h-2.5 w-2.5" strokeWidth={3.5} aria-hidden />
-                        </span>
-                        {step}
-                      </li>
-                    ))}
-                  </ul>
-                  <div aria-hidden className="transition duration-500 group-hover:-translate-y-1 motion-reduce:group-hover:translate-y-0">
-                    <Sketch visual={visual} />
-                  </div>
-                </div>
-
-                <p className="mt-5 rounded-lg bg-emerald-50 px-3 py-2 text-[13px] text-emerald-800 ring-1 ring-emerald-100">
-                  <span className="font-semibold">{tx.intended_outcome}{" "}</span>
-                  {uc.outcome}
-                </p>
-
-                <SelectServiceLink
-                  service={uc.service}
-                  event="use_case_cta_click"
-                  className="mt-2 inline-flex items-center gap-1 self-start py-2 text-sm font-semibold text-indigo-700 hover:text-indigo-900"
+        {/* Full scenarios: native <details> keeps them keyboard and screen-reader accessible without script. */}
+        <details className="group mt-12 [&_summary::-webkit-details-marker]:hidden">
+          <summary className="mx-auto flex w-fit cursor-pointer list-none items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2">
+            <span className="group-open:hidden">{tx.see_automation_examples}</span>
+            <span className="hidden group-open:inline">{tx.hide_automation_examples}</span>
+            <ChevronDown className="h-4 w-4 transition group-open:rotate-180" aria-hidden />
+          </summary>
+          <ul className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {USE_CASES.map((uc, i) => {
+              const { icon: Icon, tone, visual } = STYLE[i % STYLE.length];
+              return (
+                <li
+                  key={uc.title}
+                  className="group/card flex flex-col rounded-2xl bg-white/90 p-6 ring-1 ring-slate-200/80 shadow-[0_20px_50px_-35px_rgba(79,70,229,0.45)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:ring-indigo-200 motion-reduce:hover:translate-y-0"
                 >
-                  {uc.apps}
-                  <span className="sr-only">{" "}{tx.discuss_this_workflow}</span>
-                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden />
-                </SelectServiceLink>
-              </li>
-            );
-          })}
-        </ul>
+                  <div className="flex items-center gap-3">
+                    <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ring-1 ${tone}`}>
+                      <Icon className="h-5 w-5" aria-hidden />
+                    </span>
+                    <h3 className="text-lg font-bold leading-snug tracking-tight text-slate-900">{uc.title}</h3>
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-slate-600">
+                    <span className="sr-only">{tx.challenge}{" "}</span>
+                    {uc.challenge}
+                  </p>
+
+                  <div className="mt-5 grid flex-1 grid-cols-[minmax(0,1fr)_7.5rem] items-center gap-4">
+                    <ul className="space-y-2.5" aria-label={tx.automated_workflow}>
+                      {uc.steps.map((step) => (
+                        <li key={step} className="flex items-start gap-2 text-[13px] leading-snug text-slate-700">
+                          <span className="mt-px flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-[1.5px] border-violet-500 text-violet-600">
+                            <Check className="h-2.5 w-2.5" strokeWidth={3.5} aria-hidden />
+                          </span>
+                          {step}
+                        </li>
+                      ))}
+                    </ul>
+                    <div aria-hidden className="transition duration-500 group-hover/card:-translate-y-1 motion-reduce:group-hover/card:translate-y-0">
+                      <Sketch visual={visual} />
+                    </div>
+                  </div>
+
+                  <p className="mt-5 rounded-lg bg-emerald-50 px-3 py-2 text-[13px] text-emerald-800 ring-1 ring-emerald-100">
+                    <span className="font-semibold">{tx.intended_outcome}{" "}</span>
+                    {uc.outcome}
+                  </p>
+
+                  <SelectServiceLink
+                    service={uc.service}
+                    event="use_case_cta_click"
+                    className="mt-2 inline-flex items-center gap-1 self-start py-2 text-sm font-semibold text-indigo-700 hover:text-indigo-900"
+                  >
+                    {uc.apps}
+                    <span className="sr-only">{" "}{tx.discuss_this_workflow}</span>
+                    <ArrowRight className="h-4 w-4 transition group-hover/card:translate-x-0.5" aria-hidden />
+                  </SelectServiceLink>
+                </li>
+              );
+            })}
+          </ul>
+        </details>
       </div>
     </section>
   );

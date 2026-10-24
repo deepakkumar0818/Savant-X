@@ -21,10 +21,15 @@
   "ui_ux": "UI/UX",
   "offices_contact": "Offices & contact",
   "partners_platforms": "Partners & platforms",
-  "aws_zoho_next_js_iot": "AWS · Zoho · Next.js · IoT edge · PostgreSQL · Kubernetes",
   "all_rights_reserved": ". All rights reserved.",
   "privacy": "Privacy",
   "terms": "Terms",
   "cookies": "Cookies",
-  "refunds": "Refunds"
+  "refunds": "Refunds",
+  "aws": "AWS",
+  "zoho": "Zoho",
+  "next_js": "Next.js",
+  "iot_edge": "IoT edge",
+  "postgresql": "PostgreSQL",
+  "kubernetes": "Kubernetes"
 }
