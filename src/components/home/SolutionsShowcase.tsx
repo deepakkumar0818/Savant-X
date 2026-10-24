@@ -90,8 +90,8 @@ function CardArt({ src }: { src: string }) {
 /** Cloud hub with connected systems for the integration card. */
 function IntegrationArt() {
   const nodes: { pos: string; node: React.ReactNode }[] = [
-    { pos: 'left-[12%] top-[6%]', node: <Image src="/images/zoho-crm.webp" alt="" width={28} height={28} className="h-7 w-7 object-contain" /> },
-    { pos: 'right-[16%] top-0', node: <Image src="/images/zohoBooks.png" alt="" width={28} height={28} className="h-7 w-7 object-contain" /> },
+    { pos: 'left-[12%] top-[6%]', node: <Image src="/images/zoho/apps/crm.webp" alt="" width={28} height={28} className="h-7 w-7 object-contain" /> },
+    { pos: 'right-[16%] top-0', node: <Image src="/images/zoho/apps/books.webp" alt="" width={28} height={28} className="h-7 w-7 object-contain" /> },
     { pos: 'left-0 top-[42%]', node: <Code2 className="h-6 w-6 text-blue-600" /> },
     { pos: 'right-0 top-[38%]', node: <Share2 className="h-6 w-6 text-emerald-600" /> },
     { pos: 'bottom-0 left-[18%]', node: <Database className="h-6 w-6 text-indigo-500" /> },

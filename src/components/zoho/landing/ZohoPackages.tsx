@@ -1,5 +1,5 @@
 import tx from '@/content/text/components/zoho/landing/ZohoPackages.json';
-import { Plug, Workflow, type LucideIcon } from 'lucide-react';
+import { Plug, type LucideIcon } from 'lucide-react';
 import OfferBento from './OfferBento';
 import type { BentoTheme } from './bentoThemes';
 import { PACKAGES, ZOHO_LOGOS } from './data';
@@ -8,7 +8,7 @@ const PACKAGE_STYLE: Record<string, { tag: string; logo?: string; icon?: LucideI
   'crm-quickstart': { tag: 'Sales', logo: ZOHO_LOGOS['Zoho CRM'] },
   'creator-mini-app': { tag: 'Custom apps', logo: ZOHO_LOGOS['Zoho Creator'] },
   'books-setup': { tag: 'Finance', logo: ZOHO_LOGOS['Zoho Books'] },
-  'workflow-automation': { tag: 'Automation', icon: Workflow },
+  'workflow-automation': { tag: 'Automation', logo: '/images/zoho/apps/workflow-automation.webp' },
   'zoho-integration': { tag: 'Integration', icon: Plug },
 };
 

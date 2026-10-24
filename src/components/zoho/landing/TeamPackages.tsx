@@ -1,13 +1,13 @@
 import tx from '@/content/text/components/zoho/landing/TeamPackages.json';
-import { Mail, Users, type LucideIcon } from 'lucide-react';
+import { type LucideIcon } from 'lucide-react';
 import OfferBento from './OfferBento';
 import type { BentoTheme } from './bentoThemes';
 import { TEAM_PACKAGES, ZOHO_LOGOS } from './data';
 
 const PACKAGE_STYLE: Record<string, { tag: string; logo?: string; icon?: LucideIcon }> = {
-  'people-setup': { tag: 'HR', icon: Users },
+  'people-setup': { tag: 'HR', logo: ZOHO_LOGOS['Zoho People'] },
   'recruit-setup': { tag: 'Hiring', logo: ZOHO_LOGOS['Zoho Recruit'] },
-  'zoho-migration': { tag: 'Email', icon: Mail },
+  'zoho-migration': { tag: 'Email', logo: ZOHO_LOGOS['Zoho Mail'] },
 };
 
 // Three cards in a row, each showing its deliverables window.

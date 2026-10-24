@@ -180,17 +180,19 @@ export const ENTERPRISE = {
 
 /** Apps shown in the trust strip and app cards. Logos exist for these in /public/images. */
 export const ZOHO_LOGOS: Record<string, string | undefined> = {
-  'Zoho CRM': '/images/zoho-crm.webp',
-  'Zoho Creator': '/images/ZohoCreator.png',
-  'Zoho Books': '/images/zohoBooks.png',
-  'Zoho Inventory': '/images/ZohoInventary.png',
-  'Zoho Desk': '/images/ZohoDesk.png',
-  'Zoho Analytics': '/images/ZohoAnalytics.png',
-  'Zoho Projects': '/images/ZohoProjects.png',
+  'Zoho CRM': '/images/zoho/apps/crm.webp',
+  'Zoho Creator': '/images/zoho/apps/creator.webp',
+  'Zoho Books': '/images/zoho/apps/books.webp',
+  'Zoho Inventory': '/images/zoho/apps/inventory.webp',
+  'Zoho Desk': '/images/zoho/apps/desk.webp',
+  'Zoho Analytics': '/images/zoho/apps/analytics.webp',
+  'Zoho Projects': '/images/zoho/apps/projects.webp',
   'Zoho Recruit': '/images/ZohoRecruit.png',
-  // No approved logo files yet for Flow and Sign; the page shows an icon instead.
-  'Zoho Flow': undefined,
-  'Zoho Sign': undefined,
+  'Zoho Flow': '/images/zoho/zoho-flow.webp',
+  'Zoho Sign': '/images/zoho/apps/sign.webp',
+  'Zoho People': '/images/zoho/apps/people.webp',
+  'Zoho Mail': '/images/zoho/apps/mail.webp',
+  'Zoho ERP': '/images/zoho/apps/erp.webp',
 };
 
 export const TRUST_APPS = [
@@ -203,6 +205,10 @@ export const TRUST_APPS = [
   'Zoho Analytics',
   'Zoho Sign',
   'Zoho Projects',
+  'Zoho People',
+  'Zoho Recruit',
+  'Zoho Mail',
+  'Zoho ERP',
 ];
 
 /** `slug` links to the existing app page; apps without one link to the enquiry form. */

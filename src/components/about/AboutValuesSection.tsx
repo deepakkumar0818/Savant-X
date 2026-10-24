@@ -84,16 +84,15 @@ function ValueCard({ value, index }: { value: Value; index: number }) {
 
       <div
         aria-hidden
-        className="relative order-first flex h-40 items-center justify-center rounded-2xl sm:order-none sm:aspect-square sm:h-auto bg-[radial-gradient(circle_at_50%_40%,#eef2ff_0%,#f8fafc_70%)] ring-1 ring-slate-100"
+        className="relative order-first flex h-40 items-center justify-center rounded-2xl sm:order-none sm:aspect-square sm:h-auto bg-slate-50/80 ring-1 ring-slate-100"
       >
-        <span className="absolute -bottom-6 -right-6 h-20 w-20 rounded-full bg-violet-100/70 blur-xl" />
         <Image
           src={value.art}
           alt=""
           width={480}
           height={480}
           sizes="(min-width: 640px) 11.5rem, 8rem"
-          className="relative h-32 w-32 object-contain sm:h-[78%] sm:w-[78%] drop-shadow-[0_12px_20px_rgba(79,70,229,0.3)] transition-transform duration-500 group-hover:scale-105 motion-reduce:group-hover:scale-100"
+          className="relative h-28 w-28 object-contain opacity-90 saturate-[0.6] sm:h-[64%] sm:w-[64%] transition-transform duration-500 group-hover:scale-105 motion-reduce:group-hover:scale-100"
         />
       </div>
     </motion.article>

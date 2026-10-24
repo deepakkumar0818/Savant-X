@@ -271,7 +271,7 @@ export default function Navbar({
   };
 
   const pillClass = (active: boolean) =>
-    `rounded-full px-2.5 py-1.5 text-sm font-semibold xl:px-3 tracking-wide transition-all duration-300 ease-out motion-safe:hover:scale-105 ${
+    `whitespace-nowrap rounded-full px-2.5 py-1.5 text-sm font-semibold xl:px-3 tracking-wide transition-all duration-300 ease-out motion-safe:hover:scale-105 ${
       active ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-700 hover:bg-slate-50 hover:text-indigo-600'
     }`;
 

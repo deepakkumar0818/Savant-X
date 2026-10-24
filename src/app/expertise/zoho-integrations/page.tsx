@@ -223,8 +223,8 @@ export default function ZohoIntegrationsPage() {
           <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 xl:flex-nowrap xl:justify-between xl:gap-x-3">
             {INDUSTRIES.map(({ label, icon }) => (
               <li key={label} className="flex items-center gap-2.5 whitespace-nowrap text-sm font-semibold text-slate-700">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl xl:h-14 xl:w-14 xl:rounded-2xl bg-white shadow-sm ring-1 ring-slate-200/80">
-                  <Image src={icon} alt="" width={48} height={48} className="h-10 w-10 object-contain xl:h-12 xl:w-12" />
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-50/60 ring-1 ring-indigo-100/70 xl:h-12 xl:w-12">
+                  <Image src={icon} alt="" width={40} height={40} className="h-8 w-8 object-contain opacity-90 saturate-[0.65] xl:h-9 xl:w-9" />
                 </span>
                 {label}
               </li>
@@ -263,9 +263,9 @@ export default function ZohoIntegrationsPage() {
       <section aria-labelledby="zoho-apps-strip" className="border-y border-slate-200/70 bg-slate-50/70 px-6 py-10 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <h2 id="zoho-apps-strip" className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{tx.zoho_applications_we_work_with}</h2>
-          <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 xl:flex-nowrap xl:justify-between xl:gap-x-3">
+          <ul className="mx-auto mt-6 flex max-w-5xl flex-wrap items-center justify-center gap-x-7 gap-y-4">
             {TRUST_APPS.map((app) => (
-              <li key={app} className="flex items-center gap-2 whitespace-nowrap text-sm font-semibold text-slate-700 xl:gap-1.5 xl:text-[13px] 2xl:gap-2 2xl:text-sm">
+              <li key={app} className="flex items-center gap-2 whitespace-nowrap text-sm font-semibold text-slate-700">
                 <AppMark app={app} size="sm" />
                 {app}
               </li>

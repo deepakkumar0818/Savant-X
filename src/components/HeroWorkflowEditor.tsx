@@ -74,7 +74,7 @@ const SCENARIOS: Scenario[] = [
   {
     id: 'crm',
     label: 'CRM',
-    logoSrc: '/images/zoho-crm.webp',
+    logoSrc: '/images/zoho/apps/crm.webp',
     logoAlt: 'Zoho CRM',
     accent: {
       tab: 'ring-blue-200 text-blue-700',
@@ -134,7 +134,7 @@ const SCENARIOS: Scenario[] = [
   {
     id: 'zoho',
     label: 'Zoho',
-    logoSrc: '/images/ZohoCreator.png',
+    logoSrc: '/images/zoho/apps/creator.webp',
     logoAlt: 'Zoho Creator',
     accent: {
       tab: 'ring-[#c8202f]/30 text-[#b01828]',
@@ -191,7 +191,7 @@ const SCENARIOS: Scenario[] = [
   {
     id: 'erp',
     label: 'ERP',
-    logoSrc: '/images/ZohoInventary.png',
+    logoSrc: '/images/zoho/apps/inventory.webp',
     logoAlt: 'Zoho Inventory',
     accent: {
       tab: 'ring-violet-200 text-violet-700',

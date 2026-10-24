@@ -28,9 +28,9 @@ const styles = `
   }
 `;
 
-function Mark({ offer, inverse, size }: { offer: BentoOffer; inverse: boolean; size: 'sm' | 'lg' }) {
+function Mark({ offer, inverse, size }: { offer: BentoOffer; inverse: boolean; size: 'sm' | 'md' | 'lg' }) {
   const { logo, icon: Icon } = offer;
-  const box = size === 'lg' ? 'h-20 w-20 rounded-2xl' : 'h-7 w-7 rounded-lg';
+  const box = size === 'lg' ? 'h-20 w-20 rounded-2xl' : size === 'md' ? 'h-10 w-10 rounded-xl shadow-sm' : 'h-7 w-7 rounded-lg';
   const glow = inverse
     ? 'bg-white/10 ring-1 ring-white/20 shadow-[0_0_60px_-5px_rgba(129,140,248,0.75)] backdrop-blur'
     : 'bg-white ring-1 ring-slate-200/70 shadow-[0_20px_40px_-15px_rgba(37,99,235,0.45)]';
@@ -38,12 +38,12 @@ function Mark({ offer, inverse, size }: { offer: BentoOffer; inverse: boolean; s
     <span className={`flex shrink-0 items-center justify-center ${box} ${size === 'lg' ? glow : 'bg-white ring-1 ring-slate-200'}`}>
       {logo ? (
         <span className={`flex items-center justify-center ${size === 'lg' && inverse ? 'h-12 w-12 rounded-xl bg-white' : ''}`}>
-          <Image src={logo} alt="" width={40} height={40} className={size === 'lg' ? 'h-10 w-10 object-contain' : 'h-5 w-5 object-contain'} />
+          <Image src={logo} alt="" width={40} height={40} className={size === 'lg' ? 'h-10 w-10 object-contain' : size === 'md' ? 'h-7 w-7 object-contain' : 'h-5 w-5 object-contain'} />
         </span>
       ) : (
         Icon && (
           <Icon
-            className={`${size === 'lg' ? 'h-9 w-9' : 'h-4 w-4'} ${size === 'lg' && inverse ? 'text-white' : 'text-blue-600'}`}
+            className={`${size === 'lg' ? 'h-9 w-9' : size === 'md' ? 'h-5 w-5' : 'h-4 w-4'} ${size === 'lg' && inverse ? 'text-white' : 'text-blue-600'}`}
             strokeWidth={1.75}
             aria-hidden
           />
@@ -142,7 +142,10 @@ export default function OfferBento({
                     </span>
                   )}
                 </div>
-                <CardHeading className={`mt-1.5 text-lg font-semibold tracking-tight ${inverse ? 'text-white' : 'text-slate-900'}`}>{offer.name}</CardHeading>
+                <div className="mt-1.5 flex items-center gap-3">
+                  {isWide && <Mark offer={offer} inverse={inverse} size="md" />}
+                  <CardHeading className={`text-lg font-semibold tracking-tight ${inverse ? 'text-white' : 'text-slate-900'}`}>{offer.name}</CardHeading>
+                </div>
                 <p className="mt-2 flex items-baseline gap-1.5">
                   <span className={`text-3xl font-bold tracking-tight ${inverse ? 'text-white' : 'text-slate-900'}`}>{offer.price}</span>
                   <span className={`text-sm font-medium ${inverse ? 'text-white/60' : 'text-slate-500'}`}>

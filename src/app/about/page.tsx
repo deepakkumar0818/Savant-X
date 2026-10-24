@@ -1,7 +1,9 @@
 'use client';
 
 import tx from '@/content/text/app/about/page.json';
+import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowRight, CalendarDays } from 'lucide-react';
 import { useState } from 'react';
 import Footer from '@/components/Footer';
 import ConsultationDialog from '@/components/forms/ConsultationDialog';
@@ -154,27 +156,29 @@ export default function About() {
         </div>
       </section>
 
-      {/* Professional CTA Section */}
-      <section className="relative z-10 py-20 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center bg-blue-600 rounded-lg p-12">
-            <h2 className="text-3xl font-bold text-white mb-4">{tx.ready_to_work_with_us}</h2>
-            <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">{tx.let_s_discuss_your_project}</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="group bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-300 ease-out font-semibold text-lg shadow-lg transform hover:scale-105 hover:shadow-xl">
-                <span className="flex items-center justify-center gap-2">{tx.start_your_project}<svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </span>
-              </Link>
-              <button 
-                onClick={() => setIsConsultationOpen(true)}
-                className="group border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-300 ease-out font-semibold text-lg transform hover:scale-105 hover:shadow-lg"
+      {/* CTA */}
+      <section className="relative z-10 px-4 py-16 sm:px-8 lg:px-12 lg:py-20">
+        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl bg-[#060b2b] px-6 py-16 text-center sm:py-20">
+          <Image src="/images/zoho/cta-wave.webp" alt="" fill sizes="(min-width: 1280px) 1280px, 100vw" className="object-cover" />
+          <div className="relative">
+            <p className="inline-flex rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white ring-1 ring-white/60">{tx.let_s_work_together}</p>
+            <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">{tx.ready_to_work_with_us}</h2>
+            <p className="mx-auto mt-4 max-w-xl text-slate-300">{tx.let_s_discuss_your_project}</p>
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-indigo-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40"
               >
-                <span className="flex items-center justify-center gap-2">
-                  <svg className="w-5 h-5 transform group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>{tx.schedule_consultation}</span>
+                {tx.start_your_project}
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </Link>
+              <button
+                type="button"
+                onClick={() => setIsConsultationOpen(true)}
+                className="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-white ring-1 ring-white/25 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                <CalendarDays className="h-4 w-4" aria-hidden />
+                {tx.schedule_consultation}
               </button>
             </div>
           </div>
