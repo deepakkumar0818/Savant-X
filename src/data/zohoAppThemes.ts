@@ -36,7 +36,7 @@ export type ZohoAppTheme = {
   };
 };
 
-export const zohoAppThemes: Record<string, ZohoAppTheme> = {
+const zohoAppThemes: Record<string, ZohoAppTheme> = {
   'zoho-crm': {
     officialHeadline: 'The easiest AI CRM for growth.',
     officialSubhead:

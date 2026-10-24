@@ -150,11 +150,6 @@ export async function listFiles(prefix: string): Promise<string[]> {
   return out.sort();
 }
 
-export async function readJson<T>(p: string): Promise<{ data: T; sha: string } | null> {
-  const [file] = await readFiles([p]);
-  return file ? { data: JSON.parse(file.content) as T, sha: file.sha } : null;
-}
-
 function commonPrefix(paths: string[]): string {
   if (!paths.length) return '';
   let prefix = paths[0];

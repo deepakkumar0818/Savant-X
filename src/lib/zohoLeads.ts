@@ -86,9 +86,9 @@ export const LEAD_FIELDS = {
 } as const;
 
 /** Stored Lead Status value for the label "New Lead". */
-export const LEAD_STATUS_NEW = 'Attempted to Contact';
+const LEAD_STATUS_NEW = 'Attempted to Contact';
 /** Priority labels as shown in CRM → stored values. */
-export const PRIORITY_VALUE = { High: 'ShutDown', Medium: 'Medium', Low: 'Low' } as const;
+const PRIORITY_VALUE = { High: 'ShutDown', Medium: 'Medium', Low: 'Low' } as const;
 
 export type LeadType = (typeof LEAD_FIELDS.picklists.Lead_Type)[number];
 export type Priority = keyof typeof PRIORITY_VALUE;
@@ -138,8 +138,8 @@ const OPTIONAL_FIELDS = new Set<keyof ZohoLeadRecord>([
 type FetchLike = (input: string, init?: RequestInit) => Promise<Response>;
 
 /** Company is required by Zoho; used when the visitor leaves it blank. */
-export const COMPANY_FALLBACK = 'Website Enquiry';
-export const MAX_BODY_BYTES = 16 * 1024;
+const COMPANY_FALLBACK = 'Website Enquiry';
+const MAX_BODY_BYTES = 16 * 1024;
 const REQUEST_TIMEOUT_MS = 8000;
 /** Refresh a little before Zoho's expiry so a token never dies mid-request. */
 const TOKEN_EXPIRY_MARGIN_MS = 60_000;
@@ -312,7 +312,7 @@ export function priorityFromBudget(budget: string): Priority {
 }
 
 /** Zoho DateTime in India time, e.g. 2026-10-22T18:37:05+05:30. */
-export function zohoDateTimeIST(date: Date): string {
+function zohoDateTimeIST(date: Date): string {
   const ist = new Date(date.getTime() + 5.5 * 60 * 60 * 1000);
   return `${ist.toISOString().slice(0, 19)}+05:30`;
 }

@@ -4,7 +4,7 @@
  */
 
 export const SESSION_COOKIE = 'sx_admin';
-export const SESSION_TTL_SECONDS = 8 * 60 * 60;
+const SESSION_TTL_SECONDS = 8 * 60 * 60;
 
 export type AdminConfig = { email: string; password: string; secret: string };
 

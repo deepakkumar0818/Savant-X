@@ -89,7 +89,7 @@ function readSize(src: string): Promise<{ width: number; height: number }> {
   });
 }
 
-export function MediaPicker({ onPick, onClose }: { onPick: (src: string) => void; onClose: () => void }) {
+function MediaPicker({ onPick, onClose }: { onPick: (src: string) => void; onClose: () => void }) {
   const ref = useRef<HTMLDialogElement>(null);
   const [media, setMedia] = useState<{ uploads: string[]; images: string[] } | null>(null);
   const [error, setError] = useState('');

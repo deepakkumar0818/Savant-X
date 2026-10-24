@@ -58,80 +58,10 @@ html {
 /* Pause decorative motion while scrolling — keeps the main thread free for scroll */
 html[data-scrolling='true'] .motion-safe\:animate-hero-blob-a,
 html[data-scrolling='true'] .motion-safe\:animate-hero-blob-b,
-html[data-scrolling='true'] .animate-hero-blob-a,
-html[data-scrolling='true'] .animate-hero-blob-b,
-html[data-scrolling='true'] .animate-hero-radial-breathe,
-html[data-scrolling='true'] .animate-hero-conic-slow,
-html[data-scrolling='true'] .animate-hero-grid-pan,
-html[data-scrolling='true'] .animate-hero-mesh-gradient,
-html[data-scrolling='true'] .animate-hero-heading-spotlight,
-html[data-scrolling='true'] .animate-hero-beam-premium,
-html[data-scrolling='true'] .animate-hero-beam-premium-delayed,
-html[data-scrolling='true'] .animate-hero-particle-drift,
-html[data-scrolling='true'] .animate-hero-noise-shift,
 html[data-scrolling='true'] .animate-hero-card-float-soft,
 html[data-scrolling='true'] .animate-hero-gradient-text-shift,
-html[data-scrolling='true'] .animate-float-gentle,
-html[data-scrolling='true'] .animate-cta-gradient-flow,
-html[data-scrolling='true'] .animate-cta-conic-slow,
-html[data-scrolling='true'] .animate-cta-orb-a,
-html[data-scrolling='true'] .animate-cta-orb-b,
-html[data-scrolling='true'] .animate-cta-orb-soft,
-html[data-scrolling='true'] .animate-cta-micro-drift,
-html[data-scrolling='true'] .animate-cta-shimmer-sweep,
-html[data-scrolling='true'] .animate-cta-shimmer-sweep-2,
-html[data-scrolling='true'] .animate-cta-border-glow,
-html[data-scrolling='true'] .animate-cta-dust-a,
-html[data-scrolling='true'] .animate-cta-dust-b,
-html[data-scrolling='true'] .animate-cta-dust-c,
 html[data-scrolling='true'] [class*='animate-'] {
   animation-play-state: paused !important;
-}
-
-/* Contain paint for large sections so scrolling doesn't repaint the whole page */
-.scroll-section {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 900px;
-}
-
-/* 3D Floating Animations */
-@keyframes float-slow {
-  0%, 100% {
-    transform: translateY(0px) rotate(12deg);
-  }
-  50% {
-    transform: translateY(-20px) rotate(12deg);
-  }
-}
-
-@keyframes float-medium {
-  0%, 100% {
-    transform: translateY(0px) rotate(-12deg);
-  }
-  50% {
-    transform: translateY(-15px) rotate(-12deg);
-  }
-}
-
-@keyframes float-center {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-.animate-float-slow {
-  animation: float-slow 6s ease-in-out infinite;
-}
-
-.animate-float-medium {
-  animation: float-medium 4s ease-in-out infinite;
-}
-
-.animate-float-center {
-  animation: float-center 5s ease-in-out infinite;
 }
 
 /* Hero workbench workflow animation */
@@ -203,40 +133,6 @@ html[data-scrolling='true'] [class*='animate-'] {
   animation: workflow-check-pop 0.4s ease-out backwards;
 }
 
-/* Fast spin animation for refresh button */
-@keyframes spin-fast {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin-fast {
-  animation: spin-fast 0.5s linear;
-}
-
-/* Code change animation */
-@keyframes code-change {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  50% {
-    opacity: 0.3;
-    transform: translateY(-5px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.code-change {
-  animation: code-change 1s ease-in-out;
-}
-
 /* Professional Animations for Why Choose Section */
 @keyframes fadeInUp {
   0% {
@@ -246,17 +142,6 @@ html[data-scrolling='true'] [class*='animate-'] {
   100% {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes fadeInLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
   }
 }
 
@@ -282,24 +167,6 @@ html[data-scrolling='true'] [class*='animate-'] {
   }
 }
 
-@keyframes float-gentle {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
-  }
-}
-
 @keyframes gradient-shift {
   0% {
     background-position: 0% 50%;
@@ -312,85 +179,9 @@ html[data-scrolling='true'] [class*='animate-'] {
   }
 }
 
-@keyframes tech-bounce {
-  0%, 100% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-5px) scale(1.05);
-  }
-}
-
-@keyframes slideInFromBottom {
-  0% {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-/* Smooth Company Rotation Animations */
-@keyframes companyFadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes companyFadeOut {
-  0% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-10px) scale(0.95);
-  }
-}
-
-@keyframes companySlideIn {
-  0% {
-    opacity: 0;
-    transform: translateX(30px) scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-}
-
-@keyframes companyGentleBounce {
-  0%, 100% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-3px) scale(1.02);
-  }
-}
-
 /* Animation Classes */
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
-}
-
-.animate-fade-in-left {
-  animation: fadeInLeft 0.8s ease-out forwards;
 }
 
 .animate-fade-in-right {
@@ -399,10 +190,6 @@ html[data-scrolling='true'] [class*='animate-'] {
 
 .animate-scale-in {
   animation: scaleIn 0.6s ease-out forwards;
-}
-
-.animate-float-gentle {
-  animation: float-gentle 3s ease-in-out infinite;
 }
 
 /* Staggered Animation Delays */
@@ -428,18 +215,6 @@ html[data-scrolling='true'] [class*='animate-'] {
 
 .delay-600 {
   animation-delay: 0.6s;
-}
-
-.delay-700 {
-  animation-delay: 0.7s;
-}
-
-.delay-800 {
-  animation-delay: 0.8s;
-}
-
-.delay-1000 {
-  animation-delay: 1s;
 }
 
 @keyframes fade-in-up {
@@ -481,15 +256,6 @@ html[data-scrolling='true'] [class*='animate-'] {
   border: 1px solid #cbd5e1;
 }
 
-.custom-marker {
-  background: transparent !important;
-  border: none !important;
-}
-
-.map-container {
-  font-family: inherit;
-}
-
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
@@ -499,10 +265,6 @@ html[data-scrolling='true'] [class*='animate-'] {
     transform: scale(1.1);
     opacity: 0.9;
   }
-}
-
-.custom-popup .leaflet-popup-content-wrapper {
-  padding: 0;
 }
 
 /* Smooth scale animation */
@@ -522,15 +284,6 @@ html[data-scrolling='true'] [class*='animate-'] {
 }
 
 /* Hero — professional motion (respects prefers-reduced-motion via motion-safe / media) */
-@keyframes hero-blob-drift {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(-18px, 14px) scale(1.04);
-  }
-}
 
 @keyframes hero-card-float-soft {
   0%,
@@ -552,14 +305,6 @@ html[data-scrolling='true'] [class*='animate-'] {
   }
 }
 
-.animate-hero-blob-a {
-  animation: hero-blob-drift 24s ease-in-out infinite alternate;
-}
-
-.animate-hero-blob-b {
-  animation: hero-blob-drift 30s ease-in-out infinite alternate-reverse;
-}
-
 .animate-hero-card-float-soft {
   animation: hero-card-float-soft 10s ease-in-out infinite;
 }
@@ -567,367 +312,6 @@ html[data-scrolling='true'] [class*='animate-'] {
 .animate-hero-gradient-text-shift {
   background-size: 200% auto;
   animation: hero-gradient-shift-text 10s ease-in-out infinite;
-}
-
-/* Hero background — restrained, editorial motion */
-@keyframes hero-radial-breathe {
-  0%,
-  100% {
-    opacity: 0.32;
-    transform: translate(-50%, 0) scale(1);
-  }
-  50% {
-    opacity: 0.48;
-    transform: translate(-50%, -6%) scale(1.06);
-  }
-}
-
-@keyframes hero-conic-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes hero-grid-pan {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 3.75rem 3.75rem;
-  }
-}
-
-.animate-hero-radial-breathe {
-  animation: hero-radial-breathe 22s ease-in-out infinite;
-}
-
-.animate-hero-conic-slow {
-  animation: hero-conic-slow 100s linear infinite;
-}
-
-.animate-hero-grid-pan {
-  animation: hero-grid-pan 56s linear infinite;
-}
-
-@keyframes hero-mesh-gradient-shift {
-  0%,
-  100% {
-    background-position: 10% 40%;
-  }
-  50% {
-    background-position: 90% 58%;
-  }
-}
-
-.animate-hero-mesh-gradient {
-  background-size: 220% 220%;
-  animation: hero-mesh-gradient-shift 42s ease-in-out infinite;
-}
-
-@keyframes hero-heading-spotlight {
-  0%,
-  100% {
-    opacity: 0.42;
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    opacity: 0.62;
-    transform: translate(0, -2%) scale(1.04);
-  }
-}
-
-.animate-hero-heading-spotlight {
-  animation: hero-heading-spotlight 16s ease-in-out infinite;
-}
-
-@keyframes hero-beam-premium {
-  0%,
-  100% {
-    opacity: 0.065;
-    transform: translateX(-12%) skewX(-13deg);
-  }
-  50% {
-    opacity: 0.13;
-    transform: translateX(10%) skewX(-13deg);
-  }
-}
-
-.animate-hero-beam-premium {
-  animation: hero-beam-premium 18s ease-in-out infinite;
-}
-
-.animate-hero-beam-premium-delayed {
-  animation: hero-beam-premium 22s ease-in-out infinite;
-  animation-delay: -6s;
-}
-
-@keyframes hero-particle-drift {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 56px 72px;
-  }
-}
-
-.animate-hero-particle-drift {
-  animation: hero-particle-drift 52s linear infinite;
-}
-
-@keyframes hero-noise-shift {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: -180px 140px;
-  }
-}
-
-.animate-hero-noise-shift {
-  animation: hero-noise-shift 90s linear infinite;
-}
-
-/* Solutions / expertise mega-section — aurora + mesh + diagonal (distinct from hero) */
-@keyframes solutions-aurora-a {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: translate(7%, 5%) scale(1.09);
-    opacity: 0.88;
-  }
-}
-
-@keyframes solutions-aurora-b {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: translate(-7%, -6%) scale(1.08);
-    opacity: 0.86;
-  }
-}
-
-@keyframes solutions-aurora-c {
-  0%,
-  100% {
-    transform: translate(3%, -3%) scale(1);
-    opacity: 0.82;
-  }
-  50% {
-    transform: translate(-5%, 6%) scale(1.11);
-    opacity: 1;
-  }
-}
-
-@keyframes solutions-heading-glow {
-  0%,
-  100% {
-    opacity: 0.55;
-    transform: translate(-50%, 0) scale(1);
-  }
-  50% {
-    opacity: 0.72;
-    transform: translate(-50%, 0) scale(1.03);
-  }
-}
-
-@keyframes solutions-ambient-pulse {
-  0%,
-  100% {
-    opacity: 0.42;
-  }
-  50% {
-    opacity: 0.62;
-  }
-}
-
-@keyframes solutions-ambient-pulse-delayed {
-  0%,
-  100% {
-    opacity: 0.34;
-  }
-  50% {
-    opacity: 0.55;
-  }
-}
-
-@keyframes solutions-particles-drift {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: -52px 42px;
-  }
-}
-
-@keyframes solutions-grid-pan {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 52px 52px;
-  }
-}
-
-@keyframes solutions-noise-drift {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: -160px 120px;
-  }
-}
-
-@keyframes solutions-frame-glow {
-  0%,
-  100% {
-    opacity: 0.42;
-  }
-  50% {
-    opacity: 0.72;
-  }
-}
-
-@keyframes solutions-mesh-drift {
-  0% {
-    background-position: 0% 40%;
-  }
-  50% {
-    background-position: 100% 60%;
-  }
-  100% {
-    background-position: 0% 40%;
-  }
-}
-
-@keyframes solutions-diagonal-pan {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 72px 72px;
-  }
-}
-
-@keyframes solutions-dots-drift {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 28px 28px;
-  }
-}
-
-@keyframes solutions-beam-sweep {
-  0%,
-  100% {
-    opacity: 0.06;
-    transform: translateX(-10%) skewX(-12deg);
-  }
-  50% {
-    opacity: 0.14;
-    transform: translateX(10%) skewX(-12deg);
-  }
-}
-
-@keyframes solutions-conic-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes solutions-shimmer-line {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.35;
-  }
-  85% {
-    opacity: 0.35;
-  }
-  100% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
-
-.animate-solutions-aurora-a {
-  animation: solutions-aurora-a 22s ease-in-out infinite;
-}
-
-.animate-solutions-aurora-b {
-  animation: solutions-aurora-b 27s ease-in-out infinite;
-}
-
-.animate-solutions-aurora-c {
-  animation: solutions-aurora-c 31s ease-in-out infinite;
-}
-
-.animate-solutions-heading-glow {
-  animation: solutions-heading-glow 18s ease-in-out infinite;
-}
-
-.animate-solutions-ambient-pulse {
-  animation: solutions-ambient-pulse 14s ease-in-out infinite;
-}
-
-.animate-solutions-ambient-pulse-delayed {
-  animation: solutions-ambient-pulse-delayed 17s ease-in-out infinite;
-  animation-delay: -6s;
-}
-
-.animate-solutions-particles-drift {
-  animation: solutions-particles-drift 36s linear infinite;
-}
-
-.animate-solutions-grid-pan {
-  animation: solutions-grid-pan 56s linear infinite;
-}
-
-.animate-solutions-noise-drift {
-  animation: solutions-noise-drift 72s linear infinite;
-}
-
-.animate-solutions-shimmer-line-delayed {
-  animation: solutions-shimmer-line 22s ease-in-out infinite;
-  animation-delay: -8s;
-}
-
-.animate-solutions-mesh-drift {
-  animation: solutions-mesh-drift 34s ease-in-out infinite;
-}
-
-.animate-solutions-diagonal-pan {
-  animation: solutions-diagonal-pan 32s linear infinite;
-}
-
-.animate-solutions-dots-drift {
-  animation: solutions-dots-drift 16s linear infinite;
-}
-
-.animate-solutions-beam-sweep {
-  animation: solutions-beam-sweep 11s ease-in-out infinite;
-}
-
-.animate-solutions-conic-slow {
-  animation: solutions-conic-spin 88s linear infinite;
-}
-
-.animate-solutions-shimmer-line {
-  animation: solutions-shimmer-line 14s ease-in-out infinite;
 }
 
 /* Inset frame glow — solutions mega-section (subtle premium edge) */
@@ -941,244 +325,8 @@ html[data-scrolling='true'] [class*='animate-'] {
   animation: none;
 }
 
-/* Home mega-section CTA banner — gradient flow + light pools */
-@keyframes cta-gradient-flow {
-  0%,
-  100% {
-    background-position: 8% 42%;
-  }
-  50% {
-    background-position: 92% 58%;
-  }
-}
-
-.animate-cta-gradient-flow {
-  animation: cta-gradient-flow 22s ease-in-out infinite;
-}
-
-@keyframes cta-conic-slow {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
-.animate-cta-conic-slow {
-  animation: cta-conic-slow 95s linear infinite;
-}
-
-@keyframes cta-orb-a {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.65;
-  }
-  50% {
-    transform: translate(-6%, 10%) scale(1.12);
-    opacity: 0.85;
-  }
-}
-
-@keyframes cta-orb-b {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.55;
-  }
-  50% {
-    transform: translate(8%, -8%) scale(1.1);
-    opacity: 0.78;
-  }
-}
-
-@keyframes cta-orb-soft {
-  0%,
-  100% {
-    opacity: 0.35;
-    transform: translate(-50%, 0) scale(1);
-  }
-  50% {
-    opacity: 0.55;
-    transform: translate(-50%, 0) scale(1.06);
-  }
-}
-
-@keyframes cta-micro-drift {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 22px 22px;
-  }
-}
-
-.animate-cta-micro-drift {
-  animation: cta-micro-drift 28s linear infinite;
-}
-
-@keyframes cta-shimmer-sweep {
-  0% {
-    transform: translateX(-120%) skewX(-20deg);
-    opacity: 0;
-  }
-  18% {
-    opacity: 0.45;
-  }
-  42% {
-    opacity: 0.28;
-  }
-  100% {
-    transform: translateX(220%) skewX(-20deg);
-    opacity: 0;
-  }
-}
-
-.animate-cta-shimmer-sweep {
-  animation: cta-shimmer-sweep 16s ease-in-out infinite;
-}
-
-.animate-cta-shimmer-sweep-2 {
-  animation: cta-shimmer-sweep 21s ease-in-out infinite;
-  animation-delay: -7s;
-}
-
-@keyframes cta-border-glow {
-  0%,
-  100% {
-    opacity: 0.45;
-  }
-  50% {
-    opacity: 0.85;
-  }
-}
-
-.animate-cta-border-glow {
-  animation: cta-border-glow 10s ease-in-out infinite;
-}
-
-@keyframes cta-dust-a {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.32;
-  }
-  50% {
-    transform: translate(14px, -18px) scale(1.18);
-    opacity: 0.68;
-  }
-}
-
-@keyframes cta-dust-b {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.26;
-  }
-  50% {
-    transform: translate(-16px, 14px) scale(1.12);
-    opacity: 0.62;
-  }
-}
-
-@keyframes cta-dust-c {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translate(12px, 16px) scale(1.14);
-    opacity: 0.65;
-  }
-}
-
-.animate-cta-dust-a {
-  animation: cta-dust-a 14s ease-in-out infinite;
-}
-
-.animate-cta-dust-b {
-  animation: cta-dust-b 18s ease-in-out infinite;
-  animation-delay: -4s;
-}
-
-.animate-cta-dust-c {
-  animation: cta-dust-c 12s ease-in-out infinite;
-  animation-delay: -2s;
-}
-
-.animate-cta-orb-a {
-  animation: cta-orb-a 22s ease-in-out infinite;
-}
-
-.animate-cta-orb-b {
-  animation: cta-orb-b 28s ease-in-out infinite;
-}
-
-.animate-cta-orb-soft {
-  animation: cta-orb-soft 16s ease-in-out infinite;
-}
-
-@keyframes products-orbit-spin {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
-.products-orbit-ring {
-  transform: translate(-50%, -50%);
-  animation: products-orbit-spin 34s linear infinite;
-}
-
-.products-orbit-ring-reverse {
-  transform: translate(-50%, -50%);
-  animation: products-orbit-spin 28s linear infinite reverse;
-}
-
-@keyframes products-orbit-icons-rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes products-orbit-icons-upright {
-  from {
-    transform: translate(-50%, -100%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -100%) rotate(-360deg);
-  }
-}
-
-.products-orbit-icons-track {
-  transform-origin: center center;
-  animation: products-orbit-icons-rotate 32s linear infinite;
-}
-
-.products-orbit-icon-upright {
-  transform: translate(-50%, -100%);
-  animation: products-orbit-icons-upright 32s linear infinite;
-}
-
+/* Reduced motion: stop the decorative loops above. */
 @media (prefers-reduced-motion: reduce) {
-  .products-orbit-ring,
-  .products-orbit-ring-reverse,
-  .products-orbit-icons-track,
-  .products-orbit-icon-upright {
-    animation: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-hero-blob-a,
-  .animate-hero-blob-b,
   .animate-hero-card-float-soft {
     animation: none !important;
   }
@@ -1187,125 +335,9 @@ html[data-scrolling='true'] [class*='animate-'] {
     animation: none !important;
   }
 
-  .animate-hero-radial-breathe,
-  .animate-hero-conic-slow,
-  .animate-hero-grid-pan {
-    animation: none !important;
-  }
-
-  .animate-hero-mesh-gradient,
-  .animate-hero-heading-spotlight,
-  .animate-hero-beam-premium,
-  .animate-hero-beam-premium-delayed,
-  .animate-hero-particle-drift,
-  .animate-hero-noise-shift {
-    animation: none !important;
-  }
-
-  .animate-solutions-aurora-a,
-  .animate-solutions-aurora-b,
-  .animate-solutions-mesh-drift,
-  .animate-solutions-diagonal-pan,
-  .animate-solutions-dots-drift,
-  .animate-solutions-beam-sweep,
-  .animate-solutions-conic-slow,
-  .animate-solutions-shimmer-line {
-    animation: none !important;
-  }
-
-  .animate-solutions-aurora-c,
-  .animate-solutions-heading-glow,
-  .animate-solutions-ambient-pulse,
-  .animate-solutions-ambient-pulse-delayed,
-  .animate-solutions-particles-drift,
-  .animate-solutions-grid-pan,
-  .animate-solutions-noise-drift,
-  .animate-solutions-shimmer-line-delayed {
-    animation: none !important;
-  }
-
   .solutions-mega-section-ring::before {
     animation: none !important;
     opacity: 0.5 !important;
-  }
-
-  .animate-cta-gradient-flow,
-  .animate-cta-conic-slow,
-  .animate-cta-orb-a,
-  .animate-cta-orb-b,
-  .animate-cta-orb-soft,
-  .animate-cta-micro-drift,
-  .animate-cta-shimmer-sweep,
-  .animate-cta-shimmer-sweep-2,
-  .animate-cta-border-glow,
-  .animate-cta-dust-a,
-  .animate-cta-dust-b,
-  .animate-cta-dust-c {
-    animation: none !important;
-  }
-
-  .products-orbit-ring,
-  .products-orbit-ring-reverse {
-    animation: none !important;
-    transform: translate(-50%, -50%) !important;
-  }
-
-  .products-orbit-icons-track,
-  .products-orbit-icon-upright {
-    animation: none !important;
-  }
-}
-
-/* Pause orbit when off-screen or tab hidden */
-.products-orbit-paused .products-orbit-ring,
-.products-orbit-paused .products-orbit-ring-reverse,
-.products-orbit-paused .products-orbit-icons-track,
-.products-orbit-paused .products-orbit-icon-upright {
-  animation-play-state: paused !important;
-}
-
-/* Reduce GPU load on smaller screens — keep layout, drop continuous motion */
-@media (max-width: 1280px), (pointer: coarse) {
-  .animate-hero-mesh-gradient,
-  .animate-hero-radial-breathe,
-  .animate-hero-blob-a,
-  .animate-hero-blob-b,
-  .animate-hero-conic-slow,
-  .animate-hero-grid-pan,
-  .animate-hero-beam-premium,
-  .animate-hero-beam-premium-delayed,
-  .animate-hero-particle-drift,
-  .animate-hero-noise-shift,
-  .animate-hero-heading-spotlight,
-  .animate-solutions-heading-glow,
-  .animate-solutions-aurora-a,
-  .animate-solutions-aurora-b,
-  .animate-solutions-aurora-c,
-  .animate-solutions-mesh-drift,
-  .animate-solutions-conic-slow,
-  .animate-solutions-ambient-pulse,
-  .animate-solutions-ambient-pulse-delayed,
-  .animate-solutions-shimmer-line,
-  .animate-solutions-shimmer-line-delayed,
-  .animate-solutions-dots-drift,
-  .animate-solutions-particles-drift,
-  .animate-solutions-grid-pan,
-  .animate-solutions-diagonal-pan,
-  .animate-solutions-beam-sweep,
-  .animate-solutions-noise-drift,
-  .animate-cta-gradient-flow,
-  .animate-cta-conic-slow,
-  .animate-cta-orb-a,
-  .animate-cta-orb-b,
-  .animate-cta-orb-soft,
-  .animate-cta-micro-drift,
-  .animate-cta-shimmer-sweep,
-  .animate-cta-shimmer-sweep-2,
-  .animate-cta-border-glow,
-  .animate-cta-dust-a,
-  .animate-cta-dust-b,
-  .animate-cta-dust-c {
-    animation: none !important;
   }
 }
 

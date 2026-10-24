@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import Navbar from './Navbar';
 import ScrollToTop from './ScrollToTop';
+import SiteLeadPopup from './forms/SiteLeadPopup';
 
 export default function ConditionalNavbar() {
   const pathname = usePathname();
@@ -16,6 +17,7 @@ export default function ConditionalNavbar() {
     <>
       <Navbar />
       <ScrollToTop />
+      <SiteLeadPopup />
     </>
   );
 }

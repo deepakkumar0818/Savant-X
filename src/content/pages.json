@@ -4,6 +4,7 @@
     "src/content/text/components/Footer.json",
     "src/content/text/components/Navbar.json",
     "src/content/text/components/NewsletterSignup.json",
+    "src/content/text/components/forms/ConsultationDialog.json",
     "src/content/text/components/hero/PageHero.json"
   ],
   "pages": [
@@ -18,7 +19,6 @@
         "src/content/text/components/CompaniesSection.json",
         "src/content/text/components/HomeMegaSectionCTA.json",
         "src/content/text/components/TestimonialCarousel.json",
-        "src/content/text/components/forms/ConsultationDialog.json",
         "src/content/text/components/home/SolutionsShowcase.json"
       ]
     },
@@ -31,8 +31,7 @@
         "src/content/text/app/about/page.json",
         "src/content/text/components/about/AboutJourneySection.json",
         "src/content/text/components/about/AboutPageHero.json",
-        "src/content/text/components/about/AboutValuesSection.json",
-        "src/content/text/components/forms/ConsultationDialog.json"
+        "src/content/text/components/about/AboutValuesSection.json"
       ]
     },
     {

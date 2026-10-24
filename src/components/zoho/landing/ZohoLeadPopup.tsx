@@ -5,50 +5,16 @@ import { useEffect, useRef, useState } from 'react';
 import { CalendarCheck, X } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
 import { useDialog } from '@/lib/useDialog';
-import ZohoEnquiryForm, { LEAD_SENT_EVENT } from './ZohoEnquiryForm';
+import { useAutoLeadPopup } from '@/lib/leadPopup';
+import ZohoEnquiryForm from './ZohoEnquiryForm';
 import { SELECT_SERVICE_EVENT } from './SelectServiceLink';
 import type { ServiceId } from './data';
-
-/** The automatic popup opens once per visit (browser session)… */
-const SHOWN_KEY = 'savantx:zoho-lead-popup:shown';
-/** …and not at all for a week after the visitor has sent a lead. */
-const LEAD_SENT_KEY = 'savantx:zoho-lead-popup:lead-sent';
-const LEAD_SENT_QUIET_MS = 7 * 24 * 60 * 60 * 1000;
-const AUTO_OPEN_DELAY_MS = 15_000;
-const AUTO_OPEN_SCROLL = 0.5;
-
-function alreadySeen() {
-  try {
-    if (sessionStorage.getItem(SHOWN_KEY)) return true;
-    const sentAt = Number(localStorage.getItem(LEAD_SENT_KEY));
-    return Number.isFinite(sentAt) && sentAt > 0 && Date.now() - sentAt < LEAD_SENT_QUIET_MS;
-  } catch {
-    return false;
-  }
-}
-
-function markSeen(reason: 'shown' | 'lead') {
-  try {
-    if (reason === 'lead') localStorage.setItem(LEAD_SENT_KEY, String(Date.now()));
-    else sessionStorage.setItem(SHOWN_KEY, '1');
-  } catch {
-    // Private mode or blocked storage: the popup may open again later.
-  }
-}
-
-/** True while the visitor is busy: typing in a field, or another dialog is open. */
-function visitorIsBusy() {
-  const active = document.activeElement;
-  if (active && active.matches('input, textarea, select')) return true;
-  return document.body.style.overflow === 'hidden' || document.querySelector('[role="dialog"]') !== null;
-}
 
 /**
  * Lead form in a popup for the Zoho landing page:
  * - every "Book consultation" / package button opens it with that service pre-selected;
  * - a floating button keeps it one tap away;
- * - it opens by itself once per visit, after 15 seconds or halfway down the page (not for a week after a lead is sent),
- *   unless they are already filling in the form on the page.
+ * - it opens by itself once per visit (see useAutoLeadPopup), unless the form on the page is already in view.
  */
 export default function ZohoLeadPopup() {
   const [open, setOpen] = useState(false);
@@ -57,8 +23,6 @@ export default function ZohoLeadPopup() {
   const [mounted, setMounted] = useState(false);
   const [inlineFormVisible, setInlineFormVisible] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
-  const openRef = useRef(false);
-  openRef.current = open;
 
   const show = (next: { service?: ServiceId; auto: boolean }) => {
     if (next.service) setService(next.service);
@@ -88,47 +52,16 @@ export default function ZohoLeadPopup() {
     return () => observer.disconnect();
   }, []);
 
-  // Someone who has sent a lead (from either form) never gets the automatic popup.
-  useEffect(() => {
-    const onLeadSent = () => markSeen('lead');
-    window.addEventListener(LEAD_SENT_EVENT, onLeadSent);
-    return () => window.removeEventListener(LEAD_SENT_EVENT, onLeadSent);
-  }, []);
-
-  // Open once by itself.
-  useEffect(() => {
-    if (alreadySeen()) return;
-    const arrivedAt = Date.now();
-    let done = false;
-    const tryAutoOpen = () => {
-      if (done || openRef.current || alreadySeen()) return;
-      const section = document.getElementById('enquiry');
-      const rect = section?.getBoundingClientRect();
-      const inlineInView = rect ? rect.top < window.innerHeight && rect.bottom > 0 : false;
-      if (inlineInView || visitorIsBusy()) return; // try again on the next trigger
-      done = true;
-      markSeen('shown');
+  useAutoLeadPopup(
+    () => {
       trackEvent('lead_popup_auto_open', { page: 'zoho' });
       show({ auto: true });
-      cleanup();
-    };
-    const onScroll = () => {
-      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-      if (scrollable > 0 && window.scrollY / scrollable >= AUTO_OPEN_SCROLL) tryAutoOpen();
-    };
-    const timer = window.setTimeout(tryAutoOpen, AUTO_OPEN_DELAY_MS);
-    // If the visitor was busy when the timer fired, retry every few seconds.
-    const retry = window.setInterval(() => {
-      if (Date.now() - arrivedAt >= AUTO_OPEN_DELAY_MS) tryAutoOpen();
-    }, 5000);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    const cleanup = () => {
-      window.clearTimeout(timer);
-      window.clearInterval(retry);
-      window.removeEventListener('scroll', onScroll);
-    };
-    return cleanup;
-  }, []);
+    },
+    () => {
+      const rect = document.getElementById('enquiry')?.getBoundingClientRect();
+      return rect ? rect.top < window.innerHeight && rect.bottom > 0 : false;
+    },
+  );
 
   return (
     <>

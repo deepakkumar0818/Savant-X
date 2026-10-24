@@ -9,8 +9,8 @@ import { BUDGET_OPTIONS, SERVICE_OPTIONS, type ServiceId } from './data';
 import { SELECT_SERVICE_EVENT } from './SelectServiceLink';
 
 /** Fired on window once the server confirms a lead was delivered. */
-export const LEAD_SENT_EVENT = 'zoho:lead-sent';
 import { fetchWithTimeout } from '@/lib/fetchWithTimeout';
+import { LEAD_SENT_EVENT } from '@/lib/leadPopup';
 
 type Fields = {
   name: string;

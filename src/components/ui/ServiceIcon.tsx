@@ -490,7 +490,7 @@ const EMOJI_ICONS: Record<string, LucideIcon> = {
 
 const FALLBACK: LucideIcon = Sparkles;
 
-export function iconForEmoji(emoji: string | undefined | null): LucideIcon {
+function iconForEmoji(emoji: string | undefined | null): LucideIcon {
   if (!emoji) return FALLBACK;
   const key = emoji.trim();
   return EMOJI_ICONS[key] ?? EMOJI_ICONS[key.replace(/️/g, '')] ?? FALLBACK;
