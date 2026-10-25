@@ -43,7 +43,7 @@ const organizationSchema = {
     telephone: COMPANY.phone.schema,
     email: COMPANY.email,
     contactType: "Customer Service",
-    areaServed: "IN",
+    areaServed: ["IN", "CA"],
     availableLanguage: ["English", "Hindi"],
   },
   // TODO(verify): these profiles differ from the footer's social links; confirm the official accounts.

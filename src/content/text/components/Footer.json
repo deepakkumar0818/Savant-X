@@ -31,5 +31,6 @@
   "next_js": "Next.js",
   "iot_edge": "IoT edge",
   "postgresql": "PostgreSQL",
-  "kubernetes": "Kubernetes"
+  "kubernetes": "Kubernetes",
+  "also_operating_from": "Also operating from"
 }

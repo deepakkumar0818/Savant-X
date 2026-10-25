@@ -56,6 +56,21 @@ export const OFFICES: Office[] = site.offices.map((o) => ({
   type: o.type === 'headquarters' ? 'headquarters' : 'office',
 }));
 
+/** Cities we also operate from, without a published office address. */
+export type OperatingCity = { id: string; city: string; region: string; country: string; coordinates: [number, number] };
+
+export const OPERATING_FROM: OperatingCity[] = site.operatingFrom.map((c) => ({ ...c, coordinates: [c.coordinates[0], c.coordinates[1]] }));
+
+/** "Mumbai, India and Toronto, Canada" */
+export const operatingFromText = () => {
+  const names = OPERATING_FROM.map((c) => `${c.city}, ${c.country}`);
+  return names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names.at(-1)}` : (names[0] ?? '');
+};
+
+export function cityMapUrl(c: OperatingCity): string {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${c.city}, ${c.region}, ${c.country}`)}`;
+}
+
 export const SOCIAL_LINKS = site.social;
 
 export function formatOfficeAddress(office: Office): string {
@@ -65,3 +80,24 @@ export function formatOfficeAddress(office: Office): string {
 export function officeMapUrl(office: Office): string {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(formatOfficeAddress(office))}`;
 }
+
+/** Everything shown on the contact map: the offices, then the cities we also operate from. */
+export type MapPlace = {
+  id: string;
+  name: string;
+  city: string;
+  kind: Office['type'] | 'operations';
+  coordinates: [number, number];
+  address: string;
+  mapUrl: string;
+};
+
+function officePlace(o: Office): MapPlace {
+  return { id: o.id, name: o.name, city: o.city, kind: o.type, coordinates: o.coordinates, address: formatOfficeAddress(o), mapUrl: officeMapUrl(o) };
+}
+
+function cityPlace(c: OperatingCity): MapPlace {
+  return { id: c.id, name: `${c.city} Operations`, city: c.city, kind: 'operations', coordinates: c.coordinates, address: `${c.city}, ${c.region}, ${c.country}`, mapUrl: cityMapUrl(c) };
+}
+
+export const MAP_PLACES: MapPlace[] = OFFICES.map(officePlace).concat(OPERATING_FROM.map(cityPlace));

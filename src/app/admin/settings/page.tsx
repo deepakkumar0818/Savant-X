@@ -25,6 +25,7 @@ type Site = {
   company: { name: string; legalName: string; foundingYear: number; phone: string; email: string; infoEmail: string; zohoEmail: string; logoPath: string };
   metrics: { value: number; suffix: string; label: string; zohoLabel?: string }[];
   offices: Office[];
+  operatingFrom: { id: string; city: string; region: string; country: string; coordinates: [number, number] }[];
   social: Record<'x' | 'linkedin' | 'facebook' | 'instagram' | 'threads', string>;
 };
 
@@ -67,6 +68,38 @@ export default function AdminSettings() {
               <Text label="Info email" type="email" value={s.company.infoEmail} onChange={(infoEmail) => setCompany({ infoEmail })} />
               <Text label="Zoho email" type="email" value={s.company.zohoEmail} onChange={(zohoEmail) => setCompany({ zohoEmail })} hint="Shown only on the Zoho page." />
               <Text label="Founded (year)" type="number" value={s.company.foundingYear} onChange={(v) => setCompany({ foundingYear: Number(v) })} hint="“Years of experience” is worked out from this." />
+            </div>
+          </Card>
+
+          <Card title="Also operating from" description="Cities without a published office. Shown on the contact map with an Operations badge, and in the footer.">
+            <div className="space-y-4">
+              {s.operatingFrom.map((c, i) => {
+                const setCity = (patch: Partial<typeof c>) => set({ ...s, operatingFrom: s.operatingFrom.map((x, j) => (j === i ? { ...x, ...patch } : x)) });
+                return (
+                  <div key={i} className="grid gap-4 rounded-lg bg-slate-50 p-4 sm:grid-cols-3">
+                    <Text label="City" value={c.city} onChange={(city) => setCity({ city })} />
+                    <Text label="State / province" value={c.region} onChange={(region) => setCity({ region })} />
+                    <Text label="Country" value={c.country} onChange={(country) => setCity({ country })} />
+                    <Text label="Short id" value={c.id} onChange={(id) => setCity({ id: id.toLowerCase().replace(/[^a-z0-9-]/g, '') })} hint="Lowercase, e.g. mumbai" />
+                    <Text label="Latitude" type="number" value={c.coordinates[0]} onChange={(v) => setCity({ coordinates: [Number(v), c.coordinates[1]] })} />
+                    <Text label="Longitude" type="number" value={c.coordinates[1]} onChange={(v) => setCity({ coordinates: [c.coordinates[0], Number(v)] })} />
+                    <button
+                      type="button"
+                      onClick={() => window.confirm(`Remove ${c.city || 'this city'}?`) && set({ ...s, operatingFrom: s.operatingFrom.filter((_, j) => j !== i) })}
+                      className="justify-self-start text-sm font-semibold text-rose-600 hover:text-rose-800"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                );
+              })}
+              <button
+                type="button"
+                onClick={() => set({ ...s, operatingFrom: [...s.operatingFrom, { id: `city-${s.operatingFrom.length + 1}`, city: '', region: '', country: '', coordinates: [20.5937, 78.9629] }] })}
+                className="text-sm font-semibold text-indigo-700 hover:text-indigo-900"
+              >
+                + Add a city
+              </button>
             </div>
           </Card>
 

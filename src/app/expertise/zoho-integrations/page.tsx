@@ -39,7 +39,7 @@ import {
   TRUST_APPS,
   ZOHO_LOGOS,
 } from '@/components/zoho/landing/data';
-import { COMPANY, OFFICES, SITE_URL } from '@/lib/company';
+import { COMPANY, OFFICES, SITE_URL, operatingFromText } from '@/lib/company';
 import { canonicalUrl } from '@/lib/seo';
 
 const PAGE_PATH = '/expertise/zoho-integrations';
@@ -202,7 +202,7 @@ export default function ZohoIntegrationsPage() {
                 </li>
               ))}
             </ul>
-            <p className="animate-fade-in-up delay-500 mt-6 text-sm text-slate-500">{tx.building_business_software_since}{" "}{COMPANY.foundingYear}{" "}{tx.offices_in}{" "}{OFFICES.map((o) => o.city).join(' and ')}{tx.india}</p>
+            <p className="animate-fade-in-up delay-500 mt-6 text-sm text-slate-500">{tx.building_business_software_since}{" "}{COMPANY.foundingYear}{" "}{tx.offices_in}{" "}{OFFICES.map((o) => o.city).join(' and ')}{tx.india}{' '}{tx.also_operating_from}{' '}{operatingFromText()}.</p>
           </div>
           <div className="animate-fade-in-up delay-300">
             <Image
@@ -246,7 +246,6 @@ export default function ZohoIntegrationsPage() {
                   <span className="text-3xl font-semibold tracking-tight text-white">{MEMBERSHIP.monthly}</span>
                   <span className="text-sm">{tx.month}</span>
                 </p>
-                <p className="text-sm">{tx.minimum_commitment}{" "}{MEMBERSHIP.minimumMonths}{" "}{tx.months}<br />{tx.total_commitment}{" "}{MEMBERSHIP.minimumTotal}{" "}{tx.before_applicable_taxes}</p>
               </div>
               <TrackedLink
                 href="#membership"

@@ -24,22 +24,6 @@
   ],
   "offices": [
     {
-      "id": "gaya",
-      "city": "Gaya",
-      "name": "Gaya Office (Headquarters)",
-      "streetAddress": "Panchanpur, Tekari",
-      "locality": "Gaya",
-      "region": "Bihar",
-      "postalCode": "824236",
-      "country": "India",
-      "countryCode": "IN",
-      "coordinates": [
-        24.9366,
-        84.8425
-      ],
-      "type": "headquarters"
-    },
-    {
       "id": "mohali",
       "city": "Mohali",
       "name": "Mohali Office",
@@ -54,6 +38,44 @@
         76.7179
       ],
       "type": "office"
+    },
+    {
+      "id": "gaya",
+      "city": "Gaya",
+      "name": "Gaya Office",
+      "streetAddress": "Panchanpur, Tekari",
+      "locality": "Gaya",
+      "region": "Bihar",
+      "postalCode": "824236",
+      "country": "India",
+      "countryCode": "IN",
+      "coordinates": [
+        24.9366,
+        84.8425
+      ],
+      "type": "headquarters"
+    }
+  ],
+  "operatingFrom": [
+    {
+      "id": "mumbai",
+      "city": "Mumbai",
+      "region": "Maharashtra",
+      "country": "India",
+      "coordinates": [
+        19.076,
+        72.8777
+      ]
+    },
+    {
+      "id": "toronto",
+      "city": "Toronto",
+      "region": "Ontario",
+      "country": "Canada",
+      "coordinates": [
+        43.6532,
+        -79.3832
+      ]
     }
   ],
   "social": {

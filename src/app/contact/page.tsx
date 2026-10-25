@@ -22,7 +22,7 @@ import Footer from '@/components/Footer';
 import ContactForm from '@/components/contact/ContactForm';
 import ContactOffices from '@/components/contact/ContactOffices';
 import ContactFaq from '@/components/contact/ContactFaq';
-import { COMPANY, COMPANY_METRICS, OFFICES, formatOfficeAddress, officeMapUrl } from '@/lib/company';
+import { COMPANY, COMPANY_METRICS, OFFICES, formatOfficeAddress, officeMapUrl, operatingFromText } from '@/lib/company';
 
 const HERO_STATS: { icon: LucideIcon; value: string; label: string }[] = [
   { icon: Clock, value: '24hrs', label: tx.response_time },
@@ -161,6 +161,9 @@ export default function ContactPage() {
                     <span className="block text-slate-500">{formatOfficeAddress(office)}</span>
                   </span>
                 ))}
+                <span className="mt-2 block text-slate-500">
+                  {tx.also_operating_from} {operatingFromText()}.
+                </span>
               </InfoCard>
               <div className="flex items-start gap-4 rounded-2xl bg-white p-5 ring-1 ring-slate-200/80">
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-600">

@@ -4,7 +4,6 @@ import {
   BadgeIndianRupee,
   Building2,
   CalendarCheck,
-  CalendarClock,
   Code2,
   Database,
   GitBranch,
@@ -60,8 +59,6 @@ export const MEMBERSHIP = {
   name: tx.zoho_development_membership,
   apps: [tx.zoho_crm, tx.zoho_creator],
   monthly: '₹14,999',
-  minimumMonths: 3,
-  minimumTotal: '₹44,997',
   tagline: tx.your_dedicated_zoho_development_partner,
   /** Types of development request covered. */
   requestTypes: [
@@ -77,7 +74,6 @@ export const MEMBERSHIP = {
   /** How requests are submitted and prioritised. */
   process: [
     { title: tx.send_a_request, body: tx.tell_us_what_you_need },
-    { title: tx.we_estimate_it, body: tx.larger_requests_are_estimated_first },
     { title: tx.you_set_the_priority, body: tx.requests_go_into_one_queue },
     { title: tx.monthly_review, body: tx.we_review_what_was_delivered },
   ],
@@ -335,12 +331,6 @@ export const FAQS: { q: string; a: string; group: 'general' | 'technical'; icon:
     group: 'general',
     icon: BadgeIndianRupee,
     a: tx.ongoing_development_on_zoho_crm,
-  },
-  {
-    q: tx.why_is_there_a_three,
-    group: 'general',
-    icon: CalendarClock,
-    a: tx.understanding_your_processes_building_ch,
   },
   {
     q: tx.are_zoho_licenses_included,

@@ -4,12 +4,8 @@
   "your_business_works": "your business works.",
   "building_business_software_since": "Building business software since",
   "offices_in": "· Offices in",
-  "india": ", India",
+  "india": ", India.",
   "month": "/month",
-  "minimum_commitment": "Minimum commitment:",
-  "months": "months",
-  "total_commitment": "Total commitment:",
-  "before_applicable_taxes": "before applicable taxes",
   "view_membership_details": "View Membership Details",
   "zoho_applications_we_work_with": "Zoho applications we work with",
   "a_development_team_that_knows": "A development team that knows Zoho",
@@ -51,5 +47,6 @@
   "let_s_discuss_your_requirements_and": "Let’s discuss your requirements and create a tailored Zoho solution.",
   "get_a_free_consultation": "Get a Free Consultation",
   "view_our_work": "View Our Work",
-  "zoho_question": "Zoho?"
+  "zoho_question": "Zoho?",
+  "also_operating_from": "Also operating from"
 }

@@ -147,10 +147,29 @@ export function validateSite(v: unknown) {
     social[key] = url;
   }
 
+  const operatingFrom = (Array.isArray(v.operatingFrom) ? v.operatingFrom : []).map((c, i) => {
+    if (!isObject(c)) return fail(`Operating city #${i + 1} is invalid.`);
+    const id = str(c.id, `Operating city #${i + 1} id`, { max: 40 });
+    if (!/^[a-z0-9-]+$/.test(id)) fail(`Operating city #${i + 1}: the short id must be lowercase letters, numbers or dashes.`);
+    const coords = Array.isArray(c.coordinates) ? c.coordinates.map(Number) : [];
+    if (coords.length !== 2 || !(Math.abs(coords[0]) <= 90) || !(Math.abs(coords[1]) <= 180)) fail(`Operating city #${i + 1}: the map position is invalid.`);
+    return {
+      id,
+      city: str(c.city, `Operating city #${i + 1} name`, { max: 80 }),
+      region: str(c.region, `Operating city #${i + 1} state/province`, { max: 80 }),
+      country: str(c.country, `Operating city #${i + 1} country`, { max: 80 }),
+      coordinates: [coords[0], coords[1]],
+    };
+  });
+  if (operatingFrom.length > 6) fail('List at most six "also operating from" cities.');
+  const placeIds = [...offices.map((o) => o.id), ...operatingFrom.map((c) => c.id)];
+  if (new Set(placeIds).size !== placeIds.length) fail('Offices and operating cities need different short ids.');
+
   return {
     company: { name: str(c.name, 'Company name', { max: 120 }), legalName: str(c.legalName, 'Legal name', { max: 160 }), foundingYear, phone: phone.trim(), email, infoEmail, zohoEmail, logoPath },
     metrics,
     offices,
+    operatingFrom,
     social,
   };
 }

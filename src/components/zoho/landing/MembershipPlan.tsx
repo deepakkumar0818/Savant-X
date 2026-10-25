@@ -1,11 +1,8 @@
 import tx from '@/content/text/components/zoho/landing/MembershipPlan.json';
 import Image from 'next/image';
-import { Caveat } from 'next/font/google';
-import { ArrowRight, BarChart3, CalendarDays, Check, Clock3, Code2, Coins, Settings, Star, X, Zap } from 'lucide-react';
+import { ArrowRight, BarChart3, Check, Clock3, Code2, Settings, Star, X, Zap } from 'lucide-react';
 import SelectServiceLink from './SelectServiceLink';
 import { MEMBERSHIP, ZOHO_LOGOS } from './data';
-
-const handwriting = Caveat({ subsets: ['latin'], weight: ['500'], display: 'swap' });
 
 const PIPELINE = [
   { stage: tx.new_leads, color: 'bg-blue-500', cards: 3 },
@@ -19,7 +16,6 @@ function PlanIllustration() {
   return (
     <div aria-hidden className="relative hidden h-52 w-[31rem] shrink-0 lg:block">
       <div className="absolute -right-6 -top-8 h-48 w-72 rounded-full bg-indigo-200/50 blur-3xl" />
-      <p className={`${handwriting.className} absolute left-0 top-20 -rotate-12 text-xl leading-tight text-slate-500`}>{tx.your_zoho}<br />{tx.development_partner}</p>
 
       <div className="absolute left-40 top-2 w-60 rotate-[-2deg] rounded-xl bg-white p-3 shadow-[0_24px_50px_-20px_rgba(30,58,138,0.45)] ring-1 ring-slate-200">
         <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-800">
@@ -71,8 +67,7 @@ export default function MembershipPlan() {
       <div className="relative mx-auto max-w-7xl">
         <div className="zoho-reveal flex items-center justify-between gap-8">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600">{tx.zoho_development_plans}</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">{tx.choose}{' '}
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">{tx.choose}{' '}
               <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">{tx.how_you_want}</span>{" "}{tx.to_work_with_us}</h2>
             <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">{tx.an_ongoing_development_membership_fixed}</p>
           </div>
@@ -110,23 +105,7 @@ export default function MembershipPlan() {
                   <span className="text-5xl font-bold tracking-tight sm:text-6xl">{MEMBERSHIP.monthly}</span>
                   <span className="text-lg text-slate-300">{tx.month}</span>
                 </p>
-                <dl className="mt-6 grid gap-4 border-t border-white/10 pt-6 min-[420px]:grid-cols-2">
-                  {[
-                    { icon: CalendarDays, label: tx.minimum_commitment, value: `${MEMBERSHIP.minimumMonths} months` },
-                    { icon: Coins, label: tx.minimum_value, value: MEMBERSHIP.minimumTotal },
-                  ].map(({ icon: Icon, label, value }) => (
-                    <div key={label} className="flex items-center gap-3">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/10">
-                        <Icon className="h-5 w-5 text-slate-200" aria-hidden />
-                      </span>
-                      <div>
-                        <dt className="text-xs text-slate-400">{label}</dt>
-                        <dd className="mt-0.5 font-semibold">{value}</dd>
-                      </div>
-                    </div>
-                  ))}
-                </dl>
-                <p className="mt-4 text-xs text-slate-400">{tx.prices_before_applicable_taxes_zoho}</p>
+                <p className="mt-6 border-t border-white/10 pt-6 text-xs text-slate-400">{tx.prices_before_applicable_taxes_zoho}</p>
                 <SelectServiceLink
                   service="membership"
                   event="membership_cta_click"
@@ -160,7 +139,7 @@ export default function MembershipPlan() {
                 <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
                   <Zap className="h-5 w-5" aria-hidden />
                 </span>{tx.how_requests_work}</h4>
-              <ol className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              <ol className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
                 {MEMBERSHIP.process.map((step, i) => (
                   <li key={step.title} className="relative rounded-xl bg-slate-50/80 px-4 pb-4 pt-6 text-center ring-1 ring-slate-200/70">
                     <span className="absolute -top-3 left-1/2 flex h-7 w-7 -translate-x-1/2 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 text-xs font-bold text-white shadow-md shadow-indigo-500/30">

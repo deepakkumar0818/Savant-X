@@ -1,9 +1,9 @@
 import tx from '@/content/text/components/Footer.json';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Box, ChevronRight, Facebook, Instagram, Layers, Link2, Linkedin, Mail, MapPin, Phone, Radar, type LucideIcon } from 'lucide-react';
+import { Box, ChevronRight, Globe, Facebook, Instagram, Layers, Link2, Linkedin, Mail, MapPin, Phone, Radar, type LucideIcon } from 'lucide-react';
 import NewsletterSignup from '@/components/NewsletterSignup';
-import { COMPANY, OFFICES, SOCIAL_LINKS as SOCIAL, formatOfficeAddress, officeMapUrl } from '@/lib/company';
+import { COMPANY, OFFICES, SOCIAL_LINKS as SOCIAL, formatOfficeAddress, officeMapUrl, operatingFromText } from '@/lib/company';
 
 const SOCIAL_LINKS = [
   {
@@ -182,6 +182,14 @@ export default function Footer() {
                   </ContactRow>
                 </li>
               ))}
+              <li className="flex items-center gap-3 text-sm text-slate-700 xl:text-[15px]">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-indigo-50 text-indigo-600">
+                  <Globe className="h-4 w-4" aria-hidden />
+                </span>
+                <span>
+                  {tx.also_operating_from} {operatingFromText()}
+                </span>
+              </li>
               <li>
                 <ContactRow href={COMPANY.phone.href} icon={Phone}>
                   {COMPANY.phone.display}
