@@ -7,6 +7,8 @@ import { AlertCircle, CalendarDays, CheckCircle2, Loader2, X } from 'lucide-reac
 import { useDialog } from '@/lib/useDialog';
 import { trackEvent } from '@/lib/analytics';
 import { fetchWithTimeout } from '@/lib/fetchWithTimeout';
+import { LEAD_SENT_EVENT } from '@/lib/leadPopup';
+import { goToThankYou } from '@/lib/thankYou';
 import { PRODUCTS } from './data';
 
 type Fields = { name: string; email: string; phone: string; company: string; product: string; message: string; website: string };
@@ -89,7 +91,9 @@ export default function ProductDemoDialog({ productId, onClose }: { productId: s
         return;
       }
       trackEvent('generate_lead', { form: 'product_demo', product: form.product });
+      window.dispatchEvent(new Event(LEAD_SENT_EVENT));
       setStatus({ state: 'success', message: data.message || 'Thank you! We have received your demo request.' });
+      goToThankYou('product-demo');
     } catch {
       setStatus({ state: 'error', message: tx.network_error_please_check_your });
     }

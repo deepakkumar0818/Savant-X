@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { ArrowRight, Mail } from 'lucide-react';
 import { fetchWithTimeout } from '@/lib/fetchWithTimeout';
+import { goToThankYou } from '@/lib/thankYou';
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState('');
@@ -25,7 +26,10 @@ export default function NewsletterSignup() {
         }),
       });
       setStatus(res.ok ? 'ok' : 'err');
-      if (res.ok) setEmail('');
+      if (res.ok) {
+        setEmail('');
+        goToThankYou('newsletter');
+      }
     } catch {
       setStatus('err');
     }

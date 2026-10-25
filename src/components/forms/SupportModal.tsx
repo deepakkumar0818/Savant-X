@@ -5,6 +5,7 @@ import { useId, useRef, useState } from 'react';
 import { AlertCircle, CheckCircle2, Loader2, X } from 'lucide-react';
 import { useDialog } from '@/lib/useDialog';
 import { fetchWithTimeout } from '@/lib/fetchWithTimeout';
+import { goToThankYou } from '@/lib/thankYou';
 
 type Props = {
   open: boolean;
@@ -60,6 +61,7 @@ export default function SupportModal({ open, onClose }: Props) {
       }
       setForm(EMPTY);
       setStatus({ state: 'success', message: data.message || 'Thank you! Our support team will get back to you soon.' });
+      goToThankYou('support');
     } catch {
       setStatus({
         state: 'error',

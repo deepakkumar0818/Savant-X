@@ -7,6 +7,7 @@ import { AlertCircle, CalendarDays, CheckCircle2, Loader2, X } from 'lucide-reac
 import { useDialog } from '@/lib/useDialog';
 import { trackEvent } from '@/lib/analytics';
 import { LEAD_SENT_EVENT } from '@/lib/leadPopup';
+import { goToThankYou } from '@/lib/thankYou';
 import { fetchWithTimeout } from '@/lib/fetchWithTimeout';
 import forms from '@/content/forms.json';
 import { BUDGETS, campaignParams, EMAIL_PATTERN, MIN_MESSAGE, PHONE_PATTERN } from './leadForm';
@@ -92,6 +93,7 @@ export default function ConsultationDialog({ source, onClose }: { source: string
       trackEvent('generate_lead', { form: 'consultation', service: form.service, budget: form.budget });
       window.dispatchEvent(new Event(LEAD_SENT_EVENT));
       setStatus({ state: 'success', message: data.message || 'Thank you! We have received your request.' });
+      goToThankYou('consultation');
     } catch {
       setStatus({ state: 'error', message: tx.network_error_please_check_your });
     }

@@ -328,6 +328,15 @@
       ]
     },
     {
+      "route": "/thank-you",
+      "page": "app/thank-you/page.tsx",
+      "title": "Thank You",
+      "text": [
+        "src/content/text/app/thank-you/page.json",
+        "src/content/text/components/thank-you/ThankYouContent.json"
+      ]
+    },
+    {
       "route": "/work",
       "page": "app/work/page.tsx",
       "title": "Work",

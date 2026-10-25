@@ -11,6 +11,7 @@ import { SELECT_SERVICE_EVENT } from './SelectServiceLink';
 /** Fired on window once the server confirms a lead was delivered. */
 import { fetchWithTimeout } from '@/lib/fetchWithTimeout';
 import { LEAD_SENT_EVENT } from '@/lib/leadPopup';
+import { goToThankYou } from '@/lib/thankYou';
 
 type Fields = {
   name: string;
@@ -136,6 +137,7 @@ export default function ZohoEnquiryForm({
       setStatus({ state: 'success', message: data.message || 'Thank you! We have received your enquiry.' });
       setForm(EMPTY);
       window.dispatchEvent(new Event(LEAD_SENT_EVENT));
+      goToThankYou('zoho-enquiry');
     } catch {
       setStatus({ state: 'error', message: tx.network_error_please_check_your });
     }

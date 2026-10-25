@@ -15,6 +15,8 @@ import {
 } from 'lucide-react';
 import ZohoCrmAnalytics from '@/components/zoho/ZohoCrmAnalytics';
 import { fetchWithTimeout } from '@/lib/fetchWithTimeout';
+import { LEAD_SENT_EVENT } from '@/lib/leadPopup';
+import { goToThankYou } from '@/lib/thankYou';
 
 type FormData = {
   fullName: string;
@@ -139,6 +141,8 @@ export default function ZohoStrategyForm({
       );
       setFormData(emptyForm(defaultZohoApps));
       onSuccess?.();
+      window.dispatchEvent(new Event(LEAD_SENT_EVENT));
+      goToThankYou('zoho-strategy');
     } catch {
       setSubmitStatus('error');
       setErrorMessage('Network error. Please try again or contact us directly.');

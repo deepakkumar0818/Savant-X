@@ -9,8 +9,8 @@ import { useAutoLeadPopup } from '@/lib/leadPopup';
 // Loaded only when the popup opens, so it adds nothing to the first page load.
 const ConsultationDialog = dynamic(() => import('./ConsultationDialog'), { ssr: false });
 
-/** Pages that already show a form: the Zoho page has its own popup, the contact page its own form. */
-const SKIP = [/^\/expertise\/zoho-integrations\/?$/, /^\/contact\/?$/];
+/** Pages that already show a form (the Zoho page has its own popup, the contact page its own form), and the thank-you page. */
+const SKIP = [/^\/expertise\/zoho-integrations\/?$/, /^\/contact\/?$/, /^\/thank-you\/?$/];
 
 /** Opens the consultation form by itself once per visit, on every public page except those above. */
 export default function SiteLeadPopup() {

@@ -5,6 +5,8 @@ import { useId, useState } from 'react';
 import { AlertCircle, ArrowRight, CheckCircle2, Loader2, Lock, MonitorSmartphone, Send } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
 import { fetchWithTimeout } from '@/lib/fetchWithTimeout';
+import { LEAD_SENT_EVENT } from '@/lib/leadPopup';
+import { goToThankYou } from '@/lib/thankYou';
 import forms from '@/content/forms.json';
 import { BUDGETS, campaignParams, EMAIL_PATTERN, MIN_MESSAGE, PHONE_PATTERN } from '@/components/forms/leadForm';
 
@@ -102,8 +104,10 @@ export default function ContactForm() {
         return;
       }
       trackEvent('generate_lead', { form: 'contact', service: form.service, budget: form.budget });
+      window.dispatchEvent(new Event(LEAD_SENT_EVENT));
       setStatus({ state: 'success' });
       setForm(EMPTY_FORM);
+      goToThankYou('contact');
     } catch {
       setStatus({ state: 'error', message: tx.network_error_please_check_your });
     }
