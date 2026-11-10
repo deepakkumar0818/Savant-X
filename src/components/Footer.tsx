@@ -228,6 +228,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+            <div className="mt-4 flex items-center gap-3 rounded-2xl bg-white p-3 ring-1 ring-slate-200/80">
+              <Image src="/images/zoho/zoho-partners.webp" alt={tx.zoho_partners_logo} width={800} height={239} className="h-9 w-auto" />
+              <span className="border-l border-slate-200 pl-3 text-xs font-semibold leading-tight text-slate-700">{tx.zoho_consulting_partner}</span>
+            </div>
           </div>
         </div>
 

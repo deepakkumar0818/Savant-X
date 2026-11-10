@@ -1,5 +1,6 @@
 import tx from '@/content/text/app/expertise/zoho-integrations/page.json';
 import Image from 'next/image';
+import ZohoPartnerBadge from '@/components/ZohoPartnerBadge';
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -184,6 +185,9 @@ export default function ZohoIntegrationsPage() {
         <HeroPremiumBackdrop gridGlowActive={false} />
         <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
           <div className="text-center lg:text-left">
+            <div className="animate-fade-in-up mb-5 flex justify-center lg:justify-start">
+              <ZohoPartnerBadge linked={false} />
+            </div>
             <p className="animate-fade-in-up inline-flex items-center gap-2 rounded-lg bg-white/95 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-600 shadow-sm ring-1 ring-slate-200/70 sm:text-xs sm:tracking-[0.2em]">{tx.zoho_development_implementation}</p>
             <h1 className="animate-fade-in-up delay-100 mt-6 text-[2.15rem] font-bold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem]">{tx.make_zoho_work_the_way}{' '}
               <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.your_business_works}</span>

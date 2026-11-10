@@ -24,6 +24,7 @@ import type { ZohoApp } from '@/data/zohoApps';
 import { zohoApps } from '@/data/zohoApps';
 import { getZohoAppTheme } from '@/data/zohoAppThemes';
 import dynamic from 'next/dynamic';
+import ZohoPartnerBadge from '@/components/ZohoPartnerBadge';
 
 const ZohoStrategyFormModal = dynamic(
   () => import('@/components/zoho/ZohoStrategyFormModal'),
@@ -174,6 +175,9 @@ export default function ZohoAppPage({ app }: Props) {
 
           <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-10">
             <div className="hero-enter text-center lg:text-left">
+              <div className="mb-5">
+                <ZohoPartnerBadge />
+              </div>
               <motion.div
                 variants={fadeUp}
                 className="mb-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start"

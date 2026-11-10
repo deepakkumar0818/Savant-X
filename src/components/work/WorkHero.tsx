@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Caveat } from 'next/font/google';
 import { ArrowRight, Box, CalendarDays, ChevronLeft, ChevronRight, FolderOpen, MapPin, Star, Users, type LucideIcon } from 'lucide-react';
 import { COMPANY, COMPANY_METRICS, OFFICES } from '@/lib/company';
+import ZohoPartnerBadge from '@/components/ZohoPartnerBadge';
 
 const handwriting = Caveat({ subsets: ['latin'], weight: ['500'], display: 'swap' });
 
@@ -26,6 +27,9 @@ export default function WorkHero() {
       <div className="mx-auto max-w-7xl pb-14 pt-14 sm:pt-16 lg:pb-16 lg:pt-20">
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-6">
           <div>
+            <div className="mb-5">
+              <ZohoPartnerBadge />
+            </div>
             <p className="inline-flex items-center gap-1.5 rounded-full border border-indigo-300 bg-white/70 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-indigo-700 backdrop-blur">
               <ChevronLeft className="h-3 w-3" aria-hidden />{tx.our_work}<ChevronRight className="h-3 w-3" aria-hidden />
             </p>

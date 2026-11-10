@@ -2,6 +2,7 @@ import tx from '@/content/text/components/hero/PageHero.json';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, Eye, type LucideIcon } from 'lucide-react';
 import HeroPremiumBackdrop from '@/components/hero/HeroPremiumBackdrop';
+import ZohoPartnerBadge from '@/components/ZohoPartnerBadge';
 
 export type PageHeroStat = { value: React.ReactNode; label: string };
 type Cta = { label: string; href: string };
@@ -75,6 +76,11 @@ export default function PageHero({
           }
         >
           <div className={hasPanel ? 'text-center lg:text-left' : 'text-left'}>
+            {!compact && (
+              <div className="mb-5">
+                <ZohoPartnerBadge />
+              </div>
+            )}
             <p className="animate-fade-in-up inline-flex items-center gap-2 rounded-lg bg-white/95 px-3 py-2 shadow-sm ring-1 ring-slate-200/70 backdrop-blur-md">
               {EyebrowIcon && <EyebrowIcon className="h-4 w-4 text-indigo-600" strokeWidth={1.75} aria-hidden />}
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600">{eyebrow}</span>

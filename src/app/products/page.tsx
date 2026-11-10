@@ -23,6 +23,7 @@ import ProductCatalog from '@/components/products/ProductCatalog';
 import { CATEGORIES, PRODUCTS, TRUSTED_BY } from '@/components/products/data';
 import RequestDemoButton from '@/components/products/RequestDemoButton';
 import { COMPANY_METRICS } from '@/lib/company';
+import ZohoPartnerBadge from '@/components/ZohoPartnerBadge';
 
 const STATS: { icon: LucideIcon; value: string; label: string }[] = [
   { icon: Boxes, value: String(PRODUCTS.length), label: tx.ready_made_products },
@@ -58,6 +59,9 @@ export default function ProductsPage() {
         <div className="mx-auto max-w-7xl">
           <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <div className="hero-enter">
+              <div className="mb-5">
+                <ZohoPartnerBadge />
+              </div>
               <p className={eyebrow}>{tx.our_products}</p>
               <h1 className="mt-5 text-[2.3rem] font-bold leading-[1.08] tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem]">{tx.powerful_software_solutions_for}{' '}
                 <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">{tx.every_business}</span>

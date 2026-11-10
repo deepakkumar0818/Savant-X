@@ -32,5 +32,7 @@
   "iot_edge": "IoT edge",
   "postgresql": "PostgreSQL",
   "kubernetes": "Kubernetes",
-  "also_operating_from": "Also operating from"
+  "also_operating_from": "Also operating from",
+  "zoho_partners_logo": "Zoho Partners logo",
+  "zoho_consulting_partner": "Official Zoho Consulting Partner"
 }

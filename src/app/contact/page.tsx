@@ -23,6 +23,7 @@ import ContactForm from '@/components/contact/ContactForm';
 import ContactOffices from '@/components/contact/ContactOffices';
 import ContactFaq from '@/components/contact/ContactFaq';
 import { COMPANY, COMPANY_METRICS, OFFICES, formatOfficeAddress, officeMapUrl, operatingFromText } from '@/lib/company';
+import ZohoPartnerBadge from '@/components/ZohoPartnerBadge';
 
 const HERO_STATS: { icon: LucideIcon; value: string; label: string }[] = [
   { icon: Clock, value: '24hrs', label: tx.response_time },
@@ -70,6 +71,9 @@ export default function ContactPage() {
         <div aria-hidden className="absolute -right-40 -top-40 -z-10 h-[36rem] w-[36rem] rounded-full bg-indigo-200/40 blur-3xl" />
         <div className="mx-auto grid max-w-7xl items-center gap-10 pb-12 pt-14 sm:pt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-6 lg:pb-14 lg:pt-20">
           <div>
+            <div className="mb-5">
+              <ZohoPartnerBadge />
+            </div>
             <p
               className="hero-enter inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-white/70 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-indigo-700"
               style={delay(0)}

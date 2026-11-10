@@ -4,6 +4,7 @@
     "src/content/text/components/Footer.json",
     "src/content/text/components/Navbar.json",
     "src/content/text/components/NewsletterSignup.json",
+    "src/content/text/components/ZohoPartnerBadge.json",
     "src/content/text/components/forms/ConsultationDialog.json",
     "src/content/text/components/hero/PageHero.json"
   ],

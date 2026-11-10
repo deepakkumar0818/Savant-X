@@ -27,6 +27,7 @@ import {
 import Footer from '@/components/Footer';
 import SectionHeading, { GRADIENT_TEXT } from '@/components/expertise/SectionHeading';
 import { COMPANY, COMPANY_METRICS } from '@/lib/company';
+import ZohoPartnerBadge from '@/components/ZohoPartnerBadge';
 
 type Service = {
   title: string;
@@ -151,6 +152,9 @@ export default function HardwareElectronicsPage() {
         <div aria-hidden className="pointer-events-none absolute -bottom-40 -left-32 h-[26rem] w-[26rem] rounded-full bg-blue-100/60 blur-3xl" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
           <div>
+            <div className="mb-5">
+              <ZohoPartnerBadge />
+            </div>
             <p className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-indigo-700 shadow-sm ring-1 ring-indigo-100">
               <CircuitBoard className="h-3.5 w-3.5" aria-hidden />{tx.hardware_electronics}</p>
             <h1 className="mt-5 text-4xl font-bold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl lg:text-[2.9rem] xl:text-[3.2rem]">{tx.electronics_hardware}{" "}<span className={`block ${GRADIENT_TEXT}`}>{tx.development}</span>

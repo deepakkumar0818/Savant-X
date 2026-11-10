@@ -14,6 +14,7 @@ import SolutionsMegaSectionBackdrop from '@/components/solutions/SolutionsMegaSe
 import { useSolutionsAmbientMotion } from '@/lib/useSolutionsAmbientMotion';
 import HeroPremiumBackdrop from '@/components/hero/HeroPremiumBackdrop';
 import { COMPANY_METRICS } from '@/lib/company';
+import ZohoPartnerBadge from '@/components/ZohoPartnerBadge';
 
 const HeroWorkflowEditor = dynamic(() => import('@/components/HeroWorkflowEditor'), {
   loading: () => (
@@ -103,6 +104,9 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-7xl">
           <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-14">
             <div className="hero-enter text-center lg:text-left">
+              <div className="mb-5">
+                <ZohoPartnerBadge />
+              </div>
               <p className="relative z-10 inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-2 rounded-lg bg-white/95 px-3 py-2 shadow-sm ring-1 ring-white/80 backdrop-blur-md lg:justify-start">
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-600">{tx.enterprise_software_electronics}</span>
                 <span className="hidden h-1 w-1 shrink-0 rounded-full bg-indigo-300 sm:inline-block" aria-hidden />

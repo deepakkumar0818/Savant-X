@@ -5,6 +5,7 @@ import { ArrowRight, BarChart3, Code2, Layers, Play, Users } from 'lucide-react'
 import AnimatedCounter from '@/components/AnimatedCounter';
 import AboutHeroBackdrop from '@/components/about/AboutHeroBackdrop';
 import { COMPANY_METRICS } from '@/lib/company';
+import ZohoPartnerBadge from '@/components/ZohoPartnerBadge';
 
 const PARTNER_BRANDS = [
   'Legal Palz',
@@ -56,6 +57,9 @@ export default function AboutPageHero() {
         <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-10 xl:gap-16">
           {/* Copy */}
           <div className="hero-enter">
+            <div className="mb-5">
+              <ZohoPartnerBadge />
+            </div>
             <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-indigo-600">{tx.about_savantx}<span aria-hidden className="h-0.5 w-10 rounded-full bg-gradient-to-r from-indigo-500 to-violet-400" />
             </p>
 

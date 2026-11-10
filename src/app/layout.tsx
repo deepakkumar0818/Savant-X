@@ -26,7 +26,7 @@ const organizationSchema = {
   description:
     "SavantX Technologies Pvt Ltd is an IT and Electronics company delivering software, Zoho CRM and ERP solutions, IoT, Embedded Systems, PCB Design, Product Development, and Smart Automation. With offices in Gaya (Bihar) and Mohali (Punjab), India, SavantX Technologies supports startups and enterprises with end-to-end hardware and software integration, industrial automation, IoT platforms, and R&D services.",
   keywords:
-    "Zoho CRM partner India, ERP solutions, IoT company India, embedded systems development, PCB design services, product development, electronics company India, IT services, SavantX Technologies",
+    "Zoho Consulting Partner India, Zoho CRM partner India, ERP solutions, IoT company India, embedded systems development, PCB design services, product development, electronics company India, IT services, SavantX Technologies",
   foundingDate: String(COMPANY.foundingYear),
   email: COMPANY.email,
   telephone: COMPANY.phone.schema,
