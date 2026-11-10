@@ -149,7 +149,12 @@ export default function CookiePolicy() {
                   </svg>
                   <div>
                     <p className="font-semibold text-slate-900">{tx.phone}</p>
-                    <a href={COMPANY.phone.href} className="text-blue-600 hover:underline">{COMPANY.phone.display}</a>
+                    <a href={COMPANY.phone.href} className="block text-blue-600 hover:underline">{COMPANY.phone.display}</a>
+                    {COMPANY.contacts.map((c) => (
+                      <a key={c.href} href={c.href} className="block text-blue-600 hover:underline">
+                        {c.display} ({c.name})
+                      </a>
+                    ))}
                   </div>
                 </div>
                 <div className="flex items-start gap-3">

@@ -24,6 +24,8 @@ export const COMPANY = {
   legalName: site.company.legalName,
   foundingYear: site.company.foundingYear,
   phone: phoneFormats(site.company.phone),
+  /** Named people to call, shown after the main number. */
+  contacts: site.company.contacts.map((c) => ({ name: c.name, ...phoneFormats(c.phone) })),
   email: site.company.email,
   infoEmail: site.company.infoEmail,
   /** Shown only on the Zoho pages. */

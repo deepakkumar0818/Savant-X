@@ -195,6 +195,14 @@ export default function Footer() {
                   {COMPANY.phone.display}
                 </ContactRow>
               </li>
+              {COMPANY.contacts.map((c) => (
+                <li key={c.href}>
+                  <ContactRow href={c.href} icon={Phone}>
+                    <span className="block text-xs font-semibold text-slate-500">{c.name}</span>
+                    {c.display}
+                  </ContactRow>
+                </li>
+              ))}
               {[COMPANY.email, COMPANY.infoEmail].map((email) => (
                 <li key={email}>
                   <ContactRow href={`mailto:${email}`} icon={Mail}>

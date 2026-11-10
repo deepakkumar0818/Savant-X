@@ -79,13 +79,22 @@ export function validateText(next: unknown, current: Record<string, string>, lab
 // ---------------------------------------------------------------------------
 // Site settings
 // ---------------------------------------------------------------------------
+const PHONE = /^\+\d{1,3}[\s-]?\d[\d\s-]{5,16}$/;
+
 export function validateSite(v: unknown) {
   if (!isObject(v) || !isObject(v.company) || !Array.isArray(v.metrics) || !Array.isArray(v.offices) || !isObject(v.social)) {
     return fail('Site settings are invalid.');
   }
   const c = v.company;
   const phone = str(c.phone, 'Phone number', { max: 40 });
-  if (!/^\+\d{1,3}[\s-]?\d[\d\s-]{5,16}$/.test(phone.trim())) fail('Phone number must be international format, e.g. +91 9888244166.');
+  if (!PHONE.test(phone.trim())) fail('Phone number must be international format, e.g. +91 9888244166.');
+  const contacts = (Array.isArray(c.contacts) ? c.contacts : []).map((p, i) => {
+    if (!isObject(p)) return fail(`Contact person #${i + 1} is invalid.`);
+    const number = str(p.phone, `Contact person #${i + 1} phone`, { max: 40 }).trim();
+    if (!PHONE.test(number)) fail(`Contact person #${i + 1}: phone must be international format, e.g. +91 9888244166.`);
+    return { name: str(p.name, `Contact person #${i + 1} name`, { max: 80 }).trim(), phone: number };
+  });
+  if (contacts.length > 4) fail('List at most four contact people.');
   const emailOf = (value: unknown, label: string) => {
     const e = str(value, label, { max: 200 }).trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)) fail(`${label} address is invalid.`);
@@ -166,7 +175,7 @@ export function validateSite(v: unknown) {
   if (new Set(placeIds).size !== placeIds.length) fail('Offices and operating cities need different short ids.');
 
   return {
-    company: { name: str(c.name, 'Company name', { max: 120 }), legalName: str(c.legalName, 'Legal name', { max: 160 }), foundingYear, phone: phone.trim(), email, infoEmail, zohoEmail, logoPath },
+    company: { name: str(c.name, 'Company name', { max: 120 }), legalName: str(c.legalName, 'Legal name', { max: 160 }), foundingYear, phone: phone.trim(), contacts, email, infoEmail, zohoEmail, logoPath },
     metrics,
     offices,
     operatingFrom,

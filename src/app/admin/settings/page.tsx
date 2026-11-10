@@ -22,7 +22,7 @@ type Office = {
   type: 'headquarters' | 'office';
 };
 type Site = {
-  company: { name: string; legalName: string; foundingYear: number; phone: string; email: string; infoEmail: string; zohoEmail: string; logoPath: string };
+  company: { name: string; legalName: string; foundingYear: number; phone: string; contacts: { name: string; phone: string }[]; email: string; infoEmail: string; zohoEmail: string; logoPath: string };
   metrics: { value: number; suffix: string; label: string; zohoLabel?: string }[];
   offices: Office[];
   operatingFrom: { id: string; city: string; region: string; country: string; coordinates: [number, number] }[];
@@ -68,6 +68,34 @@ export default function AdminSettings() {
               <Text label="Info email" type="email" value={s.company.infoEmail} onChange={(infoEmail) => setCompany({ infoEmail })} />
               <Text label="Zoho email" type="email" value={s.company.zohoEmail} onChange={(zohoEmail) => setCompany({ zohoEmail })} hint="Shown only on the Zoho page." />
               <Text label="Founded (year)" type="number" value={s.company.foundingYear} onChange={(v) => setCompany({ foundingYear: Number(v) })} hint="“Years of experience” is worked out from this." />
+            </div>
+          </Card>
+
+          <Card title="Contact people" description="Named phone numbers shown after the main number: footer, contact page, Zoho page, thank-you page and legal pages.">
+            <div className="space-y-4">
+              {s.company.contacts.map((p, i) => {
+                const setPerson = (patch: Partial<typeof p>) => setCompany({ contacts: s.company.contacts.map((x, j) => (j === i ? { ...x, ...patch } : x)) });
+                return (
+                  <div key={i} className="grid items-end gap-4 rounded-lg bg-slate-50 p-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto]">
+                    <Text label="Name" value={p.name} onChange={(name) => setPerson({ name })} />
+                    <Text label="Phone" value={p.phone} onChange={(phone) => setPerson({ phone })} hint="International format, e.g. +91 7738071700" />
+                    <button
+                      type="button"
+                      onClick={() => window.confirm(`Remove ${p.name || 'this person'}?`) && setCompany({ contacts: s.company.contacts.filter((_, j) => j !== i) })}
+                      className="justify-self-start pb-2 text-sm font-semibold text-rose-600 hover:text-rose-800"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                );
+              })}
+              <button
+                type="button"
+                onClick={() => setCompany({ contacts: [...s.company.contacts, { name: '', phone: '' }] })}
+                className="text-sm font-semibold text-indigo-700 hover:text-indigo-900"
+              >
+                + Add a person
+              </button>
             </div>
           </Card>
 

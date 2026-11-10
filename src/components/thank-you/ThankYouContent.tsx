@@ -42,13 +42,19 @@ export default function ThankYouContent({ form }: { form?: string | null }) {
         </div>
 
         {id !== 'newsletter' && (
-          <div className="mx-auto mt-12 max-w-md rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+          <div className="mx-auto mt-12 max-w-xl rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
             <p className="font-semibold text-slate-900">{tx.need_to_talk_sooner}</p>
-            <div className="mt-3 flex flex-col items-center justify-center gap-2 text-sm sm:flex-row sm:gap-6">
+            <div className="mt-3 flex flex-col items-center justify-center gap-2 text-sm sm:flex-row sm:flex-wrap sm:gap-x-6">
               <a href={COMPANY.phone.href} className="inline-flex items-center gap-2 font-medium text-indigo-700 hover:text-indigo-900">
                 <Phone className="h-4 w-4" aria-hidden />
                 {COMPANY.phone.display}
               </a>
+              {COMPANY.contacts.map((c) => (
+                <a key={c.href} href={c.href} className="inline-flex items-center gap-2 font-medium text-indigo-700 hover:text-indigo-900">
+                  <Phone className="h-4 w-4" aria-hidden />
+                  {c.display} <span className="text-slate-500">({c.name})</span>
+                </a>
+              ))}
               <a href={`mailto:${email}`} className="inline-flex items-center gap-2 font-medium text-indigo-700 hover:text-indigo-900">
                 <Mail className="h-4 w-4" aria-hidden />
                 {email}

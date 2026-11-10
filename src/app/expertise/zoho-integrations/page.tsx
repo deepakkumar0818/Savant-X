@@ -394,6 +394,18 @@ export default function ZohoIntegrationsPage() {
                   {COMPANY.phone.display}
                 </TrackedLink>
               </li>
+              {COMPANY.contacts.map((c) => (
+                <li key={c.href}>
+                  <TrackedLink href={c.href} event="phone_click" className="flex items-center gap-3 font-medium text-slate-700 hover:text-indigo-700">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                      <Phone className="h-4 w-4" aria-hidden />
+                    </span>
+                    <span>
+                      {c.display} <span className="text-slate-500">({c.name})</span>
+                    </span>
+                  </TrackedLink>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-white shadow-[0_24px_60px_-34px_rgba(30,58,138,0.35)]">

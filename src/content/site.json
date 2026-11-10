@@ -4,6 +4,16 @@
     "legalName": "SavantX Technologies Pvt Ltd",
     "foundingYear": 2019,
     "phone": "+91 9888244166",
+    "contacts": [
+      {
+        "name": "Deepak Kumar",
+        "phone": "+91 9888344077"
+      },
+      {
+        "name": "Rajesh A",
+        "phone": "+91 7738071700"
+      }
+    ],
     "email": "contact@savantxtechnologies.com",
     "infoEmail": "info@savantxtechnologies.com",
     "zohoEmail": "zoho@savantxtechnologies.com",

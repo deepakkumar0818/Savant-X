@@ -393,7 +393,12 @@ export default function PrivacyPolicyPage() {
                     </div>
                     <h4 className="font-semibold mb-2">{tx.phone}</h4>
                     <p className="text-blue-100">
-                      <a href={COMPANY.phone.href} className="hover:underline">{COMPANY.phone.display}</a>
+                      <a href={COMPANY.phone.href} className="block hover:underline">{COMPANY.phone.display}</a>
+                      {COMPANY.contacts.map((c) => (
+                        <a key={c.href} href={c.href} className="block hover:underline">
+                          {c.display} ({c.name})
+                        </a>
+                      ))}
                     </p>
                   </div>
                   <div className="text-center">

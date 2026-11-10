@@ -149,9 +149,16 @@ export default function ContactPage() {
                   </a>
                 ))}
               </InfoCard>
-              <InfoCard icon={Phone} title={tx.call_us} href={COMPANY.phone.href}>
+              <InfoCard icon={Phone} title={tx.call_us}>
                 <span className="mt-0.5 block text-slate-500">{tx.mon_fri_9_00_am}</span>
-                <span className="mt-1 block font-semibold text-indigo-600">{COMPANY.phone.display}</span>
+                <a href={COMPANY.phone.href} className="mt-1 block font-semibold text-indigo-600 hover:underline">
+                  {COMPANY.phone.display}
+                </a>
+                {COMPANY.contacts.map((c) => (
+                  <a key={c.href} href={c.href} className="mt-1 block font-semibold text-indigo-600 hover:underline">
+                    {c.display} <span className="font-medium text-slate-500">({c.name})</span>
+                  </a>
+                ))}
               </InfoCard>
               <InfoCard icon={MapPin} title={tx.visit_us} href={officeMapUrl(OFFICES[0])} external>
                 <span className="mt-0.5 block text-slate-500">{tx.our_office_locations}</span>
